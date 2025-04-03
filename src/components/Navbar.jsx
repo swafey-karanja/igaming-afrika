@@ -1,43 +1,87 @@
 import React, { useState } from 'react';
+import { NavLink } from 'react-router-dom';
 
 const Navbar = () => {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
     const [openDropdowns, setOpenDropdowns] = useState({
-        features: false,
-        solutions: false,
-        resources: false,
-        pricing: false
+        countries: false,
+        publications: false,
+        directory: false
     });
 
     const dropdownMenus = {
-        features: [
-            { name: 'Core Features', href: '#core-features' },
-            { name: 'Advanced Analytics', href: '#advanced-analytics' },
-            { name: 'Integrations', href: '#integrations' },
-            { name: 'Mobile App', href: '#mobile-app' }
+        countries: [
+            { name: 'Nigeria', href: '#nigeria' },
+            { name: 'South Africa', href: '#south-africa' },
+            { name: 'Kenya', href: '#kenya' },
+            { name: 'Tanzania', href: '#tanzania' },
+            { name: 'Ghana', href: '#ghana' },
+            { name: 'Uganda', href: '#uganda' },
+            { name: 'Mozambique', href: '#mozambique' },
+            { name: 'Angola', href: '#angola' },
+            { name: 'Ethiopia', href: '#ethiopia' },
+            { name: 'Zambia', href: '#zambia' },
+            { name: 'Malawi', href: '#malawi' },
+            { name: 'Rwanda', href: '#rwanda' },
+            { name: 'Congo DRC', href: '#congo-drc' },
+            { name: 'Cameroon', href: '#cameroon' },
+            { name: 'Tunisia', href: '#tunisia' },
+            { name: 'Botswana', href: '#botswana' },
+            { name: 'Global', href: '#global' }
         ],
-        solutions: [
-            { name: 'For Enterprise', href: '#enterprise' },
-            { name: 'For Startups', href: '#startups' },
-            { name: 'For Small Business', href: '#small-business' },
-            { name: 'Industry Solutions', href: '#industry-solutions' }
+        publications: [
+            { name: "Editor's Pick", href: '#editors-pick' },
+            { name: 'Podcasts', href: '#podcasts' },
+            { name: 'Interviews', href: '#interviews' },
+            { name: 'Webinars', href: '#webinars' },
+            { name: 'Speakers', href: '#speakers' },
+            { name: 'Articles', href: '#articles' },
+            { name: 'Opinion Pieces', href: '#opinion-pieces' }
         ],
-        resources: [
-            { name: 'Documentation', href: '#documentation' },
-            { name: 'Blog', href: '#blog' },
-            { name: 'Case Studies', href: '#case-studies' },
-            { name: 'Webinars', href: '#webinars' }
-        ],
-        pricing: [
-            { name: 'Standard Plan', href: '#standard-plan' },
-            { name: 'Professional Plan', href: '#professional-plan' },
-            { name: 'Enterprise Plan', href: '#enterprise-plan' },
-            { name: 'Compare Plans', href: '#compare-plans' }
+        directory: [
+            { name: 'Community Forum', href: '#community-forum' },
+            { name: 'Gambling Regulation Boards', href: '#regulation-boards' },
+            { name: 'Sports betting sites', href: '#sports-betting' },
+            { name: 'Casino sites', href: '#casino-sites' },
+            { name: 'Platform Providers', href: '#platform-providers' },
+            { name: 'Land based suppliers', href: '#land-based' },
+            { name: 'Payment Providers', href: '#payment-providers' },
+            { name: 'Game Providers', href: '#game-providers' },
+            { name: 'Lottery Providers', href: '#lottery-providers' },
+            { name: 'Top Games', href: '#top-games' },
+            { name: 'Affiliate Management Platforms', href: '#affiliate-platforms' },
+            { name: 'Crash Games', href: '#crash-games' },
+            { name: 'Crash Games Providers', href: '#crash-game-providers' },
+            { name: 'SMS Service Providers', href: '#sms-providers' },
+            { name: 'Mergers and acquisitions', href: '#mergers' },
+            { name: 'Licensing Requirements', href: '#licensing' },
+            { name: 'Gambling Events', href: '#events' },
+            { name: 'Renowned Executive Profiles', href: '#executives' },
+            { name: 'CSR Activities', href: '#csr' },
+            { name: 'Gambling Guide', href: '#guide' },
+            { name: 'Responsible Gambling', href: '#responsible-gambling' },
+            { name: 'iGaming Consulting', href: '#consulting' }
         ]
     };
 
     const toggleMenu = () => setIsMenuOpen(!isMenuOpen);
 
+    // Modified to handle hover events
+    const handleMouseEnter = (dropdown) => {
+        setOpenDropdowns(prev => {
+            // Close all other dropdowns first
+            const newState = { 
+                countries: false, 
+                publications: false, 
+                directory: false 
+            };
+            // Then open the current one
+            newState[dropdown] = true;
+            return newState;
+        });
+    };
+
+    // For mobile we'll keep click functionality
     const toggleDropdown = (dropdown) => {
         setOpenDropdowns(prev => ({
             ...prev,
@@ -45,28 +89,31 @@ const Navbar = () => {
         }));
     };
 
-    // Reusable Dropdown Component for Desktop
     const DesktopDropdown = ({ name }) => (
-        <div className="relative">
+        <div 
+            className="relative group"
+            onMouseEnter={() => handleMouseEnter(name)}
+        >
             <button
-                onClick={() => toggleDropdown(name)}
-                className="text-base font-medium text-black transition-all duration-200 hover:text-green-600 focus:text-green-600 flex items-center"
+                className="text-sm font-medium text-black transition-all duration-200 ease-in-out hover:text-green-600 focus:text-green-600 flex items-center"
             >
-                {name.charAt(0).toUpperCase() + name.slice(1)}
-                <svg className={`w-4 h-4 ml-1 transform transition-transform duration-300 ${openDropdowns[name] ? 'rotate-180' : ''}`} 
+                {name.toUpperCase()}
+                <svg className={`w-4 h-4 ml-1 transform transition-transform duration-200 ease-in-out ${openDropdowns[name] ? 'rotate-180' : ''}`} 
                     fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7"></path>
                 </svg>
             </button>
             <div 
-                className={`absolute left-0 mt-2 w-48 bg-white rounded-md shadow-lg py-1 z-10 transition-all duration-300 ease-in-out origin-top-left 
-                    ${openDropdowns[name] ? 'transform opacity-100 scale-100' : 'transform opacity-0 scale-95 pointer-events-none'}`}
+                className={`absolute left-0 mt-2 w-54 bg-white rounded-md shadow-lg py-1 z-10 transition-all duration-300 ease-out origin-top will-change-transform
+                    ${openDropdowns[name] ? 'transform opacity-100 scale-100 visible' : 'transform opacity-0 scale-95 invisible'}`}
+                onMouseEnter={() => handleMouseEnter(name)}
+                onMouseLeave={() => setOpenDropdowns({ countries: false, publications: false, directory: false })}
             >
                 {dropdownMenus[name].map((item, index) => (
                     <a
                         key={index}
                         href={item.href}
-                        className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 transition-all duration-200"
+                        className="block px-4 py-2 text-sm text-gray-700 hover:text-green-700 hover:bg-gray-50 transition-all ease-in-out duration-150"
                     >
                         {item.name}
                     </a>
@@ -75,32 +122,32 @@ const Navbar = () => {
         </div>
     );
 
-    // Reusable Dropdown Component for Mobile
+    // Updated MobileDropdown component
     const MobileDropdown = ({ name }) => (
         <div className="py-2">
             <button
                 onClick={() => toggleDropdown(name)}
-                className="flex justify-between w-full text-base font-medium text-black transition-all duration-200 hover:text-green-600 focus:text-green-600"
+                className="flex justify-between w-full text-sm font-medium text-black transition-all ease-in-out duration-200 hover:text-green-600 focus:text-green-600 items-center"
             >
-                {name.charAt(0).toUpperCase() + name.slice(1)}
+                {name.toUpperCase()}
                 <svg 
-                    className={`w-4 h-4 transform transition-transform duration-300 ${openDropdowns[name] ? 'rotate-180' : ''}`} 
+                    className={`w-4 h-4 transform transition-transform duration-200 ease-in-out ${openDropdowns[name] ? 'rotate-180' : ''}`} 
                     fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"
                 >
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7"></path>
                 </svg>
             </button>
             <div 
-                className={`overflow-hidden transition-all duration-300 ease-in-out
-                    ${openDropdowns[name] ? 'max-h-40 opacity-100 mt-2' : 'max-h-0 opacity-0 mt-0'}
+                className={`transition-[max-height,opacity] duration-300 ease-in-out overflow-hidden
+                    ${openDropdowns[name] ? 'max-h-[1000px] opacity-100' : 'max-h-0 opacity-80'}
                 `}
             >
-                <div className="space-y-2 pl-4">
+                <div className="space-y-2 pl-4 pt-2">
                     {dropdownMenus[name].map((item, index) => (
                         <a
                             key={index}
                             href={item.href}
-                            className="block text-sm text-gray-600 hover:text-green-600 transition-all duration-200"
+                            className="block text-sm text-gray-600 hover:text-green-600 transition-all ease-in-out duration-150 py-1.5"
                         >
                             {item.name}
                         </a>
@@ -134,13 +181,24 @@ const Navbar = () => {
                         </svg>
                     </button>
         
-                    <div className="hidden lg:flex lg:items-center lg:ml-auto lg:space-x-10">
-                        {Object.keys(dropdownMenus).map(menu => (
+                    <div className="hidden lg:flex lg:items-center lg:ml-auto lg:space-x-8">
+                        {/* NEWS link (not a dropdown) */}
+                        <NavLink to="/" className="text-sm font-medium text-black transition-all duration-200 hover:text-green-600 focus:text-green-600">
+                            NEWS
+                        </NavLink>
+
+                        {/* COUNTRIES and PUBLICATIONS dropdowns */}
+                        {['countries', 'publications', 'directory'].map(menu => (
                             <DesktopDropdown key={menu} name={menu} />
                         ))}
+
+                        {/* MAGAZINE link (not a dropdown) */}
+                        <NavLink to="/magazine" className="text-sm font-medium text-black transition-all duration-200 hover:text-green-600 focus:text-green-600">
+                            MAGAZINE
+                        </NavLink>
                     </div>
         
-                    <a href="#" className="items-center justify-center hidden px-4 py-3 ml-10 text-base font-semibold text-white transition-all duration-200 bg-green-600 border border-transparent rounded-md lg:inline-flex hover:bg-green-700 focus:bg-green-700" role="button"> 
+                    <a href="#" className="items-center justify-center hidden px-4 py-3 ml-6 text-sm font-semibold text-white transition-all duration-200 bg-green-600 border border-transparent rounded-md lg:inline-flex hover:bg-green-700 focus:bg-green-700" role="button"> 
                         Pre Register 2026 
                     </a>
                 </nav>
@@ -156,14 +214,25 @@ const Navbar = () => {
                     <nav className="pt-4 pb-6 bg-white border border-gray-200 rounded-md shadow-md">
                         <div className="flow-root">
                             <div className="flex flex-col px-6 -my-2 space-y-1">
-                                {Object.keys(dropdownMenus).map(menu => (
+                                {/* NEWS link (not a dropdown) */}
+                                <a href="#news" className="py-2 text-sm font-medium text-black transition-all duration-200 hover:text-green-600 focus:text-green-600">
+                                    NEWS
+                                </a>
+
+                                {/* COUNTRIES and PUBLICATIONS dropdowns */}
+                                {['countries', 'publications', 'directory'].map(menu => (
                                     <MobileDropdown key={menu} name={menu} />
                                 ))}
+
+                                {/* MAGAZINE link (not a dropdown) */}
+                                <a href="#magazine" className="py-2 text-sm font-medium text-black transition-all duration-200 hover:text-green-600 focus:text-green-600">
+                                    MAGAZINE
+                                </a>
                             </div>
                         </div>
 
-                        <div className="px-6 mt-6">
-                            <a href="#" className="inline-flex justify-center px-4 py-3 text-base font-semibold text-white transition-all duration-200 bg-green-600 border border-transparent rounded-md items-center hover:bg-green-700 focus:bg-green-700" role="button"> 
+                        <div className="px-6 mt-4">
+                            <a href="#" className="inline-flex justify-center px-4 py-2 text-sm font-semibold text-white transition-all duration-200 bg-green-600 border border-transparent rounded-md items-center hover:bg-green-700 focus:bg-green-700" role="button"> 
                                 Pre Register 2026 
                             </a>
                         </div>
