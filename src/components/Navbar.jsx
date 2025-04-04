@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import { NavLink } from 'react-router-dom';
 
 const Navbar = () => {
@@ -8,6 +8,12 @@ const Navbar = () => {
         publications: false,
         directory: false
     });
+
+    // Create refs for each dropdown
+    const countriesRef = useRef(null);
+    const publicationsRef = useRef(null);
+    const directoryRef = useRef(null);
+    const mobileMenuRef = useRef(null);
 
     const dropdownMenus = {
         countries: [
@@ -66,9 +72,35 @@ const Navbar = () => {
 
     const toggleMenu = () => setIsMenuOpen(!isMenuOpen);
 
+    // Handle click outside dropdowns
+    useEffect(() => {
+        const handleClickOutside = (event) => {
+            // Close desktop dropdowns if clicked outside
+            if (countriesRef.current && !countriesRef.current.contains(event.target)) {
+                setOpenDropdowns(prev => ({ ...prev, countries: false }));
+            }
+            if (publicationsRef.current && !publicationsRef.current.contains(event.target)) {
+                setOpenDropdowns(prev => ({ ...prev, publications: false }));
+            }
+            if (directoryRef.current && !directoryRef.current.contains(event.target)) {
+                setOpenDropdowns(prev => ({ ...prev, directory: false }));
+            }
+            
+            // Close mobile menu if clicked outside
+            if (isMenuOpen && mobileMenuRef.current && !mobileMenuRef.current.contains(event.target)) {
+                setIsMenuOpen(false);
+            }
+        };
+
+        document.addEventListener('mousedown', handleClickOutside);
+        return () => {
+            document.removeEventListener('mousedown', handleClickOutside);
+        };
+    }, [isMenuOpen]);
+
     // Modified to handle hover events
     const handleMouseEnter = (dropdown) => {
-        setOpenDropdowns(prev => {
+        setOpenDropdowns(() => {
             // Close all other dropdowns first
             const newState = { 
                 countries: false, 
@@ -83,46 +115,76 @@ const Navbar = () => {
 
     // For mobile we'll keep click functionality
     const toggleDropdown = (dropdown) => {
-        setOpenDropdowns(prev => ({
-            ...prev,
-            [dropdown]: !prev[dropdown]
-        }));
+        setOpenDropdowns(prev => {
+            // If the clicked dropdown is already open, close it
+            if (prev[dropdown]) {
+                return { ...prev, [dropdown]: false };
+            }
+            // Otherwise, close all dropdowns and open the clicked one
+            return {
+                countries: false,
+                publications: false,
+                directory: false,
+                [dropdown]: true
+            };
+        });
+    };
+    
+
+    const DesktopDropdown = ({ name }) => {
+        const handleClick = (e) => {
+            e.preventDefault();
+            setOpenDropdowns(prev => {
+                // If the clicked dropdown is already open, close it
+                if (prev[name]) {
+                    return { ...prev, [name]: false };
+                }
+                // Otherwise, close all dropdowns and open the clicked one
+                return {
+                    countries: false,
+                    publications: false,
+                    directory: false,
+                    [name]: true
+                };
+            });
+        };
+    
+        return (
+            <div 
+                className="relative group"
+                onMouseEnter={() => handleMouseEnter(name)}
+                ref={name === 'countries' ? countriesRef : name === 'publications' ? publicationsRef : directoryRef}
+            >
+                <button
+                    onClick={handleClick}
+                    className="text-sm font-medium text-black transition-all duration-200 ease-in-out hover:text-green-600 focus:text-green-600 flex items-center"
+                >
+                    {name.toUpperCase()}
+                    <svg className={`w-4 h-4 ml-1 transform transition-transform duration-200 ease-in-out ${openDropdowns[name] ? 'rotate-180' : ''}`} 
+                        fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7"></path>
+                    </svg>
+                </button>
+                <div 
+                    className={`absolute left-0 mt-2 w-54 bg-white rounded-md shadow-lg py-1 z-10 transition-all duration-300 ease-out origin-top will-change-transform
+                        ${openDropdowns[name] ? 'transform opacity-100 scale-100 visible' : 'transform opacity-0 scale-95 invisible'}`}
+                    onMouseEnter={() => handleMouseEnter(name)}
+                    onMouseLeave={() => setOpenDropdowns({ countries: false, publications: false, directory: false })}
+                >
+                    {dropdownMenus[name].map((item, index) => (
+                        <a
+                            key={index}
+                            href={item.href}
+                            className="block px-4 py-2 text-sm text-gray-700 hover:text-green-700 hover:bg-gray-50 transition-all ease-in-out duration-150"
+                        >
+                            {item.name}
+                        </a>
+                    ))}
+                </div>
+            </div>
+        );
     };
 
-    const DesktopDropdown = ({ name }) => (
-        <div 
-            className="relative group"
-            onMouseEnter={() => handleMouseEnter(name)}
-        >
-            <button
-                className="text-sm font-medium text-black transition-all duration-200 ease-in-out hover:text-green-600 focus:text-green-600 flex items-center"
-            >
-                {name.toUpperCase()}
-                <svg className={`w-4 h-4 ml-1 transform transition-transform duration-200 ease-in-out ${openDropdowns[name] ? 'rotate-180' : ''}`} 
-                    fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7"></path>
-                </svg>
-            </button>
-            <div 
-                className={`absolute left-0 mt-2 w-54 bg-white rounded-md shadow-lg py-1 z-10 transition-all duration-300 ease-out origin-top will-change-transform
-                    ${openDropdowns[name] ? 'transform opacity-100 scale-100 visible' : 'transform opacity-0 scale-95 invisible'}`}
-                onMouseEnter={() => handleMouseEnter(name)}
-                onMouseLeave={() => setOpenDropdowns({ countries: false, publications: false, directory: false })}
-            >
-                {dropdownMenus[name].map((item, index) => (
-                    <a
-                        key={index}
-                        href={item.href}
-                        className="block px-4 py-2 text-sm text-gray-700 hover:text-green-700 hover:bg-gray-50 transition-all ease-in-out duration-150"
-                    >
-                        {item.name}
-                    </a>
-                ))}
-            </div>
-        </div>
-    );
-
-    // Updated MobileDropdown component
     const MobileDropdown = ({ name }) => (
         <div className="py-2">
             <button
@@ -194,7 +256,7 @@ const Navbar = () => {
 
                         {/* MAGAZINE link (not a dropdown) */}
                         <NavLink to="/magazine" className="text-sm font-medium text-black transition-all duration-200 hover:text-green-600 focus:text-green-600">
-                            MAGAZINE
+                            MAGAZINES
                         </NavLink>
                     </div>
         
@@ -205,6 +267,7 @@ const Navbar = () => {
         
                 {/* Mobile menu */}
                 <div 
+                    ref={mobileMenuRef}
                     className={`
                         transition-all duration-300 ease-in-out transform lg:hidden
                         overflow-hidden 
