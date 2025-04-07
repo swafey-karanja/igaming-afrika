@@ -1,5 +1,7 @@
 import React, { useState, useRef, useEffect } from 'react';
+import { useTranslation } from 'react-i18next';
 import { NavLink } from 'react-router-dom';
+import LanguageSwitcher from './languageSwitcher';
 
 const Navbar = () => {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -70,7 +72,16 @@ const Navbar = () => {
         ]
     };
 
-    const toggleMenu = () => setIsMenuOpen(!isMenuOpen);
+    const toggleMenu = () => {
+        if (isMenuOpen) {
+            setOpenDropdowns({
+                countries: false,
+                publications: false,
+                directory: false
+            });
+        }
+        setIsMenuOpen(!isMenuOpen);
+    };
 
     // Handle click outside dropdowns
     useEffect(() => {
@@ -89,6 +100,11 @@ const Navbar = () => {
             // Close mobile menu if clicked outside
             if (isMenuOpen && mobileMenuRef.current && !mobileMenuRef.current.contains(event.target)) {
                 setIsMenuOpen(false);
+                setOpenDropdowns({
+                    countries: false,
+                    publications: false,
+                    directory: false
+                });
             }
         };
 
@@ -219,13 +235,15 @@ const Navbar = () => {
         </div>
     );
 
+    const { t } = useTranslation();
+
     return (
         <header className="fixed top-0 left-0 w-full pb-6 lg:pb-0 bg-white shadow-md drop-shadow-md z-50 mb-auto">
             <div className="px-4 mx-auto max-w-7xl sm:px-6 lg:px-8">
                 <nav className="flex items-center justify-between h-16 lg:h-20">
                     <div className="flex-shrink-0">
                         <a href="#" className="flex">
-                            <img className="w-auto h-8 lg:h-10" src="https://igamingafrika.com/wp-content/uploads/2023/04/iGaming-Logo-2b.png" alt="Logo" />
+                            <img className="w-auto h-14 lg:h-20" src="src/assets/africa-gaming.png" alt="Logo" />
                         </a>
                     </div>
         
@@ -244,9 +262,9 @@ const Navbar = () => {
                     </button>
         
                     <div className="hidden lg:flex lg:items-center lg:ml-auto lg:space-x-8">
-                        {/* NEWS link (not a dropdown) */}
+                        {/* NEWS link  */}
                         <NavLink to="/" className="text-sm font-medium text-black transition-all duration-200 hover:text-green-600 focus:text-green-600">
-                            NEWS
+                            {t('news')}
                         </NavLink>
 
                         {/* COUNTRIES and PUBLICATIONS dropdowns */}
@@ -254,15 +272,17 @@ const Navbar = () => {
                             <DesktopDropdown key={menu} name={menu} />
                         ))}
 
-                        {/* MAGAZINE link (not a dropdown) */}
+                        {/* MAGAZINE link  */}
                         <NavLink to="/magazine" className="text-sm font-medium text-black transition-all duration-200 hover:text-green-600 focus:text-green-600">
-                            MAGAZINES
+                        {t('magazine')}
                         </NavLink>
+
+                        <LanguageSwitcher />
                     </div>
         
-                    <a href="#" className="items-center justify-center hidden px-4 py-3 ml-6 text-sm font-semibold text-white transition-all duration-200 bg-green-600 border border-transparent rounded-md lg:inline-flex hover:bg-green-700 focus:bg-green-700" role="button"> 
+                    {/* <a href="#" className="items-center justify-center hidden px-4 py-3 ml-6 text-sm font-semibold text-white transition-all duration-200 bg-green-600 border border-transparent rounded-md lg:inline-flex hover:bg-green-700 focus:bg-green-700" role="button"> 
                         Pre Register 2026 
-                    </a>
+                    </a> */}
                 </nav>
         
                 {/* Mobile menu */}
@@ -277,28 +297,28 @@ const Navbar = () => {
                     <nav className="pt-4 pb-6 bg-white border border-gray-200 rounded-md shadow-md">
                         <div className="flow-root">
                             <div className="flex flex-col px-6 -my-2 space-y-1">
-                                {/* NEWS link (not a dropdown) */}
-                                <a href="#news" className="py-2 text-sm font-medium text-black transition-all duration-200 hover:text-green-600 focus:text-green-600">
-                                    NEWS
-                                </a>
+                                {/* NEWS link  */}
+                                <NavLink to="/" className="py-2 text-sm font-medium text-black transition-all duration-200 hover:text-green-600 focus:text-green-600">
+                                  {t('news')}
+                                </NavLink>
 
                                 {/* COUNTRIES and PUBLICATIONS dropdowns */}
                                 {['countries', 'publications', 'directory'].map(menu => (
                                     <MobileDropdown key={menu} name={menu} />
                                 ))}
 
-                                {/* MAGAZINE link (not a dropdown) */}
-                                <a href="#magazine" className="py-2 text-sm font-medium text-black transition-all duration-200 hover:text-green-600 focus:text-green-600">
-                                    MAGAZINE
-                                </a>
+                                {/* MAGAZINE link  */}
+                                <NavLink to="/magazine" className="py-2 text-sm font-medium text-black transition-all duration-200 hover:text-green-600 focus:text-green-600">
+                                  {t('magazine')}
+                                </NavLink>
                             </div>
                         </div>
 
-                        <div className="px-6 mt-4">
+                        {/* <div className="px-6 mt-4">
                             <a href="#" className="inline-flex justify-center px-4 py-2 text-sm font-semibold text-white transition-all duration-200 bg-green-600 border border-transparent rounded-md items-center hover:bg-green-700 focus:bg-green-700" role="button"> 
                                 Pre Register 2026 
                             </a>
-                        </div>
+                        </div> */}
                     </nav>
                 </div>
             </div>
