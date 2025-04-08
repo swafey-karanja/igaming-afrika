@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 
-const LanguageSwitcher = () => {
+const LanguageSwitcher = ({ isScrolled }) => {
   const { i18n } = useTranslation();
   const [isOpen, setIsOpen] = useState(false);
   const currentLanguage = i18n.language;
@@ -22,7 +22,7 @@ const LanguageSwitcher = () => {
     <div className="relative inline-block text-left">
       <button
         type="button"
-        className="flex items-center justify-between text-sm font-medium text-black bg-white border border-gray-300 rounded-md px-4 py-2 hover:bg-gray-100 focus:outline-none min-w-[160px]"
+        className={`flex items-center justify-between font-bold bg-none border border-none rounded-md px-4 py-2 focus:outline-none md:min-w-[80px] min-w-[40px] cursor-pointer ${isScrolled ? "text-black" : "text-white"}`}
         onClick={() => setIsOpen(!isOpen)}
       >
         <span>{languageNames[currentLanguage] || 'Select Language'}</span>
@@ -45,7 +45,7 @@ const LanguageSwitcher = () => {
       </button>
 
       {isOpen && (
-        <div className="origin-top-right absolute right-0 mt-2 w-full rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 z-50">
+        <div className="origin-top-right absolute right-0 mt-2 w-full rounded-md shadow-lg bg-gray-100 ring-1 ring-black ring-opacity-5 z-50">
           <div className="py-1">
             {Object.entries(languageNames).map(([code, name]) => (
               <button

@@ -1,7 +1,7 @@
 import React from 'react';
 import { I18nextProvider } from 'react-i18next';
 import i18n from './i18n'; // Import your i18n configuration
-import News from './pages/News.jsx';
+import Home from './pages/Home.jsx';
 import Navbar from './components/Navbar.jsx';
 import Footer from './components/Footer.jsx';
 import { Routes, Route } from 'react-router-dom';
@@ -12,7 +12,7 @@ const App = () => {
     <I18nextProvider i18n={i18n}>
       <Navbar />
         <Routes>
-          <Route path='/' element={<News />} />
+          <Route path='/' element={<Home />} />
           <Route path='/magazine' element={<Magazine />} />
         </Routes>
       <Footer />

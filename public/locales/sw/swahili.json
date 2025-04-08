@@ -1,7 +1,14 @@
 {
-  "magazine": "MAGAZINI",
-  "countries": "NCHI",
-  "publications": "VICHAPISHO",
-  "directory": "MDAFTARI",
-  "news": "HABARI"
+  "powered_by": "Inaendeshwa na",
+  "and": "Na",
+  "pre_register_2026": "Jisajili mapema 2026",
+  "your_browser_does_not_support_the_video_tag": "Kivinjari chako hakiungi mkono lebo ya video.",
+  "contacts": "Mawasiliano",
+  "services": "Huduma",
+  "about": "Kuhusu",
+  "magazine": "Jarida",
+  "countries": "Nchi",
+  "publications": "Chapisho",
+  "directory": "Saraka",
+  "news": "Habari"
 }

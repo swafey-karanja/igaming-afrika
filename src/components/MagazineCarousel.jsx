@@ -200,7 +200,7 @@ const MagazineCarousel = ({ onSelectMagazine, selectedMagazineId }) => {
   };
 
   return (
-    <div className="min-h-[60vh] bg-white px-6 py-12 flex flex-col justify-center">
+    <div className="min-h-[60vh] bg-gray-100 px-6 py-12 flex flex-col justify-center">
       <div className="max-w-6xl mx-auto w-full">
         <div className="flex flex-col items-center justify-between gap-8 sm:flex-row">
             <h2 className="text-3xl font-bold tracking-tight text-green-700 sm:text-4xl">
@@ -221,7 +221,7 @@ const MagazineCarousel = ({ onSelectMagazine, selectedMagazineId }) => {
                 value={searchTerm}
                 onChange={(e) => setSearchTerm(e.target.value)}
                 placeholder="Search magazines..."
-                className="block w-full pl-10 pr-10 py-2 border border-gray-300 rounded-md leading-5 bg-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-green-500 text-sm"
+                className="block w-full pl-10 pr-10 py-2 border border-gray-300 rounded-md leading-5 bg-gray-100 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-green-500 text-sm"
                 />
             </div>
 
@@ -230,7 +230,7 @@ const MagazineCarousel = ({ onSelectMagazine, selectedMagazineId }) => {
                 <select
                     value={selectedYear}
                     onChange={(e) => setSelectedYear(e.target.value)}
-                    className="block w-full pl-3 pr-3 py-2 border border-gray-300 rounded-md leading-5 bg-white focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-green-500 text-sm"
+                    className="block w-full pl-3 pr-3 py-2 border border-gray-300 rounded-md leading-5 bg-gray-100 focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-green-500 text-sm"
                 >
                 {years.map((year) => (
                     <option key={year} value={year}>
@@ -250,7 +250,7 @@ const MagazineCarousel = ({ onSelectMagazine, selectedMagazineId }) => {
               <button
                 onClick={goToPrev}
                 disabled={isAnimating || filteredMagazines.length <= 1}
-                className={`absolute left-0 top-1/2 transform -translate-y-1/2 z-10 bg-white rounded-md py-10 px-2 shadow-md hover:bg-green-100 focus:outline-none transition-all ${
+                className={`absolute left-0 top-1/2 transform -translate-y-1/2 z-10 bg-gray-100 rounded-md py-10 px-2 shadow-md hover:bg-green-100 focus:outline-none transition-all ${
                   isAnimating || filteredMagazines.length <= 1 ? 'opacity-50 cursor-not-allowed' : 'opacity-100'
                 }`}
               >
@@ -279,7 +279,7 @@ const MagazineCarousel = ({ onSelectMagazine, selectedMagazineId }) => {
                             onClick={() => handleMagazineClick(filteredMagazines[(centerIndex + position + filteredMagazines.length) % filteredMagazines.length])}
                             className={`transition-all duration-300 cursor-pointer w-full max-w-sm ${getMagazineStyle(id)}`}
                         >
-                        <div className="h-[350px] bg-white rounded-lg shadow-md overflow-hidden border border-gray-200 hover:shadow-lg transition-all duration-300">
+                        <div className="h-[350px] bg-gray-100 rounded-lg shadow-md overflow-hidden border border-gray-200 hover:shadow-lg transition-all duration-300">
                           <div className="h-[280px] bg-gray-100 flex items-center justify-center">
                             <img
                               src={cover}
@@ -302,7 +302,7 @@ const MagazineCarousel = ({ onSelectMagazine, selectedMagazineId }) => {
               <button
                 onClick={goToNext}
                 disabled={isAnimating || filteredMagazines.length <= 1}
-                className={`absolute right-0 top-1/2 transform -translate-y-1/2 z-10 bg-white rounded-md py-10 px-2 shadow-md hover:bg-green-100 focus:outline-none transition-all ${
+                className={`absolute right-0 top-1/2 transform -translate-y-1/2 z-10 bg-gray-100 rounded-md py-10 px-2 shadow-md hover:bg-green-100 focus:outline-none transition-all ${
                   isAnimating || filteredMagazines.length <= 1 ? 'opacity-50 cursor-not-allowed' : 'opacity-100'
                 }`}
               >

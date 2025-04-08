@@ -109,15 +109,15 @@ const GlobalNews = ({ variant = "global-news" }) => {
       : globalNewsArticles;
   const title =
     variant === "international-regulations"
-      ? "International Regulations"
+      ? "News & Blogs"
       : "Global News";
 
   return (
-    <div className="py-16 bg-white sm:py-24">
+    <div className="py-16 bg-gray-100 sm:py-24 min-h-screen">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header Section */}
         <div className="flex flex-col items-center justify-between gap-8 sm:flex-row mb-12">
-          <h2 className="text-3xl font-bold tracking-tight text-green-700 sm:text-4xl">
+          <h2 className="text-3xl font-bold tracking-tight text-gray-700 sm:text-4xl">
             {title}
           </h2>
           <a
@@ -145,7 +145,7 @@ const GlobalNews = ({ variant = "global-news" }) => {
           {articles.map((article) => (
             <div
               key={article.id}
-              className="group relative overflow-hidden rounded-lg bg-white shadow-sm hover:shadow-md transition-shadow duration-300"
+              className="group relative overflow-hidden rounded-lg bg-gray-100 shadow-sm hover:shadow-md transition-shadow duration-300"
             >
               <div className="aspect-[4/3] w-full overflow-hidden">
                 <img
@@ -178,7 +178,7 @@ const GlobalNews = ({ variant = "global-news" }) => {
                   </span>
                 </div>
 
-                <h3 className="text-xl font-bold text-gray-900 group-hover:text-green-600 transition-colors duration-200 mb-3">
+                <h3 className="text-xl font-bold text-gray-600 group-hover:text-gray-900 transition-colors duration-200 mb-3">
                   <a href="#" className="before:absolute before:inset-0">
                     {article.title}
                   </a>

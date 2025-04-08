@@ -34,7 +34,7 @@ const TopGameReviews = () => {
   ];
 
   return (
-    <div className="overflow-x-hidden bg-white pt-4 pb-16">
+    <div className="overflow-x-hidden bg-gray-100 pt-4 pb-16">
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
         {/* Header Section */}
         <div className="flex flex-col items-center justify-between gap-8 sm:flex-row">
@@ -66,7 +66,7 @@ const TopGameReviews = () => {
           {articles.map((article) => (
             <div
               key={article.id}
-              className="group relative overflow-hidden rounded-2xl bg-white shadow-md transition-all duration-300 hover:shadow-lg"
+              className="group relative overflow-hidden rounded-2xl bg-gray-100 shadow-md transition-all duration-300 hover:shadow-lg"
             >
               <div className="aspect-[4/3] w-full overflow-hidden">
                 <img

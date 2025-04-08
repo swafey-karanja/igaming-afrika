@@ -1,7 +1,14 @@
 {
-  "magazine": "MAGAZINE",
-  "countries": "COUNTRIES",
-  "publications": "PUBLICATIONS",
-  "directory": "DIRECTORY",
-  "news": "NEWS"
+  "powered_by": "Powered by",
+  "and": "And",
+  "pre_register_2026": "Pre Register 2026",
+  "your_browser_does_not_support_the_video_tag": "Your browser does not support the video tag.",
+  "contacts": "Contacts",
+  "services": "Services",
+  "about": "About",
+  "magazine": "Magazine",
+  "countries": "Countries",
+  "publications": "Publications",
+  "directory": "Directory",
+  "news": "News"
 }

@@ -48,7 +48,7 @@ const BookReader = ({ magazine }) => {
   }, [currentPage, isTurning]);
 
   return (
-    <div className="flex flex-col items-center justify-center min-h-[80vh] bg-white p-2">
+    <div className="flex flex-col items-center justify-center min-h-[80vh] bg-gray-100 p-2">
         <div className="max-w-6xl mx-auto w-full"> 
         <div className="flex flex-col items-center justify-between gap-8 sm:flex-row">
             {magazine ? (
@@ -61,7 +61,7 @@ const BookReader = ({ magazine }) => {
                 </h2>
             )}
         </div>
-            <div className="my-8 mx-auto max-w-2xl bg-white rounded-lg shadow-lg overflow-hidden relative h-[70vh] group">
+            <div className="my-8 mx-auto max-w-2xl bg-gray-100 rounded-lg shadow-lg overflow-hidden relative h-[70vh] group">
                 {/* Progress Bar */}
                 <div className="w-full bg-gray-200 h-2.5">
                 <div 

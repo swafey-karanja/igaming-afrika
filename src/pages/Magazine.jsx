@@ -8,7 +8,7 @@ const Magazine = () => {
 
   return (
     <>
-      <div className="relative py-12 bg-white sm:py-16 lg:py-20 mt-16 min-w-screen h-1/2">
+      <div className="relative py-12 bg-gray-100 sm:py-16 lg:py-20 mt-16 min-w-screen h-1/2">
         <div className="absolute inset-0 w-full">
           <img
             className="object-cover object-right w-full h-1/2 lg:object-center"
