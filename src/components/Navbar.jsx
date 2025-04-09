@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { NavLink } from "react-router-dom";
 import LanguageSwitcher from "./languageSwitcher";
 import { useTranslation } from "react-i18next";
+import { AboutDropdown } from "./AboutDropdown";
 
 const Navbar = () => {
     const [isSidebarOpen, setSidebarOpen] = useState(false);
@@ -60,7 +61,7 @@ const Navbar = () => {
 
                         {/* Desktop Nav */}
                         <div className="hidden md:flex md:items-center md:space-x-10 lg:ml-28">
-                            <a href="#" className={`font-sans text-md font-bold ${isScrolled ? "text-black" : "text-white"}`}>{t('about')}</a>
+                            <AboutDropdown isScrolled={isScrolled} />
                             <a href="#" className={`font-sans text-base font-bold ${isScrolled ? "text-black" : "text-white"}`}>{t('services')}</a>
                             <a href="#" className={`font-sans text-base font-bold ${isScrolled ? "text-black" : "text-white"}`}>{t('contacts')}</a>
                             <LanguageSwitcher isScrolled={isScrolled} />
@@ -76,14 +77,14 @@ const Navbar = () => {
             <div className={`fixed top-0 left-0 z-30 w-full h-full bg-black transform transition-transform duration-300 md:hidden ${isSidebarOpen ? 'translate-x-0' : '-translate-x-full'}`}>
                 <div className="flex flex-col h-full p-6 space-y-6 text-white">
                     <button onClick={() => setSidebarOpen(false)} className="cursor-pointer self-end text-2xl">✕</button>
-                    <a href="#" className="text-lg">{t('about')}</a>
+                    <a href="#" className="text-lg">{t('about')} AGS</a>
                     <a href="#" className="text-lg">{t('services')}</a>
                     <a href="#" className="text-lg">{t('contacts')}</a>
                     <LanguageSwitcher isScrolled={false} />
                 </div>
             </div>
 
-             <div className="absolute inset-0 w-full h-full overflow-hidden">
+            <div className="absolute inset-0 w-full h-full overflow-hidden">
                 <video
                 className="absolute min-w-full min-h-full object-cover"
                 autoPlay
@@ -112,14 +113,14 @@ const Navbar = () => {
                         />
 
                         <div className="flex justify-center mt-12">
-                            <a
-                                href="#"
+                            <NavLink
+                                to="/registration"
                                 title="Read Exclusive Blog"
                                 className="inline-flex relative items-center justify-center px-6 py-2 text-base font-semibold text-black transition-all duration-200 bg-green-600 border border-white rounded-lg focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-900"
                                 role="button"
                             >
-                                Pre Register 2026 
-                            </a>
+                                {t('pre_register_2026')} 
+                            </NavLink>
                         </div>
                     </div>
                 </div>
@@ -127,7 +128,7 @@ const Navbar = () => {
 
             {/* Scroll Down Button */}
             <div className="absolute hidden transform -translate-x-1/2 lg:bottom-8 xl:bottom-12 left-1/2 lg:block">
-                <a href="#next-section" className="inline-flex items-center justify-center w-12 h-12 rounded-full text-white bg-black">
+                <a href="#numbers" className="inline-flex items-center justify-center w-12 h-12 rounded-full text-white bg-black">
                     <svg className="w-5 h-5" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7" />
                     </svg>

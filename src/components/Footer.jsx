@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { useTranslation } from "react-i18next";
 
 const Footer = () => {
   const [isVisible, setIsVisible] = useState(false);
@@ -22,15 +23,17 @@ const Footer = () => {
     window.scrollTo({ top: 0, behavior: "smooth" });
   };
 
+  const { t } = useTranslation();
+
   return (
-    <footer className="bg-gray-100 text-gray-700">
+    <footer className="bg-gray-100 text-gray-700 py-8">
       {/* Newsletter Section */}
       <div className="max-w-6xl mx-auto bg-gray-900 text-white py-20 rounded-lg px-6">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="relative">
             <div className="text-center mb-8">
               <h3 className="text-2xl font-semibold">
-                Subscribe to our newsletter
+                {t('subscribe_newsletter')}
               </h3>
             </div>
 
@@ -38,18 +41,18 @@ const Footer = () => {
               <input
                 type="text"
                 className="w-full sm:w-auto px-4 py-2 rounded-md text-white placeholder-white border border-white bg-transparent focus:outline-none focus:ring-2 focus:ring-gray-200"
-                placeholder="First name"
+                placeholder={t("first_name")}
               />
               <input
                 type="email"
                 className="w-full sm:w-auto px-4 py-2 rounded-md text-white placeholder-white border border-white bg-transparent focus:outline-none focus:ring-2 focus:ring-gray-200"
-                placeholder="Email address"
+                placeholder={t('email_address')}
               />
               <button
                 type="submit"
                 className="w-full sm:w-48 bg-gray-100 text-black px-8 py-2 rounded-md hover:bg-gray-100 transition-colors"
               >
-                Subscribe Now
+                {t('subscribe_now')}
               </button>
             </div>
           </div>
@@ -79,26 +82,26 @@ const Footer = () => {
 
           {/* COMPANY Column */}
           <div className="space-y-4">
-            <h3 className="text-md font-bold text-gray-600">COMPANY</h3>
+            <h3 className="text-md font-bold text-gray-600">{t("company")}</h3>
             <ul className="space-y-2 text-sm">
               <li>
                 <a href="#" className="hover:text-gray-900">
-                  About
+                  {t("about")}
                 </a>
               </li>
               <li>
                 <a href="#" className="hover:text-gray-900">
-                  Features
+                  {t('features')}
                 </a>
               </li>
               <li>
                 <a href="#" className="hover:text-gray-900">
-                  Works
+                  {t("works")}
                 </a>
               </li>
               <li>
                 <a href="#" className="hover:text-gray-900">
-                  Career
+                  {t('careers')}
                 </a>
               </li>
             </ul>
@@ -106,26 +109,26 @@ const Footer = () => {
 
           {/* HELP Column */}
           <div className="space-y-4">
-            <h3 className="text-md font-bold text-gray-600">HELP</h3>
+            <h3 className="text-md font-bold text-gray-600">{t('help')}</h3>
             <ul className="space-y-2 text-sm">
               <li>
                 <a href="#" className="hover:text-gray-900">
-                  Customer Support
+                  {t('customer_support')}
                 </a>
               </li>
               <li>
                 <a href="#" className="hover:text-gray-900">
-                  Delivery Details
+                  {t('delivery_details')}
                 </a>
               </li>
               <li>
                 <a href="#" className="hover:text-gray-900">
-                  Terms & Conditions
+                  {t('terms_conditions')}
                 </a>
               </li>
               <li>
                 <a href="#" className="hover:text-gray-900">
-                  Privacy Policy
+                  {t("privacy_policy")}
                 </a>
               </li>
             </ul>
@@ -133,26 +136,26 @@ const Footer = () => {
 
           {/* RESOURCES Column */}
           <div className="space-y-4">
-            <h3 className="text-md font-bold text-gray-600">RESOURCES</h3>
+            <h3 className="text-md font-bold text-gray-600">{t("resources")}</h3>
             <ul className="space-y-2 text-sm">
               <li>
                 <a href="#" className="hover:text-gray-900">
-                  Free eBooks
+                  {t('free_ebooks')}
                 </a>
               </li>
               <li>
                 <a href="#" className="hover:text-gray-900">
-                  Development Tutorial
+                  {t('development_tutorial')}
                 </a>
               </li>
               <li>
                 <a href="#" className="hover:text-gray-900">
-                  How to-Blog
+                  {t("how_to_blog")}
                 </a>
               </li>
               <li>
                 <a href="#" className="hover:text-gray-900">
-                  YouTube Playlist
+                  {t("youtube_playlist")}
                 </a>
               </li>
             </ul>
@@ -216,7 +219,7 @@ const Footer = () => {
       {/* Copyright Section */}
       <div className="py-4">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center text-sm text-gray-500">
-          <p>© Copyright 2022. All Rights Reserved by ClarityUI</p>
+          <p>{t('copyright_notice')}</p>
         </div>
       </div>
 

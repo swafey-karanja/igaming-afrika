@@ -1,6 +1,9 @@
 import React from "react";
+import { useTranslation } from "react-i18next";
 
 const GlobalNews = ({ variant = "global-news" }) => {
+
+  const { t } = useTranslation();
   // Global News data
   const globalNewsArticles = [
     {
@@ -109,7 +112,7 @@ const GlobalNews = ({ variant = "global-news" }) => {
       : globalNewsArticles;
   const title =
     variant === "international-regulations"
-      ? "News & Blogs"
+      ? t("news_blogs")
       : "Global News";
 
   return (
@@ -124,7 +127,7 @@ const GlobalNews = ({ variant = "global-news" }) => {
             href="#"
             className="inline-flex items-center gap-x-1 text-sm font-semibold leading-6 text-green-600 hover:text-green-800"
           >
-            Show more
+            {t('show_more')}
             <svg
               xmlns="http://www.w3.org/2000/svg"
               viewBox="0 0 20 20"
@@ -190,7 +193,7 @@ const GlobalNews = ({ variant = "global-news" }) => {
                   href="#"
                   className="inline-flex items-center text-green-600 hover:text-green-800 font-medium text-sm"
                 >
-                  Read More
+                  {t('read_more')}
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     className="h-4 w-4 ml-1"

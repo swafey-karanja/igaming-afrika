@@ -2,10 +2,10 @@
 import i18n from 'i18next';
 import { initReactI18next } from 'react-i18next';
 import LanguageDetector from 'i18next-browser-languagedetector';
-import enTranslation from '../public/locales/en/english.json';
-import frTranslation from '../public/locales/fr/french.json';
-import esTranslation from "../public/locales/sp/spanish.json";
-import swTranslation from "../public/locales/sw/swahili.json";
+import enTranslation from './assets/locales/en/english.json';
+import frTranslation from './assets/locales/fr/french.json';
+import esTranslation from "./assets/locales/sp/spanish.json";
+import swTranslation from "./assets/locales/sw/swahili.json";
 
 i18n
   .use(LanguageDetector)
