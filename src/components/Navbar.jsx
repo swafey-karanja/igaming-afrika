@@ -39,7 +39,7 @@ const Navbar = () => {
                 <div className="px-6 mx-auto sm:px-8 lg:px-12 max-w-7xl">
                     <div className="flex items-center justify-between">
                         <div className="flex flex-shrink-0">
-                            <NavLink to="/" title="BakerStreet" className="inline-flex rounded-md focus:outline-none focus:ring-2 focus:ring-offset-4 focus:ring-offset-secondary focus:ring-primary">
+                            <NavLink to="/" title="BakerStreet" className="inline-flex rounded-md ">
                                 <img className="w-auto h-20" src="src/assets/africa-gaming.png" alt="africa-gaming" />
                             </NavLink>
                         </div>
@@ -49,7 +49,7 @@ const Navbar = () => {
                             <button
                                 onClick={() => setSidebarOpen(!isSidebarOpen)}
                                 type="button"
-                                className={`cursor-pointer p-2 -m-2 transition-all duration-200 rounded-full focus:outline-none focus:ring-2 focus:ring-offset-1 focus:ring-primary focus:ring-offset-secondary ${
+                                className={`cursor-pointer p-2 -m-2 transition-all duration-200 rounded-full  ${
                                     isScrolled ? "text-black" : "text-white"
                                 }`}
                             >

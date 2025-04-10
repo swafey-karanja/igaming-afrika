@@ -1,5 +1,7 @@
 import React from "react";
 import { useTranslation } from "react-i18next";
+// eslint-disable-next-line no-unused-vars
+import { motion } from "framer-motion";
 
 const gamingSponsors = [
   {
@@ -65,18 +67,38 @@ const powerSponsors = [
 const Sponsors = () => {
   const { t } = useTranslation();
   
+  // Simple animation variants
+  const fadeUp = {
+    hidden: { opacity: 0, y: 20 },
+    visible: { opacity: 1, y: 0 }
+  };
+
   return (
     <div className="bg-gray-100 px-4 sm:px-6 lg:px-8 pb-20">
       <div className="max-w-7xl mx-auto space-y-16">
         {/* Powered By Section */}
         <section className="text-center space-y-8">
-          <h2 className="text-2xl sm:text-3xl font-bold uppercase tracking-wide text-gray-900 pb-8">
+          <motion.h2 
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            variants={fadeUp}
+            transition={{ duration: 0.5 }}
+            className="text-2xl sm:text-3xl font-bold uppercase tracking-wide text-gray-900 pb-8"
+          >
             {t('powered_by')}
-          </h2>
+          </motion.h2>
           
           <div className="flex flex-col sm:flex-row items-center justify-center gap-6 sm:gap-12">
             {powerSponsors.map((sponsor, index) => (
-              <React.Fragment key={sponsor.name}>
+              <motion.div
+                key={sponsor.name}
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: true }}
+                variants={fadeUp}
+                transition={{ duration: 0.5, delay: index * 0.1 }}
+              >
                 <a
                   href={sponsor.url}
                   target="_blank"
@@ -95,33 +117,49 @@ const Sponsors = () => {
                     {t('and')}
                   </span>
                 )}
-              </React.Fragment>
+              </motion.div>
             ))}
           </div>
         </section>
 
         {/* Kindly Supported By Section */}
         <section className="text-center space-y-8">
-          <h2 className="text-2xl sm:text-3xl font-bold uppercase tracking-wide text-gray-900 pb-20">
+          <motion.h2 
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            variants={fadeUp}
+            transition={{ duration: 0.5 }}
+            className="text-2xl sm:text-3xl font-bold uppercase tracking-wide text-gray-900 pb-20"
+          >
             {t('kindly_supported_by')}
-          </h2>
+          </motion.h2>
           
           <div className="grid grid-cols-2 sm:grid-cols-3 gap-6 sm:gap-8 md:gap-12">
-            {gamingSponsors.map((sponsor) => (
-              <a
+            {gamingSponsors.map((sponsor, index) => (
+              <motion.div
                 key={sponsor.name}
-                href={sponsor.url}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="hover:opacity-80 transition-opacity duration-200 flex justify-center"
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: true }}
+                variants={fadeUp}
+                transition={{ duration: 0.5, delay: Math.floor(index / 3) * 0.1 }}
+                className="flex justify-center"
               >
-                <img
-                  src={sponsor.logo}
-                  alt={sponsor.name}
-                  className="h-16 sm:h-20 md:h-24 w-auto max-w-[180px] object-contain"
-                  loading="lazy"
-                />
-              </a>
+                <a
+                  href={sponsor.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="hover:opacity-80 transition-opacity duration-200"
+                >
+                  <img
+                    src={sponsor.logo}
+                    alt={sponsor.name}
+                    className="h-16 sm:h-20 md:h-24 w-auto max-w-[180px] object-contain"
+                    loading="lazy"
+                  />
+                </a>
+              </motion.div>
             ))}
           </div>
         </section>

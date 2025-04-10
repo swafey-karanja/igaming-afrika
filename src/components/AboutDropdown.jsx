@@ -23,6 +23,10 @@ export function AboutDropdown({ isScrolled }) {
     {
       title: t('expo_initiatives'),
       path: "/about/team",
+    },
+    {
+      title: t('news_blogs'),
+      path: "/news",
     }
   ];
 

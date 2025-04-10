@@ -1,130 +1,48 @@
-import React from "react";
+// src/components/GlobalNews.jsx
+import React, { useEffect } from "react";
 import { useTranslation } from "react-i18next";
+import { NavLink } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { fetchNews } from "../store/newsSlice";
+// eslint-disable-next-line no-unused-vars
+import { motion } from "framer-motion";
 
-const GlobalNews = ({ variant = "global-news" }) => {
-
+const GlobalNews = () => {
   const { t } = useTranslation();
-  // Global News data
-  const globalNewsArticles = [
-    {
-      id: 1,
-      title:
-        "SIGMA Central Europe heads to Milan: A new chapter in global Gaming events",
-      date: "November 18, 2024",
-      excerpt:
-        "SIGMA Group, the leading event organiser for the global Gaming industry, has...",
-      image:
-        "https://images.unsplash.com/photo-1540910419892-4a36d2c3266c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80",
-    },
-    {
-      id: 2,
-      title:
-        "WA Technology to become Brazil's most sought-after platform provider",
-      date: "August 26, 2024",
-      excerpt:
-        "Leading supplier ready to deliver newly-regulated operator partners unmatched local expertise 26th of...",
-      image:
-        "https://images.unsplash.com/photo-1483729558449-99ef09a8c325?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80",
-    },
-    {
-      id: 3,
-      title:
-        "Sun International's Peermont Deal Uncertain After CompCom's Recommendation",
-      date: "October 28, 2024",
-      excerpt:
-        "JSE-listed gaming and resorts group Sun International's proposed acquisition of Peermont Holdings...",
-      image:
-        "https://images.unsplash.com/photo-1542744173-8e7e53415bb0?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80",
-    },
-    {
-      id: 4,
-      title: "Vixio Announces 2024 Global Regulatory Awards Shortlist",
-      date: "August 8, 2024",
-      excerpt:
-        "VIXIO is a leading provider of regulatory intelligence solutions, has announced the shortlist...",
-      image:
-        "https://images.unsplash.com/photo-1551434678-e076c223a692?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80",
-    },
-    {
-      id: 5,
-      title:
-        "Sam Sadi, LiveScore CEO Discusses Overregulation and Growing Demand for Sports Content",
-      date: "September 4, 2024",
-      excerpt:
-        "LiveScore Group CEO Sam Sadi recently shared insights into the evolving landscape...",
-      image:
-        "https://images.unsplash.com/photo-1503220317375-aaad61436b1b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80",
-    },
-    {
-      id: 6,
-      title:
-        "Stake expands into Italy through strategic acquisition of idealbet from octavian group",
-      date: "July 31, 2024",
-      excerpt:
-        "Stake is set for strategic expansion into the Italian market through its...",
-      image:
-        "https://images.unsplash.com/photo-1492684223066-81342ee5ff30?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80",
-    },
-  ];
+  const dispatch = useDispatch();
+  const { news, loading, error } = useSelector((state) => state.news);
 
-  // International Regulations data
-  const internationalRegulationsArticles = [
-    {
-      id: 7,
-      title:
-        "SIS expands global reach of Competitive Gaming through Dafabet launch",
-      companies: ["SIS", "Dafabet"],
-      type: "Press Release",
-      date: "March 5, 2025",
-      excerpt:
-        "We are pleased to have launched our Competitive Gaming product with leading operator, Dafabet in Asia, Europe, Africa and Latin...",
-      image:
-        "https://images.unsplash.com/photo-1551434678-e076c223a692?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80",
-    },
-    {
-      id: 8,
-      title: "SlotMatrix live in New Jersey with betPARX deal",
-      companies: ["Every Matrix", "bet-PARX"],
-      type: "Press Release",
-      date: "February 11, 2025",
-      excerpt:
-        "SlotMatrix, the industry's largest content platform, is live in New Jersey with its first US games aggregation deal with the betPARX brand...",
-      image:
-        "https://images.unsplash.com/photo-1503220317375-aaad61436b1b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80",
-    },
-    {
-      id: 9,
-      title:
-        "Buzz Bingo enhances retail experience with Playtech's ECM Tablets",
-      companies: ["Buzz Bingo", "Playtech"],
-      type: "Press Release",
-      date: "February 10, 2025",
-      excerpt:
-        "Playtech announces an exciting extension to its longstanding partnership with Buzz Bingo by rolling out 10,000 state-of-the-art...",
-      image:
-        "https://images.unsplash.com/photo-1492684223066-81342ee5ff30?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80",
-    },
-  ];
+  useEffect(() => {
+    // Dispatch the fetchNews action to load the data
+    dispatch(fetchNews());
+  }, [dispatch]);
 
-  const articles =
-    variant === "international-regulations"
-      ? internationalRegulationsArticles
-      : globalNewsArticles;
-  const title =
-    variant === "international-regulations"
-      ? t("news_blogs")
-      : "Global News";
+  const displayLimit = 6;
+
+  // Simple animation variants for the fade-in effect
+  const itemVariants = {
+    hidden: { opacity: 0, y: 20 },
+    visible: { opacity: 1, y: 0 }
+  };
+
+  if (loading) {
+    return <div>Loading...</div>; // Show loading state
+  }
+
+  if (error) {
+    return <div>Error: {error}</div>; // Handle errors
+  }
 
   return (
     <div className="py-16 bg-gray-100 sm:py-24 min-h-screen">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Header Section */}
+        {/* Header - no animation */}
         <div className="flex flex-col items-center justify-between gap-8 sm:flex-row mb-12">
           <h2 className="text-3xl font-bold tracking-tight text-gray-700 sm:text-4xl">
-            {title}
+            {t("news_blogs")}
           </h2>
-          <a
-            href="#"
+          <NavLink
+            to="/news"
             className="inline-flex items-center gap-x-1 text-sm font-semibold leading-6 text-green-600 hover:text-green-800"
           >
             {t('show_more')}
@@ -140,51 +58,37 @@ const GlobalNews = ({ variant = "global-news" }) => {
                 clipRule="evenodd"
               />
             </svg>
-          </a>
+          </NavLink>
         </div>
 
-        {/* Articles Grid */}
+        {/* news Grid with simple scroll animation */}
         <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
-          {articles.map((article) => (
-            <div
+          {news.slice(0, displayLimit).map((article, index) => (
+            <motion.div
               key={article.id}
-              className="group relative overflow-hidden rounded-lg bg-gray-100 shadow-sm hover:shadow-md transition-shadow duration-300"
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true, margin: "0px 0px -50px 0px" }}
+              variants={itemVariants}
+              transition={{ duration: 0.5, delay: index * 0.1 }}
+              className="group relative overflow-hidden rounded-lg bg-white shadow-sm"
             >
               <div className="aspect-[4/3] w-full overflow-hidden">
                 <img
                   src={article.image}
                   alt={article.title}
-                  className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
+                  className="h-full w-full object-cover"
                 />
               </div>
               <div className="p-6">
-                {/* Company tags for International Regulations */}
-                {variant === "international-regulations" && (
-                  <div className="flex flex-wrap items-center gap-2 mb-2">
-                    {article.companies.map((company, index) => (
-                      <span
-                        key={index}
-                        className="text-xs font-medium bg-gray-100 px-2 py-1 rounded"
-                      >
-                        {company}
-                      </span>
-                    ))}
-                    <span className="text-xs font-medium text-gray-500">
-                      {article.type}
-                    </span>
-                  </div>
-                )}
-
                 <div className="flex items-center mb-3">
                   <span className="text-xs text-gray-500">
                     © {article.date}
                   </span>
                 </div>
 
-                <h3 className="text-xl font-bold text-gray-600 group-hover:text-gray-900 transition-colors duration-200 mb-3">
-                  <a href="#" className="before:absolute before:inset-0">
-                    {article.title}
-                  </a>
+                <h3 className="text-xl font-bold text-gray-600 mb-3">
+                  {article.title}
                 </h3>
 
                 <p className="text-gray-600 text-sm mb-4">{article.excerpt}</p>
@@ -208,7 +112,7 @@ const GlobalNews = ({ variant = "global-news" }) => {
                   </svg>
                 </a>
               </div>
-            </div>
+            </motion.div>
           ))}
         </div>
       </div>

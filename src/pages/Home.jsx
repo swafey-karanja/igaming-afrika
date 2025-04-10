@@ -5,7 +5,7 @@ import GlobalNews from "../components/GlobalNews.jsx"
 import Sponsors from '../components/Sponsors.jsx'
 import Navbar from '../components/Navbar.jsx'
 
-const News = () => {
+const Home = () => {
   return (
     <div>
       <Navbar />
@@ -16,4 +16,4 @@ const News = () => {
   )
 }
 
-export default News
+export default Home;
