@@ -94,8 +94,10 @@ const GlobalNews = () => {
                 <p className="text-gray-600 text-sm mb-4">{article.excerpt}</p>
 
                 <a
-                  href="#"
+                  href={article.open_giveaway_url}
                   className="inline-flex items-center text-green-600 hover:text-green-800 font-medium text-sm"
+                  target="_blank"
+                  rel="noreferrer"
                 >
                   {t('read_more')}
                   <svg

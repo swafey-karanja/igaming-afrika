@@ -93,13 +93,13 @@ const Navbar = () => {
                 playsInline
                 >
                 <source 
-                    src="https://videos.pexels.com/video-files/4523108/4523108-sd_640_360_25fps.mp4" 
+                    src="https://cdn.pixabay.com/video/2021/03/06/67116-521253275_tiny.mp4" 
                     type="video/mp4" 
                 />
                 {t('your_browser_does_not_support_the_video_tag')}
                 </video>
                 {/* Dark overlay for better text visibility */}
-                <div className="absolute inset-0 bg-black opacity-60"></div>
+                <div className="absolute inset-0 bg-black opacity-40"></div>
             </div>
 
 

@@ -72,12 +72,12 @@ const News = () => {
                             <span>•</span>
                             <span>{new Date(article.published_date).toLocaleDateString()}</span>
                             <a
-                                href={article.open_giveaway_url}
-                                className="ml-auto text-blue-500 hover:underline"
-                                target="_blank"
-                                rel="noreferrer"
+                              href={article.open_giveaway_url}
+                              className="ml-auto text-blue-500 hover:underline"
+                              target="_blank"
+                              rel="noreferrer"
                             >
-                                ↗
+                              ↗
                             </a>
                             </div>
                         </div>
