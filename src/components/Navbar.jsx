@@ -7,6 +7,7 @@ import { AboutDropdown } from "./AboutDropdown";
 const Navbar = () => {
     const [isSidebarOpen, setSidebarOpen] = useState(false);
     const [isScrolled, setIsScrolled] = useState(false);
+    const [isMobileAboutOpen, setIsMobileAboutOpen] = useState(false);
     const { t } = useTranslation();
 
     // Add scroll event listener to detect when user scrolls
@@ -28,6 +29,10 @@ const Navbar = () => {
             window.removeEventListener('scroll', handleScroll);
         };
     }, []);
+
+    const toggleMobileAbout = () => {
+        setIsMobileAboutOpen(!isMobileAboutOpen);
+    };
 
     return (
         <div className="relative pt-24 pb-12 bg-black xl:pt-24 sm:pb-16 lg:pb-32 xl:pb-48 2xl:pb-56 h-screen">
@@ -75,9 +80,38 @@ const Navbar = () => {
 
             {/* Sidebar */}
             <div className={`fixed top-0 left-0 z-30 w-full h-full bg-black transform transition-transform duration-300 md:hidden ${isSidebarOpen ? 'translate-x-0' : '-translate-x-full'}`}>
-                <div className="flex flex-col h-full p-6 space-y-6 text-white">
+                <div className="flex flex-col h-full p-4 space-y-5 text-white">
                     <button onClick={() => setSidebarOpen(false)} className="cursor-pointer self-end text-2xl">✕</button>
-                    <a href="#" className="text-lg">{t('about')} AGS</a>
+                    
+                    {/* About AGS Dropdown */}
+                    <div className="flex flex-col">
+                        <div 
+                            className="flex items-center justify-between text-lg cursor-pointer"
+                            onClick={toggleMobileAbout}
+                        >
+                            <span>{t('about')} AGS</span>
+                            <svg 
+                                className={`w-5 h-5 transition-transform duration-300 ${isMobileAboutOpen ? 'transform rotate-180' : ''}`} 
+                                xmlns="http://www.w3.org/2000/svg" 
+                                fill="none" 
+                                viewBox="0 0 24 24" 
+                                stroke="currentColor"
+                            >
+                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7" />
+                            </svg>
+                        </div>
+                        
+                        {/* Dropdown Menu */}
+                        <div className={`flex flex-col pl-4 mt-2 space-y-3 bg-black rounded-md overflow-hidden transition-all duration-300 ${
+                            isMobileAboutOpen ? 'max-h-96 py-2' : 'max-h-0'
+                        }`}>
+                            <NavLink to="/location" className="text-white hover:text-gray-200">{t('location')}</NavLink>
+                            {/* <NavLink to="/" className="text-white hover:text-gray-200">{t('expo_initiatives')}</NavLink> */}
+                            <NavLink to="/news" className="text-white hover:text-gray-200">{t('news_blogs')}</NavLink>
+                            
+                        </div>
+                    </div>
+                    
                     <a href="#" className="text-lg">{t('services')}</a>
                     <a href="#" className="text-lg">{t('contacts')}</a>
                     <LanguageSwitcher isScrolled={false} />

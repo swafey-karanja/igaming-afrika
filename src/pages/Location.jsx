@@ -4,6 +4,7 @@ import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet';
 import 'leaflet/dist/leaflet.css';
 import L from 'leaflet';
 import Header from "../components/Header.jsx"
+import Breadcrumb from '../components/BreadCrumb.jsx';
 
 // Fix for default marker icons in Leaflet
 delete L.Icon.Default.prototype._getIconUrl;
@@ -27,9 +28,10 @@ const Location = ({
     <div className='bg-gray-100'>
       <Header />
       <div className={`bg-gray-100 w-full max-w-7xl mx-auto ${className}`}>
-        <div className="flex flex-col h-[100vh] pt-28">
+        <div className="flex flex-col h-[100vh] pt-24">
           {/* Optional header - remove if you want just the map */}
-          <div className="py-6 bg-gray-100">
+          <div className=" bg-gray-100">
+          <Breadcrumb />
             <h2 className="text-4xl font-semibold text-gray-800 mb-2">Summit Location</h2>
             <hr />
             <p className="text-gray-600">{address}</p>

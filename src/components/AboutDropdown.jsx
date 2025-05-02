@@ -20,10 +20,10 @@ export function AboutDropdown({ isScrolled }) {
       title: t('location'),
       path: "/location",
     },
-    {
-      title: t('expo_initiatives'),
-      path: "/about/team",
-    },
+    // {
+    //   title: t('expo_initiatives'),
+    //   path: "/about/team",
+    // },
     {
       title: t('news_blogs'),
       path: "/news",
