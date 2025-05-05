@@ -6,6 +6,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { fetchNews } from "../store/newsSlice";
 // eslint-disable-next-line no-unused-vars
 import { motion } from "framer-motion";
+import { IoMdRefresh } from "react-icons/io";
 
 const GlobalNews = () => {
   const { t } = useTranslation();
@@ -34,33 +35,11 @@ const GlobalNews = () => {
   }
 
   return (
-    <div className="py-16 bg-gray-100 sm:py-24 min-h-screen">
+    <div className="py-16 bg-gray-100 sm:py-20 min-h-screen">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Header - no animation */}
-        <div className="flex flex-col items-center justify-between gap-8 sm:flex-row mb-12">
-          <h2 className="text-3xl font-bold tracking-tight text-gray-700 sm:text-4xl">
-            {t("news_blogs")}
-          </h2>
-          <NavLink
-            to="/news"
-            className="inline-flex items-center gap-x-1 text-sm font-semibold leading-6 text-green-600 hover:text-green-800"
-          >
-            {t('show_more')}
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              viewBox="0 0 20 20"
-              fill="currentColor"
-              className="h-5 w-5"
-            >
-              <path
-                fillRule="evenodd"
-                d="M7.21 14.77a.75.75 0 01.02-1.06L11.168 10 7.23 6.29a.75.75 0 111.04-1.08l4.5 4.25a.75.75 0 010 1.08l-4.5 4.25a.75.75 0 01-1.06-.02z"
-                clipRule="evenodd"
-              />
-            </svg>
-          </NavLink>
-        </div>
-
+        <h2 className="text-3xl font-bold tracking-tight uppercase text-center text-gray-700 sm:text-4xl mb-12">
+          {t("news_blogs")}
+        </h2>
         {/* news Grid with simple scroll animation */}
         <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
           {news.slice(0, displayLimit).map((article, index) => (
@@ -116,6 +95,15 @@ const GlobalNews = () => {
               </div>
             </motion.div>
           ))}
+        </div>
+        <div className="flex flex-col items-center justify-center gap-8 sm:flex-row mt-12">
+          <NavLink
+            to="/news"
+            className="inline-flex items-center gap-x-1 text-sm font-semibold leading-6 text-gray-800 hover:text-md border-1 border-gray-800 hover:bg-green-600 hover:border-green-600 hover:text-white rounded-lg px-4 py-2"
+          >
+            Show More
+            <IoMdRefresh />
+          </NavLink>
         </div>
       </div>
     </div>

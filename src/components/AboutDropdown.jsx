@@ -35,7 +35,7 @@ export function AboutDropdown({ isScrolled }) {
       <MenuHandler>
         <Button
           variant="text"
-          className={`flex items-center gap-2 text-base font-bold capitalize tracking-normal p-0 hover:bg-transparent focus:bg-transparent active:bg-transparent ${
+          className={`flex items-center gap-2 text-sm capitalize tracking-normal p-0 hover:text-green-600 hover:bg-transparent focus:bg-transparent active:bg-transparent ${
             isScrolled ? "text-black" : "text-white"
           }`}
         >
@@ -51,10 +51,10 @@ export function AboutDropdown({ isScrolled }) {
       <MenuList className="min-w-[150px] bg-white p-1 border-white z-50">
         {menuItems.map(({ title, path }) => (
           <NavLink to={path} key={title} className="w-full">
-            <MenuItem className="hover:bg-gray-100 py-2 px-4 rounded-md w-full text-left border-white text-lg">
+            <MenuItem className="hover:bg-gray-100 hover:text-green-600 py-2 px-4 rounded-md w-full text-left border-white text-lg">
               <Typography 
                 variant="small" 
-                className="font-sans font-bold text-gray-900"
+                className="text-gray-900 hover:text-green-600"
               >
                 {title}
               </Typography>

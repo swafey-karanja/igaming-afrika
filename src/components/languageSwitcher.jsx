@@ -22,7 +22,7 @@ const LanguageSwitcher = ({ isScrolled }) => {
     <div className="relative inline-block text-left">
       <button
         type="button"
-        className={`flex items-center justify-between font-bold bg-none border border-none rounded-md px-4 py-2 focus:outline-none md:min-w-[80px] min-w-[40px] cursor-pointer ${isScrolled ? "text-black" : "text-white"}`}
+        className={`flex items-center justify-between text-sm bg-none border border-none rounded-md px-4 py-2 focus:outline-none md:min-w-[80px] min-w-[40px] cursor-pointer ${isScrolled ? "text-black" : "text-white"}`}
         onClick={() => setIsOpen(!isOpen)}
       >
         <span>{languageNames[currentLanguage] || 'Select Language'}</span>

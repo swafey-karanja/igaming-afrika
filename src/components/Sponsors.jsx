@@ -74,7 +74,7 @@ const Sponsors = () => {
   };
 
   return (
-    <div className="bg-gray-100 px-4 sm:px-6 lg:px-8 pb-20">
+    <div className="bg-gray-100 px-4 sm:px-6 lg:px-8 pb-8">
       <div className="max-w-7xl mx-auto space-y-16">
         {/* Powered By Section */}
         <section className="text-center space-y-8">
@@ -84,7 +84,7 @@ const Sponsors = () => {
             viewport={{ once: true }}
             variants={fadeUp}
             transition={{ duration: 0.5 }}
-            className="text-2xl sm:text-3xl font-bold uppercase tracking-wide text-gray-900 pb-8"
+            className="text-3xl font-bold tracking-tight uppercase text-gray-700 sm:text-4xl pb-8"
           >
             {t('powered_by')}
           </motion.h2>
@@ -112,11 +112,11 @@ const Sponsors = () => {
                     loading="lazy"
                   />
                 </a>
-                {index === 0 && (
+                {/* {index === 0 && (
                   <span className="hidden sm:inline text-gray-500 font-medium">
                     {t('and')}
                   </span>
-                )}
+                )} */}
               </motion.div>
             ))}
           </div>
@@ -130,9 +130,9 @@ const Sponsors = () => {
             viewport={{ once: true }}
             variants={fadeUp}
             transition={{ duration: 0.5 }}
-            className="text-2xl sm:text-3xl font-bold uppercase tracking-wide text-gray-900 pb-20"
+            className="text-3xl font-bold tracking-tight uppercase text-gray-700 sm:text-3xl pb-20"
           >
-            {t('kindly_supported_by')}
+            in collaboration with
           </motion.h2>
           
           <div className="grid grid-cols-2 sm:grid-cols-3 gap-6 sm:gap-8 md:gap-12">

@@ -4,6 +4,8 @@ import Numbers from "../components/Numbers.jsx"
 import GlobalNews from "../components/GlobalNews.jsx"
 import Sponsors from '../components/Sponsors.jsx'
 import Navbar from '../components/Navbar.jsx'
+import Schedule from '../components/Schedule.jsx'
+import Speakers from '../components/Speakers.jsx'
 
 const Home = () => {
   return (
@@ -12,6 +14,8 @@ const Home = () => {
       <Numbers />
       <GlobalNews variant="international-regulations" />
       <Sponsors />
+      <Schedule />
+      <Speakers />
     </div>
   )
 }
