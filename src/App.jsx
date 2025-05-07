@@ -24,7 +24,7 @@ const App = () => {
           </Routes>
         <Footer />
       </Provider>
-    </I18nextProvider>
+    // </I18nextProvider>
   );
 };
 

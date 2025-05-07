@@ -122,7 +122,7 @@ const Navbar = () => {
                             <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" className={`${isScrolled ? "text-black" : "text-white"} hover:text-blue-500`}>
                                 <FaFacebook />
                             </a>
-                            <button className={`${isScrolled ? "text-black" : "text-white"} hover:text-gray-500`}>
+                            <button className={`${isScrolled ? "text-black" : "text-white"} space-x-5 text-xl hover:text-gray-500`}>
                                 <FaSearch />
                             </button>
                         </div>

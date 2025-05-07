@@ -8,7 +8,9 @@ import { motion } from "framer-motion";
 const Speakers = () => {
   const [selectedSpeaker, setSelectedSpeaker] = useState(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [activeFilter, setActiveFilter] = useState('All');
 
+  // Add event categories to each speaker
   const speakers = [
     { 
       name: 'Victor Alade', 
@@ -20,7 +22,8 @@ const Speakers = () => {
         twitter: '#',
         linkedin: '#',
         website: '#'
-      }
+      },
+      events: ['Tuesday Start-Up Investor Summit', 'Wednesday Leadership Stage']
     },
     { 
       name: 'Richard Oyome', 
@@ -31,7 +34,8 @@ const Speakers = () => {
       social: {
         twitter: '#',
         linkedin: '#'
-      }
+      },
+      events: ['Wednesday HR Connect', 'Thursday Leadership Stage']
     },
     { 
       name: 'Angela Mensah', 
@@ -43,7 +47,8 @@ const Speakers = () => {
         twitter: '#',
         linkedin: '#',
         website: '#'
-      }
+      },
+      events: ['Wednesday Investment Hub', 'Thursday Global Tech Hub']
     },
     { 
       name: 'Samuel Okoro', 
@@ -54,7 +59,8 @@ const Speakers = () => {
       social: {
         twitter: '#',
         linkedin: '#'
-      }
+      },
+      events: ['Wednesday Marketing Hub', 'Thursday Personal Development Hub']
     },
     { 
       name: 'Lilian Mwangi', 
@@ -66,7 +72,8 @@ const Speakers = () => {
         twitter: '#',
         linkedin: '#',
         website: '#'
-      }
+      },
+      events: ['Wednesday Gaming Tech Hub', 'Thursday Global Markets Hub']
     },
     { 
       name: 'Ahmed Bello', 
@@ -77,7 +84,8 @@ const Speakers = () => {
       social: {
         twitter: '#',
         linkedin: '#'
-      }
+      },
+      events: ['Wednesday Leadership Stage', 'Thursday Sustainability Hub']
     },
     { 
       name: 'Grace Achieng', 
@@ -89,7 +97,8 @@ const Speakers = () => {
         twitter: '#',
         linkedin: '#',
         website: '#'
-      }
+      },
+      events: ['Tuesday Start-Up Investor Summit', 'Wednesday HR Connect']
     },
     { 
       name: 'Emeka Obi', 
@@ -100,7 +109,8 @@ const Speakers = () => {
       social: {
         twitter: '#',
         linkedin: '#'
-      }
+      },
+      events: ['Wednesday Investment Hub', 'Thursday Leadership Stage']
     },
     { 
       name: 'Fatima Diallo', 
@@ -112,7 +122,8 @@ const Speakers = () => {
         twitter: '#',
         linkedin: '#',
         website: '#'
-      }
+      },
+      events: ['Wednesday Marketing Hub', 'Thursday Global Markets Hub']
     },
     { 
       name: 'John Kariuki', 
@@ -123,12 +134,35 @@ const Speakers = () => {
       social: {
         twitter: '#',
         linkedin: '#'
-      }
+      },
+      events: ['Wednesday Gaming Tech Hub', 'Thursday Personal Development Hub']
     }
   ];
 
+  // Filter options from the design
+  const filterOptions = [
+    'All',
+    'Tuesday Start-Up Investor Summit',
+    'Wednesday Leadership Stage',
+    'Wednesday HR Connect',
+    'Wednesday Investment Hub',
+    'Wednesday Marketing Hub',
+    'Wednesday Gaming Tech Hub',
+    'Thursday Leadership Stage',
+    'Thursday Global Markets Hub',
+    'Thursday Personal Development Hub',
+    'Thursday Sustainability Hub',
+    'Thursday Global Tech Hub'
+  ];
+
+  // Filter speakers based on active filter
+  const filteredSpeakers = speakers.filter(speaker => 
+    activeFilter === 'All' || speaker.events.includes(activeFilter)
+  );
+
+  console.log("filtered speakers", filteredSpeakers)
   // Animation variants
-    const container = {
+  const container = {
     hidden: { opacity: 0 },
     visible: {
       opacity: 1,
@@ -161,7 +195,6 @@ const Speakers = () => {
     visible: { scale: 1, opacity: 1, transition: { duration: 0.3 } }
   };
   
-
   const openModal = (speaker) => {
     setSelectedSpeaker(speaker);
     setIsModalOpen(true);
@@ -173,34 +206,66 @@ const Speakers = () => {
   };
 
   return (
-    <div className="bg-gray-100 px-4 sm:px-6 lg:px-8 pb-20">
-    <div className="max-w-7xl mx-auto pb-6">
-      {/* Section Header with animation */}
-      <motion.h2 
-        initial="hidden"
-        whileInView="visible"
-        viewport={{ once: true }}
-        variants={fadeIn}
-        className="text-3xl text-center uppercase font-bold tracking-tight text-gray-700 sm:text-4xl mb-12"
-      >
-        Speakers
-      </motion.h2>
-      
-      {/* Speakers Grid with staggered animations */}
-      <motion.div
-        initial="hidden"
-        whileInView="visible"
-        viewport={{ once: true }}
-        variants={container}
-        className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-8"
-      >
-        {speakers.map((speaker, index) => (
+    <div className="bg-gray-100 px-4 sm:px-6 lg:px-8">
+      <div className="max-w-7xl mx-auto pb-6">
+        {/* Section Header with animation */}
+        <motion.h2 
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+          variants={fadeIn}
+          className="text-3xl text-center uppercase font-bold tracking-tight text-gray-700 sm:text-4xl mb-12"
+        >
+          Featured speakers
+        </motion.h2>
+
+        {/* Filter tabs */}
+        <motion.div
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+          variants={fadeIn}
+          className="flex flex-wrap justify-center gap-2 mb-12"
+        >
+          {filterOptions.map((option) => (
+            <motion.button
+              key={option}
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+              onClick={() => setActiveFilter(option)}
+              className={`px-4 py-2 text-sm font-medium rounded-full transition-colors ${
+                activeFilter === option
+                  ? 'bg-green-600 text-white'
+                  : 'bg-white text-gray-700 hover:bg-gray-200'
+              }`}
+            >
+              {option}
+            </motion.button>
+          ))}
+        </motion.div>
+        
+        {/* Speakers Grid with staggered animations */}
+        <motion.div
+          key={`speakers-grid-${activeFilter}`} // This forces re-render on filter change
+          initial="hidden"
+          animate="visible"
+          variants={container}
+          className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-8"
+          onViewportEnter={() => {
+            // This ensures the grid is properly positioned when filters change
+            const gridElement = document.querySelector('.speakers-grid-container');
+            if (gridElement) {
+              gridElement.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+            }
+          }}
+        >
+        {filteredSpeakers.map((speaker, index) => (
           <motion.div 
-            key={index} 
+            key={`${speaker.name}-${index}`} // Unique key for each speaker
             variants={item}
-            className="bg-gray-50 rounded-lg p-8 text-center hover:shadow-lg shadow-sm transition-shadow duration-300 cursor-pointer flex flex-col items-center"
+            className="bg-gray-50 rounded-lg p-8 text-center hover:shadow-lg shadow-sm transition-shadow duration-300 cursor-pointer flex flex-col items-center speakers-grid-item"
             onClick={() => openModal(speaker)}
-            whileHover={{ y: -5 }}
+            layout // This enables layout animations
           >
             {/* Image container with perfect centering */}
             <div className="relative w-40 h-40 mb-4 rounded-full bg-gray-300 overflow-hidden flex items-center justify-center">
@@ -231,29 +296,36 @@ const Speakers = () => {
             
             <h3 className="text-sm font-bold text-gray-900 mb-1">{speaker.name}</h3>
             <p className="text-xs font-medium text-gray-600">{speaker.company}</p>
+            <div className="mt-2 flex flex-wrap justify-center gap-1">
+              {speaker.events.map((event, i) => (
+                <span key={i} className="text-xs px-2 py-1 bg-gray-200 rounded-full">
+                  {event.split(' ')[0]} {/* Show just the day */}
+                </span>
+              ))}
+            </div>
           </motion.div>
         ))}
-      </motion.div>
+        </motion.div>
 
-      {/* Show More button with animation */}
-      <motion.div
-        initial="hidden"
-        whileInView="visible"
-        viewport={{ once: true }}
-        variants={fadeIn}
-        transition={{ delay: 0.4 }}
-        className="flex flex-col items-center justify-center gap-8 sm:flex-row mt-12"
-      >
-        <NavLink
-          to="/news"
-          className="inline-flex items-center gap-x-1 text-sm font-semibold leading-6 text-gray-800 hover:text-md border-1 border-gray-800 hover:bg-green-600 hover:border-green-600 hover:text-white rounded-lg px-4 py-2"
-          whileHover={{ scale: 1.05 }}
+        {/* Show More button with animation */}
+        <motion.div
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+          variants={fadeIn}
+          transition={{ delay: 0.4 }}
+          className="flex flex-col items-center justify-center gap-8 sm:flex-row mt-12"
         >
-          Show More
-          <IoMdRefresh />
-        </NavLink>
-      </motion.div>
-    </div>
+          <NavLink
+            to="/news"
+            className="inline-flex items-center gap-x-1 text-sm font-semibold leading-6 text-gray-800 hover:text-md border-1 border-gray-800 hover:bg-green-600 hover:border-green-600 hover:text-white rounded-lg px-4 py-2"
+            // whileHover={{ scale: 1.05 }}
+          >
+            Show More
+            <IoMdRefresh />
+          </NavLink>
+        </motion.div>
+      </div>
 
     {/* Speaker Modal with enhanced animations */}
     <motion.div 

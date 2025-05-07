@@ -38,7 +38,8 @@ const GlobalNews = () => {
     <div className="py-16 bg-gray-100 sm:py-20 min-h-screen">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <h2 className="text-3xl font-bold tracking-tight uppercase text-center text-gray-700 sm:text-4xl mb-12">
-          {t("news_blogs")}
+          {/* {t("news_blogs")} */}
+          News & Blogs
         </h2>
         {/* news Grid with simple scroll animation */}
         <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">

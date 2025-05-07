@@ -6,6 +6,7 @@ import Sponsors from '../components/Sponsors.jsx'
 import Navbar from '../components/Navbar.jsx'
 import Schedule from '../components/Schedule.jsx'
 import Speakers from '../components/Speakers.jsx'
+import Gallery from '../components/Galleria.jsx'
 
 const Home = () => {
   return (
@@ -16,6 +17,7 @@ const Home = () => {
       <Sponsors />
       <Schedule />
       <Speakers />
+      <Gallery />
     </div>
   )
 }
