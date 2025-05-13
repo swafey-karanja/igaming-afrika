@@ -48,6 +48,41 @@ const gamingSponsors = [
     name: "Activision",
     logo: "https://1000logos.net/wp-content/uploads/2020/09/Activision-logo-tumb.jpg",
     url: "https://activision.com"
+  },
+  {
+    name: "Betika",
+    logo: "https://cdn.brandfetch.io/idhxmz_22M/w/1024/h/1024/theme/dark/logo.png?c=1dxbfHSJFAPEGdCLU4o5B",
+    url: "https://www.betika.com/en-ke/"
+  },
+  {
+    name: "Bet365",
+    logo: "https://cdn.brandfetch.io/idvBgRUDV0/theme/dark/logo.svg?c=1dxbfHSJFAPEGdCLU4o5B",
+    url: "https://www.bet365.com/#/HO/"
+  },
+  {
+    name: "SportPesa",
+    logo: "https://cdn.brandfetch.io/idYRS_wmkY/w/400/h/400/theme/dark/icon.jpeg?c=1dxbfHSJFAPEGdCLU4o5B",
+    url: "https://www.ke.sportpesa.com/en/sports-betting/football-1/"
+  },
+  {
+    name: "Betway",
+    logo: "https://cdn.brandfetch.io/idylV0Xaxe/theme/dark/logo.svg?c=1dxbfHSJFAPEGdCLU4o5B",
+    url: "https://www.betway.co.za/sport/soccer"
+  },
+  {
+    name: "Bangbet",
+    logo: "https://cdn.brandfetch.io/idu_Lkrhft/w/288/h/66/theme/dark/logo.png?c=1dxbfHSJFAPEGdCLU4o5B",
+    url: "https://www.bangbet.com/"
+  },
+  {
+    name: "Skybet",
+    logo: "https://cdn.brandfetch.io/idwO8GVDyj/w/1120/h/223/theme/light/logo.png?c=1dxbfHSJFAPEGdCLU4o5B",
+    url: "https://m.skybet.com/"
+  },
+  {
+    name: "Sportybet",
+    logo: "https://cdn.brandfetch.io/idFOnSHs5C/w/400/h/400/theme/dark/icon.png?c=1dxbfHSJFAPEGdCLU4o5B",
+    url: "https://www.sportybet.com/"
   }
 ];
 
@@ -135,7 +170,7 @@ const Sponsors = () => {
             in collaboration with
           </motion.h2>
           
-          <div className="grid grid-cols-2 sm:grid-cols-3 gap-6 sm:gap-8 md:gap-12">
+          <div className="grid grid-cols-2 sm:grid-cols-4 gap-6 sm:gap-8 md:gap-12">
             {gamingSponsors.map((sponsor, index) => (
               <motion.div
                 key={sponsor.name}

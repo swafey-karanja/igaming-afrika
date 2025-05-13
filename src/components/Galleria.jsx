@@ -4,11 +4,24 @@ import { ChevronLeft, ChevronRight } from 'lucide-react';
 import { motion, AnimatePresence } from "framer-motion";
 
 const images = [
-  'https://primefaces.org/cdn/primereact/images/galleria/galleria14.jpg',
+  'https://res.cloudinary.com/dpuolfyum/image/upload/v1747036197/Igaming_Malta_Workshop_22_olucjp.png',
   'https://primefaces.org/cdn/primereact/images/galleria/galleria15.jpg',
-  'https://primefaces.org/cdn/primereact/images/galleria/galleria12.jpg',
-  'https://primefaces.org/cdn/primereact/images/galleria/galleria11.jpg',
-  'https://primefaces.org/cdn/primereact/images/galleria/galleria10.jpg'
+  'https://res.cloudinary.com/dpuolfyum/image/upload/v1747036195/Igaming_Malta_Workshop_11_vzcp05.png',
+  'https://res.cloudinary.com/dpuolfyum/image/upload/v1747036192/Igaming_Malta_Workshop_19_jvojsr.png',
+  'https://res.cloudinary.com/dpuolfyum/image/upload/v1747036192/Igaming_Malta_Workshop_6_xqrw4c.png',
+  'https://res.cloudinary.com/dpuolfyum/image/upload/v1747036192/Igaming_Malta_Workshop_17_zzxnaw.png',
+  'https://res.cloudinary.com/dpuolfyum/image/upload/v1747036191/Igaming_Malta_Workshop_16_iogyc9.png',
+  'https://res.cloudinary.com/dpuolfyum/image/upload/v1747036190/Igaming_Malta_Workshop_5_ra7ub0.png',
+  'https://res.cloudinary.com/dpuolfyum/image/upload/v1747036189/Igaming_Malta_Workshop_14_flgbfx.png',
+  'https://res.cloudinary.com/dpuolfyum/image/upload/v1747036188/Igaming_Malta_Workshop_10_ag3gbc.png',
+  'https://res.cloudinary.com/dpuolfyum/image/upload/v1747036188/Igaming_Malta_Workshop_24_bofciq.png',
+  'https://res.cloudinary.com/dpuolfyum/image/upload/v1747036187/Igaming_Malta_Workshop_9_yelhoa.png',
+  'https://res.cloudinary.com/dpuolfyum/image/upload/v1747036185/Igaming_Malta_Workshop_4_kpxn3q.png',
+  'https://res.cloudinary.com/dpuolfyum/image/upload/v1747036185/Igaming_Malta_Workshop_8_btkuwy.png',
+  'https://res.cloudinary.com/dpuolfyum/image/upload/v1747036183/Igaming_Malta_Workshop_13_jeiz6x.png',
+  'https://res.cloudinary.com/dpuolfyum/image/upload/v1747036182/Igaming_Malta_Workshop_18_hnqggl.png',
+  'https://res.cloudinary.com/dpuolfyum/image/upload/v1747036181/Igaming_Malta_Workshop_15_byyzeh.png',
+  'https://res.cloudinary.com/dpuolfyum/image/upload/v1747036181/Igaming_Malta_Workshop_7_xoqark.png'
 ];
 
 const fadeIn = {
@@ -107,7 +120,7 @@ const ImageCarousel = () => {
           whileInView="visible"
           viewport={{ once: true }}
           variants={fadeIn}
-          className="flex items-center justify-center gap-3 mt-4 overflow-x-auto px-2"
+          className="flex items-center justify-center gap-3 mt-4 overflow-x-hidden px-2"
         >
           {images.map((img, idx) => (
             <motion.button

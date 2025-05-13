@@ -83,9 +83,9 @@ const Footer = () => {
         viewport={{ once: true }}
         variants={fadeIn}
         transition={{ duration: 0.5, delay: 0.2 }}
-        className="max-w-6xl mx-auto px-6 sm:px-6 lg:px-8 py-20"
+        className="max-w-6xl mx-auto px-6 sm:px-6 lg:px-8 py-16"
       >
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-18">
           {/* Logo and description */}
           <motion.div 
             variants={fadeIn}
@@ -101,8 +101,9 @@ const Footer = () => {
               </a>
             </div>
             <p className="text-sm text-gray-600">
-              Clarity gives you the blocks and components you need to create a
-              truly professional website.
+              iGaming AFRIKA is the best b2b and b2c gambling media source focused on informing the betting business community 
+              on all matters related to gaming in Africa. We take pride in being Africa's leading Casino, Sportsbook and Lottery 
+              insider for news, podcasts, interviews and other gambling industry updates.
             </p>
           </motion.div>
 
@@ -110,14 +111,14 @@ const Footer = () => {
           <motion.div 
             variants={fadeIn}
             transition={{ delay: 0.1 }}
-            className="space-y-4"
+            className="space-y-4 mt-12 ml-20"
           >
             <h3 className="text-md font-bold text-gray-600">{t("company")}</h3>
             <ul className="space-y-2 text-sm">
-              <li><a href="#" className="hover:text-gray-900">{t("about")}</a></li>
-              <li><a href="#" className="hover:text-gray-900">{t('features')}</a></li>
-              <li><a href="#" className="hover:text-gray-900">{t("works")}</a></li>
-              <li><a href="#" className="hover:text-gray-900">{t('careers')}</a></li>
+              <li><a href="https://igamingafrika.com/about-us/" className="hover:text-green-600">{t("about")}</a></li>
+              <li><a href="https://igamingafrika.com/advertise/" className="hover:text-green-600">Advertise</a></li>
+              <li><a href="https://igamingafrika.com/disclaimer/" className="hover:text-green-600">Disclaimer</a></li>
+              <li><a href="https://igamingafrika.com/join-our-team/" className="hover:text-green-600">Join our Team</a></li>
             </ul>
           </motion.div>
 
@@ -125,36 +126,21 @@ const Footer = () => {
           <motion.div 
             variants={fadeIn}
             transition={{ delay: 0.15 }}
-            className="space-y-4"
+            className="space-y-4 mt-12"
           >
             <h3 className="text-md font-bold text-gray-600">{t('help')}</h3>
             <ul className="space-y-2 text-sm">
-              <li><a href="#" className="hover:text-gray-900">{t('customer_support')}</a></li>
-              <li><a href="#" className="hover:text-gray-900">{t('delivery_details')}</a></li>
-              <li><a href="#" className="hover:text-gray-900">{t('terms_conditions')}</a></li>
-              <li><a href="#" className="hover:text-gray-900">{t("privacy_policy")}</a></li>
-            </ul>
-          </motion.div>
-
-          {/* RESOURCES Column */}
-          <motion.div 
-            variants={fadeIn}
-            transition={{ delay: 0.2 }}
-            className="space-y-4"
-          >
-            <h3 className="text-md font-bold text-gray-600">{t("resources")}</h3>
-            <ul className="space-y-2 text-sm">
-              <li><a href="#" className="hover:text-gray-900">{t('free_ebooks')}</a></li>
-              <li><a href="#" className="hover:text-gray-900">{t('development_tutorial')}</a></li>
-              <li><a href="#" className="hover:text-gray-900">{t("how_to_blog")}</a></li>
-              <li><a href="#" className="hover:text-gray-900">{t("youtube_playlist")}</a></li>
+              <li><a href="https://igamingafrika.com/donate/" className="hover:text-green-600">Donate</a></li>
+              <li><a href="https://igamingafrika.com/contact-us/" className="hover:text-green-600">Contact Us</a></li>
+              <li><a href="#" className="hover:text-green-600">{t('terms_conditions')}</a></li>
+              <li><a href="https://igamingafrika.com/privacy-policy/" className="hover:text-green-600">{t("privacy_policy")}</a></li>
             </ul>
           </motion.div>
         </div>
       </motion.div>
 
       {/* Social Media Section */}
-      <div className="max-w-6xl mx-auto px-6 sm:px-6 lg:px-8 py-10">
+      <div className="max-w-6xl mx-auto px-6 sm:px-6 lg:px-8 py-6">
         <div className="flex items-center justify-center space-x-4 pt-2 text-3xl">
           <a href="#" className="text-gray-600 hover:text-blue-400">
             <FaTwitter />
@@ -184,7 +170,7 @@ const Footer = () => {
         className="py-4"
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center text-sm text-gray-500">
-          <p>{t('copyright_notice')}</p>
+          <p>© Copyright 2025 Media-Tech iGaming Technology Limited - All Rights Reserved</p>
         </div>
       </motion.div>
 

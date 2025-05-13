@@ -2,7 +2,7 @@ import { useState } from "react";
 import { NavLink } from "react-router-dom";
 import LanguageSwitcher from "./languageSwitcher";
 import { useTranslation } from "react-i18next";
-import { AboutDropdown } from "./AboutDropdown";
+import { AboutDropdown } from "./DropdownMenus";
 
 const Header = () => {
     const [isSidebarOpen, setSidebarOpen] = useState(false);

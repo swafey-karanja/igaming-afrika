@@ -1,0 +1,76 @@
+import React, { useState } from 'react';
+
+const FAQSection = () => {
+  const [activeIndex, setActiveIndex] = useState(0);
+
+  const toggleFAQ = (index) => {
+    setActiveIndex(activeIndex === index ? null : index);
+  };
+
+  const faqs = [
+    {
+      question: 'What is Igaming Afrika Summit?',
+      answer: 'The inaugural IGaming Afrika Summit is set to take place in Nairobi, Kenya, in 2026, marking a significant milestone for the continent\'s gaming and betting industry. This premier event aims to unite a diverse array of stakeholders, including betting and gaming companies, technology providers, regulators, and investors, offering them a unique platform to network, explore investment opportunities, and forge strategic partnerships. Attendees can anticipate engaging in insightful discussions on emerging trends, regulatory frameworks, and technological advancements shaping the future of IGaming in Africa. With a focus on collaboration and innovation, the summit is poised to catalyze growth and drive the evolution of the gaming landscape across the continent.'
+    },
+    {
+      question: 'How do I get access to IGaming Afrika Summit?',
+      answer: 'Access details will be available on our website once registration opens. You can sign up for our newsletter to receive updates about ticket availability and early bird specials.'
+    },
+    {
+      question: 'How can I exhibit and sponsor?',
+      answer: 'We offer various exhibition and sponsorship packages. Please contact our partnerships team at sponsors@igamingafrika.com for more information about available opportunities.'
+    },
+    {
+      question: 'How can I find Exhibitor details?',
+      answer: 'Exhibitor details will be published on our website closer to the event date. You can browse participating companies and their offerings in our digital exhibitor directory.'
+    }
+  ];
+
+  return (
+    <div className=" bg-gray-100 min-h-auto">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-16">
+            <h2 className="text-3xl font-bold tracking-tight uppercase text-center text-gray-700 sm:text-4xl mb-12">
+             Frequently Asked Questions
+            </h2>
+        
+            <div className="space-y-4">
+                {faqs.map((faq, index) => (
+                <div key={index} className="border-b border-gray-200 pb-3">
+                    <button
+                        onClick={() => toggleFAQ(index)}
+                        className="flex justify-between items-center w-full text-left py-3 focus:outline-none cursor-pointer"
+                    >
+                    <h2 className="text-md font-medium text-black">{faq.question}</h2>
+                    <svg
+                        className={`w-4 h-4 text-black transition-transform duration-200 ${
+                        activeIndex === index ? 'rotate-180' : ''
+                        }`}
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        stroke="currentColor"
+                    >
+                        <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth={2}
+                        d="M19 9l-7 7-7-7"
+                        />
+                    </svg>
+                    </button>
+                    
+                    <div
+                        className={`overflow-hidden transition-all duration-500 ${
+                            activeIndex === index ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0'
+                        }`}
+                    >
+                        <p className="text-black mt-2 text-sm pr-8">{faq.answer}</p>
+                    </div>
+                </div>
+                ))}
+            </div>
+        </div>
+    </div>
+  );
+};
+
+export default FAQSection;

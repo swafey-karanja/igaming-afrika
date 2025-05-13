@@ -2,7 +2,7 @@ import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 
 // Define an async thunk to fetch the news data
 export const fetchNews = createAsyncThunk('news/fetchNews', async () => {
-  const response = await fetch('http://localhost:5000/api/gaming-news');
+  const response = await fetch('https://igamingafrika.com/wp-json/wp/v2/posts?page=1&per_page=10');
   const data = await response.json();
   return data;
 });
