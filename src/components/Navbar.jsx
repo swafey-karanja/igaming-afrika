@@ -138,7 +138,7 @@ const Navbar = () => {
 
             {/* Mobile Sidebar Overlay */}
             <div
-                className={`fixed inset-0 z-20 bg-black bg-opacity-60 lg:hidden transition-opacity duration-300 ${
+                className={`fixed inset-0 z-20  bg-opacity-60 lg:hidden transition-opacity duration-300 ${
                     isSidebarOpen ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'
                 }`}
                 onClick={() => setSidebarOpen(false)}
@@ -239,25 +239,25 @@ const Navbar = () => {
                     
                     {/* Countdown Timer */}
                     <div className="flex justify-center space-x-2 sm:space-x-3 md:space-x-4 mb-6 sm:mb-8">
-                        <div className="text-center px-2 sm:px-3 py-1 sm:py-2 bg-black bg-opacity-30 rounded">
+                        <div className="text-center px-2 sm:px-3 py-1 sm:py-2  bg-opacity-30 rounded">
                             <div className="text-lg sm:text-xl md:text-2xl font-bold">{timeLeft.days}</div>
                             <div className="text-xs sm:text-sm uppercase">Days</div>
                         </div>
-                        <div className="text-center px-2 sm:px-3 py-1 sm:py-2 bg-black bg-opacity-30 rounded">
+                        <div className="text-center px-2 sm:px-3 py-1 sm:py-2  bg-opacity-30 rounded">
                             <div className="text-lg sm:text-xl md:text-2xl font-bold">{timeLeft.hours}</div>
                             <div className="text-xs sm:text-sm uppercase">Hours</div>
                         </div>
-                        <div className="text-center px-2 sm:px-3 py-1 sm:py-2 bg-black bg-opacity-30 rounded">
+                        <div className="text-center px-2 sm:px-3 py-1 sm:py-2  bg-opacity-30 rounded">
                             <div className="text-lg sm:text-xl md:text-2xl font-bold">{timeLeft.minutes}</div>
                             <div className="text-xs sm:text-sm uppercase">Minutes</div>
                         </div>
-                        <div className="text-center px-2 sm:px-3 py-1 sm:py-2 bg-black bg-opacity-30 rounded">
+                        <div className="text-center px-2 sm:px-3 py-1 sm:py-2  bg-opacity-30 rounded">
                             <div className="text-lg sm:text-xl md:text-2xl font-bold">{timeLeft.seconds}</div>
                             <div className="text-xs sm:text-sm uppercase">Seconds</div>
                         </div>
                     </div>
 
-                    <div className="bg-black bg-opacity-40 backdrop-blur-sm rounded-lg p-3 sm:p-4 md:p-6 max-w-lg sm:max-w-xl md:max-w-2xl mx-auto">
+                    <div className=" bg-opacity-40 backdrop-blur-sm rounded-lg p-3 sm:p-4 md:p-6 max-w-lg sm:max-w-xl md:max-w-2xl mx-auto">
                         <p className="text-xs sm:text-sm md:text-md mb-6 sm:mb-8 md:mb-10">
                             With 40% operator attendance, it's the industry's top operator led event. Dive into unmatched networking, 
                             attend a week-long festival of events, and learn from hundreds of leading experts. Engage with 6,000 
