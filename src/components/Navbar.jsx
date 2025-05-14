@@ -18,7 +18,7 @@ const Navbar = () => {
     // Calculate time left until the event (May 7, 2025)
     useEffect(() => {
         const calculateTimeLeft = () => {
-            const eventDate = new Date('May 7, 2025').getTime();
+            const eventDate = new Date('July 28, 2026').getTime();
             const now = new Date().getTime();
             const difference = eventDate - now;
 
@@ -109,26 +109,26 @@ const Navbar = () => {
                         </nav>
 
                         {/* Right Side Social Links */}
-                        <div className="hidden lg:flex items-center space-x-2 xl:space-x-3 text-sm sm:text-md">
-                            <a href="https://twitter.com" target="_blank" rel="noopener noreferrer" className={`${isScrolled ? "text-black" : "text-white"} hover:text-blue-400`} aria-label="Twitter">
+                        <div className="hidden lg:flex items-center space-x-2 xl:space-x-3 sm:text-lg">
+                            <a href="https://x.com/igamingafrika/" target="_blank" rel="noopener noreferrer" className={`${isScrolled ? "text-black" : "text-white"} hover:text-blue-400`} aria-label="Twitter">
                                 <FaTwitter />
                             </a>
-                            <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" className={`${isScrolled ? "text-black" : "text-white"} hover:text-blue-700`} aria-label="LinkedIn">
+                            <a href="https://www.linkedin.com/company/igamingafrika/" target="_blank" rel="noopener noreferrer" className={`${isScrolled ? "text-black" : "text-white"} hover:text-blue-700`} aria-label="LinkedIn">
                                 <FaLinkedin />
                             </a>
-                            <a href="https://youtube.com" target="_blank" rel="noopener noreferrer" className={`${isScrolled ? "text-black" : "text-white"} hover:text-red-600`} aria-label="YouTube">
+                            <a href="https://www.youtube.com/@igamingafrika?themeRefresh=1" target="_blank" rel="noopener noreferrer" className={`${isScrolled ? "text-black" : "text-white"} hover:text-red-600`} aria-label="YouTube">
                                 <FaYoutube />
                             </a>
-                            <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" className={`${isScrolled ? "text-black" : "text-white"} hover:text-pink-500`} aria-label="Instagram">
+                            <a href="https://www.instagram.com/igamingafrika/" target="_blank" rel="noopener noreferrer" className={`${isScrolled ? "text-black" : "text-white"} hover:text-pink-500`} aria-label="Instagram">
                                 <FaInstagram />
                             </a>
-                            <a href="https://t.me" target="_blank" rel="noopener noreferrer" className={`${isScrolled ? "text-black" : "text-white"} hover:text-blue-500`} aria-label="Telegram">
+                            <a href="https://t.me/igamingafrika" target="_blank" rel="noopener noreferrer" className={`${isScrolled ? "text-black" : "text-white"} hover:text-blue-500`} aria-label="Telegram">
                                 <FaTelegramPlane />
                             </a>
-                            <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" className={`${isScrolled ? "text-black" : "text-white"} hover:text-blue-500`} aria-label="Facebook">
+                            <a href="https://www.facebook.com/IgamingAfrika/" target="_blank" rel="noopener noreferrer" className={`${isScrolled ? "text-black" : "text-white"} hover:text-blue-500`} aria-label="Facebook">
                                 <FaFacebook />
                             </a>
-                            <button className={`${isScrolled ? "text-black" : "text-white"} hover:text-gray-500`} aria-label="Search">
+                            <button className={`${isScrolled ? "text-black" : "text-white"} ml-5 hover:text-gray-500`} aria-label="Search">
                                 <FaSearch />
                             </button>
                         </div>
@@ -185,22 +185,22 @@ const Navbar = () => {
                     
                     {/* Mobile Social Icons */}
                     <div className="flex items-center justify-center space-x-4 text-xl mt-2 py-4">
-                        <a href="https://twitter.com" target="_blank" rel="noopener noreferrer" className="text-white hover:text-blue-400" aria-label="Twitter">
+                        <a href="https://x.com/igamingafrika/" target="_blank" rel="noopener noreferrer" className="text-white hover:text-blue-400" aria-label="Twitter">
                             <FaTwitter />
                         </a>
-                        <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" className="text-white hover:text-blue-700" aria-label="LinkedIn">
+                        <a href="https://www.linkedin.com/company/igamingafrika/" target="_blank" rel="noopener noreferrer" className="text-white hover:text-blue-700" aria-label="LinkedIn">
                             <FaLinkedin />
                         </a>
-                        <a href="https://youtube.com" target="_blank" rel="noopener noreferrer" className="text-white hover:text-red-600" aria-label="YouTube">
+                        <a href="https://www.youtube.com/@igamingafrika?themeRefresh=1" target="_blank" rel="noopener noreferrer" className="text-white hover:text-red-600" aria-label="YouTube">
                             <FaYoutube />
                         </a>
-                        <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" className="text-white hover:text-pink-500" aria-label="Instagram">
+                        <a href="https://www.instagram.com/igamingafrika/" target="_blank" rel="noopener noreferrer" className="text-white hover:text-pink-500" aria-label="Instagram">
                             <FaInstagram />
                         </a>
-                        <a href="https://t.me" target="_blank" rel="noopener noreferrer" className="text-white hover:text-blue-500" aria-label="Telegram">
+                        <a href="https://t.me/igamingafrika" target="_blank" rel="noopener noreferrer" className="text-white hover:text-blue-500" aria-label="Telegram">
                             <FaTelegramPlane />
                         </a>
-                        <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" className="text-white hover:text-blue-500" aria-label="Facebook">
+                        <a href="https://www.facebook.com/IgamingAfrika/" target="_blank" rel="noopener noreferrer" className="text-white hover:text-blue-500" aria-label="Facebook">
                             <FaFacebook />
                         </a>
                     </div>
@@ -233,9 +233,10 @@ const Navbar = () => {
                         alt="iGaming Afrika Logo"
                         className="w-full max-w-xs md:max-w-md mx-auto mb-4 sm:mb-6"
                     />
-                    <p className="text-sm sm:text-md mb-4 sm:mb-6">NAIROBI • 7-8 MAY, 2025</p>
-                    <h1 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold mb-2">MAY 7-8, 2025</h1>
-                    <p className="text-sm sm:text-md mb-6 sm:mb-8">Kenya International Conference Center, Nairobi, Kenya</p>
+                    <p className="text-md sm:text-5xl font-semibold mb-2 sm:mb-3">iGaming AFRIKA Summit</p>
+                    <p className="text-md sm:text-xl font-semibold mb-2 sm:mb-3">NAIROBI, KENYA • 28-31 JULY, 2026</p>
+                    {/* <h1 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold mb-2">28-31 JULY, 2026</h1> */}
+                    <p className="text-sm sm:text-[16px] mb-6 sm:mb-8"> Sarit Expo Center, Nairobi, Kenya</p>
                     
                     {/* Countdown Timer */}
                     <div className="flex justify-center space-x-2 sm:space-x-3 md:space-x-4 mb-6 sm:mb-8">
@@ -259,9 +260,9 @@ const Navbar = () => {
 
                     <div className=" bg-opacity-40 backdrop-blur-sm rounded-lg p-3 sm:p-4 md:p-6 max-w-lg sm:max-w-xl md:max-w-2xl mx-auto">
                         <p className="text-xs sm:text-sm md:text-md mb-6 sm:mb-8 md:mb-10">
-                            With 40% operator attendance, it's the industry's top operator led event. Dive into unmatched networking, 
-                            attend a week-long festival of events, and learn from hundreds of leading experts. Engage with 6,000 
-                            global delegates and shape the future of iGaming.
+                            With expected attendees from over 70 countries, this event is unmatched in its international reach. 
+                            Explore sections dedicated to key industry verticals such as regulation, marketing, payments etc and 
+                            participate in targeted sessions to earn industry insights and knowledge. 
                         </p>
                         
                         <div className="flex flex-col sm:flex-row justify-center space-y-4 sm:space-y-0 sm:space-x-4">
@@ -270,9 +271,9 @@ const Navbar = () => {
                                  PRE-REGISTER 2026
                                </NavLink>
                             </button>
-                            <button className="bg-transparent hover:bg-green-600 hover:bg-opacity-20 text-white text-sm hover:cursor-pointer font-bold py-2 px-6 border border-green-600 rounded-md">
+                            {/* <button className="bg-transparent hover:bg-green-600 hover:bg-opacity-20 text-white text-sm hover:cursor-pointer font-bold py-2 px-6 border border-green-600 rounded-md">
                                 LIST OF ATTENDEES 2025
-                            </button>
+                            </button> */}
                            
                         </div>
                     </div>

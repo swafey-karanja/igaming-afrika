@@ -32,9 +32,9 @@ const Numbers = () => {
 
   return (
     <section
-      className="min-h-screen flex flex-col items-center bg-cover bg-center bg-fixed"
+      className="min-h-screen flex flex-col items-center bg-center bg-fixed"
       style={{
-        backgroundImage: "url('https://cdn.pixabay.com/photo/2021/09/07/07/11/game-console-6603120_1280.jpg')",
+        backgroundImage: "url('https://images.unsplash.com/photo-1699136897382-ec50fa3a289c?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NzF8fGdhbWJsaW5nfGVufDB8fDB8fHww')",
       }}
       id="numbers"
     >
@@ -52,9 +52,19 @@ const Numbers = () => {
         >
           <h1 className="text-xl md:text-2xl font-bold mb-3">{t('what_is_ags_title')}</h1>
           <p
-            className="text-xs md:text-sm leading-relaxed"
+            className="text-xs md:text-sm leading-relaxed mb-6"
             dangerouslySetInnerHTML={{ __html: t('what_is_ags_description') }}
           />
+
+          <h1 className="text-xl md:text-2xl font-bold mb-3">What Makes IGAMING AFRIKA SUMMIT Special? </h1>
+          <p
+            className="text-xs md:text-sm leading-relaxed"
+          >
+            <strong>Global Gathering:</strong> With expected attendees from over 70 countries, this event is unmatched in its international reach. <br /> <br />
+            <strong>Safari Tour:</strong> The event will kick off with a memorable Safari Tour of the iconic Masai Mara, a session that will allow the attendees to have an experience with Kenya’s wildlife such as Lions, Antelopes, Elephants among others. <br /> <br />
+            <strong>World-Class Content & Diverse Opportunities:</strong> Explore sections dedicated to key industry verticals such as regulation, marketing, payments etc and participate in targeted sessions to earn industry insights and knowledge. <br /> <br />
+            <strong>Memorable Entertainment:</strong> The event culminates with an iconic closing celebration at the Kenyatta International Convention Center (KICC) with a lineup of renowned artists.
+          </p>
         </motion.div>
         
         <motion.div 
@@ -63,7 +73,7 @@ const Numbers = () => {
           className="lg:w-2/5 aspect-video"
         >
           <img 
-            src="https://img.freepik.com/free-photo/gamer-chair-with-multicolored-neon-lights_52683-99741.jpg" 
+            src="https://img.freepik.com/free-photo/handsome-young-black-man-playing-poker-holding-smartphone-dollars-skeptic-nervous-frowning-upset-because-problem-negative-person_839833-20417.jpg?uid=R149908537&ga=GA1.1.2111726361.1747214498&semt=ais_hybrid&w=740" 
             alt="AGS Event" 
             className="w-full h-full rounded-lg shadow-lg object-cover"
             loading="lazy"
@@ -113,7 +123,7 @@ const Numbers = () => {
               className="flex flex-col items-center"
             >
               <h3 className="font-bold text-3xl sm:text-4xl md:text-5xl">
-                <span className="text-transparent bg-clip-text bg-gradient-to-r from-fuchsia-600 to-blue-600">
+                <span className="text-green-600 bg-clip-text bg-gradient-to-r ">
                   {stat.value}
                 </span>
               </h3>

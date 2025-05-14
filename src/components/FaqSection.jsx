@@ -28,47 +28,47 @@ const FAQSection = () => {
 
   return (
     <div className=" bg-gray-100 min-h-auto">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-16">
-            <h2 className="text-3xl font-bold tracking-tight uppercase text-center text-gray-700 sm:text-4xl mb-12">
-             Frequently Asked Questions
-            </h2>
-        
-            <div className="space-y-4">
-                {faqs.map((faq, index) => (
-                <div key={index} className="border-b border-gray-200 pb-3">
-                    <button
-                        onClick={() => toggleFAQ(index)}
-                        className="flex justify-between items-center w-full text-left py-3 focus:outline-none cursor-pointer"
-                    >
-                    <h2 className="text-md font-medium text-black">{faq.question}</h2>
-                    <svg
-                        className={`w-4 h-4 text-black transition-transform duration-200 ${
-                        activeIndex === index ? 'rotate-180' : ''
-                        }`}
-                        fill="none"
-                        viewBox="0 0 24 24"
-                        stroke="currentColor"
-                    >
-                        <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth={2}
-                        d="M19 9l-7 7-7-7"
-                        />
-                    </svg>
-                    </button>
-                    
-                    <div
-                        className={`overflow-hidden transition-all duration-500 ${
-                            activeIndex === index ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0'
-                        }`}
-                    >
-                        <p className="text-black mt-2 text-sm pr-8">{faq.answer}</p>
-                    </div>
-                </div>
-                ))}
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-16">
+        <h2 className="text-3xl font-bold tracking-tight uppercase text-center text-gray-700 sm:text-4xl mb-12">
+          Frequently Asked Questions
+        </h2>
+    
+        <div className="space-y-4">
+          {faqs.map((faq, index) => (
+            <div key={index} className="border-b border-gray-200 pb-3">
+              <button
+                onClick={() => toggleFAQ(index)}
+                className="flex justify-between items-center w-full text-left py-3 focus:outline-none cursor-pointer"
+              >
+                <h2 className="text-md font-medium text-black">{faq.question}</h2>
+                <svg
+                  className={`w-4 h-4 text-black transition-transform duration-200 ${
+                  activeIndex === index ? 'rotate-180' : ''
+                  }`}
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M19 9l-7 7-7-7"
+                  />
+                </svg>
+              </button>
+              
+              <div
+                className={`overflow-hidden transition-all duration-500 ${
+                  activeIndex === index ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0'
+                }`}
+              >
+                <p className="text-black mt-2 text-sm pr-8">{faq.answer}</p>
+              </div>
             </div>
+          ))}
         </div>
+      </div>
     </div>
   );
 };
