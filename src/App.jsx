@@ -6,6 +6,7 @@ import { Routes, Route } from 'react-router-dom';
 import ScrollToTop from './components/ScrollToTop.jsx';
 import { Provider } from 'react-redux';
 import store from './store/index.js';
+import Registration from './pages/registration.jsx';
 
 const App = () => {
   return (
@@ -14,6 +15,7 @@ const App = () => {
         <ScrollToTop />
           <Routes>
             <Route path='/' element={<Home />} />
+            <Route path='/register' element={<Registration />} />
           </Routes>
         <Footer />
       </Provider>

@@ -69,7 +69,7 @@ const Navbar = () => {
     }, [isSidebarOpen]);
 
     return (
-        <div className="relative bg-black h-screen">
+        <div className="relative bg-black h-1/2">
             <header className={`fixed top-0 left-0 w-full inset-x-0 z-30 py-2 sm:py-3 md:py-4 xl:py-6 transition-all duration-700 ease-in-out ${
                 isScrolled 
                     ? "bg-gray-100 shadow-md drop-shadow-md text-black"  
@@ -218,7 +218,7 @@ const Navbar = () => {
             </div>
 
             {/* Hero Section with Event Details */}
-            <div className="relative flex items-center justify-center h-full pt-16 sm:pt-20 md:pt-24 pb-12">
+            <div className="relative flex items-center justify-center h-full pt-16 sm:pt-20 md:pt-24 pb-8">
                 <div className="absolute inset-0 w-full h-full overflow-hidden">
                     <video
                         className="absolute min-w-full min-h-full object-cover"
@@ -237,55 +237,43 @@ const Navbar = () => {
                     <div className="absolute inset-0 bg-black opacity-50"></div>
                 </div>
 
-                <div className="relative z-10 text-center text-white px-4 w-full max-w-4xl mx-auto">
+                <div className="relative z-10 text-center text-white px-4 w-full max-w-xl mx-auto">
                     <img
                         src="https://igamingafrika.com/wp-content/uploads/2023/04/iGaming-Logo-2b.png"
                         alt="iGaming Afrika Logo"
-                        className="w-full max-w-xs md:max-w-sm mx-auto mb-4 sm:mb-6"
+                        className="w-full max-w-xs mx-auto mb-4 sm:mb-6"
                     />
-                    <p className="text-md sm:text-5xl font-semibold mb-2 sm:mb-3">iGaming AFRIKA Summit</p>
-                    <p className="text-md sm:text-xl font-semibold mb-2 sm:mb-3">NAIROBI, KENYA • 28-31 JULY, 2026</p>
+                    <p className="text-md sm:text-3xl font-semibold mb-2 sm:mb-3">iGaming AFRIKA Summit</p>
+                    <p className="text-md sm:text-ld font-semibold mb-2 sm:mb-3">NAIROBI, KENYA • 28-31 JULY, 2026</p>
                     {/* <h1 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold mb-2">28-31 JULY, 2026</h1> */}
-                    <p className="text-sm sm:text-[16px] mb-6 sm:mb-8"> Sarit Expo Center, Nairobi, Kenya</p>
+                    <p className="text-sm sm:text-[14px] mb-6 sm:mb-8 font-semibold"> Sarit Expo Center, Nairobi, Kenya</p>
                     
                     {/* Countdown Timer */}
-                    <div className="flex justify-center space-x-2 sm:space-x-3 md:space-x-4 mb-6 sm:mb-8">
+                    <div className="flex justify-center space-x-2 sm:space-x-3 md:space-x-4 mb-6 sm:mb-2">
                         <div className="text-center px-2 sm:px-3 py-1 sm:py-2  bg-opacity-30 rounded">
                             <div className="text-lg sm:text-xl md:text-2xl font-bold">{timeLeft.days}</div>
-                            <div className="text-xs sm:text-sm uppercase">Days</div>
+                            <div className="text-xs sm:text-[13px] uppercase">Days</div>
                         </div>
                         <div className="text-center px-2 sm:px-3 py-1 sm:py-2  bg-opacity-30 rounded">
                             <div className="text-lg sm:text-xl md:text-2xl font-bold">{timeLeft.hours}</div>
-                            <div className="text-xs sm:text-sm uppercase">Hours</div>
+                            <div className="text-xs sm:text-[13px]  uppercase">Hours</div>
                         </div>
                         <div className="text-center px-2 sm:px-3 py-1 sm:py-2  bg-opacity-30 rounded">
                             <div className="text-lg sm:text-xl md:text-2xl font-bold">{timeLeft.minutes}</div>
-                            <div className="text-xs sm:text-sm uppercase">Minutes</div>
+                            <div className="text-xs sm:text-[13px]  uppercase">Minutes</div>
                         </div>
                         <div className="text-center px-2 sm:px-3 py-1 sm:py-2  bg-opacity-30 rounded">
                             <div className="text-lg sm:text-xl md:text-2xl font-bold">{timeLeft.seconds}</div>
-                            <div className="text-xs sm:text-sm uppercase">Seconds</div>
+                            <div className="text-xs sm:text-[13px]  uppercase">Seconds</div>
                         </div>
                     </div>
 
                     <div className=" bg-opacity-40 backdrop-blur-sm rounded-lg p-3 sm:p-4 md:p-6 max-w-lg sm:max-w-xl md:max-w-2xl mx-auto">
-                        <p className="text-xs sm:text-sm md:text-md mb-6 sm:mb-8 md:mb-10">
+                        <p className="text-xs sm:text-sm mb-2 sm:mb-4 md:mb-6">
                             With expected attendees from over 70 countries, this event is unmatched in its international reach. 
                             Explore sections dedicated to key industry verticals such as regulation, marketing, payments etc and 
                             participate in targeted sessions to earn industry insights and knowledge. 
                         </p>
-                        
-                        <div className="flex flex-col sm:flex-row justify-center space-y-4 sm:space-y-0 sm:space-x-4">
-                            <button className="bg-transparent hover:bg-green-600 hover:bg-opacity-20 hover:cursor-pointer text-sm text-white font-bold self-center w-3/4 md:w-1/2 py-2 px-4 md:py-3 md:px-8 border border-green-600 rounded-md">
-                               <NavLink to="/register" >
-                                 PRE-REGISTER 2026
-                               </NavLink>
-                            </button>
-                            {/* <button className="bg-transparent hover:bg-green-600 hover:bg-opacity-20 text-white text-sm hover:cursor-pointer font-bold py-2 px-6 border border-green-600 rounded-md">
-                                LIST OF ATTENDEES 2025
-                            </button> */}
-                           
-                        </div>
                     </div>
                 </div>
                 

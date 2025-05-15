@@ -106,7 +106,7 @@ export default function Schedule() {
           whileInView="visible"
           viewport={{ once: true }}
           variants={fadeIn}
-          className="text-2xl sm:text-3xl text-center uppercase font-bold tracking-tight text-gray-700 md:text-4xl mb-4 sm:mb-8"
+          className="text-2xl sm:text-3xl text-center uppercase font-bold tracking-tight text-green-700 md:text-4xl mb-4 sm:mb-8"
         >
           Schedule
         </motion.h2>
