@@ -1,9 +1,9 @@
 import { useState } from 'react'
-import { ChevronDownIcon } from '@heroicons/react/16/solid'
 import Header from '../components/Header'
-import Hero from '../components/Hero'
-import Breadcrumb from '../components/BreadCrumb'
+import Breadcrumb from '../components/Breadcrumb'
 import { useTranslation } from 'react-i18next'
+import PhoneInput from 'react-phone-number-input'
+import 'react-phone-number-input/style.css'
 
 export default function Registration() {
 
@@ -13,11 +13,8 @@ export default function Registration() {
         firstName: '',
         lastName: '',
         email: '',
-        country: 'United States',
-        streetAddress: '',
-        city: '',
-        region: '',
-        postalCode: '',
+        company: '',
+        job: '',
         comments: true,
         candidates: false,
         offers: false,
@@ -39,6 +36,8 @@ export default function Registration() {
         const newErrors = {}
         if(!formData.firstName.trim()) newErrors.firstName = "First name is required"
         if(!formData.lastName.trim()) newErrors.lastName = "Last name is required"
+        if(!formData.company.trim()) newErrors.company = "Company name is required"
+        if(!formData.job.trim()) newErrors.job = "Job title is required"
         if (!formData.email.trim()) {
             newErrors.email = 'Email is required'
           } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email)) {
@@ -69,8 +68,10 @@ export default function Registration() {
     return (
         <div className='w-full bg-gray-100'>
           <Header />
-          <Hero />
-          <div className='py-16 w-full bg-gray-100 max-w-6xl mx-auto'>
+          <div className='py-6 w-full bg-gray-100 max-w-6xl mx-auto'>
+            <h2 className="text-xl pt-2 sm:text-2xl md:text-3xl text-center uppercase font-bold tracking-tight text-green-700 lg:text-4xl mb-2 sm:mb-4 md:mb-6">
+              REGISTER FOR THE EVENT
+            </h2>
             <Breadcrumb />
             <form onSubmit={handleSubmit} className='max-w-6xl mx-auto px-6'>
               {/* Personal Information Section */}
@@ -82,7 +83,7 @@ export default function Registration() {
                   <div className="mt-10 grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-6">
                     {/* First Name */}
                     <div className="sm:col-span-3">
-                      <label htmlFor="first-name" className="block text-sm/6 font-medium text-gray-900">
+                      <label htmlFor="first-name" className="block text-sm/6 font-medium text-gray-900 ml-1">
                         {t('first_name')}
                       </label>
                       <div className="mt-2">
@@ -105,7 +106,7 @@ export default function Registration() {
     
                     {/* Last Name */}
                     <div className="sm:col-span-3">
-                      <label htmlFor="last-name" className="block text-sm/6 font-medium text-gray-900">
+                      <label htmlFor="last-name" className="block text-sm/6 font-medium text-gray-900 ml-1">
                         {t('last_name')}
                       </label>
                       <div className="mt-2">
@@ -127,7 +128,7 @@ export default function Registration() {
     
                     {/* Email */}
                     <div className="sm:col-span-3">
-                      <label htmlFor="email" className="block text-sm/6 font-medium text-gray-900">
+                      <label htmlFor="email" className="block text-sm/6 font-medium text-gray-900 ml-1">
                         {t('email_address')}
                       </label>
                       <div className="mt-2">
@@ -147,105 +148,68 @@ export default function Registration() {
                       </div>
                     </div>
     
-                    {/* Country */}
+                    {/* Company name */}
                     <div className="sm:col-span-3">
-                      <label htmlFor="country" className="block text-sm/6 font-medium text-gray-900">
-                        {t('country')}
-                      </label>
-                      <div className="mt-2 grid grid-cols-1">
-                        <select
-                          id="country"
-                          name="country"
-                          autoComplete="country-name"
-                          value={formData.country}
-                          onChange={handleChange}
-                          className="col-start-1 row-start-1 w-full appearance-none rounded-md bg-white py-1.5 pr-8 pl-3 text-base text-gray-900 
-                            outline-1 -outline-offset-1 outline-gray-300 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6"
-                        >
-                          <option>United States</option>
-                          <option>Canada</option>
-                          <option>Mexico</option>
-                        </select>
-                        <ChevronDownIcon
-                          aria-hidden="true"
-                          className="pointer-events-none col-start-1 row-start-1 mr-2 size-5 self-center justify-self-end text-gray-500 sm:size-4"
-                        />
-                      </div>
-                    </div>
-    
-                    {/* Street Address */}
-                    <div className="col-span-full">
-                      <label htmlFor="street-address" className="block text-sm/6 font-medium text-gray-900">
-                      {t("street_address")}
+                      <label htmlFor="company" className="block text-sm/6 font-medium text-gray-900 ml-1">
+                        Company name
                       </label>
                       <div className="mt-2">
                         <input
-                          id="street-address"
-                          name="streetAddress"
+                          id="company"
+                          name="company"
                           type="text"
-                          autoComplete="street-address"
-                          value={formData.streetAddress}
+                          autoComplete="company"
+                          value={formData.company}
                           onChange={handleChange}
-                          className={`block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline-1 -outline-offset-1 outline-gray-300
-                             placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6 `}
+                          className={`block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline-1 -outline-offset-1
+                            outline-gray-300 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 
+                            sm:text-sm/6 ${errors.company ? 'border-red-500' : ''}`
+                            }
                         />
+                        {errors.company && <p className="mt-1 text-sm text-red-600">{errors.company}</p>}
                       </div>
                     </div>
-    
-                    {/* City */}
-                    <div className="sm:col-span-2 sm:col-start-1">
-                      <label htmlFor="city" className="block text-sm/6 font-medium text-gray-900">
-                        {t('city')}
+
+                    {/* Job title */}
+                    <div className="sm:col-span-3">
+                      <label htmlFor="job" className="block text-sm/6 font-medium text-gray-900 ml-1">
+                        Job title
                       </label>
                       <div className="mt-2">
                         <input
-                          id="city"
-                          name="city"
+                          id="job"
+                          name="job"
                           type="text"
-                          autoComplete="address-level2"
-                          value={formData.city}
+                          autoComplete="job"
+                          value={formData.job}
                           onChange={handleChange}
-                          className={`block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline-1 -outline-offset-1 outline-gray-300
-                             placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6`}
+                          className={`block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline-1 -outline-offset-1
+                            outline-gray-300 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 
+                            sm:text-sm/6 ${errors.job ? 'border-red-500' : ''}`
+                            }
                         />
+                        {errors.job && <p className="mt-1 text-sm text-red-600">{errors.job}</p>}
                       </div>
                     </div>
-    
-                    {/* State/Province */}
-                    <div className="sm:col-span-2">
-                      <label htmlFor="region" className="block text-sm/6 font-medium text-gray-900">
-                        {t("state_province")}
+
+                    {/* Phone number */}
+                    <div className="sm:col-span-3">
+                      <label htmlFor="phone" className="block text-sm/6 font-medium text-gray-900 ml-1">
+                        Phone number
                       </label>
                       <div className="mt-2">
-                        <input
-                          id="region"
-                          name="region"
-                          type="text"
-                          autoComplete="address-level1"
-                          value={formData.region}
-                          onChange={handleChange}
-                          className="block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline-1 -outline-offset-1 outline-gray-300
-                           placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6"
+                        <PhoneInput
+                          international
+                          defaultCountry="KE"
+                          id="phone"
+                          name="phone"
+                          value={formData.phone}
+                          onChange={(value) => handleChange({ target: { name: 'phone', value } })}
+                          className={`block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline-1 -outline-offset-1
+                            outline-gray-300 placeholder:text-gray-400 focus:outline-none focus:ring-0 
+                            sm:text-sm/6 ${errors.phone ? 'border-red-500' : ''}`}
                         />
-                      </div>
-                    </div>
-    
-                    {/* ZIP/Postal Code */}
-                    <div className="sm:col-span-2">
-                      <label htmlFor="postal-code" className="block text-sm/6 font-medium text-gray-900">
-                        {t('zip_postal_code')}
-                      </label>
-                      <div className="mt-2">
-                        <input
-                          id="postal-code"
-                          name="postalCode"
-                          type="text"
-                          autoComplete="postal-code"
-                          value={formData.postalCode}
-                          onChange={handleChange}
-                          className={`block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline-1 -outline-offset-1 outline-gray-300
-                             placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6`}
-                        />
+                        {errors.phone && <p className="mt-1 text-sm text-red-600">{errors.phone}</p>}
                       </div>
                     </div>
                   </div>

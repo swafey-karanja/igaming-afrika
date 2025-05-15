@@ -106,6 +106,11 @@ const Navbar = () => {
                             <AboutDropdown isScrolled={isScrolled} />
                             <PublicationsDropdown isScrolled={isScrolled} />
                             <IGamingDirectory isScrolled={isScrolled} />
+                            <button className={`hover:bg-green-600 hover:bg-opacity-20 hover:cursor-pointer text-xs text-white font-bold py-1.5 px-4 border border-green-600 rounded-md ${isScrolled ? "text-white bg-green-600" : "text-white"}`}>
+                               <NavLink to="/register" className="" >
+                                 PRE-REGISTER 2026
+                               </NavLink>
+                            </button>
                         </nav>
 
                         {/* Right Side Social Links */}
@@ -181,6 +186,11 @@ const Navbar = () => {
                         <AboutDropdown isScrolled={false} isInSidebar={true} />
                         <PublicationsDropdown isScrolled={false} isInSidebar={true} />
                         <IGamingDirectory isScrolled={false} isInSidebar={true} />
+                        <button className={`hover:bg-green-600 hover:bg-opacity-20 self-center hover:cursor-pointer w-1/4 text-xs text-white font-bold py-1.5 px-4 border border-white rounded-md`}>
+                            <NavLink to="/register" className="" >
+                                PRE-REGISTER 2026
+                            </NavLink>
+                        </button>
                     </div>
                     
                     {/* Mobile Social Icons */}
@@ -231,7 +241,7 @@ const Navbar = () => {
                     <img
                         src="https://igamingafrika.com/wp-content/uploads/2023/04/iGaming-Logo-2b.png"
                         alt="iGaming Afrika Logo"
-                        className="w-full max-w-xs md:max-w-md mx-auto mb-4 sm:mb-6"
+                        className="w-full max-w-xs md:max-w-sm mx-auto mb-4 sm:mb-6"
                     />
                     <p className="text-md sm:text-5xl font-semibold mb-2 sm:mb-3">iGaming AFRIKA Summit</p>
                     <p className="text-md sm:text-xl font-semibold mb-2 sm:mb-3">NAIROBI, KENYA • 28-31 JULY, 2026</p>
@@ -266,8 +276,8 @@ const Navbar = () => {
                         </p>
                         
                         <div className="flex flex-col sm:flex-row justify-center space-y-4 sm:space-y-0 sm:space-x-4">
-                            <button className="bg-transparent hover:bg-green-600 hover:bg-opacity-20 hover:cursor-pointer text-sm text-white font-bold py-3 px-8 border border-green-600 rounded-md">
-                               <NavLink to="/registration" >
+                            <button className="bg-transparent hover:bg-green-600 hover:bg-opacity-20 hover:cursor-pointer text-sm text-white font-bold self-center w-3/4 md:w-1/2 py-2 px-4 md:py-3 md:px-8 border border-green-600 rounded-md">
+                               <NavLink to="/register" >
                                  PRE-REGISTER 2026
                                </NavLink>
                             </button>

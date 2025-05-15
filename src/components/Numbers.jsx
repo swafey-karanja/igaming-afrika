@@ -50,13 +50,13 @@ const Numbers = () => {
           variants={fadeIn}
           className="lg:w-3/5"
         >
-          <h1 className="text-xl md:text-2xl font-bold mb-3">{t('what_is_ags_title')}</h1>
+          <h1 className="text-xl md:text-2xl font-bold mb-3 text-green-700">{t('what_is_ags_title')}</h1>
           <p
             className="text-xs md:text-sm leading-relaxed mb-6"
             dangerouslySetInnerHTML={{ __html: t('what_is_ags_description') }}
           />
 
-          <h1 className="text-xl md:text-2xl font-bold mb-3">What Makes IGAMING AFRIKA SUMMIT Special? </h1>
+          <h1 className="text-xl md:text-2xl font-bold mb-3 text-green-700">What Makes IGAMING AFRIKA SUMMIT Special? </h1>
           <p
             className="text-xs md:text-sm leading-relaxed"
           >

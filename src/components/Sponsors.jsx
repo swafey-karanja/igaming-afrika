@@ -118,7 +118,7 @@ const Sponsors = () => {
             viewport={{ once: true }}
             variants={fadeUp}
             transition={{ duration: 0.5 }}
-            className="text-2xl sm:text-3xl lg:text-4xl text-center uppercase font-bold tracking-tight text-gray-700 mb-4 sm:mb-6 md:mb-8"
+            className="text-2xl sm:text-3xl lg:text-4xl text-center uppercase font-bold tracking-tight text-green-700 mb-4 sm:mb-6 md:mb-8"
           >
             {t('powered_by')}
           </motion.h2>
@@ -160,7 +160,7 @@ const Sponsors = () => {
             viewport={{ once: true }}
             variants={fadeUp}
             transition={{ duration: 0.5 }}
-            className="text-2xl sm:text-3xl lg:text-4xl text-center uppercase font-bold tracking-tight text-gray-700 mb-4 sm:mb-6 md:mb-8"
+            className="text-2xl sm:text-3xl lg:text-4xl text-center uppercase font-bold tracking-tight text-green-700 mb-4 sm:mb-6 md:mb-8"
           >
             in collaboration with
           </motion.h2>

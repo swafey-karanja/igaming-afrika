@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 
 const FAQSection = () => {
   const [activeIndex, setActiveIndex] = useState(0);
@@ -29,7 +29,7 @@ const FAQSection = () => {
   return (
     <div className=" bg-gray-100 min-h-auto">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-16">
-        <h2 className="text-3xl font-bold tracking-tight uppercase text-center text-gray-700 sm:text-4xl mb-12">
+        <h2 className="text-3xl font-bold tracking-tight uppercase text-center text-green-700 sm:text-4xl mb-12">
           Frequently Asked Questions
         </h2>
     
