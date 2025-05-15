@@ -300,22 +300,23 @@ const Speakers = () => {
         </motion.div>
 
         {/* Show More button with responsive sizing */}
-        <motion.div
+        {/* <motion.div
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true }}
           variants={fadeIn}
           transition={{ delay: 0.4 }}
           className="flex justify-center mt-8 sm:mt-12"
-        >
-          <NavLink
-            to=""
-            className="inline-flex items-center gap-x-1 text-sm sm:text-base font-semibold leading-6 text-gray-800 hover:text-md border-1 border-gray-800 hover:bg-green-600 hover:border-green-600 hover:text-white rounded-lg px-4 py-2"
-          >
-            Show More
-            <IoMdRefresh className="text-sm sm:text-base" />
-          </NavLink>
-        </motion.div>
+        > */}
+          <div className="flex flex-col items-center justify-center gap-8 sm:flex-row mt-12">
+            <button
+              className="inline-flex items-center gap-x-1 text-sm font-semibold leading-6 text-gray-800 hover:text-md border-1 border-gray-800 hover:bg-green-600 hover:border-green-600 hover:text-white rounded-lg px-4 py-2"
+            >
+              Show More
+              <IoMdRefresh />
+            </button>
+          </div>
+        {/* </motion.div> */}
       </div>
 
       {/* Speaker Modal with improved responsiveness */}

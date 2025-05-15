@@ -1,4 +1,4 @@
-import React, { useState, useRef, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
 // eslint-disable-next-line no-unused-vars
 import { motion, AnimatePresence } from "framer-motion";
@@ -52,7 +52,6 @@ const ImageCarousel = () => {
   const [current, setCurrent] = useState(0);
   const [direction, setDirection] = useState(0); // 1 for forward, -1 for backward
   const [visibleThumbnails, setVisibleThumbnails] = useState(7); // Default number of thumbnails visible
-  const thumbnailsRef = useRef(null);
 
   useEffect(() => {
     // Function to update visible thumbnails based on screen width
@@ -81,6 +80,7 @@ const ImageCarousel = () => {
   }, []);
 
   // Calculate which thumbnails to show (centered around current)
+  // eslint-disable-next-line no-unused-vars
   const getVisibleThumbnails = () => {
     const halfVisible = Math.floor(visibleThumbnails / 2);
     let start = current - halfVisible;
@@ -97,20 +97,6 @@ const ImageCarousel = () => {
 
     return images.slice(start, end);
   };
-
-  useEffect(() => {
-    // Scroll the thumbnails container when current changes
-    if (thumbnailsRef.current) {
-      const selectedThumbnail = thumbnailsRef.current.querySelector(`[data-index="${current}"]`);
-      if (selectedThumbnail) {
-        selectedThumbnail.scrollIntoView({
-          behavior: 'smooth',
-          block: 'nearest',
-          inline: 'center'
-        });
-      }
-    }
-  }, [current]);
 
   const nextSlide = () => {
     setDirection(1);
@@ -221,7 +207,6 @@ const ImageCarousel = () => {
           className="relative mt-2 sm:mt-4"
         >
           <div 
-            ref={thumbnailsRef}
             className="flex items-center gap-1 sm:gap-2 md:gap-3 overflow-x-auto py-2 px-1 scrollbar-hide"
             style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
           >

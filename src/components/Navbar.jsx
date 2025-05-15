@@ -267,7 +267,7 @@ const Navbar = () => {
                         
                         <div className="flex flex-col sm:flex-row justify-center space-y-4 sm:space-y-0 sm:space-x-4">
                             <button className="bg-transparent hover:bg-green-600 hover:bg-opacity-20 hover:cursor-pointer text-sm text-white font-bold py-3 px-8 border border-green-600 rounded-md">
-                               <NavLink to="/registration" >
+                               <NavLink to="/" >
                                  PRE-REGISTER 2026
                                </NavLink>
                             </button>
