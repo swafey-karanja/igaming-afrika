@@ -6,6 +6,7 @@ const CLOUDINARY_API = 'http://localhost:5000/api/images';
 
 export const fetchImages = createAsyncThunk('images/fetchImages', async () => {
   const response = await axios.get(CLOUDINARY_API);
+  console.log(response.data.resources.map(img => img.secure_url), "image urls")
   return response.data.resources.map(img => img.secure_url); // extract URLs
 });
 

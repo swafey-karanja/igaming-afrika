@@ -10,16 +10,18 @@ dotenv.config();
 const app = express();
 const PORT = process.env.PORT || 4000;
 
-// Support for __dirname in ES modules
+// Support __dirname in ES Modules
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
 // Middleware
 app.use(cors());
+app.use(express.json());
 
-// Serve static frontend files
-app.use(express.static(path.join(__dirname, 'build')));
+// Serve static files from React build
+app.use(express.static(path.join(__dirname, '../client/dist')));
 
+// API route
 app.get('/api/images', async (req, res) => {
   try {
     const cloudName = process.env.CLOUDINARY_CLOUD_NAME;
@@ -30,42 +32,42 @@ app.get('/api/images', async (req, res) => {
     let allResources = [];
     let nextCursor = null;
     let moreResults = true;
-
+    
     while (moreResults) {
       let url = `https://api.cloudinary.com/v1_1/${cloudName}/resources/image?type=upload&prefix=${folder}&max_results=500`;
-      
+     
       if (nextCursor) {
         url += `&next_cursor=${nextCursor}`;
       }
-
+      
       const response = await axios.get(url, {
         auth: {
           username: apiKey,
           password: apiSecret
         }
       });
-
+      
       allResources = [...allResources, ...response.data.resources];
       nextCursor = response.data.next_cursor;
       moreResults = !!nextCursor;
     }
-
+    
     res.json({
       resources: allResources,
       count: allResources.length
     });
   } catch (err) {
     console.error('Error fetching Cloudinary images:', err.message);
-    res.status(500).json({ 
+    res.status(500).json({
       error: 'Failed to fetch images from Cloudinary',
-      details: err.response?.data 
+      details: err.response?.data
     });
   }
 });
 
-// Fallback to frontend for all other routes
-app.get('*', (req, res) => {
-  res.sendFile(path.join(__dirname, 'build', 'index.html'));
+// Fallback for React Router
+app.get('/*', (req, res) => {
+  res.sendFile(path.join(__dirname, '../client/build', 'index.html'));
 });
 
 app.listen(PORT, '0.0.0.0', () => {
