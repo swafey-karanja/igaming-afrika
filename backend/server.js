@@ -2,8 +2,6 @@ import express from 'express';
 import axios from 'axios';
 import cors from 'cors';
 import dotenv from 'dotenv';
-import path from 'path';
-import { fileURLToPath } from 'url';
 
 dotenv.config();
 
@@ -13,13 +11,6 @@ const PORT = process.env.PORT || 4000;
 // Middleware
 app.use(cors());
 app.use(express.json());
-
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
-
-
-// Serve static frontend
-app.use(express.static(path.join(__dirname, '../client/dist')));
 
 // API route
 app.get('/api/images', async (req, res) => {
@@ -63,10 +54,6 @@ app.get('/api/images', async (req, res) => {
       details: err.response?.data
     });
   }
-});
-
-app.get('*', (req, res) => {
-  res.sendFile(path.join(__dirname, '../client/dist/index.html'));
 });
 
 app.listen(PORT, '0.0.0.0', () => {
