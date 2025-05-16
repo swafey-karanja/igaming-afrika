@@ -1,0 +1,8 @@
+{
+  "name": "igamingafrica",
+  "private": true,
+  "scripts": {
+    "build": "npm --prefix client install && npm --prefix client run build",
+    "start": "npm --prefix backend start"
+  }
+}
