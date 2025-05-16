@@ -3,23 +3,15 @@ import axios from 'axios';
 import cors from 'cors';
 import dotenv from 'dotenv';
 import path from 'path';
-import { fileURLToPath } from 'url';
 
 dotenv.config();
 
 const app = express();
 const PORT = process.env.PORT || 4000;
 
-// Support __dirname in ES Modules
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
-
 // Middleware
 app.use(cors());
 app.use(express.json());
-
-// Serve static files from React build
-app.use(express.static(path.join(__dirname, '../client/dist')));
 
 // API route
 app.get('/api/images', async (req, res) => {
@@ -63,11 +55,6 @@ app.get('/api/images', async (req, res) => {
       details: err.response?.data
     });
   }
-});
-
-// Fallback for React Router
-app.get('/*', (req, res) => {
-  res.sendFile(path.join(__dirname, '../client/build', 'index.html'));
 });
 
 app.listen(PORT, '0.0.0.0', () => {
