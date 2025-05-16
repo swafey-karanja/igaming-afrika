@@ -2,7 +2,7 @@ import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 
 
 export const fetchImages = createAsyncThunk("images/fetchImages", async () => {
-  const response = await fetch("../../public/images.json");
+  const response = await fetch("./images.json");
    const data = await response.json();
   return data;
 })
