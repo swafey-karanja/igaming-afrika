@@ -1,4 +1,4 @@
-import React, { useState, useCallback, useMemo, useEffect } from 'react';
+import React, { useState, useCallback, useMemo, useEffect, useRef } from 'react';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
 // eslint-disable-next-line no-unused-vars
 import { motion, AnimatePresence } from "framer-motion";
@@ -35,7 +35,8 @@ const ImageCarousel = () => {
   const [visibleThumbnails, setVisibleThumbnails] = useState(7);
   const [touchStart, setTouchStart] = useState(null);
   const [touchEnd, setTouchEnd] = useState(null);
-  const [isImageLoaded, setIsImageLoaded] = useState(false);
+  const [loadedImages, setLoadedImages] = useState({});
+  const preloadedImagesRef = useRef({});
 
   const dispatch = useDispatch();
   const { images, loading, error } = useSelector((state) => state.images);
@@ -54,15 +55,51 @@ const ImageCarousel = () => {
     return () => window.removeEventListener('resize', updateVisibleThumbnails);
   }, []);
 
+  // Preload current image and adjacent images
+  useEffect(() => {
+    if (!images || images.length === 0) return;
+    
+    // Function to preload an image
+    const preloadImage = (index) => {
+      if (index < 0 || index >= images.length || preloadedImagesRef.current[index]) return;
+      
+      const img = new Image();
+      img.src = resizeImage(images[index]);
+      img.onload = () => {
+        setLoadedImages(prev => ({ ...prev, [index]: true }));
+        preloadedImagesRef.current[index] = true;
+      };
+    };
+
+    // Preload current and adjacent images
+    preloadImage(current);
+    preloadImage((current + 1) % images.length);
+    preloadImage((current - 1 + images.length) % images.length);
+  }, [current, images]);
+
+  // Initial preload of first few images
+  useEffect(() => {
+    if (!images || images.length === 0) return;
+    
+    // Preload first 3 images or all if less than 3
+    const imagesToPreload = Math.min(3, images.length);
+    for (let i = 0; i < imagesToPreload; i++) {
+      const img = new Image();
+      img.src = resizeImage(images[i]);
+      img.onload = () => {
+        setLoadedImages(prev => ({ ...prev, [i]: true }));
+        preloadedImagesRef.current[i] = true;
+      };
+    }
+  }, [images]);
+
   const nextSlide = useCallback(() => {
     setDirection(1);
-    setIsImageLoaded(false);
     setCurrent(prev => (prev + 1) % images.length);
   }, [images.length]);
 
   const prevSlide = useCallback(() => {
     setDirection(-1);
-    setIsImageLoaded(false);
     setCurrent(prev => (prev - 1 + images.length) % images.length);
   }, [images.length]);
 
@@ -141,9 +178,8 @@ const ImageCarousel = () => {
                 width="1280"
                 height="720"
                 alt={`Slide ${current}`}
-                className={`object-cover w-full h-full transition-opacity duration-500 ${isImageLoaded ? 'opacity-100' : 'opacity-0'}`}
-                onLoad={() => setIsImageLoaded(true)}
-                loading="lazy"
+                className={`object-cover w-full h-full transition-opacity duration-500 ${loadedImages[current] ? 'opacity-100' : 'opacity-0'}`}
+                loading="eager"
               />
             </motion.div>
           </AnimatePresence>
@@ -179,7 +215,6 @@ const ImageCarousel = () => {
                   key={absoluteIdx}
                   onClick={() => {
                     setDirection(absoluteIdx > current ? 1 : -1);
-                    setIsImageLoaded(false);
                     setCurrent(absoluteIdx);
                   }}
                   className={`border-2 ${absoluteIdx === current ? 'border-white' : 'border-transparent'} rounded-md overflow-hidden h-10 sm:h-12 md:h-14 cursor-pointer flex-shrink-0`}

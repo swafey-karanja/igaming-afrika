@@ -1,13 +1,11 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
-import axios from 'axios';
 
-// Replace with your proxy server or Cloudinary function
-const CLOUDINARY_API = 'http://localhost:5000/api/images';
 
-export const fetchImages = createAsyncThunk('images/fetchImages', async () => {
-  const response = await axios.get(CLOUDINARY_API);
-  return response.data.resources.map(img => img.secure_url); // extract URLs
-});
+export const fetchImages = createAsyncThunk("images/fetchImages", async () => {
+  const response = await fetch("./images.json");
+   const data = await response.json();
+  return data;
+})
 
 const imagesSlice = createSlice({
   name: 'images',
