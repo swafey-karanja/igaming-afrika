@@ -70,13 +70,13 @@ const Navbar = () => {
 
     return (
         <div className="relative bg-black h-1/2">
-            <header className={`fixed top-0 left-0 w-full inset-x-0 z-30 py-2 sm:py-3 md:py-4 xl:py-6 transition-all duration-700 ease-in-out ${
+           <header className={`fixed top-0 left-0 w-full inset-x-0 z-30 py-2 sm:py-3 md:py-4 xl:py-6 lg:py-5 transition-all duration-700 ease-in-out ${
                 isScrolled 
                     ? "bg-gray-100 shadow-md drop-shadow-md text-black"  
                     : "bg-transparent text-white"
             }`}>
                 <div className="px-4 sm:px-6 lg:px-8 mx-auto max-w-7xl">
-                    <div className="flex items-center lg:justify-between relative">
+                    <div className="flex items-center lg:justify-between lg:items-stretch lg:flex-row relative">
                         {/* Hamburger Menu - Only visible on small screens */}
                         <div className="lg:hidden flex items-center">
                             <button
@@ -92,7 +92,7 @@ const Navbar = () => {
                         </div>
 
                         {/* Logo */}
-                        <div className="flex flex-shrink-0 lg:mx-0 ml-4">
+                        <div className="flex flex-shrink-0 lg:mx-0 lg:flex-grow-0 ml-4">
                             <NavLink to="/" title="iGaming Afrika" className="inline-flex rounded-md">
                                 <img className="w-auto h-10 sm:h-12 md:h-16 lg:h-20" src="https://igamingafrika.com/wp-content/uploads/2023/04/iGaming-Logo-2b.png" alt="iGaming Afrika" />
                             </NavLink>
@@ -100,21 +100,21 @@ const Navbar = () => {
 
                         {/* Desktop Nav */}
                         <nav
-                            className="hidden lg:flex lg:items-center lg:justify-center lg:space-x-4 xl:space-x-7 whitespace-nowrap w-full max-w-3xl"
+                            className="hidden lg:flex lg:items-center lg:justify-center xl:space-x-7 lg:space-x-6 whitespace-nowrap w-full max-w-3xl lg:max-w-4xl"
                         >
                             <NewsDropdown isScrolled={isScrolled} isInSidebar={false} />
                             <AboutDropdown isScrolled={isScrolled} />
                             <PublicationsDropdown isScrolled={isScrolled} />
                             <IGamingDirectory isScrolled={isScrolled} />
-                            <button className={`hover:bg-green-600 hover:bg-opacity-20 hover:cursor-pointer text-xs text-white font-bold py-1.5 px-4 border border-green-600 rounded-md ${isScrolled ? "text-white bg-green-600" : "text-white"}`}>
-                               <NavLink to="/register" className="" >
-                                 PRE-REGISTER 2026
-                               </NavLink>
+                            <button className={`hover:bg-green-600 hover:bg-opacity-20 hover:cursor-pointer text-xs text-white font-bold py-1.5 px-4 lg:py-2 lg:px-6 lg:text-sm border border-green-600 rounded-md ${isScrolled ? "text-white bg-green-600" : "text-white"}`}>
+                                <NavLink to="/register" className="" >
+                                    PRE-REGISTER 2026
+                                </NavLink>
                             </button>
                         </nav>
 
                         {/* Right Side Social Links */}
-                        <div className="hidden lg:flex items-center space-x-2 xl:space-x-3 sm:text-lg">
+                        <div className="hidden lg:flex lg:items-center xl:space-x-3 lg:space-x-3 sm:text-lg lg:text-lg">
                             <a href="https://x.com/igamingafrika/" target="_blank" rel="noopener noreferrer" className={`${isScrolled ? "text-black" : "text-white"} hover:text-blue-400`} aria-label="Twitter">
                                 <FaTwitter />
                             </a>
@@ -133,7 +133,7 @@ const Navbar = () => {
                             <a href="https://www.facebook.com/IgamingAfrika/" target="_blank" rel="noopener noreferrer" className={`${isScrolled ? "text-black" : "text-white"} hover:text-blue-500`} aria-label="Facebook">
                                 <FaFacebook />
                             </a>
-                            <button className={`${isScrolled ? "text-black" : "text-white"} ml-5 hover:text-gray-500`} aria-label="Search">
+                            <button className={`${isScrolled ? "text-black" : "text-white"} ml-5 lg:ml-6 hover:text-gray-500`} aria-label="Search">
                                 <FaSearch />
                             </button>
                         </div>
