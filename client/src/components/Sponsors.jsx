@@ -83,6 +83,26 @@ const gamingSponsors = [
     name: "Sportybet",
     logo: "https://cdn.brandfetch.io/idFOnSHs5C/w/400/h/400/theme/dark/icon.png?c=1dxbfHSJFAPEGdCLU4o5B",
     url: "https://www.sportybet.com/"
+  },
+  {
+    name: "Stake",
+    logo: "https://cdn.brandfetch.io/idAcYcWCjc/w/333/h/180/theme/dark/logo.png?c=1dxbfHSJFAPEGdCLU4o5B",
+    url: "https://stake.com/"
+  },
+  {
+    name: "1xbet",
+    logo: "https://cdn.brandfetch.io/ide7C8QgUz/w/400/h/400/theme/dark/icon.jpeg?c=1dxbfHSJFAPEGdCLU4o5B",
+    url: "https://1xbet.com/en"
+  },
+  {
+    name: "Unibet",
+    logo: "https://cdn.brandfetch.io/idcRslJghA/theme/light/logo.svg?c=1dxbfHSJFAPEGdCLU4o5B",
+    url: "https://www.unibet.com/"
+  },
+  {
+    name: "Dafabet",
+    logo: "https://cdn.brandfetch.io/idApKtmgm5/w/596/h/167/theme/dark/logo.png?c=1dxbfHSJFAPEGdCLU4o5B",
+    url: "https://www.dafabet.com/en"
   }
 ];
 
