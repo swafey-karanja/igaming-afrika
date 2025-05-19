@@ -70,13 +70,13 @@ const Navbar = () => {
 
     return (
         <div className="relative bg-black h-screen">
-            <header className={`fixed top-0 left-0 w-full inset-x-0 z-30 py-2 sm:py-3 md:py-4 xl:py-6 transition-all duration-700 ease-in-out ${
+            <header className={`fixed top-0 left-0 w-full inset-x-0 z-30 py-2 sm:py-3 md:py-4 xl:py-6 lg:py-5 transition-all duration-700 ease-in-out ${
                 isScrolled 
                     ? "bg-gray-100 shadow-md drop-shadow-md text-black"  
                     : "bg-transparent text-white"
             }`}>
                 <div className="px-4 sm:px-6 lg:px-8 mx-auto max-w-7xl">
-                    <div className="flex items-center lg:justify-between relative">
+                    <div className="flex items-center lg:justify-between lg:items-stretch lg:flex-row relative">
                         {/* Hamburger Menu - Only visible on small screens */}
                         <div className="lg:hidden flex items-center">
                             <button
@@ -92,7 +92,7 @@ const Navbar = () => {
                         </div>
 
                         {/* Logo */}
-                        <div className="flex flex-shrink-0 lg:mx-0 ml-4">
+                        <div className="flex flex-shrink-0 lg:mx-0 lg:flex-grow-0 ml-4">
                             <NavLink to="/" title="iGaming Afrika" className="inline-flex rounded-md">
                                 <img className="w-auto h-10 sm:h-12 md:h-16 lg:h-20" src="https://igamingafrika.com/wp-content/uploads/2023/04/iGaming-Logo-2b.png" alt="iGaming Afrika" />
                             </NavLink>
@@ -100,21 +100,21 @@ const Navbar = () => {
 
                         {/* Desktop Nav */}
                         <nav
-                            className="hidden lg:flex lg:items-center lg:justify-center lg:space-x-4 xl:space-x-7 whitespace-nowrap w-full max-w-3xl"
+                            className="hidden lg:flex lg:items-center lg:justify-center xl:space-x-7 lg:space-x-6 whitespace-nowrap w-full max-w-3xl lg:max-w-4xl"
                         >
                             <NewsDropdown isScrolled={isScrolled} isInSidebar={false} />
                             <AboutDropdown isScrolled={isScrolled} />
                             <PublicationsDropdown isScrolled={isScrolled} />
                             <IGamingDirectory isScrolled={isScrolled} />
-                            <button className={`hover:bg-green-600 hover:bg-opacity-20 hover:cursor-pointer text-xs text-white font-bold py-1.5 px-4 border border-green-600 rounded-md ${isScrolled ? "text-white bg-green-600" : "text-white"}`}>
-                               <NavLink to="/register" className="" >
-                                 PRE-REGISTER 2026
-                               </NavLink>
+                            <button className={`hover:bg-green-600 hover:bg-opacity-20 hover:cursor-pointer text-xs text-white font-bold py-1.5 px-4 lg:py-2 lg:px-6 lg:text-sm border border-green-600 rounded-md ${isScrolled ? "text-white bg-green-600" : "text-white"}`}>
+                            <NavLink to="/register" className="" >
+                                PRE-REGISTER 2026
+                            </NavLink>
                             </button>
                         </nav>
 
                         {/* Right Side Social Links */}
-                        <div className="hidden lg:flex items-center space-x-2 xl:space-x-3 sm:text-lg">
+                        <div className="hidden lg:flex lg:items-center xl:space-x-3 lg:space-x-3 sm:text-lg lg:text-lg">
                             <a href="https://x.com/igamingafrika/" target="_blank" rel="noopener noreferrer" className={`${isScrolled ? "text-black" : "text-white"} hover:text-blue-400`} aria-label="Twitter">
                                 <FaTwitter />
                             </a>
@@ -133,7 +133,7 @@ const Navbar = () => {
                             <a href="https://www.facebook.com/IgamingAfrika/" target="_blank" rel="noopener noreferrer" className={`${isScrolled ? "text-black" : "text-white"} hover:text-blue-500`} aria-label="Facebook">
                                 <FaFacebook />
                             </a>
-                            <button className={`${isScrolled ? "text-black" : "text-white"} ml-5 hover:text-gray-500`} aria-label="Search">
+                            <button className={`${isScrolled ? "text-black" : "text-white"} ml-5 lg:ml-6 hover:text-gray-500`} aria-label="Search">
                                 <FaSearch />
                             </button>
                         </div>
@@ -218,7 +218,7 @@ const Navbar = () => {
             </div>
 
             {/* Hero Section with Event Details */}
-            <div className="relative flex items-center justify-center h-full pt-16 sm:pt-20 md:pt-24 pb-12">
+            <div className="relative flex items-center justify-center h-full pt-16 sm:pt-20 md:pt-24 lg:pt-28 pb-12">
                 <div className="absolute inset-0 w-full h-full overflow-hidden">
                     <video
                         className="absolute min-w-full min-h-full object-cover"
@@ -237,66 +237,66 @@ const Navbar = () => {
                     <div className="absolute inset-0 bg-black opacity-50"></div>
                 </div>
 
-                <div className="relative z-10 text-center text-white px-4 w-full max-w-4xl mx-auto">
+                <div className="relative z-10 text-center text-white px-4 w-full max-w-3xl mx-auto">
                     <img
                         src="https://igamingafrika.com/wp-content/uploads/2023/04/iGaming-Logo-2b.png"
                         alt="iGaming Afrika Logo"
-                        className="w-full max-w-xs md:max-w-sm mx-auto mb-4 sm:mb-6"
+                        className="w-full max-w-xs md:max-w-sm lg:max-w-sm mx-auto mb-4 sm:mb-6 lg:mb-8"
                     />
-                    <p className="text-md sm:text-5xl font-semibold mb-2 sm:mb-3">iGaming AFRIKA Summit</p>
-                    <p className="text-md sm:text-xl font-semibold mb-2 sm:mb-3">NAIROBI, KENYA • 28-31 JULY, 2026</p>
+                    <p className="text-md sm:text-5xl lg:text-5xl font-semibold mb-2 sm:mb-3 lg:mb-4">iGaming AFRIKA Summit</p>
+                    <p className="text-md sm:text-xl lg:text-xl font-semibold mb-2 sm:mb-3 lg:mb-4">NAIROBI, KENYA • 28-31 JULY, 2026</p>
                     {/* <h1 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold mb-2">28-31 JULY, 2026</h1> */}
-                    <p className="text-sm sm:text-[16px] mb-6 sm:mb-8"> Sarit Expo Center, Nairobi, Kenya</p>
+                    <p className="text-sm sm:text-[16px] lg:text-[16px] mb-6 sm:mb-8 lg:mb-10"> Sarit Expo Center, Nairobi, Kenya</p>
                     
                     {/* Countdown Timer */}
-                    <div className="flex justify-center space-x-2 sm:space-x-3 md:space-x-4 mb-6 sm:mb-8">
-                        <div className="text-center px-2 sm:px-3 py-1 sm:py-2  bg-opacity-30 rounded">
-                            <div className="text-lg sm:text-xl md:text-2xl font-bold">{timeLeft.days}</div>
-                            <div className="text-xs sm:text-sm uppercase">Days</div>
+                    <div className="flex justify-center space-x-2 sm:space-x-3 md:space-x-4 lg:space-x-6 mb-6 sm:mb-8 lg:mb-8">
+                        <div className="text-center px-2 sm:px-3 py-1 sm:py-2 lg:px-4 lg:py-2 bg-opacity-30 rounded lg:rounded-lg">
+                            <div className="text-lg sm:text-xl md:text-2xl lg:text-2xl font-bold">{timeLeft.days}</div>
+                            <div className="text-xs sm:text-sm lg:text-base uppercase">Days</div>
                         </div>
-                        <div className="text-center px-2 sm:px-3 py-1 sm:py-2  bg-opacity-30 rounded">
-                            <div className="text-lg sm:text-xl md:text-2xl font-bold">{timeLeft.hours}</div>
-                            <div className="text-xs sm:text-sm uppercase">Hours</div>
+                        <div className="text-center px-2 sm:px-3 py-1 sm:py-2 lg:px-4 lg:py-2 bg-opacity-30 rounded lg:rounded-lg">
+                            <div className="text-lg sm:text-xl md:text-2xl lg:text-2xl font-bold">{timeLeft.hours}</div>
+                            <div className="text-xs sm:text-sm lg:text-base uppercase">Hours</div>
                         </div>
-                        <div className="text-center px-2 sm:px-3 py-1 sm:py-2  bg-opacity-30 rounded">
-                            <div className="text-lg sm:text-xl md:text-2xl font-bold">{timeLeft.minutes}</div>
-                            <div className="text-xs sm:text-sm uppercase">Minutes</div>
+                        <div className="text-center px-2 sm:px-3 py-1 sm:py-2 lg:px-4 lg:py-2 bg-opacity-30 rounded lg:rounded-lg">
+                            <div className="text-lg sm:text-xl md:text-2xl lg:text-2xl font-bold">{timeLeft.minutes}</div>
+                            <div className="text-xs sm:text-sm lg:text-base uppercase">Minutes</div>
                         </div>
-                        <div className="text-center px-2 sm:px-3 py-1 sm:py-2  bg-opacity-30 rounded">
-                            <div className="text-lg sm:text-xl md:text-2xl font-bold">{timeLeft.seconds}</div>
-                            <div className="text-xs sm:text-sm uppercase">Seconds</div>
+                        <div className="text-center px-2 sm:px-3 py-1 sm:py-2 lg:px-4 lg:py-2 bg-opacity-30 rounded lg:rounded-lg">
+                            <div className="text-lg sm:text-xl md:text-2xl lg:text-2xl font-bold">{timeLeft.seconds}</div>
+                            <div className="text-xs sm:text-sm lg:text-base uppercase">Seconds</div>
                         </div>
                     </div>
 
-                    <div className=" bg-opacity-40 backdrop-blur-sm rounded-lg p-3 sm:p-4 md:p-6 max-w-lg sm:max-w-xl md:max-w-2xl mx-auto">
-                        <p className="text-xs sm:text-sm md:text-md mb-6 sm:mb-8 md:mb-10">
+                    <div className="bg-opacity-40 backdrop-blur-sm rounded-lg p-3 sm:p-4 md:p-6 lg:p-8 max-w-lg sm:max-w-xl md:max-w-2xl lg:max-w-2xl mx-auto">
+                        <p className="text-xs sm:text-sm md:text-md lg:text-md mb-6 sm:mb-8 md:mb-10 lg:mb-10">
                             With expected attendees from over 70 countries, this event is unmatched in its international reach. 
                             Explore sections dedicated to key industry verticals such as regulation, marketing, payments etc and 
                             participate in targeted sessions to earn industry insights and knowledge. 
                         </p>
                         
-                        <div className="flex flex-col sm:flex-row justify-center space-y-4 sm:space-y-0 sm:space-x-4">
-                            <button className="bg-transparent hover:bg-green-600 hover:bg-opacity-20 hover:cursor-pointer text-sm text-white font-bold self-center w-3/4 md:w-1/2 py-2 px-4 md:py-3 md:px-8 border border-green-600 rounded-md">
-                               <NavLink to="/register" >
-                                 PRE-REGISTER 2026
-                               </NavLink>
+                        <div className="flex flex-col sm:flex-row justify-center space-y-4 sm:space-y-0 sm:space-x-4 lg:space-x-4">
+                            <button className="bg-transparent hover:bg-green-600 hover:bg-opacity-20 hover:cursor-pointer text-sm lg:text-base text-white font-bold self-center w-3/4 md:w-1/2 lg:w-1/2 py-2 px-4 md:py-3 md:px-8 lg:py-3 lg:px-8 border border-green-600 rounded-md">
+                            <NavLink to="/register" >
+                                PRE-REGISTER 2026
+                            </NavLink>
                             </button>
                             {/* <button className="bg-transparent hover:bg-green-600 hover:bg-opacity-20 text-white text-sm hover:cursor-pointer font-bold py-2 px-6 border border-green-600 rounded-md">
                                 LIST OF ATTENDEES 2025
                             </button> */}
-                           
+                        
                         </div>
                     </div>
                 </div>
                 
                 {/* Scroll Down Button */}
-                <div className="absolute hidden lg:block bottom-4 sm:bottom-6 md:bottom-8 xl:bottom-12 left-1/2 transform -translate-x-1/2">
+                <div className="absolute hidden lg:block lg:bottom-10 bottom-4 sm:bottom-6 md:bottom-8 xl:bottom-12 left-1/2 transform -translate-x-1/2">
                     <a 
                         href="#numbers" 
-                        className="inline-flex items-center justify-center w-10 h-10 sm:w-12 sm:h-12 rounded-full text-white bg-black bg-opacity-50 hover:bg-green-600 transition duration-300"
+                        className="inline-flex items-center justify-center w-10 h-10 sm:w-12 sm:h-12 lg:w-12 lg:h-12 rounded-full text-white bg-black bg-opacity-50 hover:bg-green-600 transition duration-300"
                         aria-label="Scroll down"
                     >
-                        <svg className="w-4 h-4 sm:w-5 sm:h-5" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <svg className="w-4 h-4 sm:w-5 sm:h-5 lg:w-6 lg:h-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7" />
                         </svg>
                     </a>

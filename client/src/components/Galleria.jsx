@@ -1,5 +1,5 @@
 import React, { useState, useCallback, useMemo, useEffect, useRef } from 'react';
-import { ChevronLeft, ChevronRight } from 'lucide-react';
+import { ChevronLeft, ChevronRight, X } from 'lucide-react';
 // eslint-disable-next-line no-unused-vars
 import { motion, AnimatePresence } from "framer-motion";
 import { useSelector, useDispatch } from 'react-redux';
@@ -25,17 +25,32 @@ const fadeIn = {
   visible: { opacity: 1, transition: { duration: 1.5 } }
 };
 
-const resizeImage = (url, width = 1280, height = 720) => {
+const modalVariants = {
+  hidden: { opacity: 0, scale: 0.8 },
+  visible: { 
+    opacity: 1, 
+    scale: 1,
+    transition: { duration: 0.3 }
+  }
+};
+
+const backdropVariants = {
+  hidden: { opacity: 0 },
+  visible: { opacity: 1 }
+};
+
+const resizeImage = (url, width = 500, height = 400) => {
   return url.replace('/upload/', `/upload/w_${width},h_${height},c_fill/`);
 };
 
 const ImageCarousel = () => {
-  const [current, setCurrent] = useState(0);
+  const [currentIndex, setCurrentIndex] = useState(0);
   const [direction, setDirection] = useState(0);
-  const [visibleThumbnails, setVisibleThumbnails] = useState(7);
   const [touchStart, setTouchStart] = useState(null);
   const [touchEnd, setTouchEnd] = useState(null);
   const [loadedImages, setLoadedImages] = useState({});
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [modalImageIndex, setModalImageIndex] = useState(0);
   const preloadedImagesRef = useRef({});
 
   const dispatch = useDispatch();
@@ -45,17 +60,13 @@ const ImageCarousel = () => {
     dispatch(fetchImages());
   }, [dispatch]);
 
-  useEffect(() => {
-    const updateVisibleThumbnails = () => {
-      const width = window.innerWidth;
-      setVisibleThumbnails(width < 640 ? 3 : width < 768 ? 5 : width < 1024 ? 7 : 9);
-    };
-    updateVisibleThumbnails();
-    window.addEventListener('resize', updateVisibleThumbnails);
-    return () => window.removeEventListener('resize', updateVisibleThumbnails);
+  // Calculate how many images to show based on screen size
+  const imagesPerView = useMemo(() => {
+    const width = typeof window !== 'undefined' ? window.innerWidth : 0;
+    return width < 640 ? 1 : 3; // Show 1 on mobile, 3 on larger screens
   }, []);
 
-  // Preload current image and adjacent images
+  // Preload current set of visible images and adjacent images
   useEffect(() => {
     if (!images || images.length === 0) return;
     
@@ -71,18 +82,19 @@ const ImageCarousel = () => {
       };
     };
 
-    // Preload current and adjacent images
-    preloadImage(current);
-    preloadImage((current + 1) % images.length);
-    preloadImage((current - 1 + images.length) % images.length);
-  }, [current, images]);
+    // Preload current and next set of images
+    for (let i = 0; i < imagesPerView * 2; i++) {
+      const indexToLoad = (currentIndex + i) % images.length;
+      preloadImage(indexToLoad);
+    }
+  }, [currentIndex, images, imagesPerView]);
 
   // Initial preload of first few images
   useEffect(() => {
     if (!images || images.length === 0) return;
     
-    // Preload first 3 images or all if less than 3
-    const imagesToPreload = Math.min(3, images.length);
+    // Preload first set of images
+    const imagesToPreload = Math.min(imagesPerView * 2, images.length);
     for (let i = 0; i < imagesToPreload; i++) {
       const img = new Image();
       img.src = resizeImage(images[i]);
@@ -91,31 +103,53 @@ const ImageCarousel = () => {
         preloadedImagesRef.current[i] = true;
       };
     }
-  }, [images]);
+  }, [images, imagesPerView]);
 
   const nextSlide = useCallback(() => {
+    if (!images || images.length === 0) return;
     setDirection(1);
-    setCurrent(prev => (prev + 1) % images.length);
-  }, [images.length]);
+    setCurrentIndex(prev => (prev + 1) % images.length);
+  }, [images]);
 
   const prevSlide = useCallback(() => {
+    if (!images || images.length === 0) return;
     setDirection(-1);
-    setCurrent(prev => (prev - 1 + images.length) % images.length);
-  }, [images.length]);
+    setCurrentIndex(prev => {
+      const newIndex = prev - 1;
+      return newIndex < 0 ? Math.max(0, images.length - (Math.abs(newIndex) % images.length)) : newIndex;
+    });
+  }, [images]);
 
-  const visibleThumbnailRange = useMemo(() => {
-    const halfVisible = Math.floor(visibleThumbnails / 2);
-    let start = current - halfVisible;
-    let end = current + halfVisible + (visibleThumbnails % 2 === 0 ? 0 : 1);
-    if (start < 0) {
-      end = Math.min(visibleThumbnails, images.length);
-      start = 0;
-    } else if (end > images.length) {
-      start = Math.max(0, images.length - visibleThumbnails);
-      end = images.length;
+  const openModal = (index) => {
+    setModalImageIndex(index);
+    setIsModalOpen(true);
+    document.body.style.overflow = 'hidden'; // Prevent scrolling when modal is open
+  };
+
+  const closeModal = () => {
+    setIsModalOpen(false);
+    document.body.style.overflow = 'auto'; // Re-enable scrolling
+  };
+
+  const handleModalNavigation = (direction) => {
+    if (direction === 'next') {
+      setModalImageIndex((prev) => (prev + 1) % images.length);
+    } else {
+      setModalImageIndex((prev) => (prev - 1 + images.length) % images.length);
     }
-    return { start, end };
-  }, [current, visibleThumbnails, images.length]);
+  };
+
+  // Get the current set of images to display
+  const currentImages = useMemo(() => {
+    if (!images || images.length === 0) return [];
+    
+    const result = [];
+    for (let i = 0; i < imagesPerView; i++) {
+      const index = (currentIndex + i) % images.length;
+      result.push({ image: images[index], index });
+    }
+    return result;
+  }, [currentIndex, images, imagesPerView]);
 
   const handleTouchStart = useCallback((e) => setTouchStart(e.targetTouches[0].clientX), []);
   const handleTouchMove = useCallback((e) => setTouchEnd(e.targetTouches[0].clientX), []);
@@ -133,8 +167,8 @@ const ImageCarousel = () => {
   if (!images || images.length === 0) return null;
 
   return (
-    <div className="bg-gray-100 max-h-screen flex items-center justify-center pb-12 px-4 sm:px-6 md:px-8">
-      <div className="w-full max-w-5xl">
+    <div className="bg-gray-100 max-h-screen flex items-center justify-center py-8 md:py-12 lg:py-16 px-4 sm:px-6 md:px-8">
+      <div className="w-full max-w-6xl">
         <motion.h2
           initial="hidden"
           whileInView="visible"
@@ -146,7 +180,7 @@ const ImageCarousel = () => {
         </motion.h2>
 
         <p className="mt-2 mb-2 text-xl text-gray-900 font-semibold">Africa Pulse workshop - Malta</p>
-        <p className="mb-4 text-sm tracking-tight text-gray-900">
+        <p className="mb-6 text-sm tracking-tight text-gray-900">
           The Africa Pulse is a regional economic update published by the World Bank.
           It provides insights into economic trends, growth projections, and challenges
           in Sub-Saharan Africa. The last event took place in November, 2024 at Grand
@@ -154,14 +188,14 @@ const ImageCarousel = () => {
         </p>
 
         <div
-          className="relative aspect-video overflow-hidden rounded-lg shadow-md group"
+          className="relative h-64 md:h-100 overflow-hidden rounded-lg shadow-md group"
           onTouchStart={handleTouchStart}
           onTouchMove={handleTouchMove}
           onTouchEnd={handleTouchEnd}
         >
           <AnimatePresence custom={direction} initial={false}>
             <motion.div
-              key={current}
+              key={currentIndex}
               custom={direction}
               variants={slideVariants}
               initial="enter"
@@ -171,16 +205,22 @@ const ImageCarousel = () => {
                 x: { type: "spring", stiffness: 300, damping: 30 },
                 opacity: { duration: 0.5 }
               }}
-              className="absolute inset-0"
+              className="absolute inset-0 flex gap-2 md:gap-4"
             >
-              <img
-                src={resizeImage(images[current])}
-                width="1280"
-                height="720"
-                alt={`Slide ${current}`}
-                className={`object-cover w-full h-full transition-opacity duration-500 ${loadedImages[current] ? 'opacity-100' : 'opacity-0'}`}
-                loading="eager"
-              />
+              {currentImages.map(({ image, index }) => (
+                <div 
+                  key={index} 
+                  className="flex-1 cursor-pointer"
+                  onClick={() => openModal(index)}
+                >
+                  <img
+                    src={resizeImage(image)}
+                    alt={`Image ${index + 1}`}
+                    className={`object-cover w-full h-full rounded-md transition-opacity duration-500 ${loadedImages[index] ? 'opacity-100' : 'opacity-0'}`}
+                    loading="eager"
+                  />
+                </div>
+              ))}
             </motion.div>
           </AnimatePresence>
 
@@ -199,49 +239,68 @@ const ImageCarousel = () => {
             <ChevronRight size={20} className="sm:w-6 sm:h-6 md:w-8 md:h-8" />
           </button>
         </div>
-
-        <motion.div
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, amount: 0.5 }}
-          variants={fadeIn}
-          className="relative mt-2 sm:mt-4"
-        >
-          <div className="flex items-center gap-1 sm:gap-2 md:gap-3 overflow-x-auto py-2 px-1 scrollbar-hide">
-            {images.slice(visibleThumbnailRange.start, visibleThumbnailRange.end).map((img, idx) => {
-              const absoluteIdx = visibleThumbnailRange.start + idx;
-              return (
-                <button
-                  key={absoluteIdx}
-                  onClick={() => {
-                    setDirection(absoluteIdx > current ? 1 : -1);
-                    setCurrent(absoluteIdx);
-                  }}
-                  className={`border-2 ${absoluteIdx === current ? 'border-white' : 'border-transparent'} rounded-md overflow-hidden h-10 sm:h-12 md:h-14 cursor-pointer flex-shrink-0`}
-                  style={{ width: `${absoluteIdx === current ? '5rem' : '4rem'}` }}
-                >
-                  <img
-                    src={resizeImage(img, 200, 120)}
-                    alt={`Thumbnail ${absoluteIdx}`}
-                    className="object-cover w-full h-full"
-                    width="200"
-                    height="120"
-                    loading="lazy"
-                  />
-                </button>
-              );
-            })}
-          </div>
-          <div className="absolute right-0 top-0 bottom-0 w-12 bg-gradient-to-l from-gray-100 to-transparent pointer-events-none" />
-          <div className="absolute left-0 top-0 bottom-0 w-12 bg-gradient-to-r from-gray-100 to-transparent pointer-events-none" />
-        </motion.div>
-
-        <div className="flex justify-center mt-2">
-          <span className="text-xs sm:text-sm text-gray-500">
-            {current + 1} / {images.length}
-          </span>
-        </div>
       </div>
+
+      {/* Image Modal */}
+      <AnimatePresence>
+        {isModalOpen && (
+          <motion.div
+            className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black bg-opacity-30"
+            initial="hidden"
+            animate="visible"
+            exit="hidden"
+            variants={backdropVariants}
+            onClick={closeModal}
+          >
+            <motion.div
+              className="relative max-w-5xl w-full max-h-screen"
+              variants={modalVariants}
+              onClick={(e) => e.stopPropagation()}
+            >
+              <button
+                onClick={closeModal}
+                className="absolute -top-10 right-0 text-white hover:text-gray-300 z-10 cursor-pointer"
+                aria-label="Close modal"
+              >
+                <X size={28} />
+              </button>
+
+              <div className="relative h-full">
+                <img
+                  src={resizeImage(images[modalImageIndex], 1200, 800)}
+                  alt={`Modal view ${modalImageIndex + 1}`}
+                  className="w-full h-full object-contain max-h-[80vh]"
+                />
+
+                <button
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    handleModalNavigation('prev');
+                  }}
+                  className="cursor-pointer absolute left-4 top-1/2 transform -translate-y-1/2 bg-transparent hover:bg-green-600 bg-opacity-50 text-white p-2 rounded-full hover:bg-opacity-75"
+                  aria-label="Previous image"
+                >
+                  <ChevronLeft size={25} />
+                </button>
+                <button
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    handleModalNavigation('next');
+                  }}
+                  className="cursor-pointer absolute right-4 top-1/2 transform -translate-y-1/2 bg-transparent hover:bg-green-600 bg-opacity-50 text-white p-2 rounded-full hover:bg-opacity-75"
+                  aria-label="Next image"
+                >
+                  <ChevronRight size={25} />
+                </button>
+              </div>
+
+              <div className="text-center mt-4 text-white">
+                Image {modalImageIndex + 1} of {images.length}
+              </div>
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </div>
   );
 };

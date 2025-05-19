@@ -205,7 +205,7 @@ const Speakers = () => {
   };
 
   return (
-    <div className="bg-gray-100 px-4 sm:px-6 lg:px-8 py-8 md:py-12">
+    <div className="bg-gray-100 px-4 sm:px-6 lg:px-8 py-8 md:py-12 lg:py-16">
       <div className="max-w-7xl mx-auto">
         {/* Section Header with animation */}
         <motion.h2 

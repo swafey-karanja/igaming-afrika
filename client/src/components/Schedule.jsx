@@ -98,8 +98,8 @@ export default function Schedule() {
   const maxSessions = Math.max(...Object.values(schedules).map(day => day.length));
 
   return (
-    <div className="bg-gray-100 px-2 sm:px-4 md:px-6 lg:px-8">
-      <div className="max-w-7xl mx-auto px-2 sm:px-4 py-2">
+    <div className="bg-gray-100 px-2 sm:px-4 md:px-6 lg:px-8 py-8 md:py-12 lg:py-16">
+      <div className="max-w-7xl mx-auto px-2 sm:px-4">
         {/* Section Header with animation */}
         <motion.h2 
           initial="hidden"

@@ -83,6 +83,26 @@ const gamingSponsors = [
     name: "Sportybet",
     logo: "https://cdn.brandfetch.io/idFOnSHs5C/w/400/h/400/theme/dark/icon.png?c=1dxbfHSJFAPEGdCLU4o5B",
     url: "https://www.sportybet.com/"
+  },
+  {
+    name: "Stake",
+    logo: "https://cdn.brandfetch.io/idAcYcWCjc/w/333/h/180/theme/dark/logo.png?c=1dxbfHSJFAPEGdCLU4o5B",
+    url: "https://stake.com/"
+  },
+  {
+    name: "1xbet",
+    logo: "https://cdn.brandfetch.io/ide7C8QgUz/w/400/h/400/theme/dark/icon.jpeg?c=1dxbfHSJFAPEGdCLU4o5B",
+    url: "https://1xbet.com/en"
+  },
+  {
+    name: "Unibet",
+    logo: "https://cdn.brandfetch.io/idcRslJghA/theme/light/logo.svg?c=1dxbfHSJFAPEGdCLU4o5B",
+    url: "https://www.unibet.com/"
+  },
+  {
+    name: "Dafabet",
+    logo: "https://cdn.brandfetch.io/idApKtmgm5/w/596/h/167/theme/dark/logo.png?c=1dxbfHSJFAPEGdCLU4o5B",
+    url: "https://www.dafabet.com/en"
   }
 ];
 
@@ -165,7 +185,7 @@ const Sponsors = () => {
             in collaboration with
           </motion.h2>
           
-          <div className="grid grid-cols-2 xs:grid-cols-3 sm:grid-cols-3 md:grid-cols-4 gap-4 sm:gap-6 md:gap-8">
+          <div className="grid grid-cols-2 xs:grid-cols-3 sm:grid-cols-3 md:grid-cols-5 gap-4 sm:gap-6 md:gap-8">
             {gamingSponsors.map((sponsor, index) => (
               <motion.div
                 key={sponsor.name}
@@ -188,7 +208,7 @@ const Sponsors = () => {
                   <img
                     src={sponsor.logo}
                     alt={sponsor.name}
-                    className="h-12 sm:h-16 md:h-20 lg:h-24 w-auto max-w-[120px] sm:max-w-[140px] md:max-w-[160px] lg:max-w-[180px] object-contain"
+                    className="h-12 sm:h-16 md:h-20 w-auto max-w-[120px] sm:max-w-[140px] md:max-w-[160px] lg:max-w-[180px] object-contain"
                     loading="lazy"
                   />
                 </a>
