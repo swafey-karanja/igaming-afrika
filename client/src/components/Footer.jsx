@@ -29,7 +29,7 @@ const Footer = () => {
   };
 
   return (
-    <footer className="bg-gray-100 text-gray-700 py-4">
+    <footer className="bg-green-100 text-gray-700 py-4">
       {/* Newsletter Section */}
       <motion.div 
         initial="hidden"

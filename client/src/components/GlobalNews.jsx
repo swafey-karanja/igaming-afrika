@@ -97,7 +97,7 @@ const GlobalNews = () => {
   }
 
   return (
-    <div className="py-4 bg-gray-100 sm:py-8 min-h-screen">
+    <div className="bg-gray-100 py-8 md:py-12 lg:py-16 min-h-screen">
       <div className="max-w-7xl mx-auto px-3 sm:px-4 md:px-6 lg:px-8">
         <h2 className="text-xl sm:text-2xl md:text-3xl text-center uppercase font-bold tracking-tight text-green-700 lg:text-4xl mb-4 sm:mb-6 md:mb-8">
           News & Blogs

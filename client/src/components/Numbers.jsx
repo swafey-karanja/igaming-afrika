@@ -39,47 +39,49 @@ const Numbers = () => {
       id="numbers"
     >
       {/* Top Section: What is AGS */}
-      <motion.div 
-        initial="hidden"
-        whileInView="visible"
-        viewport={{ once: true }}
-        transition={{ staggerChildren: 0.1 }}
-        className="w-full bg-gray-100/90 text-black px-4 py-6 md:px-8 md:py-8 lg:px-12 lg:py-16 flex flex-col lg:flex-row gap-4 lg:gap-6"
-      >
-        <motion.div 
-          variants={fadeIn}
-          className="lg:w-3/5"
-        >
-          <h1 className="text-xl md:text-2xl font-bold mb-3 text-green-700">{t('what_is_ags_title')}</h1>
-          <p
-            className="text-xs md:text-sm leading-relaxed mb-6"
-            dangerouslySetInnerHTML={{ __html: t('what_is_ags_description') }}
-          />
+      <div className="w-full flex justify-center bg-gray-100/90">
+  <motion.div 
+    initial="hidden"
+    whileInView="visible"
+    viewport={{ once: true }}
+    transition={{ staggerChildren: 0.1 }}
+    className="w-full max-w-7xl text-black py-6 md:py-8 lg:py-16 flex flex-col lg:flex-row gap-4 lg:gap-6"
+  >
+    <motion.div 
+      variants={fadeIn}
+      className="lg:w-1/2 items-center"
+    >
+      <h1 className="text-xl md:text-2xl font-bold mb-3 text-green-700">{t('what_is_ags_title')}</h1>
+      <p
+        className="text-xs md:text-sm leading-relaxed mb-6"
+        dangerouslySetInnerHTML={{ __html: t('what_is_ags_description') }}
+      />
 
-          <h1 className="text-xl md:text-2xl font-bold mb-3 text-green-700">What Makes IGAMING AFRIKA SUMMIT Special? </h1>
-          <p
-            className="text-xs md:text-sm leading-relaxed"
-          >
-            <strong>Global Gathering:</strong> With expected attendees from over 70 countries, this event is unmatched in its international reach. <br /> <br />
-            <strong>Safari Tour:</strong> The event will kick off with a memorable Safari Tour of the iconic Masai Mara, a session that will allow the attendees to have an experience with Kenya’s wildlife such as Lions, Antelopes, Elephants among others. <br /> <br />
-            <strong>World-Class Content & Diverse Opportunities:</strong> Explore sections dedicated to key industry verticals such as regulation, marketing, payments etc and participate in targeted sessions to earn industry insights and knowledge. <br /> <br />
-            <strong>Memorable Entertainment:</strong> The event culminates with an iconic closing celebration at the Kenyatta International Convention Center (KICC) with a lineup of renowned artists.
-          </p>
-        </motion.div>
-        
-        <motion.div 
-          variants={fadeIn}
-          transition={{ delay: 0.1 }}
-          className="lg:w-2/5 aspect-video"
-        >
-          <img 
-            src="https://img.freepik.com/free-photo/handsome-young-black-man-playing-poker-holding-smartphone-dollars-skeptic-nervous-frowning-upset-because-problem-negative-person_839833-20417.jpg?uid=R149908537&ga=GA1.1.2111726361.1747214498&semt=ais_hybrid&w=740" 
-            alt="AGS Event" 
-            className="w-full h-full rounded-lg shadow-lg object-cover"
-            loading="lazy"
-          />
-        </motion.div>
-      </motion.div>
+      <h1 className="text-xl md:text-2xl font-bold mb-3 text-green-700">What Makes IGAMING AFRIKA SUMMIT Special? </h1>
+      <p
+        className="text-xs md:text-sm leading-relaxed"
+      >
+        <strong>Global Gathering:</strong> With expected attendees from over 70 countries, this event is unmatched in its international reach. <br /> <br />
+        <strong>Safari Tour:</strong> The event will kick off with a memorable Safari Tour of the iconic Masai Mara, a session that will allow the attendees to have an experience with Kenya's wildlife such as Lions, Antelopes, Elephants among others. <br /> <br />
+        <strong>World-Class Content & Diverse Opportunities:</strong> Explore sections dedicated to key industry verticals such as regulation, marketing, payments etc and participate in targeted sessions to earn industry insights and knowledge. <br /> <br />
+        <strong>Memorable Entertainment:</strong> The event culminates with an iconic closing celebration at the Kenyatta International Convention Center (KICC) with a lineup of renowned artists.
+      </p>
+    </motion.div>
+    
+    <motion.div 
+      variants={fadeIn}
+      transition={{ delay: 0.1 }}
+      className="lg:w-2/4"
+    >
+      <img 
+        src="https://img.freepik.com/free-photo/handsome-young-black-man-playing-poker-holding-smartphone-dollars-skeptic-nervous-frowning-upset-because-problem-negative-person_839833-20417.jpg?uid=R149908537&ga=GA1.1.2111726361.1747214498&semt=ais_hybrid&w=740" 
+        alt="AGS Event" 
+        className="w-full h-full rounded-lg shadow-lg object-cover"
+        loading="lazy"
+      />
+    </motion.div>
+  </motion.div>
+</div>
 
       {/* Bottom Section: Stats */}
       <motion.div 

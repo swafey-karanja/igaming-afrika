@@ -165,7 +165,7 @@ const Sponsors = () => {
             in collaboration with
           </motion.h2>
           
-          <div className="grid grid-cols-2 xs:grid-cols-3 sm:grid-cols-3 md:grid-cols-4 gap-4 sm:gap-6 md:gap-8">
+          <div className="grid grid-cols-2 xs:grid-cols-3 sm:grid-cols-3 md:grid-cols-5 gap-4 sm:gap-6 md:gap-8">
             {gamingSponsors.map((sponsor, index) => (
               <motion.div
                 key={sponsor.name}
@@ -188,7 +188,7 @@ const Sponsors = () => {
                   <img
                     src={sponsor.logo}
                     alt={sponsor.name}
-                    className="h-12 sm:h-16 md:h-20 lg:h-24 w-auto max-w-[120px] sm:max-w-[140px] md:max-w-[160px] lg:max-w-[180px] object-contain"
+                    className="h-12 sm:h-16 md:h-20 w-auto max-w-[120px] sm:max-w-[140px] md:max-w-[160px] lg:max-w-[180px] object-contain"
                     loading="lazy"
                   />
                 </a>
