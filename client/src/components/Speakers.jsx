@@ -213,10 +213,11 @@ const Speakers = () => {
           whileInView="visible"
           viewport={{ once: true }}
           variants={fadeIn}
-          className="text-2xl sm:text-3xl lg:text-4xl text-center uppercase font-bold tracking-tight text-green-700 mb-6 sm:mb-10"
+          className="text-2xl sm:text-3xl lg:text-4xl text-center uppercase font-bold tracking-tight text-green-700 mb-2 sm:mb-6"
         >
           Featured speakers
         </motion.h2>
+        <motion.div className="w-20 h-1 bg-green-700 mx-auto mb-6"></motion.div>
 
         {/* Filter tabs - Improved responsiveness */}
         <motion.div

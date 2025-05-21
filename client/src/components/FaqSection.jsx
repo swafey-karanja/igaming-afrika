@@ -29,9 +29,10 @@ const FAQSection = () => {
   return (
     <div className=" bg-gray-100 min-h-auto py-8 md:py-12 lg:py-16 px-4 sm:px-6 md:px-8">
       <div className="max-w-7xl mx-auto">
-        <h2 className="text-3xl font-bold tracking-tight uppercase text-center text-green-700 sm:text-4xl mb-12">
+        <h2 className="text-3xl font-bold tracking-tight uppercase text-center text-green-700 sm:text-4xl mb-6">
           Frequently Asked Questions
         </h2>
+        <div className="w-20 h-1 bg-green-700 mx-auto mb-6"></div>
     
         <div className="space-y-4">
           {faqs.map((faq, index) => (
