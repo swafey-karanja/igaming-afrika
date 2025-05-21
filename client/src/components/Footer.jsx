@@ -95,7 +95,7 @@ const Footer = () => {
               <a href="#" title="iGaming Afrika" className="flex">
                 <img
                   className="w-auto h-12 sm:h-14 md:h-16 lg:h-20"
-                  src="https://igamingafrika.com/wp-content/uploads/2023/04/iGaming-Logo-2b.png"
+                  src="Summit2_trimmed.png"
                   alt="iGaming Afrika Logo"
                 />
               </a>
