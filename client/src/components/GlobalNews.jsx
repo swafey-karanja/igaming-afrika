@@ -99,9 +99,10 @@ const GlobalNews = () => {
   return (
     <div className="bg-gray-100 py-8 md:py-12 lg:py-16 min-h-screen">
       <div className="max-w-7xl mx-auto px-3 sm:px-4 md:px-6 lg:px-8">
-        <h2 className="text-xl sm:text-2xl md:text-3xl text-center uppercase font-bold tracking-tight text-green-700 lg:text-4xl mb-4 sm:mb-6 md:mb-8">
+        <motion.h2 className="text-xl sm:text-2xl md:text-3xl text-center uppercase font-bold tracking-tight text-green-700 lg:text-4xl mb-2 sm:mb-4 md:mb-6">
           News & Blogs
-        </h2>
+        </motion.h2>
+        <motion.div className="w-20 h-1 bg-green-700 mx-auto mb-6"></motion.div>
         
         {/* news Grid with responsive column counts */}
         <div className="grid gap-4 sm:gap-6 md:gap-8 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">

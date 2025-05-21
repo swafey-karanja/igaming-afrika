@@ -174,10 +174,11 @@ const ImageCarousel = () => {
           whileInView="visible"
           viewport={{ once: true, amount: 0.5 }}
           variants={fadeIn}
-          className="text-2xl sm:text-3xl text-center uppercase font-bold tracking-tight text-green-700 md:text-4xl mb-4 sm:mb-8"
+          className="text-2xl sm:text-3xl text-center uppercase font-bold tracking-tight text-green-700 md:text-4xl mb-2 sm:mb-6"
         >
           PAST EVENTS
         </motion.h2>
+        <motion.div className="w-20 h-1 bg-green-700 mx-auto mb-6"></motion.div>
 
         <p className="mt-2 mb-2 text-xl text-gray-900 font-semibold">Africa Pulse workshop - Malta</p>
         <p className="mb-6 text-sm tracking-tight text-gray-900">

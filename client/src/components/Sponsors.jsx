@@ -138,10 +138,11 @@ const Sponsors = () => {
             viewport={{ once: true }}
             variants={fadeUp}
             transition={{ duration: 0.5 }}
-            className="text-2xl sm:text-3xl lg:text-4xl text-center uppercase font-bold tracking-tight text-green-700 mb-4 sm:mb-6 md:mb-8"
+            className="text-2xl sm:text-3xl lg:text-4xl text-center uppercase font-bold tracking-tight text-green-700 mb-2 sm:mb-4 md:mb-6"
           >
             {t('powered_by')}
           </motion.h2>
+          <motion.div className="w-20 h-1 bg-green-700 mx-auto mb-6"></motion.div>
           
           <div className="flex flex-wrap items-center justify-center gap-4 sm:gap-6 md:gap-8 lg:gap-12">
             {powerSponsors.map((sponsor, index) => (
@@ -180,10 +181,11 @@ const Sponsors = () => {
             viewport={{ once: true }}
             variants={fadeUp}
             transition={{ duration: 0.5 }}
-            className="text-2xl sm:text-3xl lg:text-4xl text-center uppercase font-bold tracking-tight text-green-700 mb-4 sm:mb-6 md:mb-8"
+            className="text-2xl sm:text-3xl lg:text-4xl text-center uppercase font-bold tracking-tight text-green-700 mb-2 sm:mb-4 md:mb-6"
           >
             in collaboration with
           </motion.h2>
+          <motion.div className="w-20 h-1 bg-green-700 mx-auto mb-6"></motion.div>
           
           <div className="grid grid-cols-2 xs:grid-cols-3 sm:grid-cols-3 md:grid-cols-5 gap-4 sm:gap-6 md:gap-8">
             {gamingSponsors.map((sponsor, index) => (
