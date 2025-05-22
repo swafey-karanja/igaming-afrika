@@ -486,10 +486,14 @@ const Speakers = () => {
         transition={{ duration: 0.3 }}
       >
         {/* Background overlay */}
-        <motion.div 
-          className="absolute inset-0 bg-black"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: isModalOpen ? 0.5 : 0 }}
+       <motion.div 
+          className="absolute inset-0 bg-black/10"
+          initial={{ opacity: 0, backdropFilter: 'blur(0px)' }}
+          animate={{ 
+            opacity: isModalOpen ? 1 : 0,
+            backdropFilter: isModalOpen ? 'blur(3px)' : 'blur(0px)'
+          }}
+          transition={{ duration: 0.3 }}
           onClick={closeModal}
         />
         
