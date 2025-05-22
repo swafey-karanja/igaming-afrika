@@ -1,5 +1,5 @@
 import { useState, useCallback, useEffect } from 'react';
-import { FaTwitter, FaLinkedin, FaInstagram, FaFacebook } from "react-icons/fa";
+import { FaTwitter, FaLinkedin, FaInstagram, FaFacebook, FaGlobe } from "react-icons/fa";
 import { IoMdRefresh } from "react-icons/io";
 // eslint-disable-next-line no-unused-vars
 import { motion } from "framer-motion";
@@ -613,6 +613,18 @@ const Speakers = () => {
                       rel="noopener noreferrer"
                     >
                       <FaInstagram />
+                    </motion.a>
+                  )}
+
+                  {selectedSpeaker?.social.website && (
+                    <motion.a
+                      href={selectedSpeaker.social.website}
+                      className="text-black text-lg sm:text-xl hover:text-red-600 transition-colors"
+                      whileHover={{ y: -2 }}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      <FaGlobe />
                     </motion.a>
                   )}
                 </div>
