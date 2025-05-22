@@ -1,7 +1,6 @@
-import React, { useState } from 'react';
+import { useState, useCallback, useEffect } from 'react';
 import { FaTwitter, FaLinkedin, FaInstagram, FaFacebook } from "react-icons/fa";
 import { IoMdRefresh } from "react-icons/io";
-import { NavLink } from 'react-router-dom';
 // eslint-disable-next-line no-unused-vars
 import { motion } from "framer-motion";
 
@@ -9,134 +8,268 @@ const Speakers = () => {
   const [selectedSpeaker, setSelectedSpeaker] = useState(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [activeFilter, setActiveFilter] = useState('All');
+  const [visibleCount, setVisibleCount] = useState(10); // Initial visible count
+  const [isMobile, setIsMobile] = useState(false);
 
   // Add event categories to each speaker
   const speakers = [
     { 
-      name: 'Victor Alade', 
-      company: 'Raenest',
-      bio: 'Co-founder and CTO of Raenest with 10+ years experience in fintech solutions.',
-      role: 'Chief Technology Officer',
-      image: 'https://images.unsplash.com/photo-1580489944761-15a19d654956?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTF8fHBlcnNvbnxlbnwwfHwwfHx8MA%3D%3D',
+      name: 'Jeremiah Maangi', 
+      company: 'iGaming Afrika',
+      bio: 'Founder & CEO, iGaming Afrika',
+      role: 'Chief Executive Officer',
+      image: 'https://igamingafrika.com/wp-content/uploads/2023/05/Jere.jpg',
       social: {
-        twitter: '#',
-        linkedin: '#',
-        website: '#'
+        twitter: 'https://x.com/jeremiahmaangi',
+        linkedin: 'https://www.linkedin.com/in/jeremiah-maangi-2b4a85112/',
+        website: 'https://igamingafrika.com/',
       },
-      events: ['Tuesday Start-Up Investor Summit', 'Wednesday Leadership Stage']
+      events: ['Wednesday Leadership Stage', 'Wednesday Leadership Stage']
     },
     { 
-      name: 'Richard Oyome', 
-      company: 'Raenest',
-      bio: 'Product lead at Raenest specializing in user experience and interface design.',
-      role: 'Product Manager',
-      image: 'https://images.unsplash.com/photo-1557862921-37829c790f19?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NTZ8fHBlcnNvbnxlbnwwfHwwfHx8MA%3D%3D',
+      name: 'Geoffrey Muindi', 
+      company: 'Dive Marketing Ltd',
+      bio: 'CEO Dive Marketing ltd.',
+      role: 'Chief Executive Officer',
+      image: 'https://igamingafrika.com/wp-content/uploads/2023/05/Geoffrey-1.jpg',
       social: {
-        twitter: '#',
-        linkedin: '#'
+        twitter: 'https://twitter.com/Geff_Muindi',
+        linkedin: 'https://www.linkedin.com/in/nixonkanali/',
+        website: 'https://www.divemarketing.co.ke/'
       },
-      events: ['Wednesday HR Connect', 'Thursday Leadership Stage']
+      events: ['Wednesday Investment Hub', 'Tuesday Leadership Stage', 'Tuesday Global Markets Hub']
     },
     { 
-      name: 'Angela Mensah', 
-      company: 'Flutterwave',
-      bio: 'Lead Software Engineer at Flutterwave focusing on scalable payment infrastructure.',
-      role: 'Lead Software Engineer',
-      image: 'https://plus.unsplash.com/premium_photo-1690587673708-d6ba8a1579a5?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NTd8fHBlcnNvbnxlbnwwfHwwfHx8MA%3D%3D',
+      name: 'David Ukairo', 
+      company: 'Mondogaming SRL',
+      bio: 'Mondogaming SRL, Business Development Manager (Africa).',
+      role: 'Business Development Manager',
+      image: 'https://igamingafrika.com/wp-content/uploads/2023/05/David-Ukairo-1.jpg',
       social: {
-        twitter: '#',
-        linkedin: '#',
-        website: '#'
+        twitter: 'https://twitter.com/DauDbet',
+        linkedin: 'https://www.linkedin.com/in/david-ukairo-90637125/',
       },
-      events: ['Wednesday Investment Hub', 'Thursday Global Tech Hub']
+      events: ['Wednesday Investment Hub', 'Tuesday Global Tech Hub']
     },
     { 
-      name: 'Samuel Okoro', 
-      company: 'Paystack',
-      bio: 'Community advocate and developer evangelist at Paystack.',
-      role: 'Developer Evangelist',
-      image: 'https://plus.unsplash.com/premium_photo-1689551670902-19b441a6afde?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NDV8fHBlcnNvbnxlbnwwfHwwfHx8MA%3D%3D',
+      name: 'Felix Mulandi', 
+      company: '',
+      bio: 'IGaming Consultant',
+      role: 'IGaming Consultant',
+      image: 'https://igamingafrika.com/wp-content/uploads/2023/05/Felix-Mulandi-2.jpg',
       social: {
-        twitter: '#',
-        linkedin: '#'
+        twitter: 'https://twitter.com/Fmulandi',
+        linkedin: 'https://www.linkedin.com/in/felix-mulandi-09882a111/'
       },
-      events: ['Wednesday Marketing Hub', 'Thursday Personal Development Hub']
+      events: ['Wednesday Marketing Hub', 'Wednesday Investment Hub', 'Tuesday Global Markets Hub']
     },
     { 
-      name: 'Lilian Mwangi', 
-      company: 'Andela',
-      bio: 'Engineering Manager at Andela with a passion for mentoring and scalable systems.',
-      role: 'Engineering Manager',
-      image: 'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MzJ8fHBlcnNvbnxlbnwwfHwwfHx8MA%3D%3D',
+      name: 'Oyindamola Michaels', 
+      company: '',
+      bio: 'iGaming Professional',
+      role: 'iGaming Professional',
+      image: 'https://igamingafrika.com/wp-content/uploads/2023/05/Oyindamola-Michaels-1.jpg',
       social: {
-        twitter: '#',
-        linkedin: '#',
-        website: '#'
+        twitter: 'https://twitter.com/oyineski',
+        linkedin: 'https://www.linkedin.com/in/oyindamola-michaels-spoc-ispo-9708a09b/',
       },
-      events: ['Wednesday Gaming Tech Hub', 'Thursday Global Markets Hub']
+      events: ['Wednesday Gaming Tech Hub', 'Tuesday Global Markets Hub', 'Wednesday Marketing Hub']
     },
     { 
-      name: 'Ahmed Bello', 
-      company: 'Chipper Cash',
-      bio: 'Cybersecurity expert and head of fraud detection at Chipper Cash.',
-      role: 'Head of Cybersecurity',
-      image: 'https://images.unsplash.com/photo-1560250097-0b93528c311a?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MzB8fHBlcnNvbnxlbnwwfHwwfHx8MA%3D%3D',
+      name: 'Samuel Ogechi', 
+      company: 'Playlogiq',
+      bio: 'Sales Manager, Playlogiq',
+      role: 'Sales Manager',
+      image: 'https://igamingafrika.com/wp-content/uploads/2023/05/Samuel-Ogechi-Moderator.jpg',
       social: {
-        twitter: '#',
-        linkedin: '#'
+        twitter: 'https://twitter.com/sheriffking5',
+        linkedin: 'https://www.linkedin.com/in/ogechi-samuel-845378192/'
       },
-      events: ['Wednesday Leadership Stage', 'Thursday Sustainability Hub']
+      events: ['Wednesday Leadership Stage', 'Tuesday Sustainability Hub', 'Tuesday Global Markets Hub']
     },
     { 
-      name: 'Grace Achieng', 
-      company: 'SafeBoda',
-      bio: 'UX Researcher at SafeBoda helping shape user-centered design for transportation.',
-      role: 'UX Researcher',
-      image: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTZ8fHBlcnNvbnxlbnwwfHwwfHx8MA%3D%3D',
+      name: 'Ambani Netshishivhe', 
+      company: 'Highlight Games',
+      bio: 'Director of Africa, Highlight Games',
+      role: 'Director of Africa',
+      image: 'https://igamingafrika.com/wp-content/uploads/2023/05/Ambani-Netshishivhe-e1685461724679.jpg',
       social: {
-        twitter: '#',
-        linkedin: '#',
-        website: '#'
+        linkedin: 'https://www.linkedin.com/in/ambani-netshishivhe-99aa619b/',
+        website: 'https://highlight-games.com/'
       },
-      events: ['Tuesday Start-Up Investor Summit', 'Wednesday HR Connect']
+      events: ['Wednesday Leadership Stage', 'Wednesday Investment Hub']
     },
     { 
-      name: 'Emeka Obi', 
-      company: 'Kuda Bank',
-      bio: 'Head of Mobile Engineering at Kuda, leading efforts in app performance and growth.',
-      role: 'Head of Mobile Engineering',
-      image: '',
+      name: 'Edwin Tarus', 
+      company: 'Tabro Solutions',
+      bio: 'Lead Consultant, Tabro Solutions.',
+      role: 'Lead Consultant',
+      image: 'https://igamingafrika.com/wp-content/uploads/2023/05/Edwin-Tarus.jpg',
       social: {
-        twitter: '#',
-        linkedin: '#'
+        linkedin: 'https://www.linkedin.com/in/edwin-tarus-pmp-14b37b121/'
       },
-      events: ['Wednesday Investment Hub', 'Thursday Leadership Stage']
+      events: ['Wednesday Investment Hub', 'Tuesday Leadership Stage', 'Wednesday Marketing Hub']
     },
     { 
-      name: 'Fatima Diallo', 
-      company: 'MFS Africa',
-      bio: 'Financial inclusion advocate and regional partnerships manager at MFS Africa.',
-      role: 'Partnerships Manager',
-      image: 'https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8cGVyc29ufGVufDB8fDB8fHww',
+      name: 'Alessandro Pizzolotto', 
+      company: 'Stm Gaming',
+      bio: 'CEO, Stm Gaming',
+      role: 'Chief Executive Officer',
+      image: 'https://igamingafrika.com/wp-content/uploads/2023/06/Alessandro-e1687177406376.jpg',
       social: {
-        twitter: '#',
-        linkedin: '#',
-        website: '#'
+        linkedin: 'https://www.linkedin.com/in/alessandro-pizzolotto-53a2989a/',
+        website: 'https://www.stmgaming.com/'
       },
-      events: ['Wednesday Marketing Hub', 'Thursday Global Markets Hub']
+      events: ['Wednesday Marketing Hub', 'Tuesday Global Markets Hub', 'Wednesday Marketing Hub']
     },
     { 
-      name: 'John Kariuki', 
-      company: 'Twiga Foods',
-      bio: 'Tech Lead at Twiga Foods, building supply chain platforms for agriculture.',
-      role: 'Technical Lead',
-      image: 'https://images.unsplash.com/photo-1552058544-f2b08422138a?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTB8fHBlcnNvbnxlbnwwfHwwfHx8MA%3D%3D',
+      name: 'Ahmad Nabeel', 
+      company: 'Trackier',
+      bio: 'Assistant Sales Manager, Trackier',
+      role: 'Assistant Sales Manage',
+      image: 'https://igamingafrika.com/wp-content/uploads/2023/06/Ahmad-e1687178091918.jpg',
       social: {
-        twitter: '#',
-        linkedin: '#'
+        linkedin: 'https://www.linkedin.com/in/ahmad-nabeel-59769a112/',
+        website: 'https://trackier.com/'
       },
-      events: ['Wednesday Gaming Tech Hub', 'Thursday Personal Development Hub']
-    }
+      events: ['Wednesday Gaming Tech Hub', 'Wednesday Investment Hub', 'Wednesday Marketing Hub']
+    },
+    { 
+      name: 'Kenneth Mugambi', 
+      company: 'Afriad Influencer Marketing',
+      bio: 'CEO, Afriad Influencer Marketing',
+      role: 'Chief Executive Officer',
+      image: 'https://igamingafrika.com/wp-content/uploads/2023/06/Kenneth-e1687190676162.jpg',
+      social: {
+        linkedin: 'https://www.linkedin.com/in/kenneth-mugambi-871510210/',
+        website: 'https://afriadz.com/'
+      },
+      events: ['Wednesday Gaming Tech Hub', 'Wednesday HR Connect', 'Tuesday Sustainability Hub']
+    },
+    { 
+      name: 'Joe Andrews', 
+      company: 'SIS Ltd',
+      bio: 'Head of Sales – Africa, SIS Ltd',
+      role: 'Head of Sales – Africa',
+      image: 'https://igamingafrika.com/wp-content/uploads/2023/07/Joe-Andrews-2-e1689758373140.jpg',
+      social: {
+        linkedin: 'https://www.linkedin.com/in/joe-andrews-4aaa7211/',
+        website: 'https://sis.tv/',
+        twitter: 'https://twitter.com/TotallyBetting'
+      },
+      events: ['Wednesday Gaming Tech Hub', 'Wednesday HR Connect', 'Tuesday Global Tech Hub']
+    },
+    { 
+      name: 'Ronny Lusigi', 
+      company: 'IndexG Esports',
+      bio: 'Founder and CEO, IndexG Esports',
+      role: 'Chief Executive Officer',
+      image: 'https://igamingafrika.com/wp-content/uploads/2023/07/Ronny-Lusigi-e1689762458504.jpg',
+      social: {
+        linkedin: 'https://www.linkedin.com/in/ronny-lusigi-2448b7100/',
+        website: 'https://indexgesports.com/',
+        twitter: 'href="https://twitter.com/RAyumba"'
+      },
+      events: ['Wednesday Gaming Tech Hub', 'Wednesday HR Connect', 'Tuesday Leadership Stage']
+    },
+    { 
+      name: 'Max Sevostianov', 
+      company: 'BetBazar',
+      bio: 'Chief Operating Officer, BetBazar',
+      role: 'Chief Operating Officer',
+      image: 'https://igamingafrika.com/wp-content/uploads/2023/07/Max-Sevostianov-e1689762813782.jpg',
+      social: {
+        linkedin: 'https://www.linkedin.com/in/sevostianov/',
+        website: 'https://betbazar.com/'
+      },
+      events: ['Wednesday Leadership Stage', 'Wednesday HR Connect', 'Tuesday Sustainability Hub']
+    },
+    { 
+      name: 'Maha Otu', 
+      company: 'Betwinner Nigeria',
+      bio: 'Director, Betwinner Nigeria',
+      role: 'Director',
+      image: 'https://igamingafrika.com/wp-content/uploads/2023/08/Maha.jpg',
+      social: {
+        linkedin: 'https://www.linkedin.com/in/maha-otu/',
+        website: 'https://betwinner.ng/en'
+      },
+      events: ['Wednesday Leadership Stage', 'Wednesday HR Connect', 'Tuesday Leadership Stage']
+    },
+    { 
+      name: 'Rene Maimo', 
+      company: 'DME Systems',
+      bio: 'Head of Marketing and Business Development, DME Systems',
+      role: 'Head of Marketing and Business Development',
+      image: 'https://igamingafrika.com/wp-content/uploads/2023/08/Rene.jpg',
+      social: {
+        linkedin: 'https://www.linkedin.com/in/renemaimo/',
+        website: 'http://dme.systems/'
+      },
+      events: ['Wednesday Leadership Stage', 'Tuesday Personal Development Hub', 'Tuesday Global Tech Hub']
+    },
+    { 
+      name: 'Artur Harutyunyan', 
+      company: 'Betfounders/Slotpes',
+      bio: 'Founder and CEO, Betfounders/Slotpesa',
+      role: 'Chief Executive Officer',
+      image: 'https://igamingafrika.com/wp-content/uploads/2023/08/Artur.jpg',
+      social: {
+        linkedin: 'https://www.linkedin.com/in/artoor/',
+        website: 'https://betfounders.com/',
+        twitter: 'https://twitter.com/artooroff'
+      },
+      events: ['Tuesday Start-Up Investor Summit', 'Tuesday Personal Development Hub', 'Tuesday Sustainability Hub']
+    },
+    { 
+      name: 'Ayofemi Panshack', 
+      company: 'Shacks Evolution Studios',
+      bio: 'Founder, Shacks Evolution Studios',
+      role: 'Founder',
+      image: 'https://igamingafrika.com/wp-content/uploads/2023/08/WhatsApp-Image-2023-08-15-at-19.12.082.jpeg',
+      social: {
+        linkedin: 'https://www.linkedin.com/in/ayofemi-panshack-akinlaja-268784122/',
+        website: 'https://shacksevo.co/'
+      },
+      events: ['Tuesday Start-Up Investor Summit', 'Tuesday Personal Development Hub']
+    },
+    { 
+      name: 'Lyubomira Lazarova', 
+      company: 'Amploa',
+      bio: 'Founder, Amploa',
+      role: 'Founder',
+      image: 'https://igamingafrika.com/wp-content/uploads/2023/09/Lyubomira.jpg',
+      social: {
+        linkedin: 'https://www.linkedin.com/in/lyubomira-lazarova/',
+        website: 'http://amploa.com',
+        twitter: 'https://twitter.com/lyubapp'
+      },
+      events: ['Tuesday Start-Up Investor Summit', 'Tuesday Personal Development Hub', 'Tuesday Global Tech Hub']
+    },
+    { 
+      name: 'Uroš Nikolić', 
+      company: 'Elbet',
+      bio: 'Business Development Manager, Elbet',
+      role: 'Business Development Manager',
+      image: 'https://igamingafrika.com/wp-content/uploads/2023/09/Uros.jpg',
+      social: {
+        linkedin: 'https://www.linkedin.com/in/uroshnikolich/',
+        website: 'https://elbet.com'
+      },
+      events: ['Tuesday Start-Up Investor Summit', 'Tuesday Personal Development Hub']
+    },
+    { 
+      name: 'Danuta Janicka-Mierzwa', 
+      company: 'TVBET',
+      bio: 'Deputy Head of Sales, TVBET',
+      role: 'Deputy Head of Sales',
+      image: 'https://igamingafrika.com/wp-content/uploads/2023/10/Danka.jpg',
+      social: {
+        linkedin: 'https://www.linkedin.com/in/danuta-janicka-mierzwa-160535a7/',
+        website: 'http://www.betcore.eu'
+      },
+      events: ['Tuesday Start-Up Investor Summit', 'Tuesday Personal Development Hub', 'Tuesday Sustainability Hub']
+    },
   ];
 
   // Filter options from the design
@@ -148,11 +281,11 @@ const Speakers = () => {
     'Wednesday Investment Hub',
     'Wednesday Marketing Hub',
     'Wednesday Gaming Tech Hub',
-    'Thursday Leadership Stage',
-    'Thursday Global Markets Hub',
-    'Thursday Personal Development Hub',
-    'Thursday Sustainability Hub',
-    'Thursday Global Tech Hub'
+    'Tuesday Leadership Stage',
+    'Tuesday Global Markets Hub',
+    'Tuesday Personal Development Hub',
+    'Tuesday Sustainability Hub',
+    'Tuesday Global Tech Hub'
   ];
 
   // Filter speakers based on active filter
@@ -204,6 +337,30 @@ const Speakers = () => {
     setSelectedSpeaker(null);
   };
 
+   // Check screen size and update state
+  const checkScreenSize = useCallback(() => {
+    setIsMobile(window.innerWidth < 640);
+  }, []);
+
+  useEffect(() => {
+    // Set initial screen size
+    checkScreenSize();
+    
+    // Add resize listener
+    window.addEventListener('resize', checkScreenSize);
+    
+    // Cleanup
+    return () => window.removeEventListener('resize', checkScreenSize);
+  }, [checkScreenSize]);
+
+   // Slice the filtered speakers to only show visible count
+  const visibleSpeakers = filteredSpeakers.slice(0, visibleCount);
+
+  const handleShowMore = () => {
+    // Load fewer items on mobile for better performance
+    setVisibleCount(prev => prev + (isMobile ? 6 : 10));
+  };
+
   return (
     <div className="bg-gray-100 px-4 sm:px-6 lg:px-8 py-8 md:py-12 lg:py-16">
       <div className="max-w-7xl mx-auto">
@@ -239,7 +396,7 @@ const Speakers = () => {
                   : 'bg-white text-gray-700 hover:bg-gray-200'
               }`}
             >
-              {option.replace('Wednesday ', '').replace('Thursday ', '').replace('Tuesday ', '')}
+              {option.replace('Wednesday ', '').replace('Tuesday ', '').replace('Tuesday ', '')}
             </motion.button>
           ))}
         </motion.div>
@@ -252,7 +409,7 @@ const Speakers = () => {
           variants={container}
           className="grid grid-cols-1 xs:grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4 sm:gap-6"
         >
-          {filteredSpeakers.map((speaker, index) => (
+          {visibleSpeakers.map((speaker, index) => (
             <motion.div 
               key={`${speaker.name}-${index}`}
               variants={item}
@@ -290,9 +447,9 @@ const Speakers = () => {
               <h3 className="text-sm sm:text-base font-bold text-gray-900 mb-1">{speaker.name}</h3>
               <p className="text-xs sm:text-sm font-medium text-gray-600">{speaker.company}</p>
               <div className="mt-2 flex flex-wrap justify-center gap-1">
-                {speaker.events.map((event, i) => (
+                {[...new Set(speaker.events.map(event => event.split(' ')[0]))].map((day, i) => (
                   <span key={i} className="text-xs xs:text-xs px-2 py-0.5 bg-gray-200 rounded-full">
-                    {event.split(' ')[0]}
+                    {day}
                   </span>
                 ))}
               </div>
@@ -300,24 +457,25 @@ const Speakers = () => {
           ))}
         </motion.div>
 
-        {/* Show More button with responsive sizing */}
-        {/* <motion.div
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true }}
-          variants={fadeIn}
-          transition={{ delay: 0.4 }}
-          className="flex justify-center mt-8 sm:mt-12"
-        > */}
+        {/* Show More button - only show if there are more speakers to show */}
+        {visibleCount < filteredSpeakers.length && (
           <div className="flex flex-col items-center justify-center gap-8 sm:flex-row mt-12">
             <button
+              onClick={handleShowMore}
               className="inline-flex items-center gap-x-1 text-sm font-semibold leading-6 text-gray-800 hover:text-md border-1 border-gray-800 hover:bg-green-600 hover:border-green-600 hover:text-white rounded-lg px-4 py-2"
             >
               Show More
               <IoMdRefresh />
             </button>
           </div>
-        {/* </motion.div> */}
+        )}
+
+        {/* No more speakers to show message */}
+        {visibleCount >= filteredSpeakers.length && filteredSpeakers.length > 0 && (
+          <div className="text-center mt-8 sm:mt-10 md:mt-12 text-sm text-gray-600">
+            <p>You've reached the end of the speakers list</p>
+          </div>
+        )}
       </div>
 
       {/* Speaker Modal with improved responsiveness */}
@@ -415,6 +573,8 @@ const Speakers = () => {
                       href={selectedSpeaker.social.twitter}
                       className="text-black text-lg sm:text-xl hover:text-blue-400 transition-colors"
                       whileHover={{ y: -2 }}
+                      target="_blank"
+                      rel="noopener noreferrer"
                     >
                       <FaTwitter />
                     </motion.a>
@@ -425,6 +585,8 @@ const Speakers = () => {
                       href={selectedSpeaker.social.linkedin}
                       className="text-black text-lg sm:text-xl hover:text-blue-600 transition-colors"
                       whileHover={{ y: -2 }}
+                      target="_blank"
+                      rel="noopener noreferrer"
                     >
                       <FaLinkedin />
                     </motion.a>
@@ -435,6 +597,8 @@ const Speakers = () => {
                       href={selectedSpeaker.social.facebook}
                       className="text-black text-lg sm:text-xl hover:text-blue-600 transition-colors"
                       whileHover={{ y: -2 }}
+                      target="_blank"
+                      rel="noopener noreferrer"
                     >
                       <FaFacebook />
                     </motion.a>
@@ -445,6 +609,8 @@ const Speakers = () => {
                       href={selectedSpeaker.social.instagram}
                       className="text-black text-lg sm:text-xl hover:text-red-600 transition-colors"
                       whileHover={{ y: -2 }}
+                      target="_blank"
+                      rel="noopener noreferrer"
                     >
                       <FaInstagram />
                     </motion.a>
