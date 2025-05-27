@@ -499,7 +499,7 @@ const Speakers = () => {
         
         {/* Modal content */}
         <motion.div 
-          className="relative bg-white rounded-lg w-full max-w-xs sm:max-w-md md:max-w-lg lg:max-w-2xl mx-auto shadow-xl max-h-[90vh] overflow-y-auto"
+          className="relative bg-gray-200 rounded-lg w-full max-w-xs sm:max-w-md md:max-w-lg lg:max-w-2xl mx-auto shadow-xl max-h-[90vh] overflow-y-auto"
           initial="hidden"
           animate={isModalOpen ? "visible" : "hidden"}
           variants={scaleUp}
@@ -507,7 +507,7 @@ const Speakers = () => {
           {/* Close button */}
           <motion.button
             onClick={closeModal}
-            className="absolute top-2 right-2 sm:top-4 sm:right-4 p-1 rounded-full hover:bg-gray-100 hover:cursor-pointer transition-colors"
+            className="absolute top-2 right-2 sm:top-4 sm:right-4 p-1 rounded-full hover:cursor-pointer transition-colors"
             whileHover={{ scale: 1.1 }}
             whileTap={{ scale: 0.95 }}
           >

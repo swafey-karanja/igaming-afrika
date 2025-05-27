@@ -266,18 +266,18 @@ const Packages = () => {
   };
 
   return (
-    <div className="p-6 bg-gray-100 min-h-auto">
-        <h2 
-            className="text-2xl sm:text-3xl lg:text-4xl text-center uppercase font-bold tracking-tight text-green-700 mb-2 sm:mb-4 md:mb-6"
-        >
-            Sponsorship Opportunities
-        </h2>
-        <div className="w-20 h-1 bg-green-700 mx-auto mb-6"></div>
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 max-w-7xl mx-auto">
+    <div className="p-4 sm:p-6 bg-gray-100 min-h-auto">
+      <h2 
+        className="text-2xl sm:text-3xl lg:text-4xl text-center uppercase font-bold tracking-tight text-green-700 mb-2 sm:mb-4 md:mb-6"
+      >
+        Sponsorship Opportunities
+      </h2>
+      <div className="w-20 h-1 bg-green-700 mx-auto mb-6"></div>
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 sm:gap-6 lg:gap-8 max-w-7xl mx-auto">
         {packages.map((pkg) => (
           <div
             key={pkg.id}
-            className="bg-white rounded-md h-68 w-72 p-4 shadow-sm hover:shadow-md transition-shadow duration-200 relative cursor-pointer flex flex-col"
+            className="bg-white rounded-md h-60 sm:h-64 md:h-68 w-full max-w-sm mx-auto sm:max-w-none p-4 shadow-sm hover:shadow-md transition-shadow duration-200 relative cursor-pointer flex flex-col"
             onClick={() => openModal(pkg)}
           >
             {getStatusBadge(pkg.status)}
@@ -287,13 +287,13 @@ const Packages = () => {
                 {getIconComponent(pkg.icon, pkg.title)}
               </div>
               
-              <h3 className="text-sm font-medium text-black leading-relaxed">
+              <h3 className="text-sm sm:text-base font-medium text-black leading-relaxed px-2">
                 {pkg.title}
               </h3>
             </div>
             
             <div className="text-right mt-auto">
-              <span className="text-xl font-semibold text-black">
+              <span className="text-lg sm:text-xl font-semibold text-black">
                 {pkg.price}
               </span>
             </div>
@@ -303,49 +303,51 @@ const Packages = () => {
 
       {/* Modal */}
       {selectedPackage && (
-         <div 
-          className={`fixed inset-0 backdrop-blur-xs bg-transparent transition-all duration-300 ease-out flex items-center justify-center p-4 z-50 ${
+        <div 
+          className={`fixed inset-0 backdrop-blur-xs bg-transparent transition-all duration-300 ease-out flex items-center sm:items-center justify-center p-2 sm:p-4 z-50 ${
             isModalOpen ? 'bg-opacity-20' : 'bg-opacity-0'
           }`}
           onClick={closeModal}
         >
           <div 
-            className={`bg-white rounded-lg max-w-4xl w-full max-h-screen overflow-y-auto transform transition-all duration-300 ease-out ${
+            className={`bg-gray-200 rounded-lg max-w-sm sm:max-w-4xl w-full max-h-[70vh] sm:max-h-screen overflow-y-auto transform transition-all duration-300 ease-out py-4 sm:mt-0 ${
               isModalOpen ? 'scale-100 opacity-100' : 'scale-95 opacity-0'
             }`}
             onClick={(e) => e.stopPropagation()}
           >
             {/* Modal Header */}
-            <div className="flex items-center justify-between p-6 border-b">
+            <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between p-4 sm:p-6 border-b space-y-4 sm:space-y-0">
               <div className="flex items-center space-x-3">
                 {getIconComponent(selectedPackage.icon, selectedPackage.title)}
                 <div>
-                  <h2 className="text-xl font-semibold text-black">
+                  <h2 className="text-lg sm:text-xl font-semibold text-black">
                     {selectedPackage.title}
                   </h2>
                 </div>
               </div>
-              <div className="flex items-center space-x-4">
-                <span className="text-xl font-bold text-black">
+              <div className="flex items-center space-x-2 sm:space-x-4 w-full sm:w-auto justify-between sm:justify-end">
+                <span className="text-lg sm:text-xl font-bold text-black">
                   {selectedPackage.price}
                 </span>
-                <button
-                  className="bg-green-600 text-white px-4 py-1 text-sm rounded font-medium hover:bg-green-700 transition-colors cursor-pointer"
-                  onClick={() => {/* Handle contact */}}
-                >
-                  CONTACT US
-                </button>
-                <button
-                  onClick={closeModal}
-                  className="text-gray-500 hover:text-gray-700 transition-colors cursor-pointer"
-                >
-                  <X size={24} />
-                </button>
+                <div className="flex items-center space-x-2">
+                  <button
+                    className="bg-green-600 text-white px-3 sm:px-4 py-1 text-xs sm:text-sm rounded font-medium hover:bg-green-700 transition-colors cursor-pointer"
+                    onClick={() => {/* Handle contact */}}
+                  >
+                    CONTACT US
+                  </button>
+                  <button
+                    onClick={closeModal}
+                    className="text-gray-500 hover:text-gray-700 transition-colors cursor-pointer"
+                  >
+                    <X size={20} className="sm:w-6 sm:h-6" />
+                  </button>
+                </div>
               </div>
             </div>
 
             {/* Modal Content */}
-            <div className="p-6 space-y-6">
+            <div className="p-4 sm:p-6 space-y-4 sm:space-y-6">
               <p className="text-sm text-gray-600 italic">
                 {getPackageDetails(selectedPackage).description}
               </p>
@@ -385,13 +387,13 @@ const Packages = () => {
               {/* Package Images */}
               <div>
                 <h3 className="font-semibold text-gray-800 mb-3">Package Images</h3>
-                <div className="grid grid-cols-2 gap-4">
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                   {getPackageDetails(selectedPackage).images.map((imageUrl, index) => (
                     <div key={index} className="relative">
                       <img
                         src={imageUrl}
                         alt={`${selectedPackage.title} - Image ${index + 1}`}
-                        className="w-full h-48 object-cover rounded-lg border shadow-sm"
+                        className="w-full h-32 sm:h-48 object-cover rounded-lg border shadow-sm"
                       />
                     </div>
                   ))}

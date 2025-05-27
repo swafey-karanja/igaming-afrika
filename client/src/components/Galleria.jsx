@@ -51,6 +51,7 @@ const ImageCarousel = () => {
   const [loadedImages, setLoadedImages] = useState({});
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [modalImageIndex, setModalImageIndex] = useState(0);
+  const [imagesPerView, setImagesPerView] = useState(1);
   const preloadedImagesRef = useRef({});
 
   const dispatch = useDispatch();
@@ -61,9 +62,22 @@ const ImageCarousel = () => {
   }, [dispatch]);
 
   // Calculate how many images to show based on screen size
-  const imagesPerView = useMemo(() => {
-    const width = typeof window !== 'undefined' ? window.innerWidth : 0;
-    return width < 640 ? 1 : 3; // Show 1 on mobile, 3 on larger screens
+  useEffect(() => {
+    const updateImagesPerView = () => {
+      const width = window.innerWidth;
+      if (width < 640) {
+        setImagesPerView(1); // Mobile: 1 image
+      } else if (width < 1024) {
+        setImagesPerView(2); // Tablet: 2 images
+      } else {
+        setImagesPerView(3); // Desktop: 3 images
+      }
+    };
+
+    updateImagesPerView();
+    window.addEventListener('resize', updateImagesPerView);
+    
+    return () => window.removeEventListener('resize', updateImagesPerView);
   }, []);
 
   // Preload current set of visible images and adjacent images
@@ -108,17 +122,17 @@ const ImageCarousel = () => {
   const nextSlide = useCallback(() => {
     if (!images || images.length === 0) return;
     setDirection(1);
-    setCurrentIndex(prev => (prev + 1) % images.length);
-  }, [images]);
+    setCurrentIndex(prev => (prev + imagesPerView) % images.length);
+  }, [images, imagesPerView]);
 
   const prevSlide = useCallback(() => {
     if (!images || images.length === 0) return;
     setDirection(-1);
     setCurrentIndex(prev => {
-      const newIndex = prev - 1;
+      const newIndex = prev - imagesPerView;
       return newIndex < 0 ? Math.max(0, images.length - (Math.abs(newIndex) % images.length)) : newIndex;
     });
-  }, [images]);
+  }, [images, imagesPerView]);
 
   const openModal = (index) => {
     setModalImageIndex(index);
@@ -196,7 +210,7 @@ const ImageCarousel = () => {
         >
           <AnimatePresence custom={direction} initial={false}>
             <motion.div
-              key={currentIndex}
+              key={`${currentIndex}-${imagesPerView}`}
               custom={direction}
               variants={slideVariants}
               initial="enter"
@@ -211,7 +225,11 @@ const ImageCarousel = () => {
               {currentImages.map(({ image, index }) => (
                 <div 
                   key={index} 
-                  className="flex-1 cursor-pointer"
+                  className={`cursor-pointer ${
+                    imagesPerView === 1 ? 'w-full' : 
+                    imagesPerView === 2 ? 'w-1/2' : 
+                    'w-1/3'
+                  }`}
                   onClick={() => openModal(index)}
                 >
                   <img
@@ -246,7 +264,7 @@ const ImageCarousel = () => {
       <AnimatePresence>
         {isModalOpen && (
           <motion.div
-            className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black bg-opacity-30"
+            className="fixed inset-0 z-50 flex items-center justify-center p-4 backdrop-blur-xs bg-transparent transition-all bg-opacity-30"
             initial="hidden"
             animate="visible"
             exit="hidden"
@@ -260,7 +278,7 @@ const ImageCarousel = () => {
             >
               <button
                 onClick={closeModal}
-                className="absolute -top-10 right-0 text-white hover:text-gray-300 z-10 cursor-pointer"
+                className="absolute -top-10 right-0 text-gray-500 hover:text-gray-800 z-10 cursor-pointer bg-green-300"
                 aria-label="Close modal"
               >
                 <X size={28} />
@@ -278,7 +296,7 @@ const ImageCarousel = () => {
                     e.stopPropagation();
                     handleModalNavigation('prev');
                   }}
-                  className="cursor-pointer absolute left-4 top-1/2 transform -translate-y-1/2 bg-transparent hover:bg-green-600 bg-opacity-50 text-white p-2 rounded-full hover:bg-opacity-75"
+                  className="cursor-pointer absolute left-4 top-1/2 transform -translate-y-1/2 bg-green-500 hover:bg-green-700 bg-opacity-50 text-white p-2 rounded-full hover:bg-opacity-75"
                   aria-label="Previous image"
                 >
                   <ChevronLeft size={25} />
@@ -288,14 +306,14 @@ const ImageCarousel = () => {
                     e.stopPropagation();
                     handleModalNavigation('next');
                   }}
-                  className="cursor-pointer absolute right-4 top-1/2 transform -translate-y-1/2 bg-transparent hover:bg-green-600 bg-opacity-50 text-white p-2 rounded-full hover:bg-opacity-75"
+                  className="cursor-pointer absolute right-4 top-1/2 transform -translate-y-1/2 bg-green-500 hover:bg-green-700 bg-opacity-50 text-white p-2 rounded-full hover:bg-opacity-75"
                   aria-label="Next image"
                 >
                   <ChevronRight size={25} />
                 </button>
               </div>
 
-              <div className="text-center mt-4 text-white">
+              <div className="text-center mt-4 text-green-500">
                 Image {modalImageIndex + 1} of {images.length}
               </div>
             </motion.div>
