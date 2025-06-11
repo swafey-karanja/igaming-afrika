@@ -1,0 +1,739 @@
+[
+  {
+    "id": 1,
+    "title": "Headline Sponsor",
+    "price": "$55,000",
+    "status": "AVAILABLE",
+    "icon": "🎤",
+    "iconBg": "bg-green-400",
+    "description": "*bespoke package pricing available on request*",
+    "benefits": [
+      "Headline Sponsorship Status and logo placement within iGaming AFRIKA",
+      "Press release announcing your Headline Sponsorship status including a quote from your C-Level Executive of choice",
+      "iGaming AFRIKA 2025 brought to you by *your company name*",
+      "Headline branding on site (main event)",
+      "1 x Speaking opportunity to be discussed and confirmed in conjunction with the production team",
+      "15-20 second advertisement video to be played in the main conference room and throughout the venue",
+      "Logo on all pre-event promotion in relation to your package (excluding peripheral events)",
+      "Logo within email blasts related to the event",
+      "Watermarked logo to appear on all official photos from the main event",
+      "Individual pre-event welcome post via social media channels",
+      "Logo within the event guide & agenda",
+      "Logo displayed in credits within after movie",
+      "Digital logo presented on display screens on site"
+    ],
+    "goldBenefits": [
+      "Platinum Sponsorship Status",
+      "Platinum sponsorship status and logo placement within event page",
+      "Platinum Branding on site (main event)",
+      "Individual digital logo presented on display screens on site (10sec rotation)",
+      "Individual pre-event welcome post via social media channels",
+      "Logo within the event guide & agenda",
+      "Mention in credits within after movie"
+    ],
+    "tickets": "20 Standard Passes + 1 Premium Pass for IGaming AFRIKA Summit. 10 Tickets for IGaming AFRIKA Summit Closing Night.",
+    "images": []
+  },
+  {
+    "id": 2,
+    "title": "Branded Staff Sponsor",
+    "price": "$4,500",
+    "status": "AVAILABLE",
+    "icon": "👕",
+    "iconBg": "bg-green-400",
+    "description": "Maximise attention throughout the show!",
+    "benefits": [
+      "Sponsor branded t-shirts for staff including helpers, security, marshals and cleaners",
+      "25 branded persons visible throughout the venue for two days",
+      "Sponsorship gives great coverage and brand awareness",
+      "Sponsor must provide 3 branded polo-shirts per person",
+      "Shirts must be delivered to the venue no later than 2 weeks prior to the Summit"
+    ],
+    "goldBenefits": [],
+    "tickets": "7 Standard tickets for IGaming AFRIKA Summit. 5 Tickets for IGaming AFRIKA Summit Closing Night.",
+    "images": []
+  },
+  {
+    "id": 3,
+    "title": "Branded Welcome Team Sponsor",
+    "price": "$5,500",
+    "status": "AVAILABLE",
+    "icon": "👋",
+    "iconBg": "bg-green-400",
+    "description": "Maximize attention at registrations!",
+    "benefits": [
+      "Sponsor embroidered logos on blouses for the welcome team",
+      "20 staff members at the Registration Desk and roaming the Expo",
+      "Blouses will be provided and embroidered by IGaming AFRIKA Summit",
+      "Sponsor's logo must be provided at least 1 month before the event and is subject to approval"
+    ],
+    "goldBenefits": [],
+    "tickets": "10 Standard Passes + 1 Premium Pass for IGaming AFRIKA Summit. 5 Tickets for IGaming AFRIKA Summit Closing Night.",
+    "images": []
+  },
+  {
+    "id": 4,
+    "title": "Safari Sponsor (Exclusive)",
+    "price": "$3,500",
+    "status": "AVAILABLE",
+    "icon": "🦁",
+    "iconBg": "bg-green-400",
+    "description": "Maximize your brand visibility at the Safari Tour!",
+    "benefits": [
+      "2D logos on safari tour vans",
+      "10 tour guides wearing polos with your logo",
+      "Sponsor logo must be submitted at least 1 month prior to the event",
+      "Polos and embroidery will be handled by IGaming AFRIKA Summit"
+    ],
+    "goldBenefits": [],
+    "tickets": "10 Standard Passes + 1 Premium Pass for IGaming AFRIKA Summit. 5 Tickets for IGaming AFRIKA Summit Closing Night.",
+    "images": []
+  },
+  {
+    "id": 5,
+    "title": "Gala/Awards Night Sponsor (Exclusive)",
+    "price": "$20,000",
+    "status": "AVAILABLE",
+    "icon": "🏆",
+    "iconBg": "bg-green-400",
+    "description": "Celebrate leaders at the most glamorous event of the summit!",
+    "benefits": [
+      "Title sponsorship – The IGaming AFRIKA Summit Gaming Awards",
+      "One table for seven in a central location",
+      "All invitations sent with the sponsor’s logo",
+      "Massive online branding visibility with several posts mentioning the exclusive sponsor",
+      "All collateral marketing material includes the sponsor’s logo",
+      "Prominent logo visibility on screens during the whole ceremony",
+      "Logo on photo wall",
+      "Event footage available in high resolution with sponsor logo",
+      "Mention by the Host"
+    ],
+    "goldBenefits": [],
+    "tickets": "25 Standard Passes + 3 Premium Passes for IGaming AFRIKA Summit. 15 Tickets for IGaming AFRIKA Summit Closing Night.",
+    "images": []
+  },
+  {
+    "id": 6,
+    "title": "Awards Category Sponsor",
+    "price": "$1,500",
+    "status": "AVAILABLE",
+    "icon": "🏅",
+    "iconBg": "bg-green-400",
+    "description": "Sponsoring an Awards Category gives your brand great visibility during our luxury Awards Dinner. NOTE: You cannot be nominated for a category you are sponsoring!",
+    "benefits": [
+      "7 seats at the Gala Awards Dinner",
+      "Exclusive sponsorship of the award of your choice",
+      "Brand visibility on online channels"
+    ],
+    "goldBenefits": [],
+    "tickets": "5 Standard tickets for IGaming AFRIKA Summit. 3 Tickets for IGaming AFRIKA Summit Closing Night.",
+    "images": []
+  },
+  {
+    "id": 7,
+    "title": "Closing Night Sponsor",
+    "price": "$50,000",
+    "status": "AVAILABLE",
+    "icon": "🎉",
+    "iconBg": "bg-green-400",
+    "description": "Time to let loose at our VIP Closing Night! Give your brand maximum visibility as business-minded delegates enter a bubbly setup.",
+    "benefits": [
+      "IGaming AFRIKA Summit and shared host branding with naming rights and invites",
+      "2 High traffic VIP tables with €2,000 combined bar spend",
+      "Clear advertising across the venue including side screens and branded photo wall",
+      "Wristbands with sponsor logos for each attendee",
+      "Start to finish social media coverage",
+      "Heavy marketing campaign featuring host logos",
+      "Venue branding is the responsibility of the sponsor"
+    ],
+    "goldBenefits": [
+      "Gold sponsorship status and logo placement within event page",
+      "Gold Branding on site (main event)",
+      "Individual digital logo presented on display screens on site (10sec rotation)",
+      "Individual pre-event welcome post via social media channels",
+      "Logo within the event guide & agenda",
+      "Mention in credits within after movie"
+    ],
+    "tickets": "45 Standard Passes + 5 Premium Passes for IGaming AFRIKA Summit. 25 Tickets for IGaming AFRIKA Summit Closing Night.",
+    "images": []
+  },
+  {
+    "id": 8,
+    "title": "Delegate Back Badge Sponsor (Exclusive)",
+    "price": "$15,000",
+    "status": "AVAILABLE",
+    "icon": "🎫",
+    "iconBg": "bg-green-400",
+    "description": "Exclusive, larger logo placement on the back of all delegate badges for extensive exposure.",
+    "benefits": [
+      "Logo Placement: Back of the badge"
+    ],
+    "goldBenefits": [
+      "Gold sponsorship status and logo placement within event page",
+      "Gold Branding on site (main event)",
+      "Individual digital logo presented on display screens on site (10sec rotation)",
+      "Individual pre-event welcome post via social media channels",
+      "Logo within the event guide & agenda",
+      "Mention in credits within after movie"
+    ],
+    "tickets": "20 Standard Passes + 5 Premium Passes for IGaming AFRIKA Summit. 15 Tickets for IGaming AFRIKA Summit Closing Night.",
+    "images": []
+  },
+  {
+    "id": 9,
+    "title": "Delegate Front Badge Sponsor",
+    "price": "$7,500",
+    "status": "AVAILABLE",
+    "icon": "🪪",
+    "iconBg": "bg-green-400",
+    "description": "Feature your brand prominently on the front of all delegate badges worn throughout the summit.",
+    "benefits": [
+      "Logo Placement: Front of the badge"
+    ],
+    "goldBenefits": [
+      "Gold sponsorship status and logo placement within event page",
+      "Gold Branding on site (main event)",
+      "Individual digital logo presented on display screens on site (10sec rotation)",
+      "Individual pre-event welcome post via social media channels",
+      "Logo within the event guide & agenda",
+      "Mention in credits within after movie"
+    ],
+    "tickets": "20 Standard Passes + 5 Premium Passes for IGaming AFRIKA Summit. 15 Tickets for IGaming AFRIKA Summit Closing Night.",
+    "images": []
+  },
+  {
+    "id": 10,
+    "title": "Delegate Lanyard Sponsor (Exclusive)",
+    "price": "$14,500",
+    "status": "AVAILABLE",
+    "icon": "📛",
+    "iconBg": "bg-green-400",
+    "description": "Each delegate receives a branded lanyard. Visibility throughout the summit. Must fix using two perforations. Sample must be approved.",
+    "benefits": [
+      "3,500 Lanyards to be provided by sponsor",
+      "Delivered no later than 2 weeks before the summit",
+      "Two perforation design required"
+    ],
+    "goldBenefits": [
+      "Gold sponsorship status and logo placement within event page",
+      "Gold Branding on site (main event)",
+      "Individual digital logo presented on display screens on site (10sec rotation)",
+      "Individual pre-event welcome post via social media channels",
+      "Logo within the event guide & agenda",
+      "Mention in credits within after movie"
+    ],
+    "tickets": "35 Standard Passes + 2 Premium Passes for IGaming AFRIKA Summit. 17 Tickets for IGaming AFRIKA Summit Closing Night.",
+    "images": []
+  },
+  {
+    "id": 11,
+    "title": "Floor Stickers Sponsor (Exclusive)",
+    "price": "$2,300",
+    "status": "AVAILABLE",
+    "icon": "🦶",
+    "iconBg": "bg-green-400",
+    "description": "Branded 1x1m floor stickers in high traffic areas (limited to one sponsor).",
+    "benefits": [
+      "Printing of stickers included"
+    ],
+    "goldBenefits": [],
+    "tickets": "5 Standard tickets for IGaming AFRIKA Summit. 2 Tickets for IGaming AFRIKA Summit Closing Night.",
+    "images": []
+  },
+  {
+    "id": 12,
+    "title": "Registration & Pre-registration Counter Sponsor",
+    "price": "$20,000",
+    "status": "AVAILABLE",
+    "icon": "🧾",
+    "iconBg": "bg-green-400",
+    "description": "Brand one of the most high-traffic areas of the venue – the registration counter and two screens.",
+    "benefits": [
+      "Prime visibility for all attendees entering the venue",
+      "Prominent branding in the Registration Area (Check-In and Main Desk)",
+      "Design provided by IGaming AFRIKA, subject to sponsor approval",
+      "Sponsor is responsible for setup of banners, props (support available)"
+    ],
+    "goldBenefits": [
+      "Gold sponsorship status and logo placement within event page",
+      "Gold Branding on site (main event)",
+      "Individual digital logo presented on display screens on site (10sec rotation)",
+      "Individual pre-event welcome post via social media channels",
+      "Logo within the event guide & agenda",
+      "Mention in credits within after movie"
+    ],
+    "tickets": "30 Standard Passes + 3 Premium Passes for IGaming AFRIKA Summit. 15 Tickets for IGaming AFRIKA Summit Closing Night.",
+    "images": []
+  },
+  {
+    "id": 13,
+    "title": "Advertisement Video",
+    "price": "$5,500",
+    "status": "AVAILABLE",
+    "icon": "📽️",
+    "iconBg": "bg-green-400",
+    "description": "15-20-second promotional video to be played during breaks and on large LED screens within the expo.",
+    "benefits": [
+      "Multiple showings throughout both conference days"
+    ],
+    "goldBenefits": [
+      "Silver sponsorship status and logo placement within event page",
+      "Silver Branding on site (main event)",
+      "Shared digital logo presented on display screens on site",
+      "Shared pre-event welcome post via social media channels",
+      "Logo within the event guide & agenda",
+      "Mention in post-event after movie"
+    ],
+    "tickets": "10 Standard tickets for IGaming AFRIKA Summit. 5 Tickets for IGaming AFRIKA Summit Closing Night.",
+    "images": []
+  },
+  {
+    "id": 14,
+    "title": "Branded Water Station Sponsorship (Exclusive)",
+    "price": "$4,500",
+    "status": "AVAILABLE",
+    "icon": "🚰",
+    "iconBg": "bg-green-400",
+    "description": "Opportunity to brand approximately 6 water stations placed in prominent locations.",
+    "benefits": [
+      "Water stations designed by sponsor"
+    ],
+    "goldBenefits": [
+      "Silver sponsorship status and logo placement within event page",
+      "Silver Branding on site (main event)",
+      "Shared digital logo presented on display screens on site",
+      "Shared pre-event welcome post via social media channels",
+      "Logo within the event guide & agenda",
+      "Mention in post-event after movie"
+    ],
+    "tickets": "10 Standard tickets for IGaming AFRIKA Summit. 5 Tickets for IGaming AFRIKA Summit Closing Night.",
+    "images": []
+  },
+  {
+    "id": 15,
+    "title": "Coffee Station Sponsorship Expo EAST (Exclusive)",
+    "price": "$4,500",
+    "status": "AVAILABLE",
+    "icon": "☕",
+    "iconBg": "bg-green-400",
+    "description": "Official coffee sponsor at the expo's east coffee station for both conference days.",
+    "benefits": [
+      "Coffee station closest to the registration entrance",
+      "Branded coffee counter and backdrop (to be designed by sponsor)",
+      "Option to bring branded merch or promo giveaways"
+    ],
+    "goldBenefits": [
+      "Gold sponsorship status and logo placement within event page",
+      "Gold Branding on site (main event)",
+      "Individual digital logo presented on display screens on site (10sec rotation)",
+      "Individual pre-event welcome post via social media channels",
+      "Logo within the event guide & agenda",
+      "Mention in credits within after movie"
+    ],
+    "tickets": "30 Standard Passes + 3 Premium Passes for IGaming AFRIKA Summit. 15 Tickets for IGaming AFRIKA Summit Closing Night.",
+    "images": []
+  },
+  {
+    "id": 16,
+    "title": "Entertainment Zone Sponsorship (Exclusive)",
+    "price": "$15,000",
+    "status": "AVAILABLE",
+    "icon": "🎮",
+    "iconBg": "bg-green-400",
+    "description": "Exclusive branding within the entertainment zone.",
+    "benefits": [
+      "Branding on 10m x 2.5m backdrop",
+      "3 x LED Totems (visuals to be provided by sponsor)",
+      "10m x 10m carpeting within the zone",
+      "*Company name* Entertainment Zone within the floorplan"
+    ],
+    "goldBenefits": [
+      "Gold sponsorship status and logo placement within event page",
+      "Gold Branding on site (main event)",
+      "Individual digital logo presented on display screens on site (10sec rotation)",
+      "Individual pre-event welcome post via social media channels",
+      "Logo within the event guide & agenda",
+      "Mention in credits within after movie"
+    ],
+    "tickets": "30 Standard Passes + 3 Premium Passes for IGaming AFRIKA Summit. 15 Tickets for IGaming AFRIKA Summit Closing Night.",
+    "images": []
+  },
+  {
+    "id": 17,
+    "title": "Expo Area Wall Mural Branding (Both sides)",
+    "price": "$55,000",
+    "status": "AVAILABLE",
+    "icon": "🖼️",
+    "iconBg": "bg-green-400",
+    "description": "Exclusive branding of 2 x 30m(w) x 3m(h) murals on either side of the expo (artwork by sponsor).",
+    "benefits": [],
+    "goldBenefits": [
+      "Gold sponsorship status and logo placement within event page",
+      "Gold Branding on site (main event)",
+      "Individual digital logo presented on display screens on site (10sec rotation)",
+      "Individual pre-event welcome post via social media channels",
+      "Logo within the event guide & agenda",
+      "Mention in credits within after movie"
+    ],
+    "tickets": "30 Standard Passes + 3 Premium Passes for IGaming AFRIKA Summit. 15 Tickets for IGaming AFRIKA Summit Closing Night.",
+    "images": []
+  },
+  {
+    "id": 18,
+    "title": "Expo Area LED Screen Branding (Both sides)",
+    "price": "$20,000",
+    "status": "AVAILABLE",
+    "icon": "📺",
+    "iconBg": "bg-green-400",
+    "description": "Large HD screens at both expo sides for digital branding. Materials by sponsor.",
+    "benefits": [
+      "LED Wall – 20m(w) x 4m(h) on either side of the expo hall"
+    ],
+    "goldBenefits": [
+      "Platinum sponsorship status and logo placement within event page",
+      "Platinum Branding on site (main event)",
+      "Logo on selected pre-event promotion in relation to your package (excluding peripheral events)",
+      "15-20 second advertisement video to be played in the main conference room and throughout the venue",
+      "Individual digital logo presented on display screens on site (20sec rotation)",
+      "Logo within email blasts related to the event",
+      "Watermarked logo to appear on all official photos from the onsite event",
+      "Individual pre-event welcome post via social media channels",
+      "Logo within the event guide & agenda",
+      "Logo displayed in credits within after movie"
+    ],
+    "tickets": "20 Standard Passes + 1 Premium Pass for IGaming AFRIKA Summit. 10 Tickets for IGaming AFRIKA Summit Closing Night.",
+    "images": []
+  },
+  {
+    "id": 19,
+    "title": "Entrance Area LED Screen Branding (One Side)",
+    "price": "$10,000",
+    "status": "AVAILABLE",
+    "icon": "🖥️",
+    "iconBg": "bg-green-400",
+    "description": "LED screen at entrance area (8m x 4m) for branding. Materials to be produced by sponsor.",
+    "benefits": [
+      "Located within Registration Desks area",
+      "50% visibility across three expo days"
+    ],
+    "goldBenefits": [
+      "Platinum sponsorship status and logo placement within event page",
+      "Platinum Branding on site (main event)",
+      "Logo on selected pre-event promotion in relation to your package (excluding peripheral events)",
+      "15-20 second advertisement video to be played in the main conference room and throughout the venue",
+      "Individual digital logo presented on display screens on site (20sec rotation)",
+      "Logo within email blasts related to the event",
+      "Watermarked logo to appear on all official photos from the onsite event",
+      "Individual pre-event welcome post via social media channels",
+      "Logo within the event guide & agenda",
+      "Logo displayed in credits within after movie"
+    ],
+    "tickets": "20 Standard Passes + 1 Premium Pass for IGaming AFRIKA Summit. 10 Tickets for IGaming AFRIKA Summit Closing Night.",
+    "images": []
+  },
+  {
+    "id": 20,
+    "title": "Soccer Tournament Sponsorship (Exclusive)",
+    "price": "$50,000",
+    "status": "AVAILABLE",
+    "icon": "⚽",
+    "iconBg": "bg-green-400",
+    "description": "Official sponsor of the soccer tournament (TBC). High visibility and branding opportunities.",
+    "benefits": [
+      "Invite up to 15 guests",
+      "Distribute branded gift/giveaway to all players",
+      "Giveaway prizes to winners",
+      "Logo on all pre-event marketing",
+      "Branding on-site: photo walls, feather flags, window stickers, directional signage"
+    ],
+    "goldBenefits": [
+      "Gold sponsorship status and logo placement within event page",
+      "Gold Branding on site at The Convene (main event)",
+      "Logo around entrance screen and signage boards",
+      "Logo on entrance pillars and sponsor wall",
+      "Individual digital logo presented on display screens on site (10sec rotation)",
+      "Individual pre-event welcome post via social media channels",
+      "Logo within the event guide & agenda",
+      "Mention in credits within after movie"
+    ],
+    "tickets": "30 Standard Passes + 3 Premium Passes for IGaming AFRIKA Summit. 15 Tickets for IGaming AFRIKA Summit Closing Night.",
+    "images": []
+  },
+  {
+    "id": 21,
+    "title": "Conference Hall 2 Chair Sponsor (Exclusive)",
+    "price": "$3,000",
+    "status": "AVAILABLE",
+    "icon": "💺",
+    "iconBg": "bg-green-400",
+    "description": "Your branding on every chair in Conference Hall 2.",
+    "benefits": [],
+    "goldBenefits": [
+      "Silver sponsorship status and logo placement within event page",
+      "Silver Branding on site (main event)",
+      "Shared digital logo presented on display screens on site",
+      "Shared pre-event welcome post via social media channels",
+      "Logo within the event guide & agenda",
+      "Mention in post-event after movie"
+    ],
+    "tickets": "10 Standard tickets for IGaming AFRIKA Summit. 5 Tickets for IGaming AFRIKA Summit Closing Night.",
+    "images": []
+  },
+  {
+    "id": 22,
+    "title": "Live Stream Sponsorship (Exclusive)",
+    "price": "$2,500",
+    "status": "AVAILABLE",
+    "icon": "📡",
+    "iconBg": "bg-green-400",
+    "description": "Sponsor the live stream with logo and ad video included.",
+    "benefits": [
+      "Logo within the livestream",
+      "Ad video included as intro"
+    ],
+    "goldBenefits": [
+      "Silver sponsorship status and logo placement within event page",
+      "Silver Branding on site (main event)",
+      "Shared digital logo presented on display screens on site",
+      "Shared pre-event welcome post via social media channels",
+      "Logo within the event guide & agenda",
+      "Mention in post-event after movie"
+    ],
+    "tickets": "10 Standard tickets for IGaming AFRIKA Summit. 5 Tickets for IGaming AFRIKA Summit Closing Night.",
+    "images": []
+  },
+  {
+    "id": 23,
+    "title": "Main Stage Chair Sponsorship (Exclusive)",
+    "price": "$3,500",
+    "status": "AVAILABLE",
+    "icon": "🪑",
+    "iconBg": "bg-green-400",
+    "description": "Branding displayed on every chair in the main stage seating area.",
+    "benefits": [],
+    "goldBenefits": [
+      "Silver sponsorship status and logo placement within event page",
+      "Silver Branding on site (main event)",
+      "Shared digital logo presented on display screens on site",
+      "Shared pre-event welcome post via social media channels",
+      "Logo within the event guide & agenda",
+      "Mention in post-event after movie"
+    ],
+    "tickets": "10 Standard tickets for IGaming AFRIKA Summit. 5 Tickets for IGaming AFRIKA Summit Closing Night.",
+    "images": []
+  },
+  {
+    "id": 24,
+    "title": "Registration Entrance Arch Branding (Exclusive)",
+    "price": "$6,500",
+    "status": "AVAILABLE",
+    "icon": "🏛️",
+    "iconBg": "bg-green-400",
+    "description": "Exclusive branding surrounding the registration arch entrance. Artwork supplied by sponsor.",
+    "benefits": [
+      "Guaranteed exposure at the main entrance façade",
+      "Highly visible to all delegates entering the venue"
+    ],
+    "goldBenefits": [
+      "Silver sponsorship status and logo placement within event page",
+      "Silver Branding on site (main event)",
+      "Shared digital logo presented on display screens on site",
+      "Shared pre-event welcome post via social media channels",
+      "Logo within the event guide & agenda",
+      "Mention in post-event after movie"
+    ],
+    "tickets": "10 Standard tickets for IGaming AFRIKA Summit. 5 Tickets for IGaming AFRIKA Summit Closing Night.",
+    "images": []
+  },
+  {
+    "id": 25,
+    "title": "Restroom Sponsorship (Exclusive)",
+    "price": "$7,500",
+    "status": "AVAILABLE",
+    "icon": "🚻",
+    "iconBg": "bg-green-400",
+    "description": "Branding within restrooms (TBC). *Bespoke package pricing available on request*.",
+    "benefits": [],
+    "goldBenefits": [
+      "Silver sponsorship status and logo placement within event page",
+      "Silver Branding on site (main event)",
+      "Shared digital logo presented on display screens on site",
+      "Shared pre-event welcome post via social media channels",
+      "Logo within the event guide & agenda",
+      "Mention in post-event after movie"
+    ],
+    "tickets": "10 Standard tickets for IGaming AFRIKA Summit. 5 Tickets for IGaming AFRIKA Summit Closing Night.",
+    "images": []
+  },
+  {
+    "id": 26,
+    "title": "Wi-Fi Sponsorship (Exclusive)",
+    "price": "$9,500",
+    "status": "AVAILABLE",
+    "icon": "📶",
+    "iconBg": "bg-green-400",
+    "description": "Brand featured in the WiFi network name and splash page for all attendees.",
+    "benefits": [
+      "Logo on the back of the delegate badge with Wi-Fi details",
+      "Customisable Wi-Fi login username and password"
+    ],
+    "goldBenefits": [
+      "Silver sponsorship status and logo placement within event page",
+      "Silver Branding on site (main event)",
+      "Shared digital logo presented on display screens on site",
+      "Shared pre-event welcome post via social media channels",
+      "Logo within the event guide & agenda",
+      "Mention in post-event after movie"
+    ],
+    "tickets": "25 Standard Passes + 2 Premium Passes for IGaming AFRIKA Summit. 12 Tickets for IGaming AFRIKA Summit Closing Night.",
+    "images": []
+  },
+  {
+    "id": 27,
+    "title": "Delegate Bag Sponsor (Exclusive)",
+    "price": "$9,500",
+    "status": "AVAILABLE",
+    "icon": "👜",
+    "iconBg": "bg-green-400",
+    "description": "Sponsor 5,000 delegate bags featuring the Sponsor Logo for maximum visual outreach.",
+    "benefits": [
+      "Delegate bags include the official agenda and select exhibitor treats",
+      "3,000 delegate bags to be provided by sponsor & delivered 2 weeks prior to the Summit"
+    ],
+    "goldBenefits": [
+      "Silver sponsorship status and logo placement within event page",
+      "Silver Branding on site (main event)",
+      "Shared digital logo presented on display screens on site",
+      "Shared pre-event welcome post via social media channels",
+      "Logo within the event guide & agenda",
+      "Mention in post-event after movie"
+    ],
+    "tickets": "10 Standard tickets for IGaming AFRIKA Summit. 5 Tickets for IGaming AFRIKA Summit Closing Night.",
+    "images": []
+  },
+  {
+    "id": 28,
+    "title": "Pen and Paper Sponsor",
+    "price": "$1,000",
+    "status": "AVAILABLE",
+    "icon": "🖊️",
+    "iconBg": "bg-green-400",
+    "description": "Branded pen and paper placed on every seat and in delegate bags.",
+    "benefits": [
+      "1,500 pens & notepads provided by sponsor and delivered 2 weeks prior to the Summit"
+    ],
+    "goldBenefits": [],
+    "tickets": "6 Standard tickets for IGaming AFRIKA Summit. 3 Tickets for IGaming AFRIKA Summit Closing Night.",
+    "images": []
+  },
+  {
+    "id": 29,
+    "title": "Delegate Bag Insert",
+    "price": "$750",
+    "status": "AVAILABLE",
+    "icon": "📄",
+    "iconBg": "bg-green-400",
+    "description": "Provide merchandise or brochures to be inserted in delegate bags.",
+    "benefits": [
+      "Up to 2,500 units of merchandise or A5 brochures",
+      "1,000 inserts to be delivered 2 weeks before the Summit"
+    ],
+    "goldBenefits": [
+      "Silver sponsorship status and logo placement within event page",
+      "Silver Branding on site (main event)",
+      "Shared digital logo presented on display screens on site",
+      "Shared pre-event welcome post via social media channels",
+      "Logo within the event guide & agenda",
+      "Mention in post-event after movie"
+    ],
+    "tickets": "1 Standard Pass for IGaming AFRIKA Summit.",
+    "images": []
+  },
+  {
+    "id": 30,
+    "title": "Conference Room Flyers",
+    "price": "$1,500",
+    "status": "AVAILABLE",
+    "icon": "📬",
+    "iconBg": "bg-green-400",
+    "description": "Place brochures or merchandise on every chair in the conference room.",
+    "benefits": [
+      "500 products to be delivered 2 weeks prior to the Summit"
+    ],
+    "goldBenefits": [],
+    "tickets": "1 Standard Pass for IGaming AFRIKA Summit.",
+    "images": []
+  },
+  {
+    "id": 31,
+    "title": "Conference Stage Chairs",
+    "price": "$9,500",
+    "status": "AVAILABLE",
+    "icon": "🪑",
+    "iconBg": "bg-green-400",
+    "description": "Branding on every chair within the conference halls seating area.",
+    "benefits": [
+      "Chair branding provided by sponsor & delivered 2 weeks prior to the Summit"
+    ],
+    "goldBenefits": [
+      "Silver sponsorship status and logo placement within event page",
+      "Silver Branding on site (main event)",
+      "Shared digital logo presented on display screens on site",
+      "Shared pre-event welcome post via social media channels",
+      "Logo within the event guide & agenda",
+      "Mention in post-event after movie"
+    ],
+    "tickets": "10 Standard tickets for IGaming AFRIKA Summit. 5 Tickets for IGaming AFRIKA Summit Closing Night.",
+    "images": []
+  },
+  {
+    "id": 32,
+    "title": "iGaming AFRIKA Connect Sponsor",
+    "price": "$3,000",
+    "status": "AVAILABLE",
+    "icon": "🤝",
+    "iconBg": "bg-green-400",
+    "description": "Host one of IGaming AFRIKA’s elite networking events.",
+    "benefits": [
+      "Invite up to 20 people (leads, clients, staff)",
+      "Full guest targeting and invitation handled by IGaming AFRIKA",
+      "Online visibility and social media coverage",
+      "Branding visibility at the event"
+    ],
+    "goldBenefits": [],
+    "tickets": "5 Standard tickets for IGaming AFRIKA Summit. 2 Tickets for IGaming AFRIKA Summit Closing Night.",
+    "images": []
+  },
+  {
+    "id": 33,
+    "title": "Networking Drinks Sponsor",
+    "price": "$7,500",
+    "status": "AVAILABLE",
+    "icon": "🍹",
+    "iconBg": "bg-green-400",
+    "description": "Sponsor evening networking drinks with branding and social media coverage.",
+    "benefits": [
+      "Open bar vouchers distributed to delegates",
+      "Venue branding handled by sponsor with organizer support"
+    ],
+    "goldBenefits": [],
+    "tickets": "10 Standard tickets for IGaming AFRIKA Summit. 5 Tickets for IGaming AFRIKA Summit Closing Night.",
+    "images": []
+  },
+  {
+    "id": 34,
+    "title": "Conference Panels Sponsor",
+    "price": "$1,000",
+    "status": "AVAILABLE",
+    "icon": "🎙️",
+    "iconBg": "bg-green-400",
+    "description": "Logo featured during a selected panel discussion at the conference.",
+    "benefits": [
+      "Logo on screen during the panel",
+      "Speaker/content approval required by IGaming AFRIKA Summit content team"
+    ],
+    "goldBenefits": [],
+    "tickets": "2 Standard tickets for IGaming AFRIKA Summit. 1 Ticket for IGaming AFRIKA Summit Closing Night.",
+    "images": []
+  }
+]
