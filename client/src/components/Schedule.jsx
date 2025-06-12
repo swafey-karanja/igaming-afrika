@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState } from "react";
 // eslint-disable-next-line no-unused-vars
 import { motion } from "framer-motion";
 
@@ -6,76 +6,80 @@ export default function Schedule() {
   const [activeTab, setActiveTab] = useState(0);
 
   const dates = [
-    { day: 'Mon', date: '28 July' },
-    { day: 'Tue', date: '29 July' },
-    { day: 'Wed', date: '30 July' },
-    { day: 'Thu', date: '31 July' }
+    { day: "Mon", date: "28 July" },
+    { day: "Tue", date: "29 July" },
+    { day: "Wed", date: "30 July" },
+    { day: "Thu", date: "31 July" },
   ];
 
   // Sample conference schedule data for each day
   const schedules = {
     0: [
       {
-        time: '00:00 - 23:00',
-        title: 'Arrival',
-        location: 'Jomo Kenyatta International Airport',
-        description: 'Arrival of Delegates & Badge Collection'
+        time: "00:00 - 23:00",
+        title: "Arrival",
+        location: "Jomo Kenyatta International Airport",
+        description: "Arrival of Delegates & Badge Collection",
       },
       {
-        time: '07:00 - 18:00',
-        title: 'Safari Tour ',
-        location: 'Masai Mara, Masai Market, Nairobi National Museum & Nairobi National Park',
-        description: 'A safari tour to see the wildlife present in the city of Nairobi'
+        time: "07:00 - 18:00",
+        title: "Safari Tour ",
+        location:
+          "Masai Mara, Masai Market, Nairobi National Museum & Nairobi National Park",
+        description:
+          "A safari tour to see the wildlife present in the city of Nairobi",
       },
       {
-        time: '16:30 – 19:30 ',
-        title: 'Pre Registration ',
-        location: ': GTC Residence, Nairobi',
-        description: 'Pre registration of event attendees and delegates'
-      }
+        time: "16:30 – 19:30 ",
+        title: "Pre Registration ",
+        location: ": GTC Residence, Nairobi",
+        description: "Pre registration of event attendees and delegates",
+      },
     ],
     1: [
       {
-        time: '9:30am - 5:30pm',
-        title: 'Conference & Exhibition ',
-        location: 'Sarit Expo Centre',
-        description: 'Day 1 of the event with attendees exhibiting their products'
+        time: "9:30am - 5:30pm",
+        title: "Conference & Exhibition ",
+        location: "Sarit Expo Centre",
+        description:
+          "Day 1 of the event with attendees exhibiting their products",
       },
       {
-        time: '10:00pm to 02:30am',
-        title: 'IGaming AFRIKA Closing Party ',
-        location: 'TBC',
-        description: 'IGaming AFRIKA Closing Party'
-      }
+        time: "10:00pm to 02:30am",
+        title: "IGaming AFRIKA Closing Party ",
+        location: "TBC",
+        description: "IGaming AFRIKA Closing Party",
+      },
     ],
     2: [
       {
-        time: '9:30am - 5:30pm',
-        title: 'Conference & Exhibition ',
-        location: 'Sarit Expo Centre',
-        description: 'Day 1 of the event with attendees exhibiting their products'
+        time: "9:30am - 5:30pm",
+        title: "Conference & Exhibition ",
+        location: "Sarit Expo Centre",
+        description:
+          "Day 1 of the event with attendees exhibiting their products",
       },
       {
-        time: '8:00pm - 12:30pm',
-        title: '-	Networking Dinner',
-        location: 'Sarit Expo Centre',
-        description: 'Networking Dinner, and IGaming AFRIKA Awards ceremony'
-      }
+        time: "8:00pm - 12:30pm",
+        title: "-	Networking Dinner",
+        location: "Sarit Expo Centre",
+        description: "Networking Dinner, and IGaming AFRIKA Awards ceremony",
+      },
     ],
     3: [
       {
-        time: '9:30am - 5:30pm',
-        title: 'Delegates Leave',
-        location: 'Jomo Kenyatta International Airport',
-        description: ''
+        time: "9:30am - 5:30pm",
+        title: "Delegates Leave",
+        location: "Jomo Kenyatta International Airport",
+        description: "",
       },
-    ]
+    ],
   };
 
   // Animation variants
   const fadeIn = {
     hidden: { opacity: 0, y: 20 },
-    visible: { opacity: 1, y: 0, transition: { duration: 0.5 } }
+    visible: { opacity: 1, y: 0, transition: { duration: 0.5 } },
   };
 
   const staggerContainer = {
@@ -84,36 +88,52 @@ export default function Schedule() {
       opacity: 1,
       transition: {
         staggerChildren: 0.1,
-        delayChildren: 0.2
-      }
-    }
+        delayChildren: 0.2,
+      },
+    },
   };
 
   const scheduleItem = {
     hidden: { opacity: 0, y: 20 },
-    visible: { opacity: 1, y: 0 }
+    visible: { opacity: 1, y: 0 },
   };
 
   // Calculate the maximum number of sessions across all days
-  const maxSessions = Math.max(...Object.values(schedules).map(day => day.length));
+  const maxSessions = Math.max(
+    ...Object.values(schedules).map((day) => day.length)
+  );
 
   return (
-    <div className="bg-gray-100 px-2 sm:px-4 md:px-6 lg:px-8 py-8 md:py-12 lg:py-16">
+    <div className="bg-gray-100 px-2 sm:px-4 md:px-6 lg:px-8 py-8 md:py-8 lg:py-8">
       <div className="max-w-7xl mx-auto px-2 sm:px-4">
         {/* Section Header with animation */}
-        <motion.h2 
+        <motion.div
+          className="text-center mb-16"
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true }}
           variants={fadeIn}
-          className="text-2xl sm:text-3xl text-center uppercase font-bold tracking-tight text-green-700 md:text-4xl mb-2 sm:mb-6"
         >
-          Schedule
-        </motion.h2>
-        <motion.div className="w-20 h-1 bg-green-700 mx-auto mb-6"></motion.div>
-        
+          <div className="inline-flex items-center gap-3 mb-4">
+            <h2 className="text-4xl font-bold bg-gradient-to-r from-green-700 to-green-600 bg-clip-text text-transparent mb-2">
+              Schedule
+            </h2>
+          </div>
+          <motion.div
+            className="w-20 h-1 bg-gradient-to-r from-green-600 to-green-500 mx-auto rounded-full mb-6"
+            initial={{ width: 0 }}
+            whileInView={{ width: 96 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8, delay: 0.3 }}
+          />
+          <p className="text-gray-600 max-w-2xl mx-auto">
+            Get a detailed view of the event's activities and when they will be
+            happening
+          </p>
+        </motion.div>
+
         {/* Date Tabs with animation - Improved for small screens */}
-        <motion.div 
+        <motion.div
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true }}
@@ -127,8 +147,8 @@ export default function Schedule() {
               whileTap={{ scale: 0.95 }}
               className={`px-2 sm:px-4 py-2 text-center focus:outline-none flex-1 min-w-max sm:min-w-0 hover:cursor-pointer transition-colors duration-300 ${
                 activeTab === index
-                  ? 'border-b-3 border-green-600 text-green-600 font-bold'
-                  : 'text-gray-500 hover:text-green-600'
+                  ? "border-b-3 border-green-600 text-green-600 font-bold"
+                  : "text-gray-500 hover:text-green-600"
               }`}
               onClick={() => setActiveTab(index)}
             >
@@ -139,19 +159,19 @@ export default function Schedule() {
         </motion.div>
 
         {/* Schedule Content with animations */}
-        <motion.div 
+        <motion.div
           className="py-4 sm:py-6 transition-all duration-300 ease-in-out"
           style={{
             minHeight: `${maxSessions * 120 + 80}px`,
-            height: 'auto',
-            overflow: 'hidden'
+            height: "auto",
+            overflow: "hidden",
           }}
           initial="hidden"
           animate="visible"
           variants={fadeIn}
           transition={{ delay: 0.2 }}
         >
-          <motion.h2 
+          <motion.h2
             className="text-lg sm:text-xl font-bold mb-4 sm:mb-6 px-2"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
@@ -160,7 +180,7 @@ export default function Schedule() {
             {dates[activeTab].day}, {dates[activeTab].date} Schedule
           </motion.h2>
 
-          <motion.div 
+          <motion.div
             className="space-y-4 sm:space-y-6 md:space-y-8"
             initial="hidden"
             animate="visible"
@@ -176,35 +196,46 @@ export default function Schedule() {
                 >
                   <div className="flex flex-col md:flex-row md:items-start gap-3 sm:gap-4 md:gap-6">
                     <div className="w-full md:w-1/4 mb-2 md:mb-0">
-                      <p className="text-xs sm:text-sm font-semibold text-green-600">{session.time}</p>
-                      <p className="text-gray-500 text-xs sm:text-md mt-1">{session.location}</p>
+                      <p className="text-xs sm:text-sm font-semibold text-green-600">
+                        {session.time}
+                      </p>
+                      <p className="text-gray-500 text-xs sm:text-md mt-1">
+                        {session.location}
+                      </p>
                     </div>
                     <div className="w-full md:w-3/4">
-                      <h3 className="text-sm sm:text-md font-bold mb-2">{session.title}</h3>
-                      <p className="text-gray-700 mb-2 sm:mb-3 text-xs sm:text-sm">{session.description}</p>
-                      
+                      <h3 className="text-sm sm:text-md font-bold mb-2">
+                        {session.title}
+                      </h3>
+                      <p className="text-gray-700 mb-2 sm:mb-3 text-xs sm:text-sm">
+                        {session.description}
+                      </p>
+
                       {session.speaker && (
-                        <motion.p 
+                        <motion.p
                           className="text-xs sm:text-sm text-gray-600"
                           initial={{ opacity: 0 }}
                           animate={{ opacity: 1 }}
                           transition={{ delay: 0.2 }}
                         >
-                          <span className="font-medium">Speaker:</span> {session.speaker}
+                          <span className="font-medium">Speaker:</span>{" "}
+                          {session.speaker}
                         </motion.p>
                       )}
 
                       {session.speakers && (
-                        <motion.div 
+                        <motion.div
                           className="mt-2"
                           initial={{ opacity: 0 }}
                           animate={{ opacity: 1 }}
                           transition={{ delay: 0.3 }}
                         >
-                          <p className="text-xs sm:text-sm text-gray-600 font-medium">Speakers:</p>
+                          <p className="text-xs sm:text-sm text-gray-600 font-medium">
+                            Speakers:
+                          </p>
                           <ul className="list-disc list-inside text-xs sm:text-sm text-gray-600 ml-1">
                             {session.speakers.map((speaker, i) => (
-                              <motion.li 
+                              <motion.li
                                 key={i}
                                 initial={{ opacity: 0, x: -10 }}
                                 animate={{ opacity: 1, x: 0 }}
@@ -223,7 +254,12 @@ export default function Schedule() {
             ) : (
               <motion.div
                 className="text-gray-500 text-center py-6 sm:py-8"
-                style={{ height: '120px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}
+                style={{
+                  height: "120px",
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "center",
+                }}
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 transition={{ delay: 0.2 }}
@@ -239,7 +275,7 @@ export default function Schedule() {
 }
 
 /* Additional CSS for hiding scrollbars but enabling scroll functionality */
-const style = document.createElement('style');
+const style = document.createElement("style");
 style.textContent = `
   .hide-scrollbar {
     -ms-overflow-style: none;  /* IE and Edge */
