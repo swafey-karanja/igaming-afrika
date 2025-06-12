@@ -1,46 +1,56 @@
-import React, { useState, useCallback, useMemo, useEffect, useRef } from 'react';
-import { ChevronLeft, ChevronRight, X } from 'lucide-react';
+import React, {
+  useState,
+  useCallback,
+  useMemo,
+  useEffect,
+  useRef,
+} from "react";
+import { ChevronLeft, ChevronRight, X } from "lucide-react";
 // eslint-disable-next-line no-unused-vars
 import { motion, AnimatePresence } from "framer-motion";
-import { useSelector, useDispatch } from 'react-redux';
-import { fetchImages } from '../store/imageSlice';
+import { useSelector, useDispatch } from "react-redux";
+import { fetchImages } from "../store/imageSlice";
 
 const slideVariants = {
   enter: (direction) => ({
     x: direction > 0 ? 1000 : -1000,
-    opacity: 0
+    opacity: 0,
   }),
   center: {
     x: 0,
-    opacity: 1
+    opacity: 1,
   },
   exit: (direction) => ({
     x: direction > 0 ? -1000 : 1000,
-    opacity: 0
-  })
+    opacity: 0,
+  }),
 };
 
 const fadeIn = {
-  hidden: { opacity: 0 },
-  visible: { opacity: 1, transition: { duration: 1.5 } }
+  hidden: { opacity: 0, y: 20 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.6 },
+  },
 };
 
 const modalVariants = {
   hidden: { opacity: 0, scale: 0.8 },
-  visible: { 
-    opacity: 1, 
+  visible: {
+    opacity: 1,
     scale: 1,
-    transition: { duration: 0.3 }
-  }
+    transition: { duration: 0.3 },
+  },
 };
 
 const backdropVariants = {
   hidden: { opacity: 0 },
-  visible: { opacity: 1 }
+  visible: { opacity: 1 },
 };
 
 const resizeImage = (url, width = 500, height = 400) => {
-  return url.replace('/upload/', `/upload/w_${width},h_${height},c_fill/`);
+  return url.replace("/upload/", `/upload/w_${width},h_${height},c_fill/`);
 };
 
 const ImageCarousel = () => {
@@ -75,23 +85,28 @@ const ImageCarousel = () => {
     };
 
     updateImagesPerView();
-    window.addEventListener('resize', updateImagesPerView);
-    
-    return () => window.removeEventListener('resize', updateImagesPerView);
+    window.addEventListener("resize", updateImagesPerView);
+
+    return () => window.removeEventListener("resize", updateImagesPerView);
   }, []);
 
   // Preload current set of visible images and adjacent images
   useEffect(() => {
     if (!images || images.length === 0) return;
-    
+
     // Function to preload an image
     const preloadImage = (index) => {
-      if (index < 0 || index >= images.length || preloadedImagesRef.current[index]) return;
-      
+      if (
+        index < 0 ||
+        index >= images.length ||
+        preloadedImagesRef.current[index]
+      )
+        return;
+
       const img = new Image();
       img.src = resizeImage(images[index]);
       img.onload = () => {
-        setLoadedImages(prev => ({ ...prev, [index]: true }));
+        setLoadedImages((prev) => ({ ...prev, [index]: true }));
         preloadedImagesRef.current[index] = true;
       };
     };
@@ -106,14 +121,14 @@ const ImageCarousel = () => {
   // Initial preload of first few images
   useEffect(() => {
     if (!images || images.length === 0) return;
-    
+
     // Preload first set of images
     const imagesToPreload = Math.min(imagesPerView * 2, images.length);
     for (let i = 0; i < imagesToPreload; i++) {
       const img = new Image();
       img.src = resizeImage(images[i]);
       img.onload = () => {
-        setLoadedImages(prev => ({ ...prev, [i]: true }));
+        setLoadedImages((prev) => ({ ...prev, [i]: true }));
         preloadedImagesRef.current[i] = true;
       };
     }
@@ -122,31 +137,33 @@ const ImageCarousel = () => {
   const nextSlide = useCallback(() => {
     if (!images || images.length === 0) return;
     setDirection(1);
-    setCurrentIndex(prev => (prev + imagesPerView) % images.length);
+    setCurrentIndex((prev) => (prev + imagesPerView) % images.length);
   }, [images, imagesPerView]);
 
   const prevSlide = useCallback(() => {
     if (!images || images.length === 0) return;
     setDirection(-1);
-    setCurrentIndex(prev => {
+    setCurrentIndex((prev) => {
       const newIndex = prev - imagesPerView;
-      return newIndex < 0 ? Math.max(0, images.length - (Math.abs(newIndex) % images.length)) : newIndex;
+      return newIndex < 0
+        ? Math.max(0, images.length - (Math.abs(newIndex) % images.length))
+        : newIndex;
     });
   }, [images, imagesPerView]);
 
   const openModal = (index) => {
     setModalImageIndex(index);
     setIsModalOpen(true);
-    document.body.style.overflow = 'hidden'; // Prevent scrolling when modal is open
+    document.body.style.overflow = "hidden"; // Prevent scrolling when modal is open
   };
 
   const closeModal = () => {
     setIsModalOpen(false);
-    document.body.style.overflow = 'auto'; // Re-enable scrolling
+    document.body.style.overflow = "auto"; // Re-enable scrolling
   };
 
   const handleModalNavigation = (direction) => {
-    if (direction === 'next') {
+    if (direction === "next") {
       setModalImageIndex((prev) => (prev + 1) % images.length);
     } else {
       setModalImageIndex((prev) => (prev - 1 + images.length) % images.length);
@@ -156,7 +173,7 @@ const ImageCarousel = () => {
   // Get the current set of images to display
   const currentImages = useMemo(() => {
     if (!images || images.length === 0) return [];
-    
+
     const result = [];
     for (let i = 0; i < imagesPerView; i++) {
       const index = (currentIndex + i) % images.length;
@@ -165,8 +182,14 @@ const ImageCarousel = () => {
     return result;
   }, [currentIndex, images, imagesPerView]);
 
-  const handleTouchStart = useCallback((e) => setTouchStart(e.targetTouches[0].clientX), []);
-  const handleTouchMove = useCallback((e) => setTouchEnd(e.targetTouches[0].clientX), []);
+  const handleTouchStart = useCallback(
+    (e) => setTouchStart(e.targetTouches[0].clientX),
+    []
+  );
+  const handleTouchMove = useCallback(
+    (e) => setTouchEnd(e.targetTouches[0].clientX),
+    []
+  );
   const handleTouchEnd = useCallback(() => {
     if (!touchStart || !touchEnd) return;
     const distance = touchStart - touchEnd;
@@ -181,25 +204,41 @@ const ImageCarousel = () => {
   if (!images || images.length === 0) return null;
 
   return (
-    <div className="bg-gray-100 max-h-screen flex items-center justify-center py-8 md:py-12 lg:py-16 px-4 sm:px-6 md:px-8">
-      <div className="w-full max-w-6xl">
-        <motion.h2
+    <div className="bg-gray-100 max-h-screen flex items-center justify-center py-8 md:py-8 lg:py-8 px-4 sm:px-6 md:px-8">
+      <div className="w-full max-w-7xl">
+        <motion.div
+          className="text-center mb-16"
           initial="hidden"
           whileInView="visible"
-          viewport={{ once: true, amount: 0.5 }}
+          viewport={{ once: true }}
           variants={fadeIn}
-          className="text-2xl sm:text-3xl text-center uppercase font-bold tracking-tight text-green-700 md:text-4xl mb-2 sm:mb-6"
         >
-          PAST EVENTS
-        </motion.h2>
-        <motion.div className="w-20 h-1 bg-green-700 mx-auto mb-6"></motion.div>
+          <div className="inline-flex items-center gap-3 mb-4">
+            <h2 className="text-4xl font-bold bg-gradient-to-r from-green-700 to-green-600 bg-clip-text text-transparent mb-2">
+              Past Events
+            </h2>
+          </div>
+          <motion.div
+            className="w-20 h-1 bg-gradient-to-r from-green-600 to-green-500 mx-auto rounded-full mb-6"
+            initial={{ width: 0 }}
+            whileInView={{ width: 96 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8, delay: 0.3 }}
+          />
+          <p className="text-gray-600 max-w-2xl mx-auto">
+            Explore Images from past iGaming events
+          </p>
+        </motion.div>
 
-        <p className="mt-2 mb-2 text-xl text-gray-900 font-semibold">Africa Pulse workshop - Malta</p>
+        <p className="mt-2 mb-2 text-xl text-gray-900 font-semibold">
+          Africa Pulse workshop - Malta
+        </p>
         <p className="mb-6 text-sm tracking-tight text-gray-900">
-          The Africa Pulse is a regional economic update published by the World Bank.
-          It provides insights into economic trends, growth projections, and challenges
-          in Sub-Saharan Africa. The last event took place in November, 2024 at Grand
-          Hotel Excelsior, Castille room (level 7) in Malta.
+          The Africa Pulse is a regional economic update published by the World
+          Bank. It provides insights into economic trends, growth projections,
+          and challenges in Sub-Saharan Africa. The last event took place in
+          November, 2024 at Grand Hotel Excelsior, Castille room (level 7) in
+          Malta.
         </p>
 
         <div
@@ -218,24 +257,28 @@ const ImageCarousel = () => {
               exit="exit"
               transition={{
                 x: { type: "spring", stiffness: 300, damping: 30 },
-                opacity: { duration: 0.5 }
+                opacity: { duration: 0.5 },
               }}
               className="absolute inset-0 flex gap-2 md:gap-4"
             >
               {currentImages.map(({ image, index }) => (
-                <div 
-                  key={index} 
+                <div
+                  key={index}
                   className={`cursor-pointer ${
-                    imagesPerView === 1 ? 'w-full' : 
-                    imagesPerView === 2 ? 'w-1/2' : 
-                    'w-1/3'
+                    imagesPerView === 1
+                      ? "w-full"
+                      : imagesPerView === 2
+                      ? "w-1/2"
+                      : "w-1/3"
                   }`}
                   onClick={() => openModal(index)}
                 >
                   <img
                     src={resizeImage(image)}
                     alt={`Image ${index + 1}`}
-                    className={`object-cover w-full h-full rounded-md transition-opacity duration-500 ${loadedImages[index] ? 'opacity-100' : 'opacity-0'}`}
+                    className={`object-cover w-full h-full rounded-md transition-opacity duration-500 ${
+                      loadedImages[index] ? "opacity-100" : "opacity-0"
+                    }`}
                     loading="eager"
                   />
                 </div>
@@ -294,7 +337,7 @@ const ImageCarousel = () => {
                 <button
                   onClick={(e) => {
                     e.stopPropagation();
-                    handleModalNavigation('prev');
+                    handleModalNavigation("prev");
                   }}
                   className="cursor-pointer absolute left-4 top-1/2 transform -translate-y-1/2 bg-green-500 hover:bg-green-700 bg-opacity-50 text-white p-2 rounded-full hover:bg-opacity-75"
                   aria-label="Previous image"
@@ -304,7 +347,7 @@ const ImageCarousel = () => {
                 <button
                   onClick={(e) => {
                     e.stopPropagation();
-                    handleModalNavigation('next');
+                    handleModalNavigation("next");
                   }}
                   className="cursor-pointer absolute right-4 top-1/2 transform -translate-y-1/2 bg-green-500 hover:bg-green-700 bg-opacity-50 text-white p-2 rounded-full hover:bg-opacity-75"
                   aria-label="Next image"
