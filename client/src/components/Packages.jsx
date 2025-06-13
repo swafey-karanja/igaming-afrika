@@ -114,7 +114,7 @@ const Packages = () => {
         variants={fadeIn}
       >
         <div className="inline-flex items-center gap-3 mb-4">
-          <h2 className="text-4xl font-bold bg-gradient-to-r from-green-700 to-green-600 bg-clip-text text-transparent mb-2">
+          <h2 className="text-2xl md:text-4xl font-bold bg-gradient-to-r from-green-700 to-green-600 bg-clip-text text-transparent mb-2">
             Sponsorship Opportunities
           </h2>
         </div>
@@ -125,7 +125,7 @@ const Packages = () => {
           viewport={{ once: true }}
           transition={{ duration: 0.8, delay: 0.3 }}
         />
-        <p className="text-gray-600 max-w-2xl mx-auto">
+        <p className="text-gray-600 max-w-2xl mx-auto text-sm md:text-md">
           Join iGaming AFRIKA 2025 and showcase your brand to industry leaders
           across the continent.
         </p>
@@ -300,7 +300,7 @@ const Packages = () => {
                     {selectedPackage.benefits.map((benefit, index) => (
                       <div
                         key={index}
-                        className="flex items-start gap-3 p-3 bg-green-50 rounded-lg"
+                        className="flex items-start gap-3 p-1 rounded-lg"
                       >
                         <CheckCircle
                           size={16}
@@ -325,7 +325,7 @@ const Packages = () => {
                       {selectedPackage.goldBenefits.map((benefit, index) => (
                         <div
                           key={index}
-                          className="flex items-start gap-3 p-3 bg-yellow-50 rounded-lg"
+                          className="flex items-start gap-3 p-1 rounded-lg"
                         >
                           <Star
                             size={16}
@@ -348,7 +348,7 @@ const Packages = () => {
                       Included Tickets
                     </h3>
                   </div>
-                  <div className="p-4 bg-blue-50 rounded-lg">
+                  <div className="p-1 rounded-lg">
                     <p className="text-gray-700">{selectedPackage.tickets}</p>
                   </div>
                 </div>

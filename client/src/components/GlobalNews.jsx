@@ -154,7 +154,7 @@ const GlobalNews = () => {
           variants={headerVariants}
         >
           <div className="inline-flex items-center gap-3 mb-4">
-            <h2 className="text-4xl font-bold bg-gradient-to-r from-green-700 to-green-600 bg-clip-text text-transparent mb-2">
+            <h2 className="text-2xl md:text-4xl font-bold bg-gradient-to-r from-green-700 to-green-600 bg-clip-text text-transparent mb-2">
               News & Blogs
             </h2>
           </div>
@@ -165,7 +165,7 @@ const GlobalNews = () => {
             viewport={{ once: true }}
             transition={{ duration: 0.8, delay: 0.3 }}
           />
-          <p className="text-gray-600 max-w-2xl mx-auto">
+          <p className="text-gray-600 max-w-2xl mx-auto text-sm md:text-md">
             Catch up on the latest news and events from the world of gaming.
           </p>
         </motion.div>
@@ -262,9 +262,10 @@ const GlobalNews = () => {
               onClick={handleShowMore}
               whileHover={{ scale: 1.02 }}
               whileTap={{ scale: 0.98 }}
-              className="px-8 py-3 bg-green-500 text-white rounded-full hover:bg-green-600 transition-all duration-200 font-medium shadow-sm hover:shadow-md"
+              className="inline-flex items-center gap-2 px-8 py-3 bg-green-500 text-white rounded-full hover:bg-green-600 transition-all duration-200 font-medium shadow-sm hover:shadow-md"
             >
               Load More Stories
+              <IoMdRefresh />
             </motion.button>
           </motion.div>
         )}
