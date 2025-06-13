@@ -1,9 +1,16 @@
 import { useState, useEffect } from "react";
 import { NavLink } from "react-router-dom";
+import {
+  FaTwitter,
+  FaLinkedin,
+  FaYoutube,
+  FaInstagram,
+  FaTelegramPlane,
+  FaSearch,
+  FaFacebook,
+} from "react-icons/fa";
 import { countries, menuItems, options } from "../data/dropdownData";
 import DropdownMenu, { NewsDropdown } from "./utils/DropdownMenus";
-import MobileSidebar from "./utils/MobileSidebar";
-import SocialIcons from "./utils/SocialIcons";
 
 const Navbar = () => {
   const [isSidebarOpen, setSidebarOpen] = useState(false);
@@ -15,123 +22,394 @@ const Navbar = () => {
     seconds: 0,
   });
 
+  // Calculate time left until the event (May 7, 2025)
   useEffect(() => {
-    const eventDate = new Date("July 28, 2026").getTime();
-    const timer = setInterval(() => {
+    const calculateTimeLeft = () => {
+      const eventDate = new Date("July 28, 2026").getTime();
       const now = new Date().getTime();
-      const diff = eventDate - now;
-      if (diff > 0) {
+      const difference = eventDate - now;
+
+      if (difference > 0) {
         setTimeLeft({
-          days: Math.floor(diff / (1000 * 60 * 60 * 24)),
-          hours: Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)),
-          minutes: Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60)),
-          seconds: Math.floor((diff % (1000 * 60)) / 1000),
+          days: Math.floor(difference / (1000 * 60 * 60 * 24)),
+          hours: Math.floor(
+            (difference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)
+          ),
+          minutes: Math.floor((difference % (1000 * 60 * 60)) / (1000 * 60)),
+          seconds: Math.floor((difference % (1000 * 60)) / 1000),
         });
       }
-    }, 1000);
+    };
+
+    const timer = setInterval(calculateTimeLeft, 1000);
+    calculateTimeLeft(); // Initial calculation
+
     return () => clearInterval(timer);
   }, []);
 
+  // Add scroll event listener to detect when user scrolls
   useEffect(() => {
-    const handleScroll = () => setIsScrolled(window.scrollY > 50);
+    const handleScroll = () => {
+      if (window.scrollY > 50) {
+        setIsScrolled(true);
+      } else {
+        setIsScrolled(false);
+      }
+    };
+
     window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
   }, []);
 
+  // Close sidebar when clicking outside on smaller screens
   useEffect(() => {
     const handleResize = () => {
-      if (window.innerWidth >= 1024 && isSidebarOpen) setSidebarOpen(false);
+      if (window.innerWidth >= 1024 && isSidebarOpen) {
+        setSidebarOpen(false);
+      }
     };
+
     window.addEventListener("resize", handleResize);
-    return () => window.removeEventListener("resize", handleResize);
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
   }, [isSidebarOpen]);
 
   return (
     <div className="relative bg-black">
-      {/* Header + Nav */}
       <header
-        className={`fixed top-0 w-full z-40 py-2 sm:py-3 md:py-4 xl:py-6 lg:py-5 transition-all duration-700 ${
+        className={`fixed top-0 left-0 w-full inset-x-0 z-40 py-2 sm:py-3 md:py-4 xl:py-6 lg:py-5 transition-all duration-700 ease-in-out ${
           isScrolled
-            ? "bg-gray-100 shadow-md text-black"
+            ? "bg-gray-100 shadow-md drop-shadow-md text-black"
             : "bg-transparent text-white"
         }`}
       >
-        <div className="px-4 sm:px-6 lg:px-8 mx-auto max-w-7xl flex items-center justify-between relative">
-          <div className="lg:hidden flex items-center">
+        <div className="px-4 sm:px-6 lg:px-8 mx-auto max-w-7xl">
+          <div className="flex items-center lg:justify-between lg:items-stretch lg:flex-row relative">
+            {/* Hamburger Menu - Only visible on small screens */}
+            <div
+              className={`lg:hidden flex items-center ${
+                isSidebarOpen ? "hidden" : ""
+              }`}
+            >
+              <button
+                onClick={() => setSidebarOpen(!isSidebarOpen)}
+                type="button"
+                className={`cursor-pointer p-2 transition-all duration-200 rounded-full text-green-600`}
+                aria-label="Toggle menu"
+              >
+                <svg
+                  className="w-6 h-6"
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth="2"
+                    d="M4 6h16M4 12h16M4 18h16"
+                  />
+                </svg>
+              </button>
+            </div>
+
+            {/* Logo */}
+            <div
+              className={`flex flex-shrink-0 lg:mx-0 lg:flex-grow-0 ml-4 ${
+                isSidebarOpen ? "hidden" : ""
+              }`}
+            >
+              <NavLink
+                to="/"
+                title="iGaming Afrika"
+                className="inline-flex rounded-md"
+                onClick={() => {
+                  // If we're already on the home page, force a reload
+                  if (window.location.pathname === "/") {
+                    window.location.reload();
+                  }
+                }}
+              >
+                <img
+                  className="w-auto h-10 sm:h-12 md:h-16 lg:h-20"
+                  src="/Summit2_trimmed.png"
+                  alt="iGaming Afrika"
+                />
+              </NavLink>
+            </div>
+            {/* Desktop Nav */}
+            <nav className="hidden lg:flex lg:items-center lg:justify-center xl:space-x-7 lg:space-x-6 whitespace-nowrap w-full max-w-3xl lg:max-w-4xl">
+              <NewsDropdown isScrolled={isScrolled} isInSidebar={false} />
+              <DropdownMenu
+                label="countries"
+                isScrolled={isScrolled}
+                isInSidebar={false}
+                items={countries}
+              />
+              <DropdownMenu
+                label="Publications"
+                isScrolled={isScrolled}
+                isInSidebar={false}
+                items={menuItems}
+              />
+              <DropdownMenu
+                label="iGaming Directory"
+                isScrolled={isScrolled}
+                isInSidebar={false}
+                items={options}
+              />
+              <button
+                className={`hover:bg-green-600 hover:bg-opacity-20 hover:cursor-pointer text-xs text-white font-bold py-1.5 px-4 lg:py-2 lg:px-6 lg:text-sm border border-green-600 rounded-md ${
+                  isScrolled ? "text-white bg-green-600" : "text-white"
+                }`}
+              >
+                <NavLink to="/register" className="">
+                  PRE-REGISTER 2026
+                </NavLink>
+              </button>
+            </nav>
+
+            {/* Right Side Social Links */}
+            <div className="hidden lg:flex lg:items-center xl:space-x-3 lg:space-x-3 sm:text-lg lg:text-lg">
+              <a
+                href="https://x.com/igamingafrika/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className={`${
+                  isScrolled ? "text-black" : "text-white"
+                } hover:text-blue-400`}
+                aria-label="Twitter"
+              >
+                <FaTwitter />
+              </a>
+              <a
+                href="https://www.linkedin.com/company/igamingafrika/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className={`${
+                  isScrolled ? "text-black" : "text-white"
+                } hover:text-blue-700`}
+                aria-label="LinkedIn"
+              >
+                <FaLinkedin />
+              </a>
+              <a
+                href="https://www.youtube.com/@igamingafrika?themeRefresh=1"
+                target="_blank"
+                rel="noopener noreferrer"
+                className={`${
+                  isScrolled ? "text-black" : "text-white"
+                } hover:text-red-600`}
+                aria-label="YouTube"
+              >
+                <FaYoutube />
+              </a>
+              <a
+                href="https://www.instagram.com/igamingafrika/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className={`${
+                  isScrolled ? "text-black" : "text-white"
+                } hover:text-pink-500`}
+                aria-label="Instagram"
+              >
+                <FaInstagram />
+              </a>
+              <a
+                href="https://t.me/igamingafrika"
+                target="_blank"
+                rel="noopener noreferrer"
+                className={`${
+                  isScrolled ? "text-black" : "text-white"
+                } hover:text-blue-500`}
+                aria-label="Telegram"
+              >
+                <FaTelegramPlane />
+              </a>
+              <a
+                href="https://www.facebook.com/IgamingAfrika/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className={`${
+                  isScrolled ? "text-black" : "text-white"
+                } hover:text-blue-500`}
+                aria-label="Facebook"
+              >
+                <FaFacebook />
+              </a>
+              <button
+                className={`${
+                  isScrolled ? "text-black" : "text-white"
+                } ml-5 lg:ml-6 hover:text-gray-500`}
+                aria-label="Search"
+              >
+                <FaSearch />
+              </button>
+            </div>
+          </div>
+        </div>
+      </header>
+
+      {/* Mobile Sidebar Overlay */}
+      <div
+        className={`fixed inset-0 z-20 bg-opacity-60 lg:hidden transition-opacity duration-300 ${
+          isSidebarOpen
+            ? "opacity-100 pointer-events-auto"
+            : "opacity-0 pointer-events-none"
+        }`}
+        onClick={() => setSidebarOpen(!isSidebarOpen)}
+        aria-hidden="true"
+      />
+
+      {/* Mobile Sidebar */}
+      <div
+        className={`fixed top-0 left-0 z-30 w-full h-screen transform transition-transform duration-300 ease-in-out lg:hidden bg-green-600 ${
+          isSidebarOpen ? "translate-x-0" : "-translate-x-full"
+        }`}
+        aria-label="Mobile navigation"
+      >
+        <div className="flex flex-col h-full">
+          {/* Header Section */}
+          <div className="flex justify-between items-center p-3 border-b border-white/10">
             <button
-              onClick={() => setSidebarOpen(true)}
-              className="cursor-pointer p-2 text-green-600"
-              aria-label="Toggle menu"
+              onClick={() => setSidebarOpen(!isSidebarOpen)}
+              className="p-2 rounded-full hover:bg-white/10 transition-colors duration-200 text-white"
+              aria-label="Close menu"
             >
               <svg
-                className="w-6 h-6"
+                className="w-7 h-7"
                 fill="none"
-                viewBox="0 0 24 24"
                 stroke="currentColor"
+                viewBox="0 0 24 24"
               >
                 <path
                   strokeLinecap="round"
                   strokeLinejoin="round"
-                  strokeWidth="2"
-                  d="M4 6h16M4 12h16M4 18h16"
+                  strokeWidth={2}
+                  d="M6 18L18 6M6 6l12 12"
                 />
               </svg>
             </button>
           </div>
 
-          <div className="flex flex-shrink-0 ml-4">
-            <NavLink
-              to="/"
-              onClick={() =>
-                window.location.pathname === "/" && window.location.reload()
-              }
-            >
-              <img
-                src="/Summit2_trimmed.png"
-                alt="iGaming Afrika"
-                className="h-10 sm:h-12 md:h-16 lg:h-20"
-              />
-            </NavLink>
+          {/* Scrollable Content */}
+          <div className="flex-1 overflow-y-auto">
+            <div className="p-6 space-y-6">
+              {/* Search Bar */}
+              <div className="relative">
+                <input
+                  type="text"
+                  placeholder="Search..."
+                  className="w-full py-3 pl-4 pr-12 rounded-xl text-white text-sm placeholder-white/70 focus:outline-none focus:ring-2 focus:ring-white/20 transition-all duration-200"
+                  style={{ backgroundColor: "rgba(255, 255, 255, 0.1)" }}
+                />
+                <div className="absolute right-4 top-1/2 transform -translate-y-1/2">
+                  <FaSearch className="text-white/70 text-sm" />
+                </div>
+              </div>
+
+              {/* Navigation Menu */}
+              <nav className="space-y-2">
+                <NewsDropdown isScrolled={isScrolled} isInSidebar={true} />
+                <DropdownMenu
+                  label="Countries"
+                  isScrolled={isScrolled}
+                  isInSidebar={true}
+                  items={countries}
+                />
+                <DropdownMenu
+                  label="Publications"
+                  isScrolled={isScrolled}
+                  isInSidebar={true}
+                  items={menuItems}
+                />
+                <DropdownMenu
+                  label="iGaming Directory"
+                  isScrolled={isScrolled}
+                  isInSidebar={true}
+                  items={options}
+                />
+              </nav>
+
+              {/* CTA Button */}
+              <div className="pt-4">
+                <button className="w-full bg-white/10 hover:bg-white/20 text-white font-semibold py-3 px-6 rounded-xl border border-white/30 hover:border-white/50 transition-all duration-200 backdrop-blur-sm">
+                  <NavLink to="/register" className="block">
+                    PRE-REGISTER 2026
+                  </NavLink>
+                </button>
+              </div>
+            </div>
           </div>
 
-          <nav className="hidden lg:flex space-x-6 max-w-4xl w-full justify-center items-center">
-            <NewsDropdown isScrolled={isScrolled} />
-            <DropdownMenu
-              label="countries"
-              isScrolled={isScrolled}
-              items={countries}
-            />
-            <DropdownMenu
-              label="Publications"
-              isScrolled={isScrolled}
-              items={menuItems}
-            />
-            <DropdownMenu
-              label="iGaming Directory"
-              isScrolled={isScrolled}
-              items={options}
-            />
-            <NavLink
-              to="/register"
-              className={`py-2 px-6 text-sm font-bold border border-green-600 rounded-md ${
-                isScrolled
-                  ? "bg-green-600 text-white"
-                  : "text-white hover:bg-green-600 hover:bg-opacity-20"
-              }`}
-            >
-              PRE-REGISTER 2026
-            </NavLink>
-          </nav>
-
-          <SocialIcons isScrolled={isScrolled} />
+          {/* Footer Social Icons */}
+          <div className="border-t border-white/10 p-6">
+            <div className="text-white/70 text-xs font-medium mb-4 text-center">
+              Follow Us
+            </div>
+            <div className="flex items-center justify-center gap-4">
+              <a
+                href="https://x.com/igamingafrika/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="p-3 rounded-full bg-white/10 hover:bg-white/20 text-white hover:text-blue-400 transition-all duration-200"
+                aria-label="Twitter"
+              >
+                <FaTwitter className="text-sm" />
+              </a>
+              <a
+                href="https://www.linkedin.com/company/igamingafrika/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="p-3 rounded-full bg-white/10 hover:bg-white/20 text-white hover:text-blue-700 transition-all duration-200"
+                aria-label="LinkedIn"
+              >
+                <FaLinkedin className="text-sm" />
+              </a>
+              <a
+                href="https://www.youtube.com/@igamingafrika?themeRefresh=1"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="p-3 rounded-full bg-white/10 hover:bg-white/20 text-white hover:text-red-600 transition-all duration-200"
+                aria-label="YouTube"
+              >
+                <FaYoutube className="text-sm" />
+              </a>
+              <a
+                href="https://www.instagram.com/igamingafrika/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="p-3 rounded-full bg-white/10 hover:bg-white/20 text-white hover:text-pink-500 transition-all duration-200"
+                aria-label="Instagram"
+              >
+                <FaInstagram className="text-sm" />
+              </a>
+              <a
+                href="https://t.me/igamingafrika"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="p-3 rounded-full bg-white/10 hover:bg-white/20 text-white hover:text-blue-500 transition-all duration-200"
+                aria-label="Telegram"
+              >
+                <FaTelegramPlane className="text-sm" />
+              </a>
+              <a
+                href="https://www.facebook.com/IgamingAfrika/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="p-3 rounded-full bg-white/10 hover:bg-white/20 text-white hover:text-blue-500 transition-all duration-200"
+                aria-label="Facebook"
+              >
+                <FaFacebook className="text-sm" />
+              </a>
+            </div>
+          </div>
         </div>
-      </header>
-
-      <MobileSidebar
-        isSidebarOpen={isSidebarOpen}
-        setSidebarOpen={setSidebarOpen}
-        isScrolled={isScrolled}
-      />
+      </div>
 
       {/* Hero Section with Event Details */}
       <div className="relative flex items-center justify-center h-full pt-16 sm:pt-20 md:pt-24 pb-8">
