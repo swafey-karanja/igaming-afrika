@@ -1,6 +1,6 @@
 import { useState } from "react";
 import Header from "../components/Header";
-import Breadcrumb from "../components/Breadcrumb";
+import Breadcrumb from "../components/utils/Breadcrumb";
 import { useTranslation } from "react-i18next";
 import PhoneInput from "react-phone-number-input";
 import "react-phone-number-input/style.css";

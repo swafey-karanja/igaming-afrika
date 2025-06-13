@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { ChevronDown, ChevronRight } from "lucide-react";
-import { newsCategories } from "../data/dropdownData";
+import { newsCategories } from "../../data/dropdownData";
 
 export default function DropdownMenu({
   label,
@@ -35,7 +35,7 @@ export default function DropdownMenu({
       <div className="text-white">
         <button
           onClick={toggleDropdown}
-          className="w-full flex justify-between items-center text-sm font-semibold uppercase transition-all duration-200 text-white hover:text-gray-200 hover:pl-2 focus:outline-none focus:text-gray-200 focus:pl-2 py-1 cursor-pointer"
+          className="w-full flex justify-between items-center text-[14px] font-semibold uppercase transition-all duration-200 text-white hover:text-gray-200 hover:pl-2 focus:outline-none focus:text-gray-200 focus:pl-2 py-1 cursor-pointer"
         >
           {label}
           <ChevronDown
@@ -201,11 +201,11 @@ export function NewsDropdown({ isScrolled, isInSidebar = false }) {
         {/* News Toggle (main) with smooth collapse/expand */}
         <button
           onClick={() => setIsSidebarOpen(!isSidebarOpen)}
-          className="w-full flex justify-between items-center text-[15px] mb-2 font-bold tracking-wide cursor-pointer"
+          className="w-full flex justify-between items-center text-[14px] uppercase font-bold tracking-wide cursor-pointer"
         >
           News
           <svg
-            className={`w-4 h-4 mr-4 transition-transform ${
+            className={`w-4 h-4 transition-transform ${
               isSidebarOpen ? "rotate-180" : "rotate-0"
             }`}
             fill="none"
@@ -321,7 +321,6 @@ export function NewsDropdown({ isScrolled, isInSidebar = false }) {
             </div>
           </div>
         </div>
-        <hr className="text-green-700 opacity-40 w-[98%]" />
       </div>
     );
   }

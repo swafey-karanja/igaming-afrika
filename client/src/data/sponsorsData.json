@@ -1,14 +1,27 @@
-[
+{
+  "headlineSponsor": {
+    "name": "MFC",
+    "logo": "https://mfc.ke/wp-content/uploads/2020/06/mfc-email-signature-logo-optimized.png",
+    "url": "https://mfc.ke"
+  },
+  "platinumSponsors": [
+    {
+      "name": "iGaming",
+      "logo": "https://igamingafrika.com/wp-content/uploads/2023/04/iGaming-Logo-2b.png",
+      "url": "https://igamingafrika.com"
+    },
     {
       "name": "EA",
-      "logo": "https://1000logos.net/wp-content/uploads/2023/05/EA-Sports-Logo-500x281.png", 
+      "logo": "https://1000logos.net/wp-content/uploads/2023/05/EA-Sports-Logo-500x281.png",
       "url": "https://ea.com"
     },
     {
       "name": "Xbox",
       "logo": "https://1000logos.net/wp-content/uploads/2018/10/Xbox-logo-500x281.png",
       "url": "https://xbox.com"
-    },
+    }
+  ],
+  "goldSponsors": [
     {
       "name": "PlayStation",
       "logo": "https://1000logos.net/wp-content/uploads/2021/04/PlayStation-logo-500x281.png",
@@ -25,11 +38,6 @@
       "url": "https://unity.com"
     },
     {
-      "name": "Rockstar Games",
-      "logo": "https://1000logos.net/wp-content/uploads/2020/09/Rockstar-Games-logo-500x471.png",
-      "url": "https://rockstargames.com"
-    },
-    {
       "name": "Nintendo",
       "logo": "https://1000logos.net/wp-content/uploads/2021/04/Nintendo-logo-500x281.png",
       "url": "https://nintendo.com"
@@ -38,12 +46,9 @@
       "name": "Epic Games",
       "logo": "https://1000logos.net/wp-content/uploads/2021/12/Epic-Games-logo-500x281.png",
       "url": "https://epicgames.com"
-    },
-    {
-      "name": "Activision",
-      "logo": "https://1000logos.net/wp-content/uploads/2020/09/Activision-logo-tumb.jpg",
-      "url": "https://activision.com"
-    },
+    }
+  ],
+  "bronzeSponsors": [
     {
       "name": "Betika",
       "logo": "https://cdn.brandfetch.io/idhxmz_22M/w/1024/h/1024/theme/dark/logo.png?c=1dxbfHSJFAPEGdCLU4o5B",
@@ -68,16 +73,18 @@
       "name": "Bangbet",
       "logo": "https://cdn.brandfetch.io/idu_Lkrhft/w/288/h/66/theme/dark/logo.png?c=1dxbfHSJFAPEGdCLU4o5B",
       "url": "https://www.bangbet.com/"
+    }
+  ],
+  "mediaPartners": [
+    {
+      "name": "Rockstar Games",
+      "logo": "https://1000logos.net/wp-content/uploads/2020/09/Rockstar-Games-logo-500x471.png",
+      "url": "https://rockstargames.com"
     },
     {
-      "name": "Skybet",
-      "logo": "https://cdn.brandfetch.io/idwO8GVDyj/w/1120/h/223/theme/light/logo.png?c=1dxbfHSJFAPEGdCLU4o5B",
-      "url": "https://m.skybet.com/"
-    },
-    {
-      "name": "Sportybet",
-      "logo": "https://cdn.brandfetch.io/idFOnSHs5C/w/400/h/400/theme/dark/icon.png?c=1dxbfHSJFAPEGdCLU4o5B",
-      "url": "https://www.sportybet.com/"
+      "name": "Activision",
+      "logo": "https://1000logos.net/wp-content/uploads/2020/09/Activision-logo-tumb.jpg",
+      "url": "https://activision.com"
     },
     {
       "name": "Stake",
@@ -90,13 +97,9 @@
       "url": "https://1xbet.com/en"
     },
     {
-      "name": "Unibet",
-      "logo": "https://cdn.brandfetch.io/idcRslJghA/theme/light/logo.svg?c=1dxbfHSJFAPEGdCLU4o5B",
-      "url": "https://www.unibet.com/"
-    },
-    {
-      "name": "Dafabet",
-      "logo": "https://cdn.brandfetch.io/idApKtmgm5/w/596/h/167/theme/dark/logo.png?c=1dxbfHSJFAPEGdCLU4o5B",
-      "url": "https://www.dafabet.com/en"
+      "name": "Skybet",
+      "logo": "https://cdn.brandfetch.io/idwO8GVDyj/w/1120/h/223/theme/light/logo.png?c=1dxbfHSJFAPEGdCLU4o5B",
+      "url": "https://m.skybet.com/"
     }
   ]
+}

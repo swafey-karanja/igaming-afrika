@@ -115,7 +115,7 @@ export default function Schedule() {
           variants={fadeIn}
         >
           <div className="inline-flex items-center gap-3 mb-4">
-            <h2 className="text-4xl font-bold bg-gradient-to-r from-green-700 to-green-600 bg-clip-text text-transparent mb-2">
+            <h2 className="text-2xl md:text-4xl font-bold bg-gradient-to-r from-green-700 to-green-600 bg-clip-text text-transparent mb-2">
               Schedule
             </h2>
           </div>
@@ -126,7 +126,7 @@ export default function Schedule() {
             viewport={{ once: true }}
             transition={{ duration: 0.8, delay: 0.3 }}
           />
-          <p className="text-gray-600 max-w-2xl mx-auto">
+          <p className="text-gray-600 max-w-2xl mx-auto text-sm md:text-md">
             Get a detailed view of the event's activities and when they will be
             happening
           </p>
