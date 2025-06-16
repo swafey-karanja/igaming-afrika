@@ -35,7 +35,7 @@ const Footer = () => {
   };
 
   return (
-    <footer className="bg-green-100 text-gray-700 py-4">
+    <footer className="bg-black text-white pb-8 pt-16">
       {/* Newsletter Section */}
       <motion.div
         initial="hidden"
@@ -43,7 +43,8 @@ const Footer = () => {
         viewport={{ once: true }}
         variants={fadeIn}
         transition={{ duration: 0.5 }}
-        className="max-w-7xl mx-auto bg-green-600 text-white py-12 sm:py-16 md:py-20 rounded-lg px-4 sm:px-6"
+        style={{ backgroundColor: "#14a45c" }}
+        className="max-w-7xl mx-auto text-white py-12 sm:py-16 md:py-20 rounded-lg px-4 sm:px-6"
       >
         <div className="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8">
           <div className="relative">
@@ -88,7 +89,7 @@ const Footer = () => {
         transition={{ duration: 0.5, delay: 0.2 }}
         className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-12 md:py-16"
       >
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8 md:gap-12 lg:gap-16">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-[1.5fr_1fr_1fr] gap-8 md:gap-12 lg:gap-16">
           {/* Logo and description */}
           <motion.div variants={fadeIn} className="space-y-4">
             <div className="flex-shrink-0">
@@ -100,12 +101,18 @@ const Footer = () => {
                 />
               </a>
             </div>
-            <p className="text-xs sm:text-sm text-gray-600">
-              iGaming AFRIKA is the best b2b and b2c gambling media source
-              focused on informing the betting business community on all matters
-              related to gaming in Africa. We take pride in being Africa's
-              leading Casino, Sportsbook and Lottery insider for news, podcasts,
-              interviews and other gambling industry updates.
+            <p className="text-xs sm:text-sm text-gray-400">
+              IGaming AFRIKA Summit is Africa’s mega gaming event, designed to
+              unite the entire gaming industry players across the world in one
+              place—the stunning city of Nairobi, Kenya. This being the
+              inaugural edition of the summit, the event is seen to be the
+              largest event in the industry, taking place in Nairobi, in 2026,
+              the summit is seen to be the mother of all gaming conferences in
+              Africa. The summit is taking place in an impressive 3,300m² square
+              meters location at Sarit Expo Center, Nairobi’s Largest Expo
+              center giving exhibitors and attendees a massive ground to
+              showcase their products, meet and connect with industry players as
+              we discuss the future of the gaming industry in Africa.
             </p>
           </motion.div>
 
@@ -113,9 +120,9 @@ const Footer = () => {
           <motion.div
             variants={fadeIn}
             transition={{ delay: 0.1 }}
-            className="space-y-4 mt-6 sm:mt-8 sm:ml-0 md:ml-10 lg:ml-20"
+            className="space-y-4 mt-6 sm:mt-20 sm:ml-0 md:ml-10 lg:ml-20"
           >
-            <h3 className="text-sm sm:text-md font-bold text-gray-600">
+            <h3 className="text-sm sm:text-md font-bold text-gray-400">
               {t("company")}
             </h3>
             <ul className="space-y-2 text-xs sm:text-sm">
@@ -158,9 +165,9 @@ const Footer = () => {
           <motion.div
             variants={fadeIn}
             transition={{ delay: 0.15 }}
-            className="space-y-4 mt-6 sm:mt-8"
+            className="space-y-4 mt-6 sm:mt-20"
           >
-            <h3 className="text-sm sm:text-md font-bold text-gray-600">
+            <h3 className="text-sm sm:text-md font-bold text-gray-400">
               {t("help")}
             </h3>
             <ul className="space-y-2 text-xs sm:text-sm">
@@ -203,35 +210,35 @@ const Footer = () => {
         <div className="flex items-center justify-center space-x-3 sm:space-x-4 pt-2 text-2xl sm:text-3xl">
           <a
             href="#"
-            className="text-gray-600 hover:text-blue-400 transition-colors"
+            className="text-gray-400 hover:text-blue-400 transition-colors"
             aria-label="Twitter"
           >
             <FaTwitter />
           </a>
           <a
             href="#"
-            className="text-gray-600 hover:text-blue-500 transition-colors"
+            className="text-gray-400 hover:text-blue-500 transition-colors"
             aria-label="Facebook"
           >
             <FaFacebook />
           </a>
           <a
             href="#"
-            className="text-gray-600 hover:text-red-500 transition-colors"
+            className="text-gray-400 hover:text-red-500 transition-colors"
             aria-label="Instagram"
           >
             <FaInstagram />
           </a>
           <a
             href="#"
-            className="text-gray-600 hover:text-blue-700 transition-colors"
+            className="text-gray-400 hover:text-blue-700 transition-colors"
             aria-label="LinkedIn"
           >
             <FaLinkedin />
           </a>
           <a
             href="#"
-            className="text-gray-600 hover:text-black transition-colors"
+            className="text-gray-400 hover:text-black transition-colors"
             aria-label="GitHub"
           >
             <FaGithub />
@@ -248,7 +255,7 @@ const Footer = () => {
         transition={{ duration: 0.5, delay: 0.4 }}
         className="py-4"
       >
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center text-xs sm:text-sm text-gray-500">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center text-xs sm:text-sm text-gray-400">
           <p>
             © Copyright 2025 Media-Tech iGaming Technology Limited - All Rights
             Reserved

@@ -5,7 +5,7 @@ import React, {
   useEffect,
   useRef,
 } from "react";
-import { ChevronLeft, ChevronRight, X } from "lucide-react";
+import { ChevronLeft, ChevronRight, X, Calendar, MapPin } from "lucide-react";
 // eslint-disable-next-line no-unused-vars
 import { motion, AnimatePresence } from "framer-motion";
 import { useSelector, useDispatch } from "react-redux";
@@ -219,7 +219,7 @@ const ImageCarousel = () => {
             </h2>
           </div>
           <motion.div
-            className="w-20 h-1 bg-gradient-to-r from-green-600 to-green-500 mx-auto rounded-full mb-6"
+            className="w-20 h-1 bg-gradient-to-r from-green-600 to-green-600 mx-auto rounded-full mb-6"
             initial={{ width: 0 }}
             whileInView={{ width: 96 }}
             viewport={{ once: true }}
@@ -230,84 +230,134 @@ const ImageCarousel = () => {
           </p>
         </motion.div>
 
-        <p className="mt-2 mb-2 text-xl text-gray-900 font-semibold">
-          Africa Pulse workshop - Malta
-        </p>
-        <p className="mb-6 text-sm tracking-tight text-gray-900">
-          The Africa Pulse is a regional economic update published by the World
-          Bank. It provides insights into economic trends, growth projections,
-          and challenges in Sub-Saharan Africa. The last event took place in
-          November, 2024 at Grand Hotel Excelsior, Castille room (level 7) in
-          Malta.
-        </p>
-
-        <div
-          className="relative h-64 md:h-100 overflow-hidden rounded-lg shadow-md group"
-          onTouchStart={handleTouchStart}
-          onTouchMove={handleTouchMove}
-          onTouchEnd={handleTouchEnd}
-        >
-          <AnimatePresence custom={direction} initial={false}>
-            <motion.div
-              key={`${currentIndex}-${imagesPerView}`}
-              custom={direction}
-              variants={slideVariants}
-              initial="enter"
-              animate="center"
-              exit="exit"
-              transition={{
-                x: { type: "spring", stiffness: 300, damping: 30 },
-                opacity: { duration: 0.5 },
-              }}
-              className="absolute inset-0 flex gap-2 md:gap-4"
-            >
-              {currentImages.map(({ image, index }) => (
-                <div
-                  key={index}
-                  className={`cursor-pointer ${
-                    imagesPerView === 1
-                      ? "w-full"
-                      : imagesPerView === 2
-                      ? "w-1/2"
-                      : "w-1/3"
-                  }`}
-                  onClick={() => openModal(index)}
-                >
-                  <img
-                    src={resizeImage(image)}
-                    alt={`Image ${index + 1}`}
-                    className={`object-cover w-full h-full rounded-md transition-opacity duration-500 ${
-                      loadedImages[index] ? "opacity-100" : "opacity-0"
-                    }`}
-                    loading="eager"
-                  />
+        {/* Event Info Card */}
+        <div className="bg-white rounded-xl shadow-lg border border-green-100 p-6 mb-6">
+          <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
+            <div>
+              <h3 className="text-xl font-bold text-green-800 mb-2">
+                Africa Pulse iGaming Summit
+              </h3>
+              <p className="text-gray-600 text-sm leading-relaxed mb-3">
+                The premier gathering of African gaming industry leaders,
+                featuring insights into market trends, regulatory updates, and
+                networking opportunities with key stakeholders.
+              </p>
+              <div className="flex flex-wrap gap-4 text-sm">
+                <div className="flex items-center gap-2 text-green-700">
+                  <Calendar className="w-4 h-4" />
+                  <span className="font-medium">November 2024</span>
                 </div>
-              ))}
-            </motion.div>
-          </AnimatePresence>
-
-          <button
-            onClick={prevSlide}
-            className="absolute top-1/2 left-2 sm:left-4 transform -translate-y-1/2 bg-white bg-opacity-20 sm:bg-opacity-10 text-green-700 p-1 sm:p-2 rounded-lg cursor-pointer hover:bg-opacity-75 hover:bg-green-700 hover:text-white opacity-50 sm:opacity-0 group-hover:opacity-75 transition-opacity duration-500"
-            aria-label="Previous image"
-          >
-            <ChevronLeft size={20} className="sm:w-6 sm:h-6 md:w-8 md:h-8" />
-          </button>
-          <button
-            onClick={nextSlide}
-            className="absolute top-1/2 right-2 sm:right-4 transform -translate-y-1/2 bg-white bg-opacity-20 sm:bg-opacity-10 text-green-700 p-1 sm:p-2 rounded-lg cursor-pointer hover:bg-opacity-75 hover:bg-green-700 hover:text-white opacity-50 sm:opacity-0 group-hover:opacity-75 transition-opacity duration-500"
-            aria-label="Next image"
-          >
-            <ChevronRight size={20} className="sm:w-6 sm:h-6 md:w-8 md:h-8" />
-          </button>
+                <div className="flex items-center gap-2 text-green-700">
+                  <MapPin className="w-4 h-4" />
+                  <span className="font-medium">
+                    Grand Hotel Excelsior, Malta
+                  </span>
+                </div>
+              </div>
+            </div>
+            <div className="flex-shrink-0">
+              <div className="bg-gradient-to-r from-green-500 to-green-600 text-white px-4 py-2 rounded-lg text-sm font-medium">
+                {images.length} Photos
+              </div>
+            </div>
+          </div>
         </div>
+
+        {/* Image Carousel */}
+        <motion.div
+          className="relative"
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.8 }}
+        >
+          <div
+            className="relative h-80 md:h-96 lg:h-[500px] overflow-hidden rounded-2xl shadow-2xl group bg-gradient-to-br from-green-50 to-white border-4 border-white"
+            onTouchStart={handleTouchStart}
+            onTouchMove={handleTouchMove}
+            onTouchEnd={handleTouchEnd}
+          >
+            <AnimatePresence custom={direction} initial={false}>
+              <motion.div
+                key={`${currentIndex}-${imagesPerView}`}
+                custom={direction}
+                variants={slideVariants}
+                initial="enter"
+                animate="center"
+                exit="exit"
+                transition={{
+                  x: { type: "spring", stiffness: 300, damping: 30 },
+                  opacity: { duration: 0.5 },
+                }}
+                className="absolute inset-0 flex gap-3 md:gap-6 p-4"
+              >
+                {currentImages.map(({ image, index }) => (
+                  <motion.div
+                    key={index}
+                    className={`cursor-pointer relative group/image ${
+                      imagesPerView === 1
+                        ? "w-full"
+                        : imagesPerView === 2
+                        ? "w-1/2"
+                        : "w-1/3"
+                    }`}
+                    onClick={() => openModal(index)}
+                    whileHover={{ scale: 1.02 }}
+                    transition={{ duration: 0.3 }}
+                  >
+                    <div className="relative h-full rounded-xl overflow-hidden shadow-lg border-2 border-green-100">
+                      <img
+                        src={resizeImage(image)}
+                        alt={`Event moment ${index + 1}`}
+                        className={`object-cover w-full h-full transition-all duration-500 ${
+                          loadedImages[index] ? "opacity-100" : "opacity-0"
+                        } group-hover/image:scale-105`}
+                        loading="eager"
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-t from-green-900/30 via-transparent to-transparent opacity-0 group-hover/image:opacity-100 transition-opacity duration-300"></div>
+                      <div className="absolute bottom-4 left-4 right-4 text-white transform translate-y-4 group-hover/image:translate-y-0 opacity-0 group-hover/image:opacity-100 transition-all duration-300">
+                        <div className="bg-green-600/90 backdrop-blur-sm rounded-lg px-3 py-2">
+                          <p className="text-sm font-semibold">
+                            Click to view full size
+                          </p>
+                        </div>
+                      </div>
+                    </div>
+                  </motion.div>
+                ))}
+              </motion.div>
+            </AnimatePresence>
+
+            {/* Navigation Buttons */}
+            <button
+              onClick={prevSlide}
+              className="absolute top-1/2 left-4 transform -translate-y-1/2 bg-white/90 backdrop-blur-sm text-green-700 p-3 rounded-full shadow-xl border-2 border-green-100 hover:bg-green-600 hover:text-white hover:border-green-600 opacity-70 group-hover:opacity-100 transition-all duration-300 hover:scale-110"
+              aria-label="Previous images"
+            >
+              <ChevronLeft size={24} />
+            </button>
+            <button
+              onClick={nextSlide}
+              className="absolute top-1/2 right-4 transform -translate-y-1/2 bg-white/90 backdrop-blur-sm text-green-700 p-3 rounded-full shadow-xl border-2 border-green-100 hover:bg-green-600 hover:text-white hover:border-green-600 opacity-70 group-hover:opacity-100 transition-all duration-300 hover:scale-110"
+              aria-label="Next images"
+            >
+              <ChevronRight size={24} />
+            </button>
+
+            {/* Image Counter */}
+            <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 bg-green-600/90 backdrop-blur-sm text-white px-4 py-2 rounded-full text-sm font-semibold shadow-lg">
+              {Math.floor(currentIndex / imagesPerView) + 1} of{" "}
+              {Math.ceil(images.length / imagesPerView)}
+            </div>
+          </div>
+        </motion.div>
       </div>
 
-      {/* Image Modal */}
+      {/* Enhanced Image Modal */}
       <AnimatePresence>
         {isModalOpen && (
           <motion.div
-            className="fixed inset-0 z-50 flex items-center justify-center p-4 backdrop-blur-xs bg-transparent transition-all bg-opacity-30"
+            className="fixed inset-0 z-50 flex items-center justify-center p-6 backdrop-blur-md"
             initial="hidden"
             animate="visible"
             exit="hidden"
@@ -315,49 +365,61 @@ const ImageCarousel = () => {
             onClick={closeModal}
           >
             <motion.div
-              className="relative max-w-5xl w-full max-h-screen"
+              className="relative max-w-6xl w-full max-h-screen"
               variants={modalVariants}
               onClick={(e) => e.stopPropagation()}
             >
+              {/* Close Button */}
               <button
                 onClick={closeModal}
-                className="absolute -top-10 right-0 text-gray-500 hover:text-gray-800 z-10 cursor-pointer bg-green-300"
-                aria-label="Close modal"
+                className="absolute -top-14 right-0 bg-white/90 backdrop-blur-sm text-green-700 hover:text-white hover:bg-green-600 p-3 rounded-full shadow-xl border-2 border-green-100 z-10 transition-all duration-300 hover:scale-110"
+                aria-label="Close gallery"
               >
-                <X size={28} />
+                <X size={18} />
               </button>
 
-              <div className="relative h-full">
+              <div className="relative bg-white rounded-2xl overflow-hidden shadow-2xl">
                 <img
                   src={resizeImage(images[modalImageIndex], 1200, 800)}
-                  alt={`Modal view ${modalImageIndex + 1}`}
-                  className="w-full h-full object-contain max-h-[80vh]"
+                  alt={`Event gallery ${modalImageIndex + 1}`}
+                  className="w-full h-full object-contain max-h-[80vh] bg-gradient-to-br from-green-50 to-white"
                 />
 
+                {/* Modal Navigation */}
                 <button
                   onClick={(e) => {
                     e.stopPropagation();
                     handleModalNavigation("prev");
                   }}
-                  className="cursor-pointer absolute left-4 top-1/2 transform -translate-y-1/2 bg-green-500 hover:bg-green-700 bg-opacity-50 text-white p-2 rounded-full hover:bg-opacity-75"
+                  className="absolute left-4 top-1/2 transform -translate-y-1/2 bg-green-600/90 backdrop-blur-sm hover:bg-green-700 text-white p-3 rounded-full shadow-xl transition-all duration-300 hover:scale-110"
                   aria-label="Previous image"
                 >
-                  <ChevronLeft size={25} />
+                  <ChevronLeft size={28} />
                 </button>
                 <button
                   onClick={(e) => {
                     e.stopPropagation();
                     handleModalNavigation("next");
                   }}
-                  className="cursor-pointer absolute right-4 top-1/2 transform -translate-y-1/2 bg-green-500 hover:bg-green-700 bg-opacity-50 text-white p-2 rounded-full hover:bg-opacity-75"
+                  className="absolute right-4 top-1/2 transform -translate-y-1/2 bg-green-600/90 backdrop-blur-sm hover:bg-green-700 text-white p-3 rounded-full shadow-xl transition-all duration-300 hover:scale-110"
                   aria-label="Next image"
                 >
-                  <ChevronRight size={25} />
+                  <ChevronRight size={28} />
                 </button>
-              </div>
 
-              <div className="text-center mt-4 text-green-500">
-                Image {modalImageIndex + 1} of {images.length}
+                {/* Modal Footer */}
+                <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-green-600 to-transparent p-6">
+                  <div className="text-center">
+                    <div className="bg-white/90 backdrop-blur-sm rounded-full px-6 py-3 inline-block shadow-lg">
+                      <span className="text-green-700 font-bold text-lg">
+                        {modalImageIndex + 1} of {images.length}
+                      </span>
+                      <span className="text-gray-600 ml-2">
+                        • Africa Pulse Malta
+                      </span>
+                    </div>
+                  </div>
+                </div>
               </div>
             </motion.div>
           </motion.div>

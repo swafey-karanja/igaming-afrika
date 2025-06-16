@@ -53,8 +53,9 @@ const Packages = () => {
     if (status === "AVAILABLE") {
       return (
         <div
+          style={!featured ? { backgroundColor: "#14a45c" } : {}}
           className={`absolute -top-2 -right-2 ${
-            featured ? "bg-yellow-500" : "bg-green-500"
+            featured ? "bg-yellow-500" : ""
           } text-white text-xs font-bold px-3 py-2 rounded-full shadow-md transform -rotate-12 z-10`}
         >
           {featured ? "⭐ FEATURED" : "AVAILABLE"}
@@ -119,7 +120,7 @@ const Packages = () => {
           </h2>
         </div>
         <motion.div
-          className="w-20 h-1 bg-gradient-to-r from-green-600 to-green-500 mx-auto rounded-full mb-6"
+          className="w-20 h-1 bg-gradient-to-r from-green-600 to-green-600 mx-auto rounded-full mb-6"
           initial={{ width: 0 }}
           whileInView={{ width: 96 }}
           viewport={{ once: true }}
@@ -164,7 +165,7 @@ const Packages = () => {
                     >
                       <CheckCircle
                         size={12}
-                        className="text-green-500 mt-0.5 flex-shrink-0"
+                        className="text-green-600 mt-0.5 flex-shrink-0"
                       />
                       <span className="truncate">{benefit}</span>
                     </div>
@@ -253,8 +254,8 @@ const Packages = () => {
             <div
               className={`${
                 selectedPackage.featured
-                  ? "bg-gradient-to-r from-yellow-500 to-green-500"
-                  : "bg-gradient-to-r from-green-500 to-green-600"
+                  ? "bg-gradient-to-r from-yellow-500 to-green-600"
+                  : "bg-gradient-to-r from-green-600 to-green-600"
               } text-white p-6`}
             >
               <div className="flex items-center justify-between">
@@ -291,7 +292,7 @@ const Packages = () => {
                 {/* Package Benefits */}
                 <div>
                   <div className="flex items-center gap-2 mb-4">
-                    <CheckCircle className="text-green-500" size={20} />
+                    <CheckCircle className="text-green-600" size={20} />
                     <h3 className="text-lg font-bold text-gray-900">
                       Package Benefits
                     </h3>
@@ -304,7 +305,7 @@ const Packages = () => {
                       >
                         <CheckCircle
                           size={16}
-                          className="text-green-500 mt-0.5 flex-shrink-0"
+                          className="text-green-600 mt-0.5 flex-shrink-0"
                         />
                         <span className="text-gray-700 text-sm">{benefit}</span>
                       </div>
@@ -364,7 +365,7 @@ const Packages = () => {
                       Sold Out
                     </button>
                   ) : (
-                    <button className="bg-gradient-to-r from-green-500 to-green-600 hover:from-green-600 hover:to-green-700 text-white py-3 px-8 rounded-xl font-semibold transition-all duration-300 shadow-lg hover:shadow-xl">
+                    <button className="bg-gradient-to-r from-green-600 to-green-600 hover:from-green-600 hover:to-green-700 text-white py-3 px-8 rounded-xl font-semibold transition-all duration-300 shadow-lg hover:shadow-xl">
                       Contact Us
                     </button>
                   )}

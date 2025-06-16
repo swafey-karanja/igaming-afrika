@@ -441,7 +441,7 @@ const Navbar = () => {
             iGaming AFRIKA Summit
           </p>
           <p className="text-md sm:text-ld font-semibold mb-2 sm:mb-3">
-            NAIROBI, KENYA • 28-31 JULY, 2026
+            NAIROBI, KENYA • 28-30 JULY, 2026
           </p>
           {/* <h1 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold mb-2">28-31 JULY, 2026</h1> */}
           <p className="text-sm sm:text-[14px] mb-6 sm:mb-8 font-semibold">
@@ -479,11 +479,11 @@ const Navbar = () => {
 
           <div className=" bg-opacity-40 backdrop-blur-sm rounded-lg p-3 sm:p-4 md:p-6 max-w-lg sm:max-w-xl md:max-w-2xl mx-auto">
             <p className="text-xs sm:text-sm mb-2 sm:mb-4 md:mb-6">
-              With expected attendees from over 70 countries, this event is
+              With expected attendees from over 100 countries, this event is
               unmatched in its international reach. Explore sections dedicated
-              to key industry verticals such as regulation, marketing, payments
-              etc and participate in targeted sessions to earn industry insights
-              and knowledge.
+              to key industry verticals such as regulation, affiliate marketing,
+              artificial intelligence, payments etc and participate in targeted
+              sessions to earn industry insights and knowledge.
             </p>
           </div>
         </div>

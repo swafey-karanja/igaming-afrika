@@ -83,7 +83,7 @@ const ExhibitionModal = ({ pkg, isModalOpen, onClose, getTierColor }) => {
                     icon={
                       <CheckCircle
                         size={16}
-                        className="text-green-500 mt-0.5 flex-shrink-0"
+                        className="text-green-600 mt-0.5 flex-shrink-0"
                       />
                     }
                     text={b}

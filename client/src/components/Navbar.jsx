@@ -125,23 +125,19 @@ const Navbar = () => {
                 isSidebarOpen ? "hidden" : ""
               }`}
             >
-              <NavLink
-                to="/"
+              <a
+                href="https://igamingafrika.com/"
+                target="_blank"
+                rel="noopener noreferrer"
                 title="iGaming Afrika"
                 className="inline-flex rounded-md"
-                onClick={() => {
-                  // If we're already on the home page, force a reload
-                  if (window.location.pathname === "/") {
-                    window.location.reload();
-                  }
-                }}
               >
                 <img
                   className="w-auto h-10 sm:h-12 md:h-16 lg:h-20"
-                  src="/Summit2_trimmed.png"
+                  src="https://igamingafrika.com/wp-content/uploads/2023/04/iGaming-Logo-2b.png"
                   alt="iGaming Afrika"
                 />
-              </NavLink>
+              </a>
             </div>
             {/* Desktop Nav */}
             <nav className="hidden lg:flex lg:items-center lg:justify-center xl:space-x-7 lg:space-x-6 whitespace-nowrap w-full max-w-3xl lg:max-w-4xl">
@@ -443,7 +439,7 @@ const Navbar = () => {
             iGaming AFRIKA Summit
           </p>
           <p className="text-md sm:text-xl lg:text-xl font-semibold mb-2 sm:mb-3 lg:mb-4">
-            NAIROBI, KENYA • 28-31 JULY, 2026
+            NAIROBI, KENYA • 28-30 JULY, 2026
           </p>
           {/* <h1 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold mb-2">28-31 JULY, 2026</h1> */}
           <p className="text-sm sm:text-[16px] lg:text-[16px] mb-6 sm:mb-8 lg:mb-10">
