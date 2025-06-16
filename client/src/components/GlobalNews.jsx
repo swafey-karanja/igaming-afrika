@@ -106,7 +106,7 @@ const GlobalNews = () => {
         >
           <div className="relative">
             <div className="w-12 h-12 border-4 border-green-100 rounded-full"></div>
-            <div className="w-12 h-12 border-4 border-green-500 border-t-transparent rounded-full animate-spin absolute top-0"></div>
+            <div className="w-12 h-12 border-4 border-green-600 border-t-transparent rounded-full animate-spin absolute top-0"></div>
           </div>
           <p className="mt-4 text-gray-500 font-medium">
             Loading latest news...
@@ -133,7 +133,7 @@ const GlobalNews = () => {
             onClick={() => dispatch(fetchNews())}
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
-            className="px-6 py-2 bg-green-500 text-white rounded-full hover:bg-green-600 transition-colors duration-200 font-medium"
+            className="px-6 py-2 bg-green-600 text-white rounded-full hover:bg-green-600 transition-colors duration-200 font-medium"
           >
             Try Again
           </motion.button>
@@ -159,7 +159,7 @@ const GlobalNews = () => {
             </h2>
           </div>
           <motion.div
-            className="w-20 h-1 bg-gradient-to-r from-green-600 to-green-500 mx-auto rounded-full mb-6"
+            className="w-20 h-1 bg-gradient-to-r from-green-600 to-green-600 mx-auto rounded-full mb-6"
             initial={{ width: 0 }}
             whileInView={{ width: 96 }}
             viewport={{ once: true }}
@@ -222,7 +222,7 @@ const GlobalNews = () => {
 
                   {/* Read More Link */}
                   <motion.div
-                    className="inline-flex items-center text-green-500 hover:text-green-600 font-medium text-sm group/link mt-auto"
+                    className="inline-flex items-center text-green-600 hover:text-green-600 font-medium text-sm group/link mt-auto"
                     whileHover={{ x: 4 }}
                     transition={{ duration: 0.2 }}
                   >
@@ -262,7 +262,7 @@ const GlobalNews = () => {
               onClick={handleShowMore}
               whileHover={{ scale: 1.02 }}
               whileTap={{ scale: 0.98 }}
-              className="inline-flex items-center gap-2 px-8 py-3 bg-green-500 text-white rounded-full hover:bg-green-600 transition-all duration-200 font-medium shadow-sm hover:shadow-md"
+              className="inline-flex items-center gap-2 px-8 py-3 bg-green-600 text-white rounded-full hover:bg-green-600 transition-all duration-200 font-medium shadow-sm hover:shadow-md"
             >
               Load More Stories
               <IoMdRefresh />

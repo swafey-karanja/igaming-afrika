@@ -11,6 +11,8 @@ import FAQSection from "../components/FaqSection.jsx";
 import Packages from "../components/Packages.jsx";
 import ExhibitionPackages from "../components/Exhibitionpackages.jsx";
 import FloorPlan from "../components/Floorplan.jsx";
+import Tickets from "../components/Tickets.jsx";
+import Venue from "../components/VenueInfo.jsx";
 // import Floorplan from "../components/Floorplan.jsx";
 
 const fadeInUp = {
@@ -50,14 +52,14 @@ const Home = () => {
         <Schedule />
       </motion.div>
 
-      <motion.div
+      {/* <motion.div
         variants={fadeInUp}
         initial="hidden"
         whileInView="visible"
         viewport={{ once: true }}
       >
         <Speakers />
-      </motion.div>
+      </motion.div> */}
 
       <motion.div
         variants={fadeInUp}
@@ -75,6 +77,15 @@ const Home = () => {
         viewport={{ once: true }}
       >
         <ExhibitionPackages />
+      </motion.div>
+
+      <motion.div
+        variants={fadeInUp}
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true }}
+      >
+        <Tickets />
       </motion.div>
 
       <motion.div
@@ -101,6 +112,15 @@ const Home = () => {
         whileInView="visible"
         viewport={{ once: true }}
       >
+        <FAQSection />
+      </motion.div>
+
+      <motion.div
+        variants={fadeInUp}
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true }}
+      >
         <FloorPlan />
       </motion.div>
 
@@ -110,7 +130,7 @@ const Home = () => {
         whileInView="visible"
         viewport={{ once: true }}
       >
-        <FAQSection />
+        <Venue />
       </motion.div>
     </div>
   );

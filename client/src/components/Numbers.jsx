@@ -73,25 +73,31 @@ const Numbers = () => {
       },
     },
   };
-
   const stats = [
     {
-      value: "6+",
-      label: t("years_in_business"),
-      sublabel: t("creating_success"),
-      icon: "🏆",
+      value: "3500+",
+      label: "Delegates",
+      icon: "🧑‍💼",
     },
     {
-      value: "4821",
-      label: t("projects_delivered"),
-      sublabel: t("last_six_years"),
-      icon: "🚀",
+      value: "1000+",
+      label: "Speakers",
+      icon: "🎤",
     },
     {
-      value: "37+",
-      label: t("team_members"),
-      sublabel: t("working_for_success"),
-      icon: "👥",
+      value: "450+",
+      label: "Affiliates",
+      icon: "🔗",
+    },
+    {
+      value: "500+",
+      label: "Operators",
+      icon: "🎮",
+    },
+    {
+      value: "100+",
+      label: "Exhibitors & Sponsors",
+      icon: "🏢",
     },
   ];
 
@@ -146,11 +152,28 @@ const Numbers = () => {
               <div className="flex items-start gap-3">
                 <div className="w-2 h-2 bg-green-600 rounded-full mt-2 flex-shrink-0"></div>
                 <div>
+                  <span className="font-semibold text-gray-900">Free:</span>{" "}
+                  This is the first-ever free-entry gaming summit in Africa. The
+                  free tickets provide access to the exhibition center, offering
+                  a unique opportunity to explore the extensive product
+                  offerings from various exhibitors. Additionally, ticket
+                  holders will have access to select panel discussions,
+                  providing a valuable chance to learn from our knowledgeable
+                  panel of speakers and gain insights into the latest trends and
+                  developments in the gaming industry
+                </div>
+              </div>
+
+              <div className="flex items-start gap-3">
+                <div className="w-2 h-2 bg-green-600 rounded-full mt-2 flex-shrink-0"></div>
+                <div>
                   <span className="font-semibold text-gray-900">
                     Global Gathering:
                   </span>{" "}
-                  With expected attendees from over 70 countries, this event is
-                  unmatched in its international reach.
+                  With expected attendees from over 100 countries, this event is
+                  unmatched in its international reach. It offers a unique
+                  platform for networking with industry leaders from around the
+                  world.
                 </div>
               </div>
 
@@ -162,7 +185,9 @@ const Numbers = () => {
                   </span>{" "}
                   The event will kick off with a memorable Safari Tour of the
                   iconic Masai Mara, allowing attendees to experience Kenya's
-                  wildlife including Lions, Antelopes, and Elephants.
+                  wildlife including Lions, Antelopes, and Elephants. It
+                  provides a once-in-a-lifetime opportunity to connect with
+                  nature before the main event.
                 </div>
               </div>
 
@@ -174,7 +199,8 @@ const Numbers = () => {
                   </span>{" "}
                   Explore sections dedicated to key industry verticals such as
                   regulation, marketing, and payments with targeted sessions for
-                  industry insights.
+                  industry insights. Attendees will gain practical knowledge
+                  from expert speakers and industry pioneers.
                 </div>
               </div>
 
@@ -185,7 +211,9 @@ const Numbers = () => {
                     Memorable Entertainment:
                   </span>{" "}
                   The event culminates with an iconic closing celebration at
-                  KICC featuring renowned artists.
+                  Kenyatta International Convention Centre (KICC) featuring
+                  renowned artists. It promises an unforgettable experience
+                  blending entertainment with networking opportunities.
                 </div>
               </div>
             </motion.div>
@@ -224,15 +252,6 @@ const Numbers = () => {
           >
             {t("numbers_tell_our_story")}
           </motion.h2>
-
-          <motion.p
-            variants={fadeIn}
-            transition={{ delay: 0.2 }}
-            className="text-base md:text-md text-white/90 max-w-2xl mx-auto leading-relaxed"
-          >
-            Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet
-            sint. Velit officia consequat duis.
-          </motion.p>
         </motion.div>
 
         <motion.div
@@ -246,7 +265,7 @@ const Numbers = () => {
               },
             },
           }}
-          className="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-12"
+          className="grid grid-cols-2 md:grid-cols-5 gap-8 md:gap-12"
         >
           {stats.map((stat, index) => (
             <motion.div

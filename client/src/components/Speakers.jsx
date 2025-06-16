@@ -119,7 +119,7 @@ const Speakers = () => {
             </h2>
           </div>
           <motion.div
-            className="w-20 h-1 bg-gradient-to-r from-green-600 to-green-500 mx-auto rounded-full mb-6"
+            className="w-20 h-1 bg-gradient-to-r from-green-600 to-green-600 mx-auto rounded-full mb-6"
             initial={{ width: 0 }}
             whileInView={{ width: 96 }}
             viewport={{ once: true }}
@@ -242,7 +242,8 @@ const Speakers = () => {
               onClick={handleShowMore}
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
-              className="inline-flex items-center gap-2 px-8 py-3 bg-green-600 text-white rounded-full hover:bg-green-700 transition-colors duration-200 font-medium border-2 border-green-600 hover:border-green-700"
+              style={{ backgroundColor: "#14a45c" }}
+              className="inline-flex items-center gap-2 px-8 py-3 text-white rounded-full hover:bg-green-700 transition-colors duration-200 font-medium border-2 border-green-600 hover:border-green-700"
             >
               Show More
               <IoMdRefresh />
