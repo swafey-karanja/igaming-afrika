@@ -10,6 +10,8 @@ import Gallery from "../components/Galleria.jsx";
 import FAQSection from "../components/FaqSection.jsx";
 import Packages from "../components/Packages.jsx";
 import ExhibitionPackages from "../components/Exhibitionpackages.jsx";
+import FloorPlan from "../components/Floorplan.jsx";
+// import Floorplan from "../components/Floorplan.jsx";
 
 const fadeInUp = {
   hidden: { opacity: 0, y: 40 },
@@ -91,6 +93,15 @@ const Home = () => {
         viewport={{ once: true }}
       >
         <GlobalNews variant="international-regulations" />
+      </motion.div>
+
+      <motion.div
+        variants={fadeInUp}
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true }}
+      >
+        <FloorPlan />
       </motion.div>
 
       <motion.div
