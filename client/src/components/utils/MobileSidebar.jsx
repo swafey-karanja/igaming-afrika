@@ -100,7 +100,7 @@ const MobileSidebar = ({ isSidebarOpen, setSidebarOpen, isScrolled }) => (
             <div className="pt-4">
               <button className="w-full bg-white/10 hover:bg-white/20 text-white font-semibold py-3 px-6 rounded-xl border border-white/30 hover:border-white/50 transition-all duration-200 backdrop-blur-sm">
                 <NavLink to="/register" className="block">
-                  PRE-REGISTER 2026
+                  REGISTER INTEREST
                 </NavLink>
               </button>
             </div>
