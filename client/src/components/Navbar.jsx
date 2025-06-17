@@ -166,7 +166,7 @@ const Navbar = () => {
                 }`}
               >
                 <NavLink to="/register" className="">
-                  PRE-REGISTER 2026
+                  REGISTER INTEREST
                 </NavLink>
               </button>
             </nav>
@@ -337,7 +337,7 @@ const Navbar = () => {
               <div className="pt-4">
                 <button className="w-full bg-white/10 hover:bg-white/20 text-white font-semibold py-3 px-6 rounded-xl border border-white/30 hover:border-white/50 transition-all duration-200 backdrop-blur-sm">
                   <NavLink to="/register" className="block">
-                    PRE-REGISTER 2026
+                    REGISTER INTEREST
                   </NavLink>
                 </button>
               </div>
@@ -494,7 +494,7 @@ const Navbar = () => {
 
             <div className="flex flex-col sm:flex-row justify-center space-y-4 sm:space-y-0 sm:space-x-4 lg:space-x-4">
               <button className="bg-transparent hover:bg-green-600 hover:bg-opacity-20 hover:cursor-pointer text-sm lg:text-base text-white font-bold self-center w-3/4 md:w-1/2 lg:w-1/2 py-2 px-4 md:py-3 md:px-8 lg:py-3 lg:px-8 border border-green-600 rounded-md">
-                <NavLink to="/register">PRE-REGISTER 2026</NavLink>
+                <NavLink to="/register">REGISTER INTEREST</NavLink>
               </button>
             </div>
           </div>

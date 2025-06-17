@@ -85,7 +85,7 @@ const Venue = () => {
     {
       icon: Phone,
       label: "Phone",
-      value: "+254 20 375 2333",
+      value: "+254 111 040 600",
     },
     {
       icon: Mail,
@@ -95,7 +95,7 @@ const Venue = () => {
     {
       icon: Calendar,
       label: "Event Date",
-      value: "March 15-17, 2026",
+      value: "28-30 JULY, 2026",
     },
     {
       icon: Users,
