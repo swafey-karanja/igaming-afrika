@@ -1,7 +1,7 @@
 [
   {
     "id": 1,
-    "title": "Headline Sponsor",
+    "title": "Headline Sponsor(Exclusive)",
     "price": "$55,000",
     "status": "AVAILABLE",
     "icon": "🎤",
@@ -10,7 +10,7 @@
     "benefits": [
       "Headline Sponsorship Status and logo placement within iGaming AFRIKA",
       "Press release announcing your Headline Sponsorship status including a quote from your C-Level Executive of choice",
-      "iGaming AFRIKA 2025 brought to you by *your company name*",
+      "iGaming AFRIKA 2026 brought to you by *your company name*",
       "Headline branding on site (main event)",
       "1 x Speaking opportunity to be discussed and confirmed in conjunction with the production team",
       "15-20 second advertisement video to be played in the main conference room and throughout the venue",
@@ -36,7 +36,7 @@
   },
   {
     "id": 2,
-    "title": "Branded Staff Sponsor",
+    "title": "Branded Staff Sponsor(Exclusive)",
     "price": "$4,500",
     "status": "AVAILABLE",
     "icon": "👕",
@@ -54,7 +54,7 @@
   },
   {
     "id": 3,
-    "title": "Branded Welcome Team Sponsor",
+    "title": "Branded Welcome Team Sponsor(Exclusive)",
     "price": "$5,500",
     "status": "AVAILABLE",
     "icon": "👋",
@@ -130,7 +130,7 @@
   },
   {
     "id": 7,
-    "title": "Closing Night Sponsor",
+    "title": "Closing Night Sponsor(Exclusive)",
     "price": "$50,000",
     "status": "AVAILABLE",
     "icon": "🎉",

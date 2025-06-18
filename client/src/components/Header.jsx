@@ -22,7 +22,7 @@ const Navbar = () => {
     seconds: 0,
   });
 
-  // Calculate time left until the event (May 7, 2025)
+  // Calculate time left until the event (May 7, 2026)
   useEffect(() => {
     const calculateTimeLeft = () => {
       const eventDate = new Date("July 28, 2026").getTime();
@@ -162,85 +162,23 @@ const Navbar = () => {
                 isInSidebar={false}
                 items={options}
               />
+
               <button
+                onClick={() => {
+                  const form = document.getElementById("contact-form");
+                  form?.scrollIntoView({ behavior: "smooth" });
+                }}
+                style={isScrolled ? { backgroundColor: "#14a45c" } : {}}
                 className={`hover:bg-green-600 hover:bg-opacity-20 hover:cursor-pointer text-xs text-white font-bold py-1.5 px-4 lg:py-2 lg:px-6 lg:text-sm border border-green-600 rounded-md ${
                   isScrolled ? "text-white bg-green-600" : "text-white"
                 }`}
               >
-                <NavLink to="/register" className="">
-                  REGISTER INTEREST
-                </NavLink>
+                CONTACT US
               </button>
             </nav>
 
             {/* Right Side Social Links */}
             <div className="hidden lg:flex lg:items-center xl:space-x-3 lg:space-x-3 sm:text-lg lg:text-lg">
-              <a
-                href="https://x.com/igamingafrika/"
-                target="_blank"
-                rel="noopener noreferrer"
-                className={`${
-                  isScrolled ? "text-black" : "text-white"
-                } hover:text-blue-400`}
-                aria-label="Twitter"
-              >
-                <FaTwitter />
-              </a>
-              <a
-                href="https://www.linkedin.com/company/igamingafrika/"
-                target="_blank"
-                rel="noopener noreferrer"
-                className={`${
-                  isScrolled ? "text-black" : "text-white"
-                } hover:text-blue-700`}
-                aria-label="LinkedIn"
-              >
-                <FaLinkedin />
-              </a>
-              <a
-                href="https://www.youtube.com/@igamingafrika?themeRefresh=1"
-                target="_blank"
-                rel="noopener noreferrer"
-                className={`${
-                  isScrolled ? "text-black" : "text-white"
-                } hover:text-red-600`}
-                aria-label="YouTube"
-              >
-                <FaYoutube />
-              </a>
-              <a
-                href="https://www.instagram.com/igamingafrika/"
-                target="_blank"
-                rel="noopener noreferrer"
-                className={`${
-                  isScrolled ? "text-black" : "text-white"
-                } hover:text-pink-500`}
-                aria-label="Instagram"
-              >
-                <FaInstagram />
-              </a>
-              <a
-                href="https://t.me/igamingafrika"
-                target="_blank"
-                rel="noopener noreferrer"
-                className={`${
-                  isScrolled ? "text-black" : "text-white"
-                } hover:text-blue-500`}
-                aria-label="Telegram"
-              >
-                <FaTelegramPlane />
-              </a>
-              <a
-                href="https://www.facebook.com/IgamingAfrika/"
-                target="_blank"
-                rel="noopener noreferrer"
-                className={`${
-                  isScrolled ? "text-black" : "text-white"
-                } hover:text-blue-500`}
-                aria-label="Facebook"
-              >
-                <FaFacebook />
-              </a>
               <button
                 className={`${
                   isScrolled ? "text-black" : "text-white"

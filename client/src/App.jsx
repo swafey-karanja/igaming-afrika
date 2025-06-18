@@ -7,9 +7,17 @@ import ScrollToTop from "./components/utils/ScrollToTop.jsx";
 import { Provider } from "react-redux";
 import store from "./store/index.js";
 import Registration from "./pages/registration.jsx";
-import { Toaster } from "react-hot-toast"; // ✅ Add this
+import { Toaster } from "react-hot-toast";
+import { useEffect } from "react";
 
 const App = () => {
+  useEffect(() => {
+    // Enable browser's automatic scroll restoration for reloads
+    if ("scrollRestoration" in history) {
+      history.scrollRestoration = "auto";
+    }
+  }, []);
+
   return (
     <I18nextProvider i18n={i18n}>
       <Provider store={store}>
@@ -34,7 +42,6 @@ const App = () => {
             },
           }}
         />
-        {/* ✅ Global Toast Mount */}
       </Provider>
     </I18nextProvider>
   );

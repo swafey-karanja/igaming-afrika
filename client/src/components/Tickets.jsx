@@ -1,6 +1,7 @@
 import React from "react";
 // eslint-disable-next-line no-unused-vars
 import { motion } from "framer-motion";
+import { NavLink } from "react-router-dom";
 
 const fadeIn = {
   hidden: { opacity: 0, y: 20 },
@@ -32,13 +33,16 @@ const Tickets = () => {
   const plans = [
     {
       label: "Standard Pass",
+      requirement: "Business Email registration required",
       price: 0,
       description: "Perfect for first-time attendees",
       features: [
         "Welcome Reception Access",
-        "Basic Expo Access",
-        "Networking Opportunities",
-        "Event Mobile App",
+        "Pre-registration & Networking Event",
+        "Soccer tournament ticket",
+        "Conference Hall 1 Access",
+        "Full Expo Access",
+        "IGaming AFRIKA Closing Party",
       ],
     },
     {
@@ -49,11 +53,12 @@ const Tickets = () => {
       description: "Most comprehensive experience",
       features: [
         "All Standard Pass benefits",
-        "Full Conference Access",
-        "VIP Networking Events",
-        "Awards Dinner Included",
+        "Safari Tour ",
+        "IGaming AFRIKA Awards Dinner",
+        "Conference Hall 2 Access",
         "$35 Meals Voucher",
-        "Safari Tour Access",
+        "VIP Lounge Access",
+        "VIP Networking Event ",
       ],
     },
     {
@@ -63,11 +68,8 @@ const Tickets = () => {
       description: "Platinum executive experience",
       features: [
         "All Premium Pass benefits",
-        "VIP Lounge Access",
-        "Private Meeting Rooms",
-        "Exclusive VIP Events",
-        "Premium Dining",
-        "Concierge Services",
+        "IGaming AFRIKA Networking Connect",
+        "Private Meeting Rooms Reservations",
       ],
     },
   ];
@@ -170,6 +172,14 @@ const Tickets = () => {
                   )}
                 </div>
 
+                <p
+                  className={`text-md mb-6 text-red-600 ${
+                    plan.isPopular ? "text-green-100" : "text-gray-500"
+                  }`}
+                >
+                  {plan.requirement}
+                </p>
+
                 {plan.doorPrice && (
                   <p
                     className={`text-sm ${
@@ -220,19 +230,23 @@ const Tickets = () => {
 
               {/* CTA Button */}
               <div className="px-6 pb-8">
-                <motion.button
-                  whileHover={{ scale: 1.02 }}
-                  whileTap={{ scale: 0.98 }}
-                  style={!plan.isPopular ? { backgroundColor: "#14a45c" } : {}}
-                  className={`w-full py-3 px-6 rounded-xl font-semibold text-sm transition-all duration-200 ${
-                    plan.isPopular
-                      ? "bg-white text-green-700 hover:bg-gray-50 shadow-lg"
-                      : "text-white hover:bg-green-700 shadow-md hover:shadow-lg"
-                  }`}
-                >
-                  {plan.price === 0 ? "Get Free Pass" : "Purchase Ticket"}
-                  <span className="ml-2">→</span>
-                </motion.button>
+                <NavLink to="/register">
+                  <motion.button
+                    whileHover={{ scale: 1.02 }}
+                    whileTap={{ scale: 0.98 }}
+                    style={
+                      !plan.isPopular ? { backgroundColor: "#14a45c" } : {}
+                    }
+                    className={`w-full py-3 px-6 rounded-xl font-semibold text-sm transition-all cursor-pointer duration-200 ${
+                      plan.isPopular
+                        ? "bg-white text-green-700 hover:bg-gray-50 shadow-lg"
+                        : "text-white hover:bg-green-700 shadow-md hover:shadow-lg"
+                    }`}
+                  >
+                    {plan.price === 0 ? "Get Free Pass" : "Purchase Ticket"}
+                    <span className="ml-2">→</span>
+                  </motion.button>
+                </NavLink>
               </div>
 
               {/* Decorative Elements */}

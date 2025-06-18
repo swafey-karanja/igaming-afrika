@@ -80,12 +80,12 @@ const Numbers = () => {
       icon: "🧑‍💼",
     },
     {
-      value: "1000+",
+      value: "100+",
       label: "Speakers",
       icon: "🎤",
     },
     {
-      value: "450+",
+      value: "350+",
       label: "Affiliates",
       icon: "🔗",
     },
@@ -184,10 +184,10 @@ const Numbers = () => {
                     Safari Tour:
                   </span>{" "}
                   The event will kick off with a memorable Safari Tour of the
-                  iconic Masai Mara, allowing attendees to experience Kenya's
-                  wildlife including Lions, Antelopes, and Elephants. It
-                  provides a once-in-a-lifetime opportunity to connect with
-                  nature before the main event.
+                  iconic Masai Mara and Nairobi National Parks allowing
+                  attendees to experience Kenya's wildlife including Lions,
+                  Antelopes, and Elephants. It provides a once-in-a-lifetime
+                  opportunity to connect with nature before the main event.
                 </div>
               </div>
 
@@ -198,9 +198,10 @@ const Numbers = () => {
                     World-Class Content:
                   </span>{" "}
                   Explore sections dedicated to key industry verticals such as
-                  regulation, marketing, and payments with targeted sessions for
-                  industry insights. Attendees will gain practical knowledge
-                  from expert speakers and industry pioneers.
+                  regulation, affiliate marketing, AI, Esports, Crypto, payments
+                  etc with targeted sessions for industry insights. Attendees
+                  will gain practical knowledge from expert speakers and
+                  industry pioneers.
                 </div>
               </div>
 
@@ -210,10 +211,10 @@ const Numbers = () => {
                   <span className="font-semibold text-gray-900">
                     Memorable Entertainment:
                   </span>{" "}
-                  The event culminates with an iconic closing celebration at
-                  Kenyatta International Convention Centre (KICC) featuring
-                  renowned artists. It promises an unforgettable experience
-                  blending entertainment with networking opportunities.
+                  The event culminates with an iconic closing celebration
+                  featuring renowned artists. It promises an unforgettable
+                  experience blending entertainment with networking
+                  opportunities. Venue(TBC)
                 </div>
               </div>
             </motion.div>
@@ -227,12 +228,12 @@ const Numbers = () => {
             <div className="relative w-full">
               <motion.img
                 variants={scaleIn}
-                src="https://img.freepik.com/free-photo/handsome-young-black-man-playing-poker-holding-smartphone-dollars-skeptic-nervous-frowning-upset-because-problem-negative-person_839833-20417.jpg?uid=R149908537&ga=GA1.1.2111726361.1747214498&semt=ais_hybrid&w=740"
+                src="/Summit2.png"
                 alt="AGS Event"
-                className="w-full h-80 md:h-96 lg:h-full max-h-[500px] rounded-2xl shadow-2xl object-cover"
+                className="w-full h-80 md:h-96 lg:h-full max-h-[500px] rounded-2xl object-cover"
                 loading="lazy"
               />
-              <div className="absolute inset-0 rounded-2xl bg-gradient-to-t from-black/20 to-transparent"></div>
+              {/* <div className="absolute inset-0 rounded-2xl bg-gradient-to-t from-black/20 to-transparent"></div> */}
             </div>
           </motion.div>
         </motion.div>

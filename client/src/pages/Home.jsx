@@ -85,6 +85,15 @@ const Home = () => {
         whileInView="visible"
         viewport={{ once: true }}
       >
+        <FloorPlan />
+      </motion.div>
+
+      <motion.div
+        variants={fadeInUp}
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true }}
+      >
         <Tickets />
       </motion.div>
 
@@ -113,15 +122,6 @@ const Home = () => {
         viewport={{ once: true }}
       >
         <FAQSection />
-      </motion.div>
-
-      <motion.div
-        variants={fadeInUp}
-        initial="hidden"
-        whileInView="visible"
-        viewport={{ once: true }}
-      >
-        <FloorPlan />
       </motion.div>
 
       <motion.div

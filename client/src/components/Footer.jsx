@@ -99,7 +99,7 @@ const ContactSection = ({ formData, onChange, onSubmit }) => (
         </p>
       </div>
 
-      <form onSubmit={onSubmit} className="space-y-6">
+      <form id="contact-form" onSubmit={onSubmit} className="space-y-6">
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
           <FormField
             label="Full Name"
@@ -346,7 +346,7 @@ const Footer = () => {
   };
 
   return (
-    <footer className="bg-black text-white pb-8 pt-16">
+    <footer id="footer" className="bg-black text-white pb-8 pt-16">
       <ContactSection
         formData={formData}
         onChange={handleInputChange}
@@ -367,7 +367,7 @@ const Footer = () => {
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center text-xs sm:text-sm text-gray-400">
           <p>
-            © Copyright 2025 Media-Tech iGaming Technology Limited - All Rights
+            © Copyright 2026 Media-Tech iGaming Technology Limited - All Rights
             Reserved
           </p>
         </div>

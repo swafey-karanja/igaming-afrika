@@ -204,7 +204,7 @@ const ImageCarousel = () => {
   if (!images || images.length === 0) return null;
 
   return (
-    <div className="bg-gray-100 max-h-screen flex items-center justify-center py-8 md:py-8 lg:py-8 px-4 sm:px-6 md:px-8">
+    <div className="bg-gray-100 min-h-screen flex items-center justify-center py-8 md:py-8 lg:py-8 px-4 sm:px-6 md:px-8">
       <div className="w-full max-w-7xl">
         <motion.div
           className="text-center mb-16"
@@ -256,7 +256,10 @@ const ImageCarousel = () => {
               </div>
             </div>
             <div className="flex-shrink-0">
-              <div className="bg-gradient-to-r from-green-500 to-green-600 text-white px-4 py-2 rounded-lg text-sm font-medium">
+              <div
+                className="text-white px-4 py-2 rounded-lg text-sm font-medium"
+                style={{ backgroundColor: "#14a45c" }}
+              >
                 {images.length} Photos
               </div>
             </div>

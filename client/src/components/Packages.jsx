@@ -10,6 +10,7 @@ import {
 import sponsorships from "../data/sponsorships.json";
 // eslint-disable-next-line no-unused-vars
 import { motion } from "framer-motion";
+import { NavLink } from "react-router-dom";
 
 const Packages = () => {
   const [selectedPackage, setSelectedPackage] = useState(null);
@@ -127,8 +128,8 @@ const Packages = () => {
           transition={{ duration: 0.8, delay: 0.3 }}
         />
         <p className="text-gray-600 max-w-2xl mx-auto text-sm md:text-md">
-          Join iGaming AFRIKA 2025 and showcase your brand to industry leaders
-          across the continent.
+          Join iGaming AFRIKA Summit 2026 and showcase your brand to industry
+          leaders across the continent.
         </p>
       </motion.div>
 
@@ -365,9 +366,14 @@ const Packages = () => {
                       Sold Out
                     </button>
                   ) : (
-                    <button className="bg-gradient-to-r from-green-600 to-green-600 hover:from-green-600 hover:to-green-700 text-white py-3 px-8 rounded-xl font-semibold transition-all duration-300 shadow-lg hover:shadow-xl">
-                      Contact Us
-                    </button>
+                    <NavLink to="/register">
+                      <button
+                        onClick={closeModal}
+                        className="bg-gradient-to-r from-green-600 to-green-600 hover:from-green-600 hover:to-green-700 text-white py-3 px-8 rounded-xl font-semibold transition-all duration-300 shadow-lg hover:shadow-xl"
+                      >
+                        Contact Us
+                      </button>
+                    </NavLink>
                   )}
                 </div>
               </div>

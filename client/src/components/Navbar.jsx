@@ -24,10 +24,10 @@ const Navbar = () => {
   });
   const { t } = useTranslation();
 
-  // Calculate time left until the event (May 7, 2025)
+  // Calculate time left until the event (May 7, 2026)
   useEffect(() => {
     const calculateTimeLeft = () => {
-      const eventDate = new Date("July 28, 2026").getTime();
+      const eventDate = new Date("July 18, 2026").getTime();
       const now = new Date().getTime();
       const difference = eventDate - now;
 
@@ -160,85 +160,33 @@ const Navbar = () => {
                 isInSidebar={false}
                 items={options}
               />
+              <NavLink to="/register">
+                <button
+                  style={isScrolled ? { backgroundColor: "#14a45c" } : {}}
+                  className={`hover:bg-green-600 hover:bg-opacity-20 hover:cursor-pointer text-xs text-white font-bold py-1.5 px-4 lg:py-2 lg:px-6 lg:text-sm border border-green-600 rounded-md ${
+                    isScrolled ? "text-white" : "text-white"
+                  }`}
+                >
+                  EXHIBIT/SPONSOR
+                </button>
+              </NavLink>
+
               <button
+                onClick={() => {
+                  const form = document.getElementById("contact-form");
+                  form?.scrollIntoView({ behavior: "smooth" });
+                }}
+                style={isScrolled ? { backgroundColor: "#14a45c" } : {}}
                 className={`hover:bg-green-600 hover:bg-opacity-20 hover:cursor-pointer text-xs text-white font-bold py-1.5 px-4 lg:py-2 lg:px-6 lg:text-sm border border-green-600 rounded-md ${
                   isScrolled ? "text-white bg-green-600" : "text-white"
                 }`}
               >
-                <NavLink to="/register" className="">
-                  REGISTER INTEREST
-                </NavLink>
+                CONTACT US
               </button>
             </nav>
 
             {/* Right Side Social Links */}
             <div className="hidden lg:flex lg:items-center xl:space-x-3 lg:space-x-3 sm:text-lg lg:text-lg">
-              <a
-                href="https://x.com/igamingafrika/"
-                target="_blank"
-                rel="noopener noreferrer"
-                className={`${
-                  isScrolled ? "text-black" : "text-white"
-                } hover:text-blue-400`}
-                aria-label="Twitter"
-              >
-                <FaTwitter />
-              </a>
-              <a
-                href="https://www.linkedin.com/company/igamingafrika/"
-                target="_blank"
-                rel="noopener noreferrer"
-                className={`${
-                  isScrolled ? "text-black" : "text-white"
-                } hover:text-blue-700`}
-                aria-label="LinkedIn"
-              >
-                <FaLinkedin />
-              </a>
-              <a
-                href="https://www.youtube.com/@igamingafrika?themeRefresh=1"
-                target="_blank"
-                rel="noopener noreferrer"
-                className={`${
-                  isScrolled ? "text-black" : "text-white"
-                } hover:text-red-600`}
-                aria-label="YouTube"
-              >
-                <FaYoutube />
-              </a>
-              <a
-                href="https://www.instagram.com/igamingafrika/"
-                target="_blank"
-                rel="noopener noreferrer"
-                className={`${
-                  isScrolled ? "text-black" : "text-white"
-                } hover:text-pink-500`}
-                aria-label="Instagram"
-              >
-                <FaInstagram />
-              </a>
-              <a
-                href="https://t.me/igamingafrika"
-                target="_blank"
-                rel="noopener noreferrer"
-                className={`${
-                  isScrolled ? "text-black" : "text-white"
-                } hover:text-blue-500`}
-                aria-label="Telegram"
-              >
-                <FaTelegramPlane />
-              </a>
-              <a
-                href="https://www.facebook.com/IgamingAfrika/"
-                target="_blank"
-                rel="noopener noreferrer"
-                className={`${
-                  isScrolled ? "text-black" : "text-white"
-                } hover:text-blue-500`}
-                aria-label="Facebook"
-              >
-                <FaFacebook />
-              </a>
               <button
                 className={`${
                   isScrolled ? "text-black" : "text-white"
@@ -439,12 +387,12 @@ const Navbar = () => {
             iGaming AFRIKA Summit
           </p>
           <p className="text-md sm:text-xl lg:text-xl font-semibold mb-2 sm:mb-3 lg:mb-4">
-            NAIROBI, KENYA • 28-30 JULY, 2026
+            NAIROBI, KENYA • 18-20 JULY, 2026
           </p>
           {/* <h1 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold mb-2">28-31 JULY, 2026</h1> */}
           <p className="text-sm sm:text-[16px] lg:text-[16px] mb-6 sm:mb-8 lg:mb-10">
             {" "}
-            Sarit Expo Center, Nairobi, Kenya
+            Sarit Expo Centre, Nairobi, Kenya
           </p>
 
           {/* Countdown Timer */}
@@ -485,11 +433,11 @@ const Navbar = () => {
 
           <div className="bg-opacity-40 backdrop-blur-sm rounded-lg p-3 sm:p-4 md:p-6 lg:p-8 max-w-lg sm:max-w-xl md:max-w-2xl lg:max-w-2xl mx-auto">
             <p className="text-xs sm:text-sm md:text-md lg:text-md mb-6 sm:mb-8 md:mb-10 lg:mb-10">
-              With expected attendees from over 70 countries, this event is
+              With expected attendees from over 100 countries, this event is
               unmatched in its international reach. Explore sections dedicated
-              to key industry verticals such as regulation, marketing, payments
-              etc and participate in targeted sessions to earn industry insights
-              and knowledge.
+              to key industry verticals such as regulation, affiliate marketing,
+              AI, Esports, Crypto, payments etc and participate in targeted
+              sessions to earn industry insights and knowledge.
             </p>
 
             <div className="flex flex-col sm:flex-row justify-center space-y-4 sm:space-y-0 sm:space-x-4 lg:space-x-4">

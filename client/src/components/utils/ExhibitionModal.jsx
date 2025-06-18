@@ -1,5 +1,6 @@
 // components/ExhibitionModal.jsx
 import { X, CheckCircle, Users, Star, Hammer, Building2 } from "lucide-react";
+import { NavLink } from "react-router-dom";
 
 const getTierColorClass = (tier) => {
   switch (tier) {
@@ -156,13 +157,16 @@ const ExhibitionModal = ({ pkg, isModalOpen, onClose, getTierColor }) => {
 
             {/* CTA */}
             <div className="flex gap-3 pt-4 border-t border-slate-200">
-              <button
-                className={`flex-1 bg-gradient-to-r ${getTierColor(
-                  pkg.tier
-                )} text-white py-3 px-6 rounded-lg font-medium transition-all duration-200 hover:shadow-md`}
-              >
-                Contact Us
-              </button>
+              <NavLink to="/register">
+                <button
+                  className={`flex-1 bg-gradient-to-r ${getTierColor(
+                    pkg.tier
+                  )} text-white py-3 px-6 rounded-lg font-medium transition-all duration-200 hover:shadow-md`}
+                  onClick={onClose}
+                >
+                  Contact Us
+                </button>
+              </NavLink>
             </div>
           </div>
         </div>
