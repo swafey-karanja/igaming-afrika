@@ -1,7 +1,6 @@
 import { useState } from "react";
 import Header from "../components/Header";
 import Breadcrumb from "../components/utils/Breadcrumb";
-import { useTranslation } from "react-i18next";
 import TextInput from "../components/utils/TextInput";
 import PhoneInputWrapper from "../components/utils/PhoneInputWrapper";
 import Checkbox from "../components/utils/Checkbox";
@@ -10,8 +9,6 @@ import { motion } from "framer-motion";
 import { toast } from "react-hot-toast";
 
 export default function Registration() {
-  const { t } = useTranslation();
-
   const [formData, setFormData] = useState({
     firstName: "",
     lastName: "",
@@ -113,12 +110,12 @@ export default function Registration() {
           variants={fadeIn}
         >
           <div className="inline-flex items-center gap-3 mb-4">
-            <h2 className="text-2xl md:text-4xl font-bold bg-gradient-to-r from-green-700 to-green-600 bg-clip-text text-transparent mb-2">
+            <h2 className="text-2xl md:text-4xl font-bold bg-gradient-to-r from-green-700 to-green-600 bg-clip-text text-transparent">
               REGISTER FOR THE EVENT
             </h2>
           </div>
           <motion.div
-            className="w-20 h-1 bg-gradient-to-r from-green-600 to-green-600 mx-auto rounded-full mb-6"
+            className="w-20 h-1 bg-gradient-to-r from-green-600 to-green-600 mx-auto rounded-full mb-2"
             initial={{ width: 0 }}
             whileInView={{ width: 96 }}
             viewport={{ once: true }}
@@ -130,16 +127,16 @@ export default function Registration() {
           <div className="space-y-12">
             <div className="border-b border-gray-900/10 pb-12">
               <h2 className="text-base font-semibold text-gray-900">
-                {t("personal_information")}
+                Personal Information
               </h2>
               <p className="mt-1 text-sm text-gray-600">
-                {t("permanent_address_note")}
+                Use a permanent address where you can receive mail.
               </p>
               <div className="mt-10 grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-6">
                 <TextInput
                   id="first-name"
                   name="firstName"
-                  label={t("first_name")}
+                  label="First name"
                   autoComplete="given-name"
                   value={formData.firstName}
                   onChange={handleChange}
@@ -149,7 +146,7 @@ export default function Registration() {
                 <TextInput
                   id="last-name"
                   name="lastName"
-                  label={t("last_name")}
+                  label="Last name"
                   autoComplete="family-name"
                   value={formData.lastName}
                   onChange={handleChange}
@@ -159,7 +156,7 @@ export default function Registration() {
                 <TextInput
                   id="email"
                   name="email"
-                  label={t("email_address")}
+                  label="Email Address"
                   autoComplete="email"
                   value={formData.email}
                   onChange={handleChange}
@@ -182,7 +179,7 @@ export default function Registration() {
                   error={errors.phone}
                 />
 
-                <div className="sm:col-span-6 space-y-4">
+                {/* <div className="sm:col-span-6 space-y-4">
                   <Checkbox
                     id="privacyPolicy"
                     name="privacyPolicy"
@@ -208,7 +205,7 @@ export default function Registration() {
                       {errors.confirmAccuracy}
                     </p>
                   )}
-                </div>
+                </div> */}
               </div>
             </div>
           </div>
@@ -218,7 +215,7 @@ export default function Registration() {
               type="button"
               className="text-sm font-semibold text-gray-900 cursor-pointer"
             >
-              {t("cancel")}
+              Cancel
             </button>
             <button
               type="submit"
@@ -227,7 +224,7 @@ export default function Registration() {
                 isSubmitting ? "opacity-50 cursor-not-allowed" : ""
               }`}
             >
-              {isSubmitting ? t("submitting") : t("save")}
+              {isSubmitting ? "Submitting" : "Submit"}
             </button>
           </div>
         </form>

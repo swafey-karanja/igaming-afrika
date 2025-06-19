@@ -1,5 +1,4 @@
 import React, { useState, useEffect, useRef } from "react";
-import { useTranslation } from "react-i18next";
 // eslint-disable-next-line no-unused-vars
 import { motion, useInView } from "framer-motion";
 
@@ -47,8 +46,6 @@ const AnimatedCounter = ({ value, duration = 2000, delay = 0 }) => {
 };
 
 const Numbers = () => {
-  const { t } = useTranslation();
-
   // Animation variants
   const fadeIn = {
     hidden: { opacity: 0, y: 30 },
@@ -130,13 +127,25 @@ const Numbers = () => {
               variants={scaleIn}
               className="text-xl lg:text-2xl font-bold mb-6 text-green-700 leading-tight"
             >
-              {t("what_is_ags_title")}
+              What is the iGaming AFRIKA Summit?
             </motion.h1>
             <motion.div
               variants={fadeIn}
               className="text-sm leading-relaxed mb-8 text-gray-700"
-              dangerouslySetInnerHTML={{ __html: t("what_is_ags_description") }}
-            />
+            >
+              <strong>IGaming AFRIKA Summit</strong> is Africa’s mega gaming
+              event, designed to unite the entire gaming industry players across
+              the world in one place—the stunning city of{" "}
+              <strong>Nairobi, Kenya.</strong> This being the inaugural edition
+              of the summit, the event is seen to be the largest event in the
+              industry, taking place in Nairobi, in 2026, the summit is seen to
+              be the mother of all gaming conferences in Africa. The summit is
+              taking place in an impressive 3,300m² square meters location at{" "}
+              <strong>Sarit Expo Centre</strong>, Nairobi’s Largest Expo centre
+              giving exhibitors and attendees a massive ground to showcase their
+              products, meet and connect with industry players as we discuss the
+              future of the gaming industry in Africa.
+            </motion.div>
 
             <motion.h2
               variants={scaleIn}
@@ -154,7 +163,7 @@ const Numbers = () => {
                 <div>
                   <span className="font-semibold text-gray-900">Free:</span>{" "}
                   This is the first-ever free-entry gaming summit in Africa. The
-                  free tickets provide access to the exhibition center, offering
+                  free tickets provide access to the exhibition centre, offering
                   a unique opportunity to explore the extensive product
                   offerings from various exhibitors. Additionally, ticket
                   holders will have access to select panel discussions,
@@ -251,7 +260,7 @@ const Numbers = () => {
             variants={scaleIn}
             className="text-2xl md:text-3xl lg:text-4xl font-bold text-white mb-4 leading-tight"
           >
-            {t("numbers_tell_our_story")}
+            Numbers tell our story
           </motion.h2>
         </motion.div>
 

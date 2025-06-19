@@ -32,6 +32,7 @@ const ExhibitionPackages = () => {
       exhibitorBenefits: option.exhibitorBenefits || [],
       sponsorshipStatus: option.sponsorshipStatus || [],
       notes: option.notes || [],
+      images: option.images || [], // ✅ <-- Add this line
       tickets:
         option.exhibitorBenefits
           ?.find((b) => b.includes("passes"))

@@ -180,7 +180,7 @@ const Packages = () => {
               </div>
 
               {/* Price */}
-              <div className="text-center">
+              <div className="text-center mb-3">
                 <span
                   className={`text-xl font-bold ${
                     pkg.featured ? "text-yellow-600" : "text-green-600"
@@ -189,6 +189,21 @@ const Packages = () => {
                   {pkg.price}
                 </span>
               </div>
+
+              {/* View Details Button */}
+              <button
+                className={`mt-auto w-full py-2 px-4 rounded-lg text-sm font-medium transition-colors ${
+                  pkg.featured
+                    ? "bg-yellow-100 text-yellow-800 hover:bg-yellow-200"
+                    : "bg-[#14a45c] text-white hover:bg-green-700"
+                }`}
+                onClick={(e) => {
+                  e.stopPropagation();
+                  openModal(pkg);
+                }}
+              >
+                View Details
+              </button>
             </div>
           </div>
         ))}
@@ -240,46 +255,47 @@ const Packages = () => {
       {/* Modal */}
       {selectedPackage && (
         <div
-          className={`fixed inset-0 backdrop-blur-sm bg-transparent transition-all duration-300 ease-out flex items-center justify-center p-4 z-50 ${
-            isModalOpen ? "bg-opacity-50" : "bg-opacity-0"
+          className={`fixed inset-0 z-50 bg-opacity-50 backdrop-blur-sm transition-all duration-300 flex items-center justify-center px-2 sm:px-4 py-6 ${
+            isModalOpen ? "visible" : "invisible"
           }`}
           onClick={closeModal}
         >
+          {/* Modal Content */}
           <div
-            className={`bg-white rounded-2xl max-w-4xl w-full max-h-[85vh] overflow-hidden transform transition-all duration-300 ease-out shadow-2xl ${
+            className={`bg-white w-full max-w-4xl rounded-2xl shadow-xl overflow-hidden transform transition-all duration-300 ${
               isModalOpen ? "scale-100 opacity-100" : "scale-95 opacity-0"
             }`}
             onClick={(e) => e.stopPropagation()}
           >
-            {/* Modal Header */}
+            {/* Header */}
             <div
               className={`${
                 selectedPackage.featured
                   ? "bg-gradient-to-r from-yellow-500 to-green-600"
                   : "bg-gradient-to-r from-green-600 to-green-600"
-              } text-white p-6`}
+              } text-white p-4 sm:p-6`}
             >
-              <div className="flex items-center justify-between">
+              <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
                 <div className="flex items-center gap-4">
-                  <div className="w-14 h-14 bg-white bg-opacity-20 rounded-xl flex items-center justify-center text-2xl backdrop-blur-sm">
+                  <div className="w-12 h-12 bg-white bg-opacity-20 rounded-xl flex items-center justify-center text-2xl backdrop-blur-sm">
                     {selectedPackage.icon}
                   </div>
                   <div>
-                    <h2 className="text-2xl font-bold">
+                    <h2 className="text-lg sm:text-2xl font-bold">
                       {selectedPackage.title}
                     </h2>
-                    <p className="text-white text-opacity-90 text-sm italic">
+                    <p className="text-white text-sm italic text-opacity-90 mt-1">
                       {selectedPackage.description}
                     </p>
                   </div>
                 </div>
-                <div className="flex items-center pb-8">
-                  <span className="text-xl font-bold">
+                <div className="flex items-center gap-4">
+                  <span className="text-lg sm:text-xl font-bold">
                     {selectedPackage.price}
                   </span>
                   <button
                     onClick={closeModal}
-                    className="w-10 h-10 cursor-pointer bg-transparent bg-opacity-20 rounded-full flex items-center justify-center hover:bg-opacity-30 transition-colors backdrop-blur-sm"
+                    className="w-9 h-9 sm:w-10 sm:h-10 bg-white/20 hover:bg-white/30 rounded-full flex items-center justify-center"
                   >
                     <X size={24} />
                   </button>
@@ -287,55 +303,53 @@ const Packages = () => {
               </div>
             </div>
 
-            {/* Modal Content */}
-            <div className="overflow-y-auto max-h-[calc(85vh-120px)]">
-              <div className="p-6 space-y-6">
+            {/* Scrollable Body */}
+            <div className="overflow-y-auto max-h-[calc(100vh-120px)] scroll-smooth">
+              <div className="p-4 sm:p-6 space-y-6 mb-6">
                 {/* Package Benefits */}
                 <div>
-                  <div className="flex items-center gap-2 mb-4">
+                  <div className="flex items-center gap-2 mb-3">
                     <CheckCircle className="text-green-600" size={20} />
                     <h3 className="text-lg font-bold text-gray-900">
                       Package Benefits
                     </h3>
                   </div>
-                  <div className="grid gap-2">
+                  <div className="space-y-2">
                     {selectedPackage.benefits.map((benefit, index) => (
                       <div
                         key={index}
-                        className="flex items-start gap-3 p-1 rounded-lg"
+                        className="flex items-start gap-3 text-sm text-gray-700"
                       >
                         <CheckCircle
                           size={16}
                           className="text-green-600 mt-0.5 flex-shrink-0"
                         />
-                        <span className="text-gray-700 text-sm">{benefit}</span>
+                        <span>{benefit}</span>
                       </div>
                     ))}
                   </div>
                 </div>
 
                 {/* Gold Benefits */}
-                {selectedPackage.goldBenefits.length > 0 && (
+                {selectedPackage.goldBenefits?.length > 0 && (
                   <div>
-                    <div className="flex items-center gap-2 mb-4">
+                    <div className="flex items-center gap-2 mb-3">
                       <Star className="text-yellow-500" size={20} />
                       <h3 className="text-lg font-bold text-gray-900">
                         Gold Sponsorship Status
                       </h3>
                     </div>
-                    <div className="grid gap-2">
+                    <div className="space-y-2">
                       {selectedPackage.goldBenefits.map((benefit, index) => (
                         <div
                           key={index}
-                          className="flex items-start gap-3 p-1 rounded-lg"
+                          className="flex items-start gap-3 text-sm text-gray-700"
                         >
                           <Star
                             size={16}
                             className="text-yellow-500 mt-0.5 flex-shrink-0"
                           />
-                          <span className="text-gray-700 text-sm">
-                            {benefit}
-                          </span>
+                          <span>{benefit}</span>
                         </div>
                       ))}
                     </div>
@@ -344,24 +358,50 @@ const Packages = () => {
 
                 {/* Tickets */}
                 <div>
-                  <div className="flex items-center gap-2 mb-4">
+                  <div className="flex items-center gap-2 mb-3">
                     <Users className="text-blue-500" size={20} />
                     <h3 className="text-lg font-bold text-gray-900">
                       Included Tickets
                     </h3>
                   </div>
-                  <div className="p-1 rounded-lg">
-                    <p className="text-gray-700">{selectedPackage.tickets}</p>
-                  </div>
+                  <p className="text-gray-700 text-sm">
+                    {selectedPackage.tickets}
+                  </p>
                 </div>
 
+                {/* Images */}
+                {selectedPackage.images?.length > 0 && (
+                  <div>
+                    <div className="flex items-center gap-2 mb-3">
+                      <img
+                        src={selectedPackage.images[0]}
+                        alt="Preview"
+                        className="w-5 h-5 object-cover rounded"
+                      />
+                      <h3 className="text-lg font-bold text-gray-900">
+                        Booth Visuals
+                      </h3>
+                    </div>
+                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                      {selectedPackage.images.slice(0, 2).map((src, i) => (
+                        <img
+                          key={i}
+                          src={src}
+                          alt={`Booth ${i + 1}`}
+                          // onClick={() => setPreviewImage(src)}
+                          className="w-full h-48 object-cover rounded-lg cursor-pointer shadow-sm border"
+                        />
+                      ))}
+                    </div>
+                  </div>
+                )}
+
                 {/* CTA */}
-                <div className="pt-4 border-t">
+                <div className="pt-4 border-t border-gray-200">
                   {selectedPackage.status === "SOLD OUT" ? (
                     <button
                       disabled
-                      type="button"
-                      className="bg-gradient-to-r from-red-500 to-red-600 hover:from-red-600 hover:to-red-700 text-white py-3 px-8 rounded-xl font-semibold transition-all duration-300 shadow-lg hover:shadow-xl cursor-not-allowed"
+                      className="w-full bg-gradient-to-r from-red-500 to-red-600 text-white py-3 rounded-lg font-semibold cursor-not-allowed"
                     >
                       Sold Out
                     </button>
@@ -369,7 +409,7 @@ const Packages = () => {
                     <NavLink to="/register">
                       <button
                         onClick={closeModal}
-                        className="bg-gradient-to-r from-green-600 to-green-600 hover:from-green-600 hover:to-green-700 text-white py-3 px-8 rounded-xl font-semibold transition-all duration-300 shadow-lg hover:shadow-xl"
+                        className="w-full bg-gradient-to-r from-green-600 to-green-700 text-white py-3 rounded-lg font-semibold shadow-md hover:shadow-lg transition"
                       >
                         Contact Us
                       </button>

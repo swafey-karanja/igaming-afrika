@@ -11,19 +11,19 @@ const FAQSection = () => {
 
   const faqs = [
     {
-      question: "What is Igaming Afrika Summit?",
+      question: "What is iGaming AFRIKA Summit?",
       answer:
-        "The inaugural IGaming Afrika Summit is set to take place in Nairobi, Kenya, in 2026, marking a significant milestone for the continent's gaming and betting industry. This premier event aims to unite a diverse array of stakeholders, including betting and gaming companies, technology providers, regulators, and investors, offering them a unique platform to network, explore investment opportunities, and forge strategic partnerships. Attendees can anticipate engaging in insightful discussions on emerging trends, regulatory frameworks, and technological advancements shaping the future of IGaming in Africa. With a focus on collaboration and innovation, the summit is poised to catalyze growth and drive the evolution of the gaming landscape across the continent.",
+        "The inaugural iGaming AFRIKA Summit is set to take place in Nairobi, Kenya, in 2026, marking a significant milestone for the continent's gaming and betting industry. This premier event aims to unite a diverse array of stakeholders, including betting and gaming companies, technology providers, regulators, and investors, offering them a unique platform to network, explore investment opportunities, and forge strategic partnerships. Attendees can anticipate engaging in insightful discussions on emerging trends, regulatory frameworks, and technological advancements shaping the future of IGaming in Africa. With a focus on collaboration and innovation, the summit is poised to catalyze growth and drive the evolution of the gaming landscape across the continent.",
     },
     {
-      question: "How do I get access to IGaming Afrika Summit?",
+      question: "How do I get access to iGaming AFRIKA Summit?",
       answer:
         "Access details will be available on our website once registration opens. You can sign up for our newsletter to receive updates about ticket availability and early bird specials.",
     },
     {
       question: "How can I exhibit and sponsor?",
       answer:
-        "We offer various exhibition and sponsorship packages. Please contact our partnerships team at sponsors@igamingafrika.com for more information about available opportunities.",
+        "We offer various exhibition and sponsorship packages. Please contact our partnerships team at events@igamingafrika.com for more information about available opportunities.",
     },
     {
       question: "How can I find Exhibitor details?",

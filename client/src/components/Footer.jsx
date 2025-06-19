@@ -1,5 +1,4 @@
 import { useState, useEffect } from "react";
-import { useTranslation } from "react-i18next";
 // eslint-disable-next-line no-unused-vars
 import { motion } from "framer-motion";
 import {
@@ -9,7 +8,10 @@ import {
   FaFacebook,
   FaGithub,
   FaPaperPlane,
+  FaTelegram,
+  FaYoutube,
 } from "react-icons/fa";
+import { toast } from "react-hot-toast";
 
 // Reusable Components
 const FormField = ({
@@ -153,9 +155,9 @@ const ContactSection = ({ formData, onChange, onSubmit }) => (
   </motion.div>
 );
 
-const LinksSection = ({ t }) => {
+const LinksSection = () => {
   const companyLinks = [
-    { href: "https://igamingafrika.com/about-us/", text: t("about") },
+    { href: "https://igamingafrika.com/about-us/", text: "About" },
     { href: "https://igamingafrika.com/advertise/", text: "Advertise" },
     { href: "https://igamingafrika.com/disclaimer/", text: "Disclaimer" },
     { href: "https://igamingafrika.com/join-our-team/", text: "Join our Team" },
@@ -164,10 +166,10 @@ const LinksSection = ({ t }) => {
   const helpLinks = [
     { href: "https://igamingafrika.com/donate/", text: "Donate" },
     { href: "https://igamingafrika.com/contact-us/", text: "Contact Us" },
-    { href: "#", text: t("terms_conditions") },
+    { href: "#", text: "Terms and Conditions" },
     {
       href: "https://igamingafrika.com/privacy-policy/",
-      text: t("privacy_policy"),
+      text: "Privacy Policy",
     },
   ];
 
@@ -207,7 +209,7 @@ const LinksSection = ({ t }) => {
         {/* Company Links */}
         <div className="space-y-4 mt-6 sm:mt-20 sm:ml-0 md:ml-10 lg:ml-20">
           <h3 className="text-sm sm:text-md font-bold text-gray-400 border-b border-gray-700 pb-2">
-            {t("company")}
+            COMPANY
           </h3>
           <ul className="space-y-3 text-xs sm:text-sm">
             {companyLinks.map((link, index) => (
@@ -221,7 +223,7 @@ const LinksSection = ({ t }) => {
         {/* Help Links */}
         <div className="space-y-4 mt-6 sm:mt-20">
           <h3 className="text-sm sm:text-md font-bold text-gray-400 border-b border-gray-700 pb-2">
-            {t("help")}
+            HELP
           </h3>
           <ul className="space-y-3 text-xs sm:text-sm">
             {helpLinks.map((link, index) => (
@@ -239,34 +241,40 @@ const LinksSection = ({ t }) => {
 const SocialSection = () => {
   const socialLinks = [
     {
-      href: "#",
+      href: "https://twitter.com/igamingafrika/",
       Icon: FaTwitter,
       label: "Twitter",
       hoverColor: "hover:text-blue-400",
     },
     {
-      href: "#",
+      href: "https://www.facebook.com/IgamingAfrika/",
       Icon: FaFacebook,
       label: "Facebook",
       hoverColor: "hover:text-blue-500",
     },
     {
-      href: "#",
+      href: "https://www.instagram.com/igamingafrika/",
       Icon: FaInstagram,
       label: "Instagram",
       hoverColor: "hover:text-red-500",
     },
     {
-      href: "#",
+      href: "https://www.linkedin.com/company/igamingafrika/",
       Icon: FaLinkedin,
       label: "LinkedIn",
       hoverColor: "hover:text-blue-700",
     },
     {
-      href: "#",
-      Icon: FaGithub,
-      label: "GitHub",
-      hoverColor: "hover:text-gray-300",
+      href: "https://www.youtube.com/@igamingafrika",
+      Icon: FaYoutube,
+      label: "YouTube",
+      hoverColor: "hover:text-red-700",
+    },
+    {
+      href: "https://t.me/igamingafrika",
+      Icon: FaTelegram,
+      label: "Telegram",
+      hoverColor: "hover:text-blue-700",
     },
   ];
 
@@ -323,7 +331,6 @@ const Footer = () => {
     topic: "",
     message: "",
   });
-  const { t } = useTranslation();
 
   useEffect(() => {
     const handleScroll = () => setIsVisible(window.scrollY > 20);
@@ -338,11 +345,29 @@ const Footer = () => {
     setFormData((prev) => ({ ...prev, [name]: value }));
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     console.log("Form submitted:", formData);
-    alert("Thank you for your inquiry! We will get back to you soon.");
-    setFormData({ name: "", email: "", topic: "", message: "" });
+    try {
+      await fetch(`${import.meta.env.VITE_API_URL}/inquiry`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(formData),
+      });
+
+      setTimeout(() => {
+        setFormData({
+          name: "",
+          email: "",
+          topic: "",
+          message: "",
+        });
+      }, 1500); // 1.5 second delay
+      toast.success("Registration successful!");
+    } catch (error) {
+      console.log("error", error);
+      toast.error("Something went wrong. Try again later.");
+    }
   };
 
   return (
@@ -353,7 +378,7 @@ const Footer = () => {
         onSubmit={handleSubmit}
       />
 
-      <LinksSection t={t} />
+      <LinksSection />
 
       <SocialSection />
 

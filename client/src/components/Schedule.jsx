@@ -6,10 +6,10 @@ export default function Schedule() {
   const [activeTab, setActiveTab] = useState(0);
 
   const dates = [
-    { day: "Mon", date: "28 July" },
-    { day: "Tue", date: "29 July" },
-    { day: "Wed", date: "30 July" },
-    { day: "Thu", date: "31 July" },
+    { day: "Mon", date: "4 May" },
+    { day: "Tue", date: "5 May" },
+    { day: "Wed", date: "6 May" },
+    { day: "Thu", date: "7 May" },
   ];
 
   // Sample conference schedule data for each day
@@ -19,7 +19,7 @@ export default function Schedule() {
         time: "00:00 - 23:00",
         title: "Arrival",
         location: "Jomo Kenyatta International Airport",
-        description: "Arrival of Delegates & Badge Collection",
+        description: "Arrival of Delegates",
       },
       {
         time: "07:00 - 18:00",
@@ -32,7 +32,7 @@ export default function Schedule() {
       {
         time: "16:30 – 19:30 ",
         title: "Pre Registration ",
-        location: ": GTC Residence, Nairobi",
+        location: "GTC Pan Pacific, Nairobi",
         description: "Pre registration of event attendees and delegates",
       },
     ],

@@ -2,7 +2,8 @@ import express from 'express';
 import mongoose from 'mongoose';
 import dotenv from 'dotenv';
 import cors from 'cors';
-import registerRoute from './src/routes/register.js';
+import registerRoute from './src/routes/registerRouter.js';
+import inquiryRoute from './src/routes/inquiryRouter.js'
 
 dotenv.config();
 
@@ -10,7 +11,7 @@ const app = express();
 
 app.use(express.json());
 app.use(cors({
-  origin: process.env.CLIENT_ORIGIN, 
+  origin: process.env.CLIENT_ORIGIN || "http://localhost:5173", 
   methods: ['GET', 'POST'],
 }));
 
@@ -21,6 +22,7 @@ mongoose
 
 // Routes
 app.use('/api/register', registerRoute);
+app.use('/api/inquiry', inquiryRoute);
 
 // Health check
 app.get("/", (req, res) => {

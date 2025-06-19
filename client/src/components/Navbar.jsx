@@ -1,6 +1,5 @@
 import { useState, useEffect } from "react";
 import { NavLink } from "react-router-dom";
-import { useTranslation } from "react-i18next";
 import {
   FaTwitter,
   FaLinkedin,
@@ -22,12 +21,11 @@ const Navbar = () => {
     minutes: 0,
     seconds: 0,
   });
-  const { t } = useTranslation();
 
   // Calculate time left until the event (May 7, 2026)
   useEffect(() => {
     const calculateTimeLeft = () => {
-      const eventDate = new Date("July 18, 2026").getTime();
+      const eventDate = new Date("May 4, 2026").getTime();
       const now = new Date().getTime();
       const difference = eventDate - now;
 
@@ -371,7 +369,7 @@ const Navbar = () => {
               src="https://cdn.pixabay.com/video/2021/03/06/67116-521253275_tiny.mp4"
               type="video/mp4"
             />
-            {t("your_browser_does_not_support_the_video_tag")}
+            Your browser does not support the video tag.
           </video>
           {/* Dark overlay for better text visibility */}
           <div className="absolute inset-0 bg-black opacity-50"></div>
@@ -387,7 +385,7 @@ const Navbar = () => {
             iGaming AFRIKA Summit
           </p>
           <p className="text-md sm:text-xl lg:text-xl font-semibold mb-2 sm:mb-3 lg:mb-4">
-            NAIROBI, KENYA • 18-20 JULY, 2026
+            NAIROBI, KENYA • 4-6 MAY, 2026
           </p>
           {/* <h1 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold mb-2">28-31 JULY, 2026</h1> */}
           <p className="text-sm sm:text-[16px] lg:text-[16px] mb-6 sm:mb-8 lg:mb-10">

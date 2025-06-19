@@ -47,7 +47,7 @@ const Sponsors = () => {
         </motion.div>
       </div>
 
-      <div className="max-w-8xl mx-auto space-y-12 md:space-y-16 lg:space-y-20">
+      <div className="max-w-7xl mx-auto space-y-12 md:space-y-16 lg:space-y-20">
         <SponsorTier
           title="Headline Sponsor"
           sponsors={[headlineSponsor]}

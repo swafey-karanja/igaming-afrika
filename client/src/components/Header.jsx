@@ -25,7 +25,7 @@ const Navbar = () => {
   // Calculate time left until the event (May 7, 2026)
   useEffect(() => {
     const calculateTimeLeft = () => {
-      const eventDate = new Date("July 28, 2026").getTime();
+      const eventDate = new Date("May 4, 2026").getTime();
       const now = new Date().getTime();
       const difference = eventDate - now;
 
@@ -379,7 +379,7 @@ const Navbar = () => {
             iGaming AFRIKA Summit
           </p>
           <p className="text-md sm:text-ld font-semibold mb-2 sm:mb-3">
-            NAIROBI, KENYA • 28-30 JULY, 2026
+            NAIROBI, KENYA • 4-6 MAY, 2026
           </p>
           {/* <h1 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold mb-2">28-31 JULY, 2026</h1> */}
           <p className="text-sm sm:text-[14px] mb-6 sm:mb-8 font-semibold">

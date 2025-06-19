@@ -44,19 +44,19 @@ const Venue = () => {
 
   const venueImages = [
     {
-      url: "https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=800&h=500&fit=crop",
+      url: "https://saritexpo.com/media/images/18.width-1440.jpg",
       alt: "Sarit Expo Centre Exterior",
       title: "Main Entrance",
     },
     {
-      url: "https://images.unsplash.com/photo-1505373877841-8d25f7d46678?w=800&h=500&fit=crop",
+      url: "https://saritexpo.com/media/images/Sarit_Expo_Centre_-_Exhibition_and.2e16d0ba.fill-600x300.jpg",
       alt: "Exhibition Hall Interior",
       title: "Main Exhibition Hall",
     },
     {
-      url: "https://images.unsplash.com/photo-1511578314322-379afb476865?w=800&h=500&fit=crop",
-      alt: "Networking Area",
-      title: "Networking Lounge",
+      url: "https://www.africatechsummit.com/nairobi/wp-content/uploads/2021/02/sarit-1.jpg",
+      alt: "Sarit Expo Centre Entrance",
+      title: "Main Entrance",
     },
   ];
 

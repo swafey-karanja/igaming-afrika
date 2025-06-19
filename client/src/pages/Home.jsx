@@ -2,14 +2,14 @@
 import { motion } from "framer-motion";
 import Numbers from "../components/Numbers.jsx";
 import GlobalNews from "../components/GlobalNews.jsx";
-import Sponsors from "../components/Sponsors.jsx";
+import Sponsors from "../components/EventSponsors.jsx";
 import Navbar from "../components/Navbar.jsx";
 import Schedule from "../components/Schedule.jsx";
 import Speakers from "../components/Speakers.jsx";
 import Gallery from "../components/Galleria.jsx";
 import FAQSection from "../components/FaqSection.jsx";
-import Packages from "../components/Packages.jsx";
-import ExhibitionPackages from "../components/Exhibitionpackages.jsx";
+import Packages from "../components/SponsorshipOpportunities.jsx";
+import ExhibitionPackages from "../components/ExhibitionOpportunities.jsx";
 import FloorPlan from "../components/Floorplan.jsx";
 import Tickets from "../components/Tickets.jsx";
 import Venue from "../components/VenueInfo.jsx";

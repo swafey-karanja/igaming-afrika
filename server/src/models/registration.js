@@ -14,4 +14,4 @@ const registrationSchema = new mongoose.Schema({
   },
 });
 
-export default mongoose.model('Registration', registrationSchema);
+export default mongoose.models.Registration || mongoose.model('Registration', registrationSchema);
