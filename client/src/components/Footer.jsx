@@ -302,7 +302,7 @@ const BackToTop = ({ isVisible, onClick }) => (
     initial={{ opacity: 0 }}
     animate={{ opacity: isVisible ? 1 : 0 }}
     transition={{ duration: 0.3 }}
-    className="fixed bottom-3 sm:bottom-5 right-3 sm:right-5 rounded-full bg-green-600 p-2 sm:p-3 text-xs font-medium uppercase leading-tight cursor-pointer text-white shadow-lg hover:bg-green-700 hover:shadow-xl focus:outline-none focus:ring-0  transform hover:scale-110"
+    className="fixed bottom-3 sm:bottom-5 left-3 sm:left-5 rounded-full bg-green-600 p-2 sm:p-3 text-xs font-medium uppercase leading-tight cursor-pointer text-white shadow-lg hover:bg-green-700 hover:shadow-xl focus:outline-none focus:ring-0  transform hover:scale-110"
     aria-label="Back to top"
   >
     <svg

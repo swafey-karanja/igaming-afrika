@@ -6,12 +6,12 @@ const registrationSchema = new mongoose.Schema({
   email: String,
   company: String,
   phone: String,
-  privacyPolicy: Boolean,
-  confirmAccuracy: Boolean,
+  interests: [String],
   createdAt: {
     type: Date,
     default: Date.now,
   },
 });
+
 
 export default mongoose.models.Registration || mongoose.model('Registration', registrationSchema);

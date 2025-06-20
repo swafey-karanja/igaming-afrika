@@ -415,7 +415,7 @@ const Navbar = () => {
             </div>
           </div>
 
-          <div className=" bg-opacity-40 backdrop-blur-sm rounded-lg p-3 sm:p-4 md:p-6 max-w-lg sm:max-w-xl md:max-w-2xl mx-auto">
+          {/* <div className=" bg-opacity-40 backdrop-blur-sm rounded-lg p-3 sm:p-4 md:p-6 max-w-lg sm:max-w-xl md:max-w-2xl mx-auto">
             <p className="text-xs sm:text-sm mb-2 sm:mb-4 md:mb-6">
               With expected attendees from over 100 countries, this event is
               unmatched in its international reach. Explore sections dedicated
@@ -423,11 +423,11 @@ const Navbar = () => {
               artificial intelligence, payments etc and participate in targeted
               sessions to earn industry insights and knowledge.
             </p>
-          </div>
+          </div> */}
         </div>
 
         {/* Scroll Down Button */}
-        <div className="absolute hidden lg:block bottom-4 sm:bottom-6 md:bottom-8 xl:bottom-12 left-1/2 transform -translate-x-1/2">
+        {/* <div className="absolute hidden lg:block bottom-4 sm:bottom-6 md:bottom-8 xl:bottom-12 left-1/2 transform -translate-x-1/2">
           <a
             href="#numbers"
             className="inline-flex items-center justify-center w-10 h-10 sm:w-12 sm:h-12 rounded-full text-white bg-black bg-opacity-50 hover:bg-green-600 transition duration-300"
@@ -448,7 +448,7 @@ const Navbar = () => {
               />
             </svg>
           </a>
-        </div>
+        </div> */}
       </div>
     </div>
   );

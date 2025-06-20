@@ -67,9 +67,9 @@
               "Bespoke package pricing available on request"
             ],
             "images": [
-              "/booths/Exhibition Booth 6by5_Front.jpg",
-              "/booths/Exhibition Booth 6by5_Right.jpg",
-              "/booths/Exhibition Booth 6by5_Left.jpg"
+              "/booths/Exhibition Shell 6by5_Middle.jpg",
+              "/booths/Exhibition Shell 6by5_Right.jpg",
+              "/booths/Exhibition Shell 6by5_Left.jpg"
             ]
           }
         ]
@@ -142,9 +142,9 @@
               "Bespoke package pricing available on request"
             ],
             "images": [
-              "/booths/Exhibition Booth 6by3_Front.jpg",
-              "/booths/Exhibition Booth 6by3_Right.jpg",
-              "/booths/Exhibition Booth 6by3_Left.jpg"
+              "/booths/Exhibition Shell 6by3_Middle.jpg",
+              "/booths/Exhibition Shell 6by3_Right.jpg",
+              "/booths/Exhibition Shell 6by3_Left.jpg"
             ]
           }
         ]
@@ -217,9 +217,9 @@
               "Bespoke package pricing available on request."
             ],
             "images": [
-              "/booths/Exhibition Booth 4by4_Front.jpg",
-              "/booths/Exhibition Booth 4by4_Right.jpg",
-              "/booths/Exhibition Booth 4by4_Left.jpg"
+              "/booths/Exhibition Shell 4by4_Middle.jpg",
+              "/booths/Exhibition Shell 4by4_Right.jpg",
+              "/booths/Exhibition Shell 4by4_Left.jpg"
             ]
           }
         ]
@@ -262,9 +262,9 @@
               "Bespoke package pricing available on request."
             ],
             "images": [
-              "/booths/Exhibition Booth 3by3_Front.jpg",
-              "/booths/Exhibition Booth 3by3_Right.jpg",
-              "/booths/Exhibition Booth 3by3_Left.jpg"
+              "/booths/Exhibition Shell 3by3_Middle.jpg",
+              "/booths/Exhibition Shell 3by3_Right.jpg",
+              "/booths/Exhibition Shell 3by3_Left.jpg"
             ]
           }
         ]
@@ -306,6 +306,11 @@
             "notes": [
               "IGaming AFRIKA covers the costs of wifi and power supply of 16 AMP. ",
               "Bespoke package pricing available on request."
+            ],
+            "images": [
+              "/booths/Exhibition Shell 2by2_Middle.jpg",
+              "/booths/Exhibition Shell 2by2_Right.jpg",
+              "/booths/Exhibition Shell 2by2_Left.jpg"
             ]
           }
         ]
