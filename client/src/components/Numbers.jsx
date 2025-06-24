@@ -234,15 +234,17 @@ const Numbers = () => {
             transition={{ delay: 0.3 }}
             className="lg:w-1/2 px-6 sm:px-8 lg:px-12 flex items-center"
           >
-            <div className="relative w-full">
-              <motion.img
+            <div className="relative w-full aspect-video max-h-[500px] rounded-2xl overflow-hidden">
+              <motion.iframe
                 variants={scaleIn}
-                src="/Summit2.png"
-                alt="AGS Event"
-                className="w-full h-80 md:h-96 lg:h-full max-h-[500px] rounded-2xl object-cover"
+                className="w-full h-full rounded-2xl"
+                src="https://www.youtube.com/embed/N5JtC_KSuQY?rel=0"
+                title="AGS Event Video"
+                frameBorder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowFullScreen
                 loading="lazy"
               />
-              {/* <div className="absolute inset-0 rounded-2xl bg-gradient-to-t from-black/20 to-transparent"></div> */}
             </div>
           </motion.div>
         </motion.div>

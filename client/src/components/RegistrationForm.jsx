@@ -154,6 +154,7 @@ export default function EventApplicationForm() {
                       errors.firstName ? "border-red-500" : "border-gray-300"
                     }`}
                     placeholder="Enter your first name"
+                    disabled
                   />
                   {errors.firstName && (
                     <p className="text-red-500 text-sm mt-1">
@@ -175,6 +176,7 @@ export default function EventApplicationForm() {
                       errors.lastName ? "border-red-500" : "border-gray-300"
                     }`}
                     placeholder="Enter your last name"
+                    disabled
                   />
                   {errors.lastName && (
                     <p className="text-red-500 text-sm mt-1">
@@ -198,6 +200,7 @@ export default function EventApplicationForm() {
                       errors.company ? "border-red-500" : "border-gray-300"
                     }`}
                     placeholder="Enter your company name"
+                    disabled
                   />
                   {errors.company && (
                     <p className="text-red-500 text-sm mt-1">
@@ -229,6 +232,7 @@ export default function EventApplicationForm() {
                         border: "none",
                         width: "100%",
                       }}
+                      disabled
                     />
                   </div>
                   {errors.phone && (
@@ -250,6 +254,7 @@ export default function EventApplicationForm() {
                     errors.email ? "border-red-500" : "border-gray-300"
                   }`}
                   placeholder="e.g. john.doe@company.com"
+                  disabled
                 />
                 {errors.email && (
                   <p className="text-red-500 text-sm mt-1">{errors.email}</p>
@@ -318,6 +323,7 @@ export default function EventApplicationForm() {
                             className="hidden"
                             checked={formData.interests.includes(option.id)}
                             onChange={() => handleInterestToggle(option.id)}
+                            disabled
                           />
                         </label>
                       ))}
@@ -353,11 +359,15 @@ export default function EventApplicationForm() {
             <div className="flex items-center justify-center">
               <button
                 onClick={handleSubmit}
+                disabled
                 className="w-full md:w-[20vw] bg-[#14a45c] text-white font-semibold py-4 px-6 rounded-lg hover:bg-green-700 focus:ring-4 focus:ring-green-300 transition-all duration-200 transform hover:scale-105 shadow-lg"
               >
                 APPLY NOW
               </button>
             </div>
+            <p className="font-bold text-red-600 text-xl md:text-2xl flex text-center justify-center">
+              Registrations will be opened soon!
+            </p>
           </div>
         </div>
       </div>
