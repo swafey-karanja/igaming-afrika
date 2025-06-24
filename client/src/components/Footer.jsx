@@ -192,7 +192,7 @@ const LinksSection = () => {
             />
           </a>
           <p className="text-xs sm:text-sm text-gray-400 leading-relaxed">
-            IGaming AFRIKA Summit is Africa's mega gaming event, designed to
+            iGaming AFRIKA Summit is Africa's mega gaming event, designed to
             unite the entire gaming industry players across the world in one
             place—the stunning city of Nairobi, Kenya. This being the inaugural
             edition of the summit, the event is seen to be the largest event in
@@ -282,13 +282,16 @@ const SocialSection = () => {
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 sm:py-6">
       <div className="flex items-center justify-center space-x-4 sm:space-x-6 pt-2">
         {socialLinks.map((social, index) => (
-          <SocialLink
+          <a
             key={index}
             href={social.href}
-            Icon={social.Icon}
-            label={social.label}
-            hoverColor={social.hoverColor}
-          />
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label={social.label}
+            className={`text-gray-500 text-2xl transition-colors duration-300 ${social.hoverColor}`}
+          >
+            <social.Icon />
+          </a>
         ))}
       </div>
     </div>

@@ -42,7 +42,7 @@ const Tickets = () => {
         "Soccer tournament ticket",
         "Conference Hall 1 Access",
         "Full Expo Access",
-        "IGaming AFRIKA Closing Party",
+        "iGaming AFRIKA Closing Party",
       ],
     },
     {
@@ -54,7 +54,7 @@ const Tickets = () => {
       features: [
         "All Standard Pass benefits",
         "Safari Tour ",
-        "IGaming AFRIKA Awards Dinner",
+        "iGaming AFRIKA Awards Dinner",
         "Conference Hall 2 Access",
         "$35 Meals Voucher",
         "VIP Lounge Access",
@@ -68,7 +68,7 @@ const Tickets = () => {
       description: "Platinum executive experience",
       features: [
         "All Premium Pass benefits",
-        "IGaming AFRIKA Networking Connect",
+        "iGaming AFRIKA Networking Connect",
         "Private Meeting Rooms Reservations",
       ],
     },
@@ -87,7 +87,7 @@ const Tickets = () => {
         >
           <div className="inline-flex items-center gap-3 mb-4">
             <h2 className="text-2xl md:text-4xl font-bold bg-gradient-to-r from-green-700 to-green-600 bg-clip-text text-transparent mb-2">
-              Tickets for Igaming Afrika Summit 2026
+              Tickets for iGaming AFRIKA Summit 2026
             </h2>
           </div>
           <motion.div

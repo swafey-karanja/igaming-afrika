@@ -34,6 +34,13 @@ mongoose
   .then(() => console.log('MongoDB connected'))
   .catch((err) => console.error('MongoDB connection error:', err));
 
+// Add this middleware before your routes for debugging
+app.use((req, res, next) => {
+  console.log(`${new Date().toISOString()} - ${req.method} ${req.url}`);
+  console.log('Headers:', req.headers);
+  next();
+});
+
 // Routes
 app.use('/api/register', registerRoute);
 app.use('/api/inquiry', inquiryRoute);
