@@ -253,7 +253,7 @@ const SocialSection = () => {
       hoverColor: "hover:text-blue-500",
     },
     {
-      href: "https://www.instagram.com/igamingafrika/",
+      href: "https://www.instagram.com/igamingafrikasummit?igsh=bHl5MWlkNWdiYzll",
       Icon: FaInstagram,
       label: "Instagram",
       hoverColor: "hover:text-red-500",
