@@ -13,22 +13,96 @@ const FAQSection = () => {
     {
       question: "What is iGaming AFRIKA Summit?",
       answer:
-        "The inaugural iGaming AFRIKA Summit is set to take place in Nairobi, Kenya, in 2026, marking a significant milestone for the continent's gaming and betting industry. This premier event aims to unite a diverse array of stakeholders, including betting and gaming companies, technology providers, regulators, and investors, offering them a unique platform to network, explore investment opportunities, and forge strategic partnerships. Attendees can anticipate engaging in insightful discussions on emerging trends, regulatory frameworks, and technological advancements shaping the future of IGaming in Africa. With a focus on collaboration and innovation, the summit is poised to catalyze growth and drive the evolution of the gaming landscape across the continent.",
+        "iGaming AFRIKA Summit is Africa's mega gaming event, designed to unite the entire gaming industry players across the world in one place—the stunning city of Nairobi, Kenya taking place in Nairobi, in May 2026. This being the inaugural edition of the summit, the event is seen to be the largest event in the gaming industry in Africa.",
     },
     {
-      question: "How do I get access to iGaming AFRIKA Summit?",
+      question: "What are the scheduled days for the event?",
       answer:
-        "Access details will be available on our website once registration opens. You can sign up for our newsletter to receive updates about ticket availability and early bird specials.",
+        "The iGaming AFRIKA Summit will be held from May 4th to 6th, 2026.",
     },
     {
-      question: "How can I exhibit and sponsor?",
+      question: "Where will the iGaming Africa Summit 2026 be held?",
       answer:
-        "We offer various exhibition and sponsorship packages. Please contact our partnerships team at events@igamingafrika.com for more information about available opportunities.",
+        "The summit is taking place in an impressive 3,300m² square meters location at Sarit Expo Center, Nairobi's Largest Expo center giving exhibitors and attendees a massive ground to showcase their products, meet and connect with industry players as we discuss the future of the gaming industry in Africa.",
     },
     {
-      question: "How can I find Exhibitor details?",
+      question: "How do I get access to the iGaming AFRIKA Summit?",
       answer:
-        "Exhibitor details will be published on our website closer to the event date. You can browse participating companies and their offerings in our digital exhibitor directory.",
+        "Access details will be available on our event website (https://summits.igamingafrika.com/ ) once registration opens. You can sign up for our newsletter to receive updates about ticket availability and early bird specials.",
+    },
+    {
+      question: "What is the ticket policy if the event can’t go ahead?",
+      answer:
+        "If the physical event cannot proceed for any reason, all ticket holders will have the option to transfer their ticket to a future event or receive a full refund in accordance with our ticketing terms and conditions.",
+    },
+    {
+      question: "Can i transfer my ticket if i can no longer attend?",
+      answer:
+        "Yes, if you are unable to attend, you may transfer your ticket to a substitute delegate at no additional cost. All substitution requests must be submitted via email through events@igamingafrika.com at least 48 hours before the event, including the names, job titles, and contact emails for both the registered and replacement delegates.",
+    },
+    {
+      question: "Will i have access to online delegates?",
+      answer:
+        "Only Premium and Platinum Pass holders will have access to the event's digital networking platform. You will receive access to connect with other online delegates via the platform prior to the event.",
+    },
+    {
+      question: "What are the accommodation options?",
+      answer:
+        "For accommodation options, please visit our event page, which features partnerships with local hotels to provide special rates for attendees.",
+    },
+    {
+      question: "What are the costs to attend iGaming AFRIKA Summit?",
+      answer:
+        "It is absolutely free to attend the iGaming AFRIKA Summit. However, delegates interested in purchasing paid tickets for enhanced access to the summit may do so at their convenience.\n\nDetailed ticket pricing and options are available on our website. Please visit our ticket options page for more information.",
+    },
+    {
+      question: "Are there any covid-19 measures in place?",
+      answer:
+        "Currently, there are no specific COVID-19 restrictions in place. However, we encourage attendees to follow any personal safety measures they prefer, such as wearing masks.",
+    },
+    {
+      question: "What does the expo-only pass include?",
+      answer:
+        "The Free Standard Pass provides access to the welcome reception access, pre-registration &amp; networking event, tournament access, and the Closing Party. It does not include access to Hall 2 conference sessions, food and beverage services, or evening networking events.",
+    },
+    {
+      question: "Is there a lost and found?",
+      answer:
+        "Yes. Any lost items can be reported to the Help Desk during the event. After the Summit concludes, unclaimed items will be handed over to local authorities.",
+    },
+    {
+      question: "What are our terms and conditions for event attendance?",
+      answer:
+        "You can review the Terms and Conditions for event attendance on our website.",
+    },
+    {
+      question: "Are there any restrictions in attendance?",
+      answer:
+        "Due to the nature of the event, some activities may not be suitable for individuals under 18 years old. Attendees who appear under 25 may be required to show valid identification at the entrance.",
+    },
+    {
+      question: "Where can i find the code of conduct?",
+      answer:
+        "Our Code of Conduct is available on our event website for your review.",
+    },
+    {
+      question: "Where can i find the privacy policy?",
+      answer: "Our Privacy Policy is accessible on our website.",
+    },
+    {
+      question: "How can i contact the iGaming AFRIKA summit team?",
+      answer:
+        "For any inquiries, feedback, or questions, please contact us at events@igamingafrika.com",
+    },
+    {
+      question: "Is smoking allowed at the venue?",
+      answer:
+        "Smoking is not permitted inside the Sarit Centre. Designated outdoor smoking areas will be provided, and we kindly ask all attendees to use these areas.",
+    },
+    {
+      question: "Will there be networking events?",
+      answer:
+        "Yes, networking events will be held throughout the Summit, providing attendees with opportunities to connect and collaborate with industry professionals. More details will be shared closer to the event date.",
     },
   ];
 
@@ -72,7 +146,7 @@ const FAQSection = () => {
                 onClick={() => toggleFAQ(index)}
                 className="flex justify-between items-center w-full text-left py-3 focus:outline-none cursor-pointer"
               >
-                <h2 className="text-md font-medium text-black">
+                <h2 className="text-lg font-semibold text-black">
                   {faq.question}
                 </h2>
                 <svg

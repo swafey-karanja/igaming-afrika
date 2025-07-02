@@ -78,17 +78,25 @@ export default function EventApplicationForm() {
     if (validateForm()) {
       try {
         const response = await fetch(
-          `${import.meta.env.VITE_API_URL}/register`,
+          `${import.meta.env.VITE_API_URL}/register/`,
           {
             method: "POST",
             headers: {
               "Content-Type": "application/json",
+              Authorization: `Token ${import.meta.env.VITE_API_TOKEN}`,
             },
             body: JSON.stringify(formData),
           }
         );
 
-        const data = await response.json();
+        let data = null;
+        const text = await response.text(); // safer first step
+
+        try {
+          data = text ? JSON.parse(text) : null;
+        } catch (jsonError) {
+          console.warn("Failed to parse JSON response:", jsonError);
+        }
 
         if (response.ok) {
           setTimeout(() => {
@@ -103,7 +111,7 @@ export default function EventApplicationForm() {
           }, 1500);
           toast.success("Application submitted successfully!");
         } else {
-          toast.error(data.message || "Submission failed");
+          toast.error(data?.message || "Submission failed");
         }
       } catch (error) {
         console.error("Submission error:", error);

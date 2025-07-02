@@ -6,7 +6,6 @@ import {
   FaLinkedin,
   FaInstagram,
   FaFacebook,
-  FaGithub,
   FaPaperPlane,
   FaTelegram,
   FaYoutube,
@@ -358,9 +357,12 @@ const Footer = () => {
     e.preventDefault();
     console.log("Form submitted:", formData);
     try {
-      await fetch(`${import.meta.env.VITE_API_URL}/inquiry`, {
+      await fetch(`${import.meta.env.VITE_API_URL}/inquiry/`, {
         method: "POST",
-        headers: { "Content-Type": "application/json" },
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Token ${import.meta.env.VITE_API_TOKEN}`,
+        },
         body: JSON.stringify(formData),
       });
 
