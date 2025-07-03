@@ -6,6 +6,7 @@ import {
   CheckCircle,
   Star,
   Users,
+  Hammer,
 } from "lucide-react";
 import sponsorships from "../data/sponsorships.json";
 // eslint-disable-next-line no-unused-vars
@@ -44,6 +45,13 @@ const Packages = () => {
   };
 
   const getStatusBadge = (status, featured = false) => {
+    if (status === "ON HOLD") {
+      return (
+        <div className="absolute -top-2 -right-2 bg-gray-500 text-white text-xs font-bold px-3 py-2 rounded-full shadow-md transform rotate-12 z-10">
+          ON HOLD
+        </div>
+      );
+    }
     if (status === "SOLD OUT") {
       return (
         <div className="absolute -top-2 -right-2 bg-red-500 text-white text-xs font-bold px-3 py-2 rounded-full shadow-md transform rotate-12 z-10">
@@ -356,6 +364,97 @@ const Packages = () => {
                   </div>
                 )}
 
+                {selectedPackage.platinumBenefits?.length > 0 && (
+                  <div>
+                    <div className="flex items-center gap-2 mb-3">
+                      <Star className="text-purple-500" size={20} />
+                      <h3 className="text-lg font-bold text-gray-900">
+                        Platinum Sponsorship Status
+                      </h3>
+                    </div>
+                    <div className="space-y-2">
+                      {selectedPackage.platinumBenefits.map(
+                        (benefit, index) => (
+                          <div
+                            key={index}
+                            className="flex items-start gap-3 text-sm text-gray-700"
+                          >
+                            <Star
+                              size={16}
+                              className="text-purple-500 mt-0.5 flex-shrink-0"
+                            />
+                            <span>{benefit}</span>
+                          </div>
+                        )
+                      )}
+                    </div>
+                  </div>
+                )}
+
+                {selectedPackage.silverBenefits?.length > 0 && (
+                  <div>
+                    <div className="flex items-center gap-2 mb-3">
+                      <Star className="text-gray-400" size={20} />
+                      <h3 className="text-lg font-bold text-gray-900">
+                        Silver Sponsorship Status
+                      </h3>
+                    </div>
+                    <div className="space-y-2">
+                      {selectedPackage.silverBenefits.map((benefit, index) => (
+                        <div
+                          key={index}
+                          className="flex items-start gap-3 text-sm text-gray-700"
+                        >
+                          <Star
+                            size={16}
+                            className="text-gray-400 mt-0.5 flex-shrink-0"
+                          />
+                          <span>{benefit}</span>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                )}
+
+                {selectedPackage.bronzeBenefits?.length > 0 && (
+                  <div>
+                    <div className="flex items-center gap-2 mb-3">
+                      <Star className="text-amber-600" size={20} />
+                      <h3 className="text-lg font-bold text-gray-900">
+                        Bronze Sponsorship Status
+                      </h3>
+                    </div>
+                    <div className="space-y-2">
+                      {selectedPackage.bronzeBenefits.map((benefit, index) => (
+                        <div
+                          key={index}
+                          className="flex items-start gap-3 text-sm text-gray-700"
+                        >
+                          <Star
+                            size={16}
+                            className="text-amber-600 mt-0.5 flex-shrink-0"
+                          />
+                          <span>{benefit}</span>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                )}
+
+                {selectedPackage.notes?.length > 0 && (
+                  <Section icon={<Hammer size={18} />} title="Important Notes">
+                    {selectedPackage.notes.map((note, i) => (
+                      <div
+                        key={i}
+                        className="flex items-start gap-2 text-sm text-black"
+                      >
+                        <div className="w-1.5 h-1.5 bg-slate-400 rounded-full mt-2 flex-shrink-0"></div>
+                        <span>{note}</span>
+                      </div>
+                    ))}
+                  </Section>
+                )}
+
                 {/* Tickets */}
                 <div>
                   <div className="flex items-center gap-2 mb-3">
@@ -405,6 +504,13 @@ const Packages = () => {
                     >
                       Sold Out
                     </button>
+                  ) : selectedPackage.status === "ON HOLD" ? (
+                    <button
+                      disabled
+                      className="w-full bg-gray-400 text-gray-800 py-3 rounded-lg font-semibold"
+                    >
+                      On Hold
+                    </button>
                   ) : (
                     <NavLink to="/register">
                       <button
@@ -424,5 +530,16 @@ const Packages = () => {
     </div>
   );
 };
+
+// Section component
+const Section = ({ icon, title, children }) => (
+  <div>
+    <div className="flex items-center gap-2 mb-3">
+      <div className="text-slate-600">{icon}</div>
+      <h3 className="text-lg font-semibold text-slate-800">{title}</h3>
+    </div>
+    <div className="space-y-2">{children}</div>
+  </div>
+);
 
 export default Packages;
