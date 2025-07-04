@@ -52,6 +52,15 @@ const Home = () => {
         <Schedule />
       </motion.div>
 
+      <motion.div
+        variants={fadeInUp}
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true }}
+      >
+        <FloorPlan />
+      </motion.div>
+
       {/* <motion.div
         variants={fadeInUp}
         initial="hidden"
@@ -77,15 +86,6 @@ const Home = () => {
         viewport={{ once: true }}
       >
         <ExhibitionPackages />
-      </motion.div>
-
-      <motion.div
-        variants={fadeInUp}
-        initial="hidden"
-        whileInView="visible"
-        viewport={{ once: true }}
-      >
-        <FloorPlan />
       </motion.div>
 
       <motion.div
