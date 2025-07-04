@@ -19,9 +19,6 @@ export default function Registration() {
       <Header />
       <div className="py-6 w-full bg-gray-100 max-w-7xl mx-auto">
         <div ref={formRef}>
-          <p className="font-bold text-red-600 text-xl md:text-2xl flex text-center justify-center">
-            Registrations will be opened soon!
-          </p>
           <EventApplicationForm />
         </div>
       </div>

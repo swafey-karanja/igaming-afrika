@@ -36,7 +36,7 @@ const FormField = ({
         rows={rows}
         className="w-full px-4 py-1 rounded-lg text-black placeholder-gray-500 border-2 border-white/20 bg-white/90 focus:outline-none focus:border-transparent  resize-none"
         placeholder={placeholder}
-        disabled
+        //disabled
       />
     ) : (
       <input
@@ -47,7 +47,7 @@ const FormField = ({
         required={required}
         className="w-full px-4 py-1 rounded-lg text-black placeholder-gray-500 border-2 border-white/20 bg-white/90 focus:outline-none focus:border-transparent "
         placeholder={placeholder}
-        disabled
+        //disabled
       />
     )}
   </div>
@@ -100,9 +100,6 @@ const ContactSection = ({ formData, onChange, onSubmit }) => (
           Have questions about the summit? Want to explore partnership
           opportunities? We'd love to hear from you!
         </p>
-        <p className="font-bold text-red-600 text-xl md:text-2xl flex text-center justify-center">
-          Feature will be available soon!
-        </p>
       </div>
 
       <form id="contact-form" onSubmit={onSubmit} className="space-y-6">
@@ -148,7 +145,7 @@ const ContactSection = ({ formData, onChange, onSubmit }) => (
         <div className="flex justify-center pt-4">
           <button
             type="submit"
-            disabled
+            //disabled
             className="inline-flex items-center gap-2 bg-white text-green-600 px-8 py-3 rounded-lg font-semibold hover:bg-gray-100 hover:text-green-700 shadow-lg hover:shadow-xl"
           >
             <FaPaperPlane className="text-sm" />
@@ -374,7 +371,7 @@ const Footer = () => {
           message: "",
         });
       }, 1500); // 1.5 second delay
-      toast.success("Registration successful!");
+      toast.success("Inquiry sent successfully!");
     } catch (error) {
       console.log("error", error);
       toast.error("Something went wrong. Try again later.");
