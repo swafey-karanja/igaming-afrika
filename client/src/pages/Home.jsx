@@ -49,7 +49,7 @@ const Home = () => {
         whileInView="visible"
         viewport={{ once: true }}
       >
-        <Schedule />
+        <FloorPlan />
       </motion.div>
 
       <motion.div
@@ -58,7 +58,7 @@ const Home = () => {
         whileInView="visible"
         viewport={{ once: true }}
       >
-        <FloorPlan />
+        <Schedule />
       </motion.div>
 
       {/* <motion.div

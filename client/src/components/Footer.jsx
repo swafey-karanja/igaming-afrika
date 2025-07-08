@@ -22,6 +22,8 @@ const FormField = ({
   placeholder,
   required,
   rows,
+  error,
+  disabled,
 }) => (
   <div className="space-y-2">
     <label className="block text-sm font-medium">
@@ -34,9 +36,11 @@ const FormField = ({
         onChange={onChange}
         required={required}
         rows={rows}
-        className="w-full px-4 py-1 rounded-lg text-black placeholder-gray-500 border-2 border-white/20 bg-white/90 focus:outline-none focus:border-transparent  resize-none"
+        className={`w-full px-4 py-1 rounded-lg text-black placeholder-gray-500 border-2 bg-white/90 focus:outline-none focus:border-transparent resize-none ${
+          error ? "border-red-500" : "border-white/20"
+        }`}
         placeholder={placeholder}
-        //disabled
+        disabled={disabled}
       />
     ) : (
       <input
@@ -45,11 +49,14 @@ const FormField = ({
         value={value}
         onChange={onChange}
         required={required}
-        className="w-full px-4 py-1 rounded-lg text-black placeholder-gray-500 border-2 border-white/20 bg-white/90 focus:outline-none focus:border-transparent "
+        className={`w-full px-4 py-1 rounded-lg text-black placeholder-gray-500 border-2 bg-white/90 focus:outline-none focus:border-transparent ${
+          error ? "border-red-500" : "border-white/20"
+        }`}
         placeholder={placeholder}
-        //disabled
+        disabled={disabled}
       />
     )}
+    {error && <p className="text-red-200 text-sm">{error}</p>}
   </div>
 );
 
@@ -76,7 +83,13 @@ const SocialLink = ({ href, Icon, label, hoverColor }) => (
   </a>
 );
 
-const ContactSection = ({ formData, onChange, onSubmit }) => (
+const ContactSection = ({
+  formData,
+  onChange,
+  onSubmit,
+  errors,
+  isSubmitting,
+}) => (
   <motion.div
     initial={{ opacity: 0, y: 20 }}
     whileInView={{ opacity: 1, y: 0 }}
@@ -111,6 +124,8 @@ const ContactSection = ({ formData, onChange, onSubmit }) => (
             onChange={onChange}
             placeholder="Enter your full name"
             required
+            error={errors.name}
+            disabled={isSubmitting}
           />
           <FormField
             label="Email Address"
@@ -120,6 +135,8 @@ const ContactSection = ({ formData, onChange, onSubmit }) => (
             onChange={onChange}
             placeholder="your.email@example.com"
             required
+            error={errors.email}
+            disabled={isSubmitting}
           />
         </div>
 
@@ -130,6 +147,8 @@ const ContactSection = ({ formData, onChange, onSubmit }) => (
           onChange={onChange}
           placeholder="e.g., Partnership, Sponsorship, Speaking, General Inquiry"
           required
+          error={errors.topic}
+          disabled={isSubmitting}
         />
 
         <FormField
@@ -140,16 +159,20 @@ const ContactSection = ({ formData, onChange, onSubmit }) => (
           placeholder="Tell us about your inquiry, questions, or how we can help you..."
           rows="4"
           required
+          error={errors.message}
+          disabled={isSubmitting}
         />
 
         <div className="flex justify-center pt-4">
           <button
             type="submit"
-            //disabled
-            className="inline-flex items-center gap-2 bg-white text-green-600 px-8 py-3 rounded-lg font-semibold hover:bg-gray-100 hover:text-green-700 shadow-lg hover:shadow-xl"
+            disabled={isSubmitting}
+            className={`inline-flex items-center gap-2 bg-white text-green-600 px-8 py-3 rounded-lg font-semibold hover:bg-gray-100 hover:text-green-700 shadow-lg hover:shadow-xl ${
+              isSubmitting ? "opacity-50 cursor-not-allowed" : ""
+            }`}
           >
             <FaPaperPlane className="text-sm" />
-            Send Inquiry
+            {isSubmitting ? "Sending..." : "Send Inquiry"}
           </button>
         </div>
       </form>
@@ -330,6 +353,8 @@ const BackToTop = ({ isVisible, onClick }) => (
 // Main Footer Component
 const Footer = () => {
   const [isVisible, setIsVisible] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [errors, setErrors] = useState({});
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -348,13 +373,55 @@ const Footer = () => {
   const handleInputChange = (e) => {
     const { name, value } = e.target;
     setFormData((prev) => ({ ...prev, [name]: value }));
+
+    // Clear error when user starts typing
+    if (errors[name]) {
+      setErrors((prev) => ({ ...prev, [name]: "" }));
+    }
+  };
+
+  const validateForm = () => {
+    const newErrors = {};
+
+    if (!formData.name.trim()) {
+      newErrors.name = "Full name is required";
+    }
+
+    if (!formData.email.trim()) {
+      newErrors.email = "Email is required";
+    } else {
+      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      if (!emailRegex.test(formData.email)) {
+        newErrors.email = "Please enter a valid email address";
+      }
+    }
+
+    if (!formData.topic.trim()) {
+      newErrors.topic = "Topic of inquiry is required";
+    }
+
+    if (!formData.message.trim()) {
+      newErrors.message = "Message is required";
+    } else if (formData.message.trim().length < 10) {
+      newErrors.message = "Message must be at least 10 characters long";
+    }
+
+    setErrors(newErrors);
+    return Object.keys(newErrors).length === 0;
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log("Form submitted:", formData);
+
+    if (!validateForm()) {
+      return;
+    }
+
+    setIsSubmitting(true);
+    toast.loading("Sending your inquiry...", { id: "inquiry-toast" });
+
     try {
-      await fetch(`${import.meta.env.VITE_API_URL}/inquiry/`, {
+      const response = await fetch(`${import.meta.env.VITE_API_URL}/inquiry/`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -363,18 +430,28 @@ const Footer = () => {
         body: JSON.stringify(formData),
       });
 
-      setTimeout(() => {
-        setFormData({
-          name: "",
-          email: "",
-          topic: "",
-          message: "",
+      if (response.ok) {
+        toast.success("Inquiry sent successfully!", { id: "inquiry-toast" });
+        setTimeout(() => {
+          setFormData({
+            name: "",
+            email: "",
+            topic: "",
+            message: "",
+          });
+        }, 1500);
+      } else {
+        toast.error("Failed to send inquiry. Please try again.", {
+          id: "inquiry-toast",
         });
-      }, 1500); // 1.5 second delay
-      toast.success("Inquiry sent successfully!");
+      }
     } catch (error) {
-      console.log("error", error);
-      toast.error("Something went wrong. Try again later.");
+      console.error("Error:", error);
+      toast.error("Something went wrong. Try again later.", {
+        id: "inquiry-toast",
+      });
+    } finally {
+      setIsSubmitting(false);
     }
   };
 
@@ -384,6 +461,8 @@ const Footer = () => {
         formData={formData}
         onChange={handleInputChange}
         onSubmit={handleSubmit}
+        errors={errors}
+        isSubmitting={isSubmitting}
       />
 
       <LinksSection />

@@ -16,6 +16,7 @@ export default function EventApplicationForm() {
 
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const [errors, setErrors] = useState({});
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
   const interestOptions = [
     { id: "speaking", label: "Interested in Speaking" },
@@ -76,6 +77,9 @@ export default function EventApplicationForm() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     if (validateForm()) {
+      setIsSubmitting(true);
+      toast.loading("Submitting your application...", { id: "submit-toast" });
+
       try {
         const response = await fetch(
           `${import.meta.env.VITE_API_URL}/register/`,
@@ -99,6 +103,9 @@ export default function EventApplicationForm() {
         }
 
         if (response.ok) {
+          toast.success("Application submitted successfully!", {
+            id: "submit-toast",
+          });
           setTimeout(() => {
             setFormData({
               firstName: "",
@@ -109,13 +116,16 @@ export default function EventApplicationForm() {
               interests: [],
             });
           }, 1500);
-          toast.success("Application submitted successfully!");
         } else {
-          toast.error(data?.message || "Submission failed");
+          toast.error(data?.message || "Submission failed", {
+            id: "submit-toast",
+          });
         }
       } catch (error) {
         console.error("Submission error:", error);
-        toast.error("Submission failed");
+        toast.error("Submission failed", { id: "submit-toast" });
+      } finally {
+        setIsSubmitting(false);
       }
     }
   };
@@ -162,7 +172,7 @@ export default function EventApplicationForm() {
                       errors.firstName ? "border-red-500" : "border-gray-300"
                     }`}
                     placeholder="Enter your first name"
-                    //disabled
+                    disabled={isSubmitting}
                   />
                   {errors.firstName && (
                     <p className="text-red-500 text-sm mt-1">
@@ -184,7 +194,7 @@ export default function EventApplicationForm() {
                       errors.lastName ? "border-red-500" : "border-gray-300"
                     }`}
                     placeholder="Enter your last name"
-                    //disabled
+                    disabled={isSubmitting}
                   />
                   {errors.lastName && (
                     <p className="text-red-500 text-sm mt-1">
@@ -208,7 +218,7 @@ export default function EventApplicationForm() {
                       errors.company ? "border-red-500" : "border-gray-300"
                     }`}
                     placeholder="Enter your company name"
-                    //disabled
+                    disabled={isSubmitting}
                   />
                   {errors.company && (
                     <p className="text-red-500 text-sm mt-1">
@@ -240,7 +250,7 @@ export default function EventApplicationForm() {
                         border: "none",
                         width: "100%",
                       }}
-                      //disabled
+                      disabled={isSubmitting}
                     />
                   </div>
                   {errors.phone && (
@@ -262,7 +272,7 @@ export default function EventApplicationForm() {
                     errors.email ? "border-red-500" : "border-gray-300"
                   }`}
                   placeholder="e.g. john.doe@company.com"
-                  //disabled
+                  disabled={isSubmitting}
                 />
                 {errors.email && (
                   <p className="text-red-500 text-sm mt-1">{errors.email}</p>
@@ -283,9 +293,10 @@ export default function EventApplicationForm() {
                   <button
                     type="button"
                     onClick={() => setIsDropdownOpen(!isDropdownOpen)}
+                    disabled={isSubmitting}
                     className={`w-full px-4 py-1 border rounded-lg text-left  transition-colors flex items-center justify-between ${
                       errors.interests ? "border-red-500" : "border-gray-300"
-                    }`}
+                    } ${isSubmitting ? "opacity-50 cursor-not-allowed" : ""}`}
                   >
                     <span
                       className={
@@ -308,7 +319,9 @@ export default function EventApplicationForm() {
                       {interestOptions.map((option) => (
                         <label
                           key={option.id}
-                          className="flex items-center px-4 py-1 hover:bg-gray-50 cursor-pointer"
+                          className={`flex items-center px-4 py-1 hover:bg-gray-50 cursor-pointer ${
+                            isSubmitting ? "opacity-50 cursor-not-allowed" : ""
+                          }`}
                         >
                           <div className="flex items-center">
                             <div
@@ -331,7 +344,7 @@ export default function EventApplicationForm() {
                             className="hidden"
                             checked={formData.interests.includes(option.id)}
                             onChange={() => handleInterestToggle(option.id)}
-                            //disabled
+                            disabled={isSubmitting}
                           />
                         </label>
                       ))}
@@ -367,10 +380,12 @@ export default function EventApplicationForm() {
             <div className="flex items-center justify-center">
               <button
                 onClick={handleSubmit}
-                //disabled
-                className="w-full md:w-[20vw] bg-[#14a45c] text-white font-semibold py-4 px-6 rounded-lg hover:bg-green-700 focus:ring-4 focus:ring-green-300 transition-all duration-200 transform hover:scale-105 shadow-lg"
+                disabled={isSubmitting}
+                className={`w-full md:w-[20vw] bg-[#14a45c] text-white font-semibold py-4 px-6 rounded-lg hover:bg-green-700 focus:ring-4 focus:ring-green-300 transition-all duration-200 transform hover:scale-105 shadow-lg ${
+                  isSubmitting ? "opacity-50 cursor-not-allowed" : ""
+                }`}
               >
-                APPLY NOW
+                {isSubmitting ? "SUBMITTING..." : "APPLY NOW"}
               </button>
             </div>
           </div>

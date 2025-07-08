@@ -85,17 +85,17 @@ const Venue = () => {
     {
       icon: Phone,
       label: "Phone",
-      value: "+254 111 040 600",
+      value: "+254 737 448 844",
     },
     {
       icon: Mail,
       label: "Email",
-      value: "info@saritcentre.com",
+      value: "events@igamingafrika.com",
     },
     {
       icon: Calendar,
       label: "Event Date",
-      value: "28-30 JULY, 2026",
+      value: "4-6 MAY, 2026",
     },
     {
       icon: Users,
