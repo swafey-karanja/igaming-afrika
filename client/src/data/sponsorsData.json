@@ -43,6 +43,28 @@
       "url": "https://nintendo.com"
     }
   ],
+  "silverSponsors": [
+    {
+      "name": "PlayStation",
+      "logo": "/Summit2_trimmed.png",
+      "url": "https://playstation.com"
+    },
+    {
+      "name": "Ubisoft",
+      "logo": "/Summit2_trimmed.png",
+      "url": "https://ubisoft.com"
+    },
+    {
+      "name": "Unity",
+      "logo": "/Summit2_trimmed.png",
+      "url": "https://unity.com"
+    },
+    {
+      "name": "Nintendo",
+      "logo": "/Summit2_trimmed.png",
+      "url": "https://nintendo.com"
+    }
+  ],
   "bronzeSponsors": [
     {
       "name": "Betika",

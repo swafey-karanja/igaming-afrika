@@ -14,6 +14,7 @@ const Sponsors = () => {
     headlineSponsor,
     platinumSponsors,
     goldSponsors,
+    silverSponsors,
     bronzeSponsors,
     mediaPartners,
   } = sponsorData;
@@ -72,6 +73,16 @@ const Sponsors = () => {
           titleColor="from-yellow-500 via-yellow-400 to-amber-400"
           delay={0.4}
         />
+
+        <SponsorTier
+          title="Silver Sponsors"
+          sponsors={silverSponsors}
+          logoSizes="h-12 w-auto max-w-[150px] xs:h-14 xs:max-w-[170px] sm:h-16 sm:max-w-[190px] md:h-18 md:max-w-[210px] lg:h-20 lg:max-w-[230px] xl:h-22 xl:max-w-[250px]"
+          containerClass="grid grid-cols-2 xs:grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-4 gap-5 xs:gap-7 sm:gap-9 md:gap-11 px-2 items-center justify-items-center"
+          titleColor="from-gray-400 via-gray-300 to-gray-500"
+          delay={0.5}
+        />
+
         <SponsorTier
           title="Bronze Sponsors"
           sponsors={bronzeSponsors}
@@ -80,6 +91,7 @@ const Sponsors = () => {
           titleColor="from-amber-600 via-orange-500 to-amber-700"
           delay={0.6}
         />
+
         <SponsorTier
           title="Media Partners"
           sponsors={mediaPartners}

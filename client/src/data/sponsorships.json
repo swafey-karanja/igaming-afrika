@@ -732,5 +732,62 @@
     ],
     "tickets": "2 Premium tickets for the iGaming AFRIKA Summit 2026. 1 Ticket for the iGaming AFRIKA Summit 2026 Closing Night.",
     "images": []
+  },
+  {
+    "id": 35,
+    "title": "Brand Product Presentation sponsorship",
+    "price": "$19,500",
+    "status": "AVAILABLE",
+    "icon": "📢",
+    "iconBg": "bg-green-400",
+    "description": "",
+    "benefits": [
+      "15-minute presentation to showcase your company’s latest developments, innovative products/services to a carefully selected audience on the main stage",
+      "Company logo ‘sting’ to present the session on stage (produced by iGaming AFRIKA)",
+      "Professional video content package of your company’s presentation on stage (including the full-length version.)",
+      "15-20 second advertisement video to be played on 2 x LED screens within the expo and in breaks in the main conference hall",
+      "1 x promotional post on iGaming AFRIKA social media channels, announcing the details of your presentation (speaker, date, time etc)",
+      "Pre-event recorded mini-interview with your company representative to discuss your presentation, posted on iGaming AFRIKA Youtube and social media channels",
+      "On-site interview within the media area with nominated speaker, which will then be published online post-event."
+    ],
+    "tickets": "20 Premium Passes + 3 Platinum Pass for iGaming AFRIKA Summit\n15 Tickets for iGaming AFRIKA Summit 2026 Closing Night",
+    "images": []
+  },
+  {
+    "id": 36,
+    "title": "Main Stage Branding Sponsorship (Exclusive)",
+    "price": "$25,000",
+    "status": "AVAILABLE",
+    "icon": "🎯",
+    "iconBg": "bg-green-400",
+    "description": "*bespoke package pricing available on request*",
+    "benefits": [
+      "Prominent branding on main stage across two days of content in the Republic Hall."
+    ],
+    "tickets": "20 Premium Passes + 3 Platinum Pass for IGaming AFRIKA Summit\n15 Tickets for iGaming AFRIKA Summit 2026 Closing Night",
+    "images": []
+  },
+  {
+    "id": 37,
+    "title": "Networking Rooftop Drinks Reception Sponsorship",
+    "price": "$15,000",
+    "status": "AVAILABLE",
+    "icon": "🍸",
+    "iconBg": "bg-green-400",
+    "description": "*bespoke package pricing available on request*",
+    "benefits": [
+      "Branding within the reception venue",
+      "Logo on large photo wall",
+      "Logo on backdrop behind the bar area",
+      "Logo on window panels",
+      "Logo on staff aprons (individual)",
+      "Logo on feather flags (individual)",
+      "Logo on SoMe frame of 360 photo booth",
+      "Logo on drinks menu",
+      "10 entrance tickets (guaranteed) to pre-registration event",
+      "Opportunity to distribute a branded gift or giveaway to all attendees of the networking drinks reception"
+    ],
+    "tickets": "20 Premium Passes + 3 Platinum Pass for iGaming AFRIKA Summit\n15 Tickets for iGaming AFRIKA Summit 2026 Closing Night",
+    "images": []
   }
 ]

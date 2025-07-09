@@ -6,72 +6,64 @@ export default function Schedule() {
   const [activeTab, setActiveTab] = useState(0);
 
   const dates = [
+    { day: "Sun", date: "3 May" },
     { day: "Mon", date: "4 May" },
     { day: "Tue", date: "5 May" },
     { day: "Wed", date: "6 May" },
-    { day: "Thu", date: "7 May" },
   ];
 
   // Sample conference schedule data for each day
   const schedules = {
     0: [
       {
-        time: "00:00 - 23:00",
+        time: "00:00 – 23:00",
         title: "Arrival",
         location: "Jomo Kenyatta International Airport",
         description: "Arrival of Delegates",
       },
       {
-        time: "07:00 - 18:00",
-        title: "Safari Tour ",
-        location:
-          "Masai Mara, Masai Market, Nairobi National Museum & Nairobi National Park",
-        description:
-          "A safari tour to see the wildlife present in the city of Nairobi",
-      },
-      {
-        time: "16:30 – 19:30 ",
-        title: "Pre Registration ",
-        location: "GTC Pan Pacific, Nairobi",
-        description: "Pre registration of event attendees and delegates",
+        time: "16:30 – 19:30",
+        title: "Pre-Registration",
+        location: "GTC Pan Pacific",
+        description: "Pre-registration of event attendees and delegates",
       },
     ],
     1: [
       {
-        time: "9:30am - 5:30pm",
-        title: "Conference & Exhibition ",
+        time: "09:30 – 17:30",
+        title: "Conference & Exhibition",
         location: "Sarit Expo Centre",
         description:
           "Day 1 of the event with attendees exhibiting their products",
       },
       {
-        time: "10:00pm to 02:30am",
-        title: "IGaming AFRIKA Closing Party ",
+        time: "20:30 – 00:30",
+        title: "Networking Dinner",
         location: "TBC",
-        description: "IGaming AFRIKA Closing Party",
+        description: "Networking Dinner, and iGaming AFRIKA Awards ceremony",
       },
     ],
     2: [
       {
-        time: "9:30am - 5:30pm",
-        title: "Conference & Exhibition ",
+        time: "09:30 – 17:30",
+        title: "Conference & Exhibition",
         location: "Sarit Expo Centre",
         description:
-          "Day 1 of the event with attendees exhibiting their products",
+          "Day 2 of the event with attendees exhibiting their products",
       },
       {
-        time: "8:00pm - 12:30pm",
-        title: "-	Networking Dinner",
-        location: "Sarit Expo Centre",
-        description: "Networking Dinner, and IGaming AFRIKA Awards ceremony",
+        time: "22:00 – 02:30",
+        title: "Closing Party",
+        location: "TBC",
+        description: "iGaming AFRIKA Closing Party",
       },
     ],
     3: [
       {
-        time: "9:30am - 5:30pm",
-        title: "Delegates Leave",
-        location: "Jomo Kenyatta International Airport",
-        description: "",
+        time: "09:00 – 18:00",
+        title: "Safari Tour",
+        location: "Masai Mara National Park",
+        description: "A safari tour to see the wildlife present in the Mara.",
       },
     ],
   };

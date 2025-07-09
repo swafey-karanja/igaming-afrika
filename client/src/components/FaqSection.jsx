@@ -9,6 +9,28 @@ const FAQSection = () => {
     setActiveIndex(activeIndex === index ? null : index);
   };
 
+  const renderTextWithLinks = (text) => {
+    const urlPattern = /(https?:\/\/[^\s)]+)/g;
+    const parts = text.split(urlPattern);
+
+    return parts.map((part, index) => {
+      if (part.match(urlPattern)) {
+        return (
+          <a
+            key={index}
+            href={part}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-blue-600 hover:text-blue-800 underline"
+          >
+            {part}
+          </a>
+        );
+      }
+      return part;
+    });
+  };
+
   const faqs = [
     {
       question: "What is iGaming AFRIKA Summit?",
@@ -28,7 +50,7 @@ const FAQSection = () => {
     {
       question: "How do I get access to the iGaming AFRIKA Summit?",
       answer:
-        "Access details will be available on our event website (https://summits.igamingafrika.com/ ) once registration opens. You can sign up for our newsletter to receive updates about ticket availability and early bird specials.",
+        "Access details will be available on our event website https://summits.igamingafrika.com/ once registration opens. You can sign up for our newsletter to receive updates about ticket availability and early bird specials.",
     },
     {
       question: "What is the ticket policy if the event can’t go ahead?",
@@ -42,8 +64,7 @@ const FAQSection = () => {
     },
     {
       question: "Will i have access to online delegates?",
-      answer:
-        "Only Premium and Platinum Pass holders will have access to the event's digital networking platform. You will receive access to connect with other online delegates via the platform prior to the event.",
+      answer: "No. We will not have online delegates.",
     },
     {
       question: "What are the accommodation options?",
@@ -78,7 +99,7 @@ const FAQSection = () => {
     {
       question: "Are there any restrictions in attendance?",
       answer:
-        "Due to the nature of the event, some activities may not be suitable for individuals under 18 years old. Attendees who appear under 25 may be required to show valid identification at the entrance.",
+        "Due to the nature of the event, some activities may not be suitable for individuals under 18 years old.",
     },
     {
       question: "Where can i find the code of conduct?",
@@ -173,7 +194,9 @@ const FAQSection = () => {
                     : "max-h-0 opacity-0"
                 }`}
               >
-                <p className="text-black mt-2 text-sm pr-8">{faq.answer}</p>
+                <p className="text-black mt-2 text-sm pr-8">
+                  {renderTextWithLinks(faq.answer)}
+                </p>
               </div>
             </div>
           ))}

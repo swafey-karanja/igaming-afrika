@@ -191,9 +191,12 @@ const LinksSection = () => {
   const helpLinks = [
     { href: "https://igamingafrika.com/donate/", text: "Donate" },
     { href: "https://igamingafrika.com/contact-us/", text: "Contact Us" },
-    { href: "#", text: "Terms and Conditions" },
     {
-      href: "https://igamingafrika.com/privacy-policy/",
+      href: "https://igamingafrika.com/terms-and-conditions/",
+      text: "Terms and Conditions",
+    },
+    {
+      href: "https://igamingafrika.com/privacy-policy-events/",
       text: "Privacy Policy",
     },
   ];
@@ -221,13 +224,11 @@ const LinksSection = () => {
             unite the entire gaming industry players across the world in one
             place—the stunning city of Nairobi, Kenya. This being the inaugural
             edition of the summit, the event is seen to be the largest event in
-            the industry, taking place in Nairobi, in 2026, the summit is seen
-            to be the mother of all gaming conferences in Africa. The summit is
-            taking place in an impressive 3,300m² square meters location at
-            Sarit Expo Center, Nairobi's Largest Expo center giving exhibitors
-            and attendees a massive ground to showcase their products, meet and
-            connect with industry players as we discuss the future of the gaming
-            industry in Africa.
+            the industry. The summit is taking place in an impressive 3,300m²
+            square meters location at Sarit Expo Centre, Nairobi's Largest Expo
+            center giving exhibitors and attendees a massive ground to showcase
+            their products, meet and connect with industry players as we discuss
+            the future of the gaming industry in Africa.
           </p>
         </div>
 
@@ -278,7 +279,7 @@ const SocialSection = () => {
       hoverColor: "hover:text-blue-500",
     },
     {
-      href: "https://www.instagram.com/igamingafrikasummit?igsh=bHl5MWlkNWdiYzll",
+      href: "https://www.instagram.com/igamingafrika?igsh=bHl5MWlkNWdiYzll&utm_source=qr",
       Icon: FaInstagram,
       label: "Instagram",
       hoverColor: "hover:text-red-500",
@@ -478,10 +479,7 @@ const Footer = () => {
         className="py-4 border-t border-gray-800"
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center text-xs sm:text-sm text-gray-400">
-          <p>
-            © Copyright 2026 Media-Tech iGaming Technology Limited - All Rights
-            Reserved
-          </p>
+          <p>© Copyright 2026 IGA Events Limited - All Rights Reserved</p>
         </div>
       </motion.div>
 

@@ -138,13 +138,12 @@ const Numbers = () => {
               the world in one place—the stunning city of{" "}
               <strong>Nairobi, Kenya.</strong> This being the inaugural edition
               of the summit, the event is expected to be the largest in the
-              industry. Taking place in Nairobi in 2026, it is considered the
-              mother of all gaming conferences in Africa. The summit is taking
-              place in an impressive 3,300m² square meters location at{" "}
-              <strong>Sarit Expo Centre</strong>, Nairobi’s Largest Expo centre
-              giving exhibitors and attendees a massive ground to showcase their
-              products, meet and connect with industry players as we discuss the
-              future of the gaming industry in Africa.
+              industry. The summit is taking place in an impressive 3,300m²
+              square meters location at <strong>Sarit Expo Centre</strong>,
+              Nairobi’s Largest Expo centre giving exhibitors and attendees a
+              massive ground to showcase their products, meet and connect with
+              industry players as we discuss the future of the gaming industry
+              in Africa.
             </motion.div>
 
             <motion.h2
@@ -193,10 +192,10 @@ const Numbers = () => {
                     Safari Tour:
                   </span>{" "}
                   The event will kick off with a memorable Safari Tour of the
-                  iconic Masai Mara and Nairobi National Parks allowing
-                  attendees to experience Kenya's wildlife including Lions,
-                  Antelopes, and Elephants. It provides a once-in-a-lifetime
-                  opportunity to connect with nature before the main event.
+                  iconic Masai Mara allowing attendees to experience Kenya's
+                  wildlife including Lions, Antelopes, and Elephants. It
+                  provides a once-in-a-lifetime opportunity to connect with
+                  nature before the main event.
                 </div>
               </div>
 
@@ -223,7 +222,7 @@ const Numbers = () => {
                   The event culminates with an iconic closing celebration
                   featuring renowned artists. It promises an unforgettable
                   experience blending entertainment with networking
-                  opportunities. Venue(TBC)
+                  opportunities.
                 </div>
               </div>
             </motion.div>

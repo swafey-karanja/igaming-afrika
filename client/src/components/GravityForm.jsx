@@ -17,6 +17,7 @@ const GravityForm = () => {
   const [status, setStatus] = useState(null);
   const [isInterestsOpen, setIsInterestsOpen] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [acceptedTerms, setAcceptedTerms] = useState(false);
 
   const interestsOptions = [
     "Interested in Speaking",
@@ -48,6 +49,7 @@ const GravityForm = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    if (!acceptedTerms) return;
     setIsSubmitting(true);
     toast.loading("Submitting your application...", { id: "submit-toast" });
 
@@ -140,7 +142,7 @@ const GravityForm = () => {
           {/* Header */}
           <div className="bg-[#14a45c] px-8 py-6 h-[10vh] flex items-center justify-center">
             <h1 className="text-3xl font-bold text-white text-center">
-              REGISTER FOR THE EVENT
+              EXPRESS YOUR INTEREST
             </h1>
           </div>
 
@@ -315,23 +317,36 @@ const GravityForm = () => {
               </div>
             </div>
 
-            {/* Terms and Conditions */}
-            <div className="text-sm text-gray-600">
-              By continuing, you agree to our{" "}
-              <a
-                href="#"
-                className="text-green-600 hover:text-green-700 underline"
-              >
-                Terms and Conditions
-              </a>{" "}
-              and{" "}
-              <a
-                href="#"
-                className="text-green-600 hover:text-green-700 underline"
-              >
-                Privacy Policy
-              </a>
-              .
+            {/* Terms and Conditions Checkbox */}
+            <div className="flex items-start space-x-2 text-sm text-gray-600 mb-4">
+              <input
+                type="checkbox"
+                id="terms"
+                checked={acceptedTerms}
+                onChange={(e) => setAcceptedTerms(e.target.checked)}
+                className="mt-1"
+              />
+              <label htmlFor="terms" className="select-none">
+                I agree to the{" "}
+                <a
+                  href="https://igamingafrika.com/terms-and-conditions/"
+                  className="text-green-600 hover:text-green-700 underline"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  Terms and Conditions
+                </a>{" "}
+                and{" "}
+                <a
+                  href="https://igamingafrika.com/privacy-policy-events/"
+                  className="text-green-600 hover:text-green-700 underline"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  Privacy Policy
+                </a>
+                .
+              </label>
             </div>
 
             {/* Submit Button */}
@@ -339,9 +354,11 @@ const GravityForm = () => {
               <button
                 type="submit"
                 onClick={handleSubmit}
-                disabled={isSubmitting}
+                disabled={isSubmitting || !acceptedTerms}
                 className={`w-full md:w-[20vw] bg-[#14a45c] text-white font-semibold py-4 px-6 rounded-lg hover:bg-green-700 focus:ring-4 focus:ring-green-300 transition-all duration-200 transform hover:scale-105 shadow-lg ${
-                  isSubmitting ? "opacity-50 cursor-not-allowed" : ""
+                  isSubmitting || !acceptedTerms
+                    ? "opacity-50 cursor-not-allowed"
+                    : ""
                 }`}
               >
                 {isSubmitting ? "SUBMITTING..." : "APPLY NOW"}

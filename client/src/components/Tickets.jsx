@@ -67,8 +67,9 @@ const Tickets = () => {
       doorPrice: 950,
       description: "Platinum executive experience",
       features: [
-        "All Premium Pass benefits",
-        "iGaming AFRIKA Networking Connect",
+        "All Premium Pass benefits except for the $35 meals voucher",
+        "$55 Meals Voucher",
+        "iGaming AFRIKA Networking space access",
         "Private Meeting Rooms Reservations",
       ],
     },
