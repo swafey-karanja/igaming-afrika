@@ -27,7 +27,7 @@ const GlobalNews = () => {
   }, [dispatch]);
 
   const handleShowMore = () => {
-    setVisibleCount((prev) => prev + (isMobile ? 3 : 6));
+    setVisibleCount((prev) => prev + (isMobile ? 3 : 10));
   };
 
   // Format date to be more readable
@@ -173,9 +173,9 @@ const GlobalNews = () => {
         {/* News Grid */}
         <motion.div
           className="grid gap-8 grid-cols-1 md:grid-cols-2 lg:grid-cols-3"
+          key={`news-grid-${visibleCount}`} // Add this key
           initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, margin: "-50px" }}
+          animate="visible" // Changed from whileInView to animate
           variants={containerVariants}
         >
           {news.slice(0, visibleCount).map((article) => (

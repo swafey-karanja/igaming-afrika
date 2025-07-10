@@ -379,13 +379,13 @@ const Navbar = () => {
           <img
             src="/Summit2_trimmed.png"
             alt="iGaming Afrika Logo"
-            className="w-full max-w-[200px] md:max-w-[320px] lg:max-w-[320px] mx-auto mb-6 sm:mb-8 lg:mb-10"
+            className="w-full max-w-[200px] md:max-w-[320px] lg:max-w-[320px] mx-auto mb-6 sm:mb-8"
           />
-          <p className="text-md sm:text-5xl lg:text-5xl font-semibold mb-2 sm:mb-3 lg:mb-4">
-            iGaming AFRIKA Summit
+          <p className="text-md sm:text-5xl lg:text-5xl font-semibold mb-2 sm:mb-3 lg:mb-4 text-[#14a45c]">
+            The Heart of Gaming in Africa
           </p>
           <p className="text-md sm:text-xl lg:text-xl font-semibold mb-2 sm:mb-3 lg:mb-4">
-            NAIROBI, KENYA • 4-6 MAY, 2026
+            • 4-6 MAY, 2026
           </p>
           {/* <h1 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold mb-2">28-31 JULY, 2026</h1> */}
           <p className="text-sm sm:text-[16px] lg:text-[16px] mb-6 sm:mb-8 lg:mb-10">

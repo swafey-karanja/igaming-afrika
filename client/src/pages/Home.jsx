@@ -13,7 +13,6 @@ import ExhibitionPackages from "../components/ExhibitionOpportunities.jsx";
 import FloorPlan from "../components/Floorplan.jsx";
 import Tickets from "../components/Tickets.jsx";
 import Venue from "../components/VenueInfo.jsx";
-// import Floorplan from "../components/Floorplan.jsx";
 
 const fadeInUp = {
   hidden: { opacity: 0, y: 40 },

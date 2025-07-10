@@ -375,11 +375,11 @@ const Navbar = () => {
             alt="iGaming Afrika Logo"
             className="w-full max-w-xs mx-auto mb-4 sm:mb-6"
           />
-          <p className="text-md sm:text-3xl font-semibold mb-2 sm:mb-3">
-            iGaming AFRIKA Summit
+          <p className="text-md sm:text-3xl lg:text-3xl font-semibold mb-2 sm:mb-3 lg:mb-4 text-[#14a45c]">
+            The Heart of Gaming in Africa
           </p>
-          <p className="text-md sm:text-ld font-semibold mb-2 sm:mb-3">
-            NAIROBI, KENYA • 4-6 MAY, 2026
+          <p className="text-md sm:text-xl lg:text-xl font-semibold mb-2 sm:mb-3 lg:mb-4">
+            • 4-6 MAY, 2026
           </p>
           {/* <h1 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold mb-2">28-31 JULY, 2026</h1> */}
           <p className="text-sm sm:text-[14px] mb-6 sm:mb-8 font-semibold">
@@ -414,41 +414,7 @@ const Navbar = () => {
               <div className="text-xs sm:text-[13px]  uppercase">Seconds</div>
             </div>
           </div>
-
-          {/* <div className=" bg-opacity-40 backdrop-blur-sm rounded-lg p-3 sm:p-4 md:p-6 max-w-lg sm:max-w-xl md:max-w-2xl mx-auto">
-            <p className="text-xs sm:text-sm mb-2 sm:mb-4 md:mb-6">
-              With expected attendees from over 100 countries, this event is
-              unmatched in its international reach. Explore sections dedicated
-              to key industry verticals such as regulation, affiliate marketing,
-              artificial intelligence, payments etc and participate in targeted
-              sessions to earn industry insights and knowledge.
-            </p>
-          </div> */}
         </div>
-
-        {/* Scroll Down Button */}
-        {/* <div className="absolute hidden lg:block bottom-4 sm:bottom-6 md:bottom-8 xl:bottom-12 left-1/2 transform -translate-x-1/2">
-          <a
-            href="#numbers"
-            className="inline-flex items-center justify-center w-10 h-10 sm:w-12 sm:h-12 rounded-full text-white bg-black bg-opacity-50 hover:bg-green-600 transition duration-300"
-            aria-label="Scroll down"
-          >
-            <svg
-              className="w-4 h-4 sm:w-5 sm:h-5"
-              xmlns="http://www.w3.org/2000/svg"
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke="currentColor"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth="2"
-                d="M19 9l-7 7-7-7"
-              />
-            </svg>
-          </a>
-        </div> */}
       </div>
     </div>
   );
