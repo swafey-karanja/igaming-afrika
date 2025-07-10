@@ -318,6 +318,32 @@ const GravityForm = () => {
             </div>
 
             {/* Terms and Conditions Checkbox */}
+            <div className="text-sm text-gray-600 mb-4">
+              iGaming AFRIKA Summit needs the contact information you provide to
+              us to contact you about our products and services. You may
+              unsubscribe from these communications at any time. For information
+              on how to unsubscribe, as well as our privacy practices and
+              commitment to protecting your privacy, check out our{" "}
+              <a
+                href="https://igamingafrika.com/privacy-policy-events/"
+                className="text-green-600 hover:text-green-700 underline"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Privacy Policy
+              </a>{" "}
+              and{" "}
+              <a
+                href="https://igamingafrika.com/terms-and-conditions/"
+                className="text-green-600 hover:text-green-700 underline"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Terms of Service
+              </a>
+              .
+            </div>
+
             <div className="flex items-start space-x-2 text-sm text-gray-600 mb-4">
               <input
                 type="checkbox"
@@ -334,7 +360,7 @@ const GravityForm = () => {
                   target="_blank"
                   rel="noopener noreferrer"
                 >
-                  Terms and Conditions
+                  Terms of Service
                 </a>{" "}
                 and{" "}
                 <a
