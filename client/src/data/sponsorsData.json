@@ -2,121 +2,121 @@
   "headlineSponsor": {
     "name": "MFC",
     "logo": "/Summit2_trimmed.png",
-    "url": "https://mfc.ke"
+    "url": "#"
   },
   "platinumSponsors": [
     {
       "name": "iGaming",
       "logo": "/Summit2_trimmed.png",
-      "url": "https://igamingafrika.com"
+      "url": "#"
     },
     {
       "name": "EA",
       "logo": "/Summit2_trimmed.png",
-      "url": "https://ea.com"
+      "url": "#"
     },
     {
       "name": "Xbox",
       "logo": "/Summit2_trimmed.png",
-      "url": "https://xbox.com"
+      "url": "#"
     }
   ],
   "goldSponsors": [
     {
       "name": "PlayStation",
       "logo": "/Summit2_trimmed.png",
-      "url": "https://playstation.com"
+      "url": "#"
     },
     {
       "name": "Ubisoft",
       "logo": "/Summit2_trimmed.png",
-      "url": "https://ubisoft.com"
+      "url": "#"
     },
     {
       "name": "Unity",
       "logo": "/Summit2_trimmed.png",
-      "url": "https://unity.com"
+      "url": "#"
     },
     {
       "name": "Nintendo",
       "logo": "/Summit2_trimmed.png",
-      "url": "https://nintendo.com"
+      "url": "#"
     }
   ],
   "silverSponsors": [
     {
-      "name": "PlayStation",
-      "logo": "/Summit2_trimmed.png",
-      "url": "https://playstation.com"
+      "name": "Leprecoins",
+      "logo": "/sponsors/leprecoins.svg",
+      "url": "https://leprecoins.com/en"
     },
     {
       "name": "Ubisoft",
       "logo": "/Summit2_trimmed.png",
-      "url": "https://ubisoft.com"
+      "url": "#"
     },
     {
       "name": "Unity",
       "logo": "/Summit2_trimmed.png",
-      "url": "https://unity.com"
+      "url": "#"
     },
     {
       "name": "Nintendo",
       "logo": "/Summit2_trimmed.png",
-      "url": "https://nintendo.com"
+      "url": "#"
     }
   ],
   "bronzeSponsors": [
     {
       "name": "Betika",
       "logo": "/Summit2_trimmed.png",
-      "url": "https://www.betika.com/en-ke/"
+      "url": "#"
     },
     {
       "name": "Bet365",
       "logo": "/Summit2_trimmed.png",
-      "url": "https://www.bet365.com/#/HO/"
+      "url": "#"
     },
     {
       "name": "SportPesa",
       "logo": "/Summit2_trimmed.png",
-      "url": "https://www.ke.sportpesa.com/en/sports-betting/football-1/"
+      "url": "#"
     },
     {
       "name": "Betway",
       "logo": "/Summit2_trimmed.png",
-      "url": "https://www.betway.co.za/sport/soccer"
+      "url": "#"
     },
     {
       "name": "Bangbet",
       "logo": "/Summit2_trimmed.png",
-      "url": "https://www.bangbet.com/"
+      "url": "#"
     }
   ],
   "mediaPartners": [
     {
       "name": "Rockstar Games",
       "logo": "/Summit2_trimmed.png",
-      "url": "https://rockstargames.com"
+      "url": "#"
     },
     {
       "name": "Activision",
       "logo": "/Summit2_trimmed.png",
-      "url": "https://activision.com"
+      "url": "#"
     },
     {
       "name": "Stake",
       "logo": "/Summit2_trimmed.png",
-      "url": "https://stake.com/"
+      "url": "#"
     },
     {
       "name": "1xbet",
       "logo": "/Summit2_trimmed.png",
-      "url": "https://1xbet.com/en"
+      "url": "#"
     },
     {
       "name": "Skybet",
       "logo": "/Summit2_trimmed.png",
-      "url": "https://m.skybet.com/"
+      "url": "#"
     }
   ]
 }

@@ -20,7 +20,9 @@ const Packages = () => {
   const packagesPerPage = 12;
 
   // Sample data based on your structure
-  const packages = sponsorships;
+  const packages = [...sponsorships].sort((a, b) =>
+    a.title.localeCompare(b.title)
+  );
 
   // Pagination logic
   const totalPages = Math.ceil(packages.length / packagesPerPage);
@@ -54,7 +56,7 @@ const Packages = () => {
     }
     if (status === "SOLD OUT") {
       return (
-        <div className="absolute -top-2 -right-2 bg-red-500 text-white text-xs font-bold px-3 py-2 rounded-full shadow-md transform rotate-12 z-10">
+        <div className="absolute -top-2 -right-2 bg-red-600 text-white text-xs font-bold px-3 py-2 rounded-full shadow-md transform rotate-12 z-10">
           SOLD OUT
         </div>
       );
