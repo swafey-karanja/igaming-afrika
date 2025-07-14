@@ -14,7 +14,7 @@ const FAQSection = () => {
     const parts = text.split(urlPattern);
 
     return parts.map((part, index) => {
-      if (part.match(urlPattern)) {
+      if (urlPattern.test(part)) {
         return (
           <a
             key={index}
@@ -27,7 +27,7 @@ const FAQSection = () => {
           </a>
         );
       }
-      return part;
+      return <span key={index}>{part}</span>;
     });
   };
 
@@ -45,7 +45,7 @@ const FAQSection = () => {
     {
       question: "Where will the iGaming Africa Summit 2026 be held?",
       answer:
-        "The summit is taking place in an impressive 3,300m² square meters location at Sarit Expo Center, Nairobi's Largest Expo center giving exhibitors and attendees a massive ground to showcase their products, meet and connect with industry players as we discuss the future of the gaming industry in Africa.",
+        "The summit is taking place in an impressive 3,300m² square meters location at Sarit Expo Centre, Nairobi's Largest Expo centre giving exhibitors and attendees a massive ground to showcase their products, meet and connect with industry players as we discuss the future of the gaming industry in Africa.",
     },
     {
       question: "How do I get access to the iGaming AFRIKA Summit?",
@@ -84,7 +84,7 @@ const FAQSection = () => {
     {
       question: "What does the expo-only pass include?",
       answer:
-        "The Free Standard Pass provides access to the welcome reception access, pre-registration &amp; networking event, tournament access, and the Closing Party. It does not include access to Hall 2 conference sessions, food and beverage services, or evening networking events.",
+        "The Free Standard Pass provides access to the welcome reception access, pre-registration networking event, tournament access, and the Closing Party. It does not include access to Hall 2 conference sessions, food and beverage services, or evening networking events.",
     },
     {
       question: "Is there a lost and found?",
@@ -94,7 +94,7 @@ const FAQSection = () => {
     {
       question: "What are our terms and conditions for event attendance?",
       answer:
-        "You can review the Terms and Conditions for event attendance on our website.",
+        "You can review the terms and conditions by clicking the following link: https://igamingafrika.com/terms-and-conditions-events/ for event attendance on our website.",
     },
     {
       question: "Are there any restrictions in attendance?",
@@ -108,7 +108,8 @@ const FAQSection = () => {
     },
     {
       question: "Where can i find the privacy policy?",
-      answer: "Our Privacy Policy is accessible on our website.",
+      answer:
+        "You can find the privacy policy by clicking the following link: https://igamingafrika.com/privacy-policy-events/.",
     },
     {
       question: "How can i contact the iGaming AFRIKA summit team?",

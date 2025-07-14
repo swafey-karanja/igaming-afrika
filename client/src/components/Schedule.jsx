@@ -10,6 +10,7 @@ export default function Schedule() {
     { day: "Mon", date: "4 May" },
     { day: "Tue", date: "5 May" },
     { day: "Wed", date: "6 May" },
+    { day: "Thur", date: "7 May" },
   ];
 
   // Sample conference schedule data for each day
@@ -39,7 +40,7 @@ export default function Schedule() {
       {
         time: "20:30 – 00:30",
         title: "Networking Dinner",
-        location: "TBC",
+        location: "",
         description: "Networking Dinner, and iGaming AFRIKA Awards ceremony",
       },
     ],
@@ -54,16 +55,31 @@ export default function Schedule() {
       {
         time: "22:00 – 02:30",
         title: "Closing Party",
-        location: "TBC",
+        location: "",
         description: "iGaming AFRIKA Closing Party",
       },
     ],
     3: [
       {
-        time: "09:00 – 18:00",
+        time: "5:00 - 15:00",
         title: "Safari Tour",
-        location: "Masai Mara National Park",
-        description: "A safari tour to see the wildlife present in the Mara.",
+        location: "",
+        description: "A safari tour to see the wildlife in Kenya.",
+      },
+      {
+        time: "16:30 - 19:30",
+        title: "Football Tournament",
+        location: "",
+        description:
+          "A football tournament experience to officially close the event in style.",
+      },
+    ],
+    4: [
+      {
+        time: "Any time",
+        title: "Departure",
+        location: "",
+        description: "Guests leave at thier own pleasure.",
       },
     ],
   };

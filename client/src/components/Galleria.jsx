@@ -8,8 +8,7 @@ import React, {
 import { ChevronLeft, ChevronRight, X, Calendar, MapPin } from "lucide-react";
 // eslint-disable-next-line no-unused-vars
 import { motion, AnimatePresence } from "framer-motion";
-import { useSelector, useDispatch } from "react-redux";
-import { fetchImages } from "../store/imageSlice";
+import imagesData from "../data/imagesData.json";
 
 const slideVariants = {
   enter: (direction) => ({
@@ -64,12 +63,7 @@ const ImageCarousel = () => {
   const [imagesPerView, setImagesPerView] = useState(1);
   const preloadedImagesRef = useRef({});
 
-  const dispatch = useDispatch();
-  const { images, loading, error } = useSelector((state) => state.images);
-
-  useEffect(() => {
-    dispatch(fetchImages());
-  }, [dispatch]);
+  const images = imagesData;
 
   // Calculate how many images to show based on screen size
   useEffect(() => {
@@ -199,8 +193,6 @@ const ImageCarousel = () => {
     setTouchEnd(null);
   }, [touchStart, touchEnd, nextSlide, prevSlide]);
 
-  if (loading) return <p>Loading images...</p>;
-  if (error) return <p>Error loading images: {error}</p>;
   if (!images || images.length === 0) return null;
 
   return (

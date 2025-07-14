@@ -10,7 +10,7 @@ import { IoMdRefresh } from "react-icons/io";
 import { X, Users } from "lucide-react";
 // eslint-disable-next-line no-unused-vars
 import { motion } from "framer-motion";
-import speakers from "../data/speakers.json";
+import { AlertCircle } from "lucide-react";
 
 const Speakers = () => {
   const [selectedSpeaker, setSelectedSpeaker] = useState(null);
@@ -18,6 +18,10 @@ const Speakers = () => {
   const [activeFilter, setActiveFilter] = useState("All");
   const [visibleCount, setVisibleCount] = useState(12);
   const [isMobile, setIsMobile] = useState(false);
+
+  const [speakers, setSpeakers] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
+  const [error, setError] = useState(null);
 
   const filterOptions = [
     "All",
@@ -30,13 +34,40 @@ const Speakers = () => {
     "Global Markets",
   ];
 
-  // Simplified filtering logic
-  const filteredSpeakers = speakers.filter((speaker) => {
-    if (activeFilter === "All") return true;
-    return speaker.events.some((event) =>
-      event.toLowerCase().includes(activeFilter.toLowerCase())
-    );
-  });
+  const fetchSpeakers = useCallback(async () => {
+    try {
+      const token = import.meta.env.VITE_PUBLIC_API_TOKEN;
+      setIsLoading(true);
+      setError(null);
+      setSpeakers([]);
+
+      const response = await fetch(
+        "https://events.igamingafrika.com/api/speakers/",
+        {
+          headers: {
+            Authorization: `Token ${token}`,
+            "Content-Type": "application/json",
+          },
+        }
+      );
+
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
+      }
+
+      const data = await response.json();
+      setSpeakers(data);
+    } catch (error) {
+      console.error("Failed to fetch speakers:", error);
+      setError("Failed to load speakers. Please try again.");
+    } finally {
+      setIsLoading(false);
+    }
+  }, []);
+
+  useEffect(() => {
+    fetchSpeakers();
+  }, [fetchSpeakers]);
 
   const checkScreenSize = useCallback(() => {
     setIsMobile(window.innerWidth < 768);
@@ -48,7 +79,21 @@ const Speakers = () => {
     return () => window.removeEventListener("resize", checkScreenSize);
   }, [checkScreenSize]);
 
+  // Simplified filtering logic
+  const filteredSpeakers = isLoading
+    ? []
+    : speakers.filter((speaker) => {
+        if (activeFilter === "All") return true;
+        return speaker.events.some((event) =>
+          event.toLowerCase().includes(activeFilter.toLowerCase())
+        );
+      });
+
   const visibleSpeakers = filteredSpeakers.slice(0, visibleCount);
+
+  const handleShowMore = () => {
+    setVisibleCount((prev) => prev + (isMobile ? 6 : 12));
+  };
 
   const openModal = (speaker) => {
     setSelectedSpeaker(speaker);
@@ -58,10 +103,6 @@ const Speakers = () => {
   const closeModal = () => {
     setIsModalOpen(false);
     setSelectedSpeaker(null);
-  };
-
-  const handleShowMore = () => {
-    setVisibleCount((prev) => prev + (isMobile ? 6 : 12));
   };
 
   // Animation variants
@@ -105,7 +146,7 @@ const Speakers = () => {
   return (
     <div className="bg-gray-100 min-h-screen">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 md:py-8 lg:py-8">
-        {/* Header */}
+        {/* Header - Always visible */}
         <motion.div
           className="text-center mb-16"
           initial="hidden"
@@ -131,135 +172,162 @@ const Speakers = () => {
           </p>
         </motion.div>
 
-        {/* Simplified Filter Bar */}
-        <motion.div
-          className="flex flex-wrap justify-center gap-2 mb-12"
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true }}
-          variants={fadeIn}
-        >
-          {filterOptions.map((option) => (
-            <motion.button
-              key={option}
-              onClick={() => setActiveFilter(option)}
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-              className={`px-6 py-2 rounded-full text-sm font-medium transition-all duration-200 ${
-                activeFilter === option
-                  ? "bg-green-600 text-white shadow-lg"
-                  : "bg-gray-100 text-gray-700 hover:bg-green-50 hover:text-green-700 border-1 border-green-600"
-              }`}
+        {/* Content Area */}
+        {isLoading ? (
+          <div className="max-w-7xl mx-auto flex justify-center items-center py-20">
+            <div className="animate-spin rounded-full h-10 w-10 border-t-2 border-b-2 border-green-600"></div>
+          </div>
+        ) : error ? (
+          <div className="max-w-7xl mx-auto flex flex-col items-center justify-center py-20 rounded-lg">
+            <AlertCircle className="h-12 w-12 text-red-500 mb-4" />
+            <h3 className="text-md font-medium text-gray-900 mb-2">
+              Unable to load sponsors
+            </h3>
+            <p className="text-gray-600 mb-6 max-w-md text-sm text-center">
+              {error}
+            </p>
+            <button
+              onClick={fetchSpeakers}
+              className="px-4 py-2 bg-green-600 text-white rounded-md hover:bg-green-700 transition-colors"
             >
-              {option}
-            </motion.button>
-          ))}
-        </motion.div>
-
-        {/* Speakers Grid */}
-        <motion.div
-          key={`speakers-grid-${activeFilter}`}
-          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8"
-          initial="hidden"
-          animate="visible"
-          variants={container}
-        >
-          {visibleSpeakers.map((speaker, index) => (
+              Try Again
+            </button>
+          </div>
+        ) : (
+          <>
+            {/* Simplified Filter Bar */}
             <motion.div
-              key={`${speaker.name}-${index}`}
-              onClick={() => openModal(speaker)}
-              className="group cursor-pointer"
-              variants={item}
-              layout
+              className="flex flex-wrap justify-center gap-2 mb-12"
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true }}
+              variants={fadeIn}
             >
-              <motion.div
-                className="bg-white rounded-2xl p-6 shadow-md transition-all hover:shadow-green-300 border-green-300 duration-300 cursor-pointer hover:-translate-y-1 text-center"
-                whileTap={{ scale: 0.98 }}
-              >
-                {/* Speaker Image */}
-                <div className="relative w-24 h-24 mx-auto mb-4">
-                  <motion.div
-                    className="w-full h-full rounded-full overflow-hidden bg-gray-100 ring-4 ring-green-50 group-hover:ring-green-100 transition-all duration-300"
-                    whileHover={{ scale: 1.1 }}
-                  >
-                    {speaker.image ? (
-                      <img
-                        src={speaker.image}
-                        alt={speaker.name}
-                        className="w-full h-full object-cover"
-                      />
-                    ) : (
-                      <div className="w-full h-full flex items-center justify-center bg-green-100">
-                        <Users className="w-8 h-8 text-green-600" />
-                      </div>
-                    )}
-                  </motion.div>
-                </div>
-
-                {/* Speaker Info */}
-                <h3 className="text-lg font-semibold text-gray-900 mb-1">
-                  {speaker.name}
-                </h3>
-                <p className="text-sm text-green-600 font-medium mb-1">
-                  {speaker.role}
-                </p>
-                <p className="text-sm text-gray-500 mb-4">{speaker.company}</p>
-
-                {/* Event Tags */}
-                <div className="flex flex-wrap justify-center gap-1">
-                  {speaker.events.slice(0, 2).map((event, i) => {
-                    const day = event.split(" ")[0];
-                    return (
-                      <span
-                        key={i}
-                        className="text-xs px-3 py-1 bg-green-50 text-green-700 rounded-full border border-green-200"
-                      >
-                        {day}
-                      </span>
-                    );
-                  })}
-                  {speaker.events.length > 2 && (
-                    <span className="text-xs px-3 py-1 bg-gray-100 text-gray-600 rounded-full border border-gray-300">
-                      +{speaker.events.length - 2}
-                    </span>
-                  )}
-                </div>
-              </motion.div>
+              {filterOptions.map((option) => (
+                <motion.button
+                  key={option}
+                  onClick={() => setActiveFilter(option)}
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
+                  className={`px-6 py-2 rounded-full text-sm font-medium transition-all duration-200 ${
+                    activeFilter === option
+                      ? "bg-green-600 text-white shadow-lg"
+                      : "bg-gray-100 text-gray-700 hover:bg-green-50 hover:text-green-700 border-1 border-green-600"
+                  }`}
+                >
+                  {option}
+                </motion.button>
+              ))}
             </motion.div>
-          ))}
-        </motion.div>
 
-        {/* Load More */}
-        {visibleCount < filteredSpeakers.length && (
-          <motion.div
-            className="text-center mt-12"
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5 }}
-          >
-            <motion.button
-              onClick={handleShowMore}
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-              style={{ backgroundColor: "#14a45c" }}
-              className="inline-flex items-center gap-2 px-8 py-3 text-white rounded-full hover:bg-green-700 transition-colors duration-200 font-medium border-2 border-green-600 hover:border-green-700"
+            {/* Speakers Grid */}
+            <motion.div
+              key={`speakers-grid-${activeFilter}`}
+              className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8"
+              initial="hidden"
+              animate="visible"
+              variants={container}
             >
-              Show More
-              <IoMdRefresh />
-            </motion.button>
-          </motion.div>
-        )}
+              {visibleSpeakers.map((speaker, index) => (
+                <motion.div
+                  key={`${speaker.name}-${index}`}
+                  onClick={() => openModal(speaker)}
+                  className="group cursor-pointer"
+                  variants={item}
+                  layout
+                >
+                  <motion.div
+                    className="bg-white rounded-2xl p-6 shadow-md transition-all hover:shadow-green-300 border-green-300 duration-300 cursor-pointer hover:-translate-y-1 text-center"
+                    whileTap={{ scale: 0.98 }}
+                  >
+                    {/* Speaker Image */}
+                    <div className="relative w-24 h-24 mx-auto mb-4">
+                      <motion.div
+                        className="w-full h-full rounded-full overflow-hidden bg-gray-100 ring-4 ring-green-50 group-hover:ring-green-100 transition-all duration-300"
+                        whileHover={{ scale: 1.1 }}
+                      >
+                        {speaker.image ? (
+                          <img
+                            src={speaker.image}
+                            alt={speaker.name}
+                            className="w-full h-full object-cover"
+                          />
+                        ) : (
+                          <div className="w-full h-full flex items-center justify-center bg-green-100">
+                            <Users className="w-8 h-8 text-green-600" />
+                          </div>
+                        )}
+                      </motion.div>
+                    </div>
 
-        {/* End Message */}
-        {visibleCount >= filteredSpeakers.length &&
-          filteredSpeakers.length > 0 && (
-            <div className="text-center mt-12">
-              <p className="text-gray-500">
-                You've seen all {filteredSpeakers.length} speakers
-              </p>
-            </div>
-          )}
+                    {/* Speaker Info */}
+                    <h3 className="text-lg font-semibold text-gray-900 mb-1">
+                      {speaker.name}
+                    </h3>
+                    <p className="text-sm text-green-600 font-medium mb-1">
+                      {speaker.role}
+                    </p>
+                    <p className="text-sm text-gray-500 mb-4">
+                      {speaker.company}
+                    </p>
+
+                    {/* Event Tags */}
+                    <div className="flex flex-wrap justify-center gap-1">
+                      {speaker.events.slice(0, 2).map((event, i) => {
+                        const day = event.split(" ")[0];
+                        return (
+                          <span
+                            key={i}
+                            className="text-xs px-3 py-1 bg-green-50 text-green-700 rounded-full border border-green-200"
+                          >
+                            {day}
+                          </span>
+                        );
+                      })}
+                      {speaker.events.length > 2 && (
+                        <span className="text-xs px-3 py-1 bg-gray-100 text-gray-600 rounded-full border border-gray-300">
+                          +{speaker.events.length - 2}
+                        </span>
+                      )}
+                    </div>
+                  </motion.div>
+                </motion.div>
+              ))}
+            </motion.div>
+
+            {/* Load More */}
+            {visibleCount < filteredSpeakers.length && (
+              <motion.div
+                className="text-center mt-12"
+                initial={{ opacity: 0 }}
+                whileInView={{ opacity: 1 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5 }}
+              >
+                <motion.button
+                  onClick={handleShowMore}
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
+                  style={{ backgroundColor: "#14a45c" }}
+                  className="inline-flex items-center gap-2 px-8 py-3 text-white rounded-full hover:bg-green-700 transition-colors duration-200 font-medium border-2 border-green-600 hover:border-green-700"
+                >
+                  Show More
+                  <IoMdRefresh />
+                </motion.button>
+              </motion.div>
+            )}
+
+            {/* End Message */}
+            {visibleCount >= filteredSpeakers.length &&
+              filteredSpeakers.length > 0 && (
+                <div className="text-center mt-12">
+                  <p className="text-gray-500">
+                    You've seen all {filteredSpeakers.length} speakers
+                  </p>
+                </div>
+              )}
+          </>
+        )}
       </div>
 
       {/* Modal */}

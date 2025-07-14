@@ -326,7 +326,7 @@ const GravityForm = () => {
               commitment to protecting your privacy, check out our{" "}
               <a
                 href="https://igamingafrika.com/privacy-policy-events/"
-                className="text-green-600 hover:text-green-700 underline"
+                className="text-green-600 hover:text-green-700 underline cursor-pointer"
                 target="_blank"
                 rel="noopener noreferrer"
               >
@@ -334,8 +334,8 @@ const GravityForm = () => {
               </a>{" "}
               and{" "}
               <a
-                href="https://igamingafrika.com/terms-and-conditions/"
-                className="text-green-600 hover:text-green-700 underline"
+                href="https://igamingafrika.com/terms-and-conditions-events/ "
+                className="text-green-600 hover:text-green-700 underline cursor-pointer"
                 target="_blank"
                 rel="noopener noreferrer"
               >
@@ -355,7 +355,7 @@ const GravityForm = () => {
               <label htmlFor="terms" className="select-none">
                 I agree to the{" "}
                 <a
-                  href="https://igamingafrika.com/terms-and-conditions/"
+                  href="https://igamingafrika.com/terms-and-conditions-events/"
                   className="text-green-600 hover:text-green-700 underline"
                   target="_blank"
                   rel="noopener noreferrer"

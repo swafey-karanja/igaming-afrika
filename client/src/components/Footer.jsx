@@ -184,7 +184,6 @@ const LinksSection = () => {
   const companyLinks = [
     { href: "https://igamingafrika.com/about-us/", text: "About" },
     { href: "https://igamingafrika.com/advertise/", text: "Advertise" },
-    { href: "https://igamingafrika.com/disclaimer/", text: "Disclaimer" },
     { href: "https://igamingafrika.com/join-our-team/", text: "Join our Team" },
   ];
 
@@ -192,7 +191,7 @@ const LinksSection = () => {
     { href: "https://igamingafrika.com/donate/", text: "Donate" },
     { href: "https://igamingafrika.com/contact-us/", text: "Contact Us" },
     {
-      href: "https://igamingafrika.com/terms-and-conditions/",
+      href: "https://igamingafrika.com/terms-and-conditions-events/ ",
       text: "Terms and Conditions",
     },
     {

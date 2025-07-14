@@ -1,48 +1,96 @@
-import React, { useState } from "react";
+import React, { useEffect, useState, useCallback } from "react";
 // eslint-disable-next-line no-unused-vars
 import { motion } from "framer-motion";
-import { CheckCircle } from "lucide-react";
-import exhibitionPackages from "../data/exhibitionPackages.json";
+import { CheckCircle, AlertCircle } from "lucide-react";
 import ExhibitionModal from "./utils/ExhibitionModal";
 
 const ExhibitionPackages = () => {
   const [selectedPackage, setSelectedPackage] = useState(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const exhibitionData = exhibitionPackages;
+  const [exhibitionData, setExhibitionData] = useState(null);
+  const [isLoading, setIsLoading] = useState(true);
+  const [error, setError] = useState(null);
+  const tierOrder = ["Diamond", "Platinum", "Gold", "Silver", "Bronze"];
 
-  const packages = exhibitionData.flatMap((tier, tierIndex) =>
-    tier.options.map((option, optionIndex) => ({
-      id: `${tierIndex}-${optionIndex}`,
-      title: `${tier.tier} - ${option.type}`,
-      price: `$${option.price.toLocaleString()}`,
-      status: "AVAILABLE",
-      icon: option.type === "Shell Scheme" ? "🏗️" : "🏢",
-      iconBg: "bg-green-400",
-      featured: tier.tier === "Platinum" && option.type === "Shell Scheme",
-      description: option.description,
-      standSize: option.standSize,
-      tier: tier.tier,
-      type: option.type,
-      benefits: [
-        ...(option.standBenefits || []),
-        ...(option.exhibitorBenefits || []),
-        ...(option.sponsorshipStatus || []),
-      ],
-      standBenefits: option.standBenefits || [],
-      exhibitorBenefits: option.exhibitorBenefits || [],
-      sponsorshipStatus: option.sponsorshipStatus || [],
-      notes: option.notes || [],
-      images: option.images || [], // ✅ <-- Add this line
-      tickets:
-        option.exhibitorBenefits
-          ?.find((b) => b.includes("passes"))
-          ?.replace(/^\d+\s*/, "") ||
-        option.standBenefits
-          ?.find((b) => b.includes("passes"))
-          ?.replace(/^\d+\s*/, "") ||
-        "Contact for details",
-    }))
-  );
+  const fetchExhibitionPackages = useCallback(async () => {
+    try {
+      const token = import.meta.env.VITE_PUBLIC_API_TOKEN;
+      setIsLoading(true);
+      setError(null);
+      setExhibitionData(null);
+
+      const response = await fetch(
+        "https://events.igamingafrika.com/api/exhibition/",
+        {
+          headers: {
+            Authorization: `Token ${token}`,
+            "Content-Type": "application/json",
+          },
+        }
+      );
+
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
+      }
+
+      const data = await response.json();
+      setExhibitionData(data);
+    } catch (error) {
+      console.error("Failed to fetch exhibition data:", error);
+      setError("Failed to load exhibition packages. Please try again.");
+    } finally {
+      setIsLoading(false);
+    }
+  }, []);
+
+  useEffect(() => {
+    fetchExhibitionPackages();
+  }, [fetchExhibitionPackages]);
+
+  const packages = exhibitionData
+    ? exhibitionData
+        .flatMap((tier, tierIndex) =>
+          tier.options.map((option, optionIndex) => ({
+            id: `${tierIndex}-${optionIndex}`,
+            title: `${tier.tier} - ${option.type}`,
+            price: `$${Number(option.price).toLocaleString(undefined, {
+              minimumFractionDigits: 0,
+              maximumFractionDigits: 0,
+            })}`,
+            status: "AVAILABLE",
+            icon: option.type === "Shell Scheme" ? "🏗️" : "🏢",
+            iconBg: "bg-green-400",
+            featured:
+              tier.tier === "Platinum" && option.type === "Shell Scheme",
+            description: option.description,
+            standSize: option.standSize,
+            tier: tier.tier,
+            type: option.type,
+            benefits: [
+              ...(option.standBenefits || []),
+              ...(option.exhibitorBenefits || []),
+              ...(option.sponsorshipStatus || []),
+            ],
+            standBenefits: option.standBenefits || [],
+            exhibitorBenefits: option.exhibitorBenefits || [],
+            sponsorshipStatus: option.sponsorshipStatus || [],
+            notes: option.notes || [],
+            images: option.images || [],
+            tickets:
+              option.exhibitorBenefits
+                ?.find((b) => b.includes("passes"))
+                ?.replace(/^\d+\s*/, "") ||
+              option.standBenefits
+                ?.find((b) => b.includes("passes"))
+                ?.replace(/^\d+\s*/, "") ||
+              "Contact for details",
+          }))
+        )
+        // ✅ Custom tier sorting here
+        .sort((a, b) => {
+          return tierOrder.indexOf(a.tier) - tierOrder.indexOf(b.tier);
+        })
+    : [];
 
   const openModal = (pkg) => {
     setSelectedPackage(pkg);
@@ -102,83 +150,108 @@ const ExhibitionPackages = () => {
         </motion.div>
       </div>
 
-      <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
-        {packages.map((pkg) => (
-          <div
-            key={pkg.id}
-            className={`group relative bg-white rounded-2xl shadow-md border-green-300 hover:shadow-green-300 transition-all duration-300 cursor-pointer hover:-translate-y-1 flex flex-col ${
-              pkg.featured ? "ring-1 ring-slate-300" : ""
-            } ${pkg.status === "SOLD OUT" ? "opacity-60" : ""}`}
-            onClick={() => pkg.status !== "SOLD OUT" && openModal(pkg)}
+      {isLoading ? (
+        <div className="max-w-7xl mx-auto flex justify-center items-center py-20">
+          <div className="animate-spin rounded-full h-10 w-10 border-t-2 border-b-2 border-green-600"></div>
+        </div>
+      ) : error ? (
+        <div className="max-w-7xl mx-auto flex flex-col items-center justify-center py-20 rounded-lg">
+          <AlertCircle className="h-12 w-12 text-red-500 mb-4" />
+          <h3 className="text-md font-medium text-gray-900 mb-2">
+            Unable to load sponsors
+          </h3>
+          <p className="text-gray-600 mb-6 max-w-md text-sm text-center">
+            {error}
+          </p>
+          <button
+            onClick={fetchExhibitionPackages}
+            className="px-4 py-2 bg-green-600 text-white rounded-md hover:bg-green-700 transition-colors"
           >
-            <div className="p-6 flex flex-col flex-grow">
-              <div className="flex items-center justify-between mb-4">
-                <span
-                  className={`px-3 py-1 rounded-full text-xs font-semibold text-white bg-gradient-to-r ${getTierColor(
-                    pkg.tier
-                  )}`}
-                >
-                  {pkg.tier}
-                </span>
-                <span className="text-md text-slate-500 font-medium">
-                  {pkg.standSize}m
-                </span>
-              </div>
+            Try Again
+          </button>
+        </div>
+      ) : (
+        <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+          {packages.map((pkg) => (
+            <div
+              key={pkg.id}
+              className={`group relative bg-white rounded-2xl shadow-md border-green-300 hover:shadow-green-300 transition-all duration-300 cursor-pointer hover:-translate-y-1 flex flex-col ${
+                pkg.featured ? "ring-1 ring-slate-300" : ""
+              } ${pkg.status === "SOLD OUT" ? "opacity-60" : ""}`}
+              onClick={() => pkg.status !== "SOLD OUT" && openModal(pkg)}
+            >
+              <div className="p-6 flex flex-col flex-grow">
+                <div className="flex items-center justify-between mb-4">
+                  <span
+                    className={`px-3 py-1 rounded-full text-xs font-semibold text-white bg-gradient-to-r ${getTierColor(
+                      pkg.tier
+                    )}`}
+                  >
+                    {pkg.tier}
+                  </span>
+                  <span className="text-md text-slate-500 font-medium">
+                    {pkg.standSize}m
+                  </span>
+                </div>
 
-              <div className="flex justify-center mb-4">
-                <div
-                  className={`w-16 h-16 rounded-xl flex items-center justify-center text-2xl shadow-md bg-gradient-to-br ${getTierColor(
-                    pkg.tier
-                  )}`}
-                >
-                  {pkg.icon}
+                <div className="flex justify-center mb-4">
+                  <div
+                    className={`w-16 h-16 rounded-xl flex items-center justify-center text-2xl shadow-md bg-gradient-to-br ${getTierColor(
+                      pkg.tier
+                    )}`}
+                  >
+                    {pkg.icon}
+                  </div>
+                </div>
+
+                <h3 className="text-lg font-semibold text-slate-800 mb-2 text-center">
+                  {pkg.type}
+                </h3>
+                <div className="text-center mb-6">
+                  <span className="text-2xl font-bold text-slate-900">
+                    {pkg.price}
+                  </span>
+                </div>
+
+                <div className="space-y-2 mb-6">
+                  {pkg.benefits.slice(0, 2).map((b, i) => (
+                    <div
+                      key={i}
+                      className="flex items-start gap-2 text-sm text-slate-600"
+                    >
+                      <CheckCircle
+                        size={14}
+                        className="text-slate-400 mt-0.5"
+                      />
+                      <span className="line-clamp-2">{b}</span>
+                    </div>
+                  ))}
+                  {pkg.benefits.length > 2 && (
+                    <div className="text-sm text-slate-500 font-medium">
+                      +{pkg.benefits.length - 2} more benefits
+                    </div>
+                  )}
+                </div>
+
+                <div className="mt-auto pt-4">
+                  <button
+                    className={`w-full py-2.5 px-4 rounded-lg font-medium text-sm transition-all duration-200 ${
+                      pkg.status === "SOLD OUT"
+                        ? "bg-slate-200 text-slate-500 cursor-not-allowed"
+                        : `bg-gradient-to-r ${getTierColor(
+                            pkg.tier
+                          )} text-white hover:shadow-md`
+                    }`}
+                    disabled={pkg.status === "SOLD OUT"}
+                  >
+                    {pkg.status === "SOLD OUT" ? "Sold Out" : "View Details"}
+                  </button>
                 </div>
               </div>
-
-              <h3 className="text-lg font-semibold text-slate-800 mb-2 text-center">
-                {pkg.type}
-              </h3>
-              <div className="text-center mb-6">
-                <span className="text-2xl font-bold text-slate-900">
-                  {pkg.price}
-                </span>
-              </div>
-
-              <div className="space-y-2 mb-6">
-                {pkg.benefits.slice(0, 2).map((b, i) => (
-                  <div
-                    key={i}
-                    className="flex items-start gap-2 text-sm text-slate-600"
-                  >
-                    <CheckCircle size={14} className="text-slate-400 mt-0.5" />
-                    <span className="line-clamp-2">{b}</span>
-                  </div>
-                ))}
-                {pkg.benefits.length > 2 && (
-                  <div className="text-sm text-slate-500 font-medium">
-                    +{pkg.benefits.length - 2} more benefits
-                  </div>
-                )}
-              </div>
-
-              <div className="mt-auto pt-4">
-                <button
-                  className={`w-full py-2.5 px-4 rounded-lg font-medium text-sm transition-all duration-200 ${
-                    pkg.status === "SOLD OUT"
-                      ? "bg-slate-200 text-slate-500 cursor-not-allowed"
-                      : `bg-gradient-to-r ${getTierColor(
-                          pkg.tier
-                        )} text-white hover:shadow-md`
-                  }`}
-                  disabled={pkg.status === "SOLD OUT"}
-                >
-                  {pkg.status === "SOLD OUT" ? "Sold Out" : "View Details"}
-                </button>
-              </div>
             </div>
-          </div>
-        ))}
-      </div>
+          ))}
+        </div>
+      )}
 
       <ExhibitionModal
         pkg={selectedPackage}

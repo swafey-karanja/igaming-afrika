@@ -13,20 +13,22 @@ const FloorPlanIframe = () => {
   const containerRef = useRef(null);
 
   useEffect(() => {
+    // Capture the current ref value
     const currentContainer = containerRef.current;
 
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting) {
           setIsVisible(true);
+          // Add a small delay before loading the iframe to ensure smooth scrolling
           setTimeout(() => {
             setShouldLoad(true);
           }, 200);
         }
       },
       {
-        threshold: 0.5,
-        rootMargin: "100px 0px",
+        threshold: 0.5, // Load when 10% of the component is visible
+        rootMargin: "100px 0px", // Start loading 100px before it comes into view
       }
     );
 
@@ -35,6 +37,7 @@ const FloorPlanIframe = () => {
     }
 
     return () => {
+      // Use the captured ref value in cleanup
       if (currentContainer) {
         observer.unobserve(currentContainer);
       }
@@ -85,23 +88,35 @@ const FloorPlanIframe = () => {
           )}
 
           {shouldLoad && (
-            <div
-              style={{ width: "100%", height: "100%", position: "relative" }}
-            >
-              <iframe
-                style={{
-                  position: "absolute",
-                  top: 0,
-                  left: 0,
-                  bottom: 0,
-                  right: 0,
-                  width: "100%",
-                  height: "100%",
-                }}
-                src="https://igamingafrikasummit.expofp.com?allowConsent=false"
-                allow="clipboard-read; clipboard-write"
-              ></iframe>
-            </div>
+            <iframe
+              className="w-full h-full border-none"
+              src="https://igamingafrikasummit.expofp.com?allowConsent=false"
+              allow="clipboard-read; clipboard-write"
+              title="ExpoFP Floorplan"
+              loading="lazy"
+              scroll="no"
+              sandbox="allow-scripts allow-same-origin allow-popups allow-forms"
+              style={{
+                pointerEvents: "auto",
+                border: "none",
+                outline: "none",
+                overflow: "hidden",
+              }}
+              onLoad={(e) => {
+                // Prevent iframe from taking focus and affecting scroll
+                e.target.blur();
+                // Ensure the parent page maintains scroll control
+                setTimeout(() => {
+                  if (document.activeElement === e.target) {
+                    document.body.focus();
+                  }
+                }, 100);
+              }}
+              onFocus={(e) => {
+                // Prevent iframe from hijacking scroll
+                e.target.blur();
+              }}
+            />
           )}
         </div>
       </div>

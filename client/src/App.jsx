@@ -4,7 +4,7 @@ import { Routes, Route } from "react-router-dom";
 import ScrollToTop from "./components/utils/ScrollToTop.jsx";
 import { Provider } from "react-redux";
 import store from "./store/index.js";
-import Registration from "./pages/registration.jsx";
+import Registration from "./pages/Registration.jsx";
 import { Toaster } from "react-hot-toast";
 import { useEffect } from "react";
 

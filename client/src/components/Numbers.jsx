@@ -191,11 +191,10 @@ const Numbers = () => {
                   <span className="font-semibold text-gray-900">
                     Safari Tour:
                   </span>{" "}
-                  The event will kick off with a memorable Safari Tour of the
-                  iconic Masai Mara allowing attendees to experience Kenya's
-                  wildlife including Lions, Antelopes, and Elephants. It
-                  provides a once-in-a-lifetime opportunity to connect with
-                  nature before the main event.
+                  The event will kick off with a memorable Safari Tour allowing
+                  attendees to experience Kenya's wildlife including Lions,
+                  Antelopes, and Elephants. It provides a once-in-a-lifetime
+                  opportunity to connect with nature before the main event.
                 </div>
               </div>
 

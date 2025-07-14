@@ -21,7 +21,7 @@ const fadeInUp = {
 
 const Home = () => {
   return (
-    <div className="bg-gray-100">
+    <div className="bg-gray-100 overflow-hidden">
       <Navbar />
 
       <motion.div
