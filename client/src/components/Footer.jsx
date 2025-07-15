@@ -213,8 +213,8 @@ const LinksSection = () => {
         <div className="space-y-4">
           <a href="#" title="iGaming Afrika" className="flex">
             <img
-              className="w-auto h-12 sm:h-14 md:h-16 lg:h-20"
-              src="Summit2_trimmed.png"
+              className="w-auto h-22 sm:h-24 md:h-26 lg:h-30"
+              src="Summit_Logo.png"
               alt="iGaming Afrika Logo"
             />
           </a>

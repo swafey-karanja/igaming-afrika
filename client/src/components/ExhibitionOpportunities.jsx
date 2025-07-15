@@ -78,12 +78,10 @@ const ExhibitionPackages = () => {
             images: option.images || [],
             tickets:
               option.exhibitorBenefits
-                ?.find((b) => b.includes("passes"))
-                ?.replace(/^\d+\s*/, "") ||
-              option.standBenefits
-                ?.find((b) => b.includes("passes"))
-                ?.replace(/^\d+\s*/, "") ||
-              "Contact for details",
+                ?.filter(
+                  (b) => /closing night passes/i.test(b) || /passes/i.test(b)
+                )
+                ?.join(", ") || "Contact for details",
           }))
         )
         // ✅ Custom tier sorting here

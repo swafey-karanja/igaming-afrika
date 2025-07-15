@@ -241,7 +241,7 @@ const ExhibitionModal = ({ pkg = {}, isModalOpen, onClose, getTierColor }) => {
                 icon={
                   <Star size={18} className={getTierColorClass(pkg.tier)} />
                 }
-                title="Exhibitor Benefits"
+                title="Package Benefits"
               >
                 {pkg.exhibitorBenefits.map((b, i) => (
                   <ListItem

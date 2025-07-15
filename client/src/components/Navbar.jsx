@@ -80,7 +80,7 @@ const Navbar = () => {
   return (
     <div className="relative bg-black">
       <header
-        className={`fixed top-0 left-0 w-full inset-x-0 z-40 py-2 sm:py-3 md:py-4 xl:py-6 lg:py-5 transition-all duration-700 ease-in-out ${
+        className={`fixed top-0 left-0 w-full inset-x-0 z-40 py-2 sm:py-3 md:py-4 transition-all duration-700 ease-in-out ${
           isScrolled
             ? "bg-gray-100 shadow-md drop-shadow-md text-black"
             : "bg-transparent text-white"
@@ -131,7 +131,7 @@ const Navbar = () => {
                 className="inline-flex rounded-md"
               >
                 <img
-                  className="w-auto h-10 sm:h-12 md:h-16 lg:h-20"
+                  className="w-auto h-12 sm:h-14 md:h-18 lg:h-24"
                   src="https://igamingafrika.com/wp-content/uploads/2023/04/iGaming-Logo-2b.png"
                   alt="iGaming Afrika"
                 />
@@ -379,10 +379,10 @@ const Navbar = () => {
           <img
             src="/Summit_Logo.png"
             alt="iGaming Afrika Logo"
-            className="w-full max-w-[200px] md:max-w-[320px] lg:max-w-[320px] mx-auto mb-6 sm:mb-8"
+            className="w-full max-w-[200px] md:max-w-[320px] lg:max-w-[320px] mx-auto"
           />
           <p className="text-md sm:text-xl lg:text-xl font-semibold mb-2 sm:mb-3 lg:mb-4">
-            4-6 MAY, 2026
+            4 - 6 MAY, 2026
           </p>
           {/* <h1 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold mb-2">28-31 JULY, 2026</h1> */}
           <p className="text-sm sm:text-[16px] lg:text-[16px] mb-6 sm:mb-8 lg:mb-10">

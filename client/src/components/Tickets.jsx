@@ -67,7 +67,7 @@ const Tickets = () => {
       label: "VVIP Pass",
       price: 600,
       doorPrice: 950,
-      description: "Platinum executive experience",
+      description: "Executive experience",
       features: [
         "Welcome Reception",
         "Pre-registration & Networking Event",

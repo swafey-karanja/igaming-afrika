@@ -127,7 +127,7 @@ const Numbers = () => {
               variants={scaleIn}
               className="text-xl lg:text-2xl font-bold mb-6 text-green-700 leading-tight"
             >
-              What is the iGaming AFRIKA Summit?
+              What is the iGaming AFRIKA Summit (iGA Summit)?
             </motion.h1>
             <motion.div
               variants={fadeIn}
@@ -136,14 +136,14 @@ const Numbers = () => {
               <strong>iGaming AFRIKA Summit</strong> is Africa’s mega gaming
               event, designed to unite the entire gaming industry players across
               the world in one place—the stunning city of{" "}
-              <strong>Nairobi, Kenya.</strong> This being the inaugural edition
-              of the summit, the event is expected to be the largest in the
-              industry. The summit is taking place in an impressive 3,300m²
-              square meters location at <strong>Sarit Expo Centre</strong>,
-              Nairobi’s Largest Expo centre giving exhibitors and attendees a
-              massive ground to showcase their products, meet and connect with
-              industry players as we discuss the future of the gaming industry
-              in Africa.
+              <strong>Nairobi, Kenya from 4th - 6th May 2026.</strong> This
+              being the inaugural edition of the summit, the event is expected
+              to be the largest in the industry. The summit is taking place in
+              an impressive 3,300m² square meters location at{" "}
+              <strong>Sarit Expo Centre</strong>, Nairobi’s Largest Expo centre
+              giving exhibitors and attendees a massive ground to showcase their
+              products, meet and connect with industry players as we discuss the
+              future of the gaming industry in Africa.
             </motion.div>
 
             <motion.h2

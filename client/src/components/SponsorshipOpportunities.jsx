@@ -73,7 +73,7 @@ const Packages = () => {
   const getStatusBadge = (status, featured = false) => {
     if (status === "ON HOLD") {
       return (
-        <div className="absolute -top-2 -right-2 bg-gray-500 text-white text-xs font-bold px-3 py-2 rounded-full shadow-md transform rotate-12 z-10">
+        <div className="absolute -top-2 -right-2 bg-gray-500 text-white text-xs font-bold px-3 py-2 rounded-full shadow-md transform z-10">
           ON HOLD
         </div>
       );
@@ -508,6 +508,31 @@ const Packages = () => {
                           <Star
                             size={16}
                             className="text-yellow-500 mt-0.5 flex-shrink-0"
+                          />
+                          <span>{benefit}</span>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                )}
+
+                {selectedPackage.diamondBenefits?.length > 0 && (
+                  <div>
+                    <div className="flex items-center gap-2 mb-3">
+                      <Star className="text-purple-500" size={20} />
+                      <h3 className="text-lg font-bold text-gray-900">
+                        Diamond Sponsorship Status
+                      </h3>
+                    </div>
+                    <div className="space-y-2">
+                      {selectedPackage.diamondBenefits.map((benefit, index) => (
+                        <div
+                          key={index}
+                          className="flex items-start gap-3 text-sm text-gray-700"
+                        >
+                          <Star
+                            size={16}
+                            className="text-purple-500 mt-0.5 flex-shrink-0"
                           />
                           <span>{benefit}</span>
                         </div>

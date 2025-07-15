@@ -80,7 +80,7 @@ const Navbar = () => {
   return (
     <div className="relative bg-black">
       <header
-        className={`fixed top-0 left-0 w-full inset-x-0 z-40 py-2 sm:py-3 md:py-4 xl:py-6 lg:py-5 transition-all duration-700 ease-in-out ${
+        className={`fixed top-0 left-0 w-full inset-x-0 z-40 py-2 transition-all duration-700 ease-in-out ${
           isScrolled
             ? "bg-gray-100 shadow-md drop-shadow-md text-black"
             : "bg-transparent text-white"
@@ -135,8 +135,8 @@ const Navbar = () => {
                 }}
               >
                 <img
-                  className="w-auto h-10 sm:h-12 md:h-16 lg:h-20"
-                  src="/Summit2_trimmed.png"
+                  className="w-auto h-18 sm:h-20 md:h-24 lg:h-30"
+                  src="/Summit_Logo.png"
                   alt="iGaming Afrika"
                 />
               </NavLink>
@@ -371,20 +371,20 @@ const Navbar = () => {
 
         <div className="relative z-10 text-center text-white px-4 w-full max-w-xl mx-auto">
           <img
-            src="https://igamingafrika.com/wp-content/uploads/2023/04/iGaming-Logo-2b.png"
+            src="/Summit_Logo.png"
             alt="iGaming Afrika Logo"
-            className="w-full max-w-xs mx-auto mb-4 sm:mb-6"
+            className="w-full max-w-xs mx-auto"
           />
-          <p className="text-md sm:text-3xl lg:text-3xl font-semibold mb-2 sm:mb-3 lg:mb-4 text-[#14a45c]">
-            The Heart of Gaming in Africa
-          </p>
           <p className="text-md sm:text-xl lg:text-xl font-semibold mb-2 sm:mb-3 lg:mb-4">
-            • 4-6 MAY, 2026
+            4 - 6 MAY, 2026
           </p>
           {/* <h1 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold mb-2">28-31 JULY, 2026</h1> */}
           <p className="text-sm sm:text-[14px] mb-6 sm:mb-8 font-semibold">
             {" "}
-            Sarit Expo Center, Nairobi, Kenya
+            Sarit Expo Centre, Nairobi, Kenya
+          </p>
+          <p className="text-md sm:text-3xl lg:text-3xl font-semibold mb-2 sm:mb-3 lg:mb-4 text-[#14a45c]">
+            The Heart of Gaming in Africa
           </p>
 
           {/* Countdown Timer */}
