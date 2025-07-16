@@ -46,6 +46,7 @@ const Sponsors = () => {
         goldSponsors: data.goldSponsors || [],
         silverSponsors: data.silverSponsors || [],
         bronzeSponsors: data.bronzeSponsors || [],
+        strategicPartners: data.strategicPartners || [],
         mediaPartners: data.mediaPartners || [],
       };
 
@@ -195,7 +196,7 @@ const Sponsors = () => {
               title="Strategic Partners"
               sponsors={strategicPartners}
               logoSizes="h-10 w-auto max-w-[100px] xs:h-12 xs:max-w-[120px] sm:h-14 sm:max-w-[140px] md:h-16 md:max-w-[160px] lg:h-18 lg:max-w-[180px] xl:h-20 xl:max-w-[200px]"
-              containerClass="grid grid-cols-2 xs:grid-cols-2 sm:grid-cols-3 md:grid-cols-4  gap-4 xs:gap-6 sm:gap-8 md:gap-10 px-2 items-center justify-items-center"
+              containerClass="grid gap-4 xs:gap-6 sm:gap-8 md:gap-10 px-2 items-center justify-items-center"
               titleColor="from-amber-600 via-orange-500 to-amber-700"
               delay={0.6}
               bordered={true}
