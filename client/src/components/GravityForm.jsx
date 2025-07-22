@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import { ChevronDown, Check } from "lucide-react";
 import axios from "axios";
 import { toast } from "react-hot-toast";
+import PhoneInput from "react-phone-number-input";
+import "react-phone-number-input/style.css";
 
 const GravityForm = () => {
   const [formData, setFormData] = useState({
@@ -36,6 +38,10 @@ const GravityForm = () => {
     } else {
       setFormData({ ...formData, [name]: value });
     }
+  };
+
+  const handlePhoneChange = (value) => {
+    setFormData({ ...formData, input_4: value || "" });
   };
 
   const handleInterestToggle = (interest) => {
@@ -207,21 +213,15 @@ const GravityForm = () => {
                   <label className="block text-sm font-semibold text-gray-700 mb-2">
                     Phone number <span className="text-red-500">*</span>
                   </label>
-                  <div className="flex items-center border border-gray-300 rounded-lg transition-colors">
-                    <div className="flex items-center px-3 bg-gray-50 border-r border-gray-300 rounded-l-lg">
-                      <span className="text-xs mr-1">🇰🇪</span>
-                      <span className="text-sm text-gray-600">+</span>
-                    </div>
-                    <input
-                      type="tel"
-                      name="input_4"
-                      value={formData["input_4"]}
-                      onChange={handleChange}
-                      placeholder="0700 000 000"
-                      className="flex-1 px-4 py-1 bg-white rounded-r-lg border-none focus:outline-none focus:ring-2 focus:ring-green-500"
-                      disabled={isSubmitting}
-                    />
-                  </div>
+                  <PhoneInput
+                    international
+                    defaultCountry="KE"
+                    value={formData.input_4}
+                    onChange={handlePhoneChange}
+                    disabled={isSubmitting}
+                    className="phone-input-custom"
+                    placeholder="Enter phone number"
+                  />
                 </div>
               </div>
 
@@ -392,6 +392,40 @@ const GravityForm = () => {
             </div>
           </div>
         </div>
+
+        <style jsx>{`
+          .phone-input-custom .PhoneInputInput {
+            border: 1px solid #d1d5db;
+            border-radius: 0.5rem;
+            padding: 0.25rem 1rem;
+            width: 100%;
+            transition: border-color 0.2s, box-shadow 0.2s;
+          }
+
+          .phone-input-custom .PhoneInputInput:focus {
+            outline: none;
+            border-color: transparent;
+            box-shadow: 0 0 0 2px #10b981;
+          }
+
+          .phone-input-custom .PhoneInputCountrySelect {
+            border: 1px solid #d1d5db;
+            border-radius: 0.5rem 0 0 0.5rem;
+            border-right: none;
+            background-color: #f9fafb;
+            padding: 0.25rem 0.5rem;
+          }
+
+          .phone-input-custom .PhoneInputCountrySelect:focus {
+            outline: none;
+            border-color: #10b981;
+            box-shadow: 0 0 0 2px #10b981;
+          }
+
+          .phone-input-custom .PhoneInputCountrySelectArrow {
+            color: #6b7280;
+          }
+        `}</style>
       </div>
     </div>
   );
