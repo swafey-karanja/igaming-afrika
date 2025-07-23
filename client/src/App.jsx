@@ -15,31 +15,49 @@ const App = () => {
     if ("scrollRestoration" in history) {
       history.scrollRestoration = "auto";
     }
+
+    // Prevent copy, paste, and cut keyboard shortcuts
+    const handleKeyDown = (e) => {
+      const isShortcut =
+        (e.ctrlKey || e.metaKey) &&
+        ["c", "v", "x"].includes(e.key.toLowerCase());
+      if (isShortcut) {
+        e.preventDefault();
+      }
+    };
+
+    document.addEventListener("keydown", handleKeyDown);
+
+    return () => {
+      document.removeEventListener("keydown", handleKeyDown);
+    };
   }, []);
 
   return (
     <Provider store={store}>
-      <ScrollToTop />
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/register" element={<Registration />} />
-      </Routes>
-      <Footer />
-      <Toaster
-        position="top-center"
-        containerStyle={{
-          top: "50%",
-          transform: "translateY(-80%)",
-        }}
-        toastOptions={{
-          duration: 3000,
-          style: {
-            background: "#f0fdf4",
-            color: "#14532d",
-            fontSize: "15px",
-          },
-        }}
-      />
+      <div className="select-none">
+        <ScrollToTop />
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/register" element={<Registration />} />
+        </Routes>
+        <Footer />
+        <Toaster
+          position="top-center"
+          containerStyle={{
+            top: "50%",
+            transform: "translateY(-80%)",
+          }}
+          toastOptions={{
+            duration: 3000,
+            style: {
+              background: "#f0fdf4",
+              color: "#14532d",
+              fontSize: "15px",
+            },
+          }}
+        />
+      </div>
     </Provider>
   );
 };
