@@ -25,7 +25,7 @@ export default function Schedule() {
       {
         time: "16:30 – 19:30",
         title: "Pre-Registration",
-        location: "GTC Pan Pacific",
+        location: "",
         description: "Pre-registration of event attendees and delegates",
       },
     ],
