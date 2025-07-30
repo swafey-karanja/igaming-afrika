@@ -148,7 +148,7 @@ export default function EventApplicationForm() {
           {/* Header */}
           <div className="bg-[#14a45c] px-8 py-6 h-[10vh] flex items-center justify-center">
             <h1 className="text-3xl font-bold text-white text-center">
-              REGISTER FOR THE EVENT
+              EXPRESS YOUR INTEREST
             </h1>
           </div>
           <div className="p-8 space-y-16">
@@ -237,8 +237,9 @@ export default function EventApplicationForm() {
                     }`}
                   >
                     <PhoneInput
+                      international
                       defaultCountry="KE"
-                      placeholder="0700 000 000"
+                      placeholder="Enter phone number"
                       value={formData.phone}
                       onChange={(value) =>
                         setFormData((prev) => ({ ...prev, phone: value }))
