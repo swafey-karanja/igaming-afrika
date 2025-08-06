@@ -1,6 +1,6 @@
 import { useEffect, useRef } from "react";
 import Header from "../components/Header";
-import GravityForm from "../components/GravityForm";
+// import GravityForm from "../components/GravityForm";
 import EventApplicationForm from "../components/Registrationform";
 
 export default function Registration() {
