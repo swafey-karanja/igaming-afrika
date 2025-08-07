@@ -1,6 +1,8 @@
 import React from "react";
 // eslint-disable-next-line no-unused-vars
 import { motion } from "framer-motion";
+import PhoneInput from "react-phone-number-input";
+import "react-phone-number-input/style.css";
 
 const CheckoutForm = ({ formData, handleInputChange }) => {
   return (
@@ -18,13 +20,12 @@ const CheckoutForm = ({ formData, handleInputChange }) => {
       </h2>
 
       <div className="grid md:grid-cols-2 gap-4">
-        {["firstName", "lastName", "email", "phone", "company", "jobTitle"].map(
+        {["firstName", "lastName", "email", "company", "jobTitle"].map(
           (field) => (
             <div key={field}>
               <label className="block text-sm font-medium text-gray-700 mb-2">
-                {field.charAt(0).toUpperCase() + field.slice(1)}
-                {["firstName", "lastName", "email", "phone"].includes(field) &&
-                  " *"}
+                {field.charAt(0).toUpperCase() + field.slice(1)}{" "}
+                {["firstName", "lastName", "email"].includes(field) && "*"}
               </label>
               <input
                 type={field === "email" ? "email" : "text"}
@@ -32,14 +33,36 @@ const CheckoutForm = ({ formData, handleInputChange }) => {
                 value={formData[field]}
                 onChange={handleInputChange}
                 className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-transparent"
-                required={["firstName", "lastName", "email", "phone"].includes(
-                  field
-                )}
+                required={["firstName", "lastName", "email"].includes(field)}
               />
             </div>
           )
         )}
 
+        {/* Custom PhoneInput field */}
+        <div>
+          <label className="block text-sm font-semibold text-gray-700 mb-2">
+            Phone number <span className="text-red-500">*</span>
+          </label>
+          <div className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-transparent">
+            <PhoneInput
+              international
+              defaultCountry="KE"
+              placeholder="Enter phone number"
+              value={formData.phone}
+              onChange={(value) =>
+                handleInputChange({ target: { name: "phone", value } })
+              }
+              style={{
+                borderTopLeftRadius: 0,
+                borderBottomLeftRadius: 0,
+                outline: "none",
+                width: "100%",
+                backgroundColor: "transparent",
+              }}
+            />
+          </div>
+        </div>
         <div className="md:col-span-2">
           <label className="block text-sm font-medium text-gray-700 mb-2">
             Country *

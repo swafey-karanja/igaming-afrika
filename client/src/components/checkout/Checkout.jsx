@@ -3,7 +3,6 @@ import { useLocation, useNavigate } from "react-router-dom";
 // eslint-disable-next-line no-unused-vars
 import { motion } from "framer-motion";
 import CheckoutForm from "./CheckoutForm";
-import PaymentMethods from "./PaymentMethods";
 import PaymentProcessor from "./PaymentProcessor";
 import OrderSummary from "./OrderSummary";
 
@@ -11,7 +10,6 @@ const Checkout = () => {
   const location = useLocation();
   const navigate = useNavigate();
   const [selectedTicket, setSelectedTicket] = useState(null);
-  const [paymentMethod, setPaymentMethod] = useState("");
   const [isProcessing, setIsProcessing] = useState(false);
   const [formData, setFormData] = useState({
     firstName: "",
@@ -83,12 +81,6 @@ const Checkout = () => {
               formData={formData}
               handleInputChange={handleInputChange}
             />
-            {selectedTicket.price !== 0 && (
-              <PaymentMethods
-                paymentMethod={paymentMethod}
-                setPaymentMethod={setPaymentMethod}
-              />
-            )}
           </div>
 
           <div className="lg:col-span-1">
@@ -96,7 +88,6 @@ const Checkout = () => {
             <PaymentProcessor
               selectedTicket={selectedTicket}
               formData={formData}
-              paymentMethod={paymentMethod}
               isProcessing={isProcessing}
               setIsProcessing={setIsProcessing}
               validateForm={validateForm}
