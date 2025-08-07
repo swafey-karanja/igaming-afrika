@@ -49,7 +49,7 @@ const FloorPlanIframe = () => {
       ref={containerRef}
       className="bg-gray-100 px-4 sm:px-6 lg:px-8 py-8 md:py-8 lg:py-8"
     >
-      <div className="max-w-7xl mx-auto text-center">
+      <div className="max-w-[160p] mx-auto text-center">
         <motion.div
           className="text-center mb-16"
           initial="hidden"
@@ -94,7 +94,7 @@ const FloorPlanIframe = () => {
               allow="clipboard-read; clipboard-write"
               title="ExpoFP Floorplan"
               loading="lazy"
-              scroll="no"
+              scrolling="no"
               sandbox="allow-scripts allow-same-origin allow-popups allow-forms"
               style={{
                 pointerEvents: "auto",

@@ -1,6 +1,6 @@
 import React, { useEffect, useState, useCallback } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { fetchNews } from "../store/newsSlice";
+import { fetchNews } from "../../store/newsSlice";
 // eslint-disable-next-line no-unused-vars
 import { motion } from "framer-motion";
 import { IoMdRefresh, IoMdTime } from "react-icons/io";

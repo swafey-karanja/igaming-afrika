@@ -12,7 +12,7 @@ import {
 import { countries, menuItems, options } from "../data/dropdownData";
 import DropdownMenu, { NewsDropdown } from "./utils/DropdownMenus";
 
-const Navbar = () => {
+const Header = () => {
   const [isSidebarOpen, setSidebarOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
   const [timeLeft, setTimeLeft] = useState({
@@ -420,4 +420,4 @@ const Navbar = () => {
   );
 };
 
-export default Navbar;
+export default Header;

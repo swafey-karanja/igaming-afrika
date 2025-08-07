@@ -117,7 +117,7 @@ const Numbers = () => {
           whileInView="visible"
           viewport={{ once: true }}
           transition={{ staggerChildren: 0.2 }}
-          className="w-full max-w-[1400px] text-gray-800 py-8 md:py-12 lg:py-16 flex flex-col lg:flex-row gap-8 lg:gap-12"
+          className="w-full max-w-[1600px] text-gray-800 py-8 md:py-12 lg:py-16 flex flex-col lg:flex-row gap-8 lg:gap-12"
         >
           <motion.div
             variants={fadeIn}

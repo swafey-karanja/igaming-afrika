@@ -1,7 +1,7 @@
 import { useEffect, useRef } from "react";
 import Header from "../components/Header";
 // import GravityForm from "../components/GravityForm";
-import EventApplicationForm from "../components/Registrationform";
+import EventApplicationForm from "../components/registration/Registrationform";
 
 export default function Registration() {
   const formRef = useRef(null);

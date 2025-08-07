@@ -32,6 +32,7 @@ const cardVariant = {
 const Tickets = () => {
   const plans = [
     {
+      id: "standard",
       label: "Standard Pass",
       requirement: "Business Email registration required",
       price: 0,
@@ -46,6 +47,28 @@ const Tickets = () => {
       ],
     },
     {
+      id: "operator",
+      label: "Operator's Pass",
+      price: 0,
+      description: "VIP experience for operators",
+      requirement: "Business Email registration required",
+      features: [
+        "Welcome Reception",
+        "Pre-registration & Networking Event",
+        "Soccer tournament ticket",
+        "Conference Hall 1 Access",
+        "Conference Hall 2 Access",
+        "Full Expo Access",
+        "iGaming AFRIKA Closing Party",
+        "iGaming AFRIKA Awards Dinner",
+        "iGaming AFRIKA Konnect Space",
+        "VIP Lounge Access",
+        "VIP Networking Event",
+        "Private Meeting Rooms Reservations",
+      ],
+    },
+    {
+      id: "premium",
       label: "Premium Pass",
       price: 200,
       doorPrice: 350,
@@ -64,6 +87,7 @@ const Tickets = () => {
       ],
     },
     {
+      id: "vvip",
       label: "VVIP Pass",
       price: 600,
       doorPrice: 950,
@@ -112,8 +136,11 @@ const Tickets = () => {
   };
 
   return (
-    <div className="bg-gray-100 px-4 sm:px-6 lg:px-8 py-12 md:py-12 lg:py-12">
-      <div className="max-w-7xl mx-auto">
+    <div
+      className="bg-gray-100 px-4 sm:px-6 lg:px-8 py-12 md:py-12 lg:py-12"
+      id="tickets"
+    >
+      <div className="max-w-[1600px] mx-auto">
         {/* Header Section */}
         <motion.div
           className="text-center mb-16"
@@ -143,7 +170,7 @@ const Tickets = () => {
 
         {/* Pricing Cards */}
         <motion.div
-          className="grid md:grid-cols-3 gap-6 lg:gap-8 h-auto items-center"
+          className="grid md:grid-cols-4 gap-6 h-auto items-center"
           variants={staggerContainer}
           initial="hidden"
           whileInView="visible"
@@ -294,7 +321,7 @@ const Tickets = () => {
 
               {/* CTA Button */}
               <div className="px-6 pb-8">
-                <NavLink to="/register">
+                <NavLink to="/checkout" state={{ selectedTicket: plan }}>
                   <motion.button
                     whileHover={{ scale: 1.02 }}
                     whileTap={{ scale: 0.98 }}

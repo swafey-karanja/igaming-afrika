@@ -1,18 +1,19 @@
 // eslint-disable-next-line no-unused-vars
 import { motion } from "framer-motion";
-import Numbers from "../components/Numbers.jsx";
-import GlobalNews from "../components/GlobalNews.jsx";
-import Sponsors from "../components/EventSponsors.jsx";
-import Navbar from "../components/Navbar.jsx";
-import Schedule from "../components/Schedule.jsx";
-import Speakers from "../components/Speakers.jsx";
-import Gallery from "../components/Galleria.jsx";
-import FAQSection from "../components/FaqSection.jsx";
-import Packages from "../components/SponsorshipOpportunities.jsx";
-import ExhibitionPackages from "../components/ExhibitionOpportunities.jsx";
-import FloorPlan from "../components/Floorplan.jsx";
-import Tickets from "../components/Tickets.jsx";
-import Venue from "../components/VenueInfo.jsx";
+import Numbers from "../components/home/Numbers.jsx";
+import GlobalNews from "../components/home/GlobalNews.jsx";
+import Sponsors from "../components/home/EventSponsors.jsx";
+import Navbar from "../components/home/Navbar.jsx";
+import Schedule from "../components/home/Schedule.jsx";
+// import Speakers from "../components/Speakers.jsx";
+import Gallery from "../components/home/Galleria.jsx";
+import FAQSection from "../components/home/FaqSection.jsx";
+import Packages from "../components/home/SponsorshipOpportunities.jsx";
+import ExhibitionPackages from "../components/home/ExhibitionOpportunities.jsx";
+import FloorPlan from "../components/home/Floorplan.jsx";
+import Tickets from "../components/home/Tickets.jsx";
+import Venue from "../components/home/VenueInfo.jsx";
+import Attendees from "../components/home/Attendees.jsx";
 
 const fadeInUp = {
   hidden: { opacity: 0, y: 40 },
@@ -40,6 +41,15 @@ const Home = () => {
         viewport={{ once: true }}
       >
         <Sponsors />
+      </motion.div>
+
+      <motion.div
+        variants={fadeInUp}
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true }}
+      >
+        <Attendees />
       </motion.div>
 
       <motion.div

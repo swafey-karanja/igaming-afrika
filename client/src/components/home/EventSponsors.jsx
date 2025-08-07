@@ -2,7 +2,7 @@ import React, { useEffect, useState, useCallback } from "react";
 // eslint-disable-next-line no-unused-vars
 import { motion } from "framer-motion";
 import { AlertCircle } from "lucide-react";
-import SponsorTier from "./utils/SponsorTier";
+import SponsorTier from "../utils/SponsorTier";
 
 const fadeIn = {
   hidden: { opacity: 0, y: 20 },
@@ -124,7 +124,7 @@ const Sponsors = () => {
           </button>
         </div>
       ) : (
-        <div className="max-w-7xl mx-auto space-y-12 md:space-y-16 lg:space-y-20">
+        <div className="max-w-[1600px] mx-auto space-y-12 md:space-y-16 lg:space-y-20">
           {headlineSponsor && (
             <SponsorTier
               title="Headline Sponsor"
@@ -163,7 +163,7 @@ const Sponsors = () => {
               title="Gold Sponsors"
               sponsors={goldSponsors}
               logoSizes="h-18 w-auto max-w-[200px] xs:h-20 xs:max-w-[240px] sm:h-22 sm:max-w-[280px] md:h-24 md:max-w-[320px] lg:h-28 lg:max-w-[360px] xl:h-32 xl:max-w-[400px]"
-              containerClass="grid grid-cols-2 xs:grid-cols-2 sm:grid-cols-3 gap-6 xs:gap-8 sm:gap-10 md:gap-12 px-2 items-center justify-items-center"
+              containerClass="grid grid-cols-2 xs:grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-6 xs:gap-8 sm:gap-10 md:gap-12 px-2 items-center justify-items-center"
               titleColor="from-yellow-500 via-yellow-400 to-amber-400"
               delay={0.4}
               bordered={true}

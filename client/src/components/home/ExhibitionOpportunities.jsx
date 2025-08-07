@@ -2,7 +2,7 @@ import React, { useEffect, useState, useCallback } from "react";
 // eslint-disable-next-line no-unused-vars
 import { motion } from "framer-motion";
 import { CheckCircle, AlertCircle } from "lucide-react";
-import ExhibitionModal from "./utils/ExhibitionModal";
+import ExhibitionModal from "../utils/ExhibitionModal";
 
 const ExhibitionPackages = () => {
   const [selectedPackage, setSelectedPackage] = useState(null);

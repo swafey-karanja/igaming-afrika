@@ -8,6 +8,7 @@ import Registration from "./pages/registration.jsx";
 
 import { Toaster } from "react-hot-toast";
 import { useEffect } from "react";
+import CheckoutPage from "./pages/checkout.jsx";
 
 const App = () => {
   useEffect(() => {
@@ -40,6 +41,7 @@ const App = () => {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/register" element={<Registration />} />
+          <Route path="/checkout" element={<CheckoutPage />} />
         </Routes>
         <Footer />
         <Toaster

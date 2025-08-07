@@ -9,8 +9,8 @@ import {
   FaSearch,
   FaFacebook,
 } from "react-icons/fa";
-import { countries, menuItems, options } from "../data/dropdownData";
-import DropdownMenu, { NewsDropdown } from "./utils/DropdownMenus";
+import { countries, menuItems, options } from "../../data/dropdownData";
+import DropdownMenu, { NewsDropdown } from "../utils/DropdownMenus";
 
 const Navbar = () => {
   const [isSidebarOpen, setSidebarOpen] = useState(false);
@@ -78,7 +78,7 @@ const Navbar = () => {
   }, [isSidebarOpen]);
 
   return (
-    <div className="relative bg-black">
+    <div className="relative bg-black min-h-screen">
       <header
         className={`fixed top-0 left-0 w-full inset-x-0 z-40 py-2 sm:py-3 md:py-4 transition-all duration-700 ease-in-out ${
           isScrolled
@@ -356,10 +356,10 @@ const Navbar = () => {
       </div>
 
       {/* Hero Section with Event Details */}
-      <div className="relative flex items-center justify-center min-h-screen pt-24 sm:pt-28 md:pt-32 lg:pt-36 pb-12">
+      <div className="relative flex items-center justify-center min-h-screen h-screen pt-15 pb-0">
         <div className="absolute inset-0 w-full h-full overflow-hidden z-0">
           <video
-            className="absolute min-w-full min-h-full object-cover"
+            className="absolute top-0 left-0 w-full h-full object-cover"
             autoPlay
             loop
             muted
@@ -375,7 +375,7 @@ const Navbar = () => {
           <div className="absolute inset-0 bg-black opacity-50"></div>
         </div>
 
-        <div className="relative z-10 text-center text-white px-4 w-full max-w-3xl mx-auto">
+        <div className="relative z-10 text-center text-white px-4 w-full max-w-4xl mx-auto">
           <img
             src="/Summit_Logo.png"
             alt="iGaming Afrika Logo"
@@ -440,7 +440,33 @@ const Navbar = () => {
 
             <div className="flex flex-col sm:flex-row justify-center space-y-4 sm:space-y-0 sm:space-x-4 lg:space-x-4">
               <button className="bg-transparent hover:bg-green-600 hover:bg-opacity-20 hover:cursor-pointer text-sm lg:text-base text-white font-bold self-center w-3/4 md:w-1/2 lg:w-1/2 py-2 px-4 md:py-3 md:px-8 lg:py-3 lg:px-8 border border-green-600 rounded-md">
-                <NavLink to="/register">REGISTER INTEREST</NavLink>
+                <NavLink to="/register">Register interest</NavLink>
+              </button>
+            </div>
+            <div className="flex flex-col sm:flex-row justify-center space-y-4 sm:space-y-0 sm:space-x-4 lg:space-x-4 mt-6">
+              <button
+                className="bg-transparent hover:bg-green-600 hover:bg-opacity-20 hover:cursor-pointer text-sm lg:text-base text-white font-bold self-center w-auto py-2 px-4 md:py-3 md:px-8 lg:py-3 lg:px-8 border border-green-600 rounded-md"
+                onClick={() => {
+                  document.getElementById("tickets")?.scrollIntoView({
+                    behavior: "smooth",
+                  });
+                }}
+              >
+                <span className="whitespace-nowrap">
+                  Operators - Apply for Free Operator's Pass
+                </span>
+              </button>
+              <button
+                className="bg-transparent hover:bg-green-600 hover:bg-opacity-20 hover:cursor-pointer text-sm lg:text-base text-white font-bold self-center w-auto py-2 px-4 md:py-3 md:px-8 lg:py-3 lg:px-8 border border-green-600 rounded-md"
+                onClick={() => {
+                  document.getElementById("tickets")?.scrollIntoView({
+                    behavior: "smooth",
+                  });
+                }}
+              >
+                <span className="whitespace-nowrap">
+                  Delegates & Affiliates - Apply for Free Pass
+                </span>
               </button>
             </div>
           </div>

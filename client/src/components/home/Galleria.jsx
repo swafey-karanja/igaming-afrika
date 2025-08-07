@@ -8,7 +8,7 @@ import React, {
 import { ChevronLeft, ChevronRight, X, Calendar, MapPin } from "lucide-react";
 // eslint-disable-next-line no-unused-vars
 import { motion, AnimatePresence } from "framer-motion";
-import imagesData from "../data/imagesData.json";
+import imagesData from "../../data/imagesData.json";
 
 const slideVariants = {
   enter: (direction) => ({
