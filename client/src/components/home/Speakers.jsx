@@ -15,24 +15,12 @@ import { AlertCircle } from "lucide-react";
 const Speakers = () => {
   const [selectedSpeaker, setSelectedSpeaker] = useState(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const [activeFilter, setActiveFilter] = useState("All");
   const [visibleCount, setVisibleCount] = useState(12);
   const [isMobile, setIsMobile] = useState(false);
 
   const [speakers, setSpeakers] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState(null);
-
-  const filterOptions = [
-    "All",
-    "Leadership",
-    "Investment",
-    "Marketing",
-    "HR Connect",
-    "Gaming Tech",
-    "Sustainability",
-    "Global Markets",
-  ];
 
   const fetchSpeakers = useCallback(async () => {
     try {
@@ -79,17 +67,8 @@ const Speakers = () => {
     return () => window.removeEventListener("resize", checkScreenSize);
   }, [checkScreenSize]);
 
-  // Simplified filtering logic
-  const filteredSpeakers = isLoading
-    ? []
-    : speakers.filter((speaker) => {
-        if (activeFilter === "All") return true;
-        return speaker.events.some((event) =>
-          event.toLowerCase().includes(activeFilter.toLowerCase())
-        );
-      });
-
-  const visibleSpeakers = filteredSpeakers.slice(0, visibleCount);
+  // Display all speakers without filtering
+  const visibleSpeakers = speakers.slice(0, visibleCount);
 
   const handleShowMore = () => {
     setVisibleCount((prev) => prev + (isMobile ? 6 : 12));
@@ -145,7 +124,7 @@ const Speakers = () => {
 
   return (
     <div className="bg-gray-100 min-h-screen">
-      <div className="max-w- mx-auto px-4 sm:px-6 lg:px-8 py-8 md:py-8 lg:py-8">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 md:py-8 lg:py-8">
         {/* Header - Always visible */}
         <motion.div
           className="text-center mb-16"
@@ -195,34 +174,8 @@ const Speakers = () => {
           </div>
         ) : (
           <>
-            {/* Simplified Filter Bar */}
-            <motion.div
-              className="flex flex-wrap justify-center gap-2 mb-12"
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true }}
-              variants={fadeIn}
-            >
-              {filterOptions.map((option) => (
-                <motion.button
-                  key={option}
-                  onClick={() => setActiveFilter(option)}
-                  whileHover={{ scale: 1.05 }}
-                  whileTap={{ scale: 0.95 }}
-                  className={`px-6 py-2 rounded-full text-sm font-medium transition-all duration-200 ${
-                    activeFilter === option
-                      ? "bg-green-600 text-white shadow-lg"
-                      : "bg-gray-100 text-gray-700 hover:bg-green-50 hover:text-green-700 border-1 border-green-600"
-                  }`}
-                >
-                  {option}
-                </motion.button>
-              ))}
-            </motion.div>
-
             {/* Speakers Grid */}
             <motion.div
-              key={`speakers-grid-${activeFilter}`}
               className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8"
               initial="hidden"
               animate="visible"
@@ -237,7 +190,7 @@ const Speakers = () => {
                   layout
                 >
                   <motion.div
-                    className="bg-white rounded-2xl p-6 shadow-md transition-all hover:shadow-green-300 border-green-300 duration-300 cursor-pointer hover:-translate-y-1 text-center"
+                    className="bg-white rounded-2xl p-6 shadow-md transition-all hover:shadow-green-300 border-green-300 duration-300 cursor-pointer hover:-translate-y-1 text-center h-full flex flex-col"
                     whileTap={{ scale: 0.98 }}
                   >
                     {/* Speaker Image */}
@@ -261,34 +214,36 @@ const Speakers = () => {
                     </div>
 
                     {/* Speaker Info */}
-                    <h3 className="text-lg font-semibold text-gray-900 mb-1">
-                      {speaker.name}
-                    </h3>
-                    <p className="text-sm text-green-600 font-medium mb-1">
-                      {speaker.role}
-                    </p>
-                    <p className="text-sm text-gray-500 mb-4">
-                      {speaker.company}
-                    </p>
+                    <div className="flex-1 flex flex-col">
+                      <h3 className="text-lg font-semibold text-gray-900 mb-1">
+                        {speaker.name}
+                      </h3>
+                      <p className="text-sm text-green-600 font-medium mb-1">
+                        {speaker.role}
+                      </p>
+                      <p className="text-sm text-gray-500 mb-4 flex-1">
+                        {speaker.company}
+                      </p>
 
-                    {/* Event Tags */}
-                    <div className="flex flex-wrap justify-center gap-1">
-                      {speaker.events.slice(0, 2).map((event, i) => {
-                        const day = event.split(" ")[0];
-                        return (
-                          <span
-                            key={i}
-                            className="text-xs px-3 py-1 bg-green-50 text-green-700 rounded-full border border-green-200"
-                          >
-                            {day}
+                      {/* Event Tags */}
+                      <div className="flex flex-wrap justify-center gap-1 mt-auto">
+                        {speaker.events.slice(0, 2).map((event, i) => {
+                          const day = event.split(" ")[0];
+                          return (
+                            <span
+                              key={i}
+                              className="text-xs px-3 py-1 bg-green-50 text-green-700 rounded-full border border-green-200"
+                            >
+                              {day}
+                            </span>
+                          );
+                        })}
+                        {speaker.events.length > 2 && (
+                          <span className="text-xs px-3 py-1 bg-gray-100 text-gray-600 rounded-full border border-gray-300">
+                            +{speaker.events.length - 2}
                           </span>
-                        );
-                      })}
-                      {speaker.events.length > 2 && (
-                        <span className="text-xs px-3 py-1 bg-gray-100 text-gray-600 rounded-full border border-gray-300">
-                          +{speaker.events.length - 2}
-                        </span>
-                      )}
+                        )}
+                      </div>
                     </div>
                   </motion.div>
                 </motion.div>
@@ -296,7 +251,7 @@ const Speakers = () => {
             </motion.div>
 
             {/* Load More */}
-            {visibleCount < filteredSpeakers.length && (
+            {visibleCount < speakers.length && (
               <motion.div
                 className="text-center mt-12"
                 initial={{ opacity: 0 }}
@@ -318,14 +273,13 @@ const Speakers = () => {
             )}
 
             {/* End Message */}
-            {visibleCount >= filteredSpeakers.length &&
-              filteredSpeakers.length > 0 && (
-                <div className="text-center mt-12">
-                  <p className="text-gray-500">
-                    You've seen all {filteredSpeakers.length} speakers
-                  </p>
-                </div>
-              )}
+            {visibleCount >= speakers.length && speakers.length > 0 && (
+              <div className="text-center mt-12">
+                <p className="text-gray-500">
+                  You've seen all {speakers.length} speakers
+                </p>
+              </div>
+            )}
           </>
         )}
       </div>

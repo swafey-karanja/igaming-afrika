@@ -5,7 +5,7 @@ import GlobalNews from "../components/home/GlobalNews.jsx";
 import Sponsors from "../components/home/EventSponsors.jsx";
 import Navbar from "../components/home/Navbar.jsx";
 import Schedule from "../components/home/Schedule.jsx";
-// import Speakers from "../components/Speakers.jsx";
+import Speakers from "../components/home/Speakers.jsx";
 import Gallery from "../components/home/Galleria.jsx";
 import FAQSection from "../components/home/FaqSection.jsx";
 import Packages from "../components/home/SponsorshipOpportunities.jsx";
@@ -70,14 +70,14 @@ const Home = () => {
         <Schedule />
       </motion.div>
 
-      {/* <motion.div
+      <motion.div
         variants={fadeInUp}
         initial="hidden"
         whileInView="visible"
         viewport={{ once: true }}
       >
         <Speakers />
-      </motion.div> */}
+      </motion.div>
 
       <motion.div
         variants={fadeInUp}
