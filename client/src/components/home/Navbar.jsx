@@ -184,7 +184,7 @@ const Navbar = () => {
             </nav>
 
             {/* Right Side Social Links */}
-            <div className="hidden lg:flex lg:items-center xl:space-x-3 lg:space-x-3 sm:text-lg lg:text-lg">
+            {/* <div className="hidden lg:flex lg:items-center xl:space-x-3 lg:space-x-3 sm:text-lg lg:text-lg">
               <button
                 className={`${
                   isScrolled ? "text-black" : "text-white"
@@ -193,7 +193,7 @@ const Navbar = () => {
               >
                 <FaSearch />
               </button>
-            </div>
+            </div> */}
           </div>
         </div>
       </header>
@@ -244,7 +244,7 @@ const Navbar = () => {
           <div className="flex-1 overflow-y-auto">
             <div className="p-6 space-y-6">
               {/* Search Bar */}
-              <div className="relative">
+              {/* <div className="relative">
                 <input
                   type="text"
                   placeholder="Search..."
@@ -254,7 +254,7 @@ const Navbar = () => {
                 <div className="absolute right-4 top-1/2 transform -translate-y-1/2">
                   <FaSearch className="text-white/70 text-sm" />
                 </div>
-              </div>
+              </div> */}
 
               {/* Navigation Menu */}
               <nav className="space-y-2">
@@ -356,7 +356,7 @@ const Navbar = () => {
       </div>
 
       {/* Hero Section with Event Details */}
-      <div className="relative flex items-center justify-center min-h-screen h-screen pt-15 pb-0">
+      <div className="relative flex items-center justify-center min-h-screen pt-15 pb-0">
         <div className="absolute inset-0 w-full h-full overflow-hidden z-0">
           <video
             className="absolute top-0 left-0 w-full h-full object-cover"
