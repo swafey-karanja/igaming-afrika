@@ -1,5 +1,4 @@
 import { useState, useEffect } from "react";
-import { useTranslation } from "react-i18next";
 // eslint-disable-next-line no-unused-vars
 import { motion } from "framer-motion";
 import {
@@ -7,9 +6,11 @@ import {
   FaLinkedin,
   FaInstagram,
   FaFacebook,
-  FaGithub,
   FaPaperPlane,
+  FaTelegram,
+  FaYoutube,
 } from "react-icons/fa";
+import { toast } from "react-hot-toast";
 
 // Reusable Components
 const FormField = ({
@@ -21,6 +22,8 @@ const FormField = ({
   placeholder,
   required,
   rows,
+  error,
+  disabled,
 }) => (
   <div className="space-y-2">
     <label className="block text-sm font-medium">
@@ -33,8 +36,11 @@ const FormField = ({
         onChange={onChange}
         required={required}
         rows={rows}
-        className="w-full px-4 py-1 rounded-lg text-black placeholder-gray-500 border-2 border-white/20 bg-white/90 focus:outline-none focus:border-transparent  resize-none"
+        className={`w-full px-4 py-1 rounded-lg text-black placeholder-gray-500 border-2 bg-white/90 focus:outline-none focus:border-transparent resize-none ${
+          error ? "border-red-500" : "border-white/20"
+        }`}
         placeholder={placeholder}
+        disabled={disabled}
       />
     ) : (
       <input
@@ -43,10 +49,14 @@ const FormField = ({
         value={value}
         onChange={onChange}
         required={required}
-        className="w-full px-4 py-1 rounded-lg text-black placeholder-gray-500 border-2 border-white/20 bg-white/90 focus:outline-none focus:border-transparent "
+        className={`w-full px-4 py-1 rounded-lg text-black placeholder-gray-500 border-2 bg-white/90 focus:outline-none focus:border-transparent ${
+          error ? "border-red-500" : "border-white/20"
+        }`}
         placeholder={placeholder}
+        disabled={disabled}
       />
     )}
+    {error && <p className="text-red-200 text-sm">{error}</p>}
   </div>
 );
 
@@ -73,7 +83,13 @@ const SocialLink = ({ href, Icon, label, hoverColor }) => (
   </a>
 );
 
-const ContactSection = ({ formData, onChange, onSubmit }) => (
+const ContactSection = ({
+  formData,
+  onChange,
+  onSubmit,
+  errors,
+  isSubmitting,
+}) => (
   <motion.div
     initial={{ opacity: 0, y: 20 }}
     whileInView={{ opacity: 1, y: 0 }}
@@ -99,7 +115,7 @@ const ContactSection = ({ formData, onChange, onSubmit }) => (
         </p>
       </div>
 
-      <form onSubmit={onSubmit} className="space-y-6">
+      <form id="contact-form" onSubmit={onSubmit} className="space-y-6">
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
           <FormField
             label="Full Name"
@@ -108,6 +124,8 @@ const ContactSection = ({ formData, onChange, onSubmit }) => (
             onChange={onChange}
             placeholder="Enter your full name"
             required
+            error={errors.name}
+            disabled={isSubmitting}
           />
           <FormField
             label="Email Address"
@@ -117,6 +135,8 @@ const ContactSection = ({ formData, onChange, onSubmit }) => (
             onChange={onChange}
             placeholder="your.email@example.com"
             required
+            error={errors.email}
+            disabled={isSubmitting}
           />
         </div>
 
@@ -127,6 +147,8 @@ const ContactSection = ({ formData, onChange, onSubmit }) => (
           onChange={onChange}
           placeholder="e.g., Partnership, Sponsorship, Speaking, General Inquiry"
           required
+          error={errors.topic}
+          disabled={isSubmitting}
         />
 
         <FormField
@@ -137,15 +159,20 @@ const ContactSection = ({ formData, onChange, onSubmit }) => (
           placeholder="Tell us about your inquiry, questions, or how we can help you..."
           rows="4"
           required
+          error={errors.message}
+          disabled={isSubmitting}
         />
 
         <div className="flex justify-center pt-4">
           <button
             type="submit"
-            className="inline-flex items-center gap-2 bg-white text-green-600 px-8 py-3 rounded-lg font-semibold hover:bg-gray-100 hover:text-green-700 shadow-lg hover:shadow-xl"
+            disabled={isSubmitting}
+            className={`inline-flex items-center gap-2 bg-white text-green-600 px-8 py-3 rounded-lg font-semibold hover:bg-gray-100 hover:text-green-700 shadow-lg hover:shadow-xl ${
+              isSubmitting ? "opacity-50 cursor-not-allowed" : ""
+            }`}
           >
             <FaPaperPlane className="text-sm" />
-            Send Inquiry
+            {isSubmitting ? "Sending..." : "Send Inquiry"}
           </button>
         </div>
       </form>
@@ -153,21 +180,23 @@ const ContactSection = ({ formData, onChange, onSubmit }) => (
   </motion.div>
 );
 
-const LinksSection = ({ t }) => {
+const LinksSection = () => {
   const companyLinks = [
-    { href: "https://igamingafrika.com/about-us/", text: t("about") },
+    { href: "https://igamingafrika.com/about-us/", text: "About" },
     { href: "https://igamingafrika.com/advertise/", text: "Advertise" },
-    { href: "https://igamingafrika.com/disclaimer/", text: "Disclaimer" },
     { href: "https://igamingafrika.com/join-our-team/", text: "Join our Team" },
   ];
 
   const helpLinks = [
     { href: "https://igamingafrika.com/donate/", text: "Donate" },
     { href: "https://igamingafrika.com/contact-us/", text: "Contact Us" },
-    { href: "#", text: t("terms_conditions") },
     {
-      href: "https://igamingafrika.com/privacy-policy/",
-      text: t("privacy_policy"),
+      href: "https://igamingafrika.com/terms-and-conditions-events/ ",
+      text: "Terms and Conditions",
+    },
+    {
+      href: "https://igamingafrika.com/privacy-policy-events/",
+      text: "Privacy Policy",
     },
   ];
 
@@ -184,30 +213,28 @@ const LinksSection = ({ t }) => {
         <div className="space-y-4">
           <a href="#" title="iGaming Afrika" className="flex">
             <img
-              className="w-auto h-12 sm:h-14 md:h-16 lg:h-20"
-              src="Summit2_trimmed.png"
+              className="w-auto h-22 sm:h-24 md:h-26 lg:h-30"
+              src="Summit_Logo.png"
               alt="iGaming Afrika Logo"
             />
           </a>
           <p className="text-xs sm:text-sm text-gray-400 leading-relaxed">
-            IGaming AFRIKA Summit is Africa's mega gaming event, designed to
+            iGaming AFRIKA Summit is Africa's mega gaming event, designed to
             unite the entire gaming industry players across the world in one
             place—the stunning city of Nairobi, Kenya. This being the inaugural
             edition of the summit, the event is seen to be the largest event in
-            the industry, taking place in Nairobi, in 2026, the summit is seen
-            to be the mother of all gaming conferences in Africa. The summit is
-            taking place in an impressive 3,300m² square meters location at
-            Sarit Expo Center, Nairobi's Largest Expo center giving exhibitors
-            and attendees a massive ground to showcase their products, meet and
-            connect with industry players as we discuss the future of the gaming
-            industry in Africa.
+            the industry. The summit is taking place in an impressive 3,300m²
+            square meters location at Sarit Expo Centre, Nairobi's Largest Expo
+            center giving exhibitors and attendees a massive ground to showcase
+            their products, meet and connect with industry players as we discuss
+            the future of the gaming industry in Africa.
           </p>
         </div>
 
         {/* Company Links */}
         <div className="space-y-4 mt-6 sm:mt-20 sm:ml-0 md:ml-10 lg:ml-20">
           <h3 className="text-sm sm:text-md font-bold text-gray-400 border-b border-gray-700 pb-2">
-            {t("company")}
+            COMPANY
           </h3>
           <ul className="space-y-3 text-xs sm:text-sm">
             {companyLinks.map((link, index) => (
@@ -221,7 +248,7 @@ const LinksSection = ({ t }) => {
         {/* Help Links */}
         <div className="space-y-4 mt-6 sm:mt-20">
           <h3 className="text-sm sm:text-md font-bold text-gray-400 border-b border-gray-700 pb-2">
-            {t("help")}
+            HELP
           </h3>
           <ul className="space-y-3 text-xs sm:text-sm">
             {helpLinks.map((link, index) => (
@@ -239,34 +266,40 @@ const LinksSection = ({ t }) => {
 const SocialSection = () => {
   const socialLinks = [
     {
-      href: "#",
+      href: "https://twitter.com/igamingafrika/",
       Icon: FaTwitter,
       label: "Twitter",
       hoverColor: "hover:text-blue-400",
     },
     {
-      href: "#",
+      href: "https://www.facebook.com/IgamingAfrika/",
       Icon: FaFacebook,
       label: "Facebook",
       hoverColor: "hover:text-blue-500",
     },
     {
-      href: "#",
+      href: "https://www.instagram.com/igamingafrika?igsh=bHl5MWlkNWdiYzll&utm_source=qr",
       Icon: FaInstagram,
       label: "Instagram",
       hoverColor: "hover:text-red-500",
     },
     {
-      href: "#",
+      href: "https://www.linkedin.com/company/igamingafrika/",
       Icon: FaLinkedin,
       label: "LinkedIn",
       hoverColor: "hover:text-blue-700",
     },
     {
-      href: "#",
-      Icon: FaGithub,
-      label: "GitHub",
-      hoverColor: "hover:text-gray-300",
+      href: "https://www.youtube.com/@igamingafrika",
+      Icon: FaYoutube,
+      label: "YouTube",
+      hoverColor: "hover:text-red-700",
+    },
+    {
+      href: "https://t.me/igamingafrika",
+      Icon: FaTelegram,
+      label: "Telegram",
+      hoverColor: "hover:text-blue-700",
     },
   ];
 
@@ -274,13 +307,16 @@ const SocialSection = () => {
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 sm:py-6">
       <div className="flex items-center justify-center space-x-4 sm:space-x-6 pt-2">
         {socialLinks.map((social, index) => (
-          <SocialLink
+          <a
             key={index}
             href={social.href}
-            Icon={social.Icon}
-            label={social.label}
-            hoverColor={social.hoverColor}
-          />
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label={social.label}
+            className={`text-gray-500 text-2xl transition-colors duration-300 ${social.hoverColor}`}
+          >
+            <social.Icon />
+          </a>
         ))}
       </div>
     </div>
@@ -294,7 +330,7 @@ const BackToTop = ({ isVisible, onClick }) => (
     initial={{ opacity: 0 }}
     animate={{ opacity: isVisible ? 1 : 0 }}
     transition={{ duration: 0.3 }}
-    className="fixed bottom-3 sm:bottom-5 right-3 sm:right-5 rounded-full bg-green-600 p-2 sm:p-3 text-xs font-medium uppercase leading-tight cursor-pointer text-white shadow-lg hover:bg-green-700 hover:shadow-xl focus:outline-none focus:ring-0  transform hover:scale-110"
+    className="fixed bottom-3 sm:bottom-5 left-3 sm:left-5 rounded-full bg-green-600 p-2 sm:p-3 text-xs font-medium uppercase leading-tight cursor-pointer text-white shadow-lg hover:bg-green-700 hover:shadow-xl focus:outline-none focus:ring-0  transform hover:scale-110"
     aria-label="Back to top"
   >
     <svg
@@ -317,13 +353,14 @@ const BackToTop = ({ isVisible, onClick }) => (
 // Main Footer Component
 const Footer = () => {
   const [isVisible, setIsVisible] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [errors, setErrors] = useState({});
   const [formData, setFormData] = useState({
     name: "",
     email: "",
     topic: "",
     message: "",
   });
-  const { t } = useTranslation();
 
   useEffect(() => {
     const handleScroll = () => setIsVisible(window.scrollY > 20);
@@ -336,24 +373,99 @@ const Footer = () => {
   const handleInputChange = (e) => {
     const { name, value } = e.target;
     setFormData((prev) => ({ ...prev, [name]: value }));
+
+    // Clear error when user starts typing
+    if (errors[name]) {
+      setErrors((prev) => ({ ...prev, [name]: "" }));
+    }
   };
 
-  const handleSubmit = (e) => {
+  const validateForm = () => {
+    const newErrors = {};
+
+    if (!formData.name.trim()) {
+      newErrors.name = "Full name is required";
+    }
+
+    if (!formData.email.trim()) {
+      newErrors.email = "Email is required";
+    } else {
+      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      if (!emailRegex.test(formData.email)) {
+        newErrors.email = "Please enter a valid email address";
+      }
+    }
+
+    if (!formData.topic.trim()) {
+      newErrors.topic = "Topic of inquiry is required";
+    }
+
+    if (!formData.message.trim()) {
+      newErrors.message = "Message is required";
+    } else if (formData.message.trim().length < 10) {
+      newErrors.message = "Message must be at least 10 characters long";
+    }
+
+    setErrors(newErrors);
+    return Object.keys(newErrors).length === 0;
+  };
+
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log("Form submitted:", formData);
-    alert("Thank you for your inquiry! We will get back to you soon.");
-    setFormData({ name: "", email: "", topic: "", message: "" });
+
+    if (!validateForm()) {
+      return;
+    }
+
+    setIsSubmitting(true);
+    toast.loading("Sending your inquiry...", { id: "inquiry-toast" });
+
+    try {
+      const response = await fetch(`${import.meta.env.VITE_API_URL}/inquiry/`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Token ${import.meta.env.VITE_API_TOKEN}`,
+        },
+        body: JSON.stringify(formData),
+      });
+
+      if (response.ok) {
+        toast.success("Inquiry sent successfully!", { id: "inquiry-toast" });
+        setTimeout(() => {
+          setFormData({
+            name: "",
+            email: "",
+            topic: "",
+            message: "",
+          });
+        }, 1500);
+      } else {
+        toast.error("Failed to send inquiry. Please try again.", {
+          id: "inquiry-toast",
+        });
+      }
+    } catch (error) {
+      console.error("Error:", error);
+      toast.error("Something went wrong. Try again later.", {
+        id: "inquiry-toast",
+      });
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
-    <footer className="bg-black text-white pb-8 pt-16">
+    <footer id="footer" className="bg-black text-white pb-8 pt-16">
       <ContactSection
         formData={formData}
         onChange={handleInputChange}
         onSubmit={handleSubmit}
+        errors={errors}
+        isSubmitting={isSubmitting}
       />
 
-      <LinksSection t={t} />
+      <LinksSection />
 
       <SocialSection />
 
@@ -366,10 +478,7 @@ const Footer = () => {
         className="py-4 border-t border-gray-800"
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center text-xs sm:text-sm text-gray-400">
-          <p>
-            © Copyright 2025 Media-Tech iGaming Technology Limited - All Rights
-            Reserved
-          </p>
+          <p>© Copyright 2026 IGA Events Limited - All Rights Reserved</p>
         </div>
       </motion.div>
 

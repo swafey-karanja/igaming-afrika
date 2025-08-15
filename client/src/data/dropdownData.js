@@ -182,7 +182,7 @@ export const menuItems = [
 ];
 
 export const options = [
-    { title: "Events Calendar", url: "https://igamingafrika.com/magazine/" },
+    { title: "Events Calendar", url: "https://igamingafrika.com/events-calendar/" },
     { title: "Community Forum", url: "https://t.me/igaminginafrica" },
     { title: "Gambling Regulation Boards", url: "https://igamingafrika.com/gambling-regulation-boards/" },
     { title: "Sports Betting Sites", url: "https://igamingafrika.com/sports-betting-sites/" },

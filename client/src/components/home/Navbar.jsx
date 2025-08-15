@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import {
   FaTwitter,
   FaLinkedin,
@@ -9,10 +9,10 @@ import {
   FaSearch,
   FaFacebook,
 } from "react-icons/fa";
-import { countries, menuItems, options } from "../data/dropdownData";
-import DropdownMenu, { NewsDropdown } from "./utils/DropdownMenus";
+import { countries, menuItems, options } from "../../data/dropdownData";
+import DropdownMenu, { NewsDropdown } from "../utils/DropdownMenus";
 
-const Header = () => {
+const Navbar = () => {
   const [isSidebarOpen, setSidebarOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
   const [timeLeft, setTimeLeft] = useState({
@@ -21,6 +21,30 @@ const Header = () => {
     minutes: 0,
     seconds: 0,
   });
+  const navigate = useNavigate();
+
+  // Operator's pass data
+  const operatorPassData = {
+    id: "operator",
+    label: "Operator's Pass",
+    price: 0,
+    description: "VIP experience for operators",
+    requirement: "Business Email registration required",
+    features: [
+      "Welcome Reception",
+      "Pre-registration & Networking Event",
+      "Soccer tournament ticket",
+      "Conference Hall 1 Access",
+      "Conference Hall 2 Access",
+      "Full Expo Access",
+      "iGaming AFRIKA Closing Party",
+      "iGaming AFRIKA Awards Dinner",
+      "iGaming AFRIKA Konnect Space",
+      "VIP Lounge Access",
+      "VIP Networking Event",
+      "Private Meeting Rooms Reservations",
+    ],
+  };
 
   // Calculate time left until the event (May 7, 2026)
   useEffect(() => {
@@ -78,9 +102,9 @@ const Header = () => {
   }, [isSidebarOpen]);
 
   return (
-    <div className="relative bg-black">
+    <div className="relative bg-black min-h-screen">
       <header
-        className={`fixed top-0 left-0 w-full inset-x-0 z-40 py-2 transition-all duration-700 ease-in-out ${
+        className={`fixed top-0 left-0 w-full inset-x-0 z-40 py-2 sm:py-3 md:py-4 transition-all duration-700 ease-in-out ${
           isScrolled
             ? "bg-gray-100 shadow-md drop-shadow-md text-black"
             : "bg-transparent text-white"
@@ -123,23 +147,19 @@ const Header = () => {
                 isSidebarOpen ? "hidden" : ""
               }`}
             >
-              <NavLink
-                to="/"
+              <a
+                href="https://igamingafrika.com/"
+                target="_blank"
+                rel="noopener noreferrer"
                 title="iGaming Afrika"
                 className="inline-flex rounded-md"
-                onClick={() => {
-                  // If we're already on the home page, force a reload
-                  if (window.location.pathname === "/") {
-                    window.location.reload();
-                  }
-                }}
               >
                 <img
-                  className="w-auto h-18 sm:h-20 md:h-24 lg:h-30"
-                  src="/Summit_Logo.png"
+                  className="w-auto h-12 sm:h-14 md:h-18 lg:h-24"
+                  src="https://igamingafrika.com/wp-content/uploads/2023/04/iGaming-Logo-2b.png"
                   alt="iGaming Afrika"
                 />
-              </NavLink>
+              </a>
             </div>
             {/* Desktop Nav */}
             <nav className="hidden lg:flex lg:items-center lg:justify-center xl:space-x-7 lg:space-x-6 whitespace-nowrap w-full max-w-3xl lg:max-w-4xl">
@@ -162,6 +182,16 @@ const Header = () => {
                 isInSidebar={false}
                 items={options}
               />
+              <NavLink to="/register">
+                <button
+                  style={isScrolled ? { backgroundColor: "#14a45c" } : {}}
+                  className={`hover:bg-green-600 hover:bg-opacity-20 hover:cursor-pointer text-xs text-white font-bold py-1.5 px-4 lg:py-2 lg:px-6 lg:text-sm border border-green-600 rounded-md ${
+                    isScrolled ? "text-white" : "text-white"
+                  }`}
+                >
+                  EXHIBIT/SPONSOR
+                </button>
+              </NavLink>
 
               <button
                 onClick={() => {
@@ -178,7 +208,7 @@ const Header = () => {
             </nav>
 
             {/* Right Side Social Links */}
-            <div className="hidden lg:flex lg:items-center xl:space-x-3 lg:space-x-3 sm:text-lg lg:text-lg">
+            {/* <div className="hidden lg:flex lg:items-center xl:space-x-3 lg:space-x-3 sm:text-lg lg:text-lg">
               <button
                 className={`${
                   isScrolled ? "text-black" : "text-white"
@@ -187,7 +217,7 @@ const Header = () => {
               >
                 <FaSearch />
               </button>
-            </div>
+            </div> */}
           </div>
         </div>
       </header>
@@ -238,7 +268,7 @@ const Header = () => {
           <div className="flex-1 overflow-y-auto">
             <div className="p-6 space-y-6">
               {/* Search Bar */}
-              <div className="relative">
+              {/* <div className="relative">
                 <input
                   type="text"
                   placeholder="Search..."
@@ -248,7 +278,7 @@ const Header = () => {
                 <div className="absolute right-4 top-1/2 transform -translate-y-1/2">
                   <FaSearch className="text-white/70 text-sm" />
                 </div>
-              </div>
+              </div> */}
 
               {/* Navigation Menu */}
               <nav className="space-y-2">
@@ -350,10 +380,10 @@ const Header = () => {
       </div>
 
       {/* Hero Section with Event Details */}
-      <div className="relative flex items-center justify-center h-full pt-16 sm:pt-20 md:pt-24 pb-8">
-        <div className="absolute inset-0 w-full h-full overflow-hidden">
+      <div className="relative flex items-center justify-center min-h-screen pt-15 pb-0">
+        <div className="absolute inset-0 w-full h-full overflow-hidden z-0">
           <video
-            className="absolute min-w-full min-h-full object-cover"
+            className="absolute top-0 left-0 w-full h-full object-cover"
             autoPlay
             loop
             muted
@@ -363,55 +393,106 @@ const Header = () => {
               src="https://cdn.pixabay.com/video/2021/03/06/67116-521253275_tiny.mp4"
               type="video/mp4"
             />
-            your browser does not support the video
+            Your browser does not support the video tag.
           </video>
           {/* Dark overlay for better text visibility */}
           <div className="absolute inset-0 bg-black opacity-50"></div>
         </div>
 
-        <div className="relative z-10 text-center text-white px-4 w-full max-w-xl mx-auto">
+        <div className="relative z-10 text-center text-white px-4 w-full max-w-4xl mx-auto">
           <img
             src="/Summit_Logo.png"
             alt="iGaming Afrika Logo"
-            className="w-full max-w-xs mx-auto"
+            className="w-full max-w-[200px] md:max-w-[320px] lg:max-w-[320px] mx-auto"
           />
           <p className="text-md sm:text-xl lg:text-xl font-semibold mb-2 sm:mb-3 lg:mb-4">
             4 - 6 MAY, 2026
           </p>
           {/* <h1 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold mb-2">28-31 JULY, 2026</h1> */}
-          <p className="text-sm sm:text-[14px] mb-6 sm:mb-8 font-semibold">
+          <p className="text-sm sm:text-[16px] lg:text-[16px] mb-6 sm:mb-8 lg:mb-10">
             {" "}
             Sarit Expo Centre, Nairobi, Kenya
           </p>
-          <p className="text-md sm:text-3xl lg:text-3xl font-semibold mb-2 sm:mb-3 lg:mb-4 text-[#14a45c]">
+          <p className="text-md sm:text-5xl lg:text-5xl font-semibold mb-2 sm:mb-3 lg:mb-4 text-[#14a45c]">
             The Heart of Gaming in Africa
           </p>
 
           {/* Countdown Timer */}
-          <div className="flex justify-center space-x-2 sm:space-x-3 md:space-x-4 mb-6 sm:mb-2">
-            <div className="text-center px-2 sm:px-3 py-1 sm:py-2  bg-opacity-30 rounded">
-              <div className="text-lg sm:text-xl md:text-2xl font-bold">
+          <div className="flex justify-center space-x-2 sm:space-x-3 md:space-x-4 lg:space-x-6 mb-6 sm:mb-8 lg:mb-8">
+            <div className="text-center px-2 sm:px-3 py-1 sm:py-2 lg:px-4 lg:py-2 bg-opacity-30 rounded lg:rounded-lg">
+              <div className="text-lg sm:text-xl md:text-2xl lg:text-2xl font-bold">
                 {timeLeft.days}
               </div>
-              <div className="text-xs sm:text-[13px] uppercase">Days</div>
+              <div className="text-xs sm:text-sm lg:text-base uppercase">
+                Days
+              </div>
             </div>
-            <div className="text-center px-2 sm:px-3 py-1 sm:py-2  bg-opacity-30 rounded">
-              <div className="text-lg sm:text-xl md:text-2xl font-bold">
+            <div className="text-center px-2 sm:px-3 py-1 sm:py-2 lg:px-4 lg:py-2 bg-opacity-30 rounded lg:rounded-lg">
+              <div className="text-lg sm:text-xl md:text-2xl lg:text-2xl font-bold">
                 {timeLeft.hours}
               </div>
-              <div className="text-xs sm:text-[13px]  uppercase">Hours</div>
+              <div className="text-xs sm:text-sm lg:text-base uppercase">
+                Hours
+              </div>
             </div>
-            <div className="text-center px-2 sm:px-3 py-1 sm:py-2  bg-opacity-30 rounded">
-              <div className="text-lg sm:text-xl md:text-2xl font-bold">
+            <div className="text-center px-2 sm:px-3 py-1 sm:py-2 lg:px-4 lg:py-2 bg-opacity-30 rounded lg:rounded-lg">
+              <div className="text-lg sm:text-xl md:text-2xl lg:text-2xl font-bold">
                 {timeLeft.minutes}
               </div>
-              <div className="text-xs sm:text-[13px]  uppercase">Minutes</div>
+              <div className="text-xs sm:text-sm lg:text-base uppercase">
+                Minutes
+              </div>
             </div>
-            <div className="text-center px-2 sm:px-3 py-1 sm:py-2  bg-opacity-30 rounded">
-              <div className="text-lg sm:text-xl md:text-2xl font-bold">
+            <div className="text-center px-2 sm:px-3 py-1 sm:py-2 lg:px-4 lg:py-2 bg-opacity-30 rounded lg:rounded-lg">
+              <div className="text-lg sm:text-xl md:text-2xl lg:text-2xl font-bold">
                 {timeLeft.seconds}
               </div>
-              <div className="text-xs sm:text-[13px]  uppercase">Seconds</div>
+              <div className="text-xs sm:text-sm lg:text-base uppercase">
+                Seconds
+              </div>
+            </div>
+          </div>
+
+          <div className="bg-opacity-40 backdrop-blur-sm rounded-lg p-3 sm:p-4 md:p-6 lg:p-8 max-w-lg sm:max-w-xl md:max-w-2xl lg:max-w-2xl mx-auto">
+            <p className="text-xs sm:text-sm md:text-md lg:text-md mb-6 sm:mb-8 md:mb-10 lg:mb-10">
+              With expected attendees from over 100 countries, this event is
+              unmatched in its international reach. Explore sections dedicated
+              to key industry verticals such as regulation, affiliate marketing,
+              AI, Esports, Crypto, payments etc and participate in targeted
+              sessions to earn industry insights and knowledge.
+            </p>
+
+            <div className="flex flex-col sm:flex-row justify-center space-y-4 sm:space-y-0 sm:space-x-4 lg:space-x-4">
+              <button className="bg-transparent hover:bg-green-600 hover:bg-opacity-20 hover:cursor-pointer text-sm lg:text-base text-white font-bold self-center w-3/4 md:w-1/2 lg:w-1/2 py-2 px-4 md:py-3 md:px-8 lg:py-3 lg:px-8 border border-green-600 rounded-md">
+                <NavLink to="/register">Register interest</NavLink>
+              </button>
+            </div>
+            <div className="flex flex-col sm:flex-row justify-center space-y-4 sm:space-y-0 sm:space-x-4 lg:space-x-4 mt-6">
+              <button
+                className="bg-transparent hover:bg-green-600 hover:bg-opacity-20 hover:cursor-pointer text-sm lg:text-base text-white font-bold self-center w-auto py-2 px-4 md:py-3 md:px-8 lg:py-3 lg:px-8 border border-green-600 rounded-md"
+                onClick={() => {
+                  // Navigate to checkout with operator's pass data
+                  navigate("/checkout", {
+                    state: { selectedTicket: operatorPassData },
+                  });
+                }}
+              >
+                <span className="whitespace-nowrap">
+                  Operators - Apply for the Free Operator's Pass
+                </span>
+              </button>
+              <button
+                className="bg-transparent hover:bg-green-600 hover:bg-opacity-20 hover:cursor-pointer text-sm lg:text-base text-white font-bold self-center w-auto py-2 px-4 md:py-3 md:px-8 lg:py-3 lg:px-8 border border-green-600 rounded-md"
+                onClick={() => {
+                  document.getElementById("tickets")?.scrollIntoView({
+                    behavior: "smooth",
+                  });
+                }}
+              >
+                <span className="whitespace-nowrap">
+                  Affiliates - Apply for the Free Standard Pass
+                </span>
+              </button>
             </div>
           </div>
         </div>
@@ -420,4 +501,4 @@ const Header = () => {
   );
 };
 
-export default Header;
+export default Navbar;
