@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import {
   FaTwitter,
   FaLinkedin,
@@ -21,6 +21,30 @@ const Navbar = () => {
     minutes: 0,
     seconds: 0,
   });
+  const navigate = useNavigate();
+
+  // Operator's pass data
+  const operatorPassData = {
+    id: "operator",
+    label: "Operator's Pass",
+    price: 0,
+    description: "VIP experience for operators",
+    requirement: "Business Email registration required",
+    features: [
+      "Welcome Reception",
+      "Pre-registration & Networking Event",
+      "Soccer tournament ticket",
+      "Conference Hall 1 Access",
+      "Conference Hall 2 Access",
+      "Full Expo Access",
+      "iGaming AFRIKA Closing Party",
+      "iGaming AFRIKA Awards Dinner",
+      "iGaming AFRIKA Konnect Space",
+      "VIP Lounge Access",
+      "VIP Networking Event",
+      "Private Meeting Rooms Reservations",
+    ],
+  };
 
   // Calculate time left until the event (May 7, 2026)
   useEffect(() => {
@@ -447,13 +471,14 @@ const Navbar = () => {
               <button
                 className="bg-transparent hover:bg-green-600 hover:bg-opacity-20 hover:cursor-pointer text-sm lg:text-base text-white font-bold self-center w-auto py-2 px-4 md:py-3 md:px-8 lg:py-3 lg:px-8 border border-green-600 rounded-md"
                 onClick={() => {
-                  document.getElementById("tickets")?.scrollIntoView({
-                    behavior: "smooth",
+                  // Navigate to checkout with operator's pass data
+                  navigate("/checkout", {
+                    state: { selectedTicket: operatorPassData },
                   });
                 }}
               >
                 <span className="whitespace-nowrap">
-                  Operators - Apply for Free Operator's Pass
+                  Operators - Apply for the Free Operator's Pass
                 </span>
               </button>
               <button
@@ -465,7 +490,7 @@ const Navbar = () => {
                 }}
               >
                 <span className="whitespace-nowrap">
-                  Delegates & Affiliates - Apply for Free Pass
+                  Affiliates - Apply for the Free Standard Pass
                 </span>
               </button>
             </div>

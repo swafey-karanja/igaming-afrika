@@ -41,30 +41,8 @@ const Tickets = () => {
         "Welcome Reception",
         "Pre-registration & Networking Event",
         "Soccer tournament ticket",
-        "Conference Hall 1 Access",
         "Full Expo Access",
-        "iGaming AFRIKA Closing Party",
-      ],
-    },
-    {
-      id: "operator",
-      label: "Operator's Pass",
-      price: 0,
-      description: "VIP experience for operators",
-      requirement: "Business Email registration required",
-      features: [
-        "Welcome Reception",
-        "Pre-registration & Networking Event",
-        "Soccer tournament ticket",
         "Conference Hall 1 Access",
-        "Conference Hall 2 Access",
-        "Full Expo Access",
-        "iGaming AFRIKA Closing Party",
-        "iGaming AFRIKA Awards Dinner",
-        "iGaming AFRIKA Konnect Space",
-        "VIP Lounge Access",
-        "VIP Networking Event",
-        "Private Meeting Rooms Reservations",
       ],
     },
     {
@@ -78,9 +56,9 @@ const Tickets = () => {
         "Welcome Reception",
         "Pre-registration & Networking Event",
         "Soccer tournament ticket",
+        "Full Expo Access",
         "Conference Hall 1 Access",
         "Conference Hall 2 Access",
-        "Full Expo Access",
         "iGaming AFRIKA Closing Party",
         "iGaming AFRIKA Awards Dinner",
         "$50 Meals Voucher",
@@ -96,9 +74,9 @@ const Tickets = () => {
         "Welcome Reception",
         "Pre-registration & Networking Event",
         "Soccer tournament ticket",
+        "Full Expo Access",
         "Conference Hall 1 Access",
         "Conference Hall 2 Access",
-        "Full Expo Access",
         "iGaming AFRIKA Closing Party",
         "iGaming AFRIKA Awards Dinner",
         "$50 Meals Voucher",
@@ -116,9 +94,9 @@ const Tickets = () => {
     "Welcome Reception",
     "Pre-registration & Networking Event",
     "Soccer tournament ticket",
+    "Full Expo Access",
     "Conference Hall 1 Access",
     "Conference Hall 2 Access",
-    "Full Expo Access",
     "iGaming AFRIKA Closing Party",
     "iGaming AFRIKA Awards Dinner",
     "$50 Meals Voucher",
@@ -140,7 +118,7 @@ const Tickets = () => {
       className="bg-gray-100 px-4 sm:px-6 lg:px-8 py-12 md:py-12 lg:py-12"
       id="tickets"
     >
-      <div className="max-w-[1600px] mx-auto">
+      <div className="max-w-7xl mx-auto">
         {/* Header Section */}
         <motion.div
           className="text-center mb-16"
@@ -170,7 +148,7 @@ const Tickets = () => {
 
         {/* Pricing Cards */}
         <motion.div
-          className="grid md:grid-cols-4 gap-6 h-auto items-center"
+          className="grid md:grid-cols-3 gap-6 h-auto items-center"
           variants={staggerContainer}
           initial="hidden"
           whileInView="visible"
