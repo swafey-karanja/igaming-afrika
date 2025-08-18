@@ -158,7 +158,7 @@ export default function EventApplicationForm() {
                 PERSONAL INFORMATION
               </h2>
 
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-4">
                 <div>
                   <label className="block text-sm font-semibold text-gray-700 mb-2">
                     First name <span className="text-red-500">*</span>
@@ -168,7 +168,7 @@ export default function EventApplicationForm() {
                     name="firstName"
                     value={formData.firstName}
                     onChange={handleInputChange}
-                    className={`w-full px-4 py-1 border rounded-lg  transition-colors ${
+                    className={`w-full px-4 py-1 border rounded-lg transition-colors ${
                       errors.firstName ? "border-red-500" : "border-gray-300"
                     }`}
                     placeholder="Enter your first name"
@@ -190,7 +190,7 @@ export default function EventApplicationForm() {
                     name="lastName"
                     value={formData.lastName}
                     onChange={handleInputChange}
-                    className={`w-full px-4 py-1 border rounded-lg  transition-colors ${
+                    className={`w-full px-4 py-1 border rounded-lg transition-colors ${
                       errors.lastName ? "border-red-500" : "border-gray-300"
                     }`}
                     placeholder="Enter your last name"
@@ -200,6 +200,30 @@ export default function EventApplicationForm() {
                     <p className="text-red-500 text-sm mt-1">
                       {errors.lastName}
                     </p>
+                  )}
+                </div>
+
+                <div>
+                  <label className="block text-sm font-semibold text-gray-700 mb-2">
+                    Pronouns
+                  </label>
+                  <select
+                    name="gender"
+                    value={formData.gender}
+                    onChange={handleInputChange}
+                    className={`w-full px-4 py-1 border rounded-lg transition-colors ${
+                      errors.gender ? "border-red-500" : "border-gray-300"
+                    }`}
+                    disabled={isSubmitting}
+                  >
+                    <option value="">Select pronouns</option>
+                    <option value="he/him">he/him</option>
+                    <option value="she/her">she/her</option>
+                    <option value="they/them">they/them</option>
+                    <option value="prefer-not-to-say">Prefer Not to Say</option>
+                  </select>
+                  {errors.gender && (
+                    <p className="text-red-500 text-sm mt-1">{errors.gender}</p>
                   )}
                 </div>
               </div>
