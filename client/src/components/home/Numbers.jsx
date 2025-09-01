@@ -161,14 +161,15 @@ const Numbers = () => {
                 <div className="w-2 h-2 bg-green-600 rounded-full mt-2 flex-shrink-0"></div>
                 <div>
                   <span className="font-semibold text-gray-900">Free:</span>{" "}
-                  This is the first-ever free-entry gaming summit in Africa. The
-                  free tickets provide access to the exhibition centre, offering
-                  a unique opportunity to explore the extensive product
-                  offerings from various exhibitors. Additionally, ticket
-                  holders will have access to select panel discussions,
-                  providing a valuable chance to learn from our knowledgeable
-                  panel of speakers and gain insights into the latest trends and
-                  developments in the gaming industry
+                  This is the first-ever event of its scale within the iGaming
+                  industry to offer a free entry pass on the continent. The free
+                  tickets provide access to the exhibition centre, offering a
+                  unique opportunity to explore the extensive product offerings
+                  from various exhibitors. Additionally, ticket holders will
+                  have access to select panel discussions, providing a valuable
+                  chance to learn from our knowledgeable panel of speakers and
+                  gain insights into the latest trends and developments in the
+                  gaming industry
                 </div>
               </div>
 
