@@ -110,7 +110,7 @@ const Navbar = () => {
             : "bg-transparent text-white"
         }`}
       >
-        <div className="px-4 sm:px-6 lg:px-8 mx-auto max-w-7xl">
+        <div className="px-4 sm:px-6 lg:px-8 mx-auto max-w-[1600px]">
           <div className="flex items-center lg:justify-between lg:items-stretch lg:flex-row relative">
             {/* Hamburger Menu - Only visible on small screens */}
             <div

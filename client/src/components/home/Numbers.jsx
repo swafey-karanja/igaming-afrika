@@ -237,11 +237,12 @@ const Numbers = () => {
               <motion.iframe
                 variants={scaleIn}
                 className="w-full h-full rounded-2xl"
-                src="https://www.youtube.com/embed/N5JtC_KSuQY?rel=0"
-                title="AGS Event Video"
-                frameBorder="0"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                allowFullScreen
+                src="https://www.youtube.com/embed/2uGFFuhAVhM"
+                title="Why iGA Summit 2026; Unpacking the iGaming AFRIKA Summit"
+                frameborder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                referrerpolicy="strict-origin-when-cross-origin"
+                allowfullscreen
                 loading="lazy"
               />
             </div>

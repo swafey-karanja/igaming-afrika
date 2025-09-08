@@ -86,8 +86,8 @@ const Header = () => {
             : "bg-transparent text-white"
         }`}
       >
-        <div className="px-4 sm:px-6 lg:px-8 mx-auto max-w-7xl">
-          <div className="flex items-center lg:justify-between lg:items-stretch lg:flex-row relative">
+        <div className="px-4 sm:px-6 lg:px-8 mx-auto max-w-[1600px]">
+          <div className="flex items-center lg:justify-between  lg:flex-row relative">
             {/* Hamburger Menu - Only visible on small screens */}
             <div
               className={`lg:hidden flex items-center ${
@@ -142,7 +142,7 @@ const Header = () => {
               </NavLink>
             </div>
             {/* Desktop Nav */}
-            <nav className="hidden lg:flex lg:items-center lg:justify-center xl:space-x-7 lg:space-x-6 whitespace-nowrap w-full max-w-3xl lg:max-w-4xl">
+            <nav className="hidden lg:flex lg:items-center lg:justify-center xl:space-x-7 lg:space-x-6 whitespace-nowrap w-full max-w-2xl">
               <NewsDropdown isScrolled={isScrolled} isInSidebar={false} />
               <DropdownMenu
                 label="countries"
@@ -178,7 +178,7 @@ const Header = () => {
             </nav>
 
             {/* Right Side Social Links */}
-            <div className="hidden lg:flex lg:items-center xl:space-x-3 lg:space-x-3 sm:text-lg lg:text-lg">
+            {/* <div className="hidden lg:flex lg:items-center xl:space-x-3 lg:space-x-3 sm:text-lg lg:text-lg">
               <button
                 className={`${
                   isScrolled ? "text-black" : "text-white"
@@ -187,7 +187,7 @@ const Header = () => {
               >
                 <FaSearch />
               </button>
-            </div>
+            </div> */}
           </div>
         </div>
       </header>
