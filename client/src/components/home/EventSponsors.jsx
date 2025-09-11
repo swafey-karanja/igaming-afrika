@@ -141,7 +141,7 @@ const Sponsors = () => {
               title="Diamond Sponsors"
               sponsors={diamondSponsors}
               logoSizes="h-28 w-auto max-w-[320px] xs:h-32 xs:max-w-[380px] sm:h-36 sm:max-w-[440px] md:h-40 md:max-w-[500px] lg:h-44 lg:max-w-[560px] xl:h-48 xl:max-w-[600px]"
-              containerClass="flex flex-wrap justify-center gap-6 xs:gap-8 sm:gap-10 md:gap-12 lg:gap-14 px-2 grid grid-cols-2 xs:grid-cols-2 sm:grid-cols-3"
+              containerClass="flex flex-wrap justify-center gap-6 xs:gap-8 sm:gap-10 md:gap-12 px-2 grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3"
               titleColor="from-cyan-400 via-blue-500 to-purple-500"
               delay={0.15}
               bordered={true}
@@ -152,7 +152,7 @@ const Sponsors = () => {
               title="Platinum Sponsors"
               sponsors={platinumSponsors}
               logoSizes="h-24 w-auto max-w-[300px] xs:h-28 xs:max-w-[360px] sm:h-32 sm:max-w-[420px] md:h-36 md:max-w-[480px] lg:h-40 lg:max-w-[540px] xl:h-44 xl:max-w-[580px]"
-              containerClass="flex flex-wrap justify-center gap-6 xs:gap-8 sm:gap-10 md:gap-12 lg:gap-16 px-2 grid grid-cols-2 xs:grid-cols-2 sm:grid-cols-3"
+              containerClass="flex flex-wrap justify-center gap-6 xs:gap-8 sm:gap-10 md:gap-12 lg:gap-16 px-2 grid grid-cols-2 xs:grid-cols-2 md:grid-cols-3"
               titleColor="from-gray-400 via-gray-300 to-slate-400"
               delay={0.2}
               bordered={true}

@@ -8,6 +8,7 @@ import {
   FaTelegramPlane,
   FaSearch,
   FaFacebook,
+  FaSpotify,
 } from "react-icons/fa";
 import { countries, menuItems, options } from "../../data/dropdownData";
 import DropdownMenu, { NewsDropdown } from "../utils/DropdownMenus";
@@ -321,7 +322,7 @@ const Navbar = () => {
             </div>
             <div className="flex items-center justify-center gap-4">
               <a
-                href="https://x.com/igamingafrika/"
+                href="https://x.com/iGASummit?t=N8kO_9qtwaBu3YeUUaBQNA&s=09"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="p-3 rounded-full bg-white/10 hover:bg-white/20 text-white hover:text-blue-400 transition-all duration-200"
@@ -330,7 +331,7 @@ const Navbar = () => {
                 <FaTwitter className="text-sm" />
               </a>
               <a
-                href="https://www.linkedin.com/company/igamingafrika/"
+                href="https://www.linkedin.com/company/igasummit/"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="p-3 rounded-full bg-white/10 hover:bg-white/20 text-white hover:text-blue-700 transition-all duration-200"
@@ -339,7 +340,7 @@ const Navbar = () => {
                 <FaLinkedin className="text-sm" />
               </a>
               <a
-                href="https://www.youtube.com/@igamingafrika?themeRefresh=1"
+                href="https://www.youtube.com/@iGASummit"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="p-3 rounded-full bg-white/10 hover:bg-white/20 text-white hover:text-red-600 transition-all duration-200"
@@ -348,7 +349,7 @@ const Navbar = () => {
                 <FaYoutube className="text-sm" />
               </a>
               <a
-                href="https://www.instagram.com/igamingafrika/"
+                href="https://www.instagram.com/igasummit?igsh=MXF6YXdpYXRxdzBoaQ=="
                 target="_blank"
                 rel="noopener noreferrer"
                 className="p-3 rounded-full bg-white/10 hover:bg-white/20 text-white hover:text-pink-500 transition-all duration-200"
@@ -357,16 +358,16 @@ const Navbar = () => {
                 <FaInstagram className="text-sm" />
               </a>
               <a
-                href="https://t.me/igamingafrika"
+                href="https://open.spotify.com/show/11m2XkXyP3MmjHRgXEVgwx?si=8cb7aaae5d2a47bc"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="p-3 rounded-full bg-white/10 hover:bg-white/20 text-white hover:text-blue-500 transition-all duration-200"
-                aria-label="Telegram"
+                className="p-3 rounded-full bg-white/10 hover:bg-white/20 text-white hover:text-green-600 transition-all duration-200"
+                aria-label="Spotify"
               >
-                <FaTelegramPlane className="text-sm" />
+                <FaSpotify className="text-sm" />
               </a>
               <a
-                href="https://www.facebook.com/IgamingAfrika/"
+                href="https://www.facebook.com/share/1Ay79xHcfi/"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="p-3 rounded-full bg-white/10 hover:bg-white/20 text-white hover:text-blue-500 transition-all duration-200"

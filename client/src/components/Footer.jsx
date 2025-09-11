@@ -9,6 +9,7 @@ import {
   FaPaperPlane,
   FaTelegram,
   FaYoutube,
+  FaSpotify,
 } from "react-icons/fa";
 import { toast } from "react-hot-toast";
 
@@ -266,37 +267,43 @@ const LinksSection = () => {
 const SocialSection = () => {
   const socialLinks = [
     {
-      href: "https://twitter.com/igamingafrika/",
+      href: "https://x.com/iGASummit?t=N8kO_9qtwaBu3YeUUaBQNA&s=09",
       Icon: FaTwitter,
       label: "Twitter",
       hoverColor: "hover:text-blue-400",
     },
     {
-      href: "https://www.facebook.com/IgamingAfrika/",
+      href: "https://www.facebook.com/share/1Ay79xHcfi/",
       Icon: FaFacebook,
       label: "Facebook",
       hoverColor: "hover:text-blue-500",
     },
     {
-      href: "https://www.instagram.com/igamingafrika?igsh=bHl5MWlkNWdiYzll&utm_source=qr",
+      href: "https://www.instagram.com/igasummit?igsh=MXF6YXdpYXRxdzBoaQ==",
       Icon: FaInstagram,
       label: "Instagram",
       hoverColor: "hover:text-red-500",
     },
     {
-      href: "https://www.linkedin.com/company/igamingafrika/",
+      href: "https://www.linkedin.com/company/igasummit/",
       Icon: FaLinkedin,
       label: "LinkedIn",
-      hoverColor: "hover:text-blue-700",
+      hoverColor: "hover:text-blue-600",
     },
     {
-      href: "https://www.youtube.com/@igamingafrika",
+      href: "https://www.youtube.com/@iGASummit",
       Icon: FaYoutube,
       label: "YouTube",
       hoverColor: "hover:text-red-700",
     },
     {
-      href: "https://t.me/igamingafrika",
+      href: "https://open.spotify.com/show/11m2XkXyP3MmjHRgXEVgwx?si=8cb7aaae5d2a47bc",
+      Icon: FaSpotify,
+      label: "Spotify",
+      hoverColor: "hover:text-green-700",
+    },
+    {
+      href: "https://t.me/igamingInAfrica",
       Icon: FaTelegram,
       label: "Telegram",
       hoverColor: "hover:text-blue-700",
