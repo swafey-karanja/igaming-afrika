@@ -70,14 +70,14 @@ const Home = () => {
         <Schedule />
       </motion.div>
 
-      <motion.div
+      {/* <motion.div
         variants={fadeInUp}
         initial="hidden"
         whileInView="visible"
         viewport={{ once: true }}
       >
         <Speakers />
-      </motion.div>
+      </motion.div> */}
 
       <motion.div
         variants={fadeInUp}
