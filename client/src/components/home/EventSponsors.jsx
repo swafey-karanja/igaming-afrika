@@ -82,7 +82,7 @@ const Sponsors = () => {
     if (sponsorCount === 3) {
       return "grid grid-cols-2 xs:grid-cols-2 sm:grid-cols-3 gap-6 xs:gap-8 sm:gap-10 md:gap-12 px-2 items-center justify-items-center justify-center";
     } else if (sponsorCount === 2) {
-      return "flex flex-wrap justify-center space-x-20 md:space-x-30 px-2 items-center";
+      return "flex flex-wrap justify-center space-x-12 md:space-x-30 px-2 items-center";
     } else if (sponsorCount === 1) {
       return "grid grid-cols-1 gap-6 px-2 items-center justify-items-center justify-center";
     }
@@ -111,7 +111,7 @@ const Sponsors = () => {
             viewport={{ once: true }}
             transition={{ duration: 0.8, delay: 0.3 }}
           />
-          <p className="text-gray-600 max-w-2xl mx-auto text-sm md:text-md">
+          <p className="text-gray-600 max-w-2xl mx-auto text-xs md:text-md">
             Meet our kind and illustrious sponsors for the ground-breaking
             iGaming AFRIKA SUMMIT 2026.
           </p>
@@ -236,7 +236,7 @@ const Sponsors = () => {
             variants={fadeIn}
             transition={{ delay: 1 }}
           >
-            <p className="text-md text-gray-600 font-medium">
+            <p className="text-xs md:text-md text-gray-600 font-medium">
               Thank you to all our amazing sponsors and partners for making this
               event possible! 🎉
             </p>

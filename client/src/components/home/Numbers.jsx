@@ -125,13 +125,13 @@ const Numbers = () => {
           >
             <motion.h1
               variants={scaleIn}
-              className="text-xl lg:text-2xl font-bold mb-6 text-green-700 leading-tight"
+              className="text-md md:text-lg lg:text-2xl font-bold mb-6 text-green-700 leading-tight"
             >
               What is the iGaming AFRIKA Summit (iGA Summit)?
             </motion.h1>
             <motion.div
               variants={fadeIn}
-              className="text-sm leading-relaxed mb-8 text-gray-700"
+              className=" text-xs md:text-sm leading-relaxed mb-8 text-gray-700"
             >
               <strong>iGaming AFRIKA Summit</strong> is Africa’s mega gaming
               event, designed to unite the entire gaming industry players across
@@ -148,7 +148,7 @@ const Numbers = () => {
 
             <motion.h2
               variants={scaleIn}
-              className="text-xl lg:text-2xl font-bold mb-6 text-green-700 leading-tight"
+              className="text-md md:text-lg lg:text-2xl font-bold mb-6 text-green-700 leading-tight"
             >
               What Makes iGaming AFRIKA SUMMIT Special?
             </motion.h2>
@@ -159,7 +159,7 @@ const Numbers = () => {
             >
               <div className="flex items-start gap-3">
                 <div className="w-2 h-2 bg-green-600 rounded-full mt-2 flex-shrink-0"></div>
-                <div>
+                <div className="text-xs md:text-sm leading-relaxed text-gray-700">
                   <span className="font-semibold text-gray-900">Free:</span>{" "}
                   This is the first-ever event of its scale within the iGaming
                   industry to offer a free entry pass on the continent. The free
@@ -175,7 +175,7 @@ const Numbers = () => {
 
               <div className="flex items-start gap-3">
                 <div className="w-2 h-2 bg-green-600 rounded-full mt-2 flex-shrink-0"></div>
-                <div>
+                <div className="text-xs md:text-sm leading-relaxed text-gray-700">
                   <span className="font-semibold text-gray-900">
                     Global Gathering:
                   </span>{" "}
@@ -188,7 +188,7 @@ const Numbers = () => {
 
               <div className="flex items-start gap-3">
                 <div className="w-2 h-2 bg-green-600 rounded-full mt-2 flex-shrink-0"></div>
-                <div>
+                <div className="text-xs md:text-sm leading-relaxed text-gray-700">
                   <span className="font-semibold text-gray-900">
                     Safari Tour:
                   </span>{" "}
@@ -201,7 +201,7 @@ const Numbers = () => {
 
               <div className="flex items-start gap-3">
                 <div className="w-2 h-2 bg-green-600 rounded-full mt-2 flex-shrink-0"></div>
-                <div>
+                <div className="text-xs md:text-sm leading-relaxed text-gray-700">
                   <span className="font-semibold text-gray-900">
                     World-Class Content:
                   </span>{" "}
@@ -215,7 +215,7 @@ const Numbers = () => {
 
               <div className="flex items-start gap-3">
                 <div className="w-2 h-2 bg-green-600 rounded-full mt-2 flex-shrink-0"></div>
-                <div>
+                <div className="text-xs md:text-sm leading-relaxed text-gray-700">
                   <span className="font-semibold text-gray-900">
                     Memorable Entertainment:
                   </span>{" "}
@@ -294,7 +294,7 @@ const Numbers = () => {
 
               <motion.h3
                 variants={scaleIn}
-                className="font-bold text-3xl sm:text-4xl md:text-5xl mb-3"
+                className="font-bold text-2xl md:text-5xl mb-3"
               >
                 <span className="text-green-400 bg-gradient-to-r from-green-400 to-green-300 bg-clip-text">
                   <AnimatedCounter

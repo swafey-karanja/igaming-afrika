@@ -165,7 +165,7 @@ const GlobalNews = () => {
             viewport={{ once: true }}
             transition={{ duration: 0.8, delay: 0.3 }}
           />
-          <p className="text-gray-600 max-w-2xl mx-auto text-sm md:text-md">
+          <p className="text-gray-600 max-w-2xl mx-auto text-xs md:text-md">
             Catch up on the latest news and events from the world of gaming.
           </p>
         </motion.div>
@@ -281,7 +281,9 @@ const GlobalNews = () => {
           >
             <div className="inline-flex items-center text-gray-500">
               <div className="w-8 h-px bg-gray-300 mr-3"></div>
-              <span className="text-sm font-medium">You're all caught up</span>
+              <span className="text-xs md:text-sm font-medium">
+                You're all caught up
+              </span>
               <div className="w-8 h-px bg-gray-300 ml-3"></div>
             </div>
           </motion.div>

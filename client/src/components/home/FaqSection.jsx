@@ -148,7 +148,7 @@ const FAQSection = () => {
           variants={fadeIn}
         >
           <div className="inline-flex items-center gap-3 mb-4">
-            <h2 className="text-2xl md:text-4xl font-bold bg-gradient-to-r from-green-700 to-green-600 bg-clip-text text-transparent mb-2">
+            <h2 className="text-2xl md:text-4xl font-bold bg-gradient-to-r from-green-700 to-green-600 bg-clip-text text-transparent">
               Frequently Asked Questions
             </h2>
           </div>

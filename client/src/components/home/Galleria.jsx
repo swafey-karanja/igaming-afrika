@@ -217,7 +217,7 @@ const ImageCarousel = () => {
             viewport={{ once: true }}
             transition={{ duration: 0.8, delay: 0.3 }}
           />
-          <p className="text-gray-600 max-w-2xl mx-auto text-sm md:text-md">
+          <p className="text-gray-600 max-w-2xl mx-auto text-xs md:text-md">
             Explore Images from past iGaming events
           </p>
         </motion.div>

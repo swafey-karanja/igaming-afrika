@@ -87,7 +87,7 @@ const Attendees = () => {
             viewport={{ once: true }}
             transition={{ duration: 0.8, delay: 0.3 }}
           />
-          <p className="text-gray-600 max-w-2xl mx-auto text-sm md:text-md">
+          <p className="text-gray-600 max-w-2xl mx-auto text-xs md:text-md">
             Meet the companies and organisations attending the ground-breaking
             iGaming AFRIKA SUMMIT 2026.
           </p>
@@ -117,11 +117,11 @@ const Attendees = () => {
       ) : (
         <div className="max-w-[1600px] mx-auto">
           {attendingCompanies && attendingCompanies.length > 0 && (
-            <div className="grid grid-cols-2 sm:grid-cols-3 gap-8">
+            <div className="grid grid-cols-2 md:grid-cols-3 gap-8">
               {attendingCompanies.map((company, index) => (
                 <motion.div
                   key={company.id || index}
-                  className="flex items-center justify-center max-h-[80px] hover:scale-110 transition-all duration-300 relative"
+                  className="flex items-center justify-center max-h-[40px] sm:max-h-[65px]  hover:scale-110 transition-all duration-300 relative"
                   initial={{ opacity: 0, y: 20 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}

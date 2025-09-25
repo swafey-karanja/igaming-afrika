@@ -139,7 +139,7 @@ const Tickets = () => {
             viewport={{ once: true }}
             transition={{ duration: 0.8, delay: 0.3 }}
           />
-          <p className="text-gray-600 max-w-2xl mx-auto text-sm md:text-md">
+          <p className="text-gray-600 max-w-2xl mx-auto text-xs md:text-md">
             Join Africa's premier iGaming conference. Connect with industry
             leaders, discover cutting-edge innovations, and shape the future of
             gaming.

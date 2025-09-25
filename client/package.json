@@ -15,7 +15,6 @@
     "@material-tailwind/react": "^2.1.10",
     "@reduxjs/toolkit": "^2.6.1",
     "@tailwindcss/vite": "^4.1.1",
-    "axios": "^1.11.0",
     "dotenv": "^16.5.0",
     "framer-motion": "^12.6.3",
     "lucide-react": "^0.510.0",

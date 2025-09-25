@@ -44,7 +44,7 @@ const SponsorTier = ({
     >
       <div className="inline-flex items-center gap-3 mb-4">
         <h2
-          className={`text-lg md:text-2xl font-bold bg-gradient-to-r ${titleColor} bg-clip-text text-transparent mb-2`}
+          className={`text-md md:text-2xl font-bold bg-gradient-to-r ${titleColor} bg-clip-text text-transparent`}
         >
           {title}
         </h2>
