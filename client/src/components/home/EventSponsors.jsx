@@ -76,7 +76,7 @@ const Sponsors = () => {
 
   // Standard logo sizes for all tiers except headline sponsor (same as gold tier)
   const standardLogoSizes =
-    "h-16 w-auto max-w-[120px] xs:h-18 xs:max-w-[160px] sm:h-20 sm:max-w-[200px] md:h-22 md:max-w-[240px] lg:h-26 lg:max-w-[280px] xl:h-30 xl:max-w-[320px]";
+    "h-14 w-auto max-w-[100px] xs:h-16 xs:max-w-[140px] sm:h-18 sm:max-w-[180px] md:h-20 md:max-w-[220px] lg:h-24 lg:max-w-[260px] xl:h-28 xl:max-w-[300px]";
 
   const getGridClass = (sponsorCount) => {
     if (sponsorCount === 3) {

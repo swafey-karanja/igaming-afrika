@@ -121,7 +121,7 @@ const Attendees = () => {
               {attendingCompanies.map((company, index) => (
                 <motion.div
                   key={company.id || index}
-                  className="flex items-center justify-center max-h-[40px] sm:max-h-[65px]  hover:scale-110 transition-all duration-300 relative"
+                  className="flex items-center justify-center max-h-[40px] sm:max-h-[80px]  hover:scale-110 transition-all duration-300 relative"
                   initial={{ opacity: 0, y: 20 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
