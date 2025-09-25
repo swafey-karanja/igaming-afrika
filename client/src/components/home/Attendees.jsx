@@ -117,21 +117,21 @@ const Attendees = () => {
       ) : (
         <div className="max-w-[1600px] mx-auto">
           {attendingCompanies && attendingCompanies.length > 0 && (
-            <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-8">
+            <div className="grid grid-cols-2 sm:grid-cols-3 gap-8">
               {attendingCompanies.map((company, index) => (
                 <motion.div
                   key={company.id || index}
-                  className="flex items-center justify-center max-h-[80px]"
+                  className="flex items-center justify-center max-h-[80px] hover:scale-110 transition-all duration-300 relative"
                   initial={{ opacity: 0, y: 20 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
-                  transition={{ duration: 0.5, delay: index * 0.1 }}
-                  whileHover={{ scale: 1.05 }}
+                  // transition={{ duration: 0.5, delay: index * 0.1 }}
+                  // whileHover={{ scale: 1.05 }}
                 >
                   <img
                     src={company.logo}
                     alt={company.name || "Company logo"}
-                    className="max-w-full max-h-full object-contain hover:cursor-pointer transition-all duration-300"
+                    className="max-w-full max-h-full object-contain hover:cursor-pointer"
                     onError={(e) => {
                       e.target.style.display = "none";
                       e.target.nextElementSibling.style.display = "flex";
