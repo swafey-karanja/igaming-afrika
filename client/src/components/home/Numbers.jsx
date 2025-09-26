@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef } from "react";
 // eslint-disable-next-line no-unused-vars
 import { motion, useInView } from "framer-motion";
+import { ChevronDown } from "lucide-react";
 
 // Counter component for animated numbers
 const AnimatedCounter = ({ value, duration = 2000, delay = 0 }) => {
@@ -45,7 +46,66 @@ const AnimatedCounter = ({ value, duration = 2000, delay = 0 }) => {
   return <span ref={ref}>{displayValue}</span>;
 };
 
+// Accordion Item Component
+const AccordionItem = ({ title, content, isOpen, onClick }) => {
+  return (
+    <motion.div
+      initial={false}
+      className="border-b border-gray-200 last:border-b-0"
+    >
+      <motion.button
+        onClick={onClick}
+        className="w-full py-4 text-left flex items-center justify-between hover:bg-gray-50 transition-colors duration-200"
+        whileHover={{ backgroundColor: "rgba(0, 0, 0, 0.02)" }}
+        whileTap={{ scale: 0.99 }}
+      >
+        <span className="font-semibold text-gray-900 text-sm md:text-base">
+          {title}
+        </span>
+        <motion.div
+          animate={{ rotate: isOpen ? 180 : 0 }}
+          transition={{ duration: 0.2 }}
+        >
+          <ChevronDown className="w-5 h-5 text-gray-600" />
+        </motion.div>
+      </motion.button>
+
+      <motion.div
+        initial={false}
+        animate={{
+          height: isOpen ? "auto" : 0,
+          opacity: isOpen ? 1 : 0,
+        }}
+        transition={{
+          height: { duration: 0.3, ease: "easeOut" },
+          opacity: { duration: 0.2, delay: isOpen ? 0.1 : 0 },
+        }}
+        className="overflow-hidden"
+      >
+        <div className="px-1 pb-4">
+          <div className="text-xs md:text-sm font-medium leading-relaxed text-gray-700">
+            {content}
+          </div>
+        </div>
+      </motion.div>
+    </motion.div>
+  );
+};
+
 const Numbers = () => {
+  const [openItems, setOpenItems] = useState({ 0: true }); // First item open by default
+
+  const toggleItem = (index) => {
+    setOpenItems((prev) => {
+      // If clicking on already open item, close it
+      if (prev[index]) {
+        return {};
+      }
+      // Otherwise, close all and open the clicked one
+      return { [index]: true };
+    });
+  };
+
   // Animation variants
   const fadeIn = {
     hidden: { opacity: 0, y: 30 },
@@ -70,6 +130,36 @@ const Numbers = () => {
       },
     },
   };
+
+  // Accordion data
+  const accordionItems = [
+    {
+      title: "Free Entry Pass",
+      content:
+        "This is the first-ever event of its scale within the iGaming industry to offer a free entry pass on the continent. The free tickets provide access to the exhibition centre, offering a unique opportunity to explore the extensive product offerings from various exhibitors. Additionally, ticket holders will have access to select panel discussions, providing a valuable chance to learn from our knowledgeable panel of speakers and gain insights into the latest trends and developments in the gaming industry.",
+    },
+    {
+      title: "Global Gathering",
+      content:
+        "With expected attendees from over 100 countries, this event is unmatched in its international reach. It offers a unique platform for networking with industry leaders from around the world.",
+    },
+    {
+      title: "Safari Tour",
+      content:
+        "The event will kick off with a memorable Safari Tour allowing attendees to experience Kenya's wildlife including Lions, Antelopes, and Elephants. It provides a once-in-a-lifetime opportunity to connect with nature before the main event.",
+    },
+    {
+      title: "World-Class Content",
+      content:
+        "Explore sections dedicated to key industry verticals such as regulation, affiliate marketing, AI, Esports, Crypto, payments etc with targeted sessions for industry insights. Attendees will gain practical knowledge from expert speakers and industry pioneers.",
+    },
+    {
+      title: "Memorable Entertainment",
+      content:
+        "The event culminates with an iconic closing celebration featuring renowned artists. It promises an unforgettable experience blending entertainment with networking opportunities.",
+    },
+  ];
+
   const stats = [
     {
       value: "3500+",
@@ -117,136 +207,108 @@ const Numbers = () => {
           whileInView="visible"
           viewport={{ once: true }}
           transition={{ staggerChildren: 0.2 }}
-          className="w-full max-w-[1600px] text-gray-800 py-8 md:py-12 lg:py-16 flex flex-col lg:flex-row gap-8 lg:gap-12"
+          className="w-full max-w-[1600px] text-gray-800 py-8 md:py-12 lg:py-16 px-6 sm:px-8 lg:px-12"
         >
-          <motion.div
-            variants={fadeIn}
-            className="lg:w-1/2 px-6 sm:px-8 lg:px-12"
-          >
-            <motion.h1
-              variants={scaleIn}
-              className="text-md md:text-lg lg:text-2xl font-bold mb-6 text-green-700 leading-tight"
-            >
-              What is the iGaming AFRIKA Summit (iGA Summit)?
-            </motion.h1>
+          {/* Grid Container */}
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 h-auto lg:min-h-[600px]">
+            {/* Top Left: First Question and Answer */}
             <motion.div
               variants={fadeIn}
-              className=" text-xs md:text-sm leading-relaxed mb-8 text-gray-700"
+              className="flex flex-col justify-center mb-10"
             >
-              <strong>iGaming AFRIKA Summit</strong> is Africa’s mega gaming
-              event, designed to unite the entire gaming industry players across
-              the world in one place—the stunning city of{" "}
-              <strong>Nairobi, Kenya from 4th - 6th May 2026.</strong> This
-              being the inaugural edition of the summit, the event is expected
-              to be the largest in the industry. The summit is taking place in
-              an impressive 3,300m² square meters location at{" "}
-              <strong>Sarit Expo Centre</strong>, Nairobi’s Largest Expo centre
-              giving exhibitors and attendees a massive ground to showcase their
-              products, meet and connect with industry players as we discuss the
-              future of the gaming industry in Africa.
+              <div className="relative w-full aspect-video lg:aspect-square max-h-[400px] rounded-2xl overflow-hidden">
+                <motion.img
+                  variants={scaleIn}
+                  src="/Nairobi.webp"
+                  alt="iGaming AFRIKA Summit Event"
+                  className="w-full h-full object-cover rounded-2xl"
+                  loading="lazy"
+                />
+              </div>
             </motion.div>
 
-            <motion.h2
-              variants={scaleIn}
-              className="text-md md:text-lg lg:text-2xl font-bold mb-6 text-green-700 leading-tight"
-            >
-              What Makes iGaming AFRIKA SUMMIT Special?
-            </motion.h2>
-
+            {/* Top Right: Image */}
             <motion.div
               variants={fadeIn}
-              className="space-y-6 text-sm leading-relaxed text-gray-700"
+              transition={{ delay: 0.1 }}
+              className="flex flex-col justify-center"
             >
-              <div className="flex items-start gap-3">
-                <div className="w-2 h-2 bg-green-600 rounded-full mt-2 flex-shrink-0"></div>
-                <div className="text-xs md:text-sm leading-relaxed text-gray-700">
-                  <span className="font-semibold text-gray-900">Free:</span>{" "}
-                  This is the first-ever event of its scale within the iGaming
-                  industry to offer a free entry pass on the continent. The free
-                  tickets provide access to the exhibition centre, offering a
-                  unique opportunity to explore the extensive product offerings
-                  from various exhibitors. Additionally, ticket holders will
-                  have access to select panel discussions, providing a valuable
-                  chance to learn from our knowledgeable panel of speakers and
-                  gain insights into the latest trends and developments in the
-                  gaming industry
-                </div>
-              </div>
-
-              <div className="flex items-start gap-3">
-                <div className="w-2 h-2 bg-green-600 rounded-full mt-2 flex-shrink-0"></div>
-                <div className="text-xs md:text-sm leading-relaxed text-gray-700">
-                  <span className="font-semibold text-gray-900">
-                    Global Gathering:
-                  </span>{" "}
-                  With expected attendees from over 100 countries, this event is
-                  unmatched in its international reach. It offers a unique
-                  platform for networking with industry leaders from around the
-                  world.
-                </div>
-              </div>
-
-              <div className="flex items-start gap-3">
-                <div className="w-2 h-2 bg-green-600 rounded-full mt-2 flex-shrink-0"></div>
-                <div className="text-xs md:text-sm leading-relaxed text-gray-700">
-                  <span className="font-semibold text-gray-900">
-                    Safari Tour:
-                  </span>{" "}
-                  The event will kick off with a memorable Safari Tour allowing
-                  attendees to experience Kenya's wildlife including Lions,
-                  Antelopes, and Elephants. It provides a once-in-a-lifetime
-                  opportunity to connect with nature before the main event.
-                </div>
-              </div>
-
-              <div className="flex items-start gap-3">
-                <div className="w-2 h-2 bg-green-600 rounded-full mt-2 flex-shrink-0"></div>
-                <div className="text-xs md:text-sm leading-relaxed text-gray-700">
-                  <span className="font-semibold text-gray-900">
-                    World-Class Content:
-                  </span>{" "}
-                  Explore sections dedicated to key industry verticals such as
-                  regulation, affiliate marketing, AI, Esports, Crypto, payments
-                  etc with targeted sessions for industry insights. Attendees
-                  will gain practical knowledge from expert speakers and
-                  industry pioneers.
-                </div>
-              </div>
-
-              <div className="flex items-start gap-3">
-                <div className="w-2 h-2 bg-green-600 rounded-full mt-2 flex-shrink-0"></div>
-                <div className="text-xs md:text-sm leading-relaxed text-gray-700">
-                  <span className="font-semibold text-gray-900">
-                    Memorable Entertainment:
-                  </span>{" "}
-                  The event culminates with an iconic closing celebration
-                  featuring renowned artists. It promises an unforgettable
-                  experience blending entertainment with networking
-                  opportunities.
-                </div>
-              </div>
-            </motion.div>
-          </motion.div>
-
-          <motion.div
-            variants={fadeIn}
-            transition={{ delay: 0.3 }}
-            className="lg:w-1/2 px-6 sm:px-8 lg:px-12 flex items-center"
-          >
-            <div className="relative w-full aspect-video max-h-[500px] rounded-2xl overflow-hidden">
-              <motion.iframe
+              <motion.h1
                 variants={scaleIn}
-                className="w-full h-full rounded-2xl"
-                src="https://www.youtube.com/embed/2uGFFuhAVhM"
-                title="Why iGA Summit 2026; Unpacking the iGaming AFRIKA Summit"
-                frameborder="0"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                referrerpolicy="strict-origin-when-cross-origin"
-                allowfullscreen
-                loading="lazy"
-              />
-            </div>
-          </motion.div>
+                className="text-md md:text-lg lg:text-4xl font-bold mb-6 text-green-700 leading-tight"
+              >
+                What is the iGaming AFRIKA Summit
+                <br /> (iGA Summit)?
+              </motion.h1>
+              <motion.div
+                variants={fadeIn}
+                className="text-xs md:text-sm font-medium leading-relaxed text-gray-700"
+              >
+                <strong className="text-lg">
+                  iGaming AFRIKA Summit is Africa's mega gaming event, designed
+                  to unite the entire gaming industry players across the world
+                  in one place—the stunning city of Nairobi, Kenya from 4th -
+                  6th May 2026.
+                </strong>{" "}
+                <br />
+                <br />
+                This being the inaugural edition of the summit, the event is
+                expected to be the largest in the industry. The summit is taking
+                place in an impressive 3,300m² square meters location at{" "}
+                <strong>Sarit Expo Centre</strong>, Nairobi's Largest Expo
+                centre giving exhibitors and attendees a massive ground to
+                showcase their products, meet and connect with industry players
+                as we discuss the future of the gaming industry in Africa.
+              </motion.div>
+            </motion.div>
+
+            {/* Bottom Left: Accordion */}
+            <motion.div
+              variants={fadeIn}
+              transition={{ delay: 0.2 }}
+              className="flex flex-col justify-center"
+            >
+              <motion.h2
+                variants={scaleIn}
+                className="text-md md:text-lg lg:text-4xl font-bold mb-6 text-green-700 leading-tight"
+              >
+                What Makes iGaming AFRIKA SUMMIT Special?
+              </motion.h2>
+
+              <motion.div variants={fadeIn} className="overflow-hidden">
+                {accordionItems.map((item, index) => (
+                  <AccordionItem
+                    key={index}
+                    title={item.title}
+                    content={item.content}
+                    isOpen={openItems[index]}
+                    onClick={() => toggleItem(index)}
+                  />
+                ))}
+              </motion.div>
+            </motion.div>
+
+            {/* Bottom Right: Video */}
+            <motion.div
+              variants={fadeIn}
+              transition={{ delay: 0.3 }}
+              className="flex items-center justify-center"
+            >
+              <div className="relative w-full aspect-video max-h-[600px] rounded-2xl overflow-hidden">
+                <motion.iframe
+                  variants={scaleIn}
+                  className="w-full h-full rounded-2xl"
+                  src="https://www.youtube.com/embed/2uGFFuhAVhM"
+                  title="Why iGA Summit 2026; Unpacking the iGaming AFRIKA Summit"
+                  frameBorder="0"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                  referrerPolicy="strict-origin-when-cross-origin"
+                  allowFullScreen
+                  loading="lazy"
+                />
+              </div>
+            </motion.div>
+          </div>
         </motion.div>
       </div>
 

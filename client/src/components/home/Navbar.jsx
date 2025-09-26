@@ -107,7 +107,7 @@ const Navbar = () => {
       <header
         className={`fixed top-0 left-0 w-full inset-x-0 z-40 py-2 sm:py-3 md:py-4 transition-all duration-700 ease-in-out ${
           isScrolled
-            ? "bg-gray-100 shadow-md drop-shadow-md text-black"
+            ? "bg-gray-300 shadow-md drop-shadow-md text-black"
             : "bg-transparent text-white"
         }`}
       >
@@ -156,7 +156,7 @@ const Navbar = () => {
                 className="inline-flex rounded-md"
               >
                 <img
-                  className="w-auto h-12 sm:h-14 md:h-18 lg:h-24"
+                  className="w-auto h-10 sm:h-12 md:h-16 lg:h-16"
                   src="https://igamingafrika.com/wp-content/uploads/2023/04/iGaming-Logo-2b.png"
                   alt="iGaming Afrika"
                 />
