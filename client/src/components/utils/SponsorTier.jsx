@@ -80,15 +80,23 @@ const SponsorTier = ({
           } transition-all duration-300 relative`}
         >
           <a
-            href={sponsor.url}
-            target="_blank"
+            href={
+              sponsor.url === "https://summits.igamingafrika.com/"
+                ? "#"
+                : sponsor.url
+            }
+            target={
+              sponsor.url === "https://summits.igamingafrika.com/"
+                ? "_parent"
+                : "_blank"
+            }
             rel="noopener noreferrer"
             className="hover:opacity-90 transition-opacity duration-200 block group relative"
           >
             <img
               src={sponsor.logo}
               alt={sponsor.name}
-              className={`${logoSizes} object-contain mx-auto filter group-hover:brightness-110 transition-all duration-300 drop-shadow-lg hover:drop-shadow-xl`}
+              className={`${logoSizes} object-contain mx-auto transition-all duration-300 drop-shadow-lg hover:drop-shadow-xl`}
               loading="lazy"
             />
             {title === "Headline Sponsor" && (

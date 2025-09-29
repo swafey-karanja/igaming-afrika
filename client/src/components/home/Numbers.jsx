@@ -59,7 +59,7 @@ const AccordionItem = ({ title, content, isOpen, onClick }) => {
         whileHover={{ backgroundColor: "rgba(0, 0, 0, 0.02)" }}
         whileTap={{ scale: 0.99 }}
       >
-        <span className="font-semibold text-gray-900 text-sm md:text-base">
+        <span className="font-semibold text-gray-900 text-sm md:text-[15px]">
           {title}
         </span>
         <motion.div
@@ -83,7 +83,7 @@ const AccordionItem = ({ title, content, isOpen, onClick }) => {
         className="overflow-hidden"
       >
         <div className="px-1 pb-4">
-          <div className="text-xs md:text-sm font-medium leading-relaxed text-gray-700">
+          <div className="text-xs md:text-[13px] font-medium leading-relaxed text-gray-700">
             {content}
           </div>
         </div>
@@ -164,27 +164,27 @@ const Numbers = () => {
     {
       value: "3500+",
       label: "Delegates",
-      icon: "🧑‍💼",
+      icon: "/Iconography/Delegates.png",
     },
     {
       value: "100+",
       label: "Speakers",
-      icon: "🎤",
+      icon: "/Iconography/Speakers.png",
     },
     {
       value: "350+",
       label: "Affiliates",
-      icon: "🔗",
+      icon: "/Iconography/Affiliates.png",
     },
     {
       value: "500+",
       label: "Operators",
-      icon: "🎮",
+      icon: "/Iconography/Operators.png",
     },
     {
       value: "100+",
       label: "Exhibitors & Sponsors",
-      icon: "🏢",
+      icon: "/Iconography/Exhibitors.png",
     },
   ];
 
@@ -201,7 +201,7 @@ const Numbers = () => {
       <div className="absolute inset-0 bg-black/20 backdrop-blur-[0.5px]" />
 
       {/* Top Section: What is AGS */}
-      <div className="relative w-full flex justify-center bg-white/95 backdrop-blur-sm">
+      <div className="relative w-full flex justify-center bg-gray-100 backdrop-blur-sm">
         <motion.div
           initial="hidden"
           whileInView="visible"
@@ -211,12 +211,12 @@ const Numbers = () => {
         >
           {/* Grid Container */}
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 h-auto lg:min-h-[600px]">
-            {/* Top Left: First Question and Answer */}
+            {/* Top Left: Image */}
             <motion.div
               variants={fadeIn}
               className="flex flex-col justify-center mb-10"
             >
-              <div className="relative w-full aspect-video lg:aspect-square max-h-[400px] rounded-2xl overflow-hidden">
+              <div className="relative w-full aspect-video lg:aspect-square max-h-[450px] rounded-2xl overflow-hidden">
                 <motion.img
                   variants={scaleIn}
                   src="/Nairobi.webp"
@@ -227,11 +227,11 @@ const Numbers = () => {
               </div>
             </motion.div>
 
-            {/* Top Right: Image */}
+            {/* Top Right: First Question and Answer */}
             <motion.div
               variants={fadeIn}
               transition={{ delay: 0.1 }}
-              className="flex flex-col justify-center"
+              className="flex flex-col mt-20"
             >
               <motion.h1
                 variants={scaleIn}
@@ -242,9 +242,9 @@ const Numbers = () => {
               </motion.h1>
               <motion.div
                 variants={fadeIn}
-                className="text-xs md:text-sm font-medium leading-relaxed text-gray-700"
+                className="text-xs md:text-[13px] font-medium leading-relaxed text-gray-700"
               >
-                <strong className="text-lg">
+                <strong className="text-[15px]">
                   iGaming AFRIKA Summit is Africa's mega gaming event, designed
                   to unite the entire gaming industry players across the world
                   in one place—the stunning city of Nairobi, Kenya from 4th -
@@ -270,7 +270,7 @@ const Numbers = () => {
             >
               <motion.h2
                 variants={scaleIn}
-                className="text-md md:text-lg lg:text-4xl font-bold mb-6 text-green-700 leading-tight"
+                className="text-md md:text-lg lg:text-4xl font-bold mb-3 text-green-700 leading-tight"
               >
                 What Makes iGaming AFRIKA SUMMIT Special?
               </motion.h2>
@@ -322,10 +322,17 @@ const Numbers = () => {
         <motion.div variants={fadeIn} className="text-center mb-8 md:mb-12">
           <motion.h2
             variants={scaleIn}
-            className="text-2xl md:text-3xl lg:text-4xl font-bold text-white mb-4 leading-tight"
+            className="text-2xl md:text-4xl font-bold bg-gradient-to-r from-green-700 to-green-600 bg-clip-text text-transparent mb-2"
           >
             Numbers tell our story
           </motion.h2>
+          <motion.div
+            className="w-20 h-1 bg-gradient-to-r from-green-600 to-green-600 mx-auto rounded-full my-6"
+            initial={{ width: 0 }}
+            whileInView={{ width: 96 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8, delay: 0.3 }}
+          />
         </motion.div>
 
         <motion.div
@@ -349,9 +356,9 @@ const Numbers = () => {
             >
               <motion.div
                 variants={scaleIn}
-                className="text-3xl mb-4 group-hover:scale-110 transition-transform duration-300"
+                className="text-xl mb-4 group-hover:scale-110 transition-transform duration-300"
               >
-                {stat.icon}
+                <img src={stat.icon} alt={stat.label} className="h-25 w-auto" />
               </motion.div>
 
               <motion.h3

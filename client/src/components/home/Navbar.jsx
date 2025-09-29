@@ -103,11 +103,11 @@ const Navbar = () => {
   }, [isSidebarOpen]);
 
   return (
-    <div className="relative bg-black min-h-screen">
+    <div className="relative min-h-screen">
       <header
         className={`fixed top-0 left-0 w-full inset-x-0 z-40 py-2 sm:py-3 md:py-4 transition-all duration-700 ease-in-out ${
           isScrolled
-            ? "bg-gray-300 shadow-md drop-shadow-md text-black"
+            ? "bg-[#ffffff] shadow-md drop-shadow-md text-black"
             : "bg-transparent text-white"
         }`}
       >

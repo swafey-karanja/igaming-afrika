@@ -110,7 +110,7 @@ export default function DropdownMenu({
       onMouseLeave={handleMouseLeave}
     >
       <button
-        className={`flex items-center gap-1 text-xs font-semibold uppercase transition-colors ${labelColor} cursor-pointer hover:underline`}
+        className={`flex items-center gap-1 text-xs font-bold uppercase transition-colors ${labelColor} cursor-pointer hover:text-red-600`}
       >
         {label}
         <ChevronDown
