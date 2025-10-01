@@ -381,7 +381,7 @@ const Navbar = () => {
       </div>
 
       {/* Hero Section with Event Details */}
-      <div className="relative flex items-center justify-center min-h-screen pt-15 pb-0">
+      <div className="relative flex items-center justify-center min-h-screen pt-10 pb-0">
         <div className="absolute inset-0 w-full h-full overflow-hidden z-0">
           <video
             className="absolute top-0 left-0 w-full h-full object-cover"
@@ -402,9 +402,9 @@ const Navbar = () => {
 
         <div className="relative z-10 text-center text-white px-4 w-full max-w-4xl mx-auto">
           <img
-            src="/Summit_Logo.png"
+            src="/iga-summit-for-website.png"
             alt="iGaming Afrika Logo"
-            className="w-full max-w-[200px] md:max-w-[320px] lg:max-w-[320px] mx-auto"
+            className="w-full max-w-[250px] md:max-w-[450px] lg:max-w-[500px] mx-auto mb-6"
           />
           <p className="text-md sm:text-xl lg:text-xl font-semibold mb-2 sm:mb-3 lg:mb-4">
             4 - 6 MAY, 2026

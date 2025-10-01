@@ -207,21 +207,21 @@ const Numbers = () => {
           whileInView="visible"
           viewport={{ once: true }}
           transition={{ staggerChildren: 0.2 }}
-          className="w-full max-w-[1600px] text-gray-800 py-8 md:py-12 lg:py-16 px-6 sm:px-8 lg:px-12"
+          className="w-full max-w-[1600px] text-gray-800 py-8 md:py-12 lg:pt-16 lg:pb-0 px-6 sm:px-8 lg:px-12"
         >
           {/* Grid Container */}
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 h-auto lg:min-h-[600px]">
+          <div className="grid grid-cols-1 lg:grid-cols-2 h-auto lg:min-h-[600px]">
             {/* Top Left: Image */}
             <motion.div
               variants={fadeIn}
-              className="flex flex-col justify-center mb-10"
+              className="flex flex-col justify-center mb-10 lg:mb-0"
             >
-              <div className="relative w-full aspect-video lg:aspect-square max-h-[450px] rounded-2xl overflow-hidden">
+              <div className="relative w-full aspect-video lg:aspect-square max-h-[450px] overflow-hidden">
                 <motion.img
                   variants={scaleIn}
                   src="/Nairobi.webp"
                   alt="iGaming AFRIKA Summit Event"
-                  className="w-full h-full object-cover rounded-2xl"
+                  className="w-full h-full object-cover"
                   loading="lazy"
                 />
               </div>
@@ -231,14 +231,14 @@ const Numbers = () => {
             <motion.div
               variants={fadeIn}
               transition={{ delay: 0.1 }}
-              className="flex flex-col mt-20"
+              className="flex flex-col mt-0 md:mb-10 lg:mt-5 ml-0 lg:ml-12"
             >
               <motion.h1
                 variants={scaleIn}
                 className="text-md md:text-lg lg:text-4xl font-bold mb-6 text-green-700 leading-tight"
               >
                 What is the iGaming AFRIKA Summit
-                <br /> (iGA Summit)?
+                <br className="block md:hidden lg:block" /> (iGA Summit)?
               </motion.h1>
               <motion.div
                 variants={fadeIn}
@@ -266,7 +266,7 @@ const Numbers = () => {
             <motion.div
               variants={fadeIn}
               transition={{ delay: 0.2 }}
-              className="flex flex-col justify-center"
+              className="flex flex-col mt-10 lg:mr-12 mb-0"
             >
               <motion.h2
                 variants={scaleIn}
@@ -292,12 +292,12 @@ const Numbers = () => {
             <motion.div
               variants={fadeIn}
               transition={{ delay: 0.3 }}
-              className="flex items-center justify-center"
+              className="flex mt-10 lg:mt-0"
             >
-              <div className="relative w-full aspect-video max-h-[600px] rounded-2xl overflow-hidden">
+              <div className="relative w-full aspect-video min-h-[300px] lg:min-h-[600px] overflow-hidden">
                 <motion.iframe
                   variants={scaleIn}
-                  className="w-full h-full rounded-2xl"
+                  className="w-full h-full lg:h-[80%]"
                   src="https://www.youtube.com/embed/2uGFFuhAVhM"
                   title="Why iGA Summit 2026; Unpacking the iGaming AFRIKA Summit"
                   frameBorder="0"
@@ -346,7 +346,7 @@ const Numbers = () => {
               },
             },
           }}
-          className="grid grid-cols-2 md:grid-cols-5 gap-8 md:gap-12"
+          className="grid grid-cols-2 lg:grid-cols-5 gap-8 md:gap-12"
         >
           {stats.map((stat, index) => (
             <motion.div
