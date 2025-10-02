@@ -381,7 +381,7 @@ const Navbar = () => {
       </div>
 
       {/* Hero Section with Event Details */}
-      <div className="relative flex items-center justify-center min-h-screen pt-10 pb-0">
+      <div className="relative flex items-center justify-center min-h-screen pt-15 lg:pt-25 xl:pt-30 pb-0">
         <div className="absolute inset-0 w-full h-full overflow-hidden z-0">
           <video
             className="absolute top-0 left-0 w-full h-full object-cover"
@@ -400,62 +400,41 @@ const Navbar = () => {
           <div className="absolute inset-0 bg-black opacity-50"></div>
         </div>
 
-        <div className="relative z-10 text-center text-white px-4 w-full max-w-4xl mx-auto">
+        <div className="relative z-10 text-center text-white px-4 w-full max-w-6xl mx-auto">
           <img
             src="/iga-summit-for-website.png"
             alt="iGaming Afrika Logo"
-            className="w-full max-w-[250px] md:max-w-[450px] lg:max-w-[500px] mx-auto mb-6"
+            className="w-full max-w-[250px] sm:max-w-[350px] md:max-w-[400px] mx-auto mb-4 sm:mb-6 lg:mb-8"
           />
-          <p className="text-md sm:text-xl lg:text-xl font-semibold mb-2 sm:mb-3 lg:mb-4">
+          <p className="text-sm sm:text-lg lg:text-xl font-semibold mb-2 sm:mb-3 lg:mb-4">
             4 - 6 MAY, 2026
           </p>
-          {/* <h1 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold mb-2">28-31 JULY, 2026</h1> */}
-          <p className="text-sm sm:text-[16px] lg:text-[16px] mb-6 sm:mb-8 lg:mb-10">
-            {" "}
+          <p className="text-xs sm:text-sm lg:text-base mb-4 sm:mb-6 lg:mb-6">
             Sarit Expo Centre, Nairobi, Kenya
           </p>
-          <p className="text-md sm:text-5xl lg:text-5xl font-semibold mb-2 sm:mb-3 lg:mb-4 text-[#14a45c]">
+          <p className="text-xl sm:text-3xl lg:text-4xl xl:text-5xl font-semibold mb-3 sm:mb-4 lg:mb-4 text-[#14a45c] px-2">
             The Heart of Gaming in Africa
           </p>
 
           {/* Countdown Timer */}
-          <div className="flex justify-center space-x-2 sm:space-x-3 md:space-x-4 lg:space-x-6 mb-6 sm:mb-8 lg:mb-8">
-            <div className="text-center px-2 sm:px-3 py-1 sm:py-2 lg:px-4 lg:py-2 bg-opacity-30 rounded lg:rounded-lg">
-              <div className="text-lg sm:text-xl md:text-2xl lg:text-2xl font-bold">
-                {timeLeft.days}
+          <div className="flex flex-wrap justify-center gap-2 sm:gap-3 md:gap-4 lg:gap-6 mb-4 sm:mb-6 lg:mb-8 max-w-2xl mx-auto">
+            {["days", "hours", "minutes", "seconds"].map((unit) => (
+              <div
+                key={unit}
+                className="text-center px-3 sm:px-4 py-2 sm:py-3 bg-opacity-10 rounded-lg min-w-[60px] sm:min-w-[70px] lg:min-w-[80px]"
+              >
+                <div className="text-base sm:text-xl md:text-2xl lg:text-3xl font-bold">
+                  {timeLeft[unit]}
+                </div>
+                <div className="text-xs sm:text-sm lg:text-base uppercase tracking-wide">
+                  {unit}
+                </div>
               </div>
-              <div className="text-xs sm:text-sm lg:text-base uppercase">
-                Days
-              </div>
-            </div>
-            <div className="text-center px-2 sm:px-3 py-1 sm:py-2 lg:px-4 lg:py-2 bg-opacity-30 rounded lg:rounded-lg">
-              <div className="text-lg sm:text-xl md:text-2xl lg:text-2xl font-bold">
-                {timeLeft.hours}
-              </div>
-              <div className="text-xs sm:text-sm lg:text-base uppercase">
-                Hours
-              </div>
-            </div>
-            <div className="text-center px-2 sm:px-3 py-1 sm:py-2 lg:px-4 lg:py-2 bg-opacity-30 rounded lg:rounded-lg">
-              <div className="text-lg sm:text-xl md:text-2xl lg:text-2xl font-bold">
-                {timeLeft.minutes}
-              </div>
-              <div className="text-xs sm:text-sm lg:text-base uppercase">
-                Minutes
-              </div>
-            </div>
-            <div className="text-center px-2 sm:px-3 py-1 sm:py-2 lg:px-4 lg:py-2 bg-opacity-30 rounded lg:rounded-lg">
-              <div className="text-lg sm:text-xl md:text-2xl lg:text-2xl font-bold">
-                {timeLeft.seconds}
-              </div>
-              <div className="text-xs sm:text-sm lg:text-base uppercase">
-                Seconds
-              </div>
-            </div>
+            ))}
           </div>
 
-          <div className="bg-opacity-40 backdrop-blur-sm rounded-lg p-3 sm:p-4 md:p-6 lg:p-8 max-w-lg sm:max-w-xl md:max-w-2xl lg:max-w-2xl mx-auto">
-            <p className="text-xs sm:text-sm md:text-md lg:text-md mb-6 sm:mb-8 md:mb-10 lg:mb-10">
+          <div className="bg-black bg-opacity-40 backdrop-blur-sm rounded-lg p-4 sm:p-6 md:p-8 max-w-4xl mx-auto">
+            <p className="text-xs sm:text-sm md:text-base lg:text-lg mb-6 sm:mb-12 leading-relaxed">
               With expected attendees from over 100 countries, this event is
               unmatched in its international reach. Explore sections dedicated
               to key industry verticals such as regulation, affiliate marketing,
@@ -463,36 +442,34 @@ const Navbar = () => {
               sessions to earn industry insights and knowledge.
             </p>
 
-            <div className="flex flex-col sm:flex-row justify-center space-y-4 sm:space-y-0 sm:space-x-4 lg:space-x-4">
-              <button className="bg-transparent hover:bg-green-600 hover:bg-opacity-20 hover:cursor-pointer text-sm lg:text-base text-white font-bold self-center w-3/4 md:w-1/2 lg:w-1/2 py-2 px-4 md:py-3 md:px-8 lg:py-3 lg:px-8 border border-green-600 rounded-md">
+            {/* Primary CTA Button */}
+            <div className="flex justify-center mb-4">
+              <button className="bg-transparent hover:bg-green-600 hover:bg-opacity-20 transition-colors duration-300 text-sm lg:text-base text-white font-bold w-full max-w-xs sm:max-w-sm py-3 px-4 border-2 border-green-600 rounded-md">
                 <NavLink to="/register">Register interest</NavLink>
               </button>
             </div>
-            <div className="flex flex-col sm:flex-row justify-center space-y-4 sm:space-y-0 sm:space-x-4 lg:space-x-4 mt-6">
+
+            {/* Secondary CTA Buttons */}
+            <div className="flex flex-col sm:flex-row justify-center gap-3 sm:gap-4">
               <button
-                className="bg-transparent hover:bg-green-600 hover:bg-opacity-20 hover:cursor-pointer text-sm lg:text-base text-white font-bold self-center w-auto py-2 px-4 md:py-3 md:px-8 lg:py-3 lg:px-8 border border-green-600 rounded-md"
+                className="bg-transparent hover:bg-green-600 hover:bg-opacity-20 transition-colors duration-300 text-xs sm:text-sm lg:text-base text-white font-bold w-full py-3 px-4 border-2 border-green-600 rounded-md whitespace-normal sm:whitespace-nowrap text-center"
                 onClick={() => {
-                  // Navigate to checkout with operator's pass data
                   navigate("/checkout", {
                     state: { selectedTicket: operatorPassData },
                   });
                 }}
               >
-                <span className="whitespace-nowrap">
-                  Operators - Apply for the Free Operator's Pass
-                </span>
+                Operators - Apply for the Free Operator's Pass
               </button>
               <button
-                className="bg-transparent hover:bg-green-600 hover:bg-opacity-20 hover:cursor-pointer text-sm lg:text-base text-white font-bold self-center w-auto py-2 px-4 md:py-3 md:px-8 lg:py-3 lg:px-8 border border-green-600 rounded-md"
+                className="bg-transparent hover:bg-green-600 hover:bg-opacity-20 transition-colors duration-300 text-xs sm:text-sm lg:text-base text-white font-bold w-full py-3 px-4 border-2 border-green-600 rounded-md whitespace-normal sm:whitespace-nowrap text-center"
                 onClick={() => {
                   document.getElementById("tickets")?.scrollIntoView({
                     behavior: "smooth",
                   });
                 }}
               >
-                <span className="whitespace-nowrap">
-                  Affiliates - Apply for the Free Standard Pass
-                </span>
+                Affiliates - Apply for the Free Standard Pass
               </button>
             </div>
           </div>
