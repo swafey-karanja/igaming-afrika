@@ -381,7 +381,7 @@ const Navbar = () => {
       </div>
 
       {/* Hero Section with Event Details */}
-      <div className="relative flex items-center justify-center min-h-screen pt-15 lg:pt-25 xl:pt-30 pb-0">
+      <div className="relative flex items-center justify-center min-h-screen pt-15 xl:pt-25 2xl:pt-25 pb-0">
         <div className="absolute inset-0 w-full h-full overflow-hidden z-0">
           <video
             className="absolute top-0 left-0 w-full h-full object-cover"
@@ -404,7 +404,7 @@ const Navbar = () => {
           <img
             src="/iga-summit-for-website.png"
             alt="iGaming Afrika Logo"
-            className="w-full max-w-[250px] sm:max-w-[350px] md:max-w-[400px] mx-auto mb-4 sm:mb-6 lg:mb-8"
+            className="w-full max-w-[250px] sm:max-w-[350px] md:max-w-[450px] mx-auto mb-4 sm:mb-6 lg:mb-8"
           />
           <p className="text-sm sm:text-lg lg:text-xl font-semibold mb-2 sm:mb-3 lg:mb-4">
             4 - 6 MAY, 2026
@@ -434,7 +434,7 @@ const Navbar = () => {
           </div>
 
           <div className="bg-black bg-opacity-40 backdrop-blur-sm rounded-lg p-4 sm:p-6 md:p-8 max-w-4xl mx-auto">
-            <p className="text-xs sm:text-sm md:text-base lg:text-lg mb-6 sm:mb-12 leading-relaxed">
+            <p className="text-xs sm:text-sm md:text-md mb-6 sm:mb-12 leading-relaxed">
               With expected attendees from over 100 countries, this event is
               unmatched in its international reach. Explore sections dedicated
               to key industry verticals such as regulation, affiliate marketing,
