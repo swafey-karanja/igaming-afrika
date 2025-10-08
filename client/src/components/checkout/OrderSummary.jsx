@@ -26,7 +26,7 @@ const OrderSummary = ({ selectedTicket }) => {
         </h3>
         <div className="space-y-1 text-sm text-gray-600">
           <div className="flex items-center">
-            <Calendar className="w-4 h-4 mr-2" /> March 4-6, 2026
+            <Calendar className="w-4 h-4 mr-2" /> May 4-6, 2026
           </div>
           <div className="flex items-center">
             <MapPin className="w-4 h-4 mr-2" /> Nairobi, Kenya

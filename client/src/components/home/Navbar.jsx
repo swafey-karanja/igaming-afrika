@@ -407,7 +407,7 @@ const Navbar = () => {
             className="w-full max-w-[250px] sm:max-w-[350px] md:max-w-[450px] mx-auto mb-4 sm:mb-6 lg:mb-8"
           />
           <p className="text-sm sm:text-lg lg:text-xl font-semibold mb-2 sm:mb-3 lg:mb-4">
-            4 - 6 MAY, 2026
+            4 - 6 &nbsp; MAY, 2026
           </p>
           <p className="text-xs sm:text-sm lg:text-base mb-4 sm:mb-6 lg:mb-6">
             Sarit Expo Centre, Nairobi, Kenya

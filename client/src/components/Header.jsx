@@ -135,7 +135,7 @@ const Header = () => {
                 }}
               >
                 <img
-                  className="w-auto h-18 sm:h-20 md:h-24 lg:h-30"
+                  className="w-auto h-10 sm:h-12 md:h-16 lg:h-16"
                   src="/Summit_Logo.png"
                   alt="iGaming Afrika"
                 />
