@@ -126,6 +126,11 @@ const FAQSection = () => {
       answer:
         "Yes, networking events will be held throughout the Summit, providing attendees with opportunities to connect and collaborate with industry professionals. More details will be shared closer to the event date.",
     },
+    {
+      question: "Are there opportunities for Media Partnerships?",
+      answer:
+        "The iGA Summit collaborates with various media partners worldwide to enhance the event's visibility and provide valuable exposure opportunities within the iGaming AFRIKA Community. If you're interested in becoming an official Media Partner, please reach out to our Media Relations team at 'mediarelations@igamingafrika.com'.",
+    },
   ];
 
   const fadeIn = {
