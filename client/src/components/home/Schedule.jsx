@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 // eslint-disable-next-line no-unused-vars
 import { motion } from "framer-motion";
+import { CalendarDropdown } from "../utils/CalendarDropdown";
 
 export default function Schedule() {
   const [activeTab, setActiveTab] = useState(0);
@@ -277,6 +278,13 @@ export default function Schedule() {
             )}
           </motion.div>
         </motion.div>
+
+        <div className="flex gap-6 mb-2 sm:mb-3 lg:mb-4">
+          {/* Calendar button positioned at top right */}
+          <div className="">
+            <CalendarDropdown iconSize="md" showText={true} />
+          </div>
+        </div>
       </div>
     </div>
   );

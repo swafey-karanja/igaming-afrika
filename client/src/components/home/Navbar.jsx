@@ -12,6 +12,7 @@ import {
 } from "react-icons/fa";
 import { countries, menuItems, options } from "../../data/dropdownData";
 import DropdownMenu, { NewsDropdown } from "../utils/DropdownMenus";
+import { CalendarDropdown } from "../utils/CalendarDropdown";
 
 const Navbar = () => {
   const [isSidebarOpen, setSidebarOpen] = useState(false);
@@ -406,9 +407,15 @@ const Navbar = () => {
             alt="iGaming Afrika Logo"
             className="w-full max-w-[250px] sm:max-w-[350px] md:max-w-[450px] mx-auto mb-4 sm:mb-6 lg:mb-8"
           />
-          <p className="text-sm sm:text-lg lg:text-xl font-semibold mb-2 sm:mb-3 lg:mb-4">
-            4 - 6 &nbsp; MAY, 2026
-          </p>
+          <div className="flex gap-6 items-center justify-center mb-2 sm:mb-3 lg:mb-4">
+            <p className="text-sm sm:text-lg lg:text-xl font-semibold">
+              4 - 6 &nbsp; MAY, 2026
+            </p>
+            {/* Calendar button positioned at top right */}
+            <div className="">
+              <CalendarDropdown iconSize="md" showText={false} />
+            </div>
+          </div>
           <p className="text-xs sm:text-sm lg:text-base mb-4 sm:mb-6 lg:mb-6">
             Sarit Expo Centre, Nairobi, Kenya
           </p>
@@ -433,7 +440,7 @@ const Navbar = () => {
             ))}
           </div>
 
-          <div className="bg-black bg-opacity-40 backdrop-blur-sm rounded-lg p-4 sm:p-6 md:p-8 max-w-4xl mx-auto">
+          <div className="backdrop-blur-sm rounded-lg p-4 sm:p-6 md:p-8 max-w-4xl mx-auto">
             <p className="text-xs sm:text-sm md:text-md mb-6 sm:mb-12 leading-relaxed">
               With expected attendees from over 100 countries, this event is
               unmatched in its international reach. Explore sections dedicated

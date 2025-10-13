@@ -11,6 +11,7 @@ import {
 } from "react-icons/fa";
 import { countries, menuItems, options } from "../data/dropdownData";
 import DropdownMenu, { NewsDropdown } from "./utils/DropdownMenus";
+import { CalendarDropdown } from "./utils/CalendarDropdown";
 
 const Header = () => {
   const [isSidebarOpen, setSidebarOpen] = useState(false);
@@ -135,7 +136,7 @@ const Header = () => {
                 }}
               >
                 <img
-                  className="w-auto h-10 sm:h-12 md:h-16 lg:h-16"
+                  className="w-auto h-10 sm:h-12 md:h-20 lg:h-20"
                   src="/Summit_Logo.png"
                   alt="iGaming Afrika"
                 />
@@ -371,13 +372,19 @@ const Header = () => {
 
         <div className="relative z-10 text-center text-white px-4 w-full max-w-xl mx-auto">
           <img
-            src="/Summit_Logo.png"
+            src="/iga-summit-for-website.png"
             alt="iGaming Afrika Logo"
-            className="w-full max-w-xs mx-auto"
+            className="w-full max-w-[200px] sm:max-w-[250px] md:max-w-[350px] mx-auto mb-4 sm:mb-6 lg:mb-8"
           />
-          <p className="text-md sm:text-xl lg:text-xl font-semibold mb-2 sm:mb-3 lg:mb-4">
-            4 - 6 MAY, 2026
-          </p>
+          <div className="flex gap-6 items-center justify-center mb-2 sm:mb-3 lg:mb-4">
+            <p className="text-sm sm:text-lg lg:text-xl font-semibold">
+              4 - 6 &nbsp; MAY, 2026
+            </p>
+            {/* Calendar button positioned at top right */}
+            <div className="">
+              <CalendarDropdown iconSize="md" showText={false} />
+            </div>
+          </div>
           {/* <h1 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold mb-2">28-31 JULY, 2026</h1> */}
           <p className="text-sm sm:text-[14px] mb-6 sm:mb-8 font-semibold">
             {" "}
