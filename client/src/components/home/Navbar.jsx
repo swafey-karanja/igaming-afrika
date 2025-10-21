@@ -113,10 +113,10 @@ const Navbar = () => {
         }`}
       >
         <div className="px-4 sm:px-6 lg:px-8 mx-auto max-w-[1600px]">
-          <div className="flex items-center lg:justify-between lg:items-stretch lg:flex-row relative">
+          <div className="flex items-center xl:justify-between xl:items-stretch xl:flex-row relative">
             {/* Hamburger Menu - Only visible on small screens */}
             <div
-              className={`lg:hidden flex items-center ${
+              className={`xl:hidden flex items-center ${
                 isSidebarOpen ? "hidden" : ""
               }`}
             >
@@ -145,7 +145,7 @@ const Navbar = () => {
 
             {/* Logo */}
             <div
-              className={`flex flex-shrink-0 lg:mx-0 lg:flex-grow-0 ml-4 ${
+              className={`flex flex-shrink-0 lg:mx-0 lg:flex-grow-0 ${
                 isSidebarOpen ? "hidden" : ""
               }`}
             >
@@ -157,14 +157,14 @@ const Navbar = () => {
                 className="inline-flex rounded-md"
               >
                 <img
-                  className="w-auto h-10 sm:h-12 md:h-16 lg:h-16"
+                  className="w-auto h-10 sm:h-12 md:h-16 lg:h-18"
                   src="https://igamingafrika.com/wp-content/uploads/2023/04/iGaming-Logo-2b.png"
                   alt="iGaming Afrika"
                 />
               </a>
             </div>
             {/* Desktop Nav */}
-            <nav className="hidden lg:flex lg:items-center lg:justify-center xl:space-x-7 lg:space-x-6 whitespace-nowrap w-full max-w-3xl lg:max-w-4xl">
+            <nav className="hidden xl:flex lg:items-center lg:justify-center xl:space-x-7 lg:space-x-6 whitespace-nowrap w-full max-w-3xl lg:max-w-4xl">
               <NewsDropdown isScrolled={isScrolled} isInSidebar={false} />
               <DropdownMenu
                 label="countries"
@@ -208,25 +208,13 @@ const Navbar = () => {
                 CONTACT US
               </button>
             </nav>
-
-            {/* Right Side Social Links */}
-            {/* <div className="hidden lg:flex lg:items-center xl:space-x-3 lg:space-x-3 sm:text-lg lg:text-lg">
-              <button
-                className={`${
-                  isScrolled ? "text-black" : "text-white"
-                } ml-5 lg:ml-6 hover:text-gray-500`}
-                aria-label="Search"
-              >
-                <FaSearch />
-              </button>
-            </div> */}
           </div>
         </div>
       </header>
 
       {/* Mobile Sidebar Overlay */}
       <div
-        className={`fixed inset-0 z-20 bg-opacity-60 lg:hidden transition-opacity duration-300 ${
+        className={`fixed inset-0 z-20 bg-opacity-60 xl:hidden transition-opacity duration-300 ${
           isSidebarOpen
             ? "opacity-100 pointer-events-auto"
             : "opacity-0 pointer-events-none"
@@ -237,7 +225,7 @@ const Navbar = () => {
 
       {/* Mobile Sidebar */}
       <div
-        className={`fixed top-0 left-0 z-30 w-full h-screen transform transition-transform duration-300 ease-in-out lg:hidden bg-green-600 ${
+        className={`fixed top-0 left-0 z-30 w-full h-screen transform transition-transform duration-300 ease-in-out xl:hidden bg-green-600 ${
           isSidebarOpen ? "translate-x-0" : "-translate-x-full"
         }`}
         aria-label="Mobile navigation"
@@ -251,7 +239,7 @@ const Navbar = () => {
               aria-label="Close menu"
             >
               <svg
-                className="w-7 h-7"
+                className="md:w-8 md:h-8 w-5 h-5"
                 fill="none"
                 stroke="currentColor"
                 viewBox="0 0 24 24"
@@ -269,19 +257,6 @@ const Navbar = () => {
           {/* Scrollable Content */}
           <div className="flex-1 overflow-y-auto">
             <div className="p-6 space-y-6">
-              {/* Search Bar */}
-              {/* <div className="relative">
-                <input
-                  type="text"
-                  placeholder="Search..."
-                  className="w-full py-3 pl-4 pr-12 rounded-xl text-white text-sm placeholder-white/70 focus:outline-none focus:ring-2 focus:ring-white/20 transition-all duration-200"
-                  style={{ backgroundColor: "rgba(255, 255, 255, 0.1)" }}
-                />
-                <div className="absolute right-4 top-1/2 transform -translate-y-1/2">
-                  <FaSearch className="text-white/70 text-sm" />
-                </div>
-              </div> */}
-
               {/* Navigation Menu */}
               <nav className="space-y-2">
                 <NewsDropdown isScrolled={isScrolled} isInSidebar={true} />
@@ -307,8 +282,11 @@ const Navbar = () => {
 
               {/* CTA Button */}
               <div className="pt-4">
-                <button className="w-full bg-white/10 hover:bg-white/20 text-white font-semibold py-3 px-6 rounded-xl border border-white/30 hover:border-white/50 transition-all duration-200 backdrop-blur-sm">
-                  <NavLink to="/register" className="block">
+                <button className="w-full bg-white/10 hover:bg-white/20 text-white font-semibold px-3 py-3 xl:px-6 rounded-xl border border-white/30 hover:border-white/50 transition-all duration-200 backdrop-blur-sm">
+                  <NavLink
+                    to="/register"
+                    className="block text-[10px] md:text-[14px]"
+                  >
                     REGISTER INTEREST
                   </NavLink>
                 </button>
@@ -402,23 +380,30 @@ const Navbar = () => {
         </div>
 
         <div className="relative z-10 text-center text-white px-4 w-full max-w-6xl mx-auto">
-          <img
-            src="/iga-summit-for-website.png"
-            alt="iGaming Afrika Logo"
-            className="w-full max-w-[250px] sm:max-w-[350px] md:max-w-[450px] mx-auto mb-4 sm:mb-6 lg:mb-8"
-          />
+          {/* Replacing the image with styled text */}
+          <div className="text-center mb-8 sm:mb-16">
+            <h1 className="font-extrabold text-4xl sm:text-5xl md:text-6xl lg:text-[80px] tracking-tight">
+              <span className="text-[#14a45c]">iGA</span>
+              <span className="text-[#14a45c]"> SUMMIT</span>
+            </h1>
+            <h2 className="text-[#c8ff00e1] text-lg sm:text-xl md:text-3xl lg:text-[35px] tracking-[0.32em] md:tracking-[0.37em] lg:tracking-[0.50em] font-bold mt-1">
+              NAIROBI 2026
+            </h2>
+          </div>
+
           <div className="flex gap-6 items-center justify-center mb-2 sm:mb-3 lg:mb-4">
             <p className="text-sm sm:text-lg lg:text-xl font-semibold">
               4 - 6 &nbsp; MAY, 2026
             </p>
-            {/* Calendar button positioned at top right */}
-            <div className="">
+            <div>
               <CalendarDropdown iconSize="md" showText={false} />
             </div>
           </div>
+
           <p className="text-xs sm:text-sm lg:text-base mb-4 sm:mb-6 lg:mb-6">
             Sarit Expo Centre, Nairobi, Kenya
           </p>
+
           <p className="text-xl sm:text-3xl lg:text-4xl xl:text-5xl font-semibold mb-3 sm:mb-4 lg:mb-4 text-[#14a45c] px-2">
             The Heart of Gaming in Africa
           </p>
@@ -449,14 +434,12 @@ const Navbar = () => {
               sessions to earn industry insights and knowledge.
             </p>
 
-            {/* Primary CTA Button */}
             <div className="flex justify-center mb-4">
               <button className="bg-transparent hover:bg-green-600 hover:bg-opacity-20 transition-colors duration-300 text-sm lg:text-base text-white font-bold w-full max-w-xs sm:max-w-sm py-3 px-4 border-2 border-green-600 rounded-md">
                 <NavLink to="/register">Register interest</NavLink>
               </button>
             </div>
 
-            {/* Secondary CTA Buttons */}
             <div className="flex flex-col sm:flex-row justify-center gap-3 sm:gap-4">
               <button
                 className="bg-transparent hover:bg-green-600 hover:bg-opacity-20 transition-colors duration-300 text-xs sm:text-sm lg:text-base text-white font-bold w-full py-3 px-4 border-2 border-green-600 rounded-md whitespace-normal sm:whitespace-nowrap text-center"

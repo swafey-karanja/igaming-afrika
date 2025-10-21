@@ -35,7 +35,7 @@ export default function DropdownMenu({
       <div className="text-white">
         <button
           onClick={toggleDropdown}
-          className="w-full flex justify-between items-center text-[14px] font-semibold uppercase transition-all duration-200 text-white hover:text-gray-200 hover:pl-2 focus:outline-none focus:text-gray-200 focus:pl-2 py-1 cursor-pointer"
+          className="w-full flex justify-between items-center text-[10px] md:text-[14px] font-semibold uppercase transition-all duration-200 text-white hover:text-gray-200 hover:pl-2 focus:outline-none focus:text-gray-200 focus:pl-2 py-1 cursor-pointer"
         >
           {label}
           <ChevronDown
@@ -201,7 +201,7 @@ export function NewsDropdown({ isScrolled, isInSidebar = false }) {
         {/* News Toggle (main) with smooth collapse/expand */}
         <button
           onClick={() => setIsSidebarOpen(!isSidebarOpen)}
-          className="w-full flex justify-between items-center text-[14px] uppercase font-bold tracking-wide cursor-pointer"
+          className="w-full flex justify-between items-center text-[10px] md:text-[14px] uppercase font-bold tracking-wide cursor-pointer"
         >
           News
           <svg

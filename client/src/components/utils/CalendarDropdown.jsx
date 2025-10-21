@@ -2,7 +2,6 @@ import { useState } from "react";
 import { CalendarPlus } from "lucide-react";
 
 export const CalendarDropdown = ({
-  iconSize = "md", // "sm" | "md" | "lg"
   showText = false, // whether to show "Add to Calendar" text
 }) => {
   const [isOpen, setIsOpen] = useState(false);
@@ -122,22 +121,17 @@ export const CalendarDropdown = ({
     },
   ];
 
-  // Icon size classes
-  const iconSizes = {
-    sm: 14,
-    md: 18,
-    lg: 24,
-  };
-
   return (
     <div className="relative inline-block">
       <button
         onMouseEnter={handleMouseEnter}
         onMouseLeave={handleMouseLeave}
-        className={`bg-[#14a45c] text-white px-5 py-3 rounded-full shadow-lg flex items-center gap-2`}
+        className="bg-[#14a45c] text-white md:px-[16px] md:py-[9px] px-2.5 py-[4px] rounded-full shadow-lg flex items-center gap-2"
         aria-label="Add to calendar"
       >
-        <CalendarPlus size={iconSizes[iconSize]} />
+        <span className="scale-90 sm:scale-100 md:scale-110 lg:scale-125 transition-transform">
+          <CalendarPlus size={18} />
+        </span>
         {showText && (
           <span className="font-semibold text-xs md:text-sm">
             Add to Calendar
