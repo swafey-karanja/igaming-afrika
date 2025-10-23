@@ -49,7 +49,7 @@ const FloorPlanIframe = () => {
       ref={containerRef}
       className="bg-gray-100 px-4 sm:px-6 lg:px-8 py-8 md:py-8 lg:py-8"
     >
-      <div className="max-w-[160p] mx-auto text-center">
+      <div className="container mx-auto text-center">
         <motion.div
           className="text-center mb-16"
           initial="hidden"
@@ -76,7 +76,7 @@ const FloorPlanIframe = () => {
         </motion.div>
       </div>
 
-      <div className="max-w-7xl mx-auto">
+      <div className="container mx-auto">
         <div className="h-[700px] w-full overflow-hidden rounded-lg shadow-lg relative">
           {!shouldLoad && (
             <div className="absolute inset-0 bg-gray-200 flex items-center justify-center">

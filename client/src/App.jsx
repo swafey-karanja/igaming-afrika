@@ -9,6 +9,7 @@ import Registration from "./pages/registration.jsx";
 import { Toaster } from "react-hot-toast";
 import { useEffect } from "react";
 import CheckoutPage from "./pages/checkout.jsx";
+import PublicationsPage from "./pages/PublicationsPage.jsx";
 
 const App = () => {
   useEffect(() => {
@@ -42,6 +43,10 @@ const App = () => {
           <Route path="/" element={<Home />} />
           <Route path="/register" element={<Registration />} />
           <Route path="/checkout" element={<CheckoutPage />} />
+          <Route
+            path="/publications/:category"
+            element={<PublicationsPage />}
+          />
         </Routes>
         <Footer />
         <Toaster

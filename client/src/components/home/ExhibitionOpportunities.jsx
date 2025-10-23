@@ -149,11 +149,11 @@ const ExhibitionPackages = () => {
       </div>
 
       {isLoading ? (
-        <div className="max-w-7xl mx-auto flex justify-center items-center py-20">
+        <div className="container mx-auto flex justify-center items-center py-20">
           <div className="animate-spin rounded-full h-10 w-10 border-t-2 border-b-2 border-green-600"></div>
         </div>
       ) : error ? (
-        <div className="max-w-7xl mx-auto flex flex-col items-center justify-center py-20 rounded-lg">
+        <div className="container mx-auto flex flex-col items-center justify-center py-20 rounded-lg">
           <AlertCircle className="h-12 w-12 text-red-500 mb-4" />
           <h3 className="text-md font-medium text-gray-900 mb-2">
             Unable to load sponsors
@@ -169,7 +169,7 @@ const ExhibitionPackages = () => {
           </button>
         </div>
       ) : (
-        <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+        <div className="container mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-10">
           {packages.map((pkg) => (
             <div
               key={pkg.id}
@@ -178,7 +178,7 @@ const ExhibitionPackages = () => {
               } ${pkg.status === "SOLD OUT" ? "opacity-60" : ""}`}
               onClick={() => pkg.status !== "SOLD OUT" && openModal(pkg)}
             >
-              <div className="p-6 flex flex-col flex-grow">
+              <div className="p-6 h-[420px] flex flex-col flex-grow">
                 <div className="flex items-center justify-between mb-4">
                   <span
                     className={`px-3 py-1 rounded-full text-xs font-semibold text-white bg-gradient-to-r ${getTierColor(

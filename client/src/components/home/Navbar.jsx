@@ -5,8 +5,6 @@ import {
   FaLinkedin,
   FaYoutube,
   FaInstagram,
-  FaTelegramPlane,
-  FaSearch,
   FaFacebook,
   FaSpotify,
 } from "react-icons/fa";

@@ -1,13 +1,12 @@
 import React, { useEffect, useState, useCallback } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { fetchNews } from "../../store/newsSlice";
+import { fetchPublications } from "../../store/publicationsSlice";
 // eslint-disable-next-line no-unused-vars
 import { motion } from "framer-motion";
 import { IoMdRefresh, IoMdTime } from "react-icons/io";
 
 const GlobalNews = () => {
   const dispatch = useDispatch();
-  const { news, loading, error } = useSelector((state) => state.news);
   const [visibleCount, setVisibleCount] = useState(6);
   const [isMobile, setIsMobile] = useState(false);
 
@@ -22,8 +21,14 @@ const GlobalNews = () => {
     return () => window.removeEventListener("resize", checkScreenSize);
   }, [checkScreenSize]);
 
+  const {
+    items: news,
+    loading,
+    error,
+  } = useSelector((state) => state.publications);
+
   useEffect(() => {
-    dispatch(fetchNews());
+    dispatch(fetchPublications({ categoryId: 20, tagId: 3229 }));
   }, [dispatch]);
 
   const handleShowMore = () => {
@@ -125,12 +130,20 @@ const GlobalNews = () => {
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.5 }}
         >
-          <div className="w-16 h-16 bg-red-50 rounded-full flex items-center justify-center mx-auto mb-4">
-            <IoMdRefresh className="w-8 h-8 text-red-500" />
+          <div className="flex items-center justify-center mx-auto mb-4">
+            <img
+              src="/error.png"
+              alt="error"
+              className="w-[400px] h-[400px] opacity-30"
+            />
           </div>
-          <p className="text-gray-700 mb-6">Unable to load news</p>
+          <p className="text-gray-400 font-bold text-4xl mb-6 opacity-50">
+            Unable to load news
+          </p>
           <motion.button
-            onClick={() => dispatch(fetchNews())}
+            onClick={() =>
+              dispatch(fetchPublications({ categoryId: 20, tagId: 3229 }))
+            }
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
             className="px-6 py-2 bg-green-600 text-white rounded-full hover:bg-green-600 transition-colors duration-200 font-medium"
@@ -142,9 +155,33 @@ const GlobalNews = () => {
     );
   }
 
+  if (!news.length) {
+    return (
+      <div className="min-h-[80vh] bg-gray-100 flex justify-center items-center">
+        <motion.div
+          className="text-center p-8"
+          initial={{ opacity: 0, scale: 0.9 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 0.5 }}
+        >
+          <div className="flex items-center justify-center mx-auto mb-4">
+            <img
+              src="/notFound-1.png"
+              alt="not-found"
+              className="w-[400px] h-[400px] opacity-30"
+            />
+          </div>
+          <p className="text-gray-400 font-bold text-4xl mb-6 opacity-50">
+            No News & Blogs Found
+          </p>
+        </motion.div>
+      </div>
+    );
+  }
+
   return (
-    <div className="min-h-screen bg-gray-100">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+    <div className=" bg-gray-100">
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-8">
         {/* Header */}
         <motion.div
           className="text-center mb-16"

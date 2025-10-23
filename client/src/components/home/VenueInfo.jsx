@@ -106,7 +106,7 @@ const Venue = () => {
 
   return (
     <div className="bg-gray-100 px-4 sm:px-6 lg:px-8 py-12 md:py-12 lg:py-12">
-      <div className="max-w-7xl mx-auto">
+      <div className="container mx-auto px-12">
         {/* Header Section */}
         <motion.div
           className="text-center mb-16"
@@ -199,7 +199,7 @@ const Venue = () => {
 
               <div className="p-6">
                 <p className="text-gray-600 mb-6">{venueInfo.description}</p>
-                <div className="grid grid-cols-2 gap-4">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                   <div className="flex items-center">
                     <Users className="w-5 h-5 text-green-600 mr-3" />
                     <div>
@@ -229,7 +229,7 @@ const Venue = () => {
                 <h4 className="text-xl font-bold text-green-700 mb-4">
                   Contact Information
                 </h4>
-                <div className="grid grid-cols-2 gap-4">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                   {contactInfo.map((item, index) => (
                     <div key={index} className="flex items-center">
                       <div className="w-10 h-10 rounded-full bg-green-100 flex items-center justify-center mr-3">

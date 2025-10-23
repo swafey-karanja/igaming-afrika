@@ -115,10 +115,10 @@ const Tickets = () => {
 
   return (
     <div
-      className="bg-gray-100 px-4 sm:px-6 lg:px-8 py-12 md:py-12 lg:py-12"
+      className="bg-gray-100 px-4 sm:px-6 lg:px-8 py-12 lg:py-6"
       id="tickets"
     >
-      <div className="max-w-7xl mx-auto">
+      <div className="container mx-auto">
         {/* Header Section */}
         <motion.div
           className="text-center mb-16"
@@ -148,7 +148,7 @@ const Tickets = () => {
 
         {/* Pricing Cards */}
         <motion.div
-          className="grid md:grid-cols-3 gap-6 h-auto items-center"
+          className="grid md:grid-cols-3 gap-12 h-auto items-center"
           variants={staggerContainer}
           initial="hidden"
           whileInView="visible"

@@ -144,7 +144,7 @@ const FAQSection = () => {
 
   return (
     <div className=" bg-gray-100 min-h-auto py-8 md:py-8 lg:py-8 px-4 sm:px-6 md:px-8">
-      <div className="max-w-7xl mx-auto">
+      <div className="max-w-[1200px] mx-auto">
         <motion.div
           className="text-center mb-16"
           initial="hidden"

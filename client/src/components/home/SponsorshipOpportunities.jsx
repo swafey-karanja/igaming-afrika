@@ -154,7 +154,7 @@ const Packages = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gray-100 py-8 px-4">
+    <div className="min-h-screen bg-gray-100 py-8 px-8">
       {/* Header - Always visible */}
       <motion.div
         className="text-center mb-16"
@@ -183,11 +183,11 @@ const Packages = () => {
 
       {/* Content Area */}
       {isLoading ? (
-        <div className="max-w-7xl mx-auto flex justify-center items-center py-20">
+        <div className="container mx-auto flex justify-center items-center py-20">
           <div className="animate-spin rounded-full h-10 w-10 border-t-2 border-b-2 border-green-600"></div>
         </div>
       ) : error ? (
-        <div className="max-w-7xl mx-auto flex flex-col items-center justify-center py-20 rounded-lg">
+        <div className="container mx-auto flex flex-col items-center justify-center py-20 rounded-lg">
           <AlertCircle className="h-12 w-12 text-red-500 mb-4" />
           <h3 className="text-md font-medium text-gray-900 mb-2">
             Unable to load sponsors
@@ -205,7 +205,7 @@ const Packages = () => {
       ) : (
         <>
           {/* Packages Grid */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 max-w-7xl mx-auto mb-8">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-12 container mx-auto mb-8">
             {currentPackages.map((pkg) => (
               <div
                 key={pkg.id}

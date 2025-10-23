@@ -74,7 +74,7 @@ const ImageCarousel = () => {
       } else if (width < 1024) {
         setImagesPerView(2); // Tablet: 2 images
       } else {
-        setImagesPerView(3); // Desktop: 3 images
+        setImagesPerView(2); // Desktop: 3 images
       }
     };
 
@@ -196,8 +196,8 @@ const ImageCarousel = () => {
   if (!images || images.length === 0) return null;
 
   return (
-    <div className="bg-gray-100 min-h-screen flex items-center justify-center py-8 md:py-8 lg:py-8 px-4 sm:px-6 md:px-8">
-      <div className="w-full max-w-7xl">
+    <div className="bg-gray-100  flex items-center justify-center py-8 lg:py-12 px-4 sm:px-6 md:px-8">
+      <div className="mx-auto container">
         <motion.div
           className="text-center mb-16"
           initial="hidden"
@@ -284,7 +284,7 @@ const ImageCarousel = () => {
                   x: { type: "spring", stiffness: 300, damping: 30 },
                   opacity: { duration: 0.5 },
                 }}
-                className="absolute inset-0 flex gap-3 md:gap-6 p-4"
+                className="absolute inset-0 flex gap-3 md:gap-12 py-15 px-14"
               >
                 {currentImages.map(({ image, index }) => (
                   <motion.div
@@ -326,17 +326,17 @@ const ImageCarousel = () => {
             {/* Navigation Buttons */}
             <button
               onClick={prevSlide}
-              className="absolute top-1/2 left-4 transform -translate-y-1/2 bg-white/90 backdrop-blur-sm text-green-700 p-3 rounded-full shadow-xl border-2 border-green-100 hover:bg-green-600 hover:text-white hover:border-green-600 opacity-70 group-hover:opacity-100 transition-all duration-300 hover:scale-110"
+              className="absolute top-1/2 left-2 transform -translate-y-1/2 bg-green-600/80 backdrop-blur-sm text-white px-1 py-4 rounded-xl shadow-xl border-2 border-green-100 hover:bg-green-600/100 hover:border-green-600 transition-all duration-300 hover:scale-105"
               aria-label="Previous images"
             >
-              <ChevronLeft size={24} />
+              <ChevronLeft size={22} />
             </button>
             <button
               onClick={nextSlide}
-              className="absolute top-1/2 right-4 transform -translate-y-1/2 bg-white/90 backdrop-blur-sm text-green-700 p-3 rounded-full shadow-xl border-2 border-green-100 hover:bg-green-600 hover:text-white hover:border-green-600 opacity-70 group-hover:opacity-100 transition-all duration-300 hover:scale-110"
-              aria-label="Next images"
+              className="absolute top-1/2 right-2 transform -translate-y-1/2 bg-green-600/80 backdrop-blur-sm text-white px-1 py-4 rounded-xl shadow-xl border-2 border-green-100 hover:bg-green-600/100 hover:border-green-600 transition-all duration-300 hover:scale-105"
+              aria-label="Previous images"
             >
-              <ChevronRight size={24} />
+              <ChevronRight size={22} />
             </button>
 
             {/* Image Counter */}
@@ -386,7 +386,7 @@ const ImageCarousel = () => {
                     e.stopPropagation();
                     handleModalNavigation("prev");
                   }}
-                  className="absolute left-4 top-1/2 transform -translate-y-1/2 bg-green-600/90 backdrop-blur-sm hover:bg-green-700 text-white p-3 rounded-full shadow-xl transition-all duration-300 hover:scale-110"
+                  className="absolute top-1/2 left-4 transform -translate-y-1/2 bg-green-600/80 backdrop-blur-sm text-white px-1 py-4 rounded-xl shadow-xl hover:bg-green-600/100 hover:border-green-600"
                   aria-label="Previous image"
                 >
                   <ChevronLeft size={28} />
@@ -396,7 +396,7 @@ const ImageCarousel = () => {
                     e.stopPropagation();
                     handleModalNavigation("next");
                   }}
-                  className="absolute right-4 top-1/2 transform -translate-y-1/2 bg-green-600/90 backdrop-blur-sm hover:bg-green-700 text-white p-3 rounded-full shadow-xl transition-all duration-300 hover:scale-110"
+                  className="absolute top-1/2 right-4 transform -translate-y-1/2 bg-green-600/80 backdrop-blur-sm text-white px-1 py-4 rounded-xl shadow-xl hover:bg-green-600/100 hover:border-green-600"
                   aria-label="Next image"
                 >
                   <ChevronRight size={28} />
@@ -405,8 +405,8 @@ const ImageCarousel = () => {
                 {/* Modal Footer */}
                 <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-green-600 to-transparent p-6">
                   <div className="text-center">
-                    <div className="bg-white/90 backdrop-blur-sm rounded-full px-6 py-3 inline-block shadow-lg">
-                      <span className="text-green-700 font-bold text-lg">
+                    <div className="bg-white/90 backdrop-blur-sm rounded-full px-5 py-2 inline-block shadow-lg">
+                      <span className="text-green-700 font-bold text-md">
                         {modalImageIndex + 1} of {images.length}
                       </span>
                       <span className="text-gray-600 ml-2">
