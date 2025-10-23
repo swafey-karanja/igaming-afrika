@@ -172,10 +172,10 @@ export default function Publications() {
             <img
               src="/error.png"
               alt="error"
-              className="w-[400px] h-[400px] opacity-30"
+              className="w-[200px] md:w-[400px] md:h-[400px] h-[200px] opacity-30"
             />
           </div>
-          <p className="text-gray-400 font-bold text-4xl mb-6 opacity-50">
+          <p className="text-gray-400 font-bold text-2xl md:text-4xl mb-6 opacity-50">
             Unable to load {currentCategory.title}
           </p>
           <motion.button
@@ -208,10 +208,10 @@ export default function Publications() {
             <img
               src="/notFound-1.png"
               alt="not-found"
-              className="w-[400px] h-[400px] opacity-30"
+              className="w-[200px] md:w-[400px] md:h-[400px] h-[200px] opacity-30"
             />
           </div>
-          <p className="text-gray-400 font-bold text-4xl mb-6 opacity-50">
+          <p className="text-gray-400 font-bold text-2xl md:text-4xl mb-6 opacity-50">
             No {currentCategory.title} Found
           </p>
         </motion.div>
