@@ -39,12 +39,12 @@ const ContactSection = ({
     viewport={{ once: true }}
     transition={{ duration: 0.5 }}
     style={{ backgroundColor: "#14a45c" }}
-    className="max-w-7xl mx-auto text-white py-12 sm:py-16 md:py-20 rounded-lg px-4 sm:px-6 relative overflow-hidden"
+    className="max-w-7xl mx-auto text-white py-12 sm:py-16 md:py-20 rounded-lg px-4 sm:px-6 relative overflow-hidden justify-center items-center"
   >
     {/* Background Pattern */}
     <div className="absolute inset-0 opacity-10">
-      <div className="absolute top-0 left-0 w-40 h-40 bg-white rounded-full -translate-x-20 -translate-y-20"></div>
-      <div className="absolute bottom-0 right-0 w-60 h-60 bg-white rounded-full translate-x-30 translate-y-30"></div>
+      <div className=" w-40 h-40 bg-white rounded-full -translate-x-20 -translate-y-20"></div>
+      <div className=" w-60 h-60 bg-white rounded-full translate-x-30 translate-y-30"></div>
     </div>
 
     <div className="max-w-4xl mx-auto px-3 sm:px-6 lg:px-8 relative z-10">
@@ -52,7 +52,7 @@ const ContactSection = ({
         <h3 className="text-2xl sm:text-3xl font-bold mb-3">
           Get In Touch With Us
         </h3>
-        <p className="text-lg opacity-90 max-w-2xl mx-auto">
+        <p className="text-sm md:text-lg opacity-90 max-w-2xl mx-auto">
           Have questions about the summit? Want to explore partnership
           opportunities? We'd love to hear from you!
         </p>

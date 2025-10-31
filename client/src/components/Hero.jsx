@@ -143,14 +143,17 @@ const Hero = () => {
             </p>
 
             <div className="flex justify-center mb-4">
-              <button className="bg-transparent hover:bg-green-600 hover:bg-opacity-20 transition-colors duration-300 text-sm lg:text-base text-white font-bold w-full max-w-xs sm:max-w-sm py-3 px-4 border-2 border-green-600 rounded-md">
-                <NavLink to="/register">Register interest</NavLink>
-              </button>
+              <NavLink
+                to="/register"
+                className="bg-transparent hover:bg-green-600 hover:bg-opacity-20 transition-colors duration-300 text-sm lg:text-base text-white font-bold w-full max-w-xs sm:max-w-sm py-3 px-4 border-2 border-green-600 rounded-md text-center"
+              >
+                Register interest
+              </NavLink>
             </div>
 
             <div className="flex flex-col sm:flex-row justify-center gap-3 sm:gap-4">
               <button
-                className="bg-transparent hover:bg-green-600 hover:bg-opacity-20 transition-colors duration-300 text-xs sm:text-sm lg:text-base text-white font-bold w-full py-3 px-4 border-2 border-green-600 rounded-md whitespace-normal sm:whitespace-nowrap text-center"
+                className="bg-transparent cursor-pointer hover:bg-green-600 hover:bg-opacity-20 transition-colors duration-300 text-xs sm:text-sm lg:text-base text-white font-bold w-full py-3 px-4 border-2 border-green-600 rounded-md whitespace-normal sm:whitespace-nowrap text-center"
                 onClick={() => {
                   navigate("/checkout", {
                     state: { selectedTicket: operatorPassData },
@@ -160,7 +163,7 @@ const Hero = () => {
                 Operators - Apply for the Free Operator's Pass
               </button>
               <button
-                className="bg-transparent hover:bg-green-600 hover:bg-opacity-20 transition-colors duration-300 text-xs sm:text-sm lg:text-base text-white font-bold w-full py-3 px-4 border-2 border-green-600 rounded-md whitespace-normal sm:whitespace-nowrap text-center"
+                className="bg-transparent cursor-pointer hover:bg-green-600 hover:bg-opacity-20 transition-colors duration-300 text-xs sm:text-sm lg:text-base text-white font-bold w-full py-3 px-4 border-2 border-green-600 rounded-md whitespace-normal sm:whitespace-nowrap text-center"
                 onClick={() => {
                   document.getElementById("tickets")?.scrollIntoView({
                     behavior: "smooth",
