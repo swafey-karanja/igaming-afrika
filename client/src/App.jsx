@@ -1,15 +1,17 @@
-import Home from "./pages/Home.jsx";
 import Footer from "./components/Footer.jsx";
 import { Routes, Route } from "react-router-dom";
-import ScrollToTop from "./components/utils/ScrollToTop.jsx";
+import { ScrollToTop } from "./lib/utils.jsx";
 import { Provider } from "react-redux";
 import store from "./store/index.js";
-import Registration from "./pages/registration.jsx";
 
 import { Toaster } from "react-hot-toast";
 import { useEffect } from "react";
-import CheckoutPage from "./pages/checkout.jsx";
-import PublicationsPage from "./pages/PublicationsPage.jsx";
+import Checkout from "./pages/checkoutpage/Checkout.jsx";
+import Home from "./pages/homepage/Home.jsx";
+import Navbar from "./components/Navbar.jsx";
+import Publications from "./pages/publicationspage/Publications.jsx";
+import Hero from "./components/Hero.jsx";
+import RegistrationForm from "./pages/registrationpage/Registrationform.jsx";
 
 const App = () => {
   useEffect(() => {
@@ -37,16 +39,15 @@ const App = () => {
 
   return (
     <Provider store={store}>
-      <div className="select-none">
+      <div className="select-none bg-gray-100 overflow-hidden">
+        <Navbar />
+        <Hero />
         <ScrollToTop />
         <Routes>
           <Route path="/" element={<Home />} />
-          <Route path="/register" element={<Registration />} />
-          <Route path="/checkout" element={<CheckoutPage />} />
-          <Route
-            path="/publications/:category"
-            element={<PublicationsPage />}
-          />
+          <Route path="/register" element={<RegistrationForm />} />
+          <Route path="/checkout" element={<Checkout />} />
+          <Route path="/publications/:category" element={<Publications />} />
         </Routes>
         <Footer />
         <Toaster

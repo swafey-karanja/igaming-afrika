@@ -12,54 +12,7 @@ import {
   FaSpotify,
 } from "react-icons/fa";
 import { toast } from "react-hot-toast";
-
-// Reusable Components
-const FormField = ({
-  label,
-  type = "text",
-  name,
-  value,
-  onChange,
-  placeholder,
-  required,
-  rows,
-  error,
-  disabled,
-}) => (
-  <div className="space-y-2">
-    <label className="block text-sm font-medium">
-      {label} {required && "*"}
-    </label>
-    {rows ? (
-      <textarea
-        name={name}
-        value={value}
-        onChange={onChange}
-        required={required}
-        rows={rows}
-        className={`w-full px-4 py-1 rounded-lg text-black placeholder-gray-500 border-2 bg-white/90 focus:outline-none focus:border-transparent resize-none ${
-          error ? "border-red-500" : "border-white/20"
-        }`}
-        placeholder={placeholder}
-        disabled={disabled}
-      />
-    ) : (
-      <input
-        type={type}
-        name={name}
-        value={value}
-        onChange={onChange}
-        required={required}
-        className={`w-full px-4 py-1 rounded-lg text-black placeholder-gray-500 border-2 bg-white/90 focus:outline-none focus:border-transparent ${
-          error ? "border-red-500" : "border-white/20"
-        }`}
-        placeholder={placeholder}
-        disabled={disabled}
-      />
-    )}
-    {error && <p className="text-red-200 text-sm">{error}</p>}
-  </div>
-);
+import { FormField } from "../lib/utils";
 
 const NavLink = ({ href, children }) => (
   <li>
@@ -71,17 +24,6 @@ const NavLink = ({ href, children }) => (
       {children}
     </a>
   </li>
-);
-
-// eslint-disable-next-line no-unused-vars
-const SocialLink = ({ href, Icon, label, hoverColor }) => (
-  <a
-    href={href}
-    className={`text-gray-400 ${hoverColor}  transform hover:scale-110 text-2xl sm:text-3xl`}
-    aria-label={label}
-  >
-    <Icon />
-  </a>
 );
 
 const ContactSection = ({
@@ -346,7 +288,7 @@ const BackToTop = ({ isVisible, onClick }) => (
       viewBox="0 0 24 24"
       strokeWidth="3"
       stroke="currentColor"
-      className="w-3 sm:w-4"
+      className="w-6 sm:w-8"
     >
       <path
         strokeLinecap="round"

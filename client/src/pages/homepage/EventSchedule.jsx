@@ -1,0 +1,205 @@
+import { useState } from "react";
+// eslint-disable-next-line no-unused-vars
+import { motion } from "framer-motion";
+import { CalendarDropdown } from "../../lib/utils";
+import { dates, schedules } from "../../data/data";
+import Header from "../../components/Header";
+
+const EventSchedule = () => {
+  const [activeTab, setActiveTab] = useState(0);
+
+  // Animation variants
+  const fadeIn = {
+    hidden: { opacity: 0, y: 20 },
+    visible: { opacity: 1, y: 0, transition: { duration: 0.5 } },
+  };
+
+  const staggerContainer = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.1,
+        delayChildren: 0.2,
+      },
+    },
+  };
+
+  const scheduleItem = {
+    hidden: { opacity: 0, y: 20 },
+    visible: { opacity: 1, y: 0 },
+  };
+
+  // Calculate the maximum number of sessions across all days
+  const maxSessions = Math.max(
+    ...Object.values(schedules).map((day) => day.length)
+  );
+
+  return (
+    <div className="container mx-auto px-6 lg:px-8 py-8">
+      <Header
+        title="Event Schedule"
+        subtitle="Stay updated with the latest schedule for the iGaming Afrika Summit 2026."
+      />
+      {/* Date Tabs with animation - Improved for small screens */}
+      <motion.div
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true }}
+        variants={fadeIn}
+        transition={{ delay: 0.1 }}
+        className="flex flex-wrap sm:flex-nowrap border-b border-gray-200 overflow-x-auto hide-scrollbar"
+      >
+        {dates.map((item, index) => (
+          <motion.button
+            key={index}
+            whileTap={{ scale: 0.95 }}
+            className={`px-2 sm:px-4 py-2 text-center focus:outline-none flex-1 min-w-max sm:min-w-0 hover:cursor-pointer transition-colors duration-300 ${
+              activeTab === index
+                ? "border-b-3 border-green-600 text-green-600 font-bold"
+                : "text-gray-500 hover:text-green-600"
+            }`}
+            onClick={() => setActiveTab(index)}
+          >
+            <div className="text-xs sm:text-sm md:text-md">{item.day}</div>
+            <div className="text-xs sm:text-sm md:text-md">{item.date}</div>
+          </motion.button>
+        ))}
+      </motion.div>
+
+      {/* Schedule Content with animations */}
+      <motion.div
+        className="py-4 sm:py-6 transition-all duration-300 ease-in-out"
+        style={{
+          minHeight: `${maxSessions * 120 + 80}px`,
+          height: "auto",
+          overflow: "hidden",
+        }}
+        initial="hidden"
+        animate="visible"
+        variants={fadeIn}
+        transition={{ delay: 0.2 }}
+      >
+        <motion.h2
+          className="text-lg sm:text-xl font-bold mb-4 sm:mb-6 px-2"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 0.3 }}
+        >
+          {dates[activeTab].day}, {dates[activeTab].date} Schedule
+        </motion.h2>
+
+        <motion.div
+          className="space-y-4 sm:space-y-6 md:space-y-8"
+          initial="hidden"
+          animate="visible"
+          variants={staggerContainer}
+          key={activeTab}
+        >
+          {schedules[activeTab].length > 0 ? (
+            schedules[activeTab].map((session, index) => (
+              <motion.div
+                key={index}
+                variants={scheduleItem}
+                className="bg-gray-50 rounded-lg p-3 sm:p-4 md:p-6 shadow-md"
+              >
+                <div className="flex flex-col md:flex-row md:items-start gap-3 sm:gap-4 md:gap-6">
+                  <div className="w-full md:w-1/4 mb-2 md:mb-0">
+                    <p className="text-xs sm:text-sm font-semibold text-green-600">
+                      {session.time}
+                    </p>
+                    <p className="text-gray-500 text-xs sm:text-md mt-1">
+                      {session.location}
+                    </p>
+                  </div>
+                  <div className="w-full md:w-3/4">
+                    <h3 className="text-sm sm:text-md font-bold mb-2">
+                      {session.title}
+                    </h3>
+                    <p className="text-gray-700 mb-2 sm:mb-3 text-xs sm:text-sm">
+                      {session.description}
+                    </p>
+
+                    {session.speaker && (
+                      <motion.p
+                        className="text-xs sm:text-sm text-gray-600"
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 1 }}
+                        transition={{ delay: 0.2 }}
+                      >
+                        <span className="font-medium">Speaker:</span>{" "}
+                        {session.speaker}
+                      </motion.p>
+                    )}
+
+                    {session.speakers && (
+                      <motion.div
+                        className="mt-2"
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 1 }}
+                        transition={{ delay: 0.3 }}
+                      >
+                        <p className="text-xs sm:text-sm text-gray-600 font-medium">
+                          Speakers:
+                        </p>
+                        <ul className="list-disc list-inside text-xs sm:text-sm text-gray-600 ml-1">
+                          {session.speakers.map((speaker, i) => (
+                            <motion.li
+                              key={i}
+                              initial={{ opacity: 0, x: -10 }}
+                              animate={{ opacity: 1, x: 0 }}
+                              transition={{ delay: 0.1 * i }}
+                            >
+                              {speaker}
+                            </motion.li>
+                          ))}
+                        </ul>
+                      </motion.div>
+                    )}
+                  </div>
+                </div>
+              </motion.div>
+            ))
+          ) : (
+            <motion.div
+              className="text-gray-500 text-center py-6 sm:py-8"
+              style={{
+                height: "120px",
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+              }}
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ delay: 0.2 }}
+            >
+              No sessions scheduled for this day
+            </motion.div>
+          )}
+        </motion.div>
+      </motion.div>
+
+      <div className="flex gap-6 mb-2 sm:mb-3 lg:mb-4">
+        {/* Calendar button positioned at top right */}
+        <div className="">
+          <CalendarDropdown iconSize="md" showText={true} />
+        </div>
+      </div>
+    </div>
+  );
+};
+
+/* Additional CSS for hiding scrollbars but enabling scroll functionality */
+const style = document.createElement("style");
+style.textContent = `
+  .hide-scrollbar {
+    -ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: none;  /* Firefox */
+  }
+  .hide-scrollbar::-webkit-scrollbar {
+    display: none;  /* Chrome, Safari and Opera */
+  }
+`;
+document.head.appendChild(style);
+
+export default EventSchedule;
