@@ -1,5 +1,4 @@
 import { useState } from "react";
-import { ChevronDown, Check } from "lucide-react";
 import PhoneInput from "react-phone-number-input";
 import "react-phone-number-input/style.css";
 import { toast } from "react-hot-toast";

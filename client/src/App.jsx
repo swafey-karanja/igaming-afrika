@@ -11,7 +11,7 @@ import Home from "./pages/homepage/Home.jsx";
 import Navbar from "./components/Navbar.jsx";
 import Publications from "./pages/publicationspage/Publications.jsx";
 import Hero from "./components/Hero.jsx";
-import RegistrationForm from "./pages/registrationpage/Registrationform.jsx";
+import EventApplicationForm from "./pages/registrationpage/EventApplicationForm.jsx";
 
 const App = () => {
   useEffect(() => {
@@ -45,7 +45,7 @@ const App = () => {
         <ScrollToTop />
         <Routes>
           <Route path="/" element={<Home />} />
-          <Route path="/register" element={<RegistrationForm />} />
+          <Route path="/register" element={<EventApplicationForm />} />
           <Route path="/checkout" element={<Checkout />} />
           <Route path="/publications/:category" element={<Publications />} />
         </Routes>
