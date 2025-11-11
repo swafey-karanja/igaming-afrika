@@ -1,9 +1,11 @@
-import { useEffect, useState, useCallback } from "react";
+
 // eslint-disable-next-line no-unused-vars
 import { motion } from "framer-motion";
 import { AlertCircle } from "lucide-react";
 import { SponsorTier } from "../../lib/utils";
 import Header from "../../components/Header";
+import {fetchDataFromApi} from "../../services/api.js";
+import useFetch from "../../services/useFetch.ts";
 
 const fadeIn = {
   hidden: { opacity: 0, y: 20 },
@@ -11,59 +13,30 @@ const fadeIn = {
 };
 
 const EventSponsors = () => {
-  const [sponsorData, setSponsorData] = useState(null);
-  const [isLoading, setIsLoading] = useState(true);
-  const [error, setError] = useState(null);
 
-  const fetchSponsors = useCallback(async () => {
-    try {
-      const token = import.meta.env.VITE_PUBLIC_API_TOKEN;
-      setIsLoading(true);
-      setError(null);
-      setSponsorData(null);
+  const fetchSponsors = async () => {
+    const data = await fetchDataFromApi("sponsors");
 
-      const response = await fetch(
-        "https://events.igamingafrika.com/api/sponsors/",
-        {
-          headers: {
-            Authorization: `Token ${token}`,
-            "Content-Type": "application/json",
-          },
-        }
-      );
-
-      if (!response.ok) {
-        throw new Error(`HTTP error! status: ${response.status}`);
-      }
-
-      const data = await response.json();
-
-      const fixedData = {
-        headlineSponsor: Array.isArray(data.headlineSponsor)
+    return {
+      headlineSponsor: Array.isArray(data.headlineSponsor)
           ? data.headlineSponsor[0]
           : data.headlineSponsor,
-        diamondSponsors: data.diamondSponsors || [],
-        platinumSponsors: data.platinumSponsors || [],
-        goldSponsors: data.goldSponsors || [],
-        silverSponsors: data.silverSponsors || [],
-        bronzeSponsors: data.bronzeSponsors || [],
-        strategicPartners: data.strategicPartners || [],
-        mediaPartners: data.mediaPartners || [],
-        attendingCompanies: data.attendingCompanies || [],
-      };
+      diamondSponsors: data.diamondSponsors || [],
+      platinumSponsors: data.platinumSponsors || [],
+      goldSponsors: data.goldSponsors || [],
+      silverSponsors: data.silverSponsors || [],
+      bronzeSponsors: data.bronzeSponsors || [],
+      strategicPartners: data.strategicPartners || [],
+      mediaPartners: data.mediaPartners || [],
+      attendingCompanies: data.attendingCompanies || [],
+    };
+  };
 
-      setSponsorData(fixedData);
-    } catch (error) {
-      console.error("Failed to fetch sponsors:", error);
-      setError("Failed to load sponsors. Please try again.");
-    } finally {
-      setIsLoading(false);
-    }
-  }, []);
-
-  useEffect(() => {
-    fetchSponsors();
-  }, [fetchSponsors]);
+  const {
+    data: sponsors,
+    isLoading: sponsorsLoading,
+    error: sponsorsError,
+  } = useFetch(fetchSponsors);
 
   const {
     headlineSponsor,
@@ -75,7 +48,7 @@ const EventSponsors = () => {
     strategicPartners,
     mediaPartners,
     attendingCompanies,
-  } = sponsorData || {};
+  } = sponsors || {};
 
   // Standard logo sizes for all tiers except headline sponsor (same as gold tier)
   const standardLogoSizes =
@@ -99,18 +72,18 @@ const EventSponsors = () => {
         subtitle="Meet our kind and illustrious sponsors for the ground-breaking iGaming
           AFRIKA SUMMIT 2026."
       />
-      {isLoading ? (
+      {sponsorsLoading ? (
         <div className="max-w-7xl mx-auto flex justify-center items-center py-20">
           <div className="animate-spin rounded-full h-10 w-10 border-t-2 border-b-2 border-green-600"></div>
         </div>
-      ) : error ? (
+      ) : sponsorsError ? (
         <div className="max-w-7xl mx-auto flex flex-col items-center justify-center py-20 rounded-lg">
           <AlertCircle className="h-12 w-12 text-red-500 mb-4" />
           <h3 className="text-md font-medium text-gray-900 mb-2">
             Unable to load sponsors
           </h3>
           <p className="text-gray-600 mb-6 max-w-md text-sm text-center">
-            {error}
+            {sponsorsError}
           </p>
           <button
             onClick={fetchSponsors}
@@ -233,7 +206,7 @@ const EventSponsors = () => {
             iGaming AFRIKA SUMMIT 2026."
         />
 
-        {!isLoading && !error && (
+        {!sponsorsLoading && !sponsorsError && (
           <div className="max-w-[1600px] mx-auto">
             {attendingCompanies && attendingCompanies.length > 0 && (
               <div className="grid grid-cols-2 lg:grid-cols-3 gap-8">

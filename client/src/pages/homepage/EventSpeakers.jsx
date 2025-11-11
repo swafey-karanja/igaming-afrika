@@ -6,6 +6,8 @@ import { motion } from "framer-motion";
 import { AlertCircle } from "lucide-react";
 import SpeakerModal from "../../components/SpeakerModal";
 import Header from "../../components/Header";
+import useFetch from "../../services/useFetch.ts";
+import {fetchDataFromApi} from "../../services/api.js";
 
 const EventSpeakers = () => {
   const [selectedSpeaker, setSelectedSpeaker] = useState(null);
@@ -13,44 +15,12 @@ const EventSpeakers = () => {
   const [visibleCount, setVisibleCount] = useState(12);
   const [isMobile, setIsMobile] = useState(false);
 
-  const [speakers, setSpeakers] = useState([]);
-  const [isLoading, setIsLoading] = useState(true);
-  const [error, setError] = useState(null);
-
-  const fetchSpeakers = useCallback(async () => {
-    try {
-      const token = import.meta.env.VITE_PUBLIC_API_TOKEN;
-      setIsLoading(true);
-      setError(null);
-      setSpeakers([]);
-
-      const response = await fetch(
-        "https://events.igamingafrika.com/api/speakers/",
-        {
-          headers: {
-            Authorization: `Token ${token}`,
-            "Content-Type": "application/json",
-          },
-        }
-      );
-
-      if (!response.ok) {
-        throw new Error(`HTTP error! status: ${response.status}`);
-      }
-
-      const data = await response.json();
-      setSpeakers(data);
-    } catch (error) {
-      console.error("Failed to fetch speakers:", error);
-      setError("Failed to load speakers. Please try again.");
-    } finally {
-      setIsLoading(false);
-    }
-  }, []);
-
-  useEffect(() => {
-    fetchSpeakers();
-  }, [fetchSpeakers]);
+  const {
+    data: speakers,
+    error: speakerError,
+    isLoading: speakerLoading,
+    refetch: refetchSpeakers
+  } = useFetch(() => fetchDataFromApi("speakers"));
 
   const checkScreenSize = useCallback(() => {
     setIsMobile(window.innerWidth < 768);
@@ -63,7 +33,7 @@ const EventSpeakers = () => {
   }, [checkScreenSize]);
 
   // Display all speakers without filtering
-  const visibleSpeakers = speakers.slice(0, visibleCount);
+  const visibleSpeakers = speakers ? speakers.slice(0, visibleCount) : [];
 
   const handleShowMore = () => {
     setVisibleCount((prev) => prev + (isMobile ? 6 : 12));
@@ -111,21 +81,21 @@ const EventSpeakers = () => {
       />
 
       {/* Content Area */}
-      {isLoading ? (
+      {speakerLoading ? (
         <div className="container mx-auto flex justify-center items-center py-20">
           <div className="animate-spin rounded-full h-10 w-10 border-t-2 border-b-2 border-green-600"></div>
         </div>
-      ) : error ? (
+      ) : speakerError ? (
         <div className="container mx-auto flex flex-col items-center justify-center py-20 rounded-lg">
           <AlertCircle className="h-12 w-12 text-red-500 mb-4" />
           <h3 className="text-md font-medium text-gray-900 mb-2">
             Unable to load sponsors
           </h3>
           <p className="text-gray-600 mb-6 max-w-md text-sm text-center">
-            {error}
+            {speakerError}
           </p>
           <button
-            onClick={fetchSpeakers}
+            onClick={refetchSpeakers}
             className="px-4 py-2 bg-green-600 text-white rounded-md hover:bg-green-700 transition-colors"
           >
             Try Again
@@ -210,7 +180,7 @@ const EventSpeakers = () => {
           </motion.div>
 
           {/* Load More */}
-          {visibleCount < speakers.length && (
+          {speakers && visibleCount < speakers.length && (
             <motion.div
               className="text-center mt-12"
               initial={{ opacity: 0 }}
@@ -232,7 +202,7 @@ const EventSpeakers = () => {
           )}
 
           {/* End Message */}
-          {visibleCount >= speakers.length && speakers.length > 0 && (
+          {speakers && visibleCount >= speakers.length && speakers.length > 0 && (
             <div className="text-center mt-12">
               <p className="text-gray-500 text-[13px] font-medium">
                 You've seen all {speakers.length} speakers!

@@ -1,97 +1,66 @@
-import { useEffect, useState, useCallback } from "react";
+import { useState } from "react";
 // eslint-disable-next-line no-unused-vars
 import { motion } from "framer-motion";
 import { CheckCircle, AlertCircle } from "lucide-react";
 import ExhibitionModal from "../../components/ExhibitionModal";
 import Header from "../../components/Header";
+import useFetch from "../../services/useFetch.ts";
+import {fetchDataFromApi} from "../../services/api.js";
 
 const ExhibitionPackages = () => {
   const [selectedPackage, setSelectedPackage] = useState(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const [exhibitionData, setExhibitionData] = useState(null);
-  const [isLoading, setIsLoading] = useState(true);
-  const [error, setError] = useState(null);
   const tierOrder = ["Diamond", "Platinum", "Gold", "Silver", "Bronze"];
 
-  const fetchExhibitionPackages = useCallback(async () => {
-    try {
-      const token = import.meta.env.VITE_PUBLIC_API_TOKEN;
-      setIsLoading(true);
-      setError(null);
-      setExhibitionData(null);
+  const {
+      data: exhibitionData,
+      isLoading: exhibitionLoading,
+      error: exhibitionError,
+      refetch: refetchExhibitions
+  } = useFetch(() => fetchDataFromApi("exhibition"));
 
-      const response = await fetch(
-        "https://events.igamingafrika.com/api/exhibition/",
-        {
-          headers: {
-            Authorization: `Token ${token}`,
-            "Content-Type": "application/json",
-          },
-        }
-      );
+    const packages = Array.isArray(exhibitionData)
+        ? exhibitionData
+            .flatMap((tier, tierIndex) =>
+                (tier.options ?? []).map((option, optionIndex) => ({
+                    id: `${tierIndex}-${optionIndex}`,
+                    title: `${tier.tier} - ${option.type}`,
+                    price: `$${Number(option.price).toLocaleString(undefined, {
+                        minimumFractionDigits: 0,
+                        maximumFractionDigits: 0,
+                    })}`,
+                    status: "AVAILABLE",
+                    icon: option.type === "Shell Scheme" ? "🏗️" : "🏢",
+                    iconBg: "bg-green-400",
+                    featured:
+                        tier.tier === "Platinum" && option.type === "Shell Scheme",
+                    description: option.description,
+                    standSize: option.standSize,
+                    tier: tier.tier,
+                    type: option.type,
+                    benefits: [
+                        ...(option.standBenefits || []),
+                        ...(option.exhibitorBenefits || []),
+                        ...(option.sponsorshipStatus || []),
+                    ],
+                    standBenefits: option.standBenefits || [],
+                    exhibitorBenefits: option.exhibitorBenefits || [],
+                    sponsorshipStatus: option.sponsorshipStatus || [],
+                    notes: option.notes || [],
+                    images: option.images || [],
+                    tickets:
+                        option.exhibitorBenefits
+                            ?.filter(
+                                (b) => /closing night passes/i.test(b) || /passes/i.test(b)
+                            )
+                            ?.join(", ") || "Contact for details",
+                }))
+            )
+            .sort((a, b) => tierOrder.indexOf(a.tier) - tierOrder.indexOf(b.tier))
+        : [];
 
-      if (!response.ok) {
-        throw new Error(`HTTP error! status: ${response.status}`);
-      }
 
-      const data = await response.json();
-      setExhibitionData(data);
-    } catch (error) {
-      console.error("Failed to fetch exhibition data:", error);
-      setError("Failed to load exhibition packages. Please try again.");
-    } finally {
-      setIsLoading(false);
-    }
-  }, []);
-
-  useEffect(() => {
-    fetchExhibitionPackages();
-  }, [fetchExhibitionPackages]);
-
-  const packages = exhibitionData
-    ? exhibitionData
-        .flatMap((tier, tierIndex) =>
-          tier.options.map((option, optionIndex) => ({
-            id: `${tierIndex}-${optionIndex}`,
-            title: `${tier.tier} - ${option.type}`,
-            price: `$${Number(option.price).toLocaleString(undefined, {
-              minimumFractionDigits: 0,
-              maximumFractionDigits: 0,
-            })}`,
-            status: "AVAILABLE",
-            icon: option.type === "Shell Scheme" ? "🏗️" : "🏢",
-            iconBg: "bg-green-400",
-            featured:
-              tier.tier === "Platinum" && option.type === "Shell Scheme",
-            description: option.description,
-            standSize: option.standSize,
-            tier: tier.tier,
-            type: option.type,
-            benefits: [
-              ...(option.standBenefits || []),
-              ...(option.exhibitorBenefits || []),
-              ...(option.sponsorshipStatus || []),
-            ],
-            standBenefits: option.standBenefits || [],
-            exhibitorBenefits: option.exhibitorBenefits || [],
-            sponsorshipStatus: option.sponsorshipStatus || [],
-            notes: option.notes || [],
-            images: option.images || [],
-            tickets:
-              option.exhibitorBenefits
-                ?.filter(
-                  (b) => /closing night passes/i.test(b) || /passes/i.test(b)
-                )
-                ?.join(", ") || "Contact for details",
-          }))
-        )
-        // ✅ Custom tier sorting here
-        .sort((a, b) => {
-          return tierOrder.indexOf(a.tier) - tierOrder.indexOf(b.tier);
-        })
-    : [];
-
-  const openModal = (pkg) => {
+    const openModal = (pkg) => {
     setSelectedPackage(pkg);
     setTimeout(() => setIsModalOpen(true), 10);
   };
@@ -125,21 +94,21 @@ const ExhibitionPackages = () => {
         subtitle="Showcase your brand at iGaming AFRIKA Summit 2026 with our tailored exhibition packages."
       />
 
-      {isLoading ? (
+      {exhibitionLoading ? (
         <div className="container mx-auto flex justify-center items-center py-20">
           <div className="animate-spin rounded-full h-10 w-10 border-t-2 border-b-2 border-green-600"></div>
         </div>
-      ) : error ? (
+      ) : exhibitionError ? (
         <div className="container mx-auto flex flex-col items-center justify-center py-20 rounded-lg">
           <AlertCircle className="h-12 w-12 text-red-500 mb-4" />
           <h3 className="text-md font-medium text-gray-900 mb-2">
             Unable to load sponsors
           </h3>
           <p className="text-gray-600 mb-6 max-w-md text-sm text-center">
-            {error}
+            {exhibitionError}
           </p>
           <button
-            onClick={fetchExhibitionPackages}
+            onClick={refetchExhibitions}
             className="px-4 py-2 bg-green-600 text-white rounded-md hover:bg-green-700 transition-colors"
           >
             Try Again

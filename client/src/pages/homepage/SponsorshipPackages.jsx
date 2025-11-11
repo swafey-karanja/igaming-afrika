@@ -1,4 +1,4 @@
-import { useEffect, useState, useCallback } from "react";
+import { useState } from "react";
 import {
   ChevronLeft,
   ChevronRight,
@@ -9,54 +9,25 @@ import {
 import { motion } from "framer-motion";
 import SponsorshipModal from "../../components/SponsorshipModal";
 import Header from "../../components/Header";
+import useFetch from "../../services/useFetch.ts";
+import {fetchDataFromApi} from "../../services/api.js";
 
 const SponsorshipPackages = () => {
   const [selectedPackage, setSelectedPackage] = useState(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [currentPage, setCurrentPage] = useState(1);
   const packagesPerPage = 12;
-  const [sponsorships, setSponsorships] = useState([]);
-  const [isLoading, setIsLoading] = useState(true);
-  const [error, setError] = useState(null);
 
-  const fetchSponsorshipData = useCallback(async () => {
-    try {
-      const token = import.meta.env.VITE_PUBLIC_API_TOKEN;
-      setIsLoading(true);
-      setError(null);
-      setSponsorships([]);
+  const {
+    data: sponsorships,
+    isLoading: sponsorshipsLoading,
+    error: sponsorshipsError,
+    refetch: refetchSponsorships
+  } = useFetch(() => fetchDataFromApi("sponsorships"));
 
-      const response = await fetch(
-        "https://events.igamingafrika.com/api/sponsorships/",
-        {
-          headers: {
-            Authorization: `Token ${token}`,
-            "Content-Type": "application/json",
-          },
-        }
-      );
-
-      if (!response.ok) {
-        throw new Error(`HTTP error! status: ${response.status}`);
-      }
-
-      const data = await response.json();
-      setSponsorships(data);
-    } catch (error) {
-      console.error("Failed to fetch sponsorships data", error);
-      setError("Failed to load sponsorship opportunities. Please try again.");
-    } finally {
-      setIsLoading(false);
-    }
-  }, []);
-
-  useEffect(() => {
-    fetchSponsorshipData();
-  }, [fetchSponsorshipData]);
-
-  const packages = isLoading
-    ? []
-    : [...sponsorships].sort((a, b) => a.title.localeCompare(b.title));
+  const packages = [...(sponsorships ?? [])].sort((a, b) =>
+      a.title.localeCompare(b.title)
+  );
 
   // Pagination logic
   const totalPages = Math.ceil(packages.length / packagesPerPage);
@@ -150,21 +121,21 @@ const SponsorshipPackages = () => {
       />
 
       {/* Content Area */}
-      {isLoading ? (
+      {sponsorshipsLoading ? (
         <div className="container mx-auto flex justify-center items-center py-20">
           <div className="animate-spin rounded-full h-10 w-10 border-t-2 border-b-2 border-green-600"></div>
         </div>
-      ) : error ? (
+      ) : sponsorshipsError ? (
         <div className="container mx-auto flex flex-col items-center justify-center py-20 rounded-lg">
           <AlertCircle className="h-12 w-12 text-red-500 mb-4" />
           <h3 className="text-md font-medium text-gray-900 mb-2">
             Unable to load sponsors
           </h3>
           <p className="text-gray-600 mb-6 max-w-md text-sm text-center">
-            {error}
+            {sponsorshipsError}
           </p>
           <button
-            onClick={fetchSponsorshipData}
+            onClick={refetchSponsorships}
             className="px-4 py-2 bg-green-600 text-white rounded-md hover:bg-green-700 transition-colors"
           >
             Try Again
