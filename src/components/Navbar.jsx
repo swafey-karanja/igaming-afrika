@@ -52,8 +52,8 @@ const Navbar = () => {
     <header
       className={`fixed top-0 left-0 w-full inset-x-0 z-40 py-2 sm:py-3 md:py-4 transition-all duration-700 ease-in-out ${
         isScrolled
-          ? "bg-[#ffffff] shadow-md drop-shadow-md text-black"
-          : "bg-transparent text-white"
+          ? "bg-gray-100 shadow-md drop-shadow-md text-black"
+          : "bg-transparent text-black"
       }`}
     >
       <div className="px-4 sm:px-6 lg:px-8 mx-auto max-w-[1600px]">
@@ -153,8 +153,8 @@ const Navbar = () => {
             <NavLink to="/register">
               <button
                 style={isScrolled ? { backgroundColor: "#14a45c" } : {}}
-                className={`hover:bg-green-600 hover:bg-opacity-20 hover:cursor-pointer text-xs text-white font-bold py-1.5 px-4 lg:py-2 lg:px-6 lg:text-sm border border-green-600 rounded-md ${
-                  isScrolled ? "text-white" : "text-white"
+                className={`hover:bg-green-600 hover:text-white transition-colors duration-300 hover:bg-opacity-20 hover:cursor-pointer text-xs font-bold py-1.5 px-4 lg:py-2 lg:px-6 lg:text-sm border-3 border-lime-500 rounded-md ${
+                  isScrolled ? "text-white bg-green-600" : "text-[#14a45c]"
                 }`}
               >
                 EXHIBIT/SPONSOR
@@ -167,8 +167,8 @@ const Navbar = () => {
                 form?.scrollIntoView({ behavior: "smooth" });
               }}
               style={isScrolled ? { backgroundColor: "#14a45c" } : {}}
-              className={`hover:bg-green-600 hover:bg-opacity-20 hover:cursor-pointer text-xs text-white font-bold py-1.5 px-4 lg:py-2 lg:px-6 lg:text-sm border border-green-600 rounded-md ${
-                isScrolled ? "text-white bg-green-600" : "text-white"
+              className={`hover:bg-green-600 hover:text-white transition-colors duration-300 hover:bg-opacity-20 hover:cursor-pointer text-xs font-bold py-1.5 px-4 lg:py-2 lg:px-6 lg:text-sm border-3 border-lime-500 rounded-md ${
+                isScrolled ? "text-white bg-green-600" : "text-[#14a45c]"
               }`}
             >
               CONTACT US

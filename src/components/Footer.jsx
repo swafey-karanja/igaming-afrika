@@ -39,7 +39,7 @@ const ContactSection = ({
     viewport={{ once: true }}
     transition={{ duration: 0.5 }}
     style={{ backgroundColor: "#14a45c" }}
-    className="max-w-7xl mx-auto text-white py-12 sm:py-16 md:py-20 rounded-lg px-4 sm:px-6 relative overflow-hidden justify-center items-center"
+    className="max-w-[90%] xl:max-w-7xl mx-auto text-white py-12 sm:py-16 md:py-20 rounded-lg px-4 sm:px-6 relative overflow-hidden justify-center items-center"
   >
     {/* Background Pattern */}
     <div className="absolute inset-0 opacity-10">
@@ -151,17 +151,17 @@ const LinksSection = () => {
       transition={{ duration: 0.5, delay: 0.2 }}
       className="max-w-[1600px] mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-12 md:py-16"
     >
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-[1.5fr_1fr_1fr] gap-8 md:gap-12 lg:gap-16">
-        {/* Logo and Description */}
-        <div className="space-y-4">
+      <div className="flex flex-col xl:grid xl:grid-cols-[1.5fr_1fr_1fr] gap-8 md:gap-12 lg:gap-16 relative">
+        {/* Logo and Description - Full width on all screens */}
+        <div className="space-y-4 xl:col-span-1">
           <a href="#" title="iGaming Afrika" className="flex">
             <img
-              className="w-auto h-22 sm:h-24 md:h-26 lg:h-30"
+              className="w-auto h-22 sm:h-24 md:h-26 lg:h-40"
               src="Summit_Logo.png"
               alt="iGaming Afrika Logo"
             />
           </a>
-          <p className="text-xs sm:text-sm text-gray-400 leading-relaxed">
+          <p className="text-xs sm:text-[15px] text-white leading-relaxed">
             iGaming AFRIKA Summit is Africa's mega gaming event, designed to
             unite the entire gaming industry players across the world in one
             place—the stunning city of Nairobi, Kenya. This being the inaugural
@@ -174,32 +174,35 @@ const LinksSection = () => {
           </p>
         </div>
 
-        {/* Company Links */}
-        <div className="space-y-4 mt-6 sm:mt-20 sm:ml-0 md:ml-10 lg:ml-20">
-          <h3 className="text-sm sm:text-md font-bold text-gray-400 border-b border-gray-700 pb-2">
-            COMPANY
-          </h3>
-          <ul className="space-y-3 text-xs sm:text-sm">
-            {companyLinks.map((link, index) => (
-              <NavLink key={index} href={link.href}>
-                {link.text}
-              </NavLink>
-            ))}
-          </ul>
-        </div>
+        {/* Menus Container - Side by side on smaller screens, grid on XL */}
+        <div className="flex flex-col sm:flex-row justify-between xl:contents gap-8 md:gap-12">
+          {/* Company Links */}
+          <div className="space-y-4 sm:flex-1 mt-0 xl:mt-45">
+            <h3 className="text-sm sm:text-[18px] font-bold text-gray-300 border-b border-gray-900 pb-2">
+              COMPANY
+            </h3>
+            <ul className="space-y-3 text-xs sm:text-[15px]">
+              {companyLinks.map((link, index) => (
+                <NavLink key={index} href={link.href}>
+                  {link.text}
+                </NavLink>
+              ))}
+            </ul>
+          </div>
 
-        {/* Help Links */}
-        <div className="space-y-4 mt-6 sm:mt-20">
-          <h3 className="text-sm sm:text-md font-bold text-gray-400 border-b border-gray-700 pb-2">
-            HELP
-          </h3>
-          <ul className="space-y-3 text-xs sm:text-sm">
-            {helpLinks.map((link, index) => (
-              <NavLink key={index} href={link.href}>
-                {link.text}
-              </NavLink>
-            ))}
-          </ul>
+          {/* Help Links */}
+          <div className="space-y-4 sm:flex-1 mt-0 xl:mt-45">
+            <h3 className="text-sm sm:text-[18px] font-bold text-gray-300 border-b border-gray-900 pb-2">
+              HELP
+            </h3>
+            <ul className="space-y-3 text-xs sm:text-[15px]">
+              {helpLinks.map((link, index) => (
+                <NavLink key={index} href={link.href}>
+                  {link.text}
+                </NavLink>
+              ))}
+            </ul>
+          </div>
         </div>
       </div>
     </motion.div>
@@ -253,7 +256,7 @@ const SocialSection = () => {
   ];
 
   return (
-    <div className="max-w-[1600px] mx-auto px-4 sm:px-6 lg:px-8 py-4 sm:py-6">
+    <div className="max-w-[1600px] mx-auto px-4 sm:px-6 lg:px-8 py-3">
       <div className="flex items-center justify-center space-x-4 sm:space-x-6 pt-2">
         {socialLinks.map((social, index) => (
           <a
@@ -262,7 +265,7 @@ const SocialSection = () => {
             target="_blank"
             rel="noopener noreferrer"
             aria-label={social.label}
-            className={`text-gray-500 text-2xl transition-colors duration-300 ${social.hoverColor}`}
+            className={`text-gray-300 text-xl md:text-2xl transition-colors duration-300 ${social.hoverColor}`}
           >
             <social.Icon />
           </a>
@@ -323,7 +326,6 @@ const Footer = () => {
     const { name, value } = e.target;
     setFormData((prev) => ({ ...prev, [name]: value }));
 
-    // Clear error when user starts typing
     if (errors[name]) {
       setErrors((prev) => ({ ...prev, [name]: "" }));
     }
@@ -405,29 +407,60 @@ const Footer = () => {
   };
 
   return (
-    <footer id="footer" className="bg-black text-white pb-8 pt-16">
-      <ContactSection
-        formData={formData}
-        onChange={handleInputChange}
-        onSubmit={handleSubmit}
-        errors={errors}
-        isSubmitting={isSubmitting}
-      />
+    <footer id="footer" className="relative text-white pb-8 pt-16 min-h-screen">
+      <div className="absolute inset-0 w-full h-full overflow-hidden z-0">
+        {/* Base African pattern image with white overlay */}
+        <div className="absolute inset-0 z-0">
+          <img
+            src="/africa-pattern.png"
+            alt="Footer Background"
+            className="w-full h-full object-cover"
+          />
+          {/* Dark overlay for better text readability */}
+          <div className="absolute inset-0 bg-black opacity-80"></div>
+        </div>
 
-      <LinksSection />
+        {/* Nairobi skyline image - positioned at bottom */}
+        <div className="absolute bottom-0 left-0 w-full h-[45vh] md:h-[40vh] lg:h-[45vh]">
+          <img
+            src="/skyline-for-website.png"
+            alt="Nairobi Skyline"
+            className="w-full h-full object-cover object-bottom"
+          />
+        </div>
+        {/* Dark overlay for better text readability */}
+        <div className="absolute inset-0 bg-black opacity-20"></div>
+        {/* Tagline positioned above skyline - MOVED OUTSIDE */}
+        <div className="absolute bottom-[8%] md:bottom-[8.5%] lg:bottom-[8.5%] left-0 right-0 flex items-center justify-center px-4">
+          <p className="text-[16px] sm:text-[20px] md:text-2xl lg:text-4xl xl:text-[35px] font-medium text-[#e1f30c] drop-shadow-lg text-center uppercase">
+            The Heart of Gaming in Africa
+          </p>
+        </div>
+      </div>
 
-      <SocialSection />
-
+      {/* Content - positioned above background with padding bottom to avoid skyline */}
+      <div className="relative z-10 pb-[30vh] lg:pb-[40vh]">
+        <ContactSection
+          formData={formData}
+          onChange={handleInputChange}
+          onSubmit={handleSubmit}
+          errors={errors}
+          isSubmitting={isSubmitting}
+        />
+      </div>
       {/* Copyright */}
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
         transition={{ duration: 0.5, delay: 0.4 }}
-        className="py-4 border-t border-gray-800"
+        className="py-4 absolute bottom-0 justify-center w-full "
       >
-        <div className="max-w-[1600px] mx-auto px-4 sm:px-6 lg:px-8 text-center text-xs sm:text-sm text-gray-400">
-          <p>© Copyright 2026 IGA Events Limited - All Rights Reserved</p>
+        <SocialSection />
+        <div className="max-w-[1600px] mx-auto px-4 sm:px-6 lg:px-8 text-center text-xs font-semibold sm:text-sm text-gray-200 border-t border-gray-800">
+          <p className="pt-2">
+            © Copyright 2026 IGA Events Limited - All Rights Reserved
+          </p>
         </div>
       </motion.div>
 

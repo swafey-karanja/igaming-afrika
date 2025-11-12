@@ -28,7 +28,7 @@ export default function DropdownMenu({
     setCloseTimeout(timeout);
   };
 
-  const labelColor = isScrolled ? "text-black" : "text-white";
+  const labelColor = isScrolled ? "text-black" : "text-black";
 
   if (isInSidebar) {
     return (
@@ -78,7 +78,7 @@ export default function DropdownMenu({
                           <li key={idx}>
                             <a
                               href={sub.url}
-                              className="block text-white hover:text-gray-200 hover:pl-2 transition-all duration-200 focus:outline-none focus:text-gray-200 focus:pl-2 py-1 text-sm"
+                              className="block text-white hover:text-gray-200 hover:pl-2 transition-all duration-200 focus:outline-none focus:text-gray-200 focus:pl-2 py-1 text-sm font-medium"
                             >
                               {sub.title}
                             </a>
@@ -110,7 +110,7 @@ export default function DropdownMenu({
       onMouseLeave={handleMouseLeave}
     >
       <button
-        className={`flex items-center gap-1 text-xs font-bold uppercase transition-colors ${labelColor} cursor-pointer hover:text-red-600`}
+        className={`flex items-center gap-1 text-sm font-[800] uppercase transition-colors ${labelColor} cursor-pointer hover:text-[#14a45c]`}
       >
         {label}
         <ChevronDown
@@ -137,7 +137,7 @@ export default function DropdownMenu({
                 <>
                   <a
                     href={item.url || "#"}
-                    className="flex justify-between items-center w-full px-4 py-2 text-xs text-gray-700 hover:text-green-600"
+                    className="flex justify-between items-center w-full px-4 py-2 text-[12px] font-medium text-gray-700 hover:text-green-600"
                   >
                     {item.title}
                     <ChevronRight className="w-3 h-3 ml-2" />
@@ -155,7 +155,7 @@ export default function DropdownMenu({
                         <a
                           key={idx}
                           href={sub.url}
-                          className="block px-4 py-2 text-xs text-gray-700 hover:text-green-600 hover:bg-gray-50"
+                          className="block px-4 py-2 text-[12px] font-medium text-gray-700 hover:text-green-600 hover:bg-gray-50"
                         >
                           {sub.title}
                         </a>
@@ -166,7 +166,7 @@ export default function DropdownMenu({
               ) : (
                 <a
                   href={item.url}
-                  className="block px-4 py-2 text-xs text-gray-700 hover:text-green-600 hover:bg-gray-50"
+                  className="block px-4 py-2 text-[12px] font-medium text-gray-700 hover:text-green-600 hover:bg-gray-50"
                 >
                   {item.title}
                 </a>
@@ -349,8 +349,8 @@ export function NewsDropdown({ isScrolled, isInSidebar = false }) {
       onMouseLeave={handleMouseLeave}
     >
       <button
-        className={`px-0 py-2 text-xs uppercase hover:text-red-600 font-[600] transition-colors flex items-center ${
-          isScrolled ? "text-black" : "text-white"
+        className={`px-0 py-2 text-sm uppercase hover:text-[#14a45c] font-[800] transition-colors flex items-center ${
+          isScrolled ? "text-black" : ""
         }`}
       >
         News
@@ -384,14 +384,14 @@ export function NewsDropdown({ isScrolled, isInSidebar = false }) {
           {/* General Column */}
           <div className="pr-4">
             <div className="border-b-2 border-green-600 pb-2 mb-3">
-              <h3 className="text-sm font-bold text-gray-900">General</h3>
+              <h3 className="text-[13px] font-bold text-gray-900">General</h3>
             </div>
             <ul className="space-y-2">
               {newsCategories.general.map((item, index) => (
                 <li key={index}>
                   <a
                     href={item.url}
-                    className="block text-xs text-gray-700 hover:text-green-600 hover:bg-gray-50 py-1 px-1 rounded"
+                    className="block text-[12px] font-medium text-gray-700 hover:text-green-600 hover:bg-gray-50 py-1 px-1 rounded"
                   >
                     {item.title}
                   </a>
@@ -403,14 +403,14 @@ export function NewsDropdown({ isScrolled, isInSidebar = false }) {
           {/* Tech Column */}
           <div className="pl-4">
             <div className="border-b-2 border-green-600 pb-2 mb-3">
-              <h3 className="text-sm font-bold text-gray-900">Tech</h3>
+              <h3 className="text-[13px] font-bold text-gray-900">Tech</h3>
             </div>
             <ul className="space-y-2">
               {newsCategories.tech.map((item, index) => (
                 <li key={index}>
                   <a
                     href={item.url}
-                    className="block text-xs text-gray-700 hover:text-green-600 hover:bg-gray-50 py-1 px-1 rounded"
+                    className="block text-[12px] font-medium text-gray-700 hover:text-green-600 hover:bg-gray-50 py-1 px-1 rounded"
                   >
                     {item.title}
                   </a>
