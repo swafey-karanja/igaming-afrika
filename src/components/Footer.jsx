@@ -215,43 +215,43 @@ const SocialSection = () => {
       href: "https://x.com/iGASummit?t=N8kO_9qtwaBu3YeUUaBQNA&s=09",
       Icon: FaTwitter,
       label: "Twitter",
-      hoverColor: "hover:text-blue-400",
+      hoverColor: "hover:text-[#1DA1F2]",
     },
     {
       href: "https://www.facebook.com/share/1Ay79xHcfi/",
       Icon: FaFacebook,
       label: "Facebook",
-      hoverColor: "hover:text-blue-500",
+      hoverColor: "hover:text-[#1877F2]",
     },
     {
       href: "https://www.instagram.com/igasummit?igsh=MXF6YXdpYXRxdzBoaQ==",
       Icon: FaInstagram,
       label: "Instagram",
-      hoverColor: "hover:text-red-500",
+      hoverColor: "hover:text-[#E4405F]",
     },
     {
       href: "https://www.linkedin.com/company/igasummit/",
       Icon: FaLinkedin,
       label: "LinkedIn",
-      hoverColor: "hover:text-blue-600",
+      hoverColor: "hover:text-[#0077B5]",
     },
     {
       href: "https://www.youtube.com/@iGASummit",
       Icon: FaYoutube,
       label: "YouTube",
-      hoverColor: "hover:text-red-700",
+      hoverColor: "hover:text-[#FF0033]",
     },
     {
       href: "https://open.spotify.com/show/11m2XkXyP3MmjHRgXEVgwx?si=8cb7aaae5d2a47bc",
       Icon: FaSpotify,
       label: "Spotify",
-      hoverColor: "hover:text-green-700",
+      hoverColor: "hover:text-[#1DB954]",
     },
     {
       href: "https://t.me/igamingInAfrica",
       Icon: FaTelegram,
       label: "Telegram",
-      hoverColor: "hover:text-blue-700",
+      hoverColor: "hover:text-[#0088CC]",
     },
   ];
 
@@ -265,7 +265,7 @@ const SocialSection = () => {
             target="_blank"
             rel="noopener noreferrer"
             aria-label={social.label}
-            className={`text-gray-300 text-xl md:text-2xl transition-colors duration-300 ${social.hoverColor}`}
+            className={`text-gray-300 text-xl md:text-[25px] transition-all duration-300 transform hover:scale-125 ${social.hoverColor}`}
           >
             <social.Icon />
           </a>
@@ -421,7 +421,7 @@ const Footer = () => {
         </div>
 
         {/* Nairobi skyline image - positioned at bottom */}
-        <div className="absolute bottom-0 left-0 w-full h-[45vh] md:h-[40vh] lg:h-[45vh]">
+        <div className="absolute bottom-0 left-0 w-full h-[45vh] md:h-[40vh] lg:h-[45vh] z-0">
           <img
             src="/skyline-for-website.png"
             alt="Nairobi Skyline"
@@ -429,7 +429,7 @@ const Footer = () => {
           />
         </div>
         {/* Dark overlay for better text readability */}
-        <div className="absolute inset-0 bg-black opacity-20"></div>
+        <div className="absolute inset-0 bg-black opacity-20 z-0"></div>
         {/* Tagline positioned above skyline - MOVED OUTSIDE */}
         <div className="absolute bottom-[8%] md:bottom-[8.5%] lg:bottom-[8.5%] left-0 right-0 flex items-center justify-center px-4">
           <p className="text-[16px] sm:text-[20px] md:text-2xl lg:text-4xl xl:text-[35px] font-medium text-[#e1f30c] drop-shadow-lg text-center uppercase">
@@ -454,7 +454,7 @@ const Footer = () => {
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
         transition={{ duration: 0.5, delay: 0.4 }}
-        className="py-4 absolute bottom-0 justify-center w-full "
+        className="py-4 absolute bottom-0 justify-center w-full z-10"
       >
         <SocialSection />
         <div className="max-w-[1600px] mx-auto px-4 sm:px-6 lg:px-8 text-center text-xs font-semibold sm:text-sm text-gray-200 border-t border-gray-800">

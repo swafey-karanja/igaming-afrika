@@ -148,10 +148,14 @@ export default function EventApplicationForm() {
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
             <div>
-              <label className="block text-sm font-semibold text-gray-700 mb-2">
-                Company Name <span className="text-red-500">*</span>
+              <label
+                htmlFor="firstName"
+                className="block text-sm font-semibold text-gray-700 mb-2"
+              >
+                First Name <span className="text-red-500">*</span>
               </label>
               <TextField
+                id="firstName"
                 fullWidth
                 label={
                   <span>
@@ -170,10 +174,14 @@ export default function EventApplicationForm() {
               />
             </div>
             <div>
-              <label className="block text-sm font-semibold text-gray-700 mb-2">
+              <label
+                htmlFor="lastName"
+                className="block text-sm font-semibold text-gray-700 mb-2"
+              >
                 Last Name <span className="text-red-500">*</span>
               </label>
               <TextField
+                id="lastName"
                 fullWidth
                 label={
                   <span>
@@ -194,14 +202,19 @@ export default function EventApplicationForm() {
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
             <div>
-              <label className="block text-sm font-semibold text-gray-700 mb-2">
+              <label
+                htmlFor="gender-select"
+                className="block text-sm font-semibold text-gray-700 mb-2"
+              >
                 Pronouns <span className="text-red-500">*</span>
               </label>
+
               <TextField
+                id="gender"
                 fullWidth
                 select
-                label="Pronouns"
                 name="gender"
+                placeholder="Select pronouns"
                 value={formData.gender || ""}
                 onChange={handleInputChange}
                 error={!!errors.gender}
@@ -209,14 +222,18 @@ export default function EventApplicationForm() {
                 disabled={isSubmitting}
                 variant="outlined"
                 size="small"
+                InputProps={{
+                  id: "gender-select",
+                }}
               >
-                <MenuItem value="">pronouns</MenuItem>
+                {/* <MenuItem value="">Select pronouns</MenuItem> */}
                 <MenuItem value="he/him">he/him</MenuItem>
                 <MenuItem value="she/her">she/her</MenuItem>
                 <MenuItem value="they/them">they/them</MenuItem>
                 <MenuItem value="prefer-not-to-say">Prefer Not to Say</MenuItem>
               </TextField>
             </div>
+
             <div>
               <label className="block text-sm font-semibold text-gray-700 mb-2">
                 Work Email <span className="text-red-500">*</span>

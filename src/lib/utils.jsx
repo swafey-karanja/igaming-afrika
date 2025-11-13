@@ -417,11 +417,11 @@ export const CalendarDropdown = ({
       <button
         onMouseEnter={handleMouseEnter}
         onMouseLeave={handleMouseLeave}
-        className="bg-[#14a45c] text-white md:px-[16px] md:py-[9px] px-2.5 py-[4px] rounded-full shadow-lg flex items-center gap-2"
+        className="bg-[#14a45c] text-white md:px-[13px] md:py-[8px] px-2.5 py-[4px] rounded-full shadow-lg flex items-center gap-2"
         aria-label="Add to calendar"
       >
-        <span className="scale-90 sm:scale-100 md:scale-110 lg:scale-125 transition-transform">
-          <CalendarPlus size={18} />
+        <span className="scale-90 sm:scale-100 md:scale-100 lg:scale-120 transition-transform">
+          <CalendarPlus size={15} />
         </span>
         {showText && (
           <span className="font-semibold text-xs md:text-sm">
