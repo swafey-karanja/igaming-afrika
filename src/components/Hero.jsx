@@ -82,7 +82,7 @@ const Hero = () => {
         {isHomePage ? (
           <div className="absolute bottom-0 left-0 w-full h-[35vh] md:h-[35vh] lg:h-[45vh] xl:h-[50vh] 2xl:h-[40vh] 3xl:h-[35vh]">
             <img
-              src="/skyline-for-website-1920px (1).png"
+              src="/skyline-for-website.png"
               alt="Nairobi Skyline"
               className="w-full h-full object-cover object-bottom"
             />
