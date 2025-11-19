@@ -12,6 +12,7 @@ import {
   OutlinedInput,
   TextField,
 } from "@mui/material";
+import FormHelperText from "@mui/material/FormHelperText";
 
 export default function EventApplicationForm() {
   const [formData, setFormData] = useState({
@@ -19,6 +20,7 @@ export default function EventApplicationForm() {
     lastName: "",
     email: "",
     phone: "",
+    pronouns: "",
     company: "",
     interests: [],
   });
@@ -34,6 +36,8 @@ export default function EventApplicationForm() {
     { id: "media-partner", label: "Interested in Being a Media Partner" },
   ];
 
+  const pronouns = ["he/him", "she/her", "they/them", "prefer-not-to-say"];
+
   const handleInputChange = (e) => {
     const { name, value } = e.target;
     setFormData((prev) => ({
@@ -48,6 +52,13 @@ export default function EventApplicationForm() {
         [name]: "",
       }));
     }
+  };
+
+  const handlePronounChange = (event) => {
+    setFormData((prev) => ({
+      ...prev,
+      pronouns: event.target.value,
+    }));
   };
 
   const validateForm = () => {
@@ -81,7 +92,7 @@ export default function EventApplicationForm() {
 
       try {
         const response = await fetch(
-          `https://events.igamingafrika.com/api/register/`,
+          `${import.meta.env.VITE_PUBLIC_API_URL}register/`,
           {
             method: "POST",
             headers: {
@@ -111,6 +122,7 @@ export default function EventApplicationForm() {
               lastName: "",
               email: "",
               phone: "",
+              pronouns: "",
               company: "",
               interests: [],
             });
@@ -149,13 +161,13 @@ export default function EventApplicationForm() {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
             <div>
               <label
-                htmlFor="firstName"
+                htmlFor="firstName-input"
                 className="block text-sm font-semibold text-gray-700 mb-2"
               >
                 First Name <span className="text-red-500">*</span>
               </label>
               <TextField
-                id="firstName"
+                id="firstName-input"
                 fullWidth
                 label={
                   <span>
@@ -175,13 +187,13 @@ export default function EventApplicationForm() {
             </div>
             <div>
               <label
-                htmlFor="lastName"
+                htmlFor="lastName-input"
                 className="block text-sm font-semibold text-gray-700 mb-2"
               >
                 Last Name <span className="text-red-500">*</span>
               </label>
               <TextField
-                id="lastName"
+                id="lastName-input"
                 fullWidth
                 label={
                   <span>
@@ -203,44 +215,47 @@ export default function EventApplicationForm() {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
             <div>
               <label
-                htmlFor="gender-select"
+                htmlFor="pronouns-select"
                 className="block text-sm font-semibold text-gray-700 mb-2"
               >
                 Pronouns <span className="text-red-500">*</span>
               </label>
 
-              <TextField
-                id="gender"
-                fullWidth
-                select
-                name="gender"
-                placeholder="Select pronouns"
-                value={formData.gender || ""}
-                onChange={handleInputChange}
-                error={!!errors.gender}
-                helperText={errors.gender}
-                disabled={isSubmitting}
-                variant="outlined"
-                size="small"
-                InputProps={{
-                  id: "gender-select",
-                }}
-              >
-                {/* <MenuItem value="">Select pronouns</MenuItem> */}
-                <MenuItem value="he/him">he/him</MenuItem>
-                <MenuItem value="she/her">she/her</MenuItem>
-                <MenuItem value="they/them">they/them</MenuItem>
-                <MenuItem value="prefer-not-to-say">Prefer Not to Say</MenuItem>
-              </TextField>
+              <FormControl fullWidth sx={{ minWidth: 120 }} size="small">
+                <InputLabel id="pronouns-select-label">Pronouns</InputLabel>
+                <Select
+                  labelId="pronouns-select-label"
+                  id="pronouns-select"
+                  value={formData.pronouns}
+                  label="Pronouns"
+                  onChange={handlePronounChange}
+                  input={<OutlinedInput label="Pronouns" />}
+                >
+                  <MenuItem value="">
+                    <em>Select pronouns</em>
+                  </MenuItem>
+                  {pronouns.map((pronoun) => (
+                    <MenuItem key={pronoun} value={pronoun}>
+                      {pronoun === "prefer-not-to-say"
+                        ? "Prefer not to say"
+                        : pronoun}
+                    </MenuItem>
+                  ))}
+                </Select>
+              </FormControl>
             </div>
 
             <div>
-              <label className="block text-sm font-semibold text-gray-700 mb-2">
+              <label
+                htmlFor="email-input"
+                className="block text-sm font-semibold text-gray-700 mb-2"
+              >
                 Work Email <span className="text-red-500">*</span>
               </label>
               <TextField
                 fullWidth
                 type="email"
+                id="email-input"
                 label={
                   <span>
                     Work email <span style={{ color: "red" }}>*</span>
@@ -261,7 +276,10 @@ export default function EventApplicationForm() {
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
             <div>
-              <label className="block text-sm font-semibold text-gray-700 mb-2">
+              <label
+                htmlFor="company-input"
+                className="block text-sm font-semibold text-gray-700 mb-2"
+              >
                 Company Name <span className="text-red-500">*</span>
               </label>
               <TextField
@@ -272,6 +290,7 @@ export default function EventApplicationForm() {
                   </span>
                 }
                 name="company"
+                id="company-input"
                 value={formData.company}
                 onChange={handleInputChange}
                 error={!!errors.company}
@@ -283,7 +302,10 @@ export default function EventApplicationForm() {
               />
             </div>
             <div>
-              <label className="block text-sm font-semibold text-gray-700 mb-2">
+              <label
+                htmlFor="phone-input"
+                className="block text-sm font-semibold text-gray-700 mb-2"
+              >
                 Phone Number <span className="text-red-500">*</span>
               </label>
               <div
@@ -292,6 +314,7 @@ export default function EventApplicationForm() {
                 }`}
               >
                 <PhoneInput
+                  id="phone-input"
                   international
                   defaultCountry="KE"
                   placeholder="Enter phone number"
@@ -321,7 +344,10 @@ export default function EventApplicationForm() {
               PARTICIPATION INTERESTS
             </h2>
 
-            <label className="block text-sm font-semibold text-gray-700 mb-2">
+            <label
+              htmlFor="interests-select"
+              className="block text-sm font-semibold text-gray-700 mb-2"
+            >
               Select your interests <span className="text-red-500">*</span>
             </label>
             <FormControl
@@ -330,12 +356,13 @@ export default function EventApplicationForm() {
               error={!!errors.interests}
               disabled={isSubmitting}
             >
-              <InputLabel id="interests-label">
+              <InputLabel id="interests-select-label">
                 Select your interests <span style={{ color: "red" }}>*</span>
               </InputLabel>
 
               <Select
-                labelId="interests-label"
+                labelId="interests-select-label"
+                id="interests-select"
                 multiple
                 value={formData.interests}
                 onChange={(event) =>

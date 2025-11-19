@@ -256,7 +256,7 @@ const SocialSection = () => {
   ];
 
   return (
-    <div className="max-w-[1600px] mx-auto px-4 sm:px-6 lg:px-8 py-3">
+    <div className="max-w-[1600px] mx-auto px-4 sm:px-6 lg:px-8 py-3 z-10">
       <div className="flex items-center justify-center space-x-4 sm:space-x-6 pt-2">
         {socialLinks.map((social, index) => (
           <a
@@ -282,7 +282,7 @@ const BackToTop = ({ isVisible, onClick }) => (
     initial={{ opacity: 0 }}
     animate={{ opacity: isVisible ? 1 : 0 }}
     transition={{ duration: 0.3 }}
-    className="fixed bottom-3 sm:bottom-5 left-3 sm:left-5 rounded-full bg-green-600 p-2 sm:p-3 text-xs font-medium uppercase leading-tight cursor-pointer text-white shadow-lg hover:bg-green-700 hover:shadow-xl focus:outline-none focus:ring-0  transform hover:scale-110"
+    className="fixed bottom-3 z-10 sm:bottom-5 left-3 sm:left-5 rounded-full bg-green-600 p-2 sm:p-3 text-xs font-medium uppercase leading-tight cursor-pointer text-white shadow-lg hover:bg-green-700 hover:shadow-xl focus:outline-none focus:ring-0  transform hover:scale-110"
     aria-label="Back to top"
   >
     <svg
@@ -372,14 +372,17 @@ const Footer = () => {
     toast.loading("Sending your inquiry...", { id: "inquiry-toast" });
 
     try {
-      const response = await fetch(`${import.meta.env.VITE_API_URL}/inquiry/`, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: `Token ${import.meta.env.VITE_API_TOKEN}`,
-        },
-        body: JSON.stringify(formData),
-      });
+      const response = await fetch(
+        `${import.meta.env.VITE_PUBLIC_API_URL}inquiry/`,
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Token ${import.meta.env.VITE_PUBLIC_API_TOKEN}`,
+          },
+          body: JSON.stringify(formData),
+        }
+      );
 
       if (response.ok) {
         toast.success("Inquiry sent successfully!", { id: "inquiry-toast" });
@@ -430,12 +433,6 @@ const Footer = () => {
         </div>
         {/* Dark overlay for better text readability */}
         <div className="absolute inset-0 bg-black opacity-20 z-0"></div>
-        {/* Tagline positioned above skyline - MOVED OUTSIDE */}
-        <div className="absolute bottom-[8%] md:bottom-[8.5%] lg:bottom-[8.5%] left-0 right-0 flex items-center justify-center px-4">
-          <p className="text-[16px] sm:text-[20px] md:text-2xl lg:text-4xl xl:text-[35px] font-medium text-[#e1f30c] drop-shadow-lg text-center uppercase">
-            The Heart of Gaming in Africa
-          </p>
-        </div>
       </div>
 
       {/* Content - positioned above background with padding bottom to avoid skyline */}
@@ -457,7 +454,7 @@ const Footer = () => {
         className="py-4 absolute bottom-0 justify-center w-full z-10"
       >
         <SocialSection />
-        <div className="max-w-[1600px] mx-auto px-4 sm:px-6 lg:px-8 text-center text-xs font-semibold sm:text-sm text-gray-200 border-t border-gray-800">
+        <div className="max-w-[1600px] mx-auto px-4 sm:px-6 lg:px-8 text-center text-xs font-semibold sm:text-sm text-gray-200 border-t border-green-400 z-0">
           <p className="pt-2">
             © Copyright 2026 IGA Events Limited - All Rights Reserved
           </p>
