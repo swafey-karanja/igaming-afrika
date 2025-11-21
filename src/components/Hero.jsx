@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { NavLink, useLocation, useNavigate } from "react-router-dom";
 import { CalendarDropdown } from "../lib/utils";
+import PopUpModal from "./PopUpModal";
 
 const Hero = () => {
   const [timeLeft, setTimeLeft] = useState({
@@ -102,6 +103,8 @@ const Hero = () => {
             alt="African Pattern Background"
             className="absolute top-0 left-0 w-full h-full object-cover opacity-20"
           />
+          {/* Dark overlay for better text readability */}
+          {/* <div className="absolute inset-0 bg-black opacity-90 z-0"></div> */}
         </div>
 
         {/* Nairobi skyline image - positioned at bottom */}
@@ -220,13 +223,17 @@ const Hero = () => {
         {/* Buttons */}
         {isHomePage && (
           <div className="rounded-lg p-2 sm:p-4 xl:p-3 max-w-4xl mx-auto w-full flex flex-col gap-y-2 sm:gap-y-3 xl:gap-y-3">
-            <div className="flex justify-center">
+            <div
+              // className="flex justify-center"
+              className="flex flex-col md:flex-row justify-center gap-2 sm:gap-4 xl:gap-3"
+            >
               <NavLink
                 to="/register"
                 className="bg-transparent hover:bg-[#47cf8b] hover:bg-opacity-20 hover:text-white transition-colors duration-300 text-sm lg:text-lg xl:text-lg 2xl:text-md 3xl:text-lg text-[#14a45c] font-bold w-full sm:max-w-sm py-2 px-2 sm:px-4 border-3 border-lime-500 rounded-4xl text-center"
               >
                 Register interest
               </NavLink>
+              <PopUpModal />
             </div>
 
             <div className="flex flex-col md:flex-row justify-center gap-2 sm:gap-4 xl:gap-3">
