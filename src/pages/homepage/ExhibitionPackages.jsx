@@ -5,7 +5,7 @@ import { CheckCircle, AlertCircle } from "lucide-react";
 import ExhibitionModal from "../../components/ExhibitionModal";
 import Header from "../../components/Header";
 import useFetch from "../../services/useFetch.ts";
-import {fetchDataFromApi} from "../../services/api.js";
+import { fetchDataFromApi } from "../../services/api.js";
 
 const ExhibitionPackages = () => {
   const [selectedPackage, setSelectedPackage] = useState(null);
@@ -13,54 +13,53 @@ const ExhibitionPackages = () => {
   const tierOrder = ["Diamond", "Platinum", "Gold", "Silver", "Bronze"];
 
   const {
-      data: exhibitionData,
-      isLoading: exhibitionLoading,
-      error: exhibitionError,
-      refetch: refetchExhibitions
+    data: exhibitionData,
+    isLoading: exhibitionLoading,
+    error: exhibitionError,
+    refetch: refetchExhibitions,
   } = useFetch(() => fetchDataFromApi("exhibition"));
 
-    const packages = Array.isArray(exhibitionData)
-        ? exhibitionData
-            .flatMap((tier, tierIndex) =>
-                (tier.options ?? []).map((option, optionIndex) => ({
-                    id: `${tierIndex}-${optionIndex}`,
-                    title: `${tier.tier} - ${option.type}`,
-                    price: `$${Number(option.price).toLocaleString(undefined, {
-                        minimumFractionDigits: 0,
-                        maximumFractionDigits: 0,
-                    })}`,
-                    status: "AVAILABLE",
-                    icon: option.type === "Shell Scheme" ? "🏗️" : "🏢",
-                    iconBg: "bg-green-400",
-                    featured:
-                        tier.tier === "Platinum" && option.type === "Shell Scheme",
-                    description: option.description,
-                    standSize: option.standSize,
-                    tier: tier.tier,
-                    type: option.type,
-                    benefits: [
-                        ...(option.standBenefits || []),
-                        ...(option.exhibitorBenefits || []),
-                        ...(option.sponsorshipStatus || []),
-                    ],
-                    standBenefits: option.standBenefits || [],
-                    exhibitorBenefits: option.exhibitorBenefits || [],
-                    sponsorshipStatus: option.sponsorshipStatus || [],
-                    notes: option.notes || [],
-                    images: option.images || [],
-                    tickets:
-                        option.exhibitorBenefits
-                            ?.filter(
-                                (b) => /closing night passes/i.test(b) || /passes/i.test(b)
-                            )
-                            ?.join(", ") || "Contact for details",
-                }))
-            )
-            .sort((a, b) => tierOrder.indexOf(a.tier) - tierOrder.indexOf(b.tier))
-        : [];
+  const packages = Array.isArray(exhibitionData)
+    ? exhibitionData
+        .flatMap((tier, tierIndex) =>
+          (tier.options ?? []).map((option, optionIndex) => ({
+            id: `${tierIndex}-${optionIndex}`,
+            title: `${tier.tier} - ${option.type}`,
+            price: `$${Number(option.price).toLocaleString(undefined, {
+              minimumFractionDigits: 0,
+              maximumFractionDigits: 0,
+            })}`,
+            status: "AVAILABLE",
+            icon: option.type === "Shell Scheme" ? "🏗️" : "🏢",
+            iconBg: "bg-green-400",
+            featured:
+              tier.tier === "Platinum" && option.type === "Shell Scheme",
+            description: option.description,
+            standSize: option.standSize,
+            tier: tier.tier,
+            type: option.type,
+            benefits: [
+              ...(option.standBenefits || []),
+              ...(option.exhibitorBenefits || []),
+              ...(option.sponsorshipStatus || []),
+            ],
+            standBenefits: option.standBenefits || [],
+            exhibitorBenefits: option.exhibitorBenefits || [],
+            sponsorshipStatus: option.sponsorshipStatus || [],
+            notes: option.notes || [],
+            images: option.images || [],
+            tickets:
+              option.exhibitorBenefits
+                ?.filter(
+                  (b) => /closing night passes/i.test(b) || /passes/i.test(b)
+                )
+                ?.join(", ") || "Contact for details",
+          }))
+        )
+        .sort((a, b) => tierOrder.indexOf(a.tier) - tierOrder.indexOf(b.tier))
+    : [];
 
-
-    const openModal = (pkg) => {
+  const openModal = (pkg) => {
     setSelectedPackage(pkg);
     setTimeout(() => setIsModalOpen(true), 10);
   };
@@ -124,7 +123,7 @@ const ExhibitionPackages = () => {
               } ${pkg.status === "SOLD OUT" ? "opacity-60" : ""}`}
               onClick={() => pkg.status !== "SOLD OUT" && openModal(pkg)}
             >
-              <div className="p-6 h-[420px] flex flex-col flex-grow">
+              <div className="p-6 min-h-[420px] flex flex-col flex-grow">
                 <div className="flex items-center justify-between mb-4">
                   <span
                     className={`px-3 py-1 rounded-full text-xs font-semibold text-white bg-gradient-to-r ${getTierColor(

@@ -233,7 +233,7 @@ const Hero = () => {
               >
                 Register interest
               </NavLink>
-              <PopUpModal />
+              {/* <PopUpModal /> */}
             </div>
 
             <div className="flex flex-col md:flex-row justify-center gap-2 sm:gap-4 xl:gap-3">
