@@ -27,7 +27,7 @@ const SponsorshipModal = ({ selectedPackage, isModalOpen, closeModal }) => {
           } text-white p-4 sm:p-6`}
         >
           <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
-            <div className="flex items-center gap-4">
+            <div className="flex items-center gap-2 w-[80%]">
               <div className="w-12 h-12 bg-white bg-opacity-20 rounded-xl flex items-center justify-center text-2xl backdrop-blur-sm">
                 {selectedPackage.icon}
               </div>
@@ -40,15 +40,21 @@ const SponsorshipModal = ({ selectedPackage, isModalOpen, closeModal }) => {
                 </p>
               </div>
             </div>
-            <div className="flex items-center gap-4">
-              <span className="text-lg sm:text-xl font-bold">
-                ${selectedPackage.price}
-              </span>
+            <div className="flex gap-y-4 w-[20%] relative">
+              <div className="flex flex-col gap-2">
+                <p className="text-md font-bold text-white">
+                  Available - {selectedPackage.total_sold}/
+                  {selectedPackage.total_availability}
+                </p>
+                <p className="text-lg sm:text-xl font-bold text-end">
+                  ${selectedPackage.price}
+                </p>
+              </div>
               <button
                 onClick={closeModal}
-                className="w-9 h-9 sm:w-10 sm:h-10 bg-white/20 hover:bg-white/30 rounded-full flex items-center justify-center"
+                className="w-9 h-9 sm:w-10 sm:h-10 rounded-full flex absolute right-0 top-0"
               >
-                <X size={24} />
+                <X size={24} className="cursor-pointer" />
               </button>
             </div>
           </div>
@@ -58,7 +64,12 @@ const SponsorshipModal = ({ selectedPackage, isModalOpen, closeModal }) => {
         <div className="overflow-y-auto max-h-[calc(100vh-120px)] scroll-smooth">
           <div className="p-4 sm:p-6 space-y-6 mb-6">
             {/* Package Benefits */}
-            <div>
+            <div className="flex flex-col gap-2">
+              <img
+                src={selectedPackage.liked_sponsor_logos}
+                alt={selectedPackage.title}
+                className="h-14 w-auto max-w-[100px] xs:h-16 xs:max-w-[140px] sm:h-18 sm:max-w-[180px] md:h-20 md:max-w-[220px] lg:h-24 lg:max-w-[260px] xl:h-28 xl:max-w-[300px]"
+              />
               <div className="flex items-center gap-2 mb-3">
                 <CheckCircle className="text-green-600" size={20} />
                 <h3 className="text-lg font-bold text-gray-900">
@@ -293,7 +304,7 @@ const SponsorshipModal = ({ selectedPackage, isModalOpen, closeModal }) => {
                 <NavLink to="/register">
                   <button
                     onClick={closeModal}
-                    className="w-full bg-gradient-to-r from-green-600 to-green-700 text-white py-3 rounded-lg font-semibold shadow-md hover:shadow-lg transition"
+                    className="w-full bg-gradient-to-r from-green-600 to-green-700 text-white py-3 rounded-lg font-semibold shadow-md hover:shadow-lg transition cursor-pointer"
                   >
                     Contact Us
                   </button>

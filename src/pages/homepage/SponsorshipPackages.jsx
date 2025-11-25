@@ -10,7 +10,7 @@ import { motion } from "framer-motion";
 import SponsorshipModal from "../../components/SponsorshipModal";
 import Header from "../../components/Header";
 import useFetch from "../../services/useFetch.ts";
-import {fetchDataFromApi} from "../../services/api.js";
+import { fetchDataFromApi } from "../../services/api.js";
 
 const SponsorshipPackages = () => {
   const [selectedPackage, setSelectedPackage] = useState(null);
@@ -22,11 +22,11 @@ const SponsorshipPackages = () => {
     data: sponsorships,
     isLoading: sponsorshipsLoading,
     error: sponsorshipsError,
-    refetch: refetchSponsorships
+    refetch: refetchSponsorships,
   } = useFetch(() => fetchDataFromApi("sponsorships"));
 
   const packages = [...(sponsorships ?? [])].sort((a, b) =>
-      a.title.localeCompare(b.title)
+    a.title.localeCompare(b.title)
   );
 
   // Pagination logic
@@ -270,14 +270,24 @@ const SponsorshipPackages = () => {
                   </div>
 
                   {/* Price */}
-                  <div className="text-center mb-3">
-                    <span
+                  <div className="mb-3 w-full flex justify-between">
+                    {pkg.total_availability === pkg.total_sold ? (
+                      <p className="text-md font-bold text-red-600">
+                        Sold Out - {pkg.total_sold}/{pkg.total_availability}
+                      </p>
+                    ) : (
+                      <p className="text-md font-bold text-green-600">
+                        Available - {pkg.total_availability - pkg.total_sold}/{" "}
+                        {pkg.total_availability}
+                      </p>
+                    )}
+                    <p
                       className={`text-xl font-bold ${
                         pkg.featured ? "text-yellow-600" : "text-green-600"
                       }`}
                     >
                       ${pkg.price}
-                    </span>
+                    </p>
                   </div>
 
                   {/* View Details Button */}
