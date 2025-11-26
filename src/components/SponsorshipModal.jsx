@@ -13,7 +13,7 @@ const SponsorshipModal = ({ selectedPackage, isModalOpen, closeModal }) => {
     >
       {/* Modal Content */}
       <div
-        className={`bg-white w-full max-w-4xl rounded-2xl shadow-xl overflow-hidden transform transition-all duration-300 ${
+        className={`bg-white max-w-full md:max-w-[90%] lg:max-w-[80%] rounded-2xl shadow-xl overflow-hidden transform transition-all duration-300 ${
           isModalOpen ? "scale-100 opacity-100" : "scale-95 opacity-0"
         }`}
         onClick={(e) => e.stopPropagation()}
@@ -28,68 +28,103 @@ const SponsorshipModal = ({ selectedPackage, isModalOpen, closeModal }) => {
         >
           <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
             <div className="flex items-center gap-2 w-[80%]">
-              <div className="w-12 h-12 bg-white bg-opacity-20 rounded-xl flex items-center justify-center text-2xl backdrop-blur-sm">
-                {selectedPackage.icon}
-              </div>
               <div>
-                <h2 className="text-lg sm:text-2xl font-bold">
-                  {selectedPackage.title}
-                </h2>
-                <p className="text-white text-sm italic text-opacity-90 mt-1">
+                <div className="flex flex-row justify-between">
+                  <h2 className="text-lg sm:text-2xl font-bold">
+                    {selectedPackage.title}
+                  </h2>
+                  <button
+                    onClick={closeModal}
+                    className="w-9 h-9 sm:w-10 sm:h-10 rounded-full absolute right-0"
+                  >
+                    <X size={24} className="cursor-pointer" />
+                  </button>
+                </div>
+                <p className="text-white text-xs italic text-opacity-90 my-1">
                   {selectedPackage.description}
                 </p>
-              </div>
-            </div>
-            <div className="flex gap-y-4 w-[20%] relative">
-              <div className="flex flex-col gap-2">
-                <p className="text-md font-bold text-white">
-                  Available - {selectedPackage.total_sold}/
-                  {selectedPackage.total_availability}
-                </p>
-                <p className="text-lg sm:text-xl font-bold text-end">
+                <div className="flex flex-col gap-2">
+                  <p className="text-md font-bold text-white">
+                    {" "}
+                    {selectedPackage.total_availability ===
+                    selectedPackage.total_sold ? (
+                      <p className="text-md font-bold text-red-600">
+                        Sold Out - {selectedPackage.total_sold}/
+                        {selectedPackage.total_availability}
+                      </p>
+                    ) : (
+                      <p className="text-md font-bold text-green-200">
+                        Available -{" "}
+                        {selectedPackage.total_availability -
+                          selectedPackage.total_sold}
+                        / {selectedPackage.total_availability}
+                      </p>
+                    )}
+                  </p>
+                  {/* <p className="text-lg sm:text-xl font-bold text-end">
                   ${selectedPackage.price}
-                </p>
+                </p> */}
+                </div>
               </div>
-              <button
-                onClick={closeModal}
-                className="w-9 h-9 sm:w-10 sm:h-10 rounded-full flex absolute right-0 top-0"
-              >
-                <X size={24} className="cursor-pointer" />
-              </button>
             </div>
           </div>
         </div>
 
         {/* Scrollable Body */}
-        <div className="overflow-y-auto max-h-[calc(100vh-120px)] scroll-smooth">
-          <div className="p-4 sm:p-6 space-y-6 mb-6">
+        <div className="overflow-y-auto overflow-visible max-h-[calc(100vh-200px)] scroll-smooth">
+          <div className="p-4 sm:p-6 space-y-6 ">
             {/* Package Benefits */}
             <div className="flex flex-col gap-2">
-              <img
-                src={selectedPackage.liked_sponsor_logos}
-                alt={selectedPackage.title}
-                className="h-14 w-auto max-w-[100px] xs:h-16 xs:max-w-[140px] sm:h-18 sm:max-w-[180px] md:h-20 md:max-w-[220px] lg:h-24 lg:max-w-[260px] xl:h-28 xl:max-w-[300px]"
-              />
-              <div className="flex items-center gap-2 mb-3">
-                <CheckCircle className="text-green-600" size={20} />
-                <h3 className="text-lg font-bold text-gray-900">
-                  Package Benefits
-                </h3>
-              </div>
-              <div className="space-y-2">
-                {selectedPackage.benefits.map((benefit, index) => (
-                  <div
-                    key={index}
-                    className="flex items-start gap-3 text-sm text-gray-700"
-                  >
-                    <CheckCircle
-                      size={16}
-                      className="text-green-600 mt-0.5 flex-shrink-0"
+              <div
+                className={`grid items-center justify-center grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-6 md:gap-8  ${
+                  selectedPackage.liked_sponsor_logos.length > 3
+                    ? "flex-wrap"
+                    : ""
+                }`}
+              >
+                {selectedPackage.liked_sponsor_logos?.map((logo, index) => {
+                  const imageCount = selectedPackage.liked_sponsor_logos.length;
+
+                  const sizeClasses =
+                    imageCount <= 2
+                      ? "h-18 md:h-20 lg:h-24 xl:h-28"
+                      : "h-12 sm:h-14 md:h-20";
+
+                  return (
+                    <img
+                      key={index}
+                      src={logo}
+                      alt={`${selectedPackage.title} sponsor ${index + 1}`}
+                      className={`${sizeClasses} w-auto object-contain`}
                     />
-                    <span>{benefit}</span>
-                  </div>
-                ))}
+                  );
+                })}
               </div>
+              <hr className="border-gray-400 my-2" />
+              {selectedPackage.benefits?.length > 0 && (
+                <>
+                  <div className="flex items-center gap-2">
+                    <CheckCircle className="text-green-600" size={20} />
+                    <h3 className="text-lg font-bold text-gray-900">
+                      Package Benefits
+                    </h3>
+                  </div>
+                  <div className="space-y-2">
+                    {selectedPackage.benefits.map((benefit, index) => (
+                      <div
+                        key={index}
+                        className="flex items-start gap-3 text-sm text-gray-700"
+                      >
+                        <CheckCircle
+                          size={16}
+                          className="text-green-600 mt-0.5 flex-shrink-0"
+                        />
+                        <span>{benefit}</span>
+                      </div>
+                    ))}
+                  </div>
+                </>
+              )}
             </div>
 
             {/* Gold Benefits */}
@@ -286,19 +321,13 @@ const SponsorshipModal = ({ selectedPackage, isModalOpen, closeModal }) => {
 
             {/* CTA */}
             <div className="pt-4 border-t border-gray-200">
-              {selectedPackage.status === "SOLD" ? (
+              {selectedPackage.total_availability ===
+              selectedPackage.total_sold ? (
                 <button
                   disabled
-                  className="w-full bg-gradient-to-r from-red-500 to-red-600 text-white py-3 rounded-lg font-semibold cursor-not-allowed"
+                  className="w-full bg-gradient-to-r from-gray-500 to-gray-600 text-white py-3 rounded-lg font-semibold cursor-not-allowed"
                 >
                   Sold Out
-                </button>
-              ) : selectedPackage.status === "ON HOLD" ? (
-                <button
-                  disabled
-                  className="w-full bg-gray-400 text-gray-800 py-3 rounded-lg font-semibold"
-                >
-                  On Hold
                 </button>
               ) : (
                 <NavLink to="/register">

@@ -37,35 +37,35 @@ const SponsorshipPackages = () => {
     startIndex + packagesPerPage
   );
 
-  const getStatusBadge = (status, featured = false) => {
-    if (status === "ON HOLD") {
-      return (
-        <div className="absolute -top-2 -right-2 bg-gray-500 text-white text-xs font-bold px-3 py-2 rounded-full shadow-md transform z-10">
-          ON HOLD
-        </div>
-      );
-    }
-    if (status === "SOLD") {
-      return (
-        <div className="absolute -top-2 -right-2 bg-red-600 text-white text-xs font-bold px-3 py-2 rounded-full shadow-md transform rotate-12 z-10">
-          SOLD OUT
-        </div>
-      );
-    }
-    if (status === "AVAILABLE") {
-      return (
-        <div
-          style={!featured ? { backgroundColor: "#14a45c" } : {}}
-          className={`absolute -top-2 -right-2 ${
-            featured ? "bg-yellow-500" : ""
-          } text-white text-xs font-bold px-3 py-2 rounded-full shadow-md transform -rotate-12 z-10`}
-        >
-          {featured ? "⭐ FEATURED" : "AVAILABLE"}
-        </div>
-      );
-    }
-    return null;
-  };
+  // const getStatusBadge = (status, featured = false) => {
+  //   if (status === "ON HOLD") {
+  //     return (
+  //       <div className="absolute -top-2 -right-2 bg-gray-500 text-white text-xs font-bold px-3 py-2 rounded-full shadow-md transform z-10">
+  //         ON HOLD
+  //       </div>
+  //     );
+  //   }
+  //   if (status === "SOLD") {
+  //     return (
+  //       <div className="absolute -top-2 -right-2 bg-red-600 text-white text-xs font-bold px-3 py-2 rounded-full shadow-md transform rotate-12 z-10">
+  //         SOLD OUT
+  //       </div>
+  //     );
+  //   }
+  //   if (status === "AVAILABLE") {
+  //     return (
+  //       <div
+  //         style={!featured ? { backgroundColor: "#14a45c" } : {}}
+  //         className={`absolute -top-2 -right-2 ${
+  //           featured ? "bg-yellow-500" : ""
+  //         } text-white text-xs font-bold px-3 py-2 rounded-full shadow-md transform -rotate-12 z-10`}
+  //       >
+  //         {featured ? "⭐ FEATURED" : "AVAILABLE"}
+  //       </div>
+  //     );
+  //   }
+  //   return null;
+  // };
 
   const getIconComponent = (icon, featured = false) => {
     return (
@@ -148,16 +148,44 @@ const SponsorshipPackages = () => {
             {currentPackages.map((pkg) => (
               <div
                 key={pkg.id}
-                className={`group relative bg-white rounded-xl p-6 shadow-md transition-all hover:shadow-green-300 border-green-300 duration-300 cursor-pointer hover:-translate-y-1 ${
+                className={`group relative min-h-[320px] h-auto bg-white rounded-xl p-6 shadow-md transition-all hover:shadow-green-300 border-green-300 duration-300 cursor-pointer hover:-translate-y-1 ${
                   pkg.status === "SOLD OUT" ? "opacity-70" : ""
-                } ${
-                  pkg.featured ? "ring-2 ring-yellow-300 ring-opacity-50" : ""
                 }`}
                 onClick={() => openModal(pkg)}
               >
-                {getStatusBadge(pkg.status, pkg.featured)}
-
                 <div className="flex flex-col h-full">
+                  <div className="flex items-center justify-between mb-3">
+                    {pkg.total_availability === pkg.total_sold ? (
+                      <>
+                        <span
+                          className={`px-3 py-1 rounded-full text-xs font-semibold text-white bg-red-500`}
+                        >
+                          Sold Out - {pkg.total_sold}/{pkg.total_availability}
+                        </span>
+                        {/* <span className="text-sm text-red-600 font-bold"></span> */}
+                      </>
+                    ) : (
+                      <>
+                        <span
+                          className={`px-3 py-1 rounded-full text-xs font-semibold text-white bg-[#14a45c]`}
+                        >
+                          Available - {pkg.total_availability - pkg.total_sold}/{" "}
+                          {pkg.total_availability}
+                        </span>
+                        {/* <span className="text-sm text-green-600 font-bold"></span> */}
+                      </>
+                    )}
+                    {/* {pkg.total_availability === pkg.total_sold ? (
+                      <p className="text-md font-bold text-red-600">
+                        Sold Out - {pkg.total_sold}/{pkg.total_availability}
+                      </p>
+                    ) : (
+                      <p className="text-md font-bold text-green-600">
+                        Available - {pkg.total_availability - pkg.total_sold}/{" "}
+                        {pkg.total_availability}
+                      </p>
+                    )} */}
+                  </div>
                   {/* Icon */}
                   <div className="flex justify-center mb-4">
                     {getIconComponent(pkg.icon, pkg.featured)}
@@ -270,17 +298,7 @@ const SponsorshipPackages = () => {
                   </div>
 
                   {/* Price */}
-                  <div className="mb-3 w-full flex justify-between">
-                    {pkg.total_availability === pkg.total_sold ? (
-                      <p className="text-md font-bold text-red-600">
-                        Sold Out - {pkg.total_sold}/{pkg.total_availability}
-                      </p>
-                    ) : (
-                      <p className="text-md font-bold text-green-600">
-                        Available - {pkg.total_availability - pkg.total_sold}/{" "}
-                        {pkg.total_availability}
-                      </p>
-                    )}
+                  <div className="mb-3 w-full flex justify-center">
                     <p
                       className={`text-xl font-bold ${
                         pkg.featured ? "text-yellow-600" : "text-green-600"
