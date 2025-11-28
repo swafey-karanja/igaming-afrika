@@ -13,6 +13,7 @@ import {
 } from "react-icons/fa";
 import { toast } from "react-hot-toast";
 import { FormField } from "../lib/utils";
+import { fetchCSRFToken } from "../services/api";
 
 const NavLink = ({ href, children }) => (
   <li>
@@ -372,13 +373,16 @@ const Footer = () => {
     toast.loading("Sending your inquiry...", { id: "inquiry-toast" });
 
     try {
+      const { csrf_token } = await fetchCSRFToken();
+      console.log({ csrf_token });
+
       const response = await fetch(
         `${import.meta.env.VITE_PUBLIC_API_URL}inquiry/`,
         {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
-            Authorization: `Token ${import.meta.env.VITE_PUBLIC_API_TOKEN}`,
+            "X-CSRF-Token": csrf_token,
           },
           body: JSON.stringify(formData),
         }

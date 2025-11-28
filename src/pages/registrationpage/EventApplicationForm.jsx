@@ -88,15 +88,14 @@ export default function EventApplicationForm() {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    const { csrf_token } = await fetchCSRFToken();
-
-    console.log({ csrf_token });
-
     if (validateForm()) {
       setIsSubmitting(true);
       toast.loading("Submitting your application...", { id: "submit-toast" });
 
       try {
+        const { csrf_token } = await fetchCSRFToken();
+        console.log({ csrf_token });
+
         const response = await fetch(
           `${import.meta.env.VITE_PUBLIC_API_URL}register/`,
           {
@@ -140,7 +139,7 @@ export default function EventApplicationForm() {
         }
       } catch (error) {
         console.error("Submission error:", error);
-        toast.error("Submission failed", { id: "submit-toast" });
+        toast.error("Submission failed. Try Again", { id: "submit-toast" });
       } finally {
         setIsSubmitting(false);
       }
