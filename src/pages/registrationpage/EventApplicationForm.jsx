@@ -13,6 +13,7 @@ import {
   TextField,
 } from "@mui/material";
 import FormHelperText from "@mui/material/FormHelperText";
+import { fetchCSRFToken } from "../../services/api";
 
 export default function EventApplicationForm() {
   const [formData, setFormData] = useState({
@@ -86,6 +87,11 @@ export default function EventApplicationForm() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+
+    const { csrf_token } = await fetchCSRFToken();
+
+    console.log({ csrf_token });
+
     if (validateForm()) {
       setIsSubmitting(true);
       toast.loading("Submitting your application...", { id: "submit-toast" });
@@ -97,7 +103,7 @@ export default function EventApplicationForm() {
             method: "POST",
             headers: {
               "Content-Type": "application/json",
-              Authorization: `Token ${import.meta.env.VITE_PUBLIC_API_TOKEN}`,
+              "X-CSRF-Token": csrf_token,
             },
             body: JSON.stringify(formData),
           }
