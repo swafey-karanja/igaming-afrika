@@ -160,7 +160,7 @@ const SponsorshipPackages = () => {
                         <span
                           className={`px-3 py-1 rounded-full text-xs font-semibold text-white bg-red-500`}
                         >
-                          Sold Out - {pkg.total_sold}/{pkg.total_availability}
+                          Sold Out - 0/{pkg.total_availability}
                         </span>
                         {/* <span className="text-sm text-red-600 font-bold"></span> */}
                       </>
