@@ -13,6 +13,7 @@ import {
   TextField,
 } from "@mui/material";
 import FormHelperText from "@mui/material/FormHelperText";
+import { fetchCSRFToken } from "../../services/api";
 
 export default function EventApplicationForm() {
   const [formData, setFormData] = useState({
@@ -86,18 +87,22 @@ export default function EventApplicationForm() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+
     if (validateForm()) {
       setIsSubmitting(true);
       toast.loading("Submitting your application...", { id: "submit-toast" });
 
       try {
+        const { csrf_token } = await fetchCSRFToken();
+        console.log({ csrf_token });
+
         const response = await fetch(
           `${import.meta.env.VITE_PUBLIC_API_URL}register/`,
           {
             method: "POST",
             headers: {
               "Content-Type": "application/json",
-              Authorization: `Token ${import.meta.env.VITE_PUBLIC_API_TOKEN}`,
+              "X-CSRF-Token": csrf_token,
             },
             body: JSON.stringify(formData),
           }
@@ -134,7 +139,7 @@ export default function EventApplicationForm() {
         }
       } catch (error) {
         console.error("Submission error:", error);
-        toast.error("Submission failed", { id: "submit-toast" });
+        toast.error("Submission failed. Try Again", { id: "submit-toast" });
       } finally {
         setIsSubmitting(false);
       }
