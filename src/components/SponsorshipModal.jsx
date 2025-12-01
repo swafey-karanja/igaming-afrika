@@ -13,7 +13,7 @@ const SponsorshipModal = ({ selectedPackage, isModalOpen, closeModal }) => {
     >
       {/* Modal Content */}
       <div
-        className={`bg-white max-w-full md:min-w-[90%] lg:min-w-[80%] rounded-2xl shadow-xl overflow-hidden transform transition-all duration-300 ${
+        className={`bg-white max-w-full md:max-w-[90%] lg:max-w-[80%] rounded-2xl shadow-xl overflow-hidden transform transition-all duration-300 ${
           isModalOpen ? "scale-100 opacity-100" : "scale-95 opacity-0"
         }`}
         onClick={(e) => e.stopPropagation()}
