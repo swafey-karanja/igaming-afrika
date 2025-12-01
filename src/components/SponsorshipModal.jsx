@@ -13,7 +13,7 @@ const SponsorshipModal = ({ selectedPackage, isModalOpen, closeModal }) => {
     >
       {/* Modal Content */}
       <div
-        className={`bg-white max-w-full md:max-w-[90%] lg:max-w-[80%] rounded-2xl shadow-xl overflow-hidden transform transition-all duration-300 ${
+        className={`bg-white max-w-full md:min-w-[90%] lg:min-w-[80%] rounded-2xl shadow-xl overflow-hidden transform transition-all duration-300 ${
           isModalOpen ? "scale-100 opacity-100" : "scale-95 opacity-0"
         }`}
         onClick={(e) => e.stopPropagation()}
@@ -49,7 +49,7 @@ const SponsorshipModal = ({ selectedPackage, isModalOpen, closeModal }) => {
                     {selectedPackage.total_availability ===
                     selectedPackage.total_sold ? (
                       <p className="text-md font-bold text-red-600">
-                        Sold Out - {selectedPackage.total_sold}/
+                        Sold Out - 0/
                         {selectedPackage.total_availability}
                       </p>
                     ) : (
@@ -325,7 +325,7 @@ const SponsorshipModal = ({ selectedPackage, isModalOpen, closeModal }) => {
               selectedPackage.total_sold ? (
                 <button
                   disabled
-                  className="w-full bg-gradient-to-r from-gray-500 to-gray-600 text-white py-3 rounded-lg font-semibold cursor-not-allowed"
+                  className="w-full bg-gradient-to-r from-red-500 to-red-600 text-white py-3 rounded-lg font-semibold cursor-not-allowed"
                 >
                   Sold Out
                 </button>
