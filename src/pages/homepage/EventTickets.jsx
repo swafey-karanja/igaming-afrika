@@ -33,7 +33,7 @@ const EventTickets = () => {
   };
 
   return (
-    <div className="container mx-auto px-6 lg:px-8 py-8" id="tickets">
+    <section className="container mx-auto px-6 lg:px-8 py-8 scroll-mt-40" id="eventTickets">
       <Header
         title="Event Tickets"
         subtitle="Secure your spot at the iGaming Afrika Summit 2026 by choosing the ticket that best suits your needs."
@@ -218,7 +218,7 @@ const EventTickets = () => {
           </motion.div>
         ))}
       </motion.div>
-    </div>
+    </section>
   );
 };
 

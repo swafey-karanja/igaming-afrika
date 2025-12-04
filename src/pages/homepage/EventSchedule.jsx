@@ -36,7 +36,7 @@ const EventSchedule = () => {
   );
 
   return (
-    <div className="container mx-auto px-6 lg:px-8 py-8">
+    <section id="schedule" className="container mx-auto px-6 lg:px-8 py-8 scroll-mt-40">
       <Header
         title="Event Schedule"
         subtitle="Stay updated with the latest schedule for the iGaming Afrika Summit 2026."
@@ -185,7 +185,7 @@ const EventSchedule = () => {
           <CalendarDropdown iconSize="md" showText={true} />
         </div>
       </div>
-    </div>
+    </section>
   );
 };
 

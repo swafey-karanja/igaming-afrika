@@ -44,14 +44,26 @@ const EventDetails = () => {
     },
   };
 
+  const scrollLinks = [
+    { name: "About", href: "#eventDetails" },
+    { name: "Sponsors", href: "#sponsors" },
+    { name: "FloorPlan", href: "#floorPlan" },
+    { name: "Schedule", href: "#schedule" },
+    { name: "Sponsor", href: "#sponsorshipPackages" },
+    { name: "Exhibit", href: "#exhibitionPackages" },
+    { name: "Tickets", href: "#eventTickets" },
+    { name: "FAQs", href: "#faqs" },
+    { name: "Venue-Info", href: "#venueInfo" },
+  ];
+
   return (
     <section
-      className="min-h-screen flex flex-col items-center bg-center bg-fixed relative"
+      id="eventDetails"
+      className="min-h-screen flex flex-col items-center bg-center bg-fixed relative scroll-mt-40"
       style={{
         backgroundImage:
           "url('https://images.unsplash.com/photo-1699136897382-ec50fa3a289c?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NzF8fGdhbWJsaW5nfGVufDB8fDB8fHww')",
       }}
-      id="numbers"
     >
       {/* Overlay for better text readability */}
       <div className="absolute inset-0 bg-black/20 backdrop-blur-[0.5px]" />
@@ -63,8 +75,26 @@ const EventDetails = () => {
           whileInView="visible"
           viewport={{ once: true }}
           transition={{ staggerChildren: 0.2 }}
-          className="w-full max-w-[1600px] text-gray-800 py-8 md:py-12 lg:pt-16 lg:pb-0 px-6 sm:px-8 lg:px-12"
+          className="w-full lg:max-w-[1600px] text-gray-800 py-8 md:py-12 lg:pt-8 lg:pb-0 px-6 sm:px-8 lg:px-12"
         >
+          <div className="w-full pb-2 text-center flex gap-x-6 items-center justify-start xl:justify-center overflow-x-auto hide-scrollbar flex-nowrap">
+            {scrollLinks.map((link) => (
+              <button
+                key={link.href}
+                className="py-3 cursor-pointer px-6 bg-gray-100 hover:bg-[#47cf8b] hover:border-[#47cf8b] text-[#14a45c] transition-colors duration-100 ease-in-out hover:text-white rounded-3xl border-2 border-lime-500 font-semibold whitespace-nowrap flex-shrink-0"
+                onClick={() => {
+                  const section = document.querySelector(link.href);
+                  if (section) {
+                    section.scrollIntoView({ behavior: "smooth" });
+                  }
+                }}
+              >
+                {link.name}
+              </button>
+            ))}
+          </div>
+
+          <hr className="text-gray-300 my-5 font-bold" />
           {/* Grid Container */}
           <div className="grid grid-cols-1 lg:grid-cols-2 h-auto lg:min-h-[600px]">
             {/* Top Left: Image */}

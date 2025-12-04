@@ -82,7 +82,7 @@ const SponsorshipPackages = () => {
   };
 
   return (
-    <div className="container mx-auto px-6 lg:px-8 py-8">
+    <section id="sponsorshipPackages" className="scroll-mt-40 container mx-auto px-6 lg:px-8 py-8">
       {/* Header */}
       <Header
         title="Sponsorship Packages"
@@ -338,7 +338,7 @@ const SponsorshipPackages = () => {
         isModalOpen={isModalOpen}
         closeModal={closeModal}
       />
-    </div>
+    </section>
   );
 };
 
