@@ -111,15 +111,15 @@ const Hero = () => {
         {isHomePage ? (
           <div className="absolute bottom-0 left-0 w-full h-[35vh]">
             <img
-              src="/skyline-website-footer.png"
+              src="/city-skyline-nairobi-C.png"
               alt="Nairobi Skyline"
               className="w-full h-full object-cover object-bottom"
             />
           </div>
         ) : (
-          <div className="absolute bottom-0 left-0 w-full h-[25vh]">
+          <div className="absolute bottom-0 left-0 w-full h-[30vh]">
             <img
-              src="/skyline-for-website-other-pages.png"
+              src="/city-skyline-blended-with-background-3.png"
               alt="Nairobi Skyline"
               className="w-full h-full object-cover object-bottom"
             />
