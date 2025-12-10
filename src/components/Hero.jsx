@@ -111,39 +111,20 @@ const Hero = () => {
         {isHomePage ? (
           <div className="absolute bottom-0 left-0 w-full h-[35vh]">
             <img
-              src="/skyline-website-footer.png"
+              src="/city-skyline-nairobi-C.png"
               alt="Nairobi Skyline"
               className="w-full h-full object-cover object-bottom"
             />
           </div>
         ) : (
-          <div className="absolute bottom-0 left-0 w-full h-[25vh]">
+          <div className="absolute bottom-0 left-0 w-full h-[30vh]">
             <img
-              src="/skyline-for-website-other-pages.png"
+              src="/city-skyline-blended-with-background-3.png"
               alt="Nairobi Skyline"
               className="w-full h-full object-cover object-bottom"
             />
           </div>
         )}
-
-        {/* Tagline positioned above skyline */}
-        {/* <div
-          className={`absolute ${
-            isHomePage
-              ? "bottom-[4%] md:bottom-[5%] lg:bottom-[7%] xl:bottom-[8%] 2xl:bottom-[4.5%] 3xl:bottom-[4%]"
-              : "bottom-[4%] md:bottom-[5%] lg:bottom-[5%] xl:bottom-[5%] 2xl:bottom-[4.5%] 3xl:bottom-[4%]"
-          } flex items-center justify-center px-4 left-0 right-0`}
-        >
-          <p
-            className={`${
-              isHomePage
-                ? "text-[16px] sm:text-[20px] md:text-2xl lg:text-4xl xl:text-[35px] 2xl:text-[33px] 3xl:text-[30px]"
-                : "text-[16px] sm:text-[20px] md:text-2xl lg:text-4xl xl:text-[30px] 2xl:text-[28px] 3xl:text-[25px]"
-            } font-medium text-[#e1f30c] drop-shadow-lg text-center uppercase`}
-          >
-            The Heart of Gaming in Africa
-          </p>
-        </div> */}
       </div>
 
       {/* Content Section - Now with flex centering for better vertical alignment */}

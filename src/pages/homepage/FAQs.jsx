@@ -34,7 +34,7 @@ const FAQs = () => {
   };
 
   return (
-    <div className="max-w-[1300px] mx-auto px-6 lg:px-8 py-8">
+    <section id="faqs" className="max-w-[1300px] mx-auto px-6 lg:px-8 py-8 scroll-mt-40">
       <Header
         title="Frequently Asked Questions"
         subtitle="Find answers to common questions about the iGaming Afrika Summit 2026."
@@ -81,7 +81,7 @@ const FAQs = () => {
           </div>
         ))}
       </div>
-    </div>
+    </section>
   );
 };
 

@@ -46,7 +46,11 @@ const Floorplan = () => {
   }, []);
 
   return (
-    <div ref={containerRef} className="container mx-auto px-6 lg:px-8 py-8">
+    <section
+      ref={containerRef}
+      className="container mx-auto px-6 lg:px-8 py-8 scroll-mt-40"
+      id="floorPlan"
+    >
       <Header
         title="Event Floorplan"
         subtitle="Explore the layout of the iGaming Afrika Summit 2026 venue."
@@ -94,7 +98,20 @@ const Floorplan = () => {
           />
         )}
       </div>
-    </div>
+      <div
+        // className="flex justify-center"
+        className="flex items-center justify-center pt-15"
+      >
+        <a
+          target="_blank"
+          href="https://igamingafrikasummit.expofp.com/"
+          className="bg-transparent hover:bg-[#47cf8b] hover:bg-opacity-20 hover:text-white transition-colors duration-300 text-sm lg:text-lg xl:text-lg 2xl:text-md 3xl:text-lg text-[#14a45c] font-bold w-auto sm:max-w-sm py-3 px-8 border-2 border-lime-500 rounded-4xl text-center"
+        >
+          View Full Screen
+        </a>
+        {/* <PopUpModal /> */}
+      </div>
+    </section>
   );
 };
 

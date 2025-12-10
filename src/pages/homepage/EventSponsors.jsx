@@ -66,7 +66,7 @@ const EventSponsors = () => {
   };
 
   return (
-    <div className="px-6 lg:px-8 py-8">
+    <section className="px-6 lg:px-8 py-8 scroll-mt-40" id="sponsors">
       <Header
         title="Event Sponsors"
         subtitle="Meet our kind and illustrious sponsors for the ground-breaking iGaming
@@ -246,7 +246,7 @@ const EventSponsors = () => {
           </div>
         )}
       </div>
-    </div>
+    </section>
   );
 };
 

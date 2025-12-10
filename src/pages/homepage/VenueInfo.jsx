@@ -106,7 +106,7 @@ const VenueInfo = () => {
   ];
 
   return (
-    <div className="container mx-auto px-6 lg:px-8 py-8">
+    <section id="venueInfo" className="scroll-mt-40 container mx-auto px-6 lg:px-8 py-8">
       {/* Header Section */}
       <Header
         title="Venue Information"
@@ -383,7 +383,7 @@ const VenueInfo = () => {
           </motion.div>
         </motion.div>
       )}
-    </div>
+    </section>
   );
 };
 
