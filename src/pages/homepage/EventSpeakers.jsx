@@ -7,7 +7,8 @@ import { AlertCircle } from "lucide-react";
 import SpeakerModal from "../../components/SpeakerModal";
 import Header from "../../components/Header";
 import useFetch from "../../services/useFetch.ts";
-import {fetchDataFromApi} from "../../services/api.js";
+import { fetchDataFromApi } from "../../services/api.js";
+import { NavLink } from "react-router-dom";
 
 const EventSpeakers = () => {
   const [selectedSpeaker, setSelectedSpeaker] = useState(null);
@@ -19,7 +20,7 @@ const EventSpeakers = () => {
     data: speakers,
     error: speakerError,
     isLoading: speakerLoading,
-    refetch: refetchSpeakers
+    refetch: refetchSpeakers,
   } = useFetch(() => fetchDataFromApi("speakers"));
 
   const checkScreenSize = useCallback(() => {
@@ -202,13 +203,26 @@ const EventSpeakers = () => {
           )}
 
           {/* End Message */}
-          {speakers && visibleCount >= speakers.length && speakers.length > 0 && (
-            <div className="text-center mt-12">
-              <p className="text-gray-500 text-[13px] font-medium">
-                You've seen all {speakers.length} speakers!
-              </p>
-            </div>
-          )}
+          {speakers &&
+            visibleCount >= speakers.length &&
+            speakers.length > 0 && (
+              <div className="text-center mt-12">
+                <p className="text-gray-500 text-[13px] font-medium">
+                  You've seen all {speakers.length} speakers!
+                </p>
+              </div>
+            )}
+
+          <NavLink
+            to="/speaker-registration"
+            className="flex items-center justify-center mt-6"
+          >
+            <button
+              className={`text-white bg-[#14a45c] hover:cursor-pointer text-xs font-bold py-2 px-4 lg:py-3 lg:px-6 lg:text-sm rounded-3xl `}
+            >
+              Become a Speaker
+            </button>
+          </NavLink>
         </>
       )}
 

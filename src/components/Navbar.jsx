@@ -160,19 +160,16 @@ const Navbar = () => {
                 EXHIBIT/SPONSOR
               </button>
             </NavLink>
-
-            <button
-              onClick={() => {
-                const form = document.getElementById("contact-form");
-                form?.scrollIntoView({ behavior: "smooth" });
-              }}
-              style={isScrolled ? { backgroundColor: "#14a45c" } : {}}
-              className={`hover:bg-green-600 hover:text-white transition-colors duration-300 hover:bg-opacity-20 hover:cursor-pointer text-xs font-bold py-1.5 px-4 lg:py-2 lg:px-6 lg:text-sm border-3 border-lime-500 rounded-md ${
-                isScrolled ? "text-white bg-green-600" : "text-[#14a45c]"
-              }`}
-            >
-              CONTACT US
-            </button>
+            <NavLink to="/speaker-registration">
+              <button
+                style={isScrolled ? { backgroundColor: "#14a45c" } : {}}
+                className={`hover:bg-green-600 hover:text-white transition-colors duration-300 hover:bg-opacity-20 hover:cursor-pointer text-xs font-bold py-1.5 px-4 lg:py-2 lg:px-6 lg:text-sm border-3 border-lime-500 rounded-md ${
+                  isScrolled ? "text-white bg-green-600" : "text-[#14a45c]"
+                }`}
+              >
+                BECOME A SPEAKER
+              </button>
+            </NavLink>
           </nav>
         </div>
       </div>

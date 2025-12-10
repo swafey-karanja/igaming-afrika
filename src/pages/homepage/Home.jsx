@@ -60,14 +60,14 @@ const Home = () => {
         <EventSchedule />
       </motion.div>
 
-      {/* <motion.div*/}
-      {/*  variants={fadeInUp}*/}
-      {/*  initial="hidden"*/}
-      {/*  whileInView="visible"*/}
-      {/*  viewport={{ once: true }}*/}
-      {/*>*/}
-      {/*  <EventSpeakers />*/}
-      {/*</motion.div>*/}
+      {/* <motion.div
+        variants={fadeInUp}
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true }}
+      >
+        <EventSpeakers />
+      </motion.div> */}
 
       <motion.div
         variants={fadeInUp}

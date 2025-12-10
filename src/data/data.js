@@ -365,7 +365,7 @@ export const schedules = {
 
 export const plans = [
   {
-    id: "standard",
+    id: "price_1ScMl8CBe8Ewb1SiA8p4sfnA",
     label: "Standard Pass",
     requirement: "Business Email registration required",
     price: 0,
@@ -379,7 +379,7 @@ export const plans = [
     ],
   },
   {
-    id: "premium",
+    id: "price_1Sc0LHCBe8Ewb1SiuNgT9QqM",
     label: "Premium Pass",
     price: 200,
     doorPrice: 350,
@@ -398,7 +398,7 @@ export const plans = [
     ],
   },
   {
-    id: "vvip",
+    id: "price_1Sc3xlCBe8Ewb1SihYH6Okgn",
     label: "VVIP Pass",
     price: 600,
     doorPrice: 950,
@@ -540,4 +540,23 @@ export const faqs = [
     answer:
       "The iGA Summit collaborates with various media partners worldwide to enhance the event's visibility and provide valuable exposure opportunities within the iGaming AFRIKA Community. If you're interested in becoming an official Media Partner, please reach out to our Media Relations team at 'mediarelations@igamingafrika.com'.",
   },
+];
+
+export const companyTypes = [
+  { value: "affiliate", label: "Affiliate" },
+  { value: "agency", label: "Agency" },
+  { value: "broker", label: "Broker" },
+  { value: "game-provider", label: "Game Provider" },
+  { value: "media", label: "Media" },
+  { value: "investor", label: "Investor" },
+  { value: "legal", label: "Legal" },
+  { value: "non-gaming-supplier", label: "Non-gaming Supplier" },
+  { value: "operator", label: "Operator" },
+  { value: "regulator", label: "Regulator" },
+  { value: "start-up", label: "Start Up" },
+  { value: "supplier", label: "Supplier" },
+  { value: "financial-institution", label: "Financial Institution" },
+  { value: "payments", label: "Payments" },
+  { value: "non-profit", label: "Non Profit" },
+  { value: "other", label: "Other" },
 ];

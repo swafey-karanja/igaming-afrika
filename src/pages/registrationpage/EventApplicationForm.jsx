@@ -1,5 +1,6 @@
 import { useState } from "react";
 import PhoneInput from "react-phone-number-input";
+import { MuiTelInput } from "mui-tel-input";
 import "react-phone-number-input/style.css";
 import { toast } from "react-hot-toast";
 import {
@@ -318,28 +319,19 @@ export default function EventApplicationForm() {
                   errors.phone ? "border-red-500" : "border-gray-300"
                 }`}
               >
-                <PhoneInput
-                  id="phone-input"
-                  international
-                  defaultCountry="KE"
-                  placeholder="Enter phone number"
+                <MuiTelInput
                   value={formData.phone}
                   onChange={(value) =>
                     setFormData((prev) => ({ ...prev, phone: value }))
                   }
-                  className="flex-1 px-4 py-2 bg-white rounded-lg border-none focus:outline-none"
-                  style={{
-                    borderTopLeftRadius: 0,
-                    borderBottomLeftRadius: 0,
-                    border: "none",
-                    width: "100%",
-                  }}
                   disabled={isSubmitting}
+                  international="true"
+                  defaultCountry="KE"
                 />
+                {errors.phone && (
+                  <p className="text-red-500 text-sm mt-1">{errors.phone}</p>
+                )}
               </div>
-              {errors.phone && (
-                <p className="text-red-500 text-sm mt-1">{errors.phone}</p>
-              )}
             </div>
           </div>
 
