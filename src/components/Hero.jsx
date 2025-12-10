@@ -109,13 +109,16 @@ const Hero = () => {
 
         {/* Nairobi skyline image - positioned at bottom */}
         {isHomePage ? (
-          <div className="absolute bottom-0 left-0 w-full h-[35vh]">
-            <img
-              src="/city-skyline-nairobi-C.png"
-              alt="Nairobi Skyline"
-              className="w-full h-full object-cover object-bottom"
-            />
-          </div>
+          <>
+            <div className="absolute bottom-0 left-0 w-full h-[35vh]">
+              <img
+                src="/city-skyline-nairobi-C.png"
+                alt="Nairobi Skyline"
+                className="w-full h-full object-cover object-bottom"
+              />
+            </div>
+            {/* <PopUpModal /> */}
+          </>
         ) : (
           <div className="absolute bottom-0 left-0 w-full h-[30vh]">
             <img
