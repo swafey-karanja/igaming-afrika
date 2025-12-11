@@ -12,7 +12,7 @@ import Navbar from "./components/Navbar.jsx";
 import Publications from "./pages/publicationspage/Publications.jsx";
 import Hero from "./components/Hero.jsx";
 import EventApplicationForm from "./pages/registrationpage/EventApplicationForm.jsx";
-// import Return from "./pages/checkoutpage/Return.jsx";
+import Return from "./pages/checkoutpage/Return.jsx";
 import SpeakerRegistrationPage from "./pages/speakerRegistration/SpeakerRegistrationPage.jsx";
 
 const App = () => {
@@ -50,7 +50,7 @@ const App = () => {
           <Route path="/register" element={<EventApplicationForm />} />
           <Route path="/checkout" element={<Checkout />} />
           <Route path="/publications/:category" element={<Publications />} />
-          {/* <Route path="/return" element={<Return />} /> */}
+          <Route path="/return" element={<Return />} />
           <Route
             path="/speaker-registration"
             element={<SpeakerRegistrationPage />}

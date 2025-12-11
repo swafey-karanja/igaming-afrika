@@ -117,7 +117,7 @@ const Hero = () => {
                 className="w-full h-full object-cover object-bottom"
               />
             </div>
-            {/* <PopUpModal /> */}
+            <PopUpModal />
           </>
         ) : (
           <div className="absolute bottom-0 left-0 w-full h-[30vh]">

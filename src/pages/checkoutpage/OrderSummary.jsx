@@ -84,21 +84,7 @@ const OrderSummary = ({ selectedTicket }) => {
       <div className="border-t pt-4 mb-6">
         <div className="flex justify-between items-center mb-2">
           <span className="text-gray-600">Ticket Price</span>
-          <span className="font-medium">
-            {selectedTicket.price === 0 ? "Free" : `$${selectedTicket.price}`}
-          </span>
-        </div>
-        {selectedTicket.doorPrice && (
-          <div className="flex justify-between items-center mb-2">
-            <span className="text-sm text-gray-500">You save</span>
-            <span className="text-sm text-green-600 font-medium">
-              ${selectedTicket.doorPrice - selectedTicket.price}
-            </span>
-          </div>
-        )}
-        <div className="flex justify-between items-center text-lg font-bold border-t pt-2">
-          <span>Total</span>
-          <span className="text-green-600">
+          <span className="font-bold text-green-600">
             {selectedTicket.price === 0 ? "Free" : `$${selectedTicket.price}`}
           </span>
         </div>

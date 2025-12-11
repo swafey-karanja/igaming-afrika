@@ -29,3 +29,14 @@ export async function fetchCSRFToken() {
   }
   return await tokenResponse.json();
 }
+
+export async function fetchExchangeRates() {
+  const url =
+    "https://v6.exchangerate-api.com/v6/be27f3528094fbe77bf956dd/latest/USD";
+  const response = await fetch(url);
+  if (!response.ok) {
+    throw new Error("Failed to get CSRF token");
+  }
+  // console.log({ response });
+  return await response.json();
+}

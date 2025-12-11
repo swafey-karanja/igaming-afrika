@@ -5,26 +5,19 @@ import { motion } from "framer-motion";
 const PaymentMethods = ({ paymentMethod, setPaymentMethod }) => {
   const paymentMethods = [
     {
-      id: "flutterwave",
-      name: "Flutterwave",
-      logo: "💳",
-      description: "Pay with cards, bank transfer, or mobile money",
-      supported: ["Visa", "Mastercard", "Mobile Money", "Bank Transfer"],
+      id: "stripe",
+      name: "Stripe",
+      logo: "🔷",
+      description: "Secure card payments worldwide",
+      supported: ["Visa", "Mastercard", "American Express", "Google Pay"],
     },
-    // {
-    //   id: "stripe",
-    //   name: "Stripe",
-    //   logo: "🔷",
-    //   description: "Secure card payments worldwide",
-    //   supported: ["Visa", "Mastercard", "American Express", "Google Pay"],
-    // },
-    // {
-    //   id: "paystack",
-    //   name: "Paystack",
-    //   logo: "🟢",
-    //   description: "Fast and secure African payments",
-    //   supported: ["Visa", "Mastercard", "Verve", "Bank Transfer", "USSD"],
-    // },
+    {
+      id: "mpesa",
+      name: "M-Pesa",
+      logo: "📱",
+      description: "Pay with your M-Pesa mobile money",
+      supported: ["Safaricom M-Pesa", "Kenya"],
+    },
   ];
 
   return (

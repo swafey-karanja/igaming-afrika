@@ -87,15 +87,15 @@ const Checkout = () => {
 
           <div className="lg:col-span-1">
             <OrderSummary selectedTicket={selectedTicket} />
-            <PaymentProcessor
-              selectedTicket={selectedTicket}
-              formData={formData}
-              isProcessing={isProcessing}
-              setIsProcessing={setIsProcessing}
-              validateForm={validateForm}
-            />
           </div>
         </div>
+        <PaymentProcessor
+          selectedTicket={selectedTicket}
+          formData={formData}
+          isProcessing={isProcessing}
+          setIsProcessing={setIsProcessing}
+          validateForm={validateForm}
+        />
       </div>
     </>
   );
