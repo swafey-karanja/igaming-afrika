@@ -227,29 +227,29 @@ export const options = [
 // Accordion data
 export const accordionItems = [
   {
-    title: "Free Entry Pass",
+    title: "Unmatched Accesibility",
     content:
-      "This is the first-ever event of its scale within the iGaming industry to offer a free entry pass on the continent. The free tickets provide access to the exhibition centre, offering a unique opportunity to explore the extensive product offerings from various exhibitors. Additionally, ticket holders will have access to select panel discussions, providing a valuable chance to learn from our knowledgeable panel of speakers and gain insights into the latest trends and developments in the gaming industry.",
+      "This is the first-ever event of its scale within the iGaming industry to offer a free entry pass option on the continent. iGA Summit offers complimentary access to the exhibition and selected panel discussions, ensuring a wide-reaching impact and bringing together professionals from all corners of the industry.",
   },
   {
-    title: "Global Gathering",
+    title: "A Global Networking Opportunity",
     content:
-      "With expected attendees from over 100 countries, this event is unmatched in its international reach. It offers a unique platform for networking with industry leaders from around the world.",
+      "Connect with over 3,500 delegates from more than 100 countries, including top gaming operators, regulatory authorities, investors, technology providers, marketers, and affiliates.",
   },
   {
-    title: "Safari Tour",
+    title: "Unique and Unforgetable Experiences including a Safari Tour",
     content:
-      "The event will kick off with a memorable Safari Tour allowing attendees to experience Kenya's wildlife including Lions, Antelopes, and Elephants. It provides a once-in-a-lifetime opportunity to connect with nature before the main event.",
+      "Culminating in an exciting safari tour, a competitivesoccer tournament, and a prestigious iGaming AFRIKASummit Awards Gala, the summit promises experiencesthat go beyond traditional conferences, designed to foster connections and celebrate the industry’s achievements.",
   },
   {
-    title: "World-Class Content",
+    title: "Exclusive Industry Insights",
     content:
-      "Explore sections dedicated to key industry verticals such as regulation, affiliate marketing, AI, Esports, Crypto, payments etc with targeted sessions for industry insights. Attendees will gain practical knowledge from expert speakers and industry pioneers.",
+      "Participate in expert-led sessions that dive deep intokey topics shaping the future of the gaming industry,ranging from regulation and responsible gaming todigital assets, Artificial Intelligence, and everything in between.",
   },
   {
-    title: "Memorable Entertainment",
+    title: "High Profile Entertainment",
     content:
-      "The event culminates with an iconic closing celebration featuring renowned artists. It promises an unforgettable experience blending entertainment with networking opportunities.",
+      "Be part of a dynamic closing celebration featuringrenowned African and international artists, ensuringboth an exciting end to the summit and a chance to network in a lively, informal atmosphere.",
   },
 ];
 
@@ -543,20 +543,20 @@ export const faqs = [
 ];
 
 export const companyTypes = [
-  { value: "affiliate", label: "Affiliate" },
-  { value: "agency", label: "Agency" },
-  { value: "broker", label: "Broker" },
-  { value: "game-provider", label: "Game Provider" },
-  { value: "media", label: "Media" },
-  { value: "investor", label: "Investor" },
-  { value: "legal", label: "Legal" },
-  { value: "non-gaming-supplier", label: "Non-gaming Supplier" },
-  { value: "operator", label: "Operator" },
-  { value: "regulator", label: "Regulator" },
-  { value: "start-up", label: "Start Up" },
-  { value: "supplier", label: "Supplier" },
-  { value: "financial-institution", label: "Financial Institution" },
-  { value: "payments", label: "Payments" },
-  { value: "non-profit", label: "Non Profit" },
-  { value: "other", label: "Other" },
+  { value: "Affiliate", label: "Affiliate" },
+  { value: "Agency", label: "Agency" },
+  { value: "Broker", label: "Broker" },
+  { value: "Game-provider", label: "Game Provider" },
+  { value: "Media", label: "Media" },
+  { value: "Investor", label: "Investor" },
+  { value: "Legal", label: "Legal" },
+  { value: "non-gaming Supplier", label: "Non-gaming Supplier" },
+  { value: "Operator", label: "Operator" },
+  { value: "Regulator", label: "Regulator" },
+  { value: "Start-up", label: "Start Up" },
+  { value: "Supplier", label: "Supplier" },
+  { value: "Financial Institution", label: "Financial Institution" },
+  { value: "Payments", label: "Payments" },
+  { value: "Nonprofit", label: "Non Profit" },
+  { value: "Other", label: "Other" },
 ];

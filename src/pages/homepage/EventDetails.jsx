@@ -140,7 +140,7 @@ const EventDetails = () => {
                 <br />
                 This being the inaugural edition of the summit, the event is
                 expected to be the largest in the industry. The summit is taking
-                place in an impressive 3,300m² square meters location at{" "}
+                place in an impressive 3,300m² square meter location at{" "}
                 <strong>Sarit Expo Centre</strong>, Nairobi's Largest Expo
                 centre giving exhibitors and attendees a massive ground to
                 showcase their products, meet and connect with industry players

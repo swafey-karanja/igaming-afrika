@@ -87,9 +87,12 @@ const ExhibitionPackages = () => {
   };
 
   return (
-    <section id="exhibitionPackages" className="container scroll-mt-40 mx-auto px-6 lg:px-8 py-8">
+    <section
+      id="exhibitionPackages"
+      className="container scroll-mt-40 mx-auto px-6 lg:px-8 py-8"
+    >
       <Header
-        title="Exhibition Packages"
+        title="Exhibition Stand Packages"
         subtitle="Showcase your brand at iGaming AFRIKA Summit 2026 with our tailored exhibition packages."
       />
 

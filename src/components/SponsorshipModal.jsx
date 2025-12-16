@@ -157,7 +157,7 @@ const SponsorshipModal = ({ selectedPackage, isModalOpen, closeModal }) => {
             {selectedPackage.diamondBenefits?.length > 0 && (
               <div>
                 <div className="flex items-center gap-2 mb-3">
-                  <Star className="text-purple-500" size={20} />
+                  <Star className="text-blue-400" size={20} />
                   <h3 className="text-lg font-bold text-gray-900">
                     Diamond Sponsorship Status
                   </h3>
@@ -170,7 +170,7 @@ const SponsorshipModal = ({ selectedPackage, isModalOpen, closeModal }) => {
                     >
                       <Star
                         size={16}
-                        className="text-purple-500 mt-0.5 flex-shrink-0"
+                        className="text-blue-400 mt-0.5 flex-shrink-0"
                       />
                       <span>{benefit}</span>
                     </div>
