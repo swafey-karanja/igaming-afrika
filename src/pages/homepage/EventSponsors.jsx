@@ -1,10 +1,9 @@
-
 // eslint-disable-next-line no-unused-vars
 import { motion } from "framer-motion";
 import { AlertCircle } from "lucide-react";
 import { SponsorTier } from "../../lib/utils";
 import Header from "../../components/Header";
-import {fetchDataFromApi} from "../../services/api.js";
+import { fetchDataFromApi } from "../../services/api.js";
 import useFetch from "../../services/useFetch.ts";
 
 const fadeIn = {
@@ -13,14 +12,13 @@ const fadeIn = {
 };
 
 const EventSponsors = () => {
-
   const fetchSponsors = async () => {
     const data = await fetchDataFromApi("sponsors");
 
     return {
       headlineSponsor: Array.isArray(data.headlineSponsor)
-          ? data.headlineSponsor[0]
-          : data.headlineSponsor,
+        ? data.headlineSponsor[0]
+        : data.headlineSponsor,
       diamondSponsors: data.diamondSponsors || [],
       platinumSponsors: data.platinumSponsors || [],
       goldSponsors: data.goldSponsors || [],
@@ -52,7 +50,7 @@ const EventSponsors = () => {
 
   // Standard logo sizes for all tiers except headline sponsor (same as gold tier)
   const standardLogoSizes =
-    "h-14 w-auto max-w-[100px] xs:h-16 xs:max-w-[140px] sm:h-18 sm:max-w-[180px] md:h-20 md:max-w-[220px] lg:h-24 lg:max-w-[260px] xl:h-28 xl:max-w-[300px]";
+    "h-14 w-auto max-w-[100px] xs:h-16 xs:max-w-[140px] sm:h-18 sm:max-w-[180px] md:h-20 md:max-w-[220px] lg:h-24 lg:max-w-[260px] xl:h-28 xl:max-w-[240px]";
 
   const getGridClass = (sponsorCount) => {
     if (sponsorCount === 3) {
@@ -62,7 +60,7 @@ const EventSponsors = () => {
     } else if (sponsorCount === 1) {
       return "grid grid-cols-1 gap-6 px-2 items-center justify-items-center justify-center";
     }
-    return "grid grid-cols-2 xs:grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-6 xs:gap-8 sm:gap-10 md:gap-12 px-2 items-center justify-items-center";
+    return "grid grid-cols-2 lg:grid-cols-4 gap-8 justify-items-center";
   };
 
   return (
@@ -98,7 +96,7 @@ const EventSponsors = () => {
             <SponsorTier
               title="Headline Sponsor"
               sponsors={[headlineSponsor]}
-              logoSizes="h-32 w-auto max-w-[360px] xs:h-36 xs:max-w-[420px] sm:h-40 sm:max-w-[480px] md:h-44 md:max-w-[540px] lg:h-52 lg:max-w-[640px] xl:h-60 xl:max-w-[720px]"
+              logoSizes="h-28 max-w-[320px] md:h-44 md:max-w-[540px] lg:h-52 lg:max-w-[640px] xl:h-60 xl:max-w-[720px]"
               containerClass="flex justify-center px-2 sm:px-4"
               titleColor="from-yellow-600 via-yellow-500 to-amber-500"
               delay={0}
@@ -209,11 +207,11 @@ const EventSponsors = () => {
         {!sponsorsLoading && !sponsorsError && (
           <div className="max-w-[1600px] mx-auto">
             {attendingCompanies && attendingCompanies.length > 0 && (
-              <div className="grid grid-cols-2 lg:grid-cols-3 gap-8">
+              <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8 justify-items-center">
                 {attendingCompanies.map((company, index) => (
                   <motion.div
                     key={company.id || index}
-                    className="flex items-center justify-center max-h-[40px] sm:max-h-[80px] hover:scale-110 transition-all duration-300 relative"
+                    className="flex items-center justify-center h-18 max-w-[120px] md:h-20 md:max-w-[180px] lg:h-24 lg:max-w-[220px] xl:h-28 xl:max-w-[240px] hover:scale-110 transition-all duration-300 relative"
                     initial={{ opacity: 0, y: 20 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}

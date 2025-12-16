@@ -21,6 +21,8 @@ import {
 } from "@mui/material";
 import { IoIosArrowBack } from "react-icons/io";
 import { companyTypes } from "../data/data";
+import { fetchCSRFToken } from "../services/api";
+import { toast } from "react-hot-toast";
 
 const participationTypes = [
   { id: "conference-speaker", label: "Conference Speaker" },
@@ -446,14 +448,70 @@ export default function SpeakerForm() {
     return Object.keys(newErrors).length === 0;
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     if (!validateForm()) return;
     setIsSubmitting(true);
 
-    if (validatePage(3)) {
-      console.log("Form submitted:", formData);
-      alert("Speaker registration submitted successfully!");
+    if (!validatePage(3)) return;
+
+    try {
+      const { csrf_token } = await fetchCSRFToken();
+      console.log({ csrf_token });
+
+      const response = await fetch(
+        `${import.meta.env.VITE_PUBLIC_API_URL}speakers/become-a-speaker/`,
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            "X-CSRF-Token": csrf_token,
+          },
+          body: JSON.stringify(formData),
+        }
+      );
+
+      let data = null;
+      const text = await response.text(); // safer first step
+
+      try {
+        data = text ? JSON.parse(text) : null;
+      } catch (jsonError) {
+        console.warn("Failed to parse JSON response:", jsonError);
+      }
+
+      if (response.ok) {
+        toast.success("Application submitted successfully!", {
+          id: "submit-toast",
+        });
+        setTimeout(() => {
+          setFormData({
+            firstName: "",
+            lastName: "",
+            email: "",
+            phone: "",
+            linkedin: "",
+            companyName: "",
+            role: "",
+            websiteUrl: "",
+            companyType: "",
+            participationType: [],
+            topicDescription: "",
+            talkTitle: "",
+          });
+
+          // Reset to first page
+          setCurrentPage(1);
+        }, 1500);
+      } else {
+        toast.error(data?.message || "Submission failed", {
+          id: "submit-toast",
+        });
+      }
+    } catch (error) {
+      console.error("Submission error:", error);
+      toast.error("Submission failed. Try Again", { id: "submit-toast" });
+    } finally {
       setIsSubmitting(false);
     }
   };
