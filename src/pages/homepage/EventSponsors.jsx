@@ -50,17 +50,19 @@ const EventSponsors = () => {
 
   // Standard logo sizes for all tiers except headline sponsor (same as gold tier)
   const standardLogoSizes =
-    "h-14 w-auto max-w-[100px] xs:h-16 xs:max-w-[140px] sm:h-18 sm:max-w-[180px] md:h-20 md:max-w-[220px] lg:h-24 lg:max-w-[260px] xl:h-28 xl:max-w-[240px]";
+    "h-16 max-w-[120px] sm:h-18 sm:max-w-[160px] md:h-20 md:max-w-[220px] ";
 
   const getGridClass = (sponsorCount) => {
-    if (sponsorCount === 3) {
-      return "grid grid-cols-2 xs:grid-cols-2 sm:grid-cols-3 gap-6 xs:gap-8 sm:gap-10 md:gap-12 px-2 items-center justify-items-center justify-center";
+    if (sponsorCount === 4) {
+      return "grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 md:gap-12 px-2 items-center justify-items-center justify-center";
+    } else if (sponsorCount === 3) {
+      return "grid grid-cols-2 xs:grid-cols-2 sm:grid-cols-3 gap-6 md:gap-12 px-2 items-center justify-items-center justify-center";
     } else if (sponsorCount === 2) {
       return "flex flex-wrap justify-center space-x-12 md:space-x-30 px-2 items-center";
     } else if (sponsorCount === 1) {
       return "grid grid-cols-1 gap-6 px-2 items-center justify-items-center justify-center";
     }
-    return "grid grid-cols-2 lg:grid-cols-4 gap-8 justify-items-center";
+    return "grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-8 justify-items-center";
   };
 
   return (
@@ -91,12 +93,12 @@ const EventSponsors = () => {
           </button>
         </div>
       ) : (
-        <div className="max-w-[1600px] mx-auto space-y-12 md:space-y-16 lg:space-y-20">
+        <div className="max-w-[1400px] mx-auto space-y-12 md:space-y-16 lg:space-y-20">
           {headlineSponsor && (
             <SponsorTier
               title="Headline Sponsor"
               sponsors={[headlineSponsor]}
-              logoSizes="h-28 max-w-[320px] md:h-44 md:max-w-[540px] lg:h-52 lg:max-w-[640px] xl:h-60 xl:max-w-[720px]"
+              logoSizes="h-28 max-w-[320px] md:h-44 md:max-w-[540px] lg:h-52 lg:max-w-[640px] "
               containerClass="flex justify-center px-2 sm:px-4"
               titleColor="from-yellow-600 via-yellow-500 to-amber-500"
               delay={0}
@@ -205,13 +207,13 @@ const EventSponsors = () => {
         />
 
         {!sponsorsLoading && !sponsorsError && (
-          <div className="max-w-[1600px] mx-auto">
+          <div className="max-w-[1400px] mx-auto">
             {attendingCompanies && attendingCompanies.length > 0 && (
-              <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8 justify-items-center">
+              <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-8 justify-items-center">
                 {attendingCompanies.map((company, index) => (
                   <motion.div
                     key={company.id || index}
-                    className="flex items-center justify-center h-18 max-w-[120px] md:h-20 md:max-w-[180px] lg:h-24 lg:max-w-[220px] xl:h-28 xl:max-w-[240px] hover:scale-110 transition-all duration-300 relative"
+                    className="flex items-center justify-center h-16 max-w-[120px] md:h-16 md:max-w-[160px] lg:h-18 lg:max-w-[200px] hover:scale-110 transition-all duration-300 relative"
                     initial={{ opacity: 0, y: 20 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}

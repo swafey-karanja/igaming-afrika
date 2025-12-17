@@ -517,11 +517,11 @@ export default function SpeakerForm() {
   };
 
   const handleNavigateHome = () => {
-    console.log("Navigate to home");
+    window.location.href = "/";
   };
 
   return (
-    <div className="py-8 md:py-15 px-6 lg:px-8 container mx-auto">
+    <div className="py-8 md:py-15 px-4 container mx-auto">
       <div className="mb-8">
         <button
           onClick={handleNavigateHome}

@@ -445,21 +445,21 @@ export const faqs = [
   {
     question: "What is iGaming AFRIKA Summit?",
     answer:
-      "iGaming AFRIKA Summit is Africa's mega gaming event, designed to unite the entire gaming industry players across the world in one place—the stunning city of Nairobi, Kenya taking place in Nairobi, in May 2026. This being the inaugural edition of the summit, the event is seen to be the largest event in the gaming industry in Africa.",
+      "iGaming AFRIKA Summit is Africa's mega gaming event, designed to unite the entire gaming industry players across the world in the stunning city of Nairobi, Kenya in May 2026. This being the inaugural edition of the summit, the event is set to be the largest event in the gaming industry in Africa.",
   },
   {
     question: "What are the scheduled days for the event?",
-    answer: "The iGaming AFRIKA Summit will be held from May 4th to 6th, 2026.",
+    answer: "The iGaming AFRIKA Summit will be held from 4th to 6th May, 2026.",
   },
   {
-    question: "Where will the iGaming Africa Summit 2026 be held?",
+    question: "Where will the iGaming AFRIKA Summit 2026 be held?",
     answer:
-      "The summit is taking place in an impressive 3,300m² square meters location at Sarit Expo Centre, Nairobi's Largest Expo centre giving exhibitors and attendees a massive ground to showcase their products, meet and connect with industry players as we discuss the future of the gaming industry in Africa.",
+      "The summit is taking place in an impressive 3,300 square meter location at Sarit Expo Centre - Nairobi's largest expo centre giving exhibitors and attendees a massive ground to showcase their products, meet and connect with industry players.",
   },
   {
     question: "How do I get access to the iGaming AFRIKA Summit?",
     answer:
-      "Access details will be available on our event website https://summits.igamingafrika.com/ once registration opens. You can sign up for our newsletter to receive updates about ticket availability and early bird specials.",
+      "You can access the IGA Summit website throught: https://summits.igamingafrika.com/ and https://www.igasummit.com/ once registration opens. You can sign up for our newsletter to receive updates about the summit.",
   },
   {
     question: "What is the ticket policy if the event can’t go ahead?",

@@ -34,24 +34,27 @@ const FAQs = () => {
   };
 
   return (
-    <section id="faqs" className="max-w-[1300px] mx-auto px-6 lg:px-8 py-8 scroll-mt-40">
+    <section
+      id="faqs"
+      className="max-w-[1300px] mx-auto px-6 lg:px-8 py-8 scroll-mt-40"
+    >
       <Header
         title="Frequently Asked Questions"
         subtitle="Find answers to common questions about the iGaming Afrika Summit 2026."
       />
 
-      <div className="space-y-4">
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-x-10 gap-y-4">
         {faqs.map((faq, index) => (
-          <div key={index} className="border-b border-gray-200 pb-3">
+          <div key={index} className="mb-2">
             <button
               onClick={() => toggleFAQ(index)}
-              className="flex justify-between items-center w-full text-left py-3 focus:outline-none cursor-pointer"
+              className="flex justify-between items-center w-full text-left py-4 px-6 focus:outline-none cursor-pointer bg-green-600 rounded-full transition-colors"
             >
-              <h2 className="text-lg font-semibold text-black">
+              <h2 className="text-md font-semibold text-white">
                 {faq.question}
               </h2>
               <svg
-                className={`w-4 h-4 text-black transition-transform duration-200 ${
+                className={`w-5 h-5 text-white transition-transform duration-200 flex-shrink-0 ml-4 ${
                   activeIndex === index ? "rotate-180" : ""
                 }`}
                 fill="none"
@@ -74,7 +77,7 @@ const FAQs = () => {
                   : "max-h-0 opacity-0"
               }`}
             >
-              <p className="text-black mt-2 text-sm pr-8">
+              <p className="text-gray-700 mt-4 text-sm px-8">
                 {renderTextWithLinks(faq.answer)}
               </p>
             </div>

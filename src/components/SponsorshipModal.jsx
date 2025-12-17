@@ -30,7 +30,7 @@ const SponsorshipModal = ({ selectedPackage, isModalOpen, closeModal }) => {
             <div className="flex items-center gap-2 w-[80%]">
               <div>
                 <div className="flex flex-row justify-between">
-                  <h2 className="text-lg sm:text-2xl font-bold">
+                  <h2 className="text-lg sm:text-3xl font-bold">
                     {selectedPackage.title}
                   </h2>
                   <button
@@ -40,6 +40,10 @@ const SponsorshipModal = ({ selectedPackage, isModalOpen, closeModal }) => {
                     <X size={24} className="cursor-pointer" />
                   </button>
                 </div>
+                <p className="py-1 text-xl font-bold">
+                  ${""}
+                  {selectedPackage.price}
+                </p>
                 <p className="text-white text-xs italic text-opacity-90 my-1">
                   {selectedPackage.description}
                 </p>

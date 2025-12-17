@@ -82,7 +82,10 @@ const SponsorshipPackages = () => {
   };
 
   return (
-    <section id="sponsorshipPackages" className="scroll-mt-40 container mx-auto px-6 lg:px-8 py-8">
+    <section
+      id="sponsorshipPackages"
+      className="scroll-mt-40 container mx-auto px-6 lg:px-8 py-8"
+    >
       {/* Header */}
       <Header
         title="Sponsorship Packages"
@@ -256,7 +259,7 @@ const SponsorshipPackages = () => {
                   </div>
 
                   {/* Price */}
-                  <div className="mb-3 w-full flex justify-center">
+                  {/* <div className="mb-3 w-full flex justify-center">
                     <p
                       className={`text-xl font-bold ${
                         pkg.featured ? "text-yellow-600" : "text-green-600"
@@ -264,7 +267,7 @@ const SponsorshipPackages = () => {
                     >
                       ${pkg.price}
                     </p>
-                  </div>
+                  </div> */}
 
                   {/* View Details Button */}
                   <button

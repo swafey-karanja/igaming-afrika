@@ -146,7 +146,7 @@ export const SponsorTier = ({
   return (
     <section className="text-center space-y-6 md:space-y-8">
       <motion.div
-        className="text-center mb-8"
+        className="text-center mb-20"
         initial="hidden"
         whileInView="visible"
         viewport={{ once: true }}
@@ -184,11 +184,6 @@ export const SponsorTier = ({
               duration: 0.5,
               delay: delay + (title === "Headline Sponsor" ? 0.5 : index * 0.1),
             }}
-            // className={`${
-            //   title === "Headline Sponsor"
-            //     ? "transform hover:scale-105"
-            //     : "hover:scale-105"
-            // } h-14 w-auto max-w-[100px] xs:h-16 xs:max-w-[140px] sm:h-18 sm:max-w-[180px] md:h-20 md:max-w-[220px] lg:h-24 lg:max-w-[260px] xl:h-28 xl:max-w-[240px]`}
           >
             <a
               href={

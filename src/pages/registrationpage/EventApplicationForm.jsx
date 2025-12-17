@@ -15,6 +15,7 @@ import {
 } from "@mui/material";
 import FormHelperText from "@mui/material/FormHelperText";
 import { fetchCSRFToken } from "../../services/api";
+import { IoIosArrowBack } from "react-icons/io";
 
 export default function EventApplicationForm() {
   const [formData, setFormData] = useState({
@@ -147,17 +148,38 @@ export default function EventApplicationForm() {
     }
   };
 
+  const handleNavigateHome = () => {
+    window.location.href = "/";
+  };
+
   return (
     <div className=" bg-gray-100 py-20 px-4 container mx-auto">
+      <div className="mb-8">
+        <button
+          onClick={handleNavigateHome}
+          className="flex items-center text-green-600 hover:text-green-700 mb-4 transition-colors font-bold cursor-pointer"
+        >
+          <span className="mr-2 font-bold">
+            <IoIosArrowBack />
+          </span>
+          Back to home page
+        </button>
+        <h1 className="text-2xl md:text-4xl font-bold bg-gradient-to-r from-green-700 to-green-600 bg-clip-text text-transparent py-2">
+          Express your Interest
+        </h1>
+        <p className="text-gray-500 max-w-3xl text-xs md:text-[13px] font-semibold">
+          Register your interest for iGaming AFRIKA Summit 2026
+        </p>
+      </div>
       <div className="bg-white rounded-lg shadow-lg overflow-hidden">
         {" "}
         {/* Changed to min-h-[80vh] */}
         {/* Header */}
-        <div className="bg-[#14a45c] px-8 py-6 h-[10vh] flex items-center justify-center">
+        {/* <div className="bg-[#14a45c] px-8 py-6 h-[10vh] flex items-center justify-center">
           <h1 className="text-3xl font-bold text-white text-center">
             EXPRESS YOUR INTEREST
           </h1>
-        </div>
+        </div> */}
         <div className="p-8 space-y-16">
           {/* Personal Information Section */}
           <h2 className="text-md md:text-xl font-semibold text-gray-800 mb-4 pb-2 border-b-2 border-green-600">

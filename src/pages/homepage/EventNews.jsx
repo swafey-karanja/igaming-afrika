@@ -8,7 +8,7 @@ import Header from "../../components/Header";
 
 const EventNews = () => {
   const dispatch = useDispatch();
-  const [visibleCount, setVisibleCount] = useState(6);
+  const [visibleCount, setVisibleCount] = useState(3);
   const [isMobile, setIsMobile] = useState(false);
 
   // Check screen size and update state
