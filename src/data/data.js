@@ -395,6 +395,7 @@ export const plans = [
       "iGaming AFRIKA Closing Party",
       "iGaming AFRIKA Awards Dinner",
       "$50 Meals Voucher",
+      "Networking App Access",
     ],
   },
   {
@@ -413,6 +414,7 @@ export const plans = [
       "iGaming AFRIKA Closing Party",
       "iGaming AFRIKA Awards Dinner",
       "$50 Meals Voucher",
+      "Networking App Access",
       "iGaming AFRIKA Konnect Space",
       "VIP Lounge Access",
       "VIP Networking Drinks",
@@ -433,10 +435,11 @@ export const allFeatures = [
   "iGaming AFRIKA Closing Party",
   "iGaming AFRIKA Awards Dinner",
   "$50 Meals Voucher",
+  "Networking App Access",
   "iGaming AFRIKA Konnect Space",
   "VIP Lounge Access",
   "VIP Networking Drinks",
-  "Private Meeting Rooms Reservations",
+  "Private Meeting Room Reservations",
   "Safari Tour",
 ];
 
