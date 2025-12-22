@@ -55,7 +55,7 @@ const EventTickets = () => {
             key={index}
             variants={cardVariant}
             style={plan.isPopular ? { backgroundColor: "#14a45c" } : {}}
-            className={`relative rounded-2xl overflow-hidden shadow-xl py-3 transition-all duration-300 hover:shadow-2xl hover:-translate-y-1 flex flex-col justify-center h-[800px] ${
+            className={`relative rounded-2xl overflow-hidden shadow-xl py-3 transition-all duration-300 hover:shadow-2xl hover:-translate-y-1 flex flex-col justify-center h-[900px] ${
               plan.isPopular
                 ? "text-white ring-4 ring-green-400 ring-opacity-50"
                 : "bg-white border border-gray-200 hover:border-green-300"
