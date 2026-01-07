@@ -59,7 +59,7 @@ const EventDetails = () => {
   return (
     <section
       id="eventDetails"
-      className="min-h-screen flex flex-col items-center bg-center bg-fixed relative scroll-mt-40 container mx-auto"
+      className="min-h-screen flex flex-col items-center bg-center bg-fixed relative scroll-mt-40"
       style={{
         backgroundImage:
           "url('https://images.unsplash.com/photo-1699136897382-ec50fa3a289c?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NzF8fGdhbWJsaW5nfGVufDB8fDB8fHww')",
@@ -69,13 +69,13 @@ const EventDetails = () => {
       <div className="absolute inset-0 bg-black/20 backdrop-blur-[0.5px]" />
 
       {/* Top Section: What is AGS */}
-      <div className="relative w-full flex justify-center bg-gray-100 backdrop-blur-sm px-2 lg:px-6">
+      <div className="relative w-full flex justify-center bg-gray-100 backdrop-blur-sm">
         <motion.div
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true }}
           transition={{ staggerChildren: 0.2 }}
-          className="w-full lg:max-w-[1300px] text-gray-800 py-8 md:py-12 lg:pt-8 lg:pb-0 "
+          className="w-full lg:max-w-[1600px] text-gray-800 py-8 md:py-12 lg:pt-8 lg:pb-0 px-6 sm:px-8 lg:px-12"
         >
           <div className="w-full pb-2 text-center flex gap-x-6 items-center justify-start xl:justify-center overflow-x-auto hide-scrollbar flex-nowrap">
             {scrollLinks.map((link) => (

@@ -182,7 +182,7 @@ const EventGallery = () => {
   if (!images || images.length === 0) return null;
 
   return (
-    <div className="container mx-auto py-8 px-2 lg:px-6">
+    <div className="container mx-auto px-6 lg:px-8 py-8">
       <Header
         title="Event Gallery"
         subtitle="Explore key moments from previous iGaming Afrika Events."
@@ -233,7 +233,7 @@ const EventGallery = () => {
         transition={{ duration: 0.8 }}
       >
         <div
-          className="relative h-80 md:h-96 lg:h-[600px] overflow-hidden rounded-2xl shadow-2xl group bg-gradient-to-br from-green-50 to-white border-4 border-white"
+          className="relative h-80 md:h-96 lg:h-[500px] overflow-hidden rounded-2xl shadow-2xl group bg-gradient-to-br from-green-50 to-white border-4 border-white"
           onTouchStart={handleTouchStart}
           onTouchMove={handleTouchMove}
           onTouchEnd={handleTouchEnd}

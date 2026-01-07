@@ -36,7 +36,7 @@ const FAQs = () => {
   return (
     <section
       id="faqs"
-      className="container mx-auto px-6 lg:px-8 py-8 scroll-mt-40"
+      className="max-w-[1300px] mx-auto px-6 lg:px-8 py-8 scroll-mt-40"
     >
       <Header
         title="Frequently Asked Questions"
