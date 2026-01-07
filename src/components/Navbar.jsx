@@ -50,13 +50,13 @@ const Navbar = () => {
 
   return (
     <header
-      className={`fixed top-0 left-0 w-full inset-x-0 z-40 py-2 sm:py-3 md:py-4 transition-all duration-700 ease-in-out ${
+      className={`fixed top-[60px] sm:top-[80px] md:top-[100px] max-w-[1300px] mx-auto px-6 lg:px-8 inset-x-0 z-40 py-2 sm:py-3 md:py-6 transition-all duration-700 ease-in-out ${
         isScrolled
-          ? "bg-gray-100 shadow-md drop-shadow-md text-black"
+          ? "bg-gray-100 shadow-sm drop-shadow-sm text-black"
           : "bg-transparent text-black"
       }`}
     >
-      <div className="px-4 sm:px-6 lg:px-8 mx-auto max-w-[1600px]">
+      <div className="px-4 sm:px-6 lg:px-8 mx-auto max-w-[1300px]">
         <div className="flex items-center xl:justify-between xl:items-stretch xl:flex-row relative">
           {/* Hamburger Menu - Only visible on small screens */}
           <div
@@ -94,7 +94,7 @@ const Navbar = () => {
             }`}
           >
             {isHomePage ? (
-              // ✅ Home page version — original logo, external link
+              // ✅ Home page version – original logo, external link
               <a
                 href="https://igamingafrika.com/"
                 target="_blank"
@@ -109,7 +109,7 @@ const Navbar = () => {
                 />
               </a>
             ) : (
-              // ✅ Other pages — Summit logo, internal NavLink
+              // ✅ Other pages – Summit logo, internal NavLink
               <NavLink
                 to="/"
                 title="iGaming Afrika"

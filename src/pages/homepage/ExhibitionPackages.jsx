@@ -89,7 +89,7 @@ const ExhibitionPackages = () => {
   return (
     <section
       id="exhibitionPackages"
-      className="container scroll-mt-40 mx-auto px-6 lg:px-8 py-8"
+      className="container scroll-mt-40 mx-auto py-8 px-2 lg:px-6"
     >
       <Header
         title="Exhibition Stand Packages"

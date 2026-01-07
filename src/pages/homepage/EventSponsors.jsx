@@ -66,7 +66,7 @@ const EventSponsors = () => {
   };
 
   return (
-    <section className="px-6 lg:px-8 py-8 scroll-mt-40" id="sponsors">
+    <section className="py-8 scroll-mt-40" id="sponsors">
       <Header
         title="Event Sponsors"
         subtitle="Meet our kind and illustrious sponsors for the ground-breaking iGaming
@@ -93,7 +93,7 @@ const EventSponsors = () => {
           </button>
         </div>
       ) : (
-        <div className="max-w-[1400px] mx-auto space-y-12 md:space-y-16 lg:space-y-20">
+        <div className="container mx-auto space-y-12 md:space-y-16 lg:space-y-20">
           {headlineSponsor && (
             <SponsorTier
               title="Headline Sponsor"
@@ -199,7 +199,7 @@ const EventSponsors = () => {
       )}
 
       {/* Attendees Section */}
-      <div className="px-6 lg:px-8 py-8">
+      <div className="py-8">
         <Header
           title="Attending Companies"
           subtitle="Meet the companies and organisations attending the ground-breaking
@@ -207,7 +207,7 @@ const EventSponsors = () => {
         />
 
         {!sponsorsLoading && !sponsorsError && (
-          <div className="max-w-[1400px] mx-auto">
+          <div className="container mx-auto">
             {attendingCompanies && attendingCompanies.length > 0 && (
               <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-8 justify-items-center">
                 {attendingCompanies.map((company, index) => (
