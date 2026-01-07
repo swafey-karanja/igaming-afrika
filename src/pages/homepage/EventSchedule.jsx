@@ -36,7 +36,10 @@ const EventSchedule = () => {
   );
 
   return (
-    <section id="schedule" className="container mx-auto px-6 lg:px-8 py-8 scroll-mt-40">
+    <section
+      id="schedule"
+      className="container mx-auto py-8 scroll-mt-40 px-2 lg:px-6"
+    >
       <Header
         title="Event Schedule"
         subtitle="Stay updated with the latest schedule for the iGaming Afrika Summit 2026."

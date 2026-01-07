@@ -10,7 +10,6 @@ const Hero = () => {
     minutes: 0,
     seconds: 0,
   });
-  const [zoomLevel, setZoomLevel] = useState(1);
   const navigate = useNavigate();
   const location = useLocation();
   const isHomePage = location.pathname === "/";
@@ -38,18 +37,6 @@ const Hero = () => {
     ],
   };
 
-  // Detect zoom level
-  useEffect(() => {
-    const handleResize = () => {
-      const zoom = window.devicePixelRatio || 1;
-      setZoomLevel(zoom);
-    };
-
-    handleResize();
-    window.addEventListener("resize", handleResize);
-    return () => window.removeEventListener("resize", handleResize);
-  }, []);
-
   // Calculate time left until the event (May 4, 2026)
   useEffect(() => {
     const calculateTimeLeft = () => {
@@ -75,24 +62,9 @@ const Hero = () => {
     return () => clearInterval(timer);
   }, []);
 
-  // Calculate dynamic height based on zoom
-  const getContainerHeight = () => {
-    if (zoomLevel > 1.2) {
-      // When zoomed in past 120%, increase height
-      const extraHeight = (zoomLevel - 1) * 50;
-      return isHomePage
-        ? `max-h-screen lg:calc(100vh + ${extraHeight}vh)`
-        : `max-h-[65vh] lg:calc(65vh + ${extraHeight * 0.6}vh)`;
-    }
-    return isHomePage ? "100vh" : "65vh";
-  };
-
   return (
     <div
-      className={`relative flex pt-15`}
-      style={{
-        minHeight: getContainerHeight(),
-      }}
+      className={`relative flex pt-15 max-w-[1300px] mx-auto px-6 lg:px-8 py-8`}
     >
       {/* Hero Section with Overlapping Images */}
       <div className="absolute inset-0 w-full h-full overflow-hidden z-0">
@@ -132,7 +104,7 @@ const Hero = () => {
 
       {/* Content Section - Now with flex centering for better vertical alignment */}
       <div
-        className={`relative z-10 w-full flex flex-col items-center justify-center mb-[30vh] mt-[5vh] text-center text-black px-4 max-w-6xl mx-auto gap-y-3 xl:gap-y-4 ${
+        className={`relative z-10 w-full flex flex-col items-center justify-center mb-[30vh] mt-[15vh] text-center text-black px-4 max-w-6xl mx-auto gap-y-3 xl:gap-y-4 ${
           isHomePage ? "lg:mb-[38vh]" : ""
         } `}
       >

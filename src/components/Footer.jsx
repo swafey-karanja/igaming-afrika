@@ -257,7 +257,7 @@ const SocialSection = () => {
   ];
 
   return (
-    <div className="max-w-[1600px] mx-auto px-4 sm:px-6 lg:px-8 py-3 z-10">
+    <div className="max-w-[1600px]  mx-auto px-4 sm:px-6 lg:px-8 py-3 z-10">
       <div className="flex items-center justify-center space-x-4 sm:space-x-6 pt-2">
         {socialLinks.map((social, index) => (
           <a
@@ -414,7 +414,10 @@ const Footer = () => {
   };
 
   return (
-    <footer id="footer" className="relative text-white pb-8 pt-16 min-h-screen">
+    <footer
+      id="footer"
+      className="relative text-white pb-8 pt-16 min-h-screen container mx-auto px-6 lg:px-8 py-8"
+    >
       <div className="absolute inset-0 w-full h-full overflow-hidden z-0">
         {/* Base African pattern image with white overlay */}
         <div className="absolute inset-0 z-0">
@@ -458,7 +461,7 @@ const Footer = () => {
         className="py-4 absolute bottom-0 justify-center w-full z-10"
       >
         <SocialSection />
-        <div className="max-w-[1600px] mx-auto px-4 sm:px-6 lg:px-8 text-center text-xs font-semibold sm:text-sm text-gray-200 border-t border-green-400 z-0">
+        <div className="max-w-[1600px]  mx-auto px-4 sm:px-6 lg:px-8 text-center text-xs font-semibold sm:text-sm text-gray-200 z-0">
           <p className="pt-2">
             © Copyright 2026 IGA Events Limited - All Rights Reserved
           </p>

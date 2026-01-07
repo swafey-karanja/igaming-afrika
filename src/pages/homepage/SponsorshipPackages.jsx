@@ -84,7 +84,7 @@ const SponsorshipPackages = () => {
   return (
     <section
       id="sponsorshipPackages"
-      className="scroll-mt-40 container mx-auto px-6 lg:px-8 py-8"
+      className="scroll-mt-40 container mx-auto py-8 px-2 lg:px-6"
     >
       {/* Header */}
       <Header
@@ -121,7 +121,7 @@ const SponsorshipPackages = () => {
             {currentPackages.map((pkg) => (
               <div
                 key={pkg.id}
-                className={`group relative min-h-[320px] h-auto bg-white rounded-xl p-6 shadow-md transition-all hover:shadow-green-300 border-green-300 duration-300 cursor-pointer hover:-translate-y-1 ${
+                className={`group relative min-h-[360px] h-auto bg-white rounded-xl p-6 shadow-md transition-all hover:shadow-green-300 border-green-300 duration-300 cursor-pointer hover:-translate-y-1 ${
                   pkg.status === "SOLD OUT" ? "opacity-70" : ""
                 }`}
                 onClick={() => openModal(pkg)}
