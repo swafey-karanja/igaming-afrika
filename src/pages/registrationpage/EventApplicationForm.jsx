@@ -349,6 +349,12 @@ export default function EventApplicationForm() {
                   disabled={isSubmitting}
                   international="true"
                   defaultCountry="KE"
+                  sx={{
+                    minWidth: "100%",
+                    "& .MuiOutlinedInput-input": {
+                      padding: "8.5px 14px",
+                    },
+                  }}
                 />
                 {errors.phone && (
                   <p className="text-red-500 text-sm mt-1">{errors.phone}</p>

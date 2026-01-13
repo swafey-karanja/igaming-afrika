@@ -110,6 +110,12 @@ const PhoneInput = ({
           name: name,
           autoComplete: "tel",
         }}
+        sx={{
+          minWidth: "100%",
+          "& .MuiOutlinedInput-input": {
+            padding: "8.5px 14px",
+          },
+        }}
       />
     </FormField>
   );
