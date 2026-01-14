@@ -50,7 +50,7 @@ const Navbar = () => {
 
   return (
     <header
-      className={`fixed top-[40px] sm:top-[85px] max-w-[1300px] mx-auto px-6 lg:px-8 inset-x-0 z-40 py-6 transition-all duration-700 ease-in-out ${
+      className={`fixed top-[40px] sm:top-[85px] container mx-auto px-6 lg:px-8 inset-x-0 z-40 py-6 transition-all duration-700 ease-in-out ${
         isScrolled
           ? "bg-gray-100 shadow-sm drop-shadow-sm text-black"
           : "bg-transparent text-black"
