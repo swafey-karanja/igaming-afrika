@@ -383,7 +383,7 @@ export const plans = [
     label: "Premium Pass",
     price: 200,
     doorPrice: 350,
-    isPopular: true,
+    isPopular: false,
     description: "Most comprehensive experience",
     features: [
       "Welcome Reception",
@@ -403,6 +403,7 @@ export const plans = [
     label: "VVIP Pass",
     price: 600,
     doorPrice: 950,
+    isPopular: true,
     description: "Executive experience",
     features: [
       "Welcome Reception",
