@@ -153,7 +153,7 @@ export default function EventApplicationForm() {
   };
 
   return (
-    <div className=" bg-gray-100 py-20 px-4 container mx-auto">
+    <div className=" bg-gray-100 py-20 px-4 xl:container xl:mx-auto ">
       <div className="mb-8">
         <button
           onClick={handleNavigateHome}

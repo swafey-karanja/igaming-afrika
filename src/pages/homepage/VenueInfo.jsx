@@ -108,7 +108,7 @@ const VenueInfo = () => {
   return (
     <section
       id="venueInfo"
-      className="scroll-mt-40 container mx-auto px-6 lg:px-8 py-8"
+      className="scroll-mt-40 xl:container xl:mx-auto  px-6 lg:px-8 py-8"
     >
       {/* Header Section */}
       <Header

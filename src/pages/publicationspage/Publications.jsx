@@ -209,7 +209,7 @@ export default function Publications() {
   }
 
   return (
-    <div className="container mx-auto px-6 lg:px-8 py-8 min-h-[80vh]">
+    <div className="xl:container xl:mx-auto  px-6 lg:px-8 py-8 min-h-[80vh]">
       <Header
         title={currentCategory.title}
         subtitle={currentCategory.description}

@@ -38,7 +38,7 @@ const EventSchedule = () => {
   return (
     <section
       id="schedule"
-      className="container mx-auto py-8 scroll-mt-40 px-2 lg:px-6"
+      className="xl:container xl:mx-auto  py-8 scroll-mt-40 px-2 lg:px-6"
     >
       <Header
         title="Event Schedule"

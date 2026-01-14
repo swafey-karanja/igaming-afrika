@@ -169,7 +169,7 @@ const EventNews = () => {
   }
 
   return (
-    <div className="container mx-auto px-6 lg:px-8 py-8">
+    <div className="xl:container xl:mx-auto  px-6 lg:px-8 py-8">
       {/* Header */}
       <Header
         title="Event News & Blogs"

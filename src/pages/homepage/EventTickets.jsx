@@ -34,7 +34,7 @@ const EventTickets = () => {
 
   return (
     <section
-      className="container mx-auto px-6 lg:px-8 py-8 scroll-mt-40"
+      className="xl:container xl:mx-auto  px-6 lg:px-8 py-8 scroll-mt-40"
       id="eventTickets"
     >
       <Header

@@ -64,7 +64,7 @@ const Hero = () => {
 
   return (
     <div
-      className={`relative flex pt-15 max-w-[1300px] mx-auto px-6 lg:px-8 py-8`}
+      className={`relative flex pt-15 xl:container xl:mx-auto  px-6 lg:px-8 py-8`}
     >
       {/* Hero Section with Overlapping Images */}
       <div className="absolute inset-0 w-full h-full overflow-hidden z-0">

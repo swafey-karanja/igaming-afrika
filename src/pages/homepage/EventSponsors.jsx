@@ -93,7 +93,7 @@ const EventSponsors = () => {
           </button>
         </div>
       ) : (
-        <div className="container mx-auto space-y-12 md:space-y-16 lg:space-y-20">
+        <div className="xl:container xl:mx-auto  space-y-12 md:space-y-16 lg:space-y-20">
           {headlineSponsor && (
             <SponsorTier
               title="Headline Sponsor"
@@ -207,7 +207,7 @@ const EventSponsors = () => {
         />
 
         {!sponsorsLoading && !sponsorsError && (
-          <div className="container mx-auto">
+          <div className="xl:container xl:mx-auto ">
             {attendingCompanies && attendingCompanies.length > 0 && (
               <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-8 justify-items-center">
                 {attendingCompanies.map((company, index) => (

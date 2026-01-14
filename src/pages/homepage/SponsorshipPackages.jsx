@@ -84,7 +84,7 @@ const SponsorshipPackages = () => {
   return (
     <section
       id="sponsorshipPackages"
-      className="scroll-mt-40 container mx-auto py-8 px-2 lg:px-6"
+      className="scroll-mt-40 xl:container xl:mx-auto  py-8 px-2 lg:px-6"
     >
       {/* Header */}
       <Header
@@ -95,11 +95,11 @@ const SponsorshipPackages = () => {
 
       {/* Content Area */}
       {sponsorshipsLoading ? (
-        <div className="container mx-auto flex justify-center items-center py-20">
+        <div className="xl:container xl:mx-auto  flex justify-center items-center py-20">
           <div className="animate-spin rounded-full h-10 w-10 border-t-2 border-b-2 border-green-600"></div>
         </div>
       ) : sponsorshipsError ? (
-        <div className="container mx-auto flex flex-col items-center justify-center py-20 rounded-lg">
+        <div className="xl:container xl:mx-auto  flex flex-col items-center justify-center py-20 rounded-lg">
           <AlertCircle className="h-12 w-12 text-red-500 mb-4" />
           <h3 className="text-md font-medium text-gray-900 mb-2">
             Unable to load sponsors
@@ -117,7 +117,7 @@ const SponsorshipPackages = () => {
       ) : (
         <>
           {/* Packages Grid */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-12 container mx-auto mb-8">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-12 xl:container xl:mx-auto  mb-8">
             {currentPackages.map((pkg) => (
               <div
                 key={pkg.id}

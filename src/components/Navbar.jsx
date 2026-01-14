@@ -56,12 +56,12 @@ const Navbar = () => {
           : "bg-transparent text-black"
       }`}
     >
-      <div className="px-4 sm:px-6 lg:px-8 mx-auto max-w-[1300px]">
+      <div className="px-4 sm:px-6 lg:px-8 mx-auto container">
         <div className="flex items-center xl:justify-between xl:items-stretch xl:flex-row relative">
           {/* Hamburger Menu - Only visible on small screens */}
           <div
             className={`xl:hidden flex items-center ${
-              isSidebarOpen ? "hidden" : ""
+              isSidebarOpen ? "hidden" : "block"
             }`}
           >
             <button

@@ -56,7 +56,7 @@ const Checkout = () => {
 
   return (
     <>
-      <div className="py-8 md:py-25 px-6 lg:px-8 container mx-auto">
+      <div className="py-8 md:py-25 px-6 lg:px-8 xl:container xl:mx-auto ">
         <motion.div
           className="mb-8"
           initial={{ opacity: 0, y: -20 }}

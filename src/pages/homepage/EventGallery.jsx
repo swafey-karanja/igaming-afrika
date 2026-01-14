@@ -182,7 +182,7 @@ const EventGallery = () => {
   if (!images || images.length === 0) return null;
 
   return (
-    <div className="container mx-auto py-8 px-2 lg:px-6">
+    <div className="xl:container xl:mx-auto  py-8 px-2 lg:px-6">
       <Header
         title="Event Gallery"
         subtitle="Explore key moments from previous iGaming Afrika Events."

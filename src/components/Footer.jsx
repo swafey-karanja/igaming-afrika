@@ -416,7 +416,7 @@ const Footer = () => {
   return (
     <footer
       id="footer"
-      className="relative text-white pb-8 pt-16 min-h-screen container mx-auto px-6 lg:px-8 py-8"
+      className="relative text-white pb-8 pt-16 min-h-screen xl:container xl:mx-auto  px-6 lg:px-8 py-8"
     >
       <div className="absolute inset-0 w-full h-full overflow-hidden z-0">
         {/* Base African pattern image with white overlay */}

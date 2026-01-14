@@ -527,7 +527,7 @@ export default function SpeakerForm() {
   };
 
   return (
-    <div className="py-8 md:py-15 px-4 container mx-auto">
+    <div className="py-8 md:py-15 px-4 xl:container xl:mx-auto ">
       <div className="mb-8">
         <button
           onClick={handleNavigateHome}
