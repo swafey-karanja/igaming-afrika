@@ -33,7 +33,7 @@ const EventNews = () => {
   }, [dispatch]);
 
   const handleShowMore = () => {
-    setVisibleCount((prev) => prev + (isMobile ? 3 : 10));
+    setVisibleCount((prev) => Math.min(prev + 3, news.length));
   };
 
   // Format date to be more readable
@@ -179,7 +179,7 @@ const EventNews = () => {
       {/* News Grid */}
       <motion.div
         className="grid gap-8 grid-cols-1 md:grid-cols-2 lg:grid-cols-3"
-        key={`news-grid-${visibleCount}`} // Add this key
+        // key={`news-grid-${visibleCount}`}
         initial="hidden"
         animate="visible" // Changed from whileInView to animate
         variants={containerVariants}
@@ -188,6 +188,8 @@ const EventNews = () => {
           <motion.article
             key={article.id}
             variants={cardVariants}
+            initial="hidden"
+            animate="visible"
             whileHover={{
               y: -8,
               transition: { duration: 0.3, ease: "easeOut" },

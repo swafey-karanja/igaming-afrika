@@ -12,7 +12,6 @@ import Navbar from "./components/Navbar.jsx";
 import Publications from "./pages/publicationspage/Publications.jsx";
 import Hero from "./components/Hero.jsx";
 import EventApplicationForm from "./pages/registrationpage/EventApplicationForm.jsx";
-// import Return from "./pages/checkoutpage/Return.jsx";
 import SpeakerRegistrationPage from "./pages/speakerRegistration/SpeakerRegistrationPage.jsx";
 
 const App = () => {
@@ -32,8 +31,6 @@ const App = () => {
       }
     };
 
-    document.addEventListener("keydown", handleKeyDown);
-
     return () => {
       document.removeEventListener("keydown", handleKeyDown);
     };
@@ -42,74 +39,75 @@ const App = () => {
   return (
     <Provider store={store}>
       <div className="select-none bg-gray-100">
-        {/* Animated Banner at the very top - fixed position */}
-        <div className="fixed top-0 left-0 right-0 w-full z-50 bg-gray-100 py-0 xl:py-1">
-          <a
-            href="https://www.sagaming.com/"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="block"
-          >
-            <img
-              src="/sagaming-banner.gif"
-              alt="bnetwork accommodation specialist"
-              className="w-full h-auto object-contain max-h-[60px] sm:max-h-[80px] md:max-h-[100px]"
-            />
-          </a>
-        </div>
-
-        {/* Main Layout with Side Banners */}
-        <div className="relative flex justify-center">
-          {/* Left Vertical Banner - Hidden on mobile and tablet, visible on large screens */}
-          <div className="hidden xl:flex sticky top-10 h-screen w-[150px] items-center justify-center flex-shrink-0">
+        {/* Use flexbox for better consistency */}
+        <div className="xl:flex xl:min-h-screen">
+          {/* Left Side Banner */}
+          <div className="hidden xl:flex xl:w-[calc((100%-1280px)/2)] sticky top-[100px] h-[calc(100vh-100px)] items-start justify-end pt-10 pr-5">
             <a
-              href="https://www.igasummit.com/register"
+              href="https://www.igasummit.com/"
               target="_blank"
               rel="noopener noreferrer"
               className="block"
             >
               <img
                 src="/iga x lionbets.gif"
-                alt="Left Advertisement"
-                className="w-full h-auto object-contain"
+                alt="Side banner left"
+                className="xl:max-w-[160px] w-full h-auto object-contain"
               />
             </a>
           </div>
 
-          {/* Center Content Area */}
-          <div className="flex-1 overflow-hidden xl:min-w-[1300px]">
+          {/* Main Content Column with fixed width */}
+          <div className="w-full xl:w-[1280px] flex-shrink-0 overflow-hidden">
+            {/* Top Banner - fixed position */}
+            <div className="fixed top-0 left-0 right-0 w-full z-50 bg-gray-100 py-0 xl:py-1">
+              <a
+                href="https://www.sagaming.com/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="block"
+              >
+                <img
+                  src="/sagaming-banner.gif"
+                  alt="bnetwork accommodation specialist"
+                  className="w-full h-auto object-contain max-h-[60px] sm:max-h-[80px] md:max-h-[100px]"
+                />
+              </a>
+            </div>
             <Navbar />
             <Hero />
             <ScrollToTop />
-            <Routes>
-              <Route path="/" element={<Home />} />
-              <Route path="/register" element={<EventApplicationForm />} />
-              <Route path="/checkout" element={<Checkout />} />
-              <Route
-                path="/publications/:category"
-                element={<Publications />}
-              />
-              {/* <Route path="/return" element={<Return />} /> */}
-              <Route
-                path="/speaker-registration"
-                element={<SpeakerRegistrationPage />}
-              />
-            </Routes>
+            {/* Ensure consistent width for all pages */}
+            <div className="w-full">
+              <Routes>
+                <Route path="/" element={<Home />} />
+                <Route path="/register" element={<EventApplicationForm />} />
+                <Route path="/checkout" element={<Checkout />} />
+                <Route
+                  path="/publications/:category"
+                  element={<Publications />}
+                />
+                <Route
+                  path="/speaker-registration"
+                  element={<SpeakerRegistrationPage />}
+                />
+              </Routes>
+            </div>
             <Footer />
           </div>
 
-          {/* Right Vertical Banner - Hidden on mobile and tablet, visible on large screens */}
-          <div className="hidden xl:flex sticky top-10 h-screen w-[150px] items-center justify-center flex-shrink-0">
+          {/* Right Side Banner */}
+          <div className="hidden xl:flex xl:w-[calc((100%-1280px)/2)] sticky top-[100px] h-[calc(100vh-100px)] items-start justify-start pt-10 pl-5">
             <a
-              href="https://www.igasummit.com/register"
+              href="https://www.igasummit.com/"
               target="_blank"
               rel="noopener noreferrer"
               className="block"
             >
               <img
                 src="/iga x lionbets.gif"
-                alt="Right Advertisement"
-                className="w-full h-auto object-contain"
+                alt="Side banner right"
+                className="max-w-[160px] w-full h-auto object-contain"
               />
             </a>
           </div>

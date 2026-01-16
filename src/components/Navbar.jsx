@@ -49,14 +49,14 @@ const Navbar = () => {
   }, [isSidebarOpen]);
 
   return (
-    <header
-      className={`fixed top-[40px] sm:top-[85px] container mx-auto px-6 lg:px-8 inset-x-0 z-40 py-6 transition-all duration-700 ease-in-out ${
-        isScrolled
-          ? "bg-gray-100 shadow-sm drop-shadow-sm text-black"
-          : "bg-transparent text-black"
-      }`}
-    >
-      <div className="px-4 sm:px-6 lg:px-8 mx-auto container">
+    <header className="fixed top-[40px] sm:top-[85px] inset-x-0 z-40  transition-all duration-700 ease-in-out">
+      <div
+        className={`px-4 sm:px-6 lg:px-12 pt-8 pb-3 mx-auto xl:max-w-[1290px] ${
+          isScrolled
+            ? "bg-gray-100 shadow-sm drop-shadow-sm text-black"
+            : "bg-transparent text-black"
+        }`}
+      >
         <div className="flex items-center xl:justify-between xl:items-stretch xl:flex-row relative">
           {/* Hamburger Menu - Only visible on small screens */}
           <div
@@ -89,7 +89,7 @@ const Navbar = () => {
 
           {/* Logo */}
           <div
-            className={`flex flex-shrink-0 lg:mx-0 lg:flex-grow-0 ml-4 ${
+            className={`flex flex-shrink-0 lg:mx-0 lg:flex-grow-0 justify-start ${
               isSidebarOpen ? "hidden" : ""
             }`}
           >
@@ -121,7 +121,7 @@ const Navbar = () => {
                 }}
               >
                 <img
-                  className="w-auto h-14 sm:h-16 md:h-20 lg:h-20"
+                  className="w-auto h-10 sm:h-12 md:h-16 lg:h-18"
                   src="/Summit_Logo.png"
                   alt="iGaming Afrika"
                 />
@@ -187,7 +187,7 @@ const Navbar = () => {
 
       {/* Mobile Sidebar */}
       <div
-        className={`fixed top-0 left-0 z-30 w-full h-screen transform transition-transform duration-300 ease-in-out xl:hidden bg-green-600 ${
+        className={`fixed top-5 md:top-15 pt-10 left-0 z-30 w-full h-screen transform transition-transform duration-300 ease-in-out xl:hidden bg-green-600 ${
           isSidebarOpen ? "translate-x-0" : "-translate-x-full"
         }`}
         aria-label="Mobile navigation"
@@ -244,7 +244,10 @@ const Navbar = () => {
 
               {/* CTA Button */}
               <div className="pt-4">
-                <button className="w-full bg-white/10 hover:bg-white/20 text-white font-semibold px-3 py-3 xl:px-6 rounded-xl border border-white/30 hover:border-white/50 transition-all duration-200 backdrop-blur-sm">
+                <button
+                  onClick={() => setSidebarOpen(!isSidebarOpen)}
+                  className="w-full bg-white/10 hover:bg-white/20 text-white font-semibold px-3 py-3 xl:px-6 rounded-xl border border-white/30 hover:border-white/50 transition-all duration-200 backdrop-blur-sm"
+                >
                   <NavLink
                     to="/register"
                     className="block text-[10px] md:text-[14px]"
@@ -253,11 +256,24 @@ const Navbar = () => {
                   </NavLink>
                 </button>
               </div>
+              <div className="">
+                <button
+                  onClick={() => setSidebarOpen(!isSidebarOpen)}
+                  className="w-full bg-white/10 hover:bg-white/20 text-white font-semibold px-3 py-3 xl:px-6 rounded-xl border border-white/30 hover:border-white/50 transition-all duration-200 backdrop-blur-sm"
+                >
+                  <NavLink
+                    to="/speaker-registration"
+                    className="block text-[10px] md:text-[14px]"
+                  >
+                    BECOME A SPEAKER
+                  </NavLink>
+                </button>
+              </div>
             </div>
           </div>
 
           {/* Footer Social Icons */}
-          <div className="border-t border-white/10 p-6">
+          <div className="border-t border-white/10 p-6 pb-10">
             <div className="text-white/70 text-xs font-medium mb-4 text-center">
               Follow Us
             </div>

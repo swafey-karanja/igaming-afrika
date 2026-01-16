@@ -3,15 +3,6 @@ import { useInView, motion } from "framer-motion";
 import { useEffect, useRef, useState } from "react";
 import { ChevronDown, CalendarPlus } from "lucide-react";
 import { useLocation } from "react-router-dom";
-import {
-  FaTwitter,
-  FaLinkedin,
-  FaYoutube,
-  FaInstagram,
-  FaTelegramPlane,
-  FaFacebook,
-  FaSearch,
-} from "react-icons/fa";
 import PhoneInput from "react-phone-number-input";
 import "react-phone-number-input/style.css";
 
@@ -225,19 +216,38 @@ export const SponsorTier = ({
 //
 // Scroll to top
 
+const scrollConfig = {
+  "/": { x: 0, y: 0, behavior: "instant" },
+  "/register": { x: 0, y: 650, behavior: "smooth" }, // offset for fixed banner
+  "/speaker-registration": { x: 0, y: 650, behavior: "smooth" },
+  "/checkout": { x: 0, y: 0, behavior: "smooth" },
+  "/publications": { x: 0, y: 200, behavior: "smooth" }, // partial scroll
+};
+
 export const ScrollToTop = () => {
   const { pathname } = useLocation();
   const isFirstRender = useRef(true);
 
   useEffect(() => {
-    // Skip scroll to top on the first render (page reload/initial load)
     if (isFirstRender.current) {
       isFirstRender.current = false;
       return;
     }
 
-    // Only scroll to top on actual navigation
-    window.scrollTo(0, 0);
+    // Match exact or prefix routes
+    const config =
+      scrollConfig[pathname] ||
+      Object.entries(scrollConfig).find(([key]) =>
+        pathname.startsWith(key)
+      )?.[1];
+
+    if (!config) return;
+
+    window.scrollTo({
+      top: config.y,
+      left: config.x,
+      behavior: config.behavior, // or "smooth"
+    });
   }, [pathname]);
 
   return null;

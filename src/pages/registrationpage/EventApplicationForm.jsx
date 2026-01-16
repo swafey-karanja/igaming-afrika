@@ -1,5 +1,4 @@
 import { useState } from "react";
-import PhoneInput from "react-phone-number-input";
 import { MuiTelInput } from "mui-tel-input";
 import "react-phone-number-input/style.css";
 import { toast } from "react-hot-toast";
@@ -153,7 +152,7 @@ export default function EventApplicationForm() {
   };
 
   return (
-    <div className=" bg-gray-100 py-20 px-4 xl:container xl:mx-auto ">
+    <section className="xl:container xl:mx-auto py-8 px-2 lg:px-6">
       <div className="mb-8">
         <button
           onClick={handleNavigateHome}
@@ -468,6 +467,6 @@ export default function EventApplicationForm() {
           {/* Terms */}
         </div>
       </div>
-    </div>
+    </section>
   );
 }
