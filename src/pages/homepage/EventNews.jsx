@@ -46,10 +46,20 @@ const EventNews = () => {
   };
 
   // Extract excerpt from content
+  const decodeHTMLEntities = (html) => {
+    const textarea = document.createElement("textarea");
+    textarea.innerHTML = html;
+    return textarea.value;
+  };
+
   const getExcerpt = (content) => {
-    const text = content.replace(/<[^>]+>/g, "");
+    const decoded = decodeHTMLEntities(content);
+    const text = decoded.replace(/<[^>]+>/g, "");
     const limit = isMobile ? 80 : 120;
-    return text.length > limit ? text.substring(0, limit) + "..." : text;
+
+    return text.length > limit
+      ? text.substring(0, limit).trim() + "..."
+      : text.trim();
   };
 
   // Get featured image URL
