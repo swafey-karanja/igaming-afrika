@@ -5,7 +5,7 @@ export const API_CONFIG = {
 };
 
 export async function fetchDataFromApi(endpoint) {
-  const response = await fetch(`${API_CONFIG.BASE_URL}/${endpoint}/`, {
+  const response = await fetch(`${API_CONFIG.BASE_URL}${endpoint}/`, {
     headers: {
       Authorization: `Token ${API_CONFIG.TOKEN}`,
       "Content-Type": "application/json",
@@ -22,7 +22,7 @@ export async function fetchDataFromApi(endpoint) {
 export async function fetchCSRFToken() {
   //  Get CSRF token
   const tokenResponse = await fetch(
-    `${API_CONFIG.BASE_URL}/security/csrf-token/`,
+    `${API_CONFIG.BASE_URL}security/csrf-token/`,
   );
   if (!tokenResponse.ok) {
     throw new Error("Failed to get CSRF token");
