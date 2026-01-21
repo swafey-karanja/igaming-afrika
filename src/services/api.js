@@ -1,6 +1,6 @@
 // src/api/apiClient.ts
 export const API_CONFIG = {
-  BASE_URL: "https://events.igamingafrika.com/api",
+  BASE_URL: import.meta.env.VITE_PUBLIC_API_URL,
   TOKEN: import.meta.env.VITE_PUBLIC_API_TOKEN,
 };
 
@@ -22,7 +22,7 @@ export async function fetchDataFromApi(endpoint) {
 export async function fetchCSRFToken() {
   //  Get CSRF token
   const tokenResponse = await fetch(
-    `${API_CONFIG.BASE_URL}/security/csrf-token/`
+    `${API_CONFIG.BASE_URL}/security/csrf-token/`,
   );
   if (!tokenResponse.ok) {
     throw new Error("Failed to get CSRF token");
