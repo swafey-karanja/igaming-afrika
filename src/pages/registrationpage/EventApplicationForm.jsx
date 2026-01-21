@@ -106,7 +106,7 @@ export default function EventApplicationForm() {
               "X-CSRF-Token": csrf_token,
             },
             body: JSON.stringify(formData),
-          }
+          },
         );
 
         let data = null;
@@ -406,7 +406,7 @@ export default function EventApplicationForm() {
                         .map(
                           (id) =>
                             interestOptions.find((opt) => opt.id === id)
-                              ?.label || id
+                              ?.label || id,
                         )
                         .join(", ")
                 }
