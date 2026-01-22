@@ -22,7 +22,7 @@ import {
 import { IoIosArrowBack } from "react-icons/io";
 import { companyTypes } from "../data/data";
 import { fetchCSRFToken } from "../services/api";
-import { toast } from "react-hot-toast";
+import { toast } from "sonner";
 
 const participationTypes = [
   { id: "conference-speaker", label: "Conference Speaker" },
@@ -187,7 +187,7 @@ const MultiSelectField = ({
               ? "Select a format"
               : selected
                   .map(
-                    (id) => options.find((opt) => opt.id === id)?.label || id
+                    (id) => options.find((opt) => opt.id === id)?.label || id,
                   )
                   .join(", ")
           }
@@ -459,6 +459,8 @@ export default function SpeakerForm() {
     if (!validateForm()) return;
     setIsSubmitting(true);
 
+    const toastId = toast.loading("Submitting application...");
+
     if (!validatePage(3)) return;
 
     try {
@@ -474,7 +476,7 @@ export default function SpeakerForm() {
             "X-CSRF-Token": csrf_token,
           },
           body: JSON.stringify(formData),
-        }
+        },
       );
 
       let data = null;
@@ -488,7 +490,7 @@ export default function SpeakerForm() {
 
       if (response.ok) {
         toast.success("Application submitted successfully!", {
-          id: "submit-toast",
+          id: toastId,
         });
         setTimeout(() => {
           setFormData({
@@ -511,12 +513,12 @@ export default function SpeakerForm() {
         }, 1500);
       } else {
         toast.error(data?.message || "Submission failed", {
-          id: "submit-toast",
+          id: toastId,
         });
       }
     } catch (error) {
       console.error("Submission error:", error);
-      toast.error("Submission failed. Try Again", { id: "submit-toast" });
+      toast.error("Submission failed. Try Again", { id: toastId });
     } finally {
       setIsSubmitting(false);
     }

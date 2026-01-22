@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { MuiTelInput } from "mui-tel-input";
 import "react-phone-number-input/style.css";
-import { toast } from "react-hot-toast";
+import { toast } from "sonner";
 import {
   FormControl,
   InputLabel,
@@ -91,7 +91,8 @@ export default function EventApplicationForm() {
 
     if (validateForm()) {
       setIsSubmitting(true);
-      toast.loading("Submitting your application...", { id: "submit-toast" });
+
+      const toastId = toast.loading("Submitting nomination...");
 
       try {
         const { csrf_token } = await fetchCSRFToken();
@@ -120,7 +121,7 @@ export default function EventApplicationForm() {
 
         if (response.ok) {
           toast.success("Application submitted successfully!", {
-            id: "submit-toast",
+            id: toastId,
           });
           setTimeout(() => {
             setFormData({
@@ -135,7 +136,7 @@ export default function EventApplicationForm() {
           }, 1500);
         } else {
           toast.error(data?.message || "Submission failed", {
-            id: "submit-toast",
+            id: toastId,
           });
         }
       } catch (error) {

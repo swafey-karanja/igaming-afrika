@@ -4,7 +4,7 @@ import { ScrollToTop } from "./lib/utils.jsx";
 import { Provider } from "react-redux";
 import store from "./store/index.js";
 
-import { Toaster } from "react-hot-toast";
+import { Toaster } from "sonner";
 import { useEffect } from "react";
 import Checkout from "./pages/checkoutpage/Checkout.jsx";
 import Home from "./pages/homepage/Home.jsx";
@@ -113,21 +113,7 @@ const App = () => {
           </div>
         </div>
 
-        <Toaster
-          position="top-center"
-          containerStyle={{
-            top: "50%",
-            transform: "translateY(-80%)",
-          }}
-          toastOptions={{
-            duration: 3000,
-            style: {
-              background: "#f0fdf4",
-              color: "#14532d",
-              fontSize: "15px",
-            },
-          }}
-        />
+        <Toaster richColors position="top-right" />
       </div>
     </Provider>
   );
