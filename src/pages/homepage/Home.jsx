@@ -150,7 +150,7 @@ const Home = () => {
         </Accordion>
       </motion.div>
 
-      <motion.div
+      {/* <motion.div
         variants={fadeInUp}
         initial="hidden"
         whileInView="visible"
@@ -159,7 +159,7 @@ const Home = () => {
         <Accordion title="Event Gallery" defaultOpen={false}>
           <EventGallery />
         </Accordion>
-      </motion.div>
+      </motion.div> */}
 
       <motion.div
         variants={fadeInUp}
