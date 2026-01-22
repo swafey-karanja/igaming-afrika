@@ -75,7 +75,7 @@ const EventDetails = () => {
           whileInView="visible"
           viewport={{ once: true }}
           transition={{ staggerChildren: 0.2 }}
-          className="w-full container mx-auto text-gray-800 py-3 md:py-12 lg:pt-8 lg:pb-0 px-6 sm:px-8"
+          className="w-full text-gray-800 lg:pb-0 px-6 sm:px-8"
         >
           <div className="w-full xl:pb-2 text-center flex gap-x-3 items-center justify-start xl:justify-center overflow-x-auto hide-scrollbar flex-nowrap">
             {scrollLinks.map((link) => (
@@ -96,7 +96,7 @@ const EventDetails = () => {
 
           <hr className="text-gray-300 my-5 font-bold" />
           {/* Grid Container */}
-          <div className="grid grid-cols-1 lg:grid-cols-2 h-auto lg:min-h-[600px]">
+          <div className="grid grid-cols-1 lg:grid-cols-2 h-auto lg:min-h-[600px] container mx-auto">
             {/* Top Left: Image */}
             <motion.div
               variants={fadeIn}
