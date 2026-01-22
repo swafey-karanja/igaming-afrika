@@ -30,7 +30,7 @@ const Floorplan = () => {
       {
         threshold: 0.5, // Load when 10% of the component is visible
         rootMargin: "100px 0px", // Start loading 100px before it comes into view
-      }
+      },
     );
 
     if (currentContainer) {
@@ -48,7 +48,7 @@ const Floorplan = () => {
   return (
     <section
       ref={containerRef}
-      className="xl:container xl:mx-auto  px-6 lg:px-8 py-8 scroll-mt-40"
+      className="container mx-auto px-6 lg:px-8 py-8 scroll-mt-60"
       id="floorPlan"
     >
       <Header

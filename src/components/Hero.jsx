@@ -48,7 +48,7 @@ const Hero = () => {
         setTimeLeft({
           days: Math.floor(difference / (1000 * 60 * 60 * 24)),
           hours: Math.floor(
-            (difference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)
+            (difference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60),
           ),
           minutes: Math.floor((difference % (1000 * 60 * 60)) / (1000 * 60)),
           seconds: Math.floor((difference % (1000 * 60)) / 1000),
@@ -63,9 +63,7 @@ const Hero = () => {
   }, []);
 
   return (
-    <div
-      className={`relative flex pt-15 xl:container xl:mx-auto  px-6 lg:px-8 py-8`}
-    >
+    <div className={`relative flex pt-15 px-6 lg:px-8 py-8 min-h-screen`}>
       {/* Hero Section with Overlapping Images */}
       <div className="absolute inset-0 w-full h-full overflow-hidden z-0">
         {/* Base African pattern image with white overlay */}

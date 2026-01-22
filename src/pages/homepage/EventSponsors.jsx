@@ -66,7 +66,7 @@ const EventSponsors = () => {
   };
 
   return (
-    <section className="py-8 scroll-mt-40" id="sponsors">
+    <section className="py-8 scroll-mt-60" id="sponsors">
       <Header
         title="Event Sponsors"
         subtitle="Meet our kind and illustrious sponsors for the ground-breaking iGaming
@@ -93,7 +93,7 @@ const EventSponsors = () => {
           </button>
         </div>
       ) : (
-        <div className="xl:container xl:mx-auto  space-y-12 md:space-y-16 lg:space-y-20">
+        <div className="container mx-auto space-y-12 md:space-y-16 lg:space-y-20">
           {headlineSponsor && (
             <SponsorTier
               title="Headline Sponsor"
@@ -199,7 +199,7 @@ const EventSponsors = () => {
       )}
 
       {/* Attendees Section */}
-      <div className="py-8">
+      <div className="pt-8">
         <Header
           title="Attending Companies"
           subtitle="Meet the companies and organisations attending the ground-breaking
@@ -207,7 +207,7 @@ const EventSponsors = () => {
         />
 
         {!sponsorsLoading && !sponsorsError && (
-          <div className="xl:container xl:mx-auto ">
+          <div className="container mx-auto ">
             {attendingCompanies && attendingCompanies.length > 0 && (
               <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-8 justify-items-center">
                 {attendingCompanies.map((company, index) => (
@@ -245,6 +245,20 @@ const EventSponsors = () => {
             )}
           </div>
         )}
+        <div className="w-full z-50 bg-gray-100 pt-6 xl:pt-12 px-6 xl:px-0">
+          <a
+            href="https://www.sagaming.com/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="block"
+          >
+            <img
+              src="/igaadbanner.gif"
+              alt="bnetwork accommodation specialist"
+              className="w-full h-auto object-contain max-h-[60px] sm:max-h-[80px] md:max-h-[120px]"
+            />
+          </a>
+        </div>
       </div>
     </section>
   );

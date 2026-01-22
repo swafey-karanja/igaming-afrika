@@ -108,7 +108,7 @@ const VenueInfo = () => {
   return (
     <section
       id="venueInfo"
-      className="scroll-mt-40 xl:container xl:mx-auto  px-6 lg:px-8 py-8"
+      className="scroll-mt-60 container mx-auto  px-6 lg:px-8 py-8"
     >
       {/* Header Section */}
       <Header
@@ -375,7 +375,7 @@ const VenueInfo = () => {
                 onClick={() =>
                   window.open(
                     "https://www.google.com/maps?ll=-1.261299,36.801215&z=16&t=m&hl=en&gl=GB&mapclient=embed&cid=14812283408865623055",
-                    "_blank"
+                    "_blank",
                   )
                 }
               >

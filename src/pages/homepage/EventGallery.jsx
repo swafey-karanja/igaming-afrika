@@ -164,11 +164,11 @@ const EventGallery = () => {
 
   const handleTouchStart = useCallback(
     (e) => setTouchStart(e.targetTouches[0].clientX),
-    []
+    [],
   );
   const handleTouchMove = useCallback(
     (e) => setTouchEnd(e.targetTouches[0].clientX),
-    []
+    [],
   );
   const handleTouchEnd = useCallback(() => {
     if (!touchStart || !touchEnd) return;
@@ -182,7 +182,7 @@ const EventGallery = () => {
   if (!images || images.length === 0) return null;
 
   return (
-    <div className="xl:container xl:mx-auto  py-8 px-2 lg:px-6">
+    <div className="container mx-auto  py-8 px-2 lg:px-6">
       <Header
         title="Event Gallery"
         subtitle="Explore key moments from previous iGaming Afrika Events."
@@ -259,8 +259,8 @@ const EventGallery = () => {
                     imagesPerView === 1
                       ? "w-full"
                       : imagesPerView === 2
-                      ? "w-1/2"
-                      : "w-1/3"
+                        ? "w-1/2"
+                        : "w-1/3"
                   }`}
                   onClick={() => openModal(index)}
                   whileHover={{ scale: 1.02 }}

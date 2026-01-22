@@ -153,7 +153,7 @@ export default function EventApplicationForm() {
   };
 
   return (
-    <section className="xl:container xl:mx-auto py-8 px-2 lg:px-6">
+    <section className="container mx-auto py-8 px-2 lg:px-6">
       <div className="mb-8">
         <button
           onClick={handleNavigateHome}

@@ -75,7 +75,7 @@ const EventSpeakers = () => {
   };
 
   return (
-    <div className="xl:container xl:mx-auto  px-6 lg:px-8 py-8">
+    <div className="container mx-auto  px-6 lg:px-8 py-8">
       <Header
         title="Event Speakers"
         subtitle="Meet the industry leaders and experts speaking at the iGaming Afrika Summit 2026."
@@ -83,11 +83,11 @@ const EventSpeakers = () => {
 
       {/* Content Area */}
       {speakerLoading ? (
-        <div className="xl:container xl:mx-auto  flex justify-center items-center py-20">
+        <div className="container mx-auto  flex justify-center items-center py-20">
           <div className="animate-spin rounded-full h-10 w-10 border-t-2 border-b-2 border-green-600"></div>
         </div>
       ) : speakerError ? (
-        <div className="xl:container xl:mx-auto  flex flex-col items-center justify-center py-20 rounded-lg">
+        <div className="container mx-auto  flex flex-col items-center justify-center py-20 rounded-lg">
           <AlertCircle className="h-12 w-12 text-red-500 mb-4" />
           <h3 className="text-md font-medium text-gray-900 mb-2">
             Unable to load sponsors

@@ -5,7 +5,7 @@ const Accordion = ({ title, children, defaultOpen = false }) => {
   const [isOpen, setIsOpen] = useState(defaultOpen);
 
   return (
-    <div className="border-b border-gray-200 xl:container xl:mx-auto ">
+    <div className="border-b border-gray-200 container mx-auto ">
       <button
         onClick={() => setIsOpen(!isOpen)}
         className={`group w-full px-8 py-4 flex items-center justify-between transition-colors cursor-pointer

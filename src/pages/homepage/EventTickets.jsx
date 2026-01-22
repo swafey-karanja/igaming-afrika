@@ -34,7 +34,7 @@ const EventTickets = () => {
 
   return (
     <section
-      className="xl:container xl:mx-auto  px-6 lg:px-8 py-8 scroll-mt-40"
+      className="container mx-auto  px-6 lg:px-8 py-8 scroll-mt-60"
       id="eventTickets"
     >
       <Header
@@ -181,8 +181,8 @@ const EventTickets = () => {
                               ? "text-green-50"
                               : "text-gray-600"
                             : plan.isPopular
-                            ? "text-green-100 opacity-60"
-                            : "text-gray-400"
+                              ? "text-green-100 opacity-60"
+                              : "text-gray-400"
                         }`}
                       >
                         {feature}

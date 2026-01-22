@@ -51,10 +51,10 @@ const ExhibitionPackages = () => {
             tickets:
               option.exhibitorBenefits
                 ?.filter(
-                  (b) => /closing night passes/i.test(b) || /passes/i.test(b)
+                  (b) => /closing night passes/i.test(b) || /passes/i.test(b),
                 )
                 ?.join(", ") || "Contact for details",
-          }))
+          })),
         )
         .sort((a, b) => tierOrder.indexOf(a.tier) - tierOrder.indexOf(b.tier))
     : [];
@@ -89,7 +89,7 @@ const ExhibitionPackages = () => {
   return (
     <section
       id="exhibitionPackages"
-      className="container scroll-mt-40 mx-auto py-8 px-2 lg:px-6"
+      className="container scroll-mt-60 mx-auto py-8 px-2 lg:px-6"
     >
       <Header
         title="Exhibition Stand Packages"
@@ -97,11 +97,11 @@ const ExhibitionPackages = () => {
       />
 
       {exhibitionLoading ? (
-        <div className="xl:container xl:mx-auto  flex justify-center items-center py-20">
+        <div className="container mx-auto  flex justify-center items-center py-20">
           <div className="animate-spin rounded-full h-10 w-10 border-t-2 border-b-2 border-green-600"></div>
         </div>
       ) : exhibitionError ? (
-        <div className="xl:container xl:mx-auto  flex flex-col items-center justify-center py-20 rounded-lg">
+        <div className="container mx-auto  flex flex-col items-center justify-center py-20 rounded-lg">
           <AlertCircle className="h-12 w-12 text-red-500 mb-4" />
           <h3 className="text-md font-medium text-gray-900 mb-2">
             Unable to load sponsors
@@ -117,7 +117,7 @@ const ExhibitionPackages = () => {
           </button>
         </div>
       ) : (
-        <div className="xl:container xl:mx-auto  grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-10">
+        <div className="container mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 px-5 gap-10">
           {packages.map((pkg) => (
             <div
               key={pkg.id}
@@ -130,7 +130,7 @@ const ExhibitionPackages = () => {
                 <div className="flex items-center justify-between mb-4">
                   <span
                     className={`px-3 py-1 rounded-full text-xs font-semibold text-white bg-gradient-to-r ${getTierColor(
-                      pkg.tier
+                      pkg.tier,
                     )}`}
                   >
                     {pkg.tier}
@@ -143,7 +143,7 @@ const ExhibitionPackages = () => {
                 <div className="flex justify-center mb-4">
                   <div
                     className={`w-16 h-16 rounded-xl flex items-center justify-center text-2xl shadow-md bg-gradient-to-br ${getTierColor(
-                      pkg.tier
+                      pkg.tier,
                     )}`}
                   >
                     {pkg.icon}
@@ -185,7 +185,7 @@ const ExhibitionPackages = () => {
                       pkg.status === "SOLD OUT"
                         ? "bg-slate-200 text-slate-500 cursor-not-allowed"
                         : `bg-gradient-to-r ${getTierColor(
-                            pkg.tier
+                            pkg.tier,
                           )} text-white hover:shadow-md`
                     }`}
                     disabled={pkg.status === "SOLD OUT"}

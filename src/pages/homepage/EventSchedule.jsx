@@ -32,13 +32,13 @@ const EventSchedule = () => {
 
   // Calculate the maximum number of sessions across all days
   const maxSessions = Math.max(
-    ...Object.values(schedules).map((day) => day.length)
+    ...Object.values(schedules).map((day) => day.length),
   );
 
   return (
     <section
       id="schedule"
-      className="xl:container xl:mx-auto  py-8 scroll-mt-40 px-2 lg:px-6"
+      className="container mx-auto py-8 scroll-mt-60 px-2 lg:px-6"
     >
       <Header
         title="Event Schedule"
@@ -72,7 +72,7 @@ const EventSchedule = () => {
 
       {/* Schedule Content with animations */}
       <motion.div
-        className="py-4 sm:py-6 transition-all duration-300 ease-in-out"
+        className="py-4 sm:py-6 px-5 transition-all duration-300 ease-in-out"
         style={{
           minHeight: `${maxSessions * 120 + 80}px`,
           height: "auto",

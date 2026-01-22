@@ -49,19 +49,19 @@ const Navbar = () => {
   }, [isSidebarOpen]);
 
   return (
-    <header className="fixed top-[40px] sm:top-[85px] inset-x-0 z-40  transition-all duration-700 ease-in-out">
-      <div
-        className={`px-4 sm:px-6 lg:px-12 pt-8 pb-3 mx-auto xl:max-w-[1290px] ${
-          isScrolled
-            ? "bg-gray-100 shadow-sm drop-shadow-sm text-black"
-            : "bg-transparent text-black"
-        }`}
-      >
+    <header
+      className={`fixed top-[40px] md:top-[85px] xl:top-[95px] inset-x-0 z-40 pt-6 pb-4 md:pt-8 transition-all duration-700 ease-in-out ${
+        isScrolled
+          ? "bg-gray-100 shadow-md drop-shadow-md text-black"
+          : "bg-transparent text-black"
+      }`}
+    >
+      <div className="px-4 sm:px-6 lg:px-8 mx-auto max-w-[1450px]">
         <div className="flex items-center xl:justify-between xl:items-stretch xl:flex-row relative">
           {/* Hamburger Menu - Only visible on small screens */}
           <div
             className={`xl:hidden flex items-center ${
-              isSidebarOpen ? "hidden" : "block"
+              isSidebarOpen ? "hidden" : ""
             }`}
           >
             <button
@@ -187,7 +187,7 @@ const Navbar = () => {
 
       {/* Mobile Sidebar */}
       <div
-        className={`fixed top-5 md:top-15 pt-10 left-0 z-30 w-full h-screen transform transition-transform duration-300 ease-in-out xl:hidden bg-green-600 ${
+        className={`fixed top-0 left-0 z-30 w-full h-screen transform transition-transform duration-300 ease-in-out xl:hidden bg-green-600 ${
           isSidebarOpen ? "translate-x-0" : "-translate-x-full"
         }`}
         aria-label="Mobile navigation"

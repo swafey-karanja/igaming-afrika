@@ -38,83 +38,40 @@ const App = () => {
 
   return (
     <Provider store={store}>
-      <div className="select-none bg-gray-100">
+      <div className="select-none bg-gray-100 w-full flex-shrink-0 overflow-hidden">
         {/* Use flexbox for better consistency */}
-        <div className="xl:flex xl:min-h-screen">
-          {/* Left Side Banner */}
-          <div className="hidden xl:flex xl:w-[calc((100%-1280px)/2)] sticky top-[100px] h-[calc(100vh-100px)] items-start justify-end pt-10 pr-5">
-            <a
-              href="https://www.igasummit.com/"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="block"
-            >
-              <img
-                src="/iga x lionbets.gif"
-                alt="Side banner left"
-                className="xl:max-w-[160px] w-full h-auto object-contain"
-              />
-            </a>
-          </div>
-
-          {/* Main Content Column with fixed width */}
-          <div className="w-full xl:w-[1280px] flex-shrink-0 overflow-hidden">
-            {/* Top Banner - fixed position */}
-            <div className="fixed top-0 left-0 right-0 w-full z-50 bg-gray-100 py-0 xl:py-1">
-              <a
-                href="https://www.sagaming.com/"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="block"
-              >
-                <img
-                  src="/sagaming-banner.gif"
-                  alt="bnetwork accommodation specialist"
-                  className="w-full h-auto object-contain max-h-[60px] sm:max-h-[80px] md:max-h-[100px]"
-                />
-              </a>
-            </div>
-            <Navbar />
-            <Hero />
-            <ScrollToTop />
-            {/* Ensure consistent width for all pages */}
-            <div className="w-full">
-              <Routes>
-                <Route path="/" element={<Home />} />
-                <Route path="/register" element={<EventApplicationForm />} />
-                <Route path="/checkout" element={<Checkout />} />
-                <Route
-                  path="/publications/:category"
-                  element={<Publications />}
-                />
-                <Route
-                  path="/speaker-registration"
-                  element={<SpeakerRegistrationPage />}
-                />
-              </Routes>
-            </div>
-            <Footer />
-          </div>
-
-          {/* Right Side Banner */}
-          <div className="hidden xl:flex xl:w-[calc((100%-1280px)/2)] sticky top-[100px] h-[calc(100vh-100px)] items-start justify-start pt-10 pl-5">
-            <a
-              href="https://www.igasummit.com/"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="block"
-            >
-              <img
-                src="/iga x lionbets.gif"
-                alt="Side banner right"
-                className="max-w-[160px] w-full h-auto object-contain"
-              />
-            </a>
-          </div>
+        {/* Top Banner - fixed position */}
+        <div className="fixed top-0 left-0 right-0 w-full z-50 bg-gray-200 py-0 xl:py-1.5">
+          <a
+            href="https://www.sagaming.com/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="block"
+          >
+            <img
+              src="/sagaming-banner.gif"
+              alt="bnetwork accommodation specialist"
+              className="w-full h-auto object-contain max-h-[60px] sm:max-h-[80px] md:max-h-[100px]"
+            />
+          </a>
         </div>
-
-        <Toaster richColors position="top-right" />
+        <Navbar />
+        <Hero />
+        <ScrollToTop />
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/register" element={<EventApplicationForm />} />
+          <Route path="/checkout" element={<Checkout />} />
+          <Route path="/publications/:category" element={<Publications />} />
+          <Route
+            path="/speaker-registration"
+            element={<SpeakerRegistrationPage />}
+          />
+        </Routes>
+        <Footer />
       </div>
+
+      <Toaster richColors position="top-right" />
     </Provider>
   );
 };

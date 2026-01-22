@@ -44,10 +44,22 @@ const EventDetails = () => {
     },
   };
 
+  const scrollLinks = [
+    { name: "Event Details", href: "#eventDetails" },
+    { name: "Event Sponsors", href: "#sponsors" },
+    { name: "FloorPlan", href: "#floorPlan" },
+    { name: "Event Schedule", href: "#schedule" },
+    { name: "Tickets", href: "#eventTickets" },
+    { name: "Become a Sponsor", href: "#sponsorshipPackages" },
+    { name: "Become and Exhibitor", href: "#exhibitionPackages" },
+    { name: "Event News", href: "#news" },
+    { name: "Venue-Info", href: "#venueInfo" },
+  ];
+
   return (
     <section
       id="eventDetails"
-      className="min-h-screen flex flex-col items-center bg-center bg-fixed relative scroll-mt-40 max-w-[1300px] mx-auto"
+      className="min-h-screen flex flex-col items-center bg-center bg-fixed relative scroll-mt-60"
       style={{
         backgroundImage:
           "url('https://images.unsplash.com/photo-1699136897382-ec50fa3a289c?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NzF8fGdhbWJsaW5nfGVufDB8fDB8fHww')",
@@ -57,14 +69,32 @@ const EventDetails = () => {
       <div className="absolute inset-0 bg-black/20 backdrop-blur-[0.5px]" />
 
       {/* Top Section: What is AGS */}
-      <div className="relative w-full flex justify-center bg-gray-100 backdrop-blur-sm px-2 lg:px-6">
+      <div className="relative w-full flex justify-center bg-gray-100 backdrop-blur-sm">
         <motion.div
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true }}
           transition={{ staggerChildren: 0.2 }}
-          className="w-full lg:max-w-[1600px]  text-gray-800 py-8 md:py-12 lg:pt-8 lg:pb-0 "
+          className="w-full container mx-auto text-gray-800 py-3 md:py-12 lg:pt-8 lg:pb-0 px-6 sm:px-8"
         >
+          <div className="w-full xl:pb-2 text-center flex gap-x-3 items-center justify-start xl:justify-center overflow-x-auto hide-scrollbar flex-nowrap">
+            {scrollLinks.map((link) => (
+              <button
+                key={link.href}
+                className="py-1.5 xl:py-3 cursor-pointer px-4 xl:px-6 bg-gray-100 hover:bg-[#47cf8b] hover:border-[#47cf8b] text-[#14a45c] transition-colors duration-100 ease-in-out hover:text-white rounded-3xl border-2 border-lime-500 font-semibold whitespace-nowrap flex-shrink-0"
+                onClick={() => {
+                  const section = document.querySelector(link.href);
+                  if (section) {
+                    section.scrollIntoView({ behavior: "smooth" });
+                  }
+                }}
+              >
+                {link.name}
+              </button>
+            ))}
+          </div>
+
+          <hr className="text-gray-300 my-5 font-bold" />
           {/* Grid Container */}
           <div className="grid grid-cols-1 lg:grid-cols-2 h-auto lg:min-h-[600px]">
             {/* Top Left: Image */}
@@ -165,6 +195,20 @@ const EventDetails = () => {
               </div>
             </motion.div>
           </div>
+          <div className="w-full z-50 bg-gray-100 pt-5 xl:py-3">
+            <a
+              href="https://www.sagaming.com/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="block"
+            >
+              <img
+                src="/igaadbanner.gif"
+                alt="bnetwork accommodation specialist"
+                className="w-full h-auto object-contain max-h-[60px] sm:max-h-[80px] md:max-h-[120px]"
+              />
+            </a>
+          </div>
         </motion.div>
       </div>
 
@@ -173,7 +217,7 @@ const EventDetails = () => {
         initial="hidden"
         whileInView="visible"
         viewport={{ once: true, margin: "-100px" }}
-        className="relative w-full xl:container xl:mx-auto  px-6 sm:px-8 py-8 md:py-12 lg:py-16 flex-1 flex flex-col justify-center"
+        className="relative w-full container mx-auto px-6 sm:px-8 py-8 md:py-12 lg:py-16 flex-1 flex flex-col justify-center"
       >
         <Header title="Numbers Tell our Story" />
 

@@ -43,26 +43,7 @@ const Home = () => {
         whileInView="visible"
         viewport={{ once: true }}
       >
-        {/* <div className="w-full pb-2 text-center flex gap-x-6 items-center justify-start xl:justify-center overflow-x-auto hide-scrollbar flex-nowrap py-6">
-          {scrollLinks.map((link) => (
-            <button
-              key={link.href}
-              className="py-3 cursor-pointer px-6 bg-gray-100 hover:bg-[#47cf8b] hover:border-[#47cf8b] text-[#14a45c] transition-colors duration-100 ease-in-out hover:text-white rounded-3xl border-2 border-lime-500 font-semibold whitespace-nowrap flex-shrink-0"
-              onClick={() => {
-                const section = document.querySelector(link.href);
-                if (section) {
-                  section.scrollIntoView({ behavior: "smooth" });
-                }
-              }}
-            >
-              {link.name}
-            </button>
-          ))}
-        </div>
-        <hr className="text-gray-300 my-5 font-bold xl:container xl:mx-auto " /> */}
-        {/* <Accordion title="Event Details" defaultOpen={false}> */}
         <EventDetails />
-        {/* </Accordion> */}
       </motion.div>
 
       <motion.div
@@ -71,19 +52,25 @@ const Home = () => {
         whileInView="visible"
         viewport={{ once: true }}
       >
-        {/* <Accordion title="Event Sponsors" defaultOpen={false}> */}
         <EventSponsors />
-        {/* </Accordion> */}
       </motion.div>
+
       <motion.div
         variants={fadeInUp}
         initial="hidden"
         whileInView="visible"
         viewport={{ once: true }}
       >
-        {/* <Accordion title="Event Schedule" defaultOpen={false}> */}
+        <Floorplan />
+      </motion.div>
+
+      <motion.div
+        variants={fadeInUp}
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true }}
+      >
         <EventSchedule />
-        {/* </Accordion> */}
       </motion.div>
 
       <motion.div
@@ -92,31 +79,7 @@ const Home = () => {
         whileInView="visible"
         viewport={{ once: true }}
       >
-        {/* <Accordion title="Event Tickets" defaultOpen={false}> */}
         <EventTickets />
-        {/* </Accordion> */}
-      </motion.div>
-
-      <motion.div
-        variants={fadeInUp}
-        initial="hidden"
-        whileInView="visible"
-        viewport={{ once: true }}
-      >
-        {/* <Accordion title="Event News & Blogs" defaultOpen={false}> */}
-        <EventNews />
-        {/* </Accordion> */}
-      </motion.div>
-
-      <motion.div
-        variants={fadeInUp}
-        initial="hidden"
-        whileInView="visible"
-        viewport={{ once: true }}
-      >
-        <Accordion title="Floorplan" defaultOpen={false}>
-          <Floorplan />
-        </Accordion>
       </motion.div>
 
       {/* <motion.div
@@ -134,9 +97,7 @@ const Home = () => {
         whileInView="visible"
         viewport={{ once: true }}
       >
-        <Accordion title="Sponsorship Packages" defaultOpen={false}>
-          <SponsorshipPackages />
-        </Accordion>
+        <SponsorshipPackages />
       </motion.div>
 
       <motion.div
@@ -145,9 +106,7 @@ const Home = () => {
         whileInView="visible"
         viewport={{ once: true }}
       >
-        <Accordion title="Exhibition Packages" defaultOpen={false}>
-          <ExhibitionPackages />
-        </Accordion>
+        <ExhibitionPackages />
       </motion.div>
 
       {/* <motion.div
@@ -156,9 +115,8 @@ const Home = () => {
         whileInView="visible"
         viewport={{ once: true }}
       >
-        <Accordion title="Event Gallery" defaultOpen={false}>
           <EventGallery />
-        </Accordion>
+
       </motion.div> */}
 
       <motion.div
@@ -167,9 +125,7 @@ const Home = () => {
         whileInView="visible"
         viewport={{ once: true }}
       >
-        <Accordion title="Frequently Asked Questions" defaultOpen={false}>
-          <FAQs />
-        </Accordion>
+        <EventNews />
       </motion.div>
 
       <motion.div
@@ -178,9 +134,16 @@ const Home = () => {
         whileInView="visible"
         viewport={{ once: true }}
       >
-        <Accordion title="Venue Information" defaultOpen={false}>
-          <VenueInfo />
-        </Accordion>
+        <FAQs />
+      </motion.div>
+
+      <motion.div
+        variants={fadeInUp}
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true }}
+      >
+        <VenueInfo />
       </motion.div>
     </div>
   );

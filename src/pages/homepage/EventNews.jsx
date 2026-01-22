@@ -179,7 +179,10 @@ const EventNews = () => {
   }
 
   return (
-    <div className="xl:container xl:mx-auto  px-6 lg:px-8 py-8">
+    <section
+      className="container mx-auto px-6 lg:px-8 py-8 scroll-mt-60"
+      id="news"
+    >
       {/* Header */}
       <Header
         title="Event News & Blogs"
@@ -306,7 +309,7 @@ const EventNews = () => {
           </div>
         </motion.div>
       )}
-    </div>
+    </section>
   );
 };
 
