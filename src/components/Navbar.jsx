@@ -8,7 +8,7 @@ import {
   FaFacebook,
   FaSpotify,
 } from "react-icons/fa";
-import { countries, menuItems, options } from "../data/data";
+import { countries, menuItems, options, awards } from "../data/data";
 import DropdownMenu, { NewsDropdown } from "./DropdownMenus";
 
 const Navbar = () => {
@@ -56,8 +56,8 @@ const Navbar = () => {
           : "bg-transparent text-black"
       }`}
     >
-      <div className="px-4 sm:px-6 lg:px-8 mx-auto max-w-[1450px]">
-        <div className="flex items-center xl:justify-between xl:items-stretch xl:flex-row relative">
+      <div className="px-4 sm:px-6 lg:px-8 mx-auto max-w-[1550px]">
+        <div className="flex items-center xl:justify-between xl:flex-row relative">
           {/* Hamburger Menu - Only visible on small screens */}
           <div
             className={`xl:hidden flex items-center ${
@@ -131,6 +131,13 @@ const Navbar = () => {
 
           {/* Desktop Nav */}
           <nav className="hidden xl:flex lg:items-center lg:justify-center xl:space-x-7 lg:space-x-6 whitespace-nowrap w-full max-w-3xl lg:max-w-4xl">
+            {/* <a
+              target="_blank"
+              href="https://awards.igasummit.com/"
+              className="text-[10px] md:text-[12px] uppercase font-bold tracking-wide cursor-pointer"
+            >
+              AWARDS
+            </a> */}
             <NewsDropdown isScrolled={isScrolled} isInSidebar={false} />
             <DropdownMenu
               label="countries"
@@ -150,6 +157,27 @@ const Navbar = () => {
               isInSidebar={false}
               items={options}
             />
+            <DropdownMenu
+              label="Awards"
+              isScrolled={isScrolled}
+              isInSidebar={false}
+              items={awards}
+            />
+            {/* <a
+              target="_blank"
+              href="https://awards.igasummit.com/"
+              className="text-[10px] md:text-[12px] uppercase font-bold tracking-wide cursor-pointer"
+            >
+              <button
+                style={isScrolled ? { backgroundColor: "#14a45c" } : {}}
+                className={`hover:bg-green-600 hover:text-white transition-colors duration-300 hover:bg-opacity-20 hover:cursor-pointer text-xs font-bold py-1.5 px-4 lg:py-2 lg:px-6 lg:text-sm border-3 border-lime-500 rounded-md ${
+                  isScrolled ? "text-white bg-green-600" : "text-[#14a45c]"
+                }`}
+              >
+                VIEW EVENT AWARDS
+              </button>
+            </a> */}
+
             <NavLink to="/register">
               <button
                 style={isScrolled ? { backgroundColor: "#14a45c" } : {}}

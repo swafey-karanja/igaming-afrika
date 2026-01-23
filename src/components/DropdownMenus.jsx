@@ -105,7 +105,7 @@ export default function DropdownMenu({
 
   return (
     <div
-      className="relative"
+      className="relative "
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
     >
@@ -121,7 +121,7 @@ export default function DropdownMenu({
       </button>
 
       <div
-        className={`absolute left-0 mt-2 w-72 bg-white shadow-lg z-20 transition-opacity ${
+        className={`absolute left-0 mt-5 w-72 bg-white shadow-lg z-20 transition-opacity ${
           isOpen ? "opacity-100 visible" : "opacity-0 invisible"
         }`}
       >
@@ -165,6 +165,7 @@ export default function DropdownMenu({
                 </>
               ) : (
                 <a
+                  target="_blank"
                   href={item.url}
                   className="block px-4 py-2 text-[12px] font-medium text-gray-700 hover:text-green-600 hover:bg-gray-50"
                 >

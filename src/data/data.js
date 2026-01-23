@@ -223,6 +223,13 @@ export const options = [
   { title: "iGaming Consulting", url: "/igaming-consulting" },
 ];
 
+export const awards = [
+  {
+    title: "iGaming AFRIKA Summit Awards 2026",
+    url: "https://awards.igasummit.com/",
+  },
+];
+
 //Event details section data
 // Accordion data
 export const accordionItems = [
