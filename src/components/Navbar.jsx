@@ -215,7 +215,7 @@ const Navbar = () => {
 
       {/* Mobile Sidebar */}
       <div
-        className={`fixed top-0 left-0 z-30 w-full h-screen transform transition-transform duration-300 ease-in-out xl:hidden bg-green-600 ${
+        className={`fixed top-0 left-0 z-30 pt-5 w-full h-screen transform transition-transform duration-300 ease-in-out xl:hidden bg-green-600 ${
           isSidebarOpen ? "translate-x-0" : "-translate-x-full"
         }`}
         aria-label="Mobile navigation"
@@ -245,8 +245,8 @@ const Navbar = () => {
           </div>
 
           {/* Scrollable Content */}
-          <div className="flex-1 overflow-y-auto">
-            <div className="p-6 space-y-6">
+          <div className="flex-1">
+            <div className="p-6 space-y-4">
               {/* Navigation Menu */}
               <nav className="space-y-2">
                 <NewsDropdown isScrolled={isScrolled} isInSidebar={true} />
@@ -267,6 +267,12 @@ const Navbar = () => {
                   isScrolled={isScrolled}
                   isInSidebar={true}
                   items={options}
+                />
+                <DropdownMenu
+                  label="Awards"
+                  isScrolled={isScrolled}
+                  isInSidebar={true}
+                  items={awards}
                 />
               </nav>
 
@@ -301,7 +307,7 @@ const Navbar = () => {
           </div>
 
           {/* Footer Social Icons */}
-          <div className="border-t border-white/10 p-6 pb-10">
+          <div className="border-t border-white/10 p-6 pb-20">
             <div className="text-white/70 text-xs font-medium mb-4 text-center">
               Follow Us
             </div>

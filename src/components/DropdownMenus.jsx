@@ -33,9 +33,10 @@ export default function DropdownMenu({
   if (isInSidebar) {
     return (
       <div className="text-white">
+        {/* Main dropdown trigger */}
         <button
           onClick={toggleDropdown}
-          className="w-full flex justify-between items-center text-[10px] md:text-[14px] font-semibold uppercase transition-all duration-200 text-white hover:text-gray-200 hover:pl-2 focus:outline-none focus:text-gray-200 focus:pl-2 py-1 cursor-pointer"
+          className="w-full flex justify-between items-center text-sm md:text-base font-semibold uppercase transition-all duration-200 text-white hover:text-gray-200 hover:pl-2 focus:outline-none focus:text-gray-200 focus:pl-2 py-1 cursor-pointer"
         >
           {label}
           <ChevronDown
@@ -45,6 +46,7 @@ export default function DropdownMenu({
           />
         </button>
 
+        {/* Dropdown content */}
         <div
           className={`transition-all duration-300 ease-in-out overflow-hidden ${
             isOpen ? "max-h-screen opacity-100" : "max-h-0 opacity-0"
@@ -55,9 +57,10 @@ export default function DropdownMenu({
               <div key={index}>
                 {item.subItems ? (
                   <>
+                    {/* Region / parent item */}
                     <button
                       onClick={() => toggleRegion(item.title)}
-                      className="flex justify-between w-full text-left text-white hover:text-gray-200 hover:pl-2 transition-all duration-200 focus:outline-none focus:text-gray-200 focus:pl-2 py-2 text-sm font-medium"
+                      className="flex justify-between w-full text-left text-white hover:text-gray-200 hover:pl-2 transition-all duration-200 focus:outline-none focus:text-gray-200 focus:pl-2 py-2 text-base font-medium"
                     >
                       {item.title}
                       <ChevronDown
@@ -66,6 +69,8 @@ export default function DropdownMenu({
                         }`}
                       />
                     </button>
+
+                    {/* Sub-items */}
                     <div
                       className={`pl-4 transition-all duration-300 ease-in-out overflow-hidden ${
                         expandedRegion === item.title
@@ -78,7 +83,7 @@ export default function DropdownMenu({
                           <li key={idx}>
                             <a
                               href={sub.url}
-                              className="block text-white hover:text-gray-200 hover:pl-2 transition-all duration-200 focus:outline-none focus:text-gray-200 focus:pl-2 py-1 text-sm font-medium"
+                              className="block text-white hover:text-gray-200 hover:pl-2 transition-all duration-200 focus:outline-none focus:text-gray-200 focus:pl-2 py-1 text-base font-normal"
                             >
                               {sub.title}
                             </a>
@@ -88,9 +93,10 @@ export default function DropdownMenu({
                     </div>
                   </>
                 ) : (
+                  /* Single item */
                   <a
                     href={item.url}
-                    className="block text-white hover:text-gray-200 hover:pl-2 transition-all duration-200 focus:outline-none focus:text-gray-200 focus:pl-2 py-2 text-sm font-medium"
+                    className="block text-white hover:text-gray-200 hover:pl-2 transition-all duration-200 focus:outline-none focus:text-gray-200 focus:pl-2 py-2 text-base font-medium"
                   >
                     {item.title}
                   </a>
@@ -199,10 +205,10 @@ export function NewsDropdown({ isScrolled, isInSidebar = false }) {
 
     return (
       <div className="text-white text-sm">
-        {/* News Toggle (main) with smooth collapse/expand */}
+        {/* News Toggle (main) */}
         <button
           onClick={() => setIsSidebarOpen(!isSidebarOpen)}
-          className="w-full flex justify-between items-center text-[10px] md:text-[14px] uppercase font-bold tracking-wide cursor-pointer"
+          className="w-full flex justify-between items-center text-[12px] md:text-[14px] uppercase font-bold tracking-wide cursor-pointer"
         >
           News
           <svg
@@ -233,7 +239,7 @@ export function NewsDropdown({ isScrolled, isInSidebar = false }) {
             <div>
               <button
                 onClick={() => toggleSection("general")}
-                className="flex justify-between items-center w-full text-white text-[14px] cursor-pointer"
+                className="flex justify-between items-center w-full text-white text-base cursor-pointer"
               >
                 General
                 <svg
@@ -265,7 +271,7 @@ export function NewsDropdown({ isScrolled, isInSidebar = false }) {
                     <li key={index}>
                       <a
                         href={item.url}
-                        className="block text-white hover:text-green-400 px-1 py-1.5 rounded text-[13px] cursor-pointer"
+                        className="block text-white hover:text-green-400 px-1 py-1.5 rounded text-base cursor-pointer"
                       >
                         {item.title}
                       </a>
@@ -279,7 +285,7 @@ export function NewsDropdown({ isScrolled, isInSidebar = false }) {
             <div>
               <button
                 onClick={() => toggleSection("tech")}
-                className="flex justify-between items-center w-full text-white text-[14px] cursor-pointer"
+                className="flex justify-between items-center w-full text-white text-base cursor-pointer"
               >
                 Tech
                 <svg
@@ -311,7 +317,7 @@ export function NewsDropdown({ isScrolled, isInSidebar = false }) {
                     <li key={index}>
                       <a
                         href={item.url}
-                        className="block text-white hover:text-green-400 px-1 py-1.5 rounded text-[13px] cursor-pointer"
+                        className="block text-white hover:text-green-400 px-1 py-1.5 rounded text-base cursor-pointer"
                       >
                         {item.title}
                       </a>
