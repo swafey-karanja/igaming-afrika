@@ -13,6 +13,9 @@ const CheckoutForm = ({ formData, handleInputChange }) => {
       animate={{ opacity: 1, x: 0 }}
       transition={{ duration: 0.5, delay: 0.1 }}
     >
+      <h1 className="text-xl font-bold bg-gradient-to-r from-red-700 to-red-600 bg-clip-text text-transparent py-2">
+        Tickets will be available soon
+      </h1>
       <h2 className="text-xl font-semibold mb-4 flex items-center">
         <div className="w-8 h-8 bg-green-100 rounded-full flex items-center justify-center mr-3">
           <span className="text-green-600 font-semibold text-sm">1</span>
@@ -40,9 +43,10 @@ const CheckoutForm = ({ formData, handleInputChange }) => {
                 fullWidth
                 variant="outlined"
                 size="small"
+                disabled
               />
             </div>
-          )
+          ),
         )}
 
         {/* Custom PhoneInput field */}
@@ -59,6 +63,7 @@ const CheckoutForm = ({ formData, handleInputChange }) => {
               onChange={(value) =>
                 handleInputChange({ target: { name: "phone", value } })
               }
+              disabled
               style={{
                 borderTopLeftRadius: 0,
                 borderBottomLeftRadius: 0,
@@ -82,6 +87,7 @@ const CheckoutForm = ({ formData, handleInputChange }) => {
             fullWidth
             variant="outlined"
             size="small"
+            disabled
           >
             <MenuItem value="">Select Country</MenuItem>
             <MenuItem value="Nigeria">Nigeria</MenuItem>
@@ -107,6 +113,7 @@ const CheckoutForm = ({ formData, handleInputChange }) => {
                 color: "rgb(22, 163, 74)",
               },
             }}
+            disabled
           />
         }
         label={

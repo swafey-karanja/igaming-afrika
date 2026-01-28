@@ -63,7 +63,7 @@ const Hero = () => {
   }, []);
 
   return (
-    <div className={`relative flex pt-15 px-6 lg:px-8 py-8 min-h-screen`}>
+    <div className={`relative flex pt-15 px-6 lg:px-8 py-8`}>
       {/* Hero Section with Overlapping Images */}
       <div className="absolute inset-0 w-full h-full overflow-hidden z-0">
         {/* Base African pattern image with white overlay */}
@@ -204,7 +204,7 @@ const Hero = () => {
               <button
                 className="bg-transparent cursor-pointer hover:bg-[#47cf8b] hover:bg-opacity-20 hover:text-white  transition-colors duration-300 text-[11px] lg:text-lg xl:text-base 2xl:text-md 3xl:text-lg text-[#14a45c] font-bold w-full py-2 px-4 sm:px-6 xl:px-4 border-3 border-lime-500 rounded-4xl whitespace-normal sm:whitespace-nowrap text-center"
                 onClick={() => {
-                  document.getElementById("tickets")?.scrollIntoView({
+                  document.getElementById("eventTickets")?.scrollIntoView({
                     behavior: "smooth",
                   });
                 }}

@@ -220,7 +220,7 @@ const scrollConfig = {
   "/": { x: 0, y: 0, behavior: "instant" },
   "/register": { x: 0, y: 650, behavior: "smooth" }, // offset for fixed banner
   "/speaker-registration": { x: 0, y: 650, behavior: "smooth" },
-  "/checkout": { x: 0, y: 0, behavior: "smooth" },
+  "/checkout": { x: 0, y: 650, behavior: "smooth" },
   "/publications": { x: 0, y: 200, behavior: "smooth" }, // partial scroll
 };
 
@@ -238,7 +238,7 @@ export const ScrollToTop = () => {
     const config =
       scrollConfig[pathname] ||
       Object.entries(scrollConfig).find(([key]) =>
-        pathname.startsWith(key)
+        pathname.startsWith(key),
       )?.[1];
 
     if (!config) return;

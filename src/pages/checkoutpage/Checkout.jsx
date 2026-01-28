@@ -10,7 +10,7 @@ const Checkout = () => {
   const location = useLocation();
   const navigate = useNavigate();
   const [selectedTicket, setSelectedTicket] = useState(null);
-  const [isProcessing, setIsProcessing] = useState(false);
+  // const [isProcessing, setIsProcessing] = useState(false);
   const [formData, setFormData] = useState({
     firstName: "",
     lastName: "",
@@ -38,10 +38,10 @@ const Checkout = () => {
     }));
   };
 
-  const validateForm = () => {
-    const required = ["firstName", "lastName", "email", "phone", "country"];
-    return required.every((field) => formData[field]) && formData.agreeToTerms;
-  };
+  // const validateForm = () => {
+  //   const required = ["firstName", "lastName", "email", "phone", "country"];
+  //   return required.every((field) => formData[field]) && formData.agreeToTerms;
+  // };
 
   if (!selectedTicket) {
     return (
@@ -72,6 +72,7 @@ const Checkout = () => {
           <h1 className="text-2xl md:text-4xl font-bold bg-gradient-to-r from-green-700 to-green-600 bg-clip-text text-transparent py-2">
             Checkout
           </h1>
+
           <p className="text-gray-500 max-w-3xl text-xs md:text-[13px] font-semibold">
             Complete your registration for iGaming AFRIKA Summit 2026
           </p>
@@ -87,13 +88,13 @@ const Checkout = () => {
 
           <div className="lg:col-span-1">
             <OrderSummary selectedTicket={selectedTicket} />
-            <PaymentProcessor
+            {/* <PaymentProcessor
               selectedTicket={selectedTicket}
               formData={formData}
               isProcessing={isProcessing}
               setIsProcessing={setIsProcessing}
               validateForm={validateForm}
-            />
+            /> */}
           </div>
         </div>
       </div>
