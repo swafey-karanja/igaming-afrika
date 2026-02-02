@@ -111,7 +111,7 @@ const EventSchedule = () => {
                     <p className="text-xs sm:text-sm font-semibold text-green-600">
                       {session.time}
                     </p>
-                    <p className="text-gray-500 text-xs sm:text-md mt-1">
+                    <p className="text-gray-500 text-xs sm:text-[12px] font-semibold mt-1">
                       {session.location}
                     </p>
                   </div>

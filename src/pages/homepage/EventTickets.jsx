@@ -34,7 +34,7 @@ const EventTickets = () => {
 
   return (
     <section
-      className="container mx-auto  px-6 lg:px-8 py-8 scroll-mt-60"
+      className="max-w-[1600px] mx-auto px-6 lg:px-8 py-8 scroll-mt-60"
       id="eventTickets"
     >
       <Header
@@ -44,7 +44,7 @@ const EventTickets = () => {
 
       {/* Pricing Cards */}
       <motion.div
-        className="grid md:grid-cols-2 lg:grid-cols-3 gap-12 h-auto items-center"
+        className="grid md:grid-cols-2 xl:grid-cols-4 gap-6 h-auto items-center"
         variants={staggerContainer}
         initial="hidden"
         whileInView="visible"
@@ -55,7 +55,7 @@ const EventTickets = () => {
             key={index}
             variants={cardVariant}
             style={plan.isPopular ? { backgroundColor: "#14a45c" } : {}}
-            className={`relative rounded-2xl overflow-hidden shadow-xl py-3 transition-all duration-300 hover:shadow-2xl hover:-translate-y-1 flex flex-col justify-center h-[900px] ${
+            className={`relative rounded-2xl overflow-hidden shadow-sm py-3 transition-all duration-300 hover:shadow-lg hover:-translate-y-1 flex flex-col justify-center h-[900px] ${
               plan.isPopular
                 ? "text-white ring-4 ring-green-400 ring-opacity-50"
                 : "bg-white border border-gray-200 hover:border-green-300"
