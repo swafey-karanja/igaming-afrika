@@ -51,7 +51,7 @@ const EventDetails = () => {
     { name: "Event Schedule", href: "#schedule" },
     { name: "Tickets", href: "#eventTickets" },
     { name: "Become a Sponsor", href: "#sponsorshipPackages" },
-    { name: "Become and Exhibitor", href: "#exhibitionPackages" },
+    { name: "Become an Exhibitor", href: "#exhibitionPackages" },
     { name: "Event News", href: "#news" },
     { name: "Venue-Info", href: "#venueInfo" },
   ];
