@@ -318,44 +318,302 @@ export const schedules = {
       time: "09:35 AM – 9:55 AM",
       title: "Entertainment",
       location: "Main stage",
-      description:
-        "Day 1 of the event with attendees exhibiting their products",
+      description: "Entertainment to start of the day",
     },
     {
-      time: "20:30 – 00:30",
-      title: "Networking Dinner",
+      time: "10:00 AM – 10:10 AM",
+      title: "Welcome remarks",
+      location: "Main stage",
+      description: "Opening remarks from the event hosts",
+    },
+    {
+      time: "10:15 AM - 10:25 AM",
+      title: "Opening Speech",
+      location: "Main Stage",
+      description: "Join us for an inspiring opening speech.",
+      speakersDetailed: [
+        {
+          name: "Jeremiah Maangi",
+          role: "Chief Executive Officer, iGaming AFRIKA",
+          image: "/speakers/Jeremiah Maangi.jpg",
+          bio: `Jeremiah is a passionate marketing and investment individual with years of experience in marketing & advertising. 
+          Intelligent knowledge on customer acquisition and retention strategies in local and global markets. Jeremiah has worked for startups' management consulting, media, events and marketing services in the African region.`,
+        },
+      ],
+    },
+    {
+      time: "10:30 AM – 10:40 AM",
+      title: "Gambling Regulatory Authority of Kenya Address",
+      location: "Main stage",
+      description: "",
+    },
+    {
+      time: "10:45 AM – 10:55 AM",
+      title: "Summit opening by the County Government of Nairobi",
+      location: "Main stage",
+      description: "",
+    },
+    {
+      time: "11:00 AM – 11:10 AM",
+      title: "Keynote address",
+      location: "Main stage",
+      description: "",
+    },
+    {
+      time: "11:15 AM – 11:20 AM",
+      title: "Photo Session/Entertainment",
       location: "",
-      description: "Networking Dinner, and iGaming AFRIKA Awards ceremony",
+      description: "",
+    },
+    {
+      time: "11:25 AM - 12:00 PM",
+      title:
+        "African Policies on the Evolving Regulatory Landscape of Gambling Licensing & TaxationAfrican Policies on the Evolving Regulatory Landscape of Gambling Licensing & Taxation",
+      location: "Main Stage",
+      description:
+        "A session for regulators - Exploring the shift toward unified gambling regulation across Africa, addressing licensing challenges, benefits of harmonized policies, and navigating the evolving regulatory landscape of the gaming industry on the continent.",
+
+      speakersDetailed: [
+        {
+          name: "Peter Emolemo Kesitilwe",
+          role: "Chief Executive Officer , African iGaming Alliance",
+          image: "/speakers/Peter Emolemo.jpg",
+          bio: `Peter Emolemo Kesitilwe is the CEO of the African iGaming Alliance, representing licensed online betting and gaming operators across 20 African jurisdictions. 
+          With over a decade of executive leadership in the sector, he formerly led Botswana’s Gambling Authority, where he oversaw major regulatory reforms, 
+          digital compliance transformation, and the expansion of Africa’s regulated market footprint. He has served on the Boards of IAGR and GRAF and currently sits on the 
+          Clarion Regulatory Advisory Board and he is an EXCO of ARSO. Peter works closely with regulators, governments, and global bodies to promote responsible, sustainable 
+          gaming and shape continental policy on tax, integrity, and player protection.`,
+        },
+      ],
+    },
+    {
+      time: "12:10 PM - 12:45 PM",
+      title: "Technological Advancements versus Casino & Retail Gaming",
+      location: "Main Stage",
+      description:
+        "Examining how technological innovations such as Artificial Intelligence and Machine Learning are transforming casino and retail gaming experiences across Africa, from mobile solutions to advanced gaming platforms.",
+    },
+    {
+      time: "12:55 PM - 01:30 PM",
+      title:
+        "The Role of operators in Nurturing Talent and Sports Development for the Youth in Africa.",
+      location: "Main Stage",
+      description:
+        "A session for operators; Discussing the role of operators in nurturing sports talent and youth development, leveraging industry resources for societal impact.",
+    },
+    {
+      time: "02:35 PM to 03:10 PM",
+      location: "Stage 02",
+      title:
+        "Opportunities from Affiliate Marketing in Africa’s Growing Gambling Sector",
+      description:
+        "Sharing targeted strategies for affiliate marketing success in Africa’s gambling industry, emphasizing the importance of traffic generation, trust-building, and compliance.",
+    },
+    // CONCURRENT SESSION - Same time slot, different stage (will display side-by-side)
+    {
+      time: "02:35 PM to 03:10 PM",
+      location: "Main Stage",
+      title: "The balance between profitability and responsible gaming.",
+      description:
+        "Discussing how operators can balance maximizing profits while promoting responsible gaming practices to ensure player protection and industry sustainability.",
+    },
+    {
+      time: "03:20 PM to 03:55 PM",
+      location: "Stage 02",
+      title:
+        "Attracting More Players: What Factors Should African Operators Consider?",
+      description: "",
+    },
+    {
+      time: "03:20 PM to 03:55 PM",
+      location: "Main Stage",
+      title:
+        "Attracting More Players: What Factors Should African Operators Consider?",
+      description:
+        "Providing insights into player preferences and strategic tactics for operators to attract and retain more players in the competitive African gaming market.",
+    },
+
+    // 03:20 PM - 03:40 PM - Single session
+    {
+      time: "03:20 PM to 03:40 PM",
+      location: "Main Stage",
+      title:
+        "Presentation: The Relationship between Sports Betting Behaviors and Gambling Harm for Adult Bettors in Nigeria.",
+      description:
+        "The Relationship between Sports Betting Behaviors and Gambling Harm for Adult Bettors in Nigeria, using the Total Consumption Model (TCM).",
+    },
+
+    // 03:45 PM - 04:00 PM - Entertainment
+    {
+      time: "03:45 PM to 04:00 PM",
+      location: "Main Stage",
+      title: "ENTERTAINMENT",
+      description:
+        "Take a break and enjoy live entertainment. Network with fellow attendees and recharge before the next session.",
+    },
+
+    // 04:05 PM - 04:40 PM - Women in Gaming
+    {
+      time: "04:05 PM to 04:40 PM",
+      location: "Main Stage",
+      title: "The Rise of Women in Africa’s Gaming Sector.",
+      description:
+        "Highlighting the increasing participation and influence of women in Africa’s gaming industry, and the importance of gender diversity for industry growth and innovation.",
+    },
+
+    // 04:45 PM - 04:55 PM - Closing Remarks
+    {
+      time: "04:45 PM to 04:55 PM",
+      location: "Main Stage",
+      title: "CLOSING REMARKS (DAY 1)",
+      description:
+        "Join us for the closing remarks of Day 1. Recap of the day's highlights, key takeaways, and a preview of what's to come on Day 2.",
     },
   ],
   2: [
     {
-      time: "09:30 – 17:30",
-      title: "Conference & Exhibition",
-      location: "Sarit Expo Centre",
+      time: "10:45 AM – 11:20 AM",
+      title:
+        "Developed Markets: Strategies for Growing Africa’s Gaming Industry.",
+      location: "Main Stage",
       description:
-        "Day 2 of the event with attendees exhibiting their products",
+        "Drawing valuable insights from developed markets to inform Africa's gaming growth strategies, focusing on technological innovations and regulatory best practices.",
+
+      // Use speakersDetailed for multiple speakers with full details
+      speakersDetailed: [
+        {
+          name: "Cameron Green",
+          role: "Country Manager - South Africa, Amusnet",
+          image: "/speakers/Cameron Green1.jpg",
+          bio: `Cameron Green is a senior iGaming executive with 25+ years' experience across Africa and other emerging markets. He's built, scaled and advised betting and gaming businesses across sportsbook, casino, retail and digital, with deep, hands-on exposure to regulation, licensing, operations, payments and commercial strategy.
+
+                Now Country Director South Africa for Amusnet, Cameron works closely with operators, regulators and partners to localise world-class gaming content for African markets. His background spans leadership roles with licensed operators in East and Southern Africa, alongside advisory work for B2B suppliers, startups and investors entering or expanding across the continent.
+
+                Known for a practical, operator-first mindset, he combines sharp strategic thinking with real execution on the ground. Cameron is a trusted industry voice on African gaming regulation and market dynamics, widely shared and straight-talking. A relationship-driven dealmaker and frequent traveller, he's deeply embedded in the African iGaming ecosystem and focused on building sustainable, long-term businesses.`,
+        },
+        {
+          name: "Thomas Nsongka",
+          role: "Managing Partner, Lionbets",
+          image: "/speakers/Thomas Nsongka.jpeg",
+        },
+      ],
     },
     {
-      time: "22:00 – 02:30",
-      title: "Closing Party",
+      time: "11:30 AM – 12:05 PM",
+      title: "The Positive Shift of Bookies Adopting Local eSports Content.",
+      location: "Main Stage",
+      description:
+        "Exploring how integrating local esports content into betting platforms can boost engagement, attract youth, and transform the betting landscape.",
+
+      // Use speakersDetailed for multiple speakers with full details
+      speakersDetailed: [
+        {
+          name: "Joe Andrews",
+          role: "Head of Sales Africa, SIS Ltd",
+          image: "/speakers/Joe Andrews.jpg",
+        },
+        {
+          name: "Rony Lusigi",
+          role: "President, Esports Kenya Federation",
+          image: "/speakers/Rony Lusigi.jpg",
+        },
+      ],
+    },
+    {
+      time: "11:30 AM – 12:30 PM",
+      title: "Presentation.",
       location: "",
-      description: "iGaming AFRIKA Closing Party",
+    },
+    {
+      time: "12:40 PM - 1:15 PM",
+      title:
+        "Show Can We Best Implement Self-Exclusion Measures to Promote Responsible Gaming?",
+      location: "Main Stage",
+      description: "",
+      // Use speakersDetailed for multiple speakers with full details
+      speakersDetailed: [
+        {
+          name: "Olabimpe Akingba",
+          role: "Regional Manager Africa, Business Development & Regulatory, pawaTech",
+          image: "/speakers/Olabimpe Akingba.jpg",
+          bio: "Experienced legal practitioner with a demonstrated history of working in the gambling & casinos industry. Skilled in Corporate Advisory, Compliance, Legal drafting, Corporate Governance and iGaming.",
+        },
+      ],
+    },
+    {
+      time: "02:25 PM to 03:00 PM",
+      location: "Stage 02",
+      title:
+        "Protecting Intellectual Property Rights in the Face of Rampant Clone Games",
+      description:
+        "Discussing strategies to safeguard IP rights amid the proliferation of clone games, ensuring originality and market integrity.",
+    },
+    {
+      time: "02:25 PM to 03:00 PM",
+      location: "Main Stage",
+      title:
+        "Impacts of Digital Assets and Fintech Innovation on Africa’s Gaming Ecosystem",
+      description:
+        "Analyzing the role of cryptocurrencies and digital assets in Africa’s gambling ecosystem, and their potential to revolutionize payment and ownership models.",
+    },
+
+    // 03:10 PM - 03:45 PM - Two concurrent sessions
+    {
+      time: "03:10 PM to 03:45 PM",
+      location: "Main Stage",
+      title:
+        "How Operators and Regulators Can Help Foster Genuine Corporate Social Responsibility in Africa’s Gambling Industry",
+      description:
+        "Exploring how operators and regulators can foster meaningful CSR initiatives that benefit communities and promote ethical industry standards.",
+    },
+    {
+      time: "03:10 PM to 03:45 PM",
+      location: "Stage 02",
+      title:
+        "Inside Africa’s Illegal Operator’s War: How regulators can fight back.",
+      description:
+        "Addressing strategies and regulatory measures needed to combat illegal operators, ensuring a fair, safe, and transparent gaming environment.",
+    },
+
+    // 03:55 PM - 04:30 PM - Two concurrent sessions
+    {
+      time: "03:55 PM to 04:30 PM",
+      location: "Main Stage",
+      title: "Rapid Surge of Crash Games Shaking Africa’s Gambling Market",
+      description:
+        "Surge of Crash Games in the Gaming Industry -Analyzing the rapid rise of crash games in Africa’s gambling scene, highlighting player appeal, market impact, and the opportunities and risks these games present to operators.",
+    },
+    {
+      time: "03:55 PM to 04:30 PM",
+      location: "Stage 02",
+      title: "Best Selling Games and Sportsbook or Casino Platforms in Africa",
+      description:
+        "Showcasing key features of top-performing games and platforms tailored to African players, emphasizing features that drive engagement and retention.",
+    },
+
+    // 04:05 PM - 04:40 PM - Single full-width session
+    {
+      time: "04:05 PM to 04:40 PM",
+      location: "Main Stage",
+      title:
+        "Getting the Right Payment Gateway for Your Online Sportsbook or Casino?",
+      description:
+        "Guiding operators in selecting optimal payment gateways, ensuring secure, fast, and seamless transaction experiences for African players.",
+    },
+
+    // 05:30 PM - 05:40 PM - Closing Remarks
+    {
+      time: "05:30 PM to 05:40 PM",
+      location: "Main Stage",
+      title: "Closing Remarks (Day 2)",
     },
   ],
   3: [
     {
-      time: "5:00 - 15:00",
-      title: "Safari Tour",
+      time: "5:45 PM - 6:15 PM",
+      title: "Dance & Entertainment",
       location: "",
-      description: "A safari tour to see the wildlife in Kenya.",
-    },
-    {
-      time: "16:30 - 19:30",
-      title: "Football Tournament",
-      location: "",
-      description:
-        "A football tournament experience to officially close the event in style.",
+      description: "",
     },
   ],
   4: [

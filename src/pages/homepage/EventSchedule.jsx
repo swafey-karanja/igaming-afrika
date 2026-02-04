@@ -4,9 +4,26 @@ import { motion } from "framer-motion";
 import { CalendarDropdown } from "../../lib/utils";
 import { dates, schedules } from "../../data/data";
 import Header from "../../components/Header";
+import SessionModal from "../../components/PopUpModal";
 
 const EventSchedule = () => {
   const [activeTab, setActiveTab] = useState(0);
+  const [modalOpen, setModalOpen] = useState(false);
+  const [selectedSession, setSelectedSession] = useState(null);
+
+  const handleSessionClick = (session) => {
+    setModalOpen(true);
+    setTimeout(() => {
+      setSelectedSession(session);
+    }, 10);
+  };
+
+  const handleModalClose = () => {
+    setModalOpen(false);
+    setTimeout(() => {
+      setSelectedSession(null);
+    }, 300);
+  };
 
   // Animation variants
   const fadeIn = {
@@ -30,11 +47,6 @@ const EventSchedule = () => {
     visible: { opacity: 1, y: 0 },
   };
 
-  // Calculate the maximum number of sessions across all days
-  const maxSessions = Math.max(
-    ...Object.values(schedules).map((day) => day.length),
-  );
-
   return (
     <section
       id="schedule"
@@ -44,7 +56,8 @@ const EventSchedule = () => {
         title="Event Schedule"
         subtitle="Stay updated with the latest schedule for the iGaming Afrika Summit 2026."
       />
-      {/* Date Tabs with animation - Improved for small screens */}
+
+      {/* Date Tabs with animation */}
       <motion.div
         initial="hidden"
         whileInView="visible"
@@ -72,12 +85,7 @@ const EventSchedule = () => {
 
       {/* Schedule Content with animations */}
       <motion.div
-        className="py-4 sm:py-6 px-5 transition-all duration-300 ease-in-out"
-        style={{
-          minHeight: `${maxSessions * 120 + 80}px`,
-          height: "auto",
-          overflow: "hidden",
-        }}
+        className="py-4 sm:py-6 px-5"
         initial="hidden"
         animate="visible"
         variants={fadeIn}
@@ -100,69 +108,101 @@ const EventSchedule = () => {
           key={activeTab}
         >
           {schedules[activeTab].length > 0 ? (
-            schedules[activeTab].map((session, index) => (
-              <motion.div
-                key={index}
-                variants={scheduleItem}
-                className="bg-gray-50 rounded-lg p-3 sm:p-4 md:p-6 shadow-md"
-              >
-                <div className="flex flex-col md:flex-row md:items-start gap-3 sm:gap-4 md:gap-6">
-                  <div className="w-full md:w-1/4 mb-2 md:mb-0">
-                    <p className="text-xs sm:text-sm font-semibold text-green-600">
-                      {session.time}
-                    </p>
-                    <p className="text-gray-500 text-xs sm:text-[12px] font-semibold mt-1">
-                      {session.location}
-                    </p>
-                  </div>
-                  <div className="w-full md:w-3/4">
-                    <h3 className="text-sm sm:text-md font-bold mb-2">
-                      {session.title}
-                    </h3>
-                    <p className="text-gray-700 mb-2 sm:mb-3 text-xs sm:text-sm">
-                      {session.description}
-                    </p>
+            (() => {
+              // Group sessions by time slot
+              const groupedSessions = {};
+              schedules[activeTab].forEach((session) => {
+                if (!groupedSessions[session.time]) {
+                  groupedSessions[session.time] = [];
+                }
+                groupedSessions[session.time].push(session);
+              });
 
-                    {session.speaker && (
-                      <motion.p
-                        className="text-xs sm:text-sm text-gray-600"
-                        initial={{ opacity: 0 }}
-                        animate={{ opacity: 1 }}
-                        transition={{ delay: 0.2 }}
-                      >
-                        <span className="font-medium">Speaker:</span>{" "}
-                        {session.speaker}
-                      </motion.p>
-                    )}
+              return Object.entries(groupedSessions).map(
+                ([time, sessions], groupIndex) => (
+                  <div key={groupIndex} className="space-y-4">
+                    {/* Time indicator - shown once per time slot */}
+                    <div className="text-xs sm:text-sm font-semibold text-green-600 px-2">
+                      {time}
+                    </div>
 
-                    {session.speakers && (
-                      <motion.div
-                        className="mt-2"
-                        initial={{ opacity: 0 }}
-                        animate={{ opacity: 1 }}
-                        transition={{ delay: 0.3 }}
-                      >
-                        <p className="text-xs sm:text-sm text-gray-600 font-medium">
-                          Speakers:
-                        </p>
-                        <ul className="list-disc list-inside text-xs sm:text-sm text-gray-600 ml-1">
-                          {session.speakers.map((speaker, i) => (
-                            <motion.li
-                              key={i}
-                              initial={{ opacity: 0, x: -10 }}
-                              animate={{ opacity: 1, x: 0 }}
-                              transition={{ delay: 0.1 * i }}
-                            >
-                              {speaker}
-                            </motion.li>
-                          ))}
-                        </ul>
-                      </motion.div>
-                    )}
+                    {/* Sessions grid - side by side if multiple sessions at same time */}
+                    <div
+                      className={`grid ${sessions.length > 1 ? "grid-cols-1 lg:grid-cols-2" : "grid-cols-1"} gap-4`}
+                    >
+                      {sessions.map((session, sessionIndex) => (
+                        <motion.div
+                          key={sessionIndex}
+                          variants={scheduleItem}
+                          className="bg-gray-50 rounded-lg p-3 sm:p-4 md:p-6 shadow-md cursor-pointer hover:shadow-lg hover:bg-gray-100 transition-all duration-300"
+                          onClick={() => handleSessionClick(session)}
+                        >
+                          <div className="flex flex-col gap-3">
+                            {/* Location */}
+                            <p className="text-green-400 text-xs sm:text-[13px] font-semibold">
+                              {session.location}
+                            </p>
+
+                            {/* Title */}
+                            <h3 className="text-sm sm:text-lg font-bold uppercase">
+                              {session.title}
+                            </h3>
+
+                            {/* Description */}
+                            <p className="text-gray-700 text-xs sm:text-sm line-clamp-2">
+                              {session.description}
+                            </p>
+
+                            {/* Multiple Speakers with Details */}
+                            {session.speakersDetailed && (
+                              <motion.div
+                                initial={{ opacity: 0 }}
+                                animate={{ opacity: 1 }}
+                                transition={{ delay: 0.3 }}
+                              >
+                                <motion.p
+                                  className="text-xs sm:text-sm text-green-600"
+                                  initial={{ opacity: 0 }}
+                                  animate={{ opacity: 1 }}
+                                  transition={{ delay: 0.2 }}
+                                >
+                                  <span className="font-semibold">
+                                    Speaker:
+                                  </span>{" "}
+                                  {session.speaker} - {session.speakerRole}
+                                </motion.p>
+                                <div className="flex flex-wrap gap-2">
+                                  {session.speakersDetailed
+                                    .slice(0, 2)
+                                    .map((speaker, i) => (
+                                      <div
+                                        key={i}
+                                        className="text-xs sm:text-sm text-green-600"
+                                      >
+                                        {speaker.name}
+                                        {i <
+                                          Math.min(
+                                            session.speakersDetailed.length - 1,
+                                            1,
+                                          ) && ","}
+                                      </div>
+                                    ))}
+                                  {session.speakersDetailed.length > 2 && (
+                                    <span className="text-xs sm:text-sm text-gray-600">
+                                      ...
+                                    </span>
+                                  )}
+                                </div>
+                              </motion.div>
+                            )}
+                          </div>
+                        </motion.div>
+                      ))}
+                    </div>
                   </div>
-                </div>
-              </motion.div>
-            ))
+                ),
+              );
+            })()
           ) : (
             <motion.div
               className="text-gray-500 text-center py-6 sm:py-8"
@@ -183,11 +223,17 @@ const EventSchedule = () => {
       </motion.div>
 
       <div className="flex gap-6 mb-2 sm:mb-3 lg:mb-4">
-        {/* Calendar button positioned at top right */}
         <div className="">
           <CalendarDropdown iconSize="md" showText={true} />
         </div>
       </div>
+
+      {/* Session Modal - Imported as Child Component */}
+      <SessionModal
+        open={modalOpen}
+        onClose={handleModalClose}
+        session={selectedSession}
+      />
     </section>
   );
 };
@@ -201,6 +247,13 @@ style.textContent = `
   }
   .hide-scrollbar::-webkit-scrollbar {
     display: none;  /* Chrome, Safari and Opera */
+  }
+  
+  .line-clamp-2 {
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
   }
 `;
 document.head.appendChild(style);
