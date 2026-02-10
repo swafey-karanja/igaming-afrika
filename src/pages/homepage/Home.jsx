@@ -24,17 +24,6 @@ const Home = () => {
     },
   };
 
-  const scrollLinks = [
-    { name: "About", href: "#eventDetails" },
-    { name: "Sponsors", href: "#sponsors" },
-    { name: "FloorPlan", href: "#floorPlan" },
-    { name: "Schedule", href: "#schedule" },
-    { name: "Sponsor", href: "#sponsorshipPackages" },
-    { name: "Exhibit", href: "#exhibitionPackages" },
-    { name: "Tickets", href: "#eventTickets" },
-    { name: "FAQs", href: "#faqs" },
-    { name: "Venue-Info", href: "#venueInfo" },
-  ];
   return (
     <div className="py-8">
       <motion.div
@@ -79,7 +68,7 @@ const Home = () => {
         whileInView="visible"
         viewport={{ once: true }}
       >
-        <EventTickets />
+        <EventSpeakers />
       </motion.div>
 
       <motion.div
@@ -88,7 +77,7 @@ const Home = () => {
         whileInView="visible"
         viewport={{ once: true }}
       >
-        <EventSpeakers />
+        <EventTickets />
       </motion.div>
 
       <motion.div

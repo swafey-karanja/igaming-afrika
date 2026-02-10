@@ -64,7 +64,10 @@ const EventSpeakers = () => {
   };
 
   return (
-    <div className="container mx-auto px-6 lg:px-8 py-8">
+    <section
+      className="container mx-auto px-6 lg:px-8 py-8 scroll-mt-60"
+      id="speakers"
+    >
       <Header
         title="Event Speakers"
         subtitle="Meet the industry leaders and experts speaking at the iGaming Afrika Summit 2026."
@@ -219,7 +222,7 @@ const EventSpeakers = () => {
         speaker={selectedSpeaker}
         onClose={closeModal}
       />
-    </div>
+    </section>
   );
 };
 
