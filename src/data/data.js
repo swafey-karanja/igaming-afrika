@@ -373,18 +373,18 @@ export const schedules = {
       description:
         "A session for regulators - Exploring the shift toward unified gambling regulation across Africa, addressing licensing challenges, benefits of harmonized policies, and navigating the evolving regulatory landscape of the gaming industry on the continent.",
 
-      speakersDetailed: [
-        {
-          name: "Peter Emolemo Kesitilwe",
-          role: "Chief Executive Officer , African iGaming Alliance",
-          image: "/speakers/Peter Emolemo.jpg",
-          bio: `Peter Emolemo Kesitilwe is the CEO of the African iGaming Alliance, representing licensed online betting and gaming operators across 20 African jurisdictions. 
-          With over a decade of executive leadership in the sector, he formerly led Botswana’s Gambling Authority, where he oversaw major regulatory reforms, 
-          digital compliance transformation, and the expansion of Africa’s regulated market footprint. He has served on the Boards of IAGR and GRAF and currently sits on the 
-          Clarion Regulatory Advisory Board and he is an EXCO of ARSO. Peter works closely with regulators, governments, and global bodies to promote responsible, sustainable 
-          gaming and shape continental policy on tax, integrity, and player protection.`,
-        },
-      ],
+      // speakersDetailed: [
+      //   {
+      //     name: "Peter Emolemo Kesitilwe",
+      //     role: "Chief Executive Officer , African iGaming Alliance",
+      //     image: "/speakers/Peter Emolemo.jpg",
+      //     bio: `Peter Emolemo Kesitilwe is the CEO of the African iGaming Alliance, representing licensed online betting and gaming operators across 20 African jurisdictions.
+      //     With over a decade of executive leadership in the sector, he formerly led Botswana’s Gambling Authority, where he oversaw major regulatory reforms,
+      //     digital compliance transformation, and the expansion of Africa’s regulated market footprint. He has served on the Boards of IAGR and GRAF and currently sits on the
+      //     Clarion Regulatory Advisory Board and he is an EXCO of ARSO. Peter works closely with regulators, governments, and global bodies to promote responsible, sustainable
+      //     gaming and shape continental policy on tax, integrity, and player protection.`,
+      //   },
+      // ],
     },
     {
       time: "12:10 PM - 12:45 PM",

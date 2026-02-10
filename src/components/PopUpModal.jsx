@@ -148,8 +148,8 @@ const SessionModal = ({ open, onClose, session }) => {
                           src={speaker.image}
                           alt={speaker.name}
                           sx={{
-                            width: "80px",
-                            height: "80px",
+                            width: "120px",
+                            height: "120px",
                             borderRadius: "50%",
                             objectFit: "cover",
                             mb: 1.5,
