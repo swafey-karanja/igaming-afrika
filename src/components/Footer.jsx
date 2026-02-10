@@ -414,62 +414,81 @@ const Footer = () => {
   };
 
   return (
-    <footer
-      id="footer"
-      className="relative text-white pb-8 pt-16 min-h-screen px-6 lg:px-8 py-8"
-    >
-      <div className="absolute inset-0 w-full h-full overflow-hidden z-0">
-        {/* Base African pattern image with white overlay */}
-        <div className="absolute inset-0 z-0">
-          <img
-            src="/africa-pattern.png"
-            alt="Footer Background"
-            className="w-full h-full object-cover"
-          />
-          {/* Dark overlay for better text readability */}
-          <div className="absolute inset-0 bg-black opacity-80"></div>
-        </div>
-
-        {/* Nairobi skyline image - positioned at bottom */}
-        <div className="absolute bottom-0 left-0 w-full h-[45vh] md:h-[40vh] lg:h-[45vh] z-0">
-          <img
-            src="/skyline-for-website.png"
-            alt="Nairobi Skyline"
-            className="w-full h-full object-cover object-bottom"
-          />
-        </div>
-        {/* Dark overlay for better text readability */}
-        <div className="absolute inset-0 bg-black opacity-20 z-0"></div>
-      </div>
-
-      {/* Content - positioned above background with padding bottom to avoid skyline */}
-      <div className="relative z-10 pb-[30vh] lg:pb-[40vh]">
-        <ContactSection
-          formData={formData}
-          onChange={handleInputChange}
-          onSubmit={handleSubmit}
-          errors={errors}
-          isSubmitting={isSubmitting}
-        />
-      </div>
-      {/* Copyright */}
-      <motion.div
-        initial={{ opacity: 0, y: 20 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true }}
-        transition={{ duration: 0.5, delay: 0.4 }}
-        className="py-4 absolute bottom-0 justify-center w-full z-10"
+    <>
+      <footer
+        id="footer"
+        className="relative text-white pb-8 pt-16 min-h-screen px-6 lg:px-8 py-8"
       >
-        <SocialSection />
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8 text-center text-xs font-semibold sm:text-sm text-gray-200 z-0">
-          <p className="pt-2">
-            © Copyright 2026 IGA Events Limited - All Rights Reserved
-          </p>
-        </div>
-      </motion.div>
+        <div className="absolute inset-0 w-full h-full overflow-hidden z-0">
+          {/* Base African pattern image with white overlay */}
+          <div className="absolute inset-0 z-0">
+            <img
+              src="/africa-pattern.png"
+              alt="Footer Background"
+              className="w-full h-full object-cover"
+            />
+            {/* Dark overlay for better text readability */}
+            <div className="absolute inset-0 bg-black opacity-80"></div>
+          </div>
 
-      <BackToTop isVisible={isVisible} onClick={scrollToTop} />
-    </footer>
+          {/* Nairobi skyline image - positioned at bottom */}
+          <div className="absolute bottom-0 left-0 w-full h-[45vh] md:h-[40vh] lg:h-[45vh] z-0">
+            <img
+              src="/skyline-for-website.png"
+              alt="Nairobi Skyline"
+              className="w-full h-full object-cover object-bottom"
+            />
+          </div>
+          {/* Dark overlay for better text readability */}
+          <div className="absolute inset-0 bg-black opacity-20 z-0"></div>
+        </div>
+
+        {/* Content - positioned above background with padding bottom to avoid skyline */}
+        <div className="relative z-10 pb-[30vh] lg:pb-[40vh]">
+          <ContactSection
+            formData={formData}
+            onChange={handleInputChange}
+            onSubmit={handleSubmit}
+            errors={errors}
+            isSubmitting={isSubmitting}
+          />
+        </div>
+        {/* Copyright */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.5, delay: 0.4 }}
+          className="py-4 absolute bottom-0 justify-center w-full z-10"
+        >
+          <SocialSection />
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8 text-center text-xs font-semibold sm:text-sm text-gray-200 z-0">
+            <p className="pt-2">
+              © Copyright 2026 IGA Events Limited - All Rights Reserved
+            </p>
+          </div>
+        </motion.div>
+
+        <BackToTop isVisible={isVisible} onClick={scrollToTop} />
+      </footer>
+      <div className="w-full bg-black h-20 flex items-center justify-center gap-2">
+        <a
+          href="https://igamingafrika.com/privacy-policy-events/"
+          className="text-white font-semibold text-[15px] hover:text-green-600 ml-15"
+          target="_blank"
+        >
+          Privacy Policy
+        </a>
+        <span className="text-white">|</span>
+        <a
+          href="https://igamingafrika.com/terms-and-conditions-events/"
+          className="text-white font-semibold text-[15px] hover:text-green-600"
+          target="_blank"
+        >
+          Terms and Conditions
+        </a>
+      </div>
+    </>
   );
 };
 

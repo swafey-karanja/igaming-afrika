@@ -195,23 +195,24 @@ const EventTickets = () => {
 
             {/* CTA Button */}
             <div className="px-6 pb-8">
-              {/* <NavLink to="/checkout" state={{ selectedTicket: plan }}> */}
-              <motion.button
-                // whileHover={{ scale: 1.02 }}
-                // whileTap={{ scale: 0.98 }}
-                style={!plan.isPopular ? { backgroundColor: "#14a45c" } : {}}
-                className={`w-full py-3 px-6 rounded-xl font-semibold text-sm transition-all duration-200 ${
-                  plan.isPopular
-                    ? "bg-white text-green-700 hover:bg-gray-50 shadow-lg"
-                    : "text-white hover:bg-green-700 shadow-md hover:shadow-lg"
-                }`}
+              <a
+                target="_blank"
+                href="https://events.igasummit.com/en/registration-form"
               >
-                {plan.price === 0
-                  ? "Tickets Available Soon"
-                  : "Tickets Available Soon"}
-                {/* <span className="ml-2">→</span> */}
-              </motion.button>
-              {/* </NavLink> */}
+                <motion.button
+                  whileHover={{ scale: 1.02 }}
+                  whileTap={{ scale: 0.98 }}
+                  style={!plan.isPopular ? { backgroundColor: "#14a45c" } : {}}
+                  className={`w-full py-3 px-6 rounded-xl font-semibold text-sm transition-all duration-200 cursor-pointer ${
+                    plan.isPopular
+                      ? "bg-white text-green-700 hover:bg-gray-50 shadow-lg"
+                      : "text-white hover:bg-green-700 shadow-md hover:shadow-lg"
+                  }`}
+                >
+                  {plan.price === 0 ? "Register Now" : "Buy Now"}
+                  <span className="ml-2">→</span>
+                </motion.button>
+              </a>
             </div>
 
             {/* Decorative Elements */}
