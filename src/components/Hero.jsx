@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
-import { NavLink, useLocation, useNavigate } from "react-router-dom";
+import { NavLink, useLocation } from "react-router-dom";
 import { CalendarDropdown } from "../lib/utils";
-import PopUpModal from "./PopUpModal";
+// import PopUpModal from "./PopUpModal";
 
 const Hero = () => {
   const [timeLeft, setTimeLeft] = useState({
@@ -10,32 +10,32 @@ const Hero = () => {
     minutes: 0,
     seconds: 0,
   });
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
   const location = useLocation();
   const isHomePage = location.pathname === "/";
 
   // Operator's pass data
-  const operatorPassData = {
-    id: "operator",
-    label: "Operator's Pass",
-    price: 0,
-    description: "VIP experience for operators",
-    requirement: "Business Email registration required",
-    features: [
-      "Welcome Reception",
-      "Pre-registration & Networking Event",
-      "Soccer tournament ticket",
-      "Conference Hall 1 Access",
-      "Conference Hall 2 Access",
-      "Full Expo Access",
-      "iGaming AFRIKA Closing Party",
-      "iGaming AFRIKA Awards Dinner",
-      "iGaming AFRIKA Konnect Space",
-      "VIP Lounge Access",
-      "VIP Networking Event",
-      "Private Meeting Rooms Reservations",
-    ],
-  };
+  // const operatorPassData = {
+  //   id: "operator",
+  //   label: "Operator's Pass",
+  //   price: 0,
+  //   description: "VIP experience for operators",
+  //   requirement: "Business Email registration required",
+  //   features: [
+  //     "Welcome Reception",
+  //     "Pre-registration & Networking Event",
+  //     "Soccer tournament ticket",
+  //     "Conference Hall 1 Access",
+  //     "Conference Hall 2 Access",
+  //     "Full Expo Access",
+  //     "iGaming AFRIKA Closing Party",
+  //     "iGaming AFRIKA Awards Dinner",
+  //     "iGaming AFRIKA Konnect Space",
+  //     "VIP Lounge Access",
+  //     "VIP Networking Event",
+  //     "Private Meeting Rooms Reservations",
+  //   ],
+  // };
 
   // Calculate time left until the event (May 4, 2026)
   useEffect(() => {
@@ -194,8 +194,8 @@ const Hero = () => {
               <button
                 className="bg-transparent cursor-pointer hover:bg-[#47cf8b] hover:bg-opacity-20 hover:text-white transition-colors duration-300 text-[11px] lg:text-lg xl:text-base 2xl:text-md 3xl:text-lg text-[#14a45c] font-bold w-full py-2 px-4 sm:px-6 xl:px-4 border-3 border-lime-500 rounded-4xl whitespace-normal sm:whitespace-nowrap text-center"
                 onClick={() => {
-                  navigate("/checkout", {
-                    state: { selectedTicket: operatorPassData },
+                  document.getElementById("eventTickets")?.scrollIntoView({
+                    behavior: "smooth",
                   });
                 }}
               >

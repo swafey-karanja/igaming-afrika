@@ -36,7 +36,7 @@ const SpeakerModal = ({ isOpen, speaker, onClose }) => {
 
       {/* Modal Content */}
       <motion.div
-        className="relative bg-white rounded-3xl w-full max-w-2xl mx-auto shadow-2xl max-h-[90vh] overflow-y-auto border-2 border-gray-200"
+        className="relative bg-white rounded-3xl min-w-4xl max-w-6xl mx-auto shadow-2xl max-h-[90vh] overflow-y-auto border-2 border-gray-200"
         initial="hidden"
         animate="visible"
         exit="hidden"
@@ -64,7 +64,7 @@ const SpeakerModal = ({ isOpen, speaker, onClose }) => {
               className="flex-shrink-0 mx-auto md:mx-0"
               whileHover={{ scale: 1.05 }}
             >
-              <div className="w-32 h-32 rounded-2xl overflow-hidden bg-gray-100 ring-8 ring-green-50 border-2 border-gray-200">
+              <div className="w-72 h-72 rounded-2xl overflow-hidden bg-gray-100 ring-8 ring-green-50 border-2 border-gray-200">
                 {speaker?.image ? (
                   <img
                     src={speaker.image}
@@ -158,31 +158,6 @@ const SpeakerModal = ({ isOpen, speaker, onClose }) => {
               </div>
             </motion.div>
           </div>
-
-          {/* Event Tags */}
-          <motion.div
-            className="mt-8 pt-6 border-t border-gray-200"
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.4 }}
-          >
-            <h4 className="text-sm font-medium text-gray-900 mb-3">
-              Speaking at:
-            </h4>
-            <div className="flex flex-wrap gap-2">
-              {speaker?.events.map((event, i) => (
-                <motion.span
-                  key={i}
-                  initial={{ opacity: 0, scale: 0.8 }}
-                  animate={{ opacity: 1, scale: 1 }}
-                  transition={{ delay: 0.5 + i * 0.1 }}
-                  className="px-4 py-2 bg-green-50 text-green-700 rounded-full text-sm border border-green-200"
-                >
-                  {event}
-                </motion.span>
-              ))}
-            </div>
-          </motion.div>
         </motion.div>
       </motion.div>
     </motion.div>

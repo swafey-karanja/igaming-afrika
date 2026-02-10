@@ -13,7 +13,7 @@ import { NavLink } from "react-router-dom";
 const EventSpeakers = () => {
   const [selectedSpeaker, setSelectedSpeaker] = useState(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const [visibleCount, setVisibleCount] = useState(12);
+  const [visibleCount, setVisibleCount] = useState(8);
   const [isMobile, setIsMobile] = useState(false);
 
   const {
@@ -51,17 +51,6 @@ const EventSpeakers = () => {
   };
 
   // Animation variants
-  const container = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.1,
-        delayChildren: 0.2,
-      },
-    },
-  };
-
   const item = {
     hidden: { y: 20, opacity: 0 },
     visible: {
@@ -75,7 +64,7 @@ const EventSpeakers = () => {
   };
 
   return (
-    <div className="container mx-auto  px-6 lg:px-8 py-8">
+    <div className="container mx-auto px-6 lg:px-8 py-8">
       <Header
         title="Event Speakers"
         subtitle="Meet the industry leaders and experts speaking at the iGaming Afrika Summit 2026."
@@ -83,7 +72,7 @@ const EventSpeakers = () => {
 
       {/* Content Area */}
       {speakerLoading ? (
-        <div className="container mx-auto  flex justify-center items-center py-20">
+        <div className="container mx-auto flex justify-center items-center py-12">
           <div className="animate-spin rounded-full h-10 w-10 border-t-2 border-b-2 border-green-600"></div>
         </div>
       ) : speakerError ? (
@@ -105,26 +94,24 @@ const EventSpeakers = () => {
       ) : (
         <>
           {/* Speakers Grid */}
-          <motion.div
-            className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-12"
-            initial="hidden"
-            animate="visible"
-            variants={container}
-          >
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-x-10 gap-y-8">
             {visibleSpeakers.map((speaker, index) => (
               <motion.div
                 key={`${speaker.name}-${index}`}
                 onClick={() => openModal(speaker)}
-                className="group cursor-pointer h-[250px]"
+                className="group cursor-pointer h-[280px]"
                 variants={item}
+                initial="hidden"
+                animate="visible"
+                whileHover={{
+                  y: -4,
+                  transition: { duration: 0.3, ease: "easeOut" },
+                }}
                 layout
               >
-                <motion.div
-                  className="bg-white rounded-2xl p-6 shadow-md transition-all hover:shadow-green-300 border-green-300 duration-300 cursor-pointer hover:-translate-y-1 text-center h-full flex flex-col"
-                  whileTap={{ scale: 0.98 }}
-                >
+                <div className="bg-white rounded-2xl py-8 px-4 border-green-300 duration-300 cursor-pointer text-center h-full flex flex-col">
                   {/* Speaker Image */}
-                  <div className="relative w-24 h-24 mx-auto mb-4">
+                  <div className="relative w-38 h-38 mx-auto mb-4">
                     <motion.div
                       className="w-full h-full rounded-full overflow-hidden bg-gray-100 ring-4 ring-green-50 group-hover:ring-green-100 transition-all duration-300"
                       whileHover={{ scale: 1.1 }}
@@ -145,13 +132,13 @@ const EventSpeakers = () => {
 
                   {/* Speaker Info */}
                   <div className="flex-1 flex flex-col">
-                    <h3 className="text-lg font-semibold text-gray-900 mb-1">
+                    <h3 className="text-xl font-semibold text-gray-900 mb-1">
                       {speaker.name}
                     </h3>
-                    <p className="text-sm text-green-600 font-medium mb-1">
+                    <p className="text-md text-green-600 font-medium mb-1">
                       {speaker.role}
                     </p>
-                    <p className="text-sm text-gray-500 mb-4 flex-1">
+                    <p className="text-md text-gray-500 mb-4 flex-1">
                       {speaker.company}
                     </p>
 
@@ -175,10 +162,10 @@ const EventSpeakers = () => {
                       )}
                     </div>
                   </div>
-                </motion.div>
+                </div>
               </motion.div>
             ))}
-          </motion.div>
+          </div>
 
           {/* Load More */}
           {speakers && visibleCount < speakers.length && (
@@ -213,16 +200,16 @@ const EventSpeakers = () => {
               </div>
             )}
 
-          <NavLink
+          {/* <NavLink
             to="/speaker-registration"
             className="flex items-center justify-center mt-6"
           >
             <button
-              className={`text-white bg-[#14a45c] hover:cursor-pointer text-xs font-bold py-2 px-4 lg:py-3 lg:px-6 lg:text-sm rounded-3xl `}
+              className={`text-white bg-[#14a45c] hover:cursor-pointer text-sm font-bold py-2 px-4 lg:py-5 lg:px-8 lg:text-[13px] rounded-3xl `}
             >
               Become a Speaker
             </button>
-          </NavLink>
+          </NavLink> */}
         </>
       )}
 

@@ -4,15 +4,15 @@ import { motion } from "framer-motion";
 import EventDetails from "./EventDetails";
 import Floorplan from "./Floorplan";
 import EventSchedule from "./EventSchedule";
-// import EventSpeakers from "./EventSpeakers";
+import EventSpeakers from "./EventSpeakers";
 import SponsorshipPackages from "./SponsorshipPackages";
 import ExhibitionPackages from "./ExhibitionPackages";
 import EventTickets from "./EventTickets";
-import EventGallery from "./EventGallery";
+// import EventGallery from "./EventGallery";
 import EventNews from "./EventNews";
 import FAQs from "./FAQs";
 import VenueInfo from "./VenueInfo";
-import Accordion from "../../components/Accordion";
+// import Accordion from "../../components/Accordion";
 
 const Home = () => {
   const fadeInUp = {
@@ -82,14 +82,14 @@ const Home = () => {
         <EventTickets />
       </motion.div>
 
-      {/* <motion.div
+      <motion.div
         variants={fadeInUp}
         initial="hidden"
         whileInView="visible"
         viewport={{ once: true }}
       >
         <EventSpeakers />
-      </motion.div> */}
+      </motion.div>
 
       <motion.div
         variants={fadeInUp}
