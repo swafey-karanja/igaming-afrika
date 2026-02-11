@@ -76,7 +76,7 @@ const EventDetails = () => {
           whileInView="visible"
           viewport={{ once: true }}
           transition={{ staggerChildren: 0.2 }}
-          className="w-full text-gray-800 lg:pb-0 px-6 sm:px-8"
+          className="w-full text-gray-800 py-6 px-6 sm:px-8"
         >
           <div className="w-full xl:pb-2 text-center flex gap-x-3 items-center justify-start xl:justify-center overflow-x-auto hide-scrollbar flex-nowrap">
             {scrollLinks.map((link) => (

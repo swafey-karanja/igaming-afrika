@@ -62,7 +62,7 @@ const SpeakerModal = ({ isOpen, speaker, onClose }) => {
             {/* Speaker Image */}
             <motion.div
               className="flex-shrink-0 mx-auto md:mx-0"
-              whileHover={{ scale: 1.05 }}
+              // whileHover={{ scale: 1.05 }}
             >
               <div className="w-72 h-72 rounded-2xl overflow-hidden bg-gray-100 ring-8 ring-green-50 border-2 border-gray-200">
                 {speaker?.image ? (

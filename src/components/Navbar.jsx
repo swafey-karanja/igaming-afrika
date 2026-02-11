@@ -130,7 +130,7 @@ const Navbar = () => {
           </div>
 
           {/* Desktop Nav */}
-          <nav className="hidden xl:flex lg:items-center lg:justify-center xl:space-x-7 lg:space-x-6 whitespace-nowrap w-full max-w-3xl lg:max-w-4xl">
+          <nav className="hidden xl:flex lg:items-center lg:justify-center lg:space-x-6 whitespace-nowrap w-full max-w-3xl lg:max-w-4xl">
             {/* <a
               target="_blank"
               href="https://awards.igasummit.com/"
@@ -178,16 +178,20 @@ const Navbar = () => {
               </button>
             </a> */}
 
-            <NavLink to="/register">
+            <a
+              href="https://events.igasummit.com/en/registration-form"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
               <button
                 style={isScrolled ? { backgroundColor: "#14a45c" } : {}}
                 className={`hover:bg-green-600 hover:text-white transition-colors duration-300 hover:bg-opacity-20 hover:cursor-pointer text-xs font-bold py-1.5 px-4 lg:py-2 lg:px-6 lg:text-sm border-3 border-lime-500 rounded-md ${
                   isScrolled ? "text-white bg-green-600" : "text-[#14a45c]"
                 }`}
               >
-                EXHIBIT/SPONSOR
+                GET TICKETS
               </button>
-            </NavLink>
+            </a>
             <NavLink to="/speaker-registration">
               <button
                 style={isScrolled ? { backgroundColor: "#14a45c" } : {}}
@@ -282,12 +286,13 @@ const Navbar = () => {
                   onClick={() => setSidebarOpen(!isSidebarOpen)}
                   className="w-full bg-white/10 hover:bg-white/20 text-white font-semibold px-3 py-3 xl:px-6 rounded-xl border border-white/30 hover:border-white/50 transition-all duration-200 backdrop-blur-sm"
                 >
-                  <NavLink
-                    to="/register"
+                  <a
+                    href="https://events.igasummit.com/en/registration-form"
                     className="block text-[10px] md:text-[14px]"
+                    target="_blank"
                   >
-                    REGISTER INTEREST
-                  </NavLink>
+                    GET TICKETS
+                  </a>
                 </button>
               </div>
               <div className="">

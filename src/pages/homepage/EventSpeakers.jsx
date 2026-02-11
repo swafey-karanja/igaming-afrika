@@ -117,7 +117,7 @@ const EventSpeakers = () => {
                   <div className="relative w-38 h-38 mx-auto mb-4">
                     <motion.div
                       className="w-full h-full rounded-full overflow-hidden bg-gray-100 ring-4 ring-green-50 group-hover:ring-green-100 transition-all duration-300"
-                      whileHover={{ scale: 1.1 }}
+                      // whileHover={{ scale: 1.1 }}
                     >
                       {speaker.image ? (
                         <img

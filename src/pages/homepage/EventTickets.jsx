@@ -1,6 +1,6 @@
 // eslint-disable-next-line no-unused-vars
 import { motion } from "framer-motion";
-import { NavLink } from "react-router-dom";
+import { ArrowRight } from "lucide-react";
 import { allFeatures, plans } from "../../data/data";
 import Header from "../../components/Header";
 
@@ -198,19 +198,20 @@ const EventTickets = () => {
               <a
                 target="_blank"
                 href="https://events.igasummit.com/en/registration-form"
+                rel="noopener noreferrer"
               >
                 <motion.button
                   whileHover={{ scale: 1.02 }}
                   whileTap={{ scale: 0.98 }}
                   style={!plan.isPopular ? { backgroundColor: "#14a45c" } : {}}
-                  className={`w-full py-3 px-6 rounded-xl font-semibold text-sm transition-all duration-200 cursor-pointer ${
+                  className={`w-full py-3 px-6 rounded-xl font-semibold text-sm transition-all duration-200 cursor-pointer flex items-center justify-center ${
                     plan.isPopular
                       ? "bg-white text-green-700 hover:bg-gray-50 shadow-lg"
                       : "text-white hover:bg-green-700 shadow-md hover:shadow-lg"
                   }`}
                 >
                   {plan.price === 0 ? "Register Now" : "Buy Now"}
-                  <span className="ml-2">→</span>
+                  <ArrowRight className="ml-2 w-4 h-4 font-bold" />
                 </motion.button>
               </a>
             </div>

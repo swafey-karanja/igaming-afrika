@@ -25,7 +25,7 @@ const Home = () => {
   };
 
   return (
-    <div className="py-8">
+    <div>
       <motion.div
         variants={fadeInUp}
         initial="hidden"

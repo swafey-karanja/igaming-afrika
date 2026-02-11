@@ -63,7 +63,7 @@ const Hero = () => {
   }, []);
 
   return (
-    <div className={`relative flex pt-15 px-6 lg:px-8 py-8`}>
+    <div className={`relative flex pt-15 px-6 lg:px-8 py-8 min-h-screen`}>
       {/* Hero Section with Overlapping Images */}
       <div className="absolute inset-0 w-full h-full overflow-hidden z-0">
         {/* Base African pattern image with white overlay */}
@@ -181,12 +181,13 @@ const Hero = () => {
               // className="flex justify-center"
               className="flex flex-col md:flex-row justify-center gap-2 sm:gap-4 xl:gap-3"
             >
-              <NavLink
-                to="/register"
+              <a
+                href="https://events.igasummit.com/en/registration-form"
+                target="_blank"
                 className="bg-transparent hover:bg-[#47cf8b] hover:bg-opacity-20 hover:text-white transition-colors duration-300 text-sm lg:text-lg xl:text-lg 2xl:text-md 3xl:text-lg text-[#14a45c] font-bold w-full sm:max-w-sm py-2 px-2 sm:px-4 border-3 border-lime-500 rounded-4xl text-center"
               >
-                Register interest
-              </NavLink>
+                Get Tickets
+              </a>
               {/* <PopUpModal /> */}
             </div>
 
