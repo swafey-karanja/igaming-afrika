@@ -1,0 +1,199 @@
+import { useState, useEffect } from "react";
+import { useLocation } from "react-router-dom";
+import { CalendarDropdown } from "../../lib/utils";
+
+const Hero = () => {
+  const [timeLeft, setTimeLeft] = useState({
+    days: 0,
+    hours: 0,
+    minutes: 0,
+    seconds: 0,
+  });
+  // const navigate = useNavigate();
+  const location = useLocation();
+  const isHomePage = location.pathname === "/";
+
+  // Calculate time left until the event (May 4, 2026)
+  useEffect(() => {
+    const calculateTimeLeft = () => {
+      const eventDate = new Date("May 4, 2026").getTime();
+      const now = new Date().getTime();
+      const difference = eventDate - now;
+
+      if (difference > 0) {
+        setTimeLeft({
+          days: Math.floor(difference / (1000 * 60 * 60 * 24)),
+          hours: Math.floor(
+            (difference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60),
+          ),
+          minutes: Math.floor((difference % (1000 * 60 * 60)) / (1000 * 60)),
+          seconds: Math.floor((difference % (1000 * 60)) / 1000),
+        });
+      }
+    };
+
+    const timer = setInterval(calculateTimeLeft, 1000);
+    calculateTimeLeft(); // Initial calculation
+
+    return () => clearInterval(timer);
+  }, []);
+
+  return (
+    <div className={`relative flex pt-15 px-6 lg:px-8 py-8 min-h-screen`}>
+      {/* Hero Section with Overlapping Images */}
+      <div className="absolute inset-0 w-full h-full overflow-hidden z-0">
+        {/* Base African pattern image with white overlay */}
+        <div className="absolute inset-0 w-full h-full">
+          <img
+            src="/africa-pattern.png"
+            alt="African Pattern Background"
+            className="absolute top-0 left-0 w-full h-full object-cover opacity-20"
+          />
+          {/* Dark overlay for better text readability */}
+          {/* <div className="absolute inset-0 bg-black opacity-90 z-0"></div> */}
+        </div>
+
+        {/* Nairobi skyline image - positioned at bottom */}
+        {isHomePage ? (
+          <>
+            <div className="absolute bottom-0 left-0 w-full h-[35vh]">
+              <img
+                src="/city-skyline-nairobi-C.png"
+                alt="Nairobi Skyline"
+                className="w-full h-full object-cover object-bottom"
+              />
+            </div>
+            {/* <PopUpModal /> */}
+          </>
+        ) : (
+          <div className="absolute bottom-0 left-0 w-full h-[30vh]">
+            <img
+              src="/city-skyline-blended-with-background-3.png"
+              alt="Nairobi Skyline"
+              className="w-full h-full object-cover object-bottom"
+            />
+          </div>
+        )}
+      </div>
+
+      {/* Content Section - Now with flex centering for better vertical alignment */}
+      <div
+        className={`relative z-10 w-full flex flex-col items-center justify-center mb-[30vh] mt-[15vh] text-center text-black px-4 max-w-6xl mx-auto gap-y-3 xl:gap-y-4 ${
+          isHomePage ? "lg:mb-[38vh]" : ""
+        } `}
+      >
+        {/* Logo */}
+        <div className="flex items-center justify-center w-full">
+          <img
+            src="/IGA-LIONBETS-Logo.png"
+            alt="iGaming Afrika Logo"
+            className={`${
+              isHomePage
+                ? "h-30 sm:h-35 md:h-55 xl:h-60"
+                : "h-22 sm:h-35 md:h-35 lg:h-45"
+            } w-auto max-w-full object-contain`}
+          />
+        </div>
+
+        {/* Event Date */}
+        <div className="flex flex-row gap-2 items-center justify-center">
+          <p
+            className={`${
+              isHomePage
+                ? "text-sm sm:text-xl md:text-2xl xl:text-3xl"
+                : "text-sm sm:text-lg md:text-xl xl:text-xl"
+            } font-bold text-[#14a45c]`}
+          >
+            4 - 6 &nbsp; MAY, 2026
+          </p>
+          <div>
+            <CalendarDropdown showText={false} />
+          </div>
+        </div>
+
+        <p
+          className={`${
+            isHomePage
+              ? "text-xs sm:text-lg md:text-xl xl:text-2xl"
+              : "text-xs sm:text-lg md:text-xl"
+          } font-bold text-[#14a45c]`}
+        >
+          Sarit Expo Centre, Nairobi, Kenya
+        </p>
+
+        {/* Countdown Timer */}
+        <div className="flex flex-wrap justify-center gap-2 sm:gap-3 md:gap-4 lg:gap-6 xl:gap-5 max-w-2xl mx-auto">
+          {["days", "hours", "minutes", "seconds"].map((unit) => (
+            <div
+              key={unit}
+              className={`text-center py-2 sm:py-4 bg-transparent border-3 border-[#14a45c] rounded-lg min-w-[70px] ${
+                isHomePage
+                  ? "px-2 sm:px-4 sm:min-w-[90px] xl:min-w-[95px]"
+                  : "px-1 sm:px-2 sm:min-w-[100px] xl:min-w-[90px]"
+              }`}
+            >
+              <div
+                className={`${
+                  isHomePage
+                    ? "text-md sm:text-2xl xl:text-3xl"
+                    : "text-sm sm:text-2xl"
+                } font-bold text-[#14a45c]`}
+              >
+                {timeLeft[unit]}
+              </div>
+              <div
+                className={`text-xs sm:text-sm text-[#14a45c] font-semibold uppercase mt-1`}
+              >
+                {unit}
+              </div>
+            </div>
+          ))}
+        </div>
+
+        {/* Buttons */}
+        {isHomePage && (
+          <div className="rounded-lg p-2 sm:p-4 xl:p-3 max-w-4xl mx-auto w-full flex flex-col gap-y-2 sm:gap-y-3 xl:gap-y-3">
+            <div
+              // className="flex justify-center"
+              className="flex flex-col md:flex-row justify-center gap-2 sm:gap-4 xl:gap-3"
+            >
+              <a
+                href="https://events.igasummit.com/en/registration-form"
+                target="_blank"
+                className="bg-transparent hover:bg-[#47cf8b] hover:bg-opacity-20 hover:text-white transition-colors duration-300 text-sm lg:text-lg xl:text-lg 2xl:text-md 3xl:text-lg text-[#14a45c] font-bold w-full sm:max-w-sm py-2 px-2 sm:px-4 border-3 border-lime-500 rounded-4xl text-center"
+              >
+                Get Tickets
+              </a>
+              {/* <PopUpModal /> */}
+            </div>
+
+            <div className="flex flex-col md:flex-row justify-center gap-2 sm:gap-4 xl:gap-3">
+              <button
+                className="bg-transparent cursor-pointer hover:bg-[#47cf8b] hover:bg-opacity-20 hover:text-white transition-colors duration-300 text-[11px] lg:text-lg xl:text-base 2xl:text-md 3xl:text-lg text-[#14a45c] font-bold w-full py-2 px-4 sm:px-6 xl:px-4 border-3 border-lime-500 rounded-4xl whitespace-normal sm:whitespace-nowrap text-center"
+                onClick={() => {
+                  document.getElementById("eventTickets")?.scrollIntoView({
+                    behavior: "smooth",
+                  });
+                }}
+              >
+                Operators - VIP Pass (Free for Operators & Regulators)
+              </button>
+              <button
+                className="bg-transparent cursor-pointer hover:bg-[#47cf8b] hover:bg-opacity-20 hover:text-white  transition-colors duration-300 text-[11px] lg:text-lg xl:text-base 2xl:text-md 3xl:text-lg text-[#14a45c] font-bold w-full py-2 px-4 sm:px-6 xl:px-4 border-3 border-lime-500 rounded-4xl whitespace-normal sm:whitespace-nowrap text-center"
+                onClick={() => {
+                  document.getElementById("eventTickets")?.scrollIntoView({
+                    behavior: "smooth",
+                  });
+                }}
+              >
+                Affiliates - Apply for the Free Standard Pass
+              </button>
+            </div>
+          </div>
+        )}
+      </div>
+    </div>
+  );
+};
+
+export default Hero;

@@ -1,4 +1,4 @@
-import Footer from "./components/Footer.jsx";
+import Footer from "./components/layout/Footer.jsx";
 import { Routes, Route } from "react-router-dom";
 import { ScrollToTop } from "./lib/utils.jsx";
 import { Provider } from "react-redux";
@@ -6,13 +6,14 @@ import store from "./store/index.js";
 
 import { Toaster } from "sonner";
 import { useEffect } from "react";
-import Checkout from "./pages/checkoutpage/Checkout.jsx";
-import Home from "./pages/homepage/Home.jsx";
-import Navbar from "./components/Navbar.jsx";
-import Publications from "./pages/publicationspage/Publications.jsx";
-import Hero from "./components/Hero.jsx";
-import EventApplicationForm from "./pages/registrationpage/EventApplicationForm.jsx";
-import SpeakerRegistrationPage from "./pages/speakerRegistration/SpeakerRegistrationPage.jsx";
+// import Checkout from "../pages/checkoutpage/Checkout.jsx";
+import Home from "./features/home/HomePage.jsx";
+import Navbar from "./components/layout/Navbar.jsx";
+import Publications from "./features/publications/PublicationsPage.jsx";
+import Hero from "./components/layout/Hero.jsx";
+import EventApplicationForm from "./features/registration/EventApplicationPage.jsx";
+import SpeakerRegistrationPage from "./features/speakerApplication/SpeakerRegistrationPage.jsx";
+import SocialSidebar from "./components/layout/SocialSidebar.jsx";
 
 const App = () => {
   useEffect(() => {
@@ -56,11 +57,12 @@ const App = () => {
           </a>
         </div>
         <Navbar />
+        <SocialSidebar />
         <Hero />
         <ScrollToTop />
         <Routes>
           <Route path="/" element={<Home />} />
-          {/* <Route path="/register" element={<EventApplicationForm />} /> */}
+          <Route path="/register" element={<EventApplicationForm />} />
           {/* <Route path="/checkout" element={<Checkout />} /> */}
           <Route path="/publications/:category" element={<Publications />} />
           <Route
