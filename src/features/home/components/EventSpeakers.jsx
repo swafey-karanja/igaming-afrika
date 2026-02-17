@@ -1,5 +1,5 @@
-import { useState, useCallback, useEffect } from "react";
-import { IoMdRefresh } from "react-icons/io";
+import { useState } from "react";
+// import { IoMdRefresh } from "react-icons/io";
 import { Users } from "lucide-react";
 // eslint-disable-next-line no-unused-vars
 import { motion } from "framer-motion";
@@ -12,8 +12,8 @@ import { fetchDataFromApi } from "../../../services/api.js";
 const EventSpeakers = () => {
   const [selectedSpeaker, setSelectedSpeaker] = useState(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const [visibleCount, setVisibleCount] = useState(8);
-  const [isMobile, setIsMobile] = useState(false);
+  // const [visibleCount, setVisibleCount] = useState(8);
+  // const [isMobile, setIsMobile] = useState(false);
 
   const {
     data: speakers,
@@ -22,15 +22,15 @@ const EventSpeakers = () => {
     refetch: refetchSpeakers,
   } = useFetch(() => fetchDataFromApi("speakers"));
 
-  const checkScreenSize = useCallback(() => {
-    setIsMobile(window.innerWidth < 768);
-  }, []);
+  // const checkScreenSize = useCallback(() => {
+  //   setIsMobile(window.innerWidth < 768);
+  // }, []);
 
-  useEffect(() => {
-    checkScreenSize();
-    window.addEventListener("resize", checkScreenSize);
-    return () => window.removeEventListener("resize", checkScreenSize);
-  }, [checkScreenSize]);
+  // useEffect(() => {
+  //   checkScreenSize();
+  //   window.addEventListener("resize", checkScreenSize);
+  //   return () => window.removeEventListener("resize", checkScreenSize);
+  // }, [checkScreenSize]);
 
   // Sort speakers to show featured ones first, then display based on visible count
   const visibleSpeakers = speakers
@@ -40,12 +40,12 @@ const EventSpeakers = () => {
           if (a.is_featured === b.is_featured) return 0;
           return a.is_featured ? -1 : 1;
         })
-        .slice(0, visibleCount)
+        .slice(0)
     : [];
 
-  const handleShowMore = () => {
-    setVisibleCount((prev) => prev + (isMobile ? 6 : 12));
-  };
+  // const handleShowMore = () => {
+  //   setVisibleCount((prev) => prev + (isMobile ? 6 : 12));
+  // };
 
   const openModal = (speaker) => {
     setSelectedSpeaker(speaker);
@@ -104,12 +104,12 @@ const EventSpeakers = () => {
       ) : (
         <>
           {/* Speakers Grid */}
-          <div className="grid grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-x-2 lg:gap-x-10 gap-y-8">
+          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 lg:gap-x-10 gap-y-8">
             {visibleSpeakers.map((speaker, index) => (
               <motion.div
                 key={`${speaker.name}-${index}`}
                 onClick={() => openModal(speaker)}
-                className="group cursor-pointer h-auto lg:min-h-[280px] "
+                className="group h-auto lg:min-h-[280px] cursor-pointer text-center flex flex-col"
                 variants={item}
                 initial="hidden"
                 animate="visible"
@@ -119,66 +119,66 @@ const EventSpeakers = () => {
                 }}
                 layout
               >
-                <div className="bg-white rounded-xl sm:rounded-2xl py-6 sm:py-7 md:py-8 px-3 sm:px-4 border-green-300 duration-300 cursor-pointer text-center h-full flex flex-col">
-                  {/* Speaker Image */}
-                  <div className="relative w-18 h-18  lg:w-38 lg:h-38 mx-auto mb-3 sm:mb-4">
-                    <motion.div
-                      className="w-full h-full rounded-full overflow-hidden bg-gray-100 ring-4 ring-green-50 group-hover:ring-green-100 transition-all duration-300"
-                      // whileHover={{ scale: 1.1 }}
-                    >
-                      {speaker.image ? (
-                        <img
-                          src={speaker.image}
-                          alt={speaker.name}
-                          className="w-full h-full object-cover"
-                        />
-                      ) : (
-                        <div className="w-full h-full flex items-center justify-center bg-green-100">
-                          <Users className="w-6 h-6 sm:w-7 sm:h-7 md:w-8 md:h-8 text-green-600" />
-                        </div>
-                      )}
-                    </motion.div>
-                  </div>
+                {/* <div className="bg-white rounded-xl sm:rounded-2xl py-6 sm:py-7 md:py-8 px-3 sm:px-4 border-green-300 duration-300 cursor-pointer text-center h-full flex flex-col"> */}
+                {/* Speaker Image */}
+                <div className="relative w-18 h-18 lg:w-38 lg:h-38 mx-auto mb-3 sm:mb-4">
+                  <motion.div
+                    className="w-full h-full rounded-full overflow-hidden bg-gray-100 ring-4 ring-green-50 group-hover:ring-green-100 transition-all duration-300"
+                    // whileHover={{ scale: 1.1 }}
+                  >
+                    {speaker.image ? (
+                      <img
+                        src={speaker.image}
+                        alt={speaker.name}
+                        className="w-full h-full object-cover"
+                      />
+                    ) : (
+                      <div className="w-full h-full flex items-center justify-center bg-green-100">
+                        <Users className="w-6 h-6 sm:w-7 sm:h-7 md:w-8 md:h-8 text-green-600" />
+                      </div>
+                    )}
+                  </motion.div>
+                </div>
 
-                  {/* Speaker Info */}
-                  <div className="flex-1 flex flex-col">
-                    <h3 className="text-sm sm:text-xl font-semibold text-gray-900 mb-1">
-                      {speaker.name}
-                    </h3>
-                    <p className="text-xs sm:text-md text-green-600 font-medium mb-1">
-                      {speaker.role}
-                    </p>
-                    <p className="text-xs sm:text-md text-gray-500 mb-3 sm:mb-4 flex-1">
-                      {speaker.company}
-                    </p>
+                {/* Speaker Info */}
+                <div className="flex-1 flex flex-col">
+                  <h3 className="text-md sm:text-xl font-semibold text-gray-900 mb-1">
+                    {speaker.name}
+                  </h3>
+                  <p className="text-xs sm:text-md text-green-600 font-medium mb-1">
+                    {speaker.role}
+                  </p>
+                  <p className="text-xs sm:text-md text-gray-500 mb-3 sm:mb-4 flex-1">
+                    {speaker.company}
+                  </p>
 
-                    {/* Event Tags */}
-                    <div className="flex flex-wrap justify-center gap-1 mt-auto">
-                      {speaker.events.slice(0, 2).map((event, i) => {
-                        const day = event.split(" ")[0];
-                        return (
-                          <span
-                            key={i}
-                            className="text-[10px] sm:text-xs px-2 sm:px-3 py-0.5 sm:py-1 bg-green-50 text-green-700 rounded-full border border-green-200"
-                          >
-                            {day}
-                          </span>
-                        );
-                      })}
-                      {speaker.events.length > 2 && (
-                        <span className="text-[10px] sm:text-xs px-2 sm:px-3 py-0.5 sm:py-1 bg-gray-100 text-gray-600 rounded-full border border-gray-300">
-                          +{speaker.events.length - 2}
+                  {/* Event Tags */}
+                  <div className="flex flex-wrap justify-center gap-1 mt-auto">
+                    {speaker.events.slice(0, 2).map((event, i) => {
+                      const day = event.split(" ")[0];
+                      return (
+                        <span
+                          key={i}
+                          className="text-[10px] sm:text-xs px-2 sm:px-3 py-0.5 sm:py-1 bg-green-50 text-green-700 rounded-full border border-green-200"
+                        >
+                          {day}
                         </span>
-                      )}
-                    </div>
+                      );
+                    })}
+                    {speaker.events.length > 2 && (
+                      <span className="text-[10px] sm:text-xs px-2 sm:px-3 py-0.5 sm:py-1 bg-gray-100 text-gray-600 rounded-full border border-gray-300">
+                        +{speaker.events.length - 2}
+                      </span>
+                    )}
                   </div>
                 </div>
+                {/* </div> */}
               </motion.div>
             ))}
           </div>
 
           {/* Load More */}
-          {speakers && visibleCount < speakers.length && (
+          {/* {speakers && (
             <motion.div
               className="text-center mt-12"
               initial={{ opacity: 0 }}
@@ -197,18 +197,16 @@ const EventSpeakers = () => {
                 <IoMdRefresh />
               </motion.button>
             </motion.div>
-          )}
+          )} */}
 
           {/* End Message */}
-          {speakers &&
-            visibleCount >= speakers.length &&
-            speakers.length > 0 && (
-              <div className="text-center mt-12">
-                <p className="text-gray-500 text-[13px] font-medium">
-                  You've seen all {speakers.length} speakers!
-                </p>
-              </div>
-            )}
+          {/* {speakers && speakers.length > 0 && (
+            <div className="text-center mt-12">
+              <p className="text-gray-500 text-[13px] font-medium">
+                You've seen all {speakers.length} speakers!
+              </p>
+            </div>
+          )} */}
         </>
       )}
 

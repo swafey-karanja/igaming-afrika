@@ -198,7 +198,7 @@ const EventDetails = () => {
           </div>
           <div className="w-full z-50 bg-gray-100 pt-5 xl:py-3">
             <a
-              href="https://www.sagaming.com/"
+              href="https://www.igasummit.com/"
               target="_blank"
               rel="noopener noreferrer"
               className="block"

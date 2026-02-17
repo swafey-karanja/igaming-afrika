@@ -247,7 +247,7 @@ const EventSponsors = () => {
         )}
         <div className="w-full z-50 bg-gray-100 pt-6 xl:pt-12 px-6 xl:px-0">
           <a
-            href="https://www.sagaming.com/"
+            href="https://www.igasummit.com/"
             target="_blank"
             rel="noopener noreferrer"
             className="block"
