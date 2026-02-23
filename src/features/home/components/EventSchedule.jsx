@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useMemo } from "react";
 // eslint-disable-next-line no-unused-vars
 import { motion } from "framer-motion";
 import { CalendarDropdown } from "../../../lib/utils";
@@ -6,10 +6,69 @@ import { dates, schedules } from "../../../data/data";
 import Header from "../../../components/ui/Header";
 import SessionModal from "../../../components/ui/PopUpModal";
 
-const EventSchedule = () => {
+// ─── Helper ──────────────────────────────────────────────────────────────────
+/**
+ * Returns all speakers from the API whose `events` array contains a title that
+ * matches the given session title (case-insensitive, whitespace-normalised).
+ */
+const getSpeakersForSession = (sessionTitle, speakers = []) => {
+  if (!sessionTitle || !speakers.length) return [];
+
+  const normalise = (str) =>
+    str?.toLowerCase().trim().replace(/\s+/g, " ") ?? "";
+  const needle = normalise(sessionTitle);
+
+  return speakers.filter((speaker) =>
+    speaker.events?.some((eventTitle) => normalise(eventTitle) === needle),
+  );
+};
+
+/**
+ * Merges dynamic API speakers with any hardcoded speakersDetailed already on
+ * the session. Dynamic speakers are de-duped by name so they don't appear twice
+ * if the same speaker happens to be hardcoded as well.
+ */
+const mergeSessionSpeakers = (session, apiSpeakers) => {
+  const dynamic = getSpeakersForSession(session.title, apiSpeakers);
+  if (!dynamic.length) return session;
+
+  const hardcoded = session.speakersDetailed ?? [];
+  const hardcodedNames = new Set(
+    hardcoded.map((s) => s.name?.toLowerCase().trim()),
+  );
+
+  const incoming = dynamic
+    .filter((s) => !hardcodedNames.has(s.name?.toLowerCase().trim()))
+    .map((s) => ({
+      name: s.name,
+      role: `${s.role}${s.company ? `, ${s.company}` : ""}`,
+      image: s.image,
+      bio: s.bio,
+    }));
+
+  return {
+    ...session,
+    speakersDetailed: [...hardcoded, ...incoming],
+  };
+};
+// ─────────────────────────────────────────────────────────────────────────────
+
+const EventSchedule = ({ speakers = [] }) => {
   const [activeTab, setActiveTab] = useState(0);
   const [modalOpen, setModalOpen] = useState(false);
   const [selectedSession, setSelectedSession] = useState(null);
+
+  // Pre-compute enriched schedules so matching only runs when speakers or
+  // schedules change, not on every render.
+  const enrichedSchedules = useMemo(() => {
+    const result = {};
+    Object.entries(schedules).forEach(([day, sessions]) => {
+      result[day] = sessions.map((session) =>
+        mergeSessionSpeakers(session, speakers),
+      );
+    });
+    return result;
+  }, [speakers]);
 
   const handleSessionClick = (session) => {
     setModalOpen(true);
@@ -46,6 +105,8 @@ const EventSchedule = () => {
     hidden: { opacity: 0, y: 20 },
     visible: { opacity: 1, y: 0 },
   };
+
+  const currentDaySessions = enrichedSchedules[activeTab] ?? [];
 
   return (
     <section
@@ -107,11 +168,11 @@ const EventSchedule = () => {
           variants={staggerContainer}
           key={activeTab}
         >
-          {schedules[activeTab].length > 0 ? (
+          {currentDaySessions.length > 0 ? (
             (() => {
               // Group sessions by time slot
               const groupedSessions = {};
-              schedules[activeTab].forEach((session) => {
+              currentDaySessions.forEach((session) => {
                 if (!groupedSessions[session.time]) {
                   groupedSessions[session.time] = [];
                 }
@@ -153,46 +214,39 @@ const EventSchedule = () => {
                               {session.description}
                             </p>
 
-                            {/* Multiple Speakers with Details */}
-                            {session.speakersDetailed && (
+                            {/* Speakers — shown when present (hardcoded or dynamically matched) */}
+                            {session.speakersDetailed?.length > 0 && (
                               <motion.div
                                 initial={{ opacity: 0 }}
                                 animate={{ opacity: 1 }}
                                 transition={{ delay: 0.3 }}
+                                className="grid grid-cols-2 justify-items-start gap-2 mt-1"
                               >
-                                <motion.p
-                                  className="text-xs sm:text-sm text-green-600"
-                                  initial={{ opacity: 0 }}
-                                  animate={{ opacity: 1 }}
-                                  transition={{ delay: 0.2 }}
-                                >
-                                  <span className="font-semibold">
-                                    Speaker:
-                                  </span>{" "}
-                                  {session.speaker} - {session.speakerRole}
-                                </motion.p>
-                                <div className="flex flex-wrap gap-2">
-                                  {session.speakersDetailed
-                                    .slice(0, 2)
-                                    .map((speaker, i) => (
-                                      <div
-                                        key={i}
-                                        className="text-xs sm:text-sm text-green-600"
-                                      >
-                                        {speaker.name}
-                                        {i <
-                                          Math.min(
-                                            session.speakersDetailed.length - 1,
-                                            1,
-                                          ) && ","}
-                                      </div>
-                                    ))}
-                                  {session.speakersDetailed.length > 2 && (
-                                    <span className="text-xs sm:text-sm text-gray-600">
-                                      ...
+                                {session.speakersDetailed.map((speaker, i) => (
+                                  <div
+                                    key={i}
+                                    className="flex items-center gap-1 w-fit"
+                                  >
+                                    {speaker.image && (
+                                      <img
+                                        src={speaker.image}
+                                        alt={speaker.name}
+                                        className="w-10 h-10 rounded-full object-cover border border-green-300"
+                                        onError={(e) => {
+                                          e.target.style.display = "none";
+                                        }}
+                                      />
+                                    )}
+                                    <span className="text-xs text-green-600">
+                                      {speaker.name}
+                                      {i <
+                                        Math.min(
+                                          session.speakersDetailed.length - 1,
+                                          1,
+                                        ) && ","}
                                     </span>
-                                  )}
-                                </div>
+                                  </div>
+                                ))}
                               </motion.div>
                             )}
                           </div>

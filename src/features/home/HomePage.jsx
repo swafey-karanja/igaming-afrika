@@ -12,7 +12,8 @@ import EventTickets from "./components/EventTickets";
 import EventNews from "./components/EventNews";
 import FAQs from "./components/FAQs";
 import VenueInfo from "./components/VenueInfo";
-// import Accordion from "../../components/Accordion";
+import useFetch from "../../hooks/useFetch.ts";
+import { fetchDataFromApi } from "../../services/api.js";
 
 const Home = () => {
   const fadeInUp = {
@@ -23,6 +24,13 @@ const Home = () => {
       transition: { duration: 0.6, ease: "easeOut" },
     },
   };
+
+  const {
+    data: speakers,
+    isLoading: speakerLoading,
+    error: speakerError,
+    refetch: refetchSpeakers,
+  } = useFetch(() => fetchDataFromApi("speakers"));
 
   return (
     <div>
@@ -59,7 +67,7 @@ const Home = () => {
         whileInView="visible"
         viewport={{ once: true }}
       >
-        <EventSchedule />
+        <EventSchedule speakers={speakers ?? []} />
       </motion.div>
 
       <motion.div
@@ -68,7 +76,12 @@ const Home = () => {
         whileInView="visible"
         viewport={{ once: true }}
       >
-        <EventSpeakers />
+        <EventSpeakers
+          speakers={speakers ?? []}
+          speakerLoading={speakerLoading}
+          speakerError={speakerError}
+          refetchSpeakers={refetchSpeakers}
+        />
       </motion.div>
 
       <motion.div

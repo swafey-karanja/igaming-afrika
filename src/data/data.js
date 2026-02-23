@@ -331,15 +331,6 @@ export const schedules = {
       title: "Opening Speech",
       location: "Main Stage",
       description: "Join us for an inspiring opening speech.",
-      speakersDetailed: [
-        {
-          name: "Jeremiah Maangi",
-          role: "Chief Executive Officer, iGaming AFRIKA",
-          image: "/speakers/Jeremiah Maangi.jpg",
-          bio: `Jeremiah is a passionate marketing and investment individual with years of experience in marketing & advertising. 
-          Intelligent knowledge on customer acquisition and retention strategies in local and global markets. Jeremiah has worked for startups' management consulting, media, events and marketing services in the African region.`,
-        },
-      ],
     },
     {
       time: "10:30 AM – 10:40 AM",
@@ -368,23 +359,10 @@ export const schedules = {
     {
       time: "11:25 AM - 12:00 PM",
       title:
-        "African Policies on the Evolving Regulatory Landscape of Gambling Licensing & TaxationAfrican Policies on the Evolving Regulatory Landscape of Gambling Licensing & Taxation",
+        "African Policies on the Evolving Regulatory Landscape of Gambling Licensing & Taxation",
       location: "Main Stage",
       description:
         "A session for regulators - Exploring the shift toward unified gambling regulation across Africa, addressing licensing challenges, benefits of harmonized policies, and navigating the evolving regulatory landscape of the gaming industry on the continent.",
-
-      // speakersDetailed: [
-      //   {
-      //     name: "Peter Emolemo Kesitilwe",
-      //     role: "Chief Executive Officer , African iGaming Alliance",
-      //     image: "/speakers/Peter Emolemo.jpg",
-      //     bio: `Peter Emolemo Kesitilwe is the CEO of the African iGaming Alliance, representing licensed online betting and gaming operators across 20 African jurisdictions.
-      //     With over a decade of executive leadership in the sector, he formerly led Botswana’s Gambling Authority, where he oversaw major regulatory reforms,
-      //     digital compliance transformation, and the expansion of Africa’s regulated market footprint. He has served on the Boards of IAGR and GRAF and currently sits on the
-      //     Clarion Regulatory Advisory Board and he is an EXCO of ARSO. Peter works closely with regulators, governments, and global bodies to promote responsible, sustainable
-      //     gaming and shape continental policy on tax, integrity, and player protection.`,
-      //   },
-      // ],
     },
     {
       time: "12:10 PM - 12:45 PM",
@@ -413,24 +391,9 @@ export const schedules = {
     {
       time: "02:35 PM to 03:10 PM",
       location: "Main Stage",
-      title: "The balance between profitability and responsible gaming.",
+      title: "The balance between profitability and responsible gaming",
       description:
         "Discussing how operators can balance maximizing profits while promoting responsible gaming practices to ensure player protection and industry sustainability.",
-    },
-    {
-      time: "03:20 PM to 03:55 PM",
-      location: "Stage 02",
-      title:
-        "Attracting More Players: What Factors Should African Operators Consider?",
-      description: "",
-    },
-    {
-      time: "03:20 PM to 03:55 PM",
-      location: "Main Stage",
-      title:
-        "Attracting More Players: What Factors Should African Operators Consider?",
-      description:
-        "Providing insights into player preferences and strategic tactics for operators to attract and retain more players in the competitive African gaming market.",
     },
 
     // 03:20 PM - 03:40 PM - Single session
@@ -441,6 +404,13 @@ export const schedules = {
         "Presentation: The Relationship between Sports Betting Behaviors and Gambling Harm for Adult Bettors in Nigeria.",
       description:
         "The Relationship between Sports Betting Behaviors and Gambling Harm for Adult Bettors in Nigeria, using the Total Consumption Model (TCM).",
+    },
+    {
+      time: "03:20 PM to 03:55 PM",
+      location: "Main Stage",
+      title:
+        "Attracting More Players: What Factors Should African Operators Consider?",
+      description: "",
     },
 
     // 03:45 PM - 04:00 PM - Entertainment
@@ -456,7 +426,7 @@ export const schedules = {
     {
       time: "04:05 PM to 04:40 PM",
       location: "Main Stage",
-      title: "The Rise of Women in Africa’s Gaming Sector.",
+      title: "The Rise of Women in Africa’s Gaming Sector",
       description:
         "Highlighting the increasing participation and influence of women in Africa’s gaming industry, and the importance of gender diversity for industry growth and innovation.",
     },
@@ -474,71 +444,37 @@ export const schedules = {
     {
       time: "10:45 AM – 11:20 AM",
       title:
-        "Developed Markets: Strategies for Growing Africa’s Gaming Industry.",
+        "Developed Markets: Strategies for Growing Africa’s Gaming Industry",
       location: "Main Stage",
       description:
         "Drawing valuable insights from developed markets to inform Africa's gaming growth strategies, focusing on technological innovations and regulatory best practices.",
-
-      // Use speakersDetailed for multiple speakers with full details
-      speakersDetailed: [
-        {
-          name: "Cameron Green",
-          role: "Country Manager - South Africa, Amusnet",
-          image: "/speakers/Cameron Green1.jpg",
-          bio: `Cameron Green is a senior iGaming executive with 25+ years' experience across Africa and other emerging markets. He's built, scaled and advised betting and gaming businesses across sportsbook, casino, retail and digital, with deep, hands-on exposure to regulation, licensing, operations, payments and commercial strategy.
-
-                Now Country Director South Africa for Amusnet, Cameron works closely with operators, regulators and partners to localise world-class gaming content for African markets. His background spans leadership roles with licensed operators in East and Southern Africa, alongside advisory work for B2B suppliers, startups and investors entering or expanding across the continent.
-
-                Known for a practical, operator-first mindset, he combines sharp strategic thinking with real execution on the ground. Cameron is a trusted industry voice on African gaming regulation and market dynamics, widely shared and straight-talking. A relationship-driven dealmaker and frequent traveller, he's deeply embedded in the African iGaming ecosystem and focused on building sustainable, long-term businesses.`,
-        },
-        {
-          name: "Thomas Nsongka",
-          role: "Managing Partner, Lionbets",
-          image: "/speakers/Thomas Nsongka.jpeg",
-        },
-      ],
     },
     {
       time: "11:30 AM – 12:05 PM",
-      title: "The Positive Shift of Bookies Adopting Local eSports Content.",
+      title: "The Positive Shift of Bookies Adopting Local eSports Content",
       location: "Main Stage",
       description:
         "Exploring how integrating local esports content into betting platforms can boost engagement, attract youth, and transform the betting landscape.",
-
-      // Use speakersDetailed for multiple speakers with full details
-      speakersDetailed: [
-        {
-          name: "Joe Andrews",
-          role: "Head of Sales Africa, SIS Ltd",
-          image: "/speakers/Joe Andrews.jpg",
-        },
-        {
-          name: "Rony Lusigi",
-          role: "President, Esports Kenya Federation",
-          image: "/speakers/Rony Lusigi.jpg",
-        },
-      ],
     },
     {
-      time: "11:30 AM – 12:30 PM",
+      time: "11:30 AM – 12:05 PM",
+      title:
+        "What Startups Entering the African Gaming Market Need to Do to Thrive",
+      location: "Stage 02",
+      description:
+        "Providing essential lessons and cautionary advice for startups entering Africa’s gaming market, emphasizing common pitfalls to avoid for sustainable growth.",
+    },
+    {
+      time: "12:15 PM – 12:30 PM",
       title: "Presentation.",
       location: "",
     },
     {
       time: "12:40 PM - 1:15 PM",
       title:
-        "Show Can We Best Implement Self-Exclusion Measures to Promote Responsible Gaming?",
+        "How Can We Best Implement Self-Exclusion Measures to Promote Responsible Gaming?",
       location: "Main Stage",
       description: "",
-      // Use speakersDetailed for multiple speakers with full details
-      speakersDetailed: [
-        {
-          name: "Olabimpe Akingba",
-          role: "Regional Manager Africa, Business Development & Regulatory, pawaTech",
-          image: "/speakers/Olabimpe Akingba.jpg",
-          bio: "Experienced legal practitioner with a demonstrated history of working in the gambling & casinos industry. Skilled in Corporate Advisory, Compliance, Legal drafting, Corporate Governance and iGaming.",
-        },
-      ],
     },
     {
       time: "02:25 PM to 03:00 PM",

@@ -6,31 +6,17 @@ import { motion } from "framer-motion";
 import { AlertCircle } from "lucide-react";
 import SpeakerModal from "../../speakerApplication/components/SpeakerModal.jsx";
 import Header from "../../../components/ui/Header.jsx";
-import useFetch from "../../../hooks/useFetch.ts";
-import { fetchDataFromApi } from "../../../services/api.js";
+// import useFetch from "../../../hooks/useFetch.ts";
+// import { fetchDataFromApi } from "../../../services/api.js";
 
-const EventSpeakers = () => {
+const EventSpeakers = ({
+  speakers = [],
+  speakerLoading,
+  speakerError,
+  refetchSpeakers,
+}) => {
   const [selectedSpeaker, setSelectedSpeaker] = useState(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
-  // const [visibleCount, setVisibleCount] = useState(8);
-  // const [isMobile, setIsMobile] = useState(false);
-
-  const {
-    data: speakers,
-    error: speakerError,
-    isLoading: speakerLoading,
-    refetch: refetchSpeakers,
-  } = useFetch(() => fetchDataFromApi("speakers"));
-
-  // const checkScreenSize = useCallback(() => {
-  //   setIsMobile(window.innerWidth < 768);
-  // }, []);
-
-  // useEffect(() => {
-  //   checkScreenSize();
-  //   window.addEventListener("resize", checkScreenSize);
-  //   return () => window.removeEventListener("resize", checkScreenSize);
-  // }, [checkScreenSize]);
 
   // Sort speakers to show featured ones first, then display based on visible count
   const visibleSpeakers = speakers
@@ -42,10 +28,6 @@ const EventSpeakers = () => {
         })
         .slice(0)
     : [];
-
-  // const handleShowMore = () => {
-  //   setVisibleCount((prev) => prev + (isMobile ? 6 : 12));
-  // };
 
   const openModal = (speaker) => {
     setSelectedSpeaker(speaker);
@@ -151,26 +133,6 @@ const EventSpeakers = () => {
                   <p className="text-xs sm:text-md text-gray-500 mb-3 sm:mb-4 flex-1">
                     {speaker.company}
                   </p>
-
-                  {/* Event Tags */}
-                  <div className="flex flex-wrap justify-center gap-1 mt-auto">
-                    {speaker.events.slice(0, 2).map((event, i) => {
-                      const day = event.split(" ")[0];
-                      return (
-                        <span
-                          key={i}
-                          className="text-[10px] sm:text-xs px-2 sm:px-3 py-0.5 sm:py-1 bg-green-50 text-green-700 rounded-full border border-green-200"
-                        >
-                          {day}
-                        </span>
-                      );
-                    })}
-                    {speaker.events.length > 2 && (
-                      <span className="text-[10px] sm:text-xs px-2 sm:px-3 py-0.5 sm:py-1 bg-gray-100 text-gray-600 rounded-full border border-gray-300">
-                        +{speaker.events.length - 2}
-                      </span>
-                    )}
-                  </div>
                 </div>
                 {/* </div> */}
               </motion.div>
