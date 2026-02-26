@@ -617,7 +617,7 @@ export const plans = [
     requirement: "Business Email registration required",
     isPopular: false,
     description: "Executive experience",
-    mealsVoucher: 25,
+    mealsVoucher: null,
     features: [
       "Welcome Reception",
       "Pre-registration & Networking Event",
