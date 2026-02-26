@@ -29,6 +29,11 @@ const EventTickets = () => {
   // Function to check if a feature is included in a specific plan
   const isFeatureIncluded = (planIndex, feature) => {
     const plan = plans[planIndex];
+
+    if (feature === "Meals Voucher") {
+      return plan.mealsVoucher !== null;
+    }
+
     return plan.features.includes(feature);
   };
 
@@ -185,7 +190,9 @@ const EventTickets = () => {
                               : "text-gray-400"
                         }`}
                       >
-                        {feature}
+                        {feature === "Meals Voucher" && plan.mealsVoucher
+                          ? `$${plan.mealsVoucher} Meals Voucher`
+                          : feature}
                       </span>
                     </li>
                   );

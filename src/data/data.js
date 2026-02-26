@@ -571,6 +571,7 @@ export const plans = [
     requirement: "Business Email registration required",
     price: 0,
     description: "Perfect for first-time attendees",
+    mealsVoucher: null,
     features: [
       "Welcome Reception",
       "Pre-registration & Networking Event",
@@ -584,8 +585,8 @@ export const plans = [
     label: "Premium Pass",
     price: 200,
     doorPrice: 350,
-    isPopular: false,
     description: "Most comprehensive experience",
+    mealsVoucher: 25, // ✅ structured
     features: [
       "Welcome Reception",
       "Pre-registration & Networking Event",
@@ -595,7 +596,6 @@ export const plans = [
       "Conference Hall 2 Access",
       "iGaming AFRIKA Closing Party",
       "iGaming AFRIKA Awards Dinner",
-      "$25 Meals Voucher",
       "Full Networking App Access",
     ],
   },
@@ -606,6 +606,7 @@ export const plans = [
     requirement: "Business Email registration required",
     isPopular: false,
     description: "Executive experience",
+    mealsVoucher: 25,
     features: [
       "Welcome Reception",
       "Pre-registration & Networking Event",
@@ -615,7 +616,6 @@ export const plans = [
       "Conference Hall 2 Access",
       "iGaming AFRIKA Closing Party",
       "iGaming AFRIKA Awards Dinner",
-      "$25 Meals Voucher",
       "Full Networking App Access",
       "iGaming AFRIKA Konnect Space",
       "VIP Lounge Access",
@@ -630,6 +630,7 @@ export const plans = [
     doorPrice: 950,
     isPopular: true,
     description: "Luxury experience",
+    mealsVoucher: 50,
     features: [
       "Welcome Reception",
       "Pre-registration & Networking Event",
@@ -639,7 +640,6 @@ export const plans = [
       "Conference Hall 2 Access",
       "iGaming AFRIKA Closing Party",
       "iGaming AFRIKA Awards Dinner",
-      "$25 Meals Voucher",
       "Full Networking App Access",
       "iGaming AFRIKA Konnect Space",
       "VIP Lounge Access",
@@ -660,7 +660,7 @@ export const allFeatures = [
   "Conference Hall 2 Access",
   "iGaming AFRIKA Closing Party",
   "iGaming AFRIKA Awards Dinner",
-  "$25 Meals Voucher",
+  "Meals Voucher", // generic label
   "Full Networking App Access",
   "iGaming AFRIKA Konnect Space",
   "VIP Lounge Access",
