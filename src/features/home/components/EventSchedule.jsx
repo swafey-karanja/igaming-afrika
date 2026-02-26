@@ -27,28 +27,61 @@ const getSpeakersForSession = (sessionTitle, speakers = []) => {
  * Merges dynamic API speakers with any hardcoded speakersDetailed already on
  * the session. Dynamic speakers are de-duped by name so they don't appear twice
  * if the same speaker happens to be hardcoded as well.
+ *
+ * Also handles moderator matching based on session.moderatorNames array.
  */
 const mergeSessionSpeakers = (session, apiSpeakers) => {
   const dynamic = getSpeakersForSession(session.title, apiSpeakers);
-  if (!dynamic.length) return session;
 
   const hardcoded = session.speakersDetailed ?? [];
   const hardcodedNames = new Set(
     hardcoded.map((s) => s.name?.toLowerCase().trim()),
   );
 
-  const incoming = dynamic
-    .filter((s) => !hardcodedNames.has(s.name?.toLowerCase().trim()))
-    .map((s) => ({
-      name: s.name,
-      role: `${s.role}${s.company ? `, ${s.company}` : ""}`,
-      image: s.image,
-      bio: s.bio,
-    }));
+  // Get moderator names from session data
+  const moderatorNames = new Set(
+    (session.moderatorNames ?? []).map((name) => name?.toLowerCase().trim()),
+  );
+
+  // Separate moderators from regular speakers
+  const moderators = [];
+  const regularSpeakers = [...hardcoded];
+
+  dynamic.forEach((speaker) => {
+    const speakerName = speaker.name?.toLowerCase().trim();
+
+    // Skip if already in hardcoded speakers
+    if (hardcodedNames.has(speakerName)) return;
+
+    // Build role string, handling null/empty values
+    let roleString = "";
+    if (speaker.role && speaker.company) {
+      roleString = `${speaker.role}, ${speaker.company}`;
+    } else if (speaker.role) {
+      roleString = speaker.role;
+    } else if (speaker.company) {
+      roleString = speaker.company;
+    }
+
+    const speakerData = {
+      name: speaker.name,
+      role: roleString,
+      image: speaker.image,
+      bio: speaker.bio,
+    };
+
+    // Check if this speaker is designated as a moderator
+    if (moderatorNames.has(speakerName)) {
+      moderators.push(speakerData);
+    } else {
+      regularSpeakers.push(speakerData);
+    }
+  });
 
   return {
     ...session,
-    speakersDetailed: [...hardcoded, ...incoming],
+    moderators,
+    speakersDetailed: regularSpeakers,
   };
 };
 // ─────────────────────────────────────────────────────────────────────────────
@@ -214,39 +247,86 @@ const EventSchedule = ({ speakers = [] }) => {
                               {session.description}
                             </p>
 
-                            {/* Speakers — shown when present (hardcoded or dynamically matched) */}
+                            {/* Moderators — shown separately with distinct styling */}
+                            {session.moderators?.length > 0 && (
+                              <motion.div
+                                initial={{ opacity: 0 }}
+                                animate={{ opacity: 1 }}
+                                transition={{ delay: 0.3 }}
+                                className="mt-2"
+                              >
+                                <div className="flex items-center gap-2 mb-2">
+                                  <span className="text-xs font-semibold text-gray-600 uppercase tracking-wide">
+                                    Moderator
+                                    {session.moderators.length > 1 ? "s" : ""}:
+                                  </span>
+                                </div>
+                                <div className="flex flex-wrap gap-2">
+                                  {session.moderators.map((moderator, i) => (
+                                    <div
+                                      key={i}
+                                      className="flex items-center gap-2 bg-amber-50 border border-amber-200 rounded-lg px-3 py-1.5"
+                                    >
+                                      {moderator.image && (
+                                        <img
+                                          src={moderator.image}
+                                          alt={moderator.name}
+                                          className="w-10 h-10 rounded-full object-cover border-2 border-amber-400"
+                                          onError={(e) => {
+                                            e.target.style.display = "none";
+                                          }}
+                                        />
+                                      )}
+                                      <span className="text-md font-medium text-amber-900">
+                                        {moderator.name}
+                                      </span>
+                                    </div>
+                                  ))}
+                                </div>
+                              </motion.div>
+                            )}
+
+                            {/* Regular Speakers — shown when present */}
                             {session.speakersDetailed?.length > 0 && (
                               <motion.div
                                 initial={{ opacity: 0 }}
                                 animate={{ opacity: 1 }}
                                 transition={{ delay: 0.3 }}
-                                className="grid grid-cols-2 justify-items-start gap-2 mt-1"
+                                className="mt-2"
                               >
-                                {session.speakersDetailed.map((speaker, i) => (
-                                  <div
-                                    key={i}
-                                    className="flex items-center gap-1 w-fit"
-                                  >
-                                    {speaker.image && (
-                                      <img
-                                        src={speaker.image}
-                                        alt={speaker.name}
-                                        className="w-10 h-10 rounded-full object-cover border border-green-300"
-                                        onError={(e) => {
-                                          e.target.style.display = "none";
-                                        }}
-                                      />
-                                    )}
-                                    <span className="text-xs text-green-600">
-                                      {speaker.name}
-                                      {i <
-                                        Math.min(
-                                          session.speakersDetailed.length - 1,
-                                          1,
-                                        ) && ","}
-                                    </span>
-                                  </div>
-                                ))}
+                                <div className="flex items-center gap-2 mb-2">
+                                  <span className="text-xs font-semibold text-gray-600 uppercase tracking-wide">
+                                    Speaker
+                                    {session.speakersDetailed.length > 1
+                                      ? "s"
+                                      : ""}
+                                    :
+                                  </span>
+                                </div>
+                                <div className="grid grid-cols-2 justify-items-start gap-2">
+                                  {session.speakersDetailed.map(
+                                    (speaker, i) => (
+                                      <div
+                                        key={i}
+                                        className="flex items-center gap-1 w-fit"
+                                      >
+                                        {speaker.image && (
+                                          <img
+                                            src={speaker.image}
+                                            alt={speaker.name}
+                                            className="w-12 h-12 rounded-full object-cover border border-green-300"
+                                            onError={(e) => {
+                                              e.target.style.display = "none";
+                                            }}
+                                          />
+                                        )}
+                                        <span className="text-md font-medium text-green-600">
+                                          {speaker.name}
+                                        </span>
+                                      </div>
+                                    ),
+                                  )}
+                                </div>
                               </motion.div>
                             )}
                           </div>

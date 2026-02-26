@@ -363,6 +363,7 @@ export const schedules = {
       location: "Main Stage",
       description:
         "A session for regulators - Exploring the shift toward unified gambling regulation across Africa, addressing licensing challenges, benefits of harmonized policies, and navigating the evolving regulatory landscape of the gaming industry on the continent.",
+      moderatorNames: ["Curtis Roach"],
     },
     {
       time: "12:10 PM - 12:45 PM",
@@ -370,6 +371,7 @@ export const schedules = {
       location: "Main Stage",
       description:
         "Examining how technological innovations such as Artificial Intelligence and Machine Learning are transforming casino and retail gaming experiences across Africa, from mobile solutions to advanced gaming platforms.",
+      moderatorNames: ["Ondela Vundisa"],
     },
     {
       time: "12:55 PM - 01:30 PM",
@@ -378,6 +380,7 @@ export const schedules = {
       location: "Main Stage",
       description:
         "A session for operators; Discussing the role of operators in nurturing sports talent and youth development, leveraging industry resources for societal impact.",
+      moderatorNames: ["Tom Bwana"],
     },
     {
       time: "02:35 PM to 03:10 PM",
@@ -394,6 +397,7 @@ export const schedules = {
       title: "The balance between profitability and responsible gaming",
       description:
         "Discussing how operators can balance maximizing profits while promoting responsible gaming practices to ensure player protection and industry sustainability.",
+      moderatorNames: ["Zzini Oluchi Ekeh"],
     },
 
     // 03:20 PM - 03:40 PM - Single session
@@ -411,6 +415,7 @@ export const schedules = {
       title:
         "Attracting More Players: What Factors Should African Operators Consider?",
       description: "",
+      moderatorNames: ["Norman Ondego"],
     },
 
     // 03:45 PM - 04:00 PM - Entertainment
@@ -448,6 +453,7 @@ export const schedules = {
       location: "Main Stage",
       description:
         "Drawing valuable insights from developed markets to inform Africa's gaming growth strategies, focusing on technological innovations and regulatory best practices.",
+      moderatorNames: ["Job Weku"],
     },
     {
       time: "11:30 AM – 12:05 PM",
@@ -463,6 +469,7 @@ export const schedules = {
       location: "Stage 02",
       description:
         "Providing essential lessons and cautionary advice for startups entering Africa’s gaming market, emphasizing common pitfalls to avoid for sustainable growth.",
+      moderatorNames: ["Agatha Wanjugu"],
     },
     {
       time: "12:15 PM – 12:30 PM",
@@ -491,6 +498,7 @@ export const schedules = {
         "Impacts of Digital Assets and Fintech Innovation on Africa’s Gaming Ecosystem",
       description:
         "Analyzing the role of cryptocurrencies and digital assets in Africa’s gambling ecosystem, and their potential to revolutionize payment and ownership models.",
+      moderatorNames: ["Anne Njoroge"],
     },
 
     // 03:10 PM - 03:45 PM - Two concurrent sessions
@@ -501,6 +509,7 @@ export const schedules = {
         "How Operators and Regulators Can Help Foster Genuine Corporate Social Responsibility in Africa’s Gambling Industry",
       description:
         "Exploring how operators and regulators can foster meaningful CSR initiatives that benefit communities and promote ethical industry standards.",
+      moderatorNames: ["Tom Bwana"],
     },
     {
       time: "03:10 PM to 03:45 PM",
@@ -518,6 +527,7 @@ export const schedules = {
       title: "Rapid Surge of Crash Games Shaking Africa’s Gambling Market",
       description:
         "Surge of Crash Games in the Gaming Industry -Analyzing the rapid rise of crash games in Africa’s gambling scene, highlighting player appeal, market impact, and the opportunities and risks these games present to operators.",
+      moderatorNames: ["Geoffrey Muindi"],
     },
     {
       time: "03:55 PM to 04:30 PM",
@@ -525,6 +535,7 @@ export const schedules = {
       title: "Best Selling Games and Sportsbook or Casino Platforms in Africa",
       description:
         "Showcasing key features of top-performing games and platforms tailored to African players, emphasizing features that drive engagement and retention.",
+      moderatorNames: ["Geoffrey Muindi"],
     },
 
     // 04:05 PM - 04:40 PM - Single full-width session

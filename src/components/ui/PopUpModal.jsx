@@ -4,6 +4,7 @@ import Box from "@mui/material/Box";
 import Modal from "@mui/material/Modal";
 import Fade from "@mui/material/Fade";
 import Typography from "@mui/material/Typography";
+import Chip from "@mui/material/Chip";
 
 const SessionModal = ({ open, onClose, session }) => {
   // Modal style
@@ -68,10 +69,121 @@ const SessionModal = ({ open, onClose, session }) => {
               <Typography
                 id="session-modal-description"
                 variant="body1"
-                sx={{ mb: 1, lineHeight: 1.4 }}
+                sx={{ mb: 3, lineHeight: 1.4 }}
               >
                 {session.description}
               </Typography>
+
+              {/* Moderators Section */}
+              {session.moderators && session.moderators.length > 0 && (
+                <Box sx={{ mb: 4 }}>
+                  <Typography
+                    variant="subtitle1"
+                    sx={{
+                      fontWeight: "700",
+                      mb: 2,
+                      fontSize: "1.1rem",
+                      color: "#92400e", // Amber-900 color
+                    }}
+                  >
+                    {session.moderators.length > 1 ? "Moderators" : "Moderator"}
+                  </Typography>
+                  {session.moderators.map((moderator, i) => (
+                    <Box
+                      key={i}
+                      sx={{
+                        mb: 3,
+                        pb: i < session.moderators.length - 1 ? 3 : 0,
+                        borderBottom:
+                          i < session.moderators.length - 1
+                            ? "2px solid #fbbf24" // Amber-400 border
+                            : "none",
+                        backgroundColor: "#fffbeb", // Amber-50 background
+                        borderRadius: "8px",
+                        p: 2,
+                        border: "2px solid #fcd34d", // Amber-300 border
+                      }}
+                    >
+                      <Box
+                        sx={{
+                          display: "flex",
+                          alignItems: "flex-start",
+                          gap: 2,
+                        }}
+                      >
+                        {moderator.image && (
+                          <Box
+                            component="img"
+                            src={moderator.image}
+                            alt={moderator.name}
+                            sx={{
+                              width: "120px",
+                              height: "120px",
+                              borderRadius: "50%",
+                              objectFit: "cover",
+                              border: "3px solid #f59e0b", // Amber-500 border
+                              flexShrink: 0,
+                            }}
+                            onError={(e) => {
+                              e.target.style.display = "none";
+                            }}
+                          />
+                        )}
+                        <Box sx={{ flex: 1 }}>
+                          <Box
+                            sx={{
+                              display: "flex",
+                              alignItems: "center",
+                              gap: 1,
+                              mb: 0.5,
+                            }}
+                          >
+                            <Typography
+                              variant="body1"
+                              sx={{ fontWeight: "700", fontSize: "1.1rem" }}
+                            >
+                              {moderator.name}
+                            </Typography>
+                            <Chip
+                              label="MODERATOR"
+                              size="small"
+                              sx={{
+                                backgroundColor: "#f59e0b", // Amber-500
+                                color: "white",
+                                fontWeight: "bold",
+                                fontSize: "0.65rem",
+                                height: "20px",
+                              }}
+                            />
+                          </Box>
+                          <Typography
+                            variant="body2"
+                            sx={{
+                              color: "#92400e",
+                              fontWeight: "600",
+                              mb: 1.5,
+                            }}
+                          >
+                            {moderator.role || ""}
+                          </Typography>
+                          {moderator.bio && (
+                            <Typography
+                              variant="body2"
+                              sx={{
+                                color: "#78716c", // Stone-500
+                                lineHeight: 1.6,
+                                whiteSpace: "pre-line",
+                              }}
+                            >
+                              {moderator.bio}
+                            </Typography>
+                          )}
+                        </Box>
+                      </Box>
+                    </Box>
+                  ))}
+                </Box>
+              )}
 
               {/* Single Speaker with Image */}
               {session.speaker && !session.speakersDetailed && (
@@ -112,7 +224,7 @@ const SessionModal = ({ open, onClose, session }) => {
                         mt: 1,
                         color: "gray",
                         fontStyle: "italic",
-                        whiteSpace: "pre-line", // This preserves line breaks from the bio text
+                        whiteSpace: "pre-line",
                       }}
                     >
                       {session.speakerBio}
@@ -122,68 +234,93 @@ const SessionModal = ({ open, onClose, session }) => {
               )}
 
               {/* Multiple Speakers with Detailed Info */}
-              {session.speakersDetailed && (
-                <Box sx={{ mb: 2 }}>
-                  <Typography
-                    variant="subtitle1"
-                    sx={{ fontWeight: "600", mb: 2 }}
-                  >
-                    Speakers:
-                  </Typography>
-                  {session.speakersDetailed.map((speaker, i) => (
-                    <Box
-                      key={i}
-                      sx={{
-                        mb: 3,
-                        pb: i < session.speakersDetailed.length - 1 ? 3 : 0,
-                        borderBottom:
-                          i < session.speakersDetailed.length - 1
-                            ? "1px solid #e0e0e0"
-                            : "none",
-                      }}
+              {session.speakersDetailed &&
+                session.speakersDetailed.length > 0 && (
+                  <Box sx={{ mb: 2 }}>
+                    <Typography
+                      variant="subtitle1"
+                      sx={{ fontWeight: "700", mb: 2, fontSize: "1.1rem" }}
                     >
-                      {speaker.image && (
+                      {session.speakersDetailed.length > 1
+                        ? "Speakers"
+                        : "Speaker"}
+                    </Typography>
+                    {session.speakersDetailed.map((speaker, i) => (
+                      <Box
+                        key={i}
+                        sx={{
+                          mb: 3,
+                          pb: i < session.speakersDetailed.length - 1 ? 3 : 0,
+                          borderBottom:
+                            i < session.speakersDetailed.length - 1
+                              ? "1px solid #e0e0e0"
+                              : "none",
+                        }}
+                      >
                         <Box
-                          component="img"
-                          src={speaker.image}
-                          alt={speaker.name}
                           sx={{
-                            width: "120px",
-                            height: "120px",
-                            borderRadius: "50%",
-                            objectFit: "cover",
-                            mb: 1.5,
-                          }}
-                        />
-                      )}
-                      <Typography
-                        variant="body1"
-                        sx={{ fontWeight: "600", mb: 0.5 }}
-                      >
-                        {speaker.name}
-                      </Typography>
-                      <Typography
-                        variant="body2"
-                        sx={{ color: "green", fontWeight: "500", mb: 1.5 }}
-                      >
-                        {speaker.role}
-                      </Typography>
-                      {speaker.bio && (
-                        <Typography
-                          variant="body2"
-                          sx={{
-                            color: "gray",
-                            lineHeight: 1.6,
-                            whiteSpace: "pre-line", // This preserves line breaks from the bio text
+                            display: "flex",
+                            alignItems: "flex-start",
+                            gap: 2,
                           }}
                         >
-                          {speaker.bio}
-                        </Typography>
-                      )}
-                    </Box>
-                  ))}
-                </Box>
-              )}
+                          {speaker.image && (
+                            <Box
+                              component="img"
+                              src={speaker.image}
+                              alt={speaker.name}
+                              sx={{
+                                width: "120px",
+                                height: "120px",
+                                borderRadius: "50%",
+                                objectFit: "cover",
+                                border: "2px solid #22c55e", // Green-500 border
+                                flexShrink: 0,
+                              }}
+                              onError={(e) => {
+                                e.target.style.display = "none";
+                              }}
+                            />
+                          )}
+                          <Box sx={{ flex: 1 }}>
+                            <Typography
+                              variant="body1"
+                              sx={{
+                                fontWeight: "700",
+                                mb: 0.5,
+                                fontSize: "1.05rem",
+                              }}
+                            >
+                              {speaker.name}
+                            </Typography>
+                            <Typography
+                              variant="body2"
+                              sx={{
+                                color: "green",
+                                fontWeight: "600",
+                                mb: 1.5,
+                              }}
+                            >
+                              {speaker.role || ""}
+                            </Typography>
+                            {speaker.bio && (
+                              <Typography
+                                variant="body2"
+                                sx={{
+                                  color: "gray",
+                                  lineHeight: 1.6,
+                                  whiteSpace: "pre-line",
+                                }}
+                              >
+                                {speaker.bio}
+                              </Typography>
+                            )}
+                          </Box>
+                        </Box>
+                      </Box>
+                    ))}
+                  </Box>
+                )}
 
               {/* Multiple Speakers (Simple List - for backward compatibility) */}
               {session.speakers && !session.speakersDetailed && (
