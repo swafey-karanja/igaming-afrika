@@ -39,7 +39,7 @@ const EventTickets = () => {
 
   return (
     <section
-      className="max-w-[1600px] mx-auto px-6 lg:px-8 py-8 scroll-mt-60"
+      className="max-w-[1380px] mx-auto px-6 lg:px-12 py-8 scroll-mt-60"
       id="eventTickets"
     >
       <Header
@@ -49,7 +49,7 @@ const EventTickets = () => {
 
       {/* Pricing Cards */}
       <motion.div
-        className="grid md:grid-cols-2 xl:grid-cols-4 gap-6 h-auto items-center"
+        className="grid md:grid-cols-2 xl:grid-cols-3 gap-10 h-auto items-center"
         variants={staggerContainer}
         initial="hidden"
         whileInView="visible"
@@ -121,6 +121,14 @@ const EventTickets = () => {
                 }`}
               >
                 {plan.requirement}
+              </p>
+
+              <p
+                className={`text-[12px] font-semibold mb-6 text-green-600 ${
+                  plan.isPopular ? "text-green-100" : "text-gray-500"
+                }`}
+              >
+                {plan.note}
               </p>
 
               {plan.doorPrice && (
