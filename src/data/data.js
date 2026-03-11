@@ -432,6 +432,7 @@ export const schedules = {
       time: "04:05 PM to 04:40 PM",
       location: "Main Stage",
       title: "The Rise of Women in Africa’s Gaming Sector",
+      moderatorNames: ["Emily Asava"],
       description:
         "Highlighting the increasing participation and influence of women in Africa’s gaming industry, and the importance of gender diversity for industry growth and innovation.",
     },
