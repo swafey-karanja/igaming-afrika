@@ -154,19 +154,22 @@ const Hero = () => {
         {isHomePage && (
           <div className="rounded-lg p-2 sm:p-4 xl:p-3 max-w-2xl mx-auto w-full flex flex-col gap-y-2 sm:gap-y-3 xl:gap-y-3">
             <div className="flex flex-col md:flex-row justify-center gap-2 sm:gap-4 xl:gap-3">
-              <a
-                href="https://events.igasummit.com/en/registration-form"
-                target="_blank"
+              <button
+                onClick={() => {
+                  document.getElementById("eventTickets")?.scrollIntoView({
+                    behavior: "smooth",
+                  });
+                }}
                 className="bg-transparent hover:bg-[#47cf8b] hover:bg-opacity-20 hover:text-white transition-colors duration-300 text-sm lg:text-lg xl:text-lg 2xl:text-md 3xl:text-lg text-[#14a45c] font-bold w-full sm:max-w-sm py-2 px-2 sm:px-4 border-3 border-lime-500 rounded-4xl text-center"
               >
                 Get Tickets
-              </a>
+              </button>
               {/* <PopUpModal /> */}
             </div>
 
-            {/* <div className="flex flex-col md:flex-row justify-center gap-2 sm:gap-4 xl:gap-3"> */}
-            {/* <button
-                className="bg-transparent cursor-pointer hover:bg-[#47cf8b] hover:bg-opacity-20 hover:text-white transition-colors duration-300 text-[11px] lg:text-lg xl:text-base 2xl:text-md 3xl:text-lg text-[#14a45c] font-bold w-full py-2 px-4 sm:px-6 xl:px-4 border-3 border-lime-500 rounded-4xl whitespace-normal sm:whitespace-nowrap text-center"
+            {/* <div className="flex flex-col md:flex-row justify-center gap-2 sm:gap-4 xl:gap-3">
+              <button
+                className="bg-transparent cursor-pointer hover:bg-[#47cf8b] hover:bg-opacity-20 hover:text-white transition-colors duration-300 text-[11px] lg:text-lg xl:text-base 2xl:text-md 3xl:text-lg text-[#14a45c] font-bold w-full py-2 px-4 sm:px-6 border-3 border-lime-500 rounded-4xl whitespace-normal sm:whitespace-nowrap text-center"
                 onClick={() => {
                   document.getElementById("eventTickets")?.scrollIntoView({
                     behavior: "smooth",
@@ -176,7 +179,7 @@ const Hero = () => {
                 Operators - VIP Pass (Free for Operators & Regulators)
               </button> */}
             <button
-              className="bg-transparent cursor-pointer hover:bg-[#47cf8b] hover:bg-opacity-20 hover:text-white  transition-colors duration-300 text-[11px] lg:text-lg xl:text-base 2xl:text-md 3xl:text-lg text-[#14a45c] font-bold w-full py-2 xl:py-3 px-4 sm:px-6 xl:px-4 border-3 border-lime-500 rounded-4xl whitespace-normal sm:whitespace-nowrap text-center"
+              className="bg-transparent cursor-pointer hover:bg-[#47cf8b] hover:bg-opacity-20 hover:text-white  transition-colors duration-300 text-[11px] lg:text-lg xl:text-base 2xl:text-md 3xl:text-lg text-[#14a45c] font-bold w-full py-2 xl:py-3 px-4 sm:px-12 border-3 border-lime-500 rounded-4xl whitespace-normal sm:whitespace-nowrap text-center"
               onClick={() => {
                 document.getElementById("eventTickets")?.scrollIntoView({
                   behavior: "smooth",

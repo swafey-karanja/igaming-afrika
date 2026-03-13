@@ -1,8 +1,80 @@
 // eslint-disable-next-line no-unused-vars
 import { motion } from "framer-motion";
-import { ArrowRight } from "lucide-react";
+import { useState, useEffect } from "react";
+import { ArrowRight, Clock } from "lucide-react";
 import { allFeatures, plans } from "../../../data/data";
 import Header from "../../../components/ui/Header";
+
+const DEADLINE = new Date("2026-04-20T23:59:59");
+
+const useCountdown = () => {
+  const getTimeLeft = () => {
+    const diff = DEADLINE - new Date();
+    if (diff <= 0) return null;
+    return {
+      days: Math.floor(diff / (1000 * 60 * 60 * 24)),
+      hours: Math.floor((diff / (1000 * 60 * 60)) % 24),
+      minutes: Math.floor((diff / (1000 * 60)) % 60),
+      seconds: Math.floor((diff / 1000) % 60),
+    };
+  };
+  const [timeLeft, setTimeLeft] = useState(getTimeLeft);
+  useEffect(() => {
+    const timer = setInterval(() => setTimeLeft(getTimeLeft()), 1000);
+    return () => clearInterval(timer);
+  }, []);
+  return timeLeft;
+};
+
+const CountdownBanner = ({ isPopular }) => {
+  const timeLeft = useCountdown();
+  if (!timeLeft) return null;
+  const pad = (n) => String(n).padStart(2, "0");
+  const labelColor = isPopular ? "text-green-100" : "text-gray-500";
+  const unitBg = isPopular ? "bg-white/10" : "bg-gray-100";
+  const valueColor = isPopular ? "text-white" : "text-gray-800";
+  const separatorColor = isPopular ? "text-green-100" : "text-gray-400";
+  return (
+    <div className="px-4 py-3 flex flex-col items-center gap-1.5">
+      <div
+        className={`flex items-center gap-1.5 text-[11px] font-bold uppercase tracking-widest ${labelColor}`}
+      >
+        <Clock className="w-3 h-3" />
+        Sale price valid until April 20th
+      </div>
+      <div className="flex items-center gap-1.5 pt-1.5">
+        {[
+          { value: timeLeft.days, label: "Days" },
+          { value: timeLeft.hours, label: "Hrs" },
+          { value: timeLeft.minutes, label: "Min" },
+          { value: timeLeft.seconds, label: "Sec" },
+        ].map(({ value, label }, i) => (
+          <div key={label} className="flex items-center gap-1.5">
+            <div
+              className={`flex flex-col items-center rounded-md px-2 py-1 min-w-[36px] ${unitBg}`}
+            >
+              <span
+                className={`text-lg font-extrabold tabular-nums leading-none ${valueColor}`}
+              >
+                {pad(value)}
+              </span>
+              <span
+                className={`text-[9px] font-bold uppercase mt-0.5 ${labelColor}`}
+              >
+                {label}
+              </span>
+            </div>
+            {i < 3 && (
+              <span className={`text-sm font-bold -mt-2 ${separatorColor}`}>
+                :
+              </span>
+            )}
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+};
 
 const EventTickets = () => {
   const staggerContainer = {
@@ -77,69 +149,137 @@ const EventTickets = () => {
 
             {/* Card Header */}
             <div
-              className={`px-6 py-12 text-center ${
+              className={`text-center ${
                 plan.isPopular ? "" : "border-b border-gray-100"
               }`}
             >
-              <h3
-                className={`text-xl font-bold mb-2 ${
-                  plan.isPopular ? "text-white" : "text-green-700"
-                }`}
-              >
-                {plan.label}
-              </h3>
-              <p
-                className={`text-sm mb-6 ${
-                  plan.isPopular ? "text-green-100" : "text-gray-500"
-                }`}
-              >
-                {plan.description}
-              </p>
-
-              <div className="mb-4">
-                <span
-                  className={`text-4xl font-bold ${
-                    plan.isPopular ? "text-white" : "text-gray-900"
+              <div className="px-6 pt-10 pb-4 text-center">
+                <h3
+                  className={`text-xl font-bold mb-2 ${
+                    plan.isPopular ? "text-white" : "text-green-700"
                   }`}
                 >
-                  {plan.price === 0 ? "Free" : `$${plan.price}`}
-                </span>
-                {plan.price > 0 && (
-                  <span
-                    className={`text-sm ${
-                      plan.isPopular ? "text-green-100" : "text-gray-500"
+                  {plan.label}
+                </h3>
+                <p
+                  className={`text-sm mb-4 ${
+                    plan.isPopular ? "text-green-100" : "text-gray-500"
+                  }`}
+                >
+                  {plan.description}
+                </p>
+
+                {plan.requirement && (
+                  <p
+                    className={`text-sm mb-3 font-medium ${
+                      plan.isPopular ? "text-green-100" : "text-red-600"
                     }`}
                   >
-                    /ticket
-                  </span>
+                    {plan.requirement}
+                  </p>
+                )}
+
+                {plan.note && (
+                  <p
+                    className={`text-[11px] font-semibold mb-4 ${
+                      plan.isPopular ? "text-green-100" : "text-green-600"
+                    }`}
+                  >
+                    {plan.note}
+                  </p>
                 )}
               </div>
 
-              <p
-                className={`text-md mb-6 text-red-600 ${
-                  plan.isPopular ? "text-green-100" : "text-gray-500"
-                }`}
-              >
-                {plan.requirement}
-              </p>
+              {/* Price Display — split layout with diagonal divider */}
+              {plan.price === 0 ? (
+                <div className="px-6 pb-4">
+                  <span
+                    className={`text-4xl font-bold ${
+                      plan.isPopular ? "text-white" : "text-gray-900"
+                    }`}
+                  >
+                    Free
+                  </span>
+                </div>
+              ) : (
+                <>
+                  {/* Sale vs Door Price row */}
+                  <div
+                    className={`relative flex items-stretch overflow-hidden ${
+                      plan.isPopular ? "bg-green-700/40" : "bg-gray-50"
+                    }`}
+                  >
+                    {/* SALE side */}
+                    <div className="flex-1 flex flex-col items-center justify-center py-4 px-4">
+                      <span
+                        className={`text-[11px] font-bold uppercase tracking-widest mb-1 ${
+                          plan.isPopular ? "text-green-200" : "text-gray-500"
+                        }`}
+                      >
+                        Sale
+                      </span>
+                      <span
+                        className={`text-3xl font-extrabold ${
+                          plan.isPopular ? "text-white" : "text-gray-900"
+                        }`}
+                      >
+                        ${plan.price}
+                      </span>
+                    </div>
 
-              <p
-                className={`text-[12px] font-semibold mb-6 text-green-600 ${
-                  plan.isPopular ? "text-green-100" : "text-gray-500"
-                }`}
-              >
-                {plan.note}
-              </p>
+                    {/* Diagonal SVG divider */}
+                    <div className="relative w-10 flex-shrink-0">
+                      <svg
+                        className="absolute inset-0 w-full h-full"
+                        viewBox="0 0 40 80"
+                        preserveAspectRatio="none"
+                      >
+                        <line
+                          x1="30"
+                          y1="0"
+                          x2="10"
+                          y2="80"
+                          stroke={
+                            plan.isPopular
+                              ? "rgba(255,255,255,0.25)"
+                              : "#d1d5db"
+                          }
+                          strokeWidth="1.5"
+                        />
+                      </svg>
+                    </div>
 
-              {plan.doorPrice && (
-                <p
-                  className={`text-sm ${
-                    plan.isPopular ? "text-green-200" : "text-gray-500"
-                  }`}
-                >
-                  Door price:{" "}
-                  <span className="line-through">${plan.doorPrice}</span>
-                </p>
+                    {/* DOOR PRICE side */}
+                    <div className="flex-1 flex flex-col items-center justify-center py-4 px-4">
+                      <span
+                        className={`text-[11px] font-bold uppercase tracking-widest mb-1 ${
+                          plan.isPopular ? "text-green-200" : "text-gray-500"
+                        }`}
+                      >
+                        Door Price
+                      </span>
+                      <span
+                        className={`text-3xl font-extrabold line-through ${
+                          plan.isPopular ? "text-green-300" : "text-gray-400"
+                        }`}
+                      >
+                        ${plan.doorPrice}
+                      </span>
+                    </div>
+                  </div>
+
+                  {/* Save banner */}
+                  <div
+                    className={`py-2.5 text-center font-bold text-lg tracking-wide ${
+                      plan.isPopular ? "text-white" : "text-green-700"
+                    }`}
+                  >
+                    Save ${plan.doorPrice - plan.price}
+                  </div>
+
+                  {/* Countdown */}
+                  <CountdownBanner isPopular={plan.isPopular} />
+                </>
               )}
             </div>
 

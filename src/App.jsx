@@ -6,7 +6,6 @@ import store from "./store/index.js";
 
 import { Toaster } from "sonner";
 import { useEffect } from "react";
-// import Checkout from "../pages/checkoutpage/Checkout.jsx";
 import Home from "./features/home/HomePage.jsx";
 import Navbar from "./components/layout/Navbar.jsx";
 import Publications from "./features/publications/PublicationsPage.jsx";
@@ -63,7 +62,6 @@ const App = () => {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/register" element={<EventApplicationForm />} />
-          {/* <Route path="/checkout" element={<Checkout />} /> */}
           <Route path="/publications/:category" element={<Publications />} />
           <Route
             path="/speaker-registration"

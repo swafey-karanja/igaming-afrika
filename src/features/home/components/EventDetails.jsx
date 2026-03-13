@@ -1,5 +1,5 @@
 /* eslint-disable no-unused-vars */
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { accordionItems, stats } from "../../../data/data";
 import { AccordionItem, AnimatedCounter } from "../../../lib/utils";
 import { motion } from "framer-motion";
@@ -18,6 +18,30 @@ const EventDetails = () => {
       return { [index]: true };
     });
   };
+
+  const scrollToSection = (href) => {
+    const section = document.querySelector(href);
+    if (section) {
+      section.scrollIntoView({ behavior: "smooth" });
+    }
+    // Update the URL hash without triggering a page jump
+    window.history.replaceState(null, "", href);
+  };
+
+  // On mount, if there's a hash in the URL, scroll to that section
+  useEffect(() => {
+    const hash = window.location.hash;
+    if (hash) {
+      // Small delay to let the page fully render before scrolling
+      const timer = setTimeout(() => {
+        const section = document.querySelector(hash);
+        if (section) {
+          section.scrollIntoView({ behavior: "smooth" });
+        }
+      }, 2000);
+      return () => clearTimeout(timer);
+    }
+  }, []);
 
   // Animation variants
   const fadeIn = {
@@ -83,12 +107,7 @@ const EventDetails = () => {
               <button
                 key={link.href}
                 className="py-1.5 xl:py-3 cursor-pointer px-4 xl:px-6 bg-gray-100 hover:bg-[#47cf8b] hover:border-[#47cf8b] text-[#14a45c] transition-colors duration-100 ease-in-out hover:text-white rounded-3xl border-2 border-lime-500 font-semibold whitespace-nowrap flex-shrink-0"
-                onClick={() => {
-                  const section = document.querySelector(link.href);
-                  if (section) {
-                    section.scrollIntoView({ behavior: "smooth" });
-                  }
-                }}
+                onClick={() => scrollToSection(link.href)}
               >
                 {link.name}
               </button>
