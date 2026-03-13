@@ -132,7 +132,7 @@ const EventTickets = () => {
             key={index}
             variants={cardVariant}
             style={plan.isPopular ? { backgroundColor: "#14a45c" } : {}}
-            className={`relative rounded-2xl overflow-hidden shadow-sm py-3 transition-all duration-300 hover:shadow-lg hover:-translate-y-1 flex flex-col justify-center h-[900px] ${
+            className={`relative rounded-2xl overflow-hidden shadow-sm py-3 transition-all duration-300 hover:shadow-lg hover:-translate-y-1 flex flex-col justify-center h-[930px] ${
               plan.isPopular
                 ? "text-white ring-4 ring-green-400 ring-opacity-50"
                 : "bg-white border border-gray-200 hover:border-green-300"
@@ -349,7 +349,7 @@ const EventTickets = () => {
             </div>
 
             {/* CTA Button */}
-            <div className="px-6 pb-8">
+            <div className="px-6 pb-4">
               <a
                 target="_blank"
                 href="https://events.igasummit.com/en/registration-form"
