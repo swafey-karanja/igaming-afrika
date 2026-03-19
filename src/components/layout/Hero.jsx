@@ -167,7 +167,7 @@ const Hero = () => {
               {/* <PopUpModal /> */}
             </div>
 
-            <div className="flex flex-col md:flex-row justify-center gap-2 sm:gap-4 xl:gap-3">
+            <div className="flex flex-col xl:flex-row justify-center gap-3">
               <a
                 className="bg-transparent cursor-pointer hover:bg-[#47cf8b] hover:bg-opacity-20 hover:text-white transition-colors duration-300 text-[11px] lg:text-lg xl:text-base 2xl:text-md 3xl:text-lg text-[#14a45c] font-bold w-full py-3 px-4 sm:px-6 border-3 border-lime-500 rounded-4xl whitespace-normal sm:whitespace-nowrap text-center"
                 // onClick={() => {
@@ -177,7 +177,8 @@ const Hero = () => {
                 // }}
                 href="https://events.igasummit.com/en/registration-form?ticket_type=VIP"
               >
-                Gambling Operators Only - Apply for the Free VIP Pass
+                iGaming Operators & Regulators Only - Apply for the Free VIP
+                Pass
               </a>
               <button
                 className="bg-transparent cursor-pointer hover:bg-[#47cf8b] hover:bg-opacity-20 hover:text-white  transition-colors duration-300 text-[11px] lg:text-lg xl:text-base 2xl:text-md 3xl:text-lg text-[#14a45c] font-bold w-full py-2 xl:py-3 px-4 sm:px-16 border-3 border-lime-500 rounded-4xl whitespace-normal sm:whitespace-nowrap text-center"

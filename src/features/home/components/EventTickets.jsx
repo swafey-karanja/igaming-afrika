@@ -40,7 +40,7 @@ const CountdownBanner = ({ isPopular }) => {
         className={`flex items-center gap-1.5 text-[11px] font-bold uppercase tracking-widest ${labelColor}`}
       >
         <Clock className="w-3 h-3" />
-        Sale price valid until April 20th
+        Prices increase on 20th april
       </div>
       <div className="flex items-center gap-1.5 pt-1.5">
         {[
@@ -179,7 +179,7 @@ const EventTickets = () => {
                   </p>
                 )}
 
-                {plan.note && (
+                {/* {plan.note && (
                   <p
                     className={`text-[11px] font-semibold mb-4 ${
                       plan.isPopular ? "text-green-100" : "text-green-600"
@@ -187,7 +187,7 @@ const EventTickets = () => {
                   >
                     {plan.note}
                   </p>
-                )}
+                )} */}
               </div>
 
               {/* Price Display — split layout with diagonal divider */}

@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 import { CalendarDropdown } from "../../../lib/utils";
 import { dates, schedules } from "../../../data/data";
 import Header from "../../../components/ui/Header";
-import SessionModal from "../../../components/ui/PopUpModal";
+import SessionModal from "../../../components/SessionModal";
 
 // ─── Helper ──────────────────────────────────────────────────────────────────
 /**

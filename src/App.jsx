@@ -5,7 +5,7 @@ import { Provider } from "react-redux";
 import store from "./store/index.js";
 
 import { Toaster } from "sonner";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import Home from "./features/home/HomePage.jsx";
 import Navbar from "./components/layout/Navbar.jsx";
 import Publications from "./features/publications/PublicationsPage.jsx";
@@ -13,8 +13,11 @@ import Hero from "./components/layout/Hero.jsx";
 import EventApplicationForm from "./features/registration/EventApplicationPage.jsx";
 import SpeakerRegistrationPage from "./features/speakerApplication/SpeakerRegistrationPage.jsx";
 import SocialSidebar from "./components/layout/SocialSidebar.jsx";
+import PromoModal from "./components/PromoModal.jsx";
 
 const App = () => {
+  const [promoOpen, setPromoOpen] = useState(false);
+
   useEffect(() => {
     // Enable browser's automatic scroll restoration for reloads
     if ("scrollRestoration" in history) {
@@ -34,6 +37,10 @@ const App = () => {
     return () => {
       document.removeEventListener("keydown", handleKeyDown);
     };
+  }, []);
+
+  useEffect(() => {
+    setPromoOpen(true); // fires on every load/reload
   }, []);
 
   return (
@@ -58,6 +65,7 @@ const App = () => {
         <Navbar />
         <SocialSidebar />
         <Hero />
+        <PromoModal open={promoOpen} onClose={() => setPromoOpen(false)} />
         <ScrollToTop />
         <Routes>
           <Route path="/" element={<Home />} />
