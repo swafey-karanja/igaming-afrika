@@ -2,17 +2,16 @@ import * as React from "react";
 import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
 import BaseModal from "./ui/PopUpModal";
-import { XIcon } from "lucide-react";
 import { CountdownBanner } from "./ui/CountdownBanner";
 
 /**
- * PromoModalV2 — iGaming Afrika Summit promotional pop-up.
+ * PromoModal — iGaming Afrika Summit promotional pop-up.
  *
- * Changes from V1:
- *  - Africa pattern as full modal background image
- *  - Logo image at the top (IGA-LIONBETS-Logo.png)
- *  - Skyline image replaces the green footer bar
- *  - Wider modal so all 5 stat boxes sit in one row
+ * Fully responsive across:
+ *   xs  — phones (< 600px)
+ *   sm  — large phones / small tablets (600–899px)
+ *   md  — tablets / small laptops (900–1199px)
+ *   lg  — desktops (1200px+)
  */
 
 const STATS = [
@@ -32,14 +31,12 @@ const PromoModal = ({ open, onClose }) => {
       sx={{
         p: 0,
         overflow: "hidden",
-        borderRadius: "5px",
-        width: { xs: "95%", sm: "680px", md: "760px" },
-        /* Africa pattern covers the entire modal background */
+        borderRadius: { xs: "8px", sm: "10px", md: "12px" },
+        width: { xs: "95%", sm: "92%", md: "760px", lg: "780px" },
         backgroundImage: "url('/africa-pattern.png')",
         backgroundSize: "cover",
         backgroundPosition: "center",
         backgroundRepeat: "no-repeat",
-        /* Subtle white wash so text stays readable over the pattern */
         position: "relative",
         "&::before": {
           content: '""',
@@ -54,21 +51,22 @@ const PromoModal = ({ open, onClose }) => {
         },
       }}
     >
+      {/* ── Close button ── */}
       <Box
         component="button"
         onClick={onClose}
         sx={{
           position: "absolute",
-          top: 12,
-          right: 12,
+          top: { xs: 8, sm: 12 },
+          right: { xs: 8, sm: 12 },
           zIndex: 10,
-          width: 32,
-          height: 32,
+          width: { xs: 28, sm: 32 },
+          height: { xs: 28, sm: 32 },
           borderRadius: "30%",
           border: "none",
-          //   backgroundColor: "rgba(0,0,0,0.15)",
+          backgroundColor: "transparent",
           color: "#111",
-          fontSize: "1.8rem",
+          fontSize: { xs: "1.4rem", sm: "1.8rem" },
           lineHeight: 1,
           cursor: "pointer",
           display: "flex",
@@ -76,7 +74,7 @@ const PromoModal = ({ open, onClose }) => {
           justifyContent: "center",
           transition: "background-color 0.2s ease",
           "&:hover": {
-            backgroundColor: "rgba(0,0,0,0.3)",
+            backgroundColor: "rgba(0,0,0,0.12)",
           },
         }}
         aria-label="Close"
@@ -88,20 +86,21 @@ const PromoModal = ({ open, onClose }) => {
       <Box
         sx={{
           textAlign: "center",
-          px: { xs: 3, sm: 5, md: 6 },
-          pt: 6,
+          px: { xs: 2.5, sm: 4, md: 6 },
+          pt: { xs: 4, sm: 5, md: 6 },
           pb: 0,
         }}
       >
+        {/* Event name */}
         <Typography
           variant="h3"
           component="h2"
           sx={{
-            fontWeight: "900",
+            fontWeight: 900,
             color: "#16a34a",
-            fontSize: { xs: "1.8rem" },
-            lineHeight: 1.12,
-            mb: 1.0,
+            fontSize: { xs: "1.2rem", sm: "1.5rem", md: "1.8rem" },
+            lineHeight: 1.15,
+            mb: { xs: 0.5, sm: 0.8, md: 1 },
           }}
         >
           iGaming AFRIKA Summit
@@ -112,11 +111,10 @@ const PromoModal = ({ open, onClose }) => {
           variant="body2"
           sx={{
             color: "#16a34a",
-            fontWeight: "800",
-            fontSize: "0.98rem",
-            // letterSpacing: "0.09em",
+            fontWeight: 800,
+            fontSize: { xs: "0.72rem", sm: "0.85rem", md: "0.98rem" },
             textTransform: "uppercase",
-            mb: 5.5,
+            mb: { xs: 2.5, sm: 4, md: 5.5 },
           }}
         >
           Nairobi, Kenya &nbsp;|&nbsp; 4–6 May 2026
@@ -127,34 +125,40 @@ const PromoModal = ({ open, onClose }) => {
           variant="h2"
           component="h2"
           sx={{
-            fontWeight: "900",
+            fontWeight: 900,
             color: "#16a34a",
             lineHeight: 1.12,
-            mb: 4.5,
+            mb: { xs: 2.5, sm: 3.5, md: 4.5 },
           }}
         >
           <Box
             component="span"
-            sx={{ fontSize: { xs: "2.2rem", sm: "3.8rem" }, display: "block" }}
+            sx={{
+              fontSize: { xs: "1.9rem", sm: "2.8rem", md: "3.8rem" },
+              display: "block",
+            }}
           >
             Registration
           </Box>
           <Box
             component="span"
-            sx={{ fontSize: { xs: "1.6rem", sm: "2.0rem" }, display: "block" }}
+            sx={{
+              fontSize: { xs: "1.2rem", sm: "1.6rem", md: "2.0rem" },
+              display: "block",
+            }}
           >
             is Now Open
           </Box>
         </Typography>
 
-        {/* Stats row — all 5 in one line on md+ */}
+        {/* Stats row — wraps on xs (2–3 per row), single row from sm up */}
         <Box
           sx={{
             display: "flex",
             justifyContent: "center",
             flexWrap: { xs: "wrap", sm: "nowrap" },
-            gap: { xs: 1, sm: 1.5 },
-            mb: 3.5,
+            gap: { xs: 0.8, sm: 1, md: 1.5 },
+            mb: { xs: 2, sm: 3, md: 3.5 },
           }}
         >
           {STATS.map((stat) => (
@@ -162,10 +166,10 @@ const PromoModal = ({ open, onClose }) => {
               key={stat.label}
               sx={{
                 border: "1.5px solid #16a34a",
-                borderRadius: "8px",
-                px: { xs: 1.5, sm: 2 },
-                py: 2.3,
-                minWidth: { xs: "72px", sm: "100px" },
+                borderRadius: { xs: "6px", sm: "8px" },
+                px: { xs: 1, sm: 1.5, md: 2 },
+                py: { xs: 1.2, sm: 1.8, md: 2.3 },
+                width: { xs: "calc(33% - 8px)", sm: "auto" },
                 flex: { sm: 1 },
                 textAlign: "center",
                 backgroundColor: "rgba(255,255,255,0.75)",
@@ -174,8 +178,8 @@ const PromoModal = ({ open, onClose }) => {
             >
               <Typography
                 sx={{
-                  fontWeight: "800",
-                  fontSize: { xs: "1rem", sm: "1.6rem" },
+                  fontWeight: 800,
+                  fontSize: { xs: "0.95rem", sm: "1.2rem", md: "1.6rem" },
                   color: "#16a34a",
                   lineHeight: 1.2,
                 }}
@@ -184,9 +188,9 @@ const PromoModal = ({ open, onClose }) => {
               </Typography>
               <Typography
                 sx={{
-                  fontSize: "0.80rem",
+                  fontSize: { xs: "0.62rem", sm: "0.70rem", md: "0.80rem" },
                   color: "#16a34a",
-                  fontWeight: "600",
+                  fontWeight: 600,
                   textTransform: "uppercase",
                   letterSpacing: "0.04em",
                   mt: 0.3,
@@ -198,10 +202,11 @@ const PromoModal = ({ open, onClose }) => {
           ))}
         </Box>
 
+        {/* Countdown */}
         <CountdownBanner />
 
         {/* CTA Button */}
-        <Box sx={{ mb: 3, mt: 2 }}>
+        <Box sx={{ mb: { xs: 2, sm: 2.5, md: 3 }, mt: { xs: 1.5, sm: 2 } }}>
           <button
             onClick={() => {
               onClose();
@@ -211,10 +216,10 @@ const PromoModal = ({ open, onClose }) => {
             }}
             style={{
               width: "100%",
-              padding: "14px 24px",
+              padding: "12px 24px",
               backgroundColor: "#16a34a",
               color: "#ffffff",
-              fontWeight: "700",
+              fontWeight: 700,
               fontSize: "1rem",
               border: "none",
               borderRadius: "8px",
@@ -230,25 +235,26 @@ const PromoModal = ({ open, onClose }) => {
         </Box>
       </Box>
 
+      {/* ── Logo ── */}
       <Box
         component="img"
         src="/IGA-LIONBETS-Logo.png"
         alt="iGaming Afrika Summit — Powered by LionBets"
         sx={{
-          height: { xs: "48px", sm: "120px" },
+          height: { xs: "40px", sm: "70px", md: "100px" },
           width: "auto",
           objectFit: "contain",
           display: "block",
           mx: "auto",
-          mb: 2,
+          mb: { xs: 1, sm: 1.5, md: 2 },
         }}
       />
 
-      {/* ── Skyline footer image ── */}
+      {/* ── Skyline footer ── */}
       <Box
         sx={{
           width: "100%",
-          height: { xs: "100px", sm: "130px" },
+          height: { xs: "70px", sm: "100px", md: "130px" },
           overflow: "hidden",
           lineHeight: 0,
         }}
