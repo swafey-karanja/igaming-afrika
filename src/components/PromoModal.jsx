@@ -92,7 +92,7 @@ const PromoModal = ({ open, onClose }) => {
         }}
       >
         {/* Event name */}
-        <Typography
+        {/* <Typography
           variant="h3"
           component="h2"
           sx={{
@@ -104,7 +104,20 @@ const PromoModal = ({ open, onClose }) => {
           }}
         >
           iGaming AFRIKA Summit
-        </Typography>
+        </Typography> */}
+        <Box
+          component="img"
+          src="/IGA-LIONBETS-Logo.png"
+          alt="iGaming Afrika Summit — Powered by LionBets"
+          sx={{
+            height: { xs: "40px", sm: "70px", md: "100px" },
+            width: "auto",
+            objectFit: "contain",
+            display: "block",
+            mx: "auto",
+            mb: { xs: 1, sm: 1.5, md: 2 },
+          }}
+        />
 
         {/* Date & Location */}
         <Typography
@@ -114,7 +127,7 @@ const PromoModal = ({ open, onClose }) => {
             fontWeight: 800,
             fontSize: { xs: "0.72rem", sm: "0.85rem", md: "0.98rem" },
             textTransform: "uppercase",
-            mb: { xs: 2.5, sm: 4, md: 5.5 },
+            mb: { xs: 2.5, sm: 4 },
           }}
         >
           Nairobi, Kenya &nbsp;|&nbsp; 4–6 May 2026
@@ -128,7 +141,7 @@ const PromoModal = ({ open, onClose }) => {
             fontWeight: 900,
             color: "#16a34a",
             lineHeight: 1.12,
-            mb: { xs: 2.5, sm: 3.5, md: 4.5 },
+            mb: { xs: 2.5, sm: 3.5 },
           }}
         >
           <Box
@@ -150,57 +163,6 @@ const PromoModal = ({ open, onClose }) => {
             is Now Open
           </Box>
         </Typography>
-
-        {/* Stats row — wraps on xs (2–3 per row), single row from sm up */}
-        <Box
-          sx={{
-            display: "flex",
-            justifyContent: "center",
-            flexWrap: { xs: "wrap", sm: "nowrap" },
-            gap: { xs: 0.8, sm: 1, md: 1.5 },
-            mb: { xs: 2, sm: 3, md: 3.5 },
-          }}
-        >
-          {STATS.map((stat) => (
-            <Box
-              key={stat.label}
-              sx={{
-                border: "1.5px solid #16a34a",
-                borderRadius: { xs: "6px", sm: "8px" },
-                px: { xs: 1, sm: 1.5, md: 2 },
-                py: { xs: 1.2, sm: 1.8, md: 2.3 },
-                width: { xs: "calc(33% - 8px)", sm: "auto" },
-                flex: { sm: 1 },
-                textAlign: "center",
-                backgroundColor: "rgba(255,255,255,0.75)",
-                backdropFilter: "blur(4px)",
-              }}
-            >
-              <Typography
-                sx={{
-                  fontWeight: 800,
-                  fontSize: { xs: "0.95rem", sm: "1.2rem", md: "1.6rem" },
-                  color: "#16a34a",
-                  lineHeight: 1.2,
-                }}
-              >
-                {stat.value}
-              </Typography>
-              <Typography
-                sx={{
-                  fontSize: { xs: "0.62rem", sm: "0.70rem", md: "0.80rem" },
-                  color: "#16a34a",
-                  fontWeight: 600,
-                  textTransform: "uppercase",
-                  letterSpacing: "0.04em",
-                  mt: 0.3,
-                }}
-              >
-                {stat.label}
-              </Typography>
-            </Box>
-          ))}
-        </Box>
 
         {/* Countdown */}
         <CountdownBanner />
@@ -236,19 +198,6 @@ const PromoModal = ({ open, onClose }) => {
       </Box>
 
       {/* ── Logo ── */}
-      <Box
-        component="img"
-        src="/IGA-LIONBETS-Logo.png"
-        alt="iGaming Afrika Summit — Powered by LionBets"
-        sx={{
-          height: { xs: "40px", sm: "70px", md: "100px" },
-          width: "auto",
-          objectFit: "contain",
-          display: "block",
-          mx: "auto",
-          mb: { xs: 1, sm: 1.5, md: 2 },
-        }}
-      />
 
       {/* ── Skyline footer ── */}
       <Box
