@@ -307,10 +307,9 @@ export const schedules = {
       description: "Arrival of Delegates",
     },
     {
-      time: "16:30 – 19:30",
-      title: "Pre-Registration",
-      location: "",
-      description: "Pre-registration of event attendees and delegates",
+      time: "16:30 PM – 10:30 PM",
+      title: "Pre-registration of Delegates & Welcome reception",
+      location: "TBC",
     },
   ],
   1: [
@@ -445,6 +444,18 @@ export const schedules = {
       description:
         "Join us for the closing remarks of Day 1. Recap of the day's highlights, key takeaways, and a preview of what's to come on Day 2.",
     },
+
+    {
+      time: "06:30 PM to 08:00 PM",
+      location: "TBC",
+      title: "VIP & VVIP Networking Event",
+    },
+
+    {
+      time: "09:00 PM to 11:30 PM",
+      location: "TBC",
+      title: "iGaming AFRIKA Awards Dinner",
+    },
   ],
   2: [
     {
@@ -483,6 +494,11 @@ export const schedules = {
         "How Can We Best Implement Self-Exclusion Measures to Promote Responsible Gaming?",
       location: "Main Stage",
       description: "",
+    },
+    {
+      time: "01:30 PM - 03:00 PM",
+      title: "Women in Gaming Africa  Mentorship Program",
+      location: "TBC",
     },
     {
       time: "02:25 PM to 03:00 PM",
@@ -554,6 +570,25 @@ export const schedules = {
       time: "05:30 PM to 05:40 PM",
       location: "Main Stage",
       title: "Closing Remarks (Day 2)",
+    },
+
+    // 06:00 PM - Other events
+    {
+      time: "06:00 PM to 07:30 PM",
+      location: "TBC",
+      title: "Women in Gaming Africa (WiG) Networking Drinks",
+    },
+
+    {
+      time: "08:00 PM to 09:30 PM",
+      location: "TBC",
+      title: "iGaming AFRIKA Konnect Space",
+    },
+
+    {
+      time: "10:00 PM to 02:30 AM",
+      location: "TBC",
+      title: "Closing Party",
     },
   ],
   3: [

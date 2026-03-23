@@ -100,7 +100,7 @@ const EventSponsors = () => {
               sponsors={[headlineSponsor]}
               logoSizes="h-28 max-w-[320px] md:h-44 md:max-w-[540px] lg:h-52 lg:max-w-[640px] "
               containerClass="flex justify-center px-2 sm:px-4"
-              titleColor="from-yellow-600 via-yellow-500 to-amber-500"
+              titleColor="from-amber-500 via-yellow-500 to-amber-500"
               delay={0}
               bordered={true}
             />
