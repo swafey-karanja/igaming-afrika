@@ -339,7 +339,7 @@ export const schedules = {
     },
     {
       time: "10:45 AM – 10:55 AM",
-      title: "Summit opening by the County Government of Nairobi",
+      title: "Summit opening",
       location: "Main stage",
       description: "",
     },
@@ -593,7 +593,19 @@ export const schedules = {
   ],
   3: [
     {
-      time: "5:45 PM - 6:15 PM",
+      time: "5:30 AM - 11:30 AM",
+      title: "Safari Tour ",
+      location: "Nairobi National park",
+      description: "",
+    },
+    {
+      time: "2:00 PM - 6:00 PM",
+      title: "Charity Soccer Tournament",
+      location: "",
+      description: "",
+    },
+    {
+      time: "6:00 PM - 6:30 PM",
       title: "Dance & Entertainment",
       location: "",
       description: "",
