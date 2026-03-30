@@ -535,6 +535,7 @@ export const schedules = {
         "Inside Africa’s Illegal Operator’s War: How regulators can fight back.",
       description:
         "Addressing strategies and regulatory measures needed to combat illegal operators, ensuring a fair, safe, and transparent gaming environment.",
+      moderatorNames: ["Obinna Akpuchukwu"],
     },
 
     // 03:55 PM - 04:30 PM - Two concurrent sessions
@@ -552,7 +553,7 @@ export const schedules = {
       title: "Best Selling Games and Sportsbook or Casino Platforms in Africa",
       description:
         "Showcasing key features of top-performing games and platforms tailored to African players, emphasizing features that drive engagement and retention.",
-      moderatorNames: ["Geoffrey Muindi"],
+      moderatorNames: ["Brian Ondieki"],
     },
 
     // 04:05 PM - 04:40 PM - Single full-width session
