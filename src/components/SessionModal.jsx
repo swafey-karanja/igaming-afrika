@@ -97,10 +97,27 @@ const SessionModal = ({ open, onClose, session }) => {
                   <Box
                     sx={{ display: "flex", alignItems: "flex-start", gap: 2 }}
                   >
-                    {moderator.image && (
+                    {moderator.image ? (
                       <Box
                         component="img"
                         src={moderator.image}
+                        alt={moderator.name}
+                        sx={{
+                          width: "120px",
+                          height: "120px",
+                          borderRadius: "50%",
+                          objectFit: "cover",
+                          border: "3px solid #f59e0b",
+                          flexShrink: 0,
+                        }}
+                        onError={(e) => {
+                          e.target.style.display = "none";
+                        }}
+                      />
+                    ) : (
+                      <Box
+                        component="img"
+                        src="fallback.png"
                         alt={moderator.name}
                         sx={{
                           width: "120px",
@@ -173,10 +190,23 @@ const SessionModal = ({ open, onClose, session }) => {
               <Typography variant="subtitle1" sx={{ fontWeight: "600", mb: 1 }}>
                 Speaker:
               </Typography>
-              {session.speakerImage && (
+              {session.speakerImage ? (
                 <Box
                   component="img"
                   src={session.speakerImage}
+                  alt={session.speaker}
+                  sx={{
+                    width: "80px",
+                    height: "80px",
+                    borderRadius: "50%",
+                    objectFit: "cover",
+                    mb: 1,
+                  }}
+                />
+              ) : (
+                <Box
+                  component="img"
+                  src="/fallback.png"
                   alt={session.speaker}
                   sx={{
                     width: "80px",
@@ -233,10 +263,27 @@ const SessionModal = ({ open, onClose, session }) => {
                   <Box
                     sx={{ display: "flex", alignItems: "flex-start", gap: 2 }}
                   >
-                    {speaker.image && (
+                    {speaker.image ? (
                       <Box
                         component="img"
                         src={speaker.image}
+                        alt={speaker.name}
+                        sx={{
+                          width: "120px",
+                          height: "120px",
+                          borderRadius: "50%",
+                          objectFit: "cover",
+                          border: "2px solid #22c55e",
+                          flexShrink: 0,
+                        }}
+                        onError={(e) => {
+                          e.target.style.display = "none";
+                        }}
+                      />
+                    ) : (
+                      <Box
+                        component="img"
+                        src="/fallback.png"
                         alt={speaker.name}
                         sx={{
                           width: "120px",

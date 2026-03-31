@@ -267,9 +267,18 @@ const EventSchedule = ({ speakers = [] }) => {
                                       key={i}
                                       className="flex items-center gap-2 bg-amber-50 border border-amber-200 rounded-lg px-3 py-1.5"
                                     >
-                                      {moderator.image && (
+                                      {moderator.image ? (
                                         <img
                                           src={moderator.image}
+                                          alt={moderator.name}
+                                          className="w-10 h-10 rounded-full object-cover border-2 border-amber-400"
+                                          onError={(e) => {
+                                            e.target.style.display = "none";
+                                          }}
+                                        />
+                                      ) : (
+                                        <img
+                                          src="/fallback.png"
                                           alt={moderator.name}
                                           className="w-10 h-10 rounded-full object-cover border-2 border-amber-400"
                                           onError={(e) => {
@@ -310,9 +319,18 @@ const EventSchedule = ({ speakers = [] }) => {
                                         key={i}
                                         className="flex items-center gap-1 w-fit"
                                       >
-                                        {speaker.image && (
+                                        {speaker.image ? (
                                           <img
                                             src={speaker.image}
+                                            alt={speaker.name}
+                                            className="w-12 h-12 rounded-full object-cover border border-green-300"
+                                            onError={(e) => {
+                                              e.target.style.display = "none";
+                                            }}
+                                          />
+                                        ) : (
+                                          <img
+                                            src="/fallback.png"
                                             alt={speaker.name}
                                             className="w-12 h-12 rounded-full object-cover border border-green-300"
                                             onError={(e) => {

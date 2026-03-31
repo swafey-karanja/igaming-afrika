@@ -301,23 +301,30 @@ export const dates = [
 export const schedules = {
   0: [
     {
-      time: "00:00 – 23:00",
+      time: "00:00 – 23:30",
       title: "Arrival",
       location: "Jomo Kenyatta International Airport",
       description: "Arrival of Delegates",
     },
     {
-      time: "16:30 PM – 10:30 PM",
+      time: "13:30 PM – 16:30 PM",
+      title:
+        "Pre-registration of Exhibitors, Service Providers, Suppliers & Staff etc.",
+      location: "TBC",
+    },
+    {
+      time: "16:30 PM – 22:30 PM",
       title: "Pre-registration of Delegates & Welcome reception",
       location: "TBC",
     },
   ],
   1: [
     {
-      time: "09:35 AM – 9:55 AM",
-      title: "Entertainment",
+      time: "09:20 AM – 9:55 AM",
+      title: "Entertainment, National Anthem and prayers",
       location: "Main stage",
-      description: "Entertainment to start of the day",
+      description:
+        "Entertainment to start of the day along with the Kenyan and East African national anthems and finally prayers(Christian, Hindu and Muslim) to bless the event.",
     },
     {
       time: "10:00 AM – 10:10 AM",
@@ -333,19 +340,20 @@ export const schedules = {
     },
     {
       time: "10:30 AM – 10:40 AM",
-      title: "Gambling Regulatory Authority of Kenya Address",
+      title: "Government of Kenya office Representative address.",
       location: "Main stage",
       description: "",
     },
     {
       time: "10:45 AM – 10:55 AM",
-      title: "Summit opening",
+      title: "Summit Keynote address",
       location: "Main stage",
       description: "",
     },
     {
       time: "11:00 AM – 11:10 AM",
-      title: "Keynote address",
+      title:
+        "Chairperson’s Address (GRA) to officially open the summit by cutting a ribbon and pyro techniques.",
       location: "Main stage",
       description: "",
     },
@@ -373,16 +381,16 @@ export const schedules = {
       moderatorNames: ["Ondela Vundisa"],
     },
     {
-      time: "12:55 PM - 01:30 PM",
+      time: "12:55 PM - 13:30 PM",
       title:
         "The Role of operators in Nurturing Talent and Sports Development for the Youth in Africa.",
       location: "Main Stage",
       description:
         "A session for operators; Discussing the role of operators in nurturing sports talent and youth development, leveraging industry resources for societal impact.",
-      moderatorNames: ["Tom Bwana"],
+      moderatorNames: ["Syombua Kibue"],
     },
     {
-      time: "02:35 PM to 03:10 PM",
+      time: "14:35 PM to 15:10 PM",
       location: "Stage 02",
       title:
         "Opportunities from Affiliate Marketing in Africa’s Growing Gambling Sector",
@@ -391,7 +399,7 @@ export const schedules = {
     },
     // CONCURRENT SESSION - Same time slot, different stage (will display side-by-side)
     {
-      time: "02:35 PM to 03:10 PM",
+      time: "14:35 PM to 15:10 PM",
       location: "Main Stage",
       title: "The balance between profitability and responsible gaming",
       description:
@@ -401,44 +409,52 @@ export const schedules = {
 
     // 03:20 PM - 03:40 PM - Single session
     {
-      time: "03:20 PM to 03:40 PM",
+      time: "15:20 PM to 15:40 PM",
       location: "Main Stage",
       title:
         "Presentation: The Relationship between Sports Betting Behaviors and Gambling Harm for Adult Bettors in Nigeria.",
       description:
         "The Relationship between Sports Betting Behaviors and Gambling Harm for Adult Bettors in Nigeria, using the Total Consumption Model (TCM).",
     },
+    // 03:45 PM - 04:00 PM - Entertainment
     {
-      time: "03:20 PM to 03:55 PM",
+      time: "15:45 PM to 16:00 PM",
       location: "Main Stage",
+      title: "ENTERTAINMENT",
+      description:
+        "Take a break and enjoy live entertainment. Network with fellow attendees and recharge before the next session.",
+    },
+    {
+      time: "15:20 PM to 15:55 PM",
+      location: "Stage 02",
       title:
         "Attracting More Players: What Factors Should African Operators Consider?",
       description: "",
       moderatorNames: ["Norman Ondego"],
     },
 
-    // 03:45 PM - 04:00 PM - Entertainment
-    {
-      time: "03:45 PM to 04:00 PM",
-      location: "Main Stage",
-      title: "ENTERTAINMENT",
-      description:
-        "Take a break and enjoy live entertainment. Network with fellow attendees and recharge before the next session.",
-    },
-
     // 04:05 PM - 04:40 PM - Women in Gaming
     {
-      time: "04:05 PM to 04:40 PM",
+      time: "16:05 PM to 16:40 PM",
       location: "Main Stage",
       title: "The Rise of Women in Africa’s Gaming Sector",
       moderatorNames: ["Emily Asava"],
       description:
         "Highlighting the increasing participation and influence of women in Africa’s gaming industry, and the importance of gender diversity for industry growth and innovation.",
     },
+    // 04:05 PM - 04:40 PM - Single full-width session
+    {
+      time: "16:05 PM to 16:40 PM",
+      location: "Stage 02",
+      title:
+        "Getting the Right Payment Gateway for Your Online Sportsbook or Casino?",
+      description:
+        "Guiding operators in selecting optimal payment gateways, ensuring secure, fast, and seamless transaction experiences for African players.",
+    },
 
     // 04:45 PM - 04:55 PM - Closing Remarks
     {
-      time: "04:45 PM to 04:55 PM",
+      time: "16:45 PM to 16:55 PM",
       location: "Main Stage",
       title: "CLOSING REMARKS (DAY 1)",
       description:
@@ -446,13 +462,19 @@ export const schedules = {
     },
 
     {
-      time: "06:30 PM to 08:00 PM",
+      time: "17:30 PM to 19:00 PM",
       location: "TBC",
       title: "VIP & VVIP Networking Event",
     },
 
     {
-      time: "09:00 PM to 11:30 PM",
+      time: "19:30 PM to 21:00 PM",
+      location: "TBC",
+      title: "Regulators' Dinner",
+    },
+
+    {
+      time: "21:30 PM to 23:30 PM",
       location: "TBC",
       title: "iGaming AFRIKA Awards Dinner",
     },
@@ -489,19 +511,19 @@ export const schedules = {
       location: "",
     },
     {
-      time: "12:40 PM - 1:15 PM",
+      time: "12:40 PM - 13:15 PM",
       title:
         "How Can We Best Implement Self-Exclusion Measures to Promote Responsible Gaming?",
       location: "Main Stage",
       description: "",
     },
     {
-      time: "01:30 PM - 03:00 PM",
+      time: "13:30 PM - 15:00 PM",
       title: "Women in Gaming Africa  Mentorship Program",
-      location: "TBC",
+      location: "MAAI hall, Sarit expo centre",
     },
     {
-      time: "02:25 PM to 03:00 PM",
+      time: "14:25 PM to 15:00 PM",
       location: "Stage 02",
       title:
         "Protecting Intellectual Property Rights in the Face of Rampant Clone Games",
@@ -509,7 +531,7 @@ export const schedules = {
         "Discussing strategies to safeguard IP rights amid the proliferation of clone games, ensuring originality and market integrity.",
     },
     {
-      time: "02:25 PM to 03:00 PM",
+      time: "14:25 PM to 15:00 PM",
       location: "Main Stage",
       title:
         "Impacts of Digital Assets and Fintech Innovation on Africa’s Gaming Ecosystem",
@@ -520,7 +542,7 @@ export const schedules = {
 
     // 03:10 PM - 03:45 PM - Two concurrent sessions
     {
-      time: "03:10 PM to 03:45 PM",
+      time: "15:10 PM to 15:45 PM",
       location: "Main Stage",
       title:
         "How Operators and Regulators Can Help Foster Genuine Corporate Social Responsibility in Africa’s Gambling Industry",
@@ -529,7 +551,7 @@ export const schedules = {
       moderatorNames: ["Tom Bwana"],
     },
     {
-      time: "03:10 PM to 03:45 PM",
+      time: "15:10 PM to 15:45 PM",
       location: "Stage 02",
       title:
         "Inside Africa’s Illegal Operator’s War: How regulators can fight back.",
@@ -540,7 +562,7 @@ export const schedules = {
 
     // 03:55 PM - 04:30 PM - Two concurrent sessions
     {
-      time: "03:55 PM to 04:30 PM",
+      time: "15:55 PM to 16:30 PM",
       location: "Main Stage",
       title: "Rapid Surge of Crash Games Shaking Africa’s Gambling Market",
       description:
@@ -548,7 +570,7 @@ export const schedules = {
       moderatorNames: ["Geoffrey Muindi"],
     },
     {
-      time: "03:55 PM to 04:30 PM",
+      time: "15:55 PM to 16:30 PM",
       location: "Stage 02",
       title: "Best Selling Games and Sportsbook or Casino Platforms in Africa",
       description:
@@ -556,38 +578,44 @@ export const schedules = {
       moderatorNames: ["Brian Ondieki"],
     },
 
-    // 04:05 PM - 04:40 PM - Single full-width session
     {
-      time: "04:05 PM to 04:40 PM",
-      location: "Main Stage",
+      time: "16:40 PM to 17:15 PM",
+      location: "Stage 02",
       title:
-        "Getting the Right Payment Gateway for Your Online Sportsbook or Casino?",
+        "What Attracts Players to Repeatedly and Consistently Bet at a Particular Gaming Site?",
       description:
-        "Guiding operators in selecting optimal payment gateways, ensuring secure, fast, and seamless transaction experiences for African players.",
+        "Description: A chat with punters - Understanding the key factors that keep gamblers loyal to specific gaming sites, including user experience, trust, rewards, and innovative offerings that influence long-term engagement.",
+      moderatorNames: ["Brian Ondieki"],
     },
 
     // 05:30 PM - 05:40 PM - Closing Remarks
     {
-      time: "05:30 PM to 05:40 PM",
+      time: "17:20 PM to 17:30 PM",
       location: "Main Stage",
       title: "Closing Remarks (Day 2)",
     },
 
-    // 06:00 PM - Other events
     {
-      time: "06:00 PM to 07:30 PM",
-      location: "TBC",
-      title: "Women in Gaming Africa (WiG) Networking Drinks",
+      time: "17:35 PM to 18:00 PM",
+      location: "Muina Hall, Sarit Expo Centre",
+      title: "Dance & Entertainment",
     },
 
+    // 06:00 PM - Other events
     {
-      time: "08:00 PM to 09:30 PM",
+      time: "18:30 PM to 19:30 PM",
       location: "TBC",
       title: "iGaming AFRIKA Konnect Space",
     },
 
     {
-      time: "10:00 PM to 02:30 AM",
+      time: "20:00 PM to 21:30 PM",
+      location: "TBC",
+      title: "Women in Gaming Africa (WiG) Networking Drinks",
+    },
+
+    {
+      time: "22:00 PM to 02:30 AM",
       location: "TBC",
       title: "Closing Party",
     },
@@ -600,13 +628,13 @@ export const schedules = {
       description: "",
     },
     {
-      time: "2:00 PM - 6:00 PM",
+      time: "14:00 PM - 18:00 PM",
       title: "Charity Soccer Tournament",
       location: "",
       description: "",
     },
     {
-      time: "6:00 PM - 6:30 PM",
+      time: "18:00 PM - 18:30 PM",
       title: "Dance & Entertainment",
       location: "",
       description: "",
