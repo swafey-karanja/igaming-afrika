@@ -655,7 +655,6 @@ export const plans = [
   {
     id: "price_1ScMl8CBe8Ewb1SiA8p4sfnA",
     label: "Standard Pass",
-    requirement: "Business Email registration required",
     price: 0,
     description: "Perfect for first-time attendees",
     note: "Note: Operators & Regulators to be Upgraded to VIP Pass Status Upon Approval",

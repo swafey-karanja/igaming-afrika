@@ -302,7 +302,7 @@ const EventTickets = () => {
                   {plan.description}
                 </p>
 
-                {plan.requirement && (
+                {/* {plan.requirement && (
                   <p
                     className={`text-sm mb-3 font-medium ${
                       plan.isPopular ? "text-green-100" : "text-red-600"
@@ -310,7 +310,7 @@ const EventTickets = () => {
                   >
                     {plan.requirement}
                   </p>
-                )}
+                )} */}
 
                 {/* {plan.note && (
                   <p
