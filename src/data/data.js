@@ -352,8 +352,7 @@ export const schedules = {
     },
     {
       time: "11:00 AM – 11:10 AM",
-      title:
-        "Chairperson’s Address (GRA) to officially open the summit by cutting a ribbon and pyro techniques.",
+      title: "Chairperson’s Address (GRA) to officially open the summit.",
       location: "Main stage",
       description: "",
     },

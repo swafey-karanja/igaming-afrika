@@ -180,16 +180,19 @@ const Hero = () => {
                 iGaming Operators & Regulators Only - Apply for the Free VIP
                 Pass
               </a>
-              <button
+              <a
                 className="bg-transparent cursor-pointer hover:bg-[#47cf8b] hover:bg-opacity-20 hover:text-white  transition-colors duration-300 text-[11px] lg:text-lg xl:text-base 2xl:text-md 3xl:text-lg text-[#14a45c] font-bold w-full py-2 xl:py-3 px-4 sm:px-16 border-3 border-lime-500 rounded-4xl whitespace-normal sm:whitespace-nowrap text-center"
-                onClick={() => {
-                  document.getElementById("eventTickets")?.scrollIntoView({
-                    behavior: "smooth",
-                  });
-                }}
+                // onClick={() => {
+                //   document.getElementById("eventTickets")?.scrollIntoView({
+                //     behavior: "smooth",
+                //   });
+                // }}
+                href="https://events.igamingafrika.com/affiliates/register/"
+                target="_blank"
+                rel="noopener noreferrer"
               >
-                Affiliates - Apply for the Free Standard Pass
-              </button>
+                Affiliates - Register for Free Here
+              </a>
             </div>
           </div>
         )}
