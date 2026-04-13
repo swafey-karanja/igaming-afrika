@@ -79,6 +79,7 @@ const EventDetails = () => {
     { name: "Become an Exhibitor", href: "#exhibitionPackages" },
     { name: "Event News", href: "#news" },
     { name: "Venue-Info", href: "#venueInfo" },
+    { name: "Accommodation", href: "#accommodation" },
   ];
 
   return (
