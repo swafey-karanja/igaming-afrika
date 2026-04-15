@@ -408,14 +408,13 @@ export const schedules = {
     },
 
     // 03:20 PM - 03:40 PM - Single session
-    // {
-    //   time: "15:20 PM to 15:40 PM",
-    //   location: "Main Stage",
-    //   title:
-    //     "Presentation: The Relationship between Sports Betting Behaviors and Gambling Harm for Adult Bettors in Nigeria.",
-    //   description:
-    //     "The Relationship between Sports Betting Behaviors and Gambling Harm for Adult Bettors in Nigeria, using the Total Consumption Model (TCM).",
-    // },
+    {
+      time: "15:20 PM to 15:40 PM",
+      location: "Main Stage",
+      title: "Fireside Chat",
+      description: "Technological Advancements versus Casino & Retail Gaming.",
+      moderatorNames: ["Zzini Oluchi Ekeh"],
+    },
     // 03:45 PM - 04:00 PM - Entertainment
     {
       time: "15:45 PM to 16:00 PM",
