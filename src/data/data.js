@@ -495,7 +495,7 @@ export const schedules = {
       location: "Main Stage",
       description:
         "Exploring how integrating local esports content into betting platforms can boost engagement, attract youth, and transform the betting landscape.",
-      moderatorNames: [""],
+      moderatorNames: ["Brian Ondieki"],
     },
     {
       time: "11:30 AM – 12:05 PM",
@@ -520,7 +520,7 @@ export const schedules = {
         "How Can We Best Implement Self-Exclusion Measures to Promote Responsible Gaming?",
       location: "Main Stage",
       description: "",
-      moderatorNames: [""],
+      moderatorNames: ["Fisayo Oke"],
     },
     {
       time: "13:30 PM - 15:00 PM",
@@ -534,7 +534,7 @@ export const schedules = {
         "Protecting Intellectual Property Rights in the Face of Rampant Clone Games",
       description:
         "Discussing strategies to safeguard IP rights amid the proliferation of clone games, ensuring originality and market integrity.",
-      moderatorNames: ["Ngabe Franklin Njumbe"],
+      moderatorNames: ["Philip Aijah"],
     },
     {
       time: "14:25 PM to 15:00 PM",
@@ -543,7 +543,7 @@ export const schedules = {
         "Impacts of Digital Assets and Fintech Innovation on Africa’s Gaming Ecosystem",
       description:
         "Analyzing the role of cryptocurrencies and digital assets in Africa’s gambling ecosystem, and their potential to revolutionize payment and ownership models.",
-      moderatorNames: [""],
+      moderatorNames: ["Frank Deya"],
     },
 
     // 03:10 PM - 03:45 PM - Two concurrent sessions
@@ -554,7 +554,7 @@ export const schedules = {
         "How Operators and Regulators Can Help Foster Genuine Corporate Social Responsibility in Africa’s Gambling Industry",
       description:
         "Exploring how operators and regulators can foster meaningful CSR initiatives that benefit communities and promote ethical industry standards.",
-      moderatorNames: [""],
+      moderatorNames: ["Garron Whitesmans"],
     },
     {
       time: "15:10 PM to 15:45 PM",
@@ -581,7 +581,7 @@ export const schedules = {
       title: "Best Selling Games and Sportsbook or Casino Platforms in Africa",
       description:
         "Showcasing key features of top-performing games and platforms tailored to African players, emphasizing features that drive engagement and retention.",
-      moderatorNames: ["Brian Ondieki"],
+      moderatorNames: ["Momo Amadu Alhassan"],
     },
 
     {
@@ -591,7 +591,7 @@ export const schedules = {
         "What Attracts Players to Repeatedly and Consistently Bet at a Particular Gaming Site?",
       description:
         "Description: A chat about punters - Understanding the key factors that keep gamblers loyal to specific gaming sites, including user experience, trust, rewards, and innovative offerings that influence long-term engagement.",
-      moderatorNames: [""],
+      moderatorNames: ["Desiree Scott"],
     },
 
     // 05:30 PM - 05:40 PM - Closing Remarks
