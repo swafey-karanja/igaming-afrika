@@ -520,7 +520,7 @@ export const schedules = {
         "How Can We Best Implement Self-Exclusion Measures to Promote Responsible Gaming?",
       location: "Main Stage",
       description: "",
-      moderatorNames: ["Fisayo Oke"],
+      moderatorNames: ["Tumelo Mokoena"],
     },
     {
       time: "13:30 PM - 15:00 PM",
@@ -586,7 +586,7 @@ export const schedules = {
 
     {
       time: "16:40 PM to 17:15 PM",
-      location: "Stage 02",
+      location: "Main Stage",
       title:
         "What Attracts Players to Repeatedly and Consistently Bet at a Particular Gaming Site?",
       description:
