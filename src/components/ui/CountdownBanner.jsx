@@ -1,11 +1,41 @@
 import { Clock } from "lucide-react";
 import { useEffect, useState } from "react";
 
-const DEADLINE = new Date("2026-04-20T23:59:59");
+// Starting date: April 20, 2026 (already passed)
+const START_DATE = new Date("2026-04-20T00:00:00");
+const CYCLE_DAYS = 3; // Change every 3 days
 
 const useCountdown = () => {
-  const getTimeLeft = () => {
-    const diff = DEADLINE - new Date();
+  const [currentDeadline, setCurrentDeadline] = useState(null);
+  const [timeLeft, setTimeLeft] = useState(null);
+
+  // Calculate the current deadline based on the cycle
+  const calculateCurrentDeadline = () => {
+    const now = new Date();
+
+    // If we haven't reached the start date yet, use the start date
+    if (now < START_DATE) {
+      return START_DATE;
+    }
+
+    // Calculate how many 3-day cycles have passed since the start date
+    const msPerCycle = CYCLE_DAYS * 24 * 60 * 60 * 1000;
+    const timeSinceStart = now.getTime() - START_DATE.getTime();
+
+    // Calculate which cycle we're currently in (0-based)
+    const currentCycle = Math.floor(timeSinceStart / msPerCycle);
+
+    // The deadline is the END of the current cycle (start of next cycle)
+    // This means the countdown shows time until the next price increase
+    const nextDeadline = new Date(
+      START_DATE.getTime() + (currentCycle + 1) * msPerCycle,
+    );
+
+    return nextDeadline;
+  };
+
+  const getTimeLeft = (deadline) => {
+    const diff = deadline.getTime() - new Date().getTime();
     if (diff <= 0) return null;
     return {
       days: Math.floor(diff / (1000 * 60 * 60 * 24)),
@@ -14,29 +44,54 @@ const useCountdown = () => {
       seconds: Math.floor((diff / 1000) % 60),
     };
   };
-  const [timeLeft, setTimeLeft] = useState(getTimeLeft);
+
   useEffect(() => {
-    const timer = setInterval(() => setTimeLeft(getTimeLeft()), 1000);
+    const updateCountdown = () => {
+      const deadline = calculateCurrentDeadline();
+      setCurrentDeadline(deadline);
+      setTimeLeft(getTimeLeft(deadline));
+    };
+
+    // Initial update
+    updateCountdown();
+
+    // Update every second
+    const timer = setInterval(updateCountdown, 1000);
+
     return () => clearInterval(timer);
   }, []);
-  return timeLeft;
+
+  return { timeLeft, currentDeadline };
 };
 
 export const CountdownBanner = () => {
-  const timeLeft = useCountdown();
-  if (!timeLeft) return null;
+  const { timeLeft, currentDeadline } = useCountdown();
+
+  if (!timeLeft || !currentDeadline) return null;
+
   const pad = (n) => String(n).padStart(2, "0");
+
+  // Format the deadline date for display
+  const formatDeadlineDate = (date) => {
+    return date.toLocaleDateString("en-US", {
+      month: "long",
+      day: "numeric",
+      year: "numeric",
+    });
+  };
+
   const labelColor = "text-green-600";
   const unitBg = "bg-gray-100";
   const valueColor = "text-green-700";
   const separatorColor = "text-gray-400";
+
   return (
     <div className="px-4 py-3 flex flex-col items-center gap-3.5">
       <div
         className={`flex items-center gap-1.5 text-[11px] font-bold uppercase tracking-widest ${labelColor}`}
       >
         <Clock className="w-3 h-3" />
-        Prices increase on 20th april
+        Prices increase on {formatDeadlineDate(currentDeadline)}
       </div>
       <div className="flex items-center gap-1.5 pt-1.5">
         {[
