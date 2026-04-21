@@ -415,14 +415,7 @@ export const schedules = {
       description: "Technological Advancements versus Casino & Retail Gaming.",
       moderatorNames: ["Zzini Oluchi Ekeh"],
     },
-    // 03:45 PM - 04:00 PM - Entertainment
-    {
-      time: "15:45 PM to 16:00 PM",
-      location: "Main Stage",
-      title: "ENTERTAINMENT",
-      description:
-        "Take a break and enjoy live entertainment. Network with fellow attendees and recharge before the next session.",
-    },
+
     {
       time: "15:20 PM to 15:55 PM",
       location: "Stage 02",
@@ -430,6 +423,14 @@ export const schedules = {
         "Attracting More Players: What Factors Should African Operators Consider?",
       description: "",
       moderatorNames: ["Norman Ondego"],
+    },
+    // 03:45 PM - 04:00 PM - Entertainment
+    {
+      time: "15:45 PM to 16:00 PM",
+      location: "Main Stage",
+      title: "ENTERTAINMENT",
+      description:
+        "Take a break and enjoy live entertainment. Network with fellow attendees and recharge before the next session.",
     },
 
     // 04:05 PM - 04:40 PM - Women in Gaming
@@ -449,7 +450,7 @@ export const schedules = {
         "Getting the Right Payment Gateway for Your Online Sportsbook or Casino?",
       description:
         "Guiding operators in selecting optimal payment gateways, ensuring secure, fast, and seamless transaction experiences for African players.",
-      moderatorNames: [""],
+      moderatorNames: ["Lucy Manzi"],
     },
 
     // 04:45 PM - 04:55 PM - Closing Remarks
@@ -480,6 +481,13 @@ export const schedules = {
     },
   ],
   2: [
+    {
+      time: "10:30 AM to 10:45 AM",
+      location: "Main Stage",
+      title: "ENTERTAINMENT",
+      description:
+        "Take a break and enjoy live entertainment. Network with fellow attendees and recharge before the next session.",
+    },
     {
       time: "10:45 AM – 11:20 AM",
       title:
@@ -661,7 +669,7 @@ export const schedules = {
 export const plans = [
   {
     id: "price_1ScMl8CBe8Ewb1SiA8p4sfnA",
-    label: "Standard Pass",
+    label: "Standard",
     price: 0,
     description: "Perfect for first-time attendees",
     note: "Note: Operators & Regulators to be Upgraded to VIP Pass Status Upon Approval",
@@ -676,8 +684,8 @@ export const plans = [
   },
   {
     id: "price_1Sc0LHCBe8Ewb1SiuNgT9QqM",
-    label: "Premium Pass",
-    price: 200,
+    label: "Premium",
+    price: 230,
     doorPrice: 350,
     description: "Most comprehensive experience",
     mealsVoucher: 25, // ✅ structured
@@ -719,8 +727,8 @@ export const plans = [
   // },
   {
     id: "price_1Sc3xlCBe8Ewb1SihYH6Okgn",
-    label: "VVIP Pass",
-    price: 600,
+    label: "VVIP",
+    price: 670,
     doorPrice: 950,
     isPopular: true,
     description: "Luxury experience",
