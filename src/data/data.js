@@ -528,7 +528,7 @@ export const schedules = {
         "How Can We Best Implement Self-Exclusion Measures to Promote Responsible Gaming?",
       location: "Main Stage",
       description: "",
-      moderatorNames: ["Tumelo Mokoena"],
+      moderatorNames: ["Fisayo Oke"],
     },
     {
       time: "13:30 PM - 15:00 PM",
