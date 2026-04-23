@@ -404,7 +404,7 @@ export const schedules = {
       title: "The balance between profitability and responsible gaming",
       description:
         "Discussing how operators can balance maximizing profits while promoting responsible gaming practices to ensure player protection and industry sustainability.",
-      moderatorNames: ["Zzini Oluchi Ekeh"],
+      moderatorNames: ["Muhizi Daniel"],
     },
 
     // 03:20 PM - 03:40 PM - Single session
@@ -495,7 +495,7 @@ export const schedules = {
       location: "Main Stage",
       description:
         "Drawing valuable insights from developed markets to inform Africa's gaming growth strategies, focusing on technological innovations and regulatory best practices.",
-      moderatorNames: ["Job Weku"],
+      moderatorNames: ["Zzini Oluchi Ekeh"],
     },
     {
       time: "11:30 AM – 12:05 PM",
