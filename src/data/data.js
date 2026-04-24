@@ -495,7 +495,7 @@ export const schedules = {
       location: "Main Stage",
       description:
         "Drawing valuable insights from developed markets to inform Africa's gaming growth strategies, focusing on technological innovations and regulatory best practices.",
-      moderatorNames: ["Zzini Oluchi Ekeh"],
+      moderatorNames: ["Job Weku"],
     },
     {
       time: "11:30 AM – 12:05 PM",
@@ -581,7 +581,7 @@ export const schedules = {
       title: "Rapid Surge of Crash Games Shaking Africa’s Gambling Market",
       description:
         "Surge of Crash Games in the Gaming Industry -Analyzing the rapid rise of crash games in Africa’s gambling scene, highlighting player appeal, market impact, and the opportunities and risks these games present to operators.",
-      moderatorNames: ["Geoffrey Muindi"],
+      moderatorNames: ["Zzini Oluchi Ekeh"],
     },
     {
       time: "15:55 PM to 16:30 PM",
