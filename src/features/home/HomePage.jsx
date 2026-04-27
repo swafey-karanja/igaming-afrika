@@ -93,7 +93,7 @@ const Home = () => {
         <EventTickets />
       </motion.div>
 
-      <motion.div
+      {/* <motion.div
         variants={fadeInUp}
         initial="hidden"
         whileInView="visible"
@@ -109,7 +109,7 @@ const Home = () => {
         viewport={{ once: true }}
       >
         <ExhibitionPackages />
-      </motion.div>
+      </motion.div> */}
 
       {/* <motion.div
         variants={fadeInUp}

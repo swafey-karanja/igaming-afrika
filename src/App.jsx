@@ -69,7 +69,7 @@ const App = () => {
         <ScrollToTop />
         <Routes>
           <Route path="/" element={<Home />} />
-          <Route path="/register" element={<EventApplicationForm />} />
+          {/* <Route path="/register" element={<EventApplicationForm />} /> */}
           <Route path="/publications/:category" element={<Publications />} />
           <Route
             path="/speaker-registration"
