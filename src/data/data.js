@@ -315,7 +315,7 @@ export const schedules = {
     {
       time: "16:30 PM – 22:30 PM",
       title: "Pre-registration of Delegates & Welcome reception",
-      location: "TBC",
+      location: "Hyatt Regency",
     },
   ],
   1: [
@@ -464,20 +464,21 @@ export const schedules = {
 
     {
       time: "17:30 PM to 19:00 PM",
-      location: "TBC",
+      location: "Alloy",
       title: "VIP & VVIP Networking Event",
     },
 
     {
       time: "19:30 PM to 21:00 PM",
-      location: "TBC",
+      location: "Hyatt Regency",
       title: "Regulators' Dinner",
     },
 
     {
       time: "21:30 PM to 23:30 PM",
-      location: "TBC",
+      location: "Hyatt Regency",
       title: "iGaming AFRIKA Awards Dinner",
+      description: "Awards dinner dress code - Black with a touch of Gold",
     },
   ],
   2: [
@@ -532,8 +533,8 @@ export const schedules = {
     },
     {
       time: "13:30 PM - 15:00 PM",
-      title: "Women in Gaming Africa  Mentorship Program",
-      location: "MAAI hall, Sarit expo centre",
+      title: "Women in Gaming Africa Mentorship Program",
+      location: "Muina Hall at Sarit Expo Centre",
     },
     {
       time: "14:25 PM to 15:00 PM",
@@ -618,19 +619,19 @@ export const schedules = {
     // 06:00 PM - Other events
     {
       time: "18:30 PM to 19:30 PM",
-      location: "TBC",
+      location: "Hyatt Regency",
       title: "iGaming AFRIKA Konnect Space",
     },
 
     {
       time: "20:00 PM to 21:30 PM",
-      location: "TBC",
+      location: "Alloy",
       title: "Women in Gaming Africa (WiG) Networking Drinks",
     },
 
     {
       time: "22:00 PM to 02:30 AM",
-      location: "TBC",
+      location: "Nairobi Street Kitchen",
       title: "Closing Party",
     },
   ],
@@ -644,7 +645,7 @@ export const schedules = {
     {
       time: "14:00 PM - 18:00 PM",
       title: "Charity Soccer Tournament",
-      location: "",
+      location: "The Goan Gymkhana",
       description: "",
     },
     {
