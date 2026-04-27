@@ -8,7 +8,6 @@ import EventSpeakers from "./components/EventSpeakers";
 import SponsorshipPackages from "../sponsorship/SponsorshipPackages";
 import ExhibitionPackages from "../exhibition/ExhibitionPackages";
 import EventTickets from "./components/EventTickets";
-// import EventGallery from "./EventGallery";
 import EventNews from "./components/EventNews";
 import FAQs from "./components/FAQs";
 import VenueInfo from "./components/VenueInfo";

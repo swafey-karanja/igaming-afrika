@@ -8,7 +8,7 @@ import {
   FaFacebook,
   FaSpotify,
 } from "react-icons/fa";
-import { countries, menuItems, options, awards } from "../../data/data";
+import { menuItems, awards } from "../../data/data";
 import DropdownMenu, { NewsDropdown } from "../../components/ui/DropdownMenus";
 
 const Navbar = () => {
@@ -56,7 +56,7 @@ const Navbar = () => {
           : "bg-transparent text-black"
       }`}
     >
-      <div className="px-4 sm:px-6 lg:px-8 mx-auto max-w-[1550px]">
+      <div className="px-4 sm:px-6 lg:px-8 mx-auto container">
         <div className="flex items-center xl:justify-between xl:flex-row relative">
           {/* Hamburger Menu - Only visible on small screens */}
           <div
@@ -94,20 +94,11 @@ const Navbar = () => {
             }`}
           >
             {isHomePage ? (
-              // ✅ Home page version – original logo, external link
-              <a
-                href="https://igamingafrika.com/"
-                target="_blank"
-                rel="noopener noreferrer"
-                title="iGaming Afrika"
-                className="inline-flex rounded-md"
-              >
-                <img
-                  className="w-auto h-10 sm:h-12 md:h-16 lg:h-18"
-                  src="https://igamingafrika.com/wp-content/uploads/2023/04/iGaming-Logo-2b.png"
-                  alt="iGaming Afrika"
-                />
-              </a>
+              <img
+                className="w-auto h-10 sm:h-12 md:h-16 lg:h-18"
+                src="https://igamingafrika.com/wp-content/uploads/2023/04/iGaming-Logo-2b.png"
+                alt="iGaming Afrika"
+              />
             ) : (
               // ✅ Other pages – Summit logo, internal NavLink
               <NavLink
@@ -130,32 +121,12 @@ const Navbar = () => {
           </div>
 
           {/* Desktop Nav */}
-          <nav className="hidden xl:flex lg:items-center lg:justify-center lg:space-x-6 whitespace-nowrap w-full max-w-3xl lg:max-w-4xl">
-            {/* <a
-              target="_blank"
-              href="https://awards.igasummit.com/"
-              className="text-[10px] md:text-[12px] uppercase font-bold tracking-wide cursor-pointer"
-            >
-              AWARDS
-            </a> */}
-            <NewsDropdown isScrolled={isScrolled} isInSidebar={false} />
-            <DropdownMenu
-              label="countries"
-              isScrolled={isScrolled}
-              isInSidebar={false}
-              items={countries}
-            />
+          <nav className="hidden xl:flex lg:items-center lg:justify-end lg:space-x-6 whitespace-nowrap w-full">
             <DropdownMenu
               label="Publications"
               isScrolled={isScrolled}
               isInSidebar={false}
               items={menuItems}
-            />
-            <DropdownMenu
-              label="iGaming Directory"
-              isScrolled={isScrolled}
-              isInSidebar={false}
-              items={options}
             />
             <DropdownMenu
               label="Awards"
@@ -191,17 +162,6 @@ const Navbar = () => {
           </nav>
         </div>
       </div>
-
-      {/* Mobile Sidebar Overlay */}
-      {/* <div
-        className={`fixed inset-0 z-20 bg-opacity-60 xl:hidden transition-opacity duration-300 ${
-          isSidebarOpen
-            ? "opacity-100 pointer-events-auto"
-            : "opacity-0 pointer-events-none"
-        }`}
-        onClick={() => setSidebarOpen(!isSidebarOpen)}
-        aria-hidden="true"
-      /> */}
 
       {/* Mobile Sidebar */}
       <div
@@ -239,24 +199,11 @@ const Navbar = () => {
             <div className="p-6 space-y-4">
               {/* Navigation Menu */}
               <nav className="space-y-2">
-                <NewsDropdown isScrolled={isScrolled} isInSidebar={true} />
-                <DropdownMenu
-                  label="Countries"
-                  isScrolled={isScrolled}
-                  isInSidebar={true}
-                  items={countries}
-                />
                 <DropdownMenu
                   label="Publications"
                   isScrolled={isScrolled}
                   isInSidebar={true}
                   items={menuItems}
-                />
-                <DropdownMenu
-                  label="iGaming Directory"
-                  isScrolled={isScrolled}
-                  isInSidebar={true}
-                  items={options}
                 />
                 <DropdownMenu
                   label="Awards"
