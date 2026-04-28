@@ -412,7 +412,8 @@ export const schedules = {
       time: "15:20 PM to 15:40 PM",
       location: "Main Stage",
       title: "Fireside Chat",
-      description: "Technological Advancements versus Casino & Retail Gaming.",
+      description:
+        "This fireside chat explores how cutting-edge technologies are revolutionizing the land-based casino and retail gaming sectors across Africa. It highlights the shift towards mobile gaming solutions, sophisticated gaming platforms, and modern gaming machines, shaping a new era of entertainment on the continent.",
       moderatorNames: ["Zzini Oluchi Ekeh"],
     },
 
@@ -421,8 +422,9 @@ export const schedules = {
       location: "Stage 02",
       title:
         "Attracting More Players: What Factors Should African Operators Consider?",
-      description: "",
-      moderatorNames: ["Norman Ondego"],
+      description:
+        "Providing insights into player preferences and strategic tactics for operators to attract and retain more players in the competitive African gaming market.",
+      moderatorNames: ["James Tumbo"],
     },
     // 03:45 PM - 04:00 PM - Entertainment
     {
@@ -600,7 +602,7 @@ export const schedules = {
         "What Attracts Players to Repeatedly and Consistently Bet at a Particular Gaming Site?",
       description:
         "Description: A chat about punters - Understanding the key factors that keep gamblers loyal to specific gaming sites, including user experience, trust, rewards, and innovative offerings that influence long-term engagement.",
-      moderatorNames: ["Desiree Scott"],
+      moderatorNames: ["Felix Mulandi"],
     },
 
     // 05:30 PM - 05:40 PM - Closing Remarks
@@ -644,7 +646,7 @@ export const schedules = {
     },
     {
       time: "14:00 PM - 18:00 PM",
-      title: "Charity Soccer Tournament",
+      title: "Charity Soccer Tournament(Supported by Choplife Gaming)",
       location: "The Goan Gymkhana",
       description: "",
     },
