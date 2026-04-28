@@ -95,8 +95,8 @@ const Navbar = () => {
           >
             {isHomePage ? (
               <img
-                className="w-auto h-10 sm:h-12 md:h-16 lg:h-18"
-                src="https://igamingafrika.com/wp-content/uploads/2023/04/iGaming-Logo-2b.png"
+                className="w-auto h-10 sm:h-12 md:h-16 lg:h-20"
+                src="/Summit_Logo.png"
                 alt="iGaming Afrika"
               />
             ) : (
