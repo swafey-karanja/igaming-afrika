@@ -4,6 +4,7 @@ import { useState, useEffect } from "react";
 import { ArrowRight, Clock, Mail } from "lucide-react";
 import { allFeatures, plans as staticPlans } from "../../../data/data";
 import Header from "../../../components/ui/Header";
+import PaymentModal from "../../../components/ui/PaymentModal";
 
 const supportStaff = [
   {
@@ -282,6 +283,13 @@ const SupportTeam = () => {
 
 const EventTickets = () => {
   const [plans, setPlans] = useState([]);
+  const [modalOpen, setModalOpen] = useState(false);
+  const [selectedPlan, setSelectedPlan] = useState(null);
+
+  const handleBuyClick = (plan) => {
+    setSelectedPlan(plan);
+    setModalOpen(true);
+  };
 
   useEffect(() => {
     // Calculate dynamic sale prices for each plan
@@ -611,27 +619,20 @@ const EventTickets = () => {
 
               {/* CTA Button */}
               <div className="px-6 pb-4">
-                <a
-                  target="_blank"
-                  href="https://events.igasummit.com/en/registration-form"
-                  rel="noopener noreferrer"
+                <motion.button
+                  onClick={() => handleBuyClick(plan)}
+                  whileHover={{ scale: 1.02 }}
+                  whileTap={{ scale: 0.98 }}
+                  style={!plan.isPopular ? { backgroundColor: "#14a45c" } : {}}
+                  className={`w-full py-3 px-6 rounded-xl font-semibold text-sm transition-all duration-200 cursor-pointer flex items-center justify-center ${
+                    plan.isPopular
+                      ? "bg-white text-green-700 hover:bg-gray-50 shadow-lg"
+                      : "text-white hover:bg-green-700 shadow-md hover:shadow-lg"
+                  }`}
                 >
-                  <motion.button
-                    whileHover={{ scale: 1.02 }}
-                    whileTap={{ scale: 0.98 }}
-                    style={
-                      !plan.isPopular ? { backgroundColor: "#14a45c" } : {}
-                    }
-                    className={`w-full py-3 px-6 rounded-xl font-semibold text-sm transition-all duration-200 cursor-pointer flex items-center justify-center ${
-                      plan.isPopular
-                        ? "bg-white text-green-700 hover:bg-gray-50 shadow-lg"
-                        : "text-white hover:bg-green-700 shadow-md hover:shadow-lg"
-                    }`}
-                  >
-                    {isFree ? "Register Now" : "Buy Now"}
-                    <ArrowRight className="ml-2 w-4 h-4 font-bold" />
-                  </motion.button>
-                </a>
+                  {isFree ? "Register Now" : "Buy Now"}
+                  <ArrowRight className="ml-2 w-4 h-4 font-bold" />
+                </motion.button>
               </div>
 
               {/* Decorative Elements */}
@@ -647,6 +648,13 @@ const EventTickets = () => {
 
       {/* Support Staff */}
       <SupportTeam />
+
+      {/* Payment Gateway Modal */}
+      <PaymentModal
+        open={modalOpen}
+        onClose={() => setModalOpen(false)}
+        plan={selectedPlan}
+      />
     </section>
   );
 };
