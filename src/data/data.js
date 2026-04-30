@@ -320,39 +320,45 @@ export const schedules = {
   ],
   1: [
     {
-      time: "09:20 AM – 9:55 AM",
+      time: "09:10 AM – 9:45 AM",
       title: "Entertainment, National Anthem and prayers",
       location: "Main stage",
       description:
         "Entertainment to start of the day along with the Kenyan and East African national anthems and finally prayers(Christian, Hindu and Muslim) to bless the event.",
     },
     {
-      time: "10:00 AM – 10:10 AM",
+      time: "09:50 AM – 10:00 AM",
       title: "Welcome remarks",
       location: "Main stage",
       description: "Opening remarks from the event hosts",
     },
     {
-      time: "10:15 AM - 10:25 AM",
+      time: "10:05 AM - 10:20 AM",
       title: "Opening Speech",
       location: "Main Stage",
       description: "Join us for an inspiring opening speech.",
     },
     {
-      time: "10:30 AM – 10:40 AM",
-      title: "Government of Kenya office Representative address.",
+      time: "10:25 AM – 10:35 AM",
+      title: "Nairobi County Governor's address.",
+      location: "Main stage",
+      description: "",
+    },
+    {
+      time: "10:35 AM – 10:45 AM",
+      title: "Kenya Revenue Authority Address",
       location: "Main stage",
       description: "",
     },
     {
       time: "10:45 AM – 10:55 AM",
-      title: "Summit Keynote address",
+      title: "GRA Director General Address.",
       location: "Main stage",
       description: "",
     },
     {
       time: "11:00 AM – 11:10 AM",
-      title: "Chairperson’s Address (GRA) to officially open the summit.",
+      title: "Keynote Address and Official Opening of the Summit.",
       location: "Main stage",
       description: "",
     },
