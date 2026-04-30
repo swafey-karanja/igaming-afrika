@@ -507,6 +507,10 @@ export const schedules = {
       moderatorNames: ["Job Weku"],
     },
     {
+      time: "12:00 PM - 14:00 PM",
+      title: "Women in Gaming Mentorship Program",
+    },
+    {
       time: "11:30 AM – 12:05 PM",
       title: "The Positive Shift of Bookies Adopting Local eSports Content",
       location: "Main Stage",
@@ -622,6 +626,11 @@ export const schedules = {
       time: "17:35 PM to 18:00 PM",
       location: "Muina Hall, Sarit Expo Centre",
       title: "Dance & Entertainment",
+    },
+
+    {
+      time: "18:00 PM - 21:00 PM",
+      title: "Women in Gaming Networking Drinks",
     },
 
     // 06:00 PM - Other events
