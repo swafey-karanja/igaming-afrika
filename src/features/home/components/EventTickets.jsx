@@ -283,13 +283,13 @@ const SupportTeam = () => {
 
 const EventTickets = () => {
   const [plans, setPlans] = useState([]);
-  const [modalOpen, setModalOpen] = useState(false);
-  const [selectedPlan, setSelectedPlan] = useState(null);
+  // const [modalOpen, setModalOpen] = useState(false);
+  // const [selectedPlan, setSelectedPlan] = useState(null);
 
-  const handleBuyClick = (plan) => {
-    setSelectedPlan(plan);
-    setModalOpen(true);
-  };
+  // const handleBuyClick = (plan) => {
+  //   setSelectedPlan(plan);
+  //   setModalOpen(true);
+  // };
 
   useEffect(() => {
     // Calculate dynamic sale prices for each plan
@@ -636,8 +636,11 @@ const EventTickets = () => {
                     </motion.button>
                   </a>
                 ) : (
-                  <motion.button
-                    onClick={() => handleBuyClick(plan)}
+                  <motion.a
+                    // onClick={() => handleBuyClick(plan)}
+                    href="https://events.igasummit.com/en/registration-form"
+                    target="_blank"
+                    rel="noopener noreferrer"
                     whileHover={{ scale: 1.02 }}
                     whileTap={{ scale: 0.98 }}
                     style={
@@ -651,7 +654,7 @@ const EventTickets = () => {
                   >
                     Buy Now
                     <ArrowRight className="ml-2 w-4 h-4 font-bold" />
-                  </motion.button>
+                  </motion.a>
                 )}
               </div>
 
@@ -670,11 +673,11 @@ const EventTickets = () => {
       <SupportTeam />
 
       {/* Payment Gateway Modal */}
-      <PaymentModal
+      {/* <PaymentModal
         open={modalOpen}
         onClose={() => setModalOpen(false)}
         plan={selectedPlan}
-      />
+      /> */}
     </section>
   );
 };
