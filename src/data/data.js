@@ -626,7 +626,8 @@ export const schedules = {
 
     {
       time: "18:00 PM - 21:00 PM",
-      title: "Women in Gaming Networking Drinks",
+      location: "Alloy",
+      title: "Women in Gaming Africa (WiG) Networking Drinks",
     },
 
     // 06:00 PM - Other events
@@ -634,12 +635,6 @@ export const schedules = {
       time: "18:30 PM to 19:30 PM",
       location: "Hyatt Regency",
       title: "iGaming AFRIKA Konnect Space",
-    },
-
-    {
-      time: "20:00 PM to 21:30 PM",
-      location: "Alloy",
-      title: "Women in Gaming Africa (WiG) Networking Drinks",
     },
 
     {
