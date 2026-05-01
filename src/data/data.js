@@ -508,7 +508,8 @@ export const schedules = {
     },
     {
       time: "12:00 PM - 14:00 PM",
-      title: "Women in Gaming Mentorship Program",
+      title: "Women in Gaming Africa Mentorship Program",
+      location: "Muina Hall at Sarit Expo Centre",
     },
     {
       time: "11:30 AM – 12:05 PM",
@@ -542,11 +543,6 @@ export const schedules = {
       location: "Main Stage",
       description: "",
       moderatorNames: ["Tumelo Mokoena"],
-    },
-    {
-      time: "13:30 PM - 15:00 PM",
-      title: "Women in Gaming Africa Mentorship Program",
-      location: "Muina Hall at Sarit Expo Centre",
     },
     {
       time: "14:25 PM to 15:00 PM",
