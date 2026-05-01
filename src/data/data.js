@@ -645,13 +645,13 @@ export const schedules = {
   ],
   3: [
     {
-      time: "5:30 AM - 11:30 AM",
+      time: "5:00 AM - 11:00 AM",
       title: "Safari Tour ",
       location: "Nairobi National park",
       description: "",
     },
     {
-      time: "14:00 PM - 18:00 PM",
+      time: "12:00 PM - 17:00 PM",
       title: "Charity Soccer Tournament(Supported by Choplife Gaming)",
       location: "The Goan Gymkhana",
       description: "",
