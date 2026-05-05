@@ -37,141 +37,6 @@ const DOOR_PRICES = {
   standard: 0,
 };
 
-// Base sale prices for each plan type (starting prices)
-const BASE_SALE_PRICES = {
-  premium: 230,
-  vvip: 670,
-  standard: 0,
-};
-
-// Price increase amounts per cycle (3 days)
-const PRICE_INCREMENT = {
-  premium: 30,
-  vvip: 70,
-};
-
-// Number of days between price increases
-const PRICE_INCREASE_INTERVAL_DAYS = 3;
-
-// Start date for price tracking (when initial prices are valid)
-// Set this to the date when the event pricing first launched
-const START_DATE = new Date("2026-04-20T00:00:00");
-
-// Calculate the current sale price based on cycles passed since START_DATE
-const calculateCurrentSalePrice = (planType, basePrice, incrementAmount) => {
-  if (planType === "standard") return 0;
-
-  const now = new Date();
-  const diffInMs = now - START_DATE;
-  const cyclesPassed = Math.floor(
-    diffInMs / (PRICE_INCREASE_INTERVAL_DAYS * 24 * 60 * 60 * 1000),
-  );
-
-  // Sale price increases by incrementAmount every 3 days
-  const currentPrice = Math.max(0, basePrice + cyclesPassed * incrementAmount);
-  return currentPrice;
-};
-
-// Get the fixed door price (constant, never changes)
-const getDoorPrice = (planType) => {
-  if (planType === "standard") return 0;
-  return DOOR_PRICES[planType];
-};
-
-// Calculate savings (doorPrice - currentSalePrice)
-const calculateSavings = (doorPrice, currentSalePrice) => {
-  return Math.max(0, doorPrice - currentSalePrice);
-};
-
-// Get the next price increase date
-const getNextIncreaseDate = () => {
-  const now = new Date();
-  const diffInMs = now - START_DATE;
-  const cyclesPassed = Math.floor(
-    diffInMs / (PRICE_INCREASE_INTERVAL_DAYS * 24 * 60 * 60 * 1000),
-  );
-  const nextIncrease = new Date(START_DATE);
-  nextIncrease.setDate(
-    START_DATE.getDate() + (cyclesPassed + 1) * PRICE_INCREASE_INTERVAL_DAYS,
-  );
-  return nextIncrease;
-};
-
-// Custom hook for countdown to next price increase
-const usePriceIncreaseCountdown = () => {
-  const getTimeLeft = () => {
-    const nextDate = getNextIncreaseDate();
-    const diff = nextDate - new Date();
-    if (diff <= 0) return null;
-    return {
-      days: Math.floor(diff / (1000 * 60 * 60 * 24)),
-      hours: Math.floor((diff / (1000 * 60 * 60)) % 24),
-      minutes: Math.floor((diff / (1000 * 60)) % 60),
-      seconds: Math.floor((diff / 1000) % 60),
-    };
-  };
-  const [timeLeft, setTimeLeft] = useState(getTimeLeft);
-  useEffect(() => {
-    const timer = setInterval(() => setTimeLeft(getTimeLeft()), 1000);
-    return () => clearInterval(timer);
-  }, []);
-  return timeLeft;
-};
-
-// Countdown banner component
-const CountdownBanner = ({ isPopular, planType }) => {
-  const timeLeft = usePriceIncreaseCountdown();
-  if (!timeLeft) return null;
-  const pad = (n) => String(n).padStart(2, "0");
-  const labelColor = isPopular ? "text-green-100" : "text-gray-500";
-  const unitBg = isPopular ? "bg-white/10" : "bg-gray-100";
-  const valueColor = isPopular ? "text-white" : "text-gray-800";
-  const separatorColor = isPopular ? "text-green-100" : "text-gray-400";
-
-  const incrementAmount = planType === "premium" ? "$30" : "$70";
-
-  return (
-    <div className="px-4 py-3 flex flex-col items-center gap-1.5">
-      <div
-        className={`flex items-center gap-1.5 text-[11px] font-bold uppercase tracking-widest ${labelColor}`}
-      >
-        <Clock className="w-3 h-3" />
-        Sale price increases by {incrementAmount} in
-      </div>
-      <div className="flex items-center gap-1.5 pt-1.5">
-        {[
-          { value: timeLeft.days, label: "Days" },
-          { value: timeLeft.hours, label: "Hrs" },
-          { value: timeLeft.minutes, label: "Min" },
-          { value: timeLeft.seconds, label: "Sec" },
-        ].map(({ value, label }, i) => (
-          <div key={label} className="flex items-center gap-1.5">
-            <div
-              className={`flex flex-col items-center rounded-md px-2 py-1 min-w-[36px] ${unitBg}`}
-            >
-              <span
-                className={`text-lg font-extrabold tabular-nums leading-none ${valueColor}`}
-              >
-                {pad(value)}
-              </span>
-              <span
-                className={`text-[9px] font-bold uppercase mt-0.5 ${labelColor}`}
-              >
-                {label}
-              </span>
-            </div>
-            {i < 3 && (
-              <span className={`text-sm font-bold -mt-2 ${separatorColor}`}>
-                :
-              </span>
-            )}
-          </div>
-        ))}
-      </div>
-    </div>
-  );
-};
-
 const TelegramIcon = ({ className }) => (
   <svg className={className} viewBox="0 0 24 24" fill="currentColor">
     <path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.894 8.221-1.97 9.28c-.145.658-.537.818-1.084.508l-3-2.21-1.447 1.394c-.16.16-.295.295-.605.295l.213-3.053 5.56-5.023c.242-.213-.054-.333-.373-.12L7.88 13.674l-2.96-.924c-.643-.204-.657-.643.136-.953l11.57-4.461c.537-.194 1.006.131.832.885z" />
@@ -292,43 +157,26 @@ const EventTickets = () => {
   // };
 
   useEffect(() => {
-    // Calculate dynamic sale prices for each plan
+    // Set fixed prices for each plan
     const updatedPlans = staticPlans.map((plan) => {
       const planType = plan.label.toLowerCase();
 
       if (planType === "standard") {
-        return { ...plan, price: 0, doorPrice: 0, currentSavings: 0 };
+        return { ...plan, price: 0 };
       }
 
-      let currentSalePrice, doorPrice, incrementAmount;
-
+      let price;
       if (planType === "premium") {
-        incrementAmount = PRICE_INCREMENT.premium;
-        currentSalePrice = calculateCurrentSalePrice(
-          "premium",
-          BASE_SALE_PRICES.premium,
-          incrementAmount,
-        );
-        doorPrice = getDoorPrice("premium");
+        price = DOOR_PRICES.premium;
       } else if (planType === "vvip") {
-        incrementAmount = PRICE_INCREMENT.vvip;
-        currentSalePrice = calculateCurrentSalePrice(
-          "vvip",
-          BASE_SALE_PRICES.vvip,
-          incrementAmount,
-        );
-        doorPrice = getDoorPrice("vvip");
+        price = DOOR_PRICES.vvip;
       } else {
         return plan;
       }
 
-      const savings = calculateSavings(doorPrice, currentSalePrice);
-
       return {
         ...plan,
-        price: currentSalePrice,
-        doorPrice: doorPrice,
-        currentSavings: savings,
+        price: price,
       };
     });
 
@@ -367,11 +215,6 @@ const EventTickets = () => {
     return plan?.features?.includes(feature) || false;
   };
 
-  // Get plan type for countdown banner
-  const getPlanType = (planLabel) => {
-    return planLabel.toLowerCase();
-  };
-
   if (plans.length === 0) {
     return (
       <section
@@ -408,7 +251,6 @@ const EventTickets = () => {
         viewport={{ once: true, margin: "-100px" }}
       >
         {plans.map((plan, index) => {
-          const planType = getPlanType(plan.label);
           const isFree = plan.price === 0;
 
           return (
@@ -454,11 +296,11 @@ const EventTickets = () => {
                   </p>
                 </div>
 
-                {/* Price Display — split layout with diagonal divider */}
+                {/* Price Display */}
                 {isFree ? (
-                  <div className="px-6 pb-4">
+                  <div className="px-6 pb-6">
                     <span
-                      className={`text-4xl font-bold ${
+                      className={`text-5xl font-bold ${
                         plan.isPopular ? "text-white" : "text-gray-900"
                       }`}
                     >
@@ -466,89 +308,15 @@ const EventTickets = () => {
                     </span>
                   </div>
                 ) : (
-                  <>
-                    {/* Sale vs Door Price row */}
-                    <div
-                      className={`relative flex items-stretch overflow-hidden ${
-                        plan.isPopular ? "bg-green-700/40" : "bg-gray-50"
+                  <div className="px-6 pb-6">
+                    <span
+                      className={`text-5xl font-bold ${
+                        plan.isPopular ? "text-white" : "text-gray-900"
                       }`}
                     >
-                      {/* SALE side */}
-                      <div className="flex-1 flex flex-col items-center justify-center py-4 px-4">
-                        <span
-                          className={`text-[11px] font-bold uppercase tracking-widest mb-1 ${
-                            plan.isPopular ? "text-green-200" : "text-gray-500"
-                          }`}
-                        >
-                          Sale
-                        </span>
-                        <span
-                          className={`text-3xl font-extrabold ${
-                            plan.isPopular ? "text-white" : "text-gray-900"
-                          }`}
-                        >
-                          ${plan.price}
-                        </span>
-                      </div>
-
-                      {/* Diagonal SVG divider */}
-                      <div className="relative w-10 flex-shrink-0">
-                        <svg
-                          className="absolute inset-0 w-full h-full"
-                          viewBox="0 0 40 80"
-                          preserveAspectRatio="none"
-                        >
-                          <line
-                            x1="30"
-                            y1="0"
-                            x2="10"
-                            y2="80"
-                            stroke={
-                              plan.isPopular
-                                ? "rgba(255,255,255,0.25)"
-                                : "#d1d5db"
-                            }
-                            strokeWidth="1.5"
-                          />
-                        </svg>
-                      </div>
-
-                      {/* DOOR PRICE side */}
-                      <div className="flex-1 flex flex-col items-center justify-center py-4 px-4">
-                        <span
-                          className={`text-[11px] font-bold uppercase tracking-widest mb-1 ${
-                            plan.isPopular ? "text-green-200" : "text-gray-500"
-                          }`}
-                        >
-                          Door Price
-                        </span>
-                        <span
-                          className={`text-3xl font-extrabold line-through ${
-                            plan.isPopular ? "text-green-300" : "text-gray-600"
-                          }`}
-                        >
-                          ${plan.doorPrice}
-                        </span>
-                      </div>
-                    </div>
-
-                    {/* Save banner */}
-                    {plan.currentSavings > 0 && (
-                      <div
-                        className={`py-2.5 text-center font-bold text-lg tracking-wide ${
-                          plan.isPopular ? "text-white" : "text-green-700"
-                        }`}
-                      >
-                        Save ${plan.currentSavings}
-                      </div>
-                    )}
-
-                    {/* Countdown */}
-                    <CountdownBanner
-                      isPopular={plan.isPopular}
-                      planType={planType}
-                    />
-                  </>
+                      ${plan.price}
+                    </span>
+                  </div>
                 )}
               </div>
 

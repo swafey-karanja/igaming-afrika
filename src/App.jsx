@@ -65,7 +65,7 @@ const App = () => {
         <Navbar />
         <SocialSidebar />
         <Hero />
-        <PromoModal open={promoOpen} onClose={() => setPromoOpen(false)} />
+        {/* <PromoModal open={promoOpen} onClose={() => setPromoOpen(false)} /> */}
         <ScrollToTop />
         <Routes>
           <Route path="/" element={<Home />} />

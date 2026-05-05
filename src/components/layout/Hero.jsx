@@ -122,7 +122,7 @@ const Hero = () => {
         </p>
 
         {/* Countdown Timer */}
-        <div className="flex flex-wrap justify-center gap-2 sm:gap-3 md:gap-4 lg:gap-6 xl:gap-5 max-w-2xl mx-auto">
+        {/* <div className="flex flex-wrap justify-center gap-2 sm:gap-3 md:gap-4 lg:gap-6 xl:gap-5 max-w-2xl mx-auto">
           {["days", "hours", "minutes", "seconds"].map((unit) => (
             <div
               key={unit}
@@ -148,7 +148,7 @@ const Hero = () => {
               </div>
             </div>
           ))}
-        </div>
+        </div> */}
 
         {/* Buttons */}
         {isHomePage && (
