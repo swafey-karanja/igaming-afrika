@@ -11,9 +11,9 @@ import {
   FaYoutube,
   FaSpotify,
 } from "react-icons/fa";
-import { toast } from "react-hot-toast";
+// import { toast } from "react-hot-toast";
 import { FormField } from "../../lib/utils";
-import { fetchCSRFToken } from "../../services/api";
+// import { fetchCSRFToken } from "../../services/api";
 
 const NavLink = ({ href, children }) => (
   <li>
@@ -306,14 +306,14 @@ const BackToTop = ({ isVisible, onClick }) => (
 // Main Footer Component
 const Footer = () => {
   const [isVisible, setIsVisible] = useState(false);
-  const [isSubmitting, setIsSubmitting] = useState(false);
-  const [errors, setErrors] = useState({});
-  const [formData, setFormData] = useState({
-    name: "",
-    email: "",
-    topic: "",
-    message: "",
-  });
+  // const [isSubmitting, setIsSubmitting] = useState(false);
+  // const [errors, setErrors] = useState({});
+  // const [formData, setFormData] = useState({
+  //   name: "",
+  //   email: "",
+  //   topic: "",
+  //   message: "",
+  // });
 
   useEffect(() => {
     const handleScroll = () => setIsVisible(window.scrollY > 20);
@@ -323,101 +323,101 @@ const Footer = () => {
 
   const scrollToTop = () => window.scrollTo({ top: 0, behavior: "smooth" });
 
-  const handleInputChange = (e) => {
-    const { name, value } = e.target;
-    setFormData((prev) => ({ ...prev, [name]: value }));
+  // const handleInputChange = (e) => {
+  //   const { name, value } = e.target;
+  //   setFormData((prev) => ({ ...prev, [name]: value }));
 
-    if (errors[name]) {
-      setErrors((prev) => ({ ...prev, [name]: "" }));
-    }
-  };
+  //   if (errors[name]) {
+  //     setErrors((prev) => ({ ...prev, [name]: "" }));
+  //   }
+  // };
 
-  const validateForm = () => {
-    const newErrors = {};
+  // const validateForm = () => {
+  //   const newErrors = {};
 
-    if (!formData.name.trim()) {
-      newErrors.name = "Full name is required";
-    }
+  //   if (!formData.name.trim()) {
+  //     newErrors.name = "Full name is required";
+  //   }
 
-    if (!formData.email.trim()) {
-      newErrors.email = "Email is required";
-    } else {
-      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-      if (!emailRegex.test(formData.email)) {
-        newErrors.email = "Please enter a valid email address";
-      }
-    }
+  //   if (!formData.email.trim()) {
+  //     newErrors.email = "Email is required";
+  //   } else {
+  //     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  //     if (!emailRegex.test(formData.email)) {
+  //       newErrors.email = "Please enter a valid email address";
+  //     }
+  //   }
 
-    if (!formData.topic.trim()) {
-      newErrors.topic = "Topic of inquiry is required";
-    }
+  //   if (!formData.topic.trim()) {
+  //     newErrors.topic = "Topic of inquiry is required";
+  //   }
 
-    if (!formData.message.trim()) {
-      newErrors.message = "Message is required";
-    } else if (formData.message.trim().length < 10) {
-      newErrors.message = "Message must be at least 10 characters long";
-    }
+  //   if (!formData.message.trim()) {
+  //     newErrors.message = "Message is required";
+  //   } else if (formData.message.trim().length < 10) {
+  //     newErrors.message = "Message must be at least 10 characters long";
+  //   }
 
-    setErrors(newErrors);
-    return Object.keys(newErrors).length === 0;
-  };
+  //   setErrors(newErrors);
+  //   return Object.keys(newErrors).length === 0;
+  // };
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
+  // const handleSubmit = async (e) => {
+  //   e.preventDefault();
 
-    if (!validateForm()) {
-      return;
-    }
+  //   if (!validateForm()) {
+  //     return;
+  //   }
 
-    setIsSubmitting(true);
-    toast.loading("Sending your inquiry...", { id: "inquiry-toast" });
+  //   setIsSubmitting(true);
+  //   toast.loading("Sending your inquiry...", { id: "inquiry-toast" });
 
-    try {
-      const { csrf_token } = await fetchCSRFToken();
-      console.log({ csrf_token });
+  //   try {
+  //     const { csrf_token } = await fetchCSRFToken();
+  //     console.log({ csrf_token });
 
-      const response = await fetch(
-        `${import.meta.env.VITE_PUBLIC_API_URL}inquiry/`,
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-            "X-CSRF-Token": csrf_token,
-          },
-          body: JSON.stringify(formData),
-        },
-      );
+  //     const response = await fetch(
+  //       `${import.meta.env.VITE_PUBLIC_API_URL}inquiry/`,
+  //       {
+  //         method: "POST",
+  //         headers: {
+  //           "Content-Type": "application/json",
+  //           "X-CSRF-Token": csrf_token,
+  //         },
+  //         body: JSON.stringify(formData),
+  //       },
+  //     );
 
-      if (response.ok) {
-        toast.success("Inquiry sent successfully!", { id: "inquiry-toast" });
-        setTimeout(() => {
-          setFormData({
-            name: "",
-            email: "",
-            topic: "",
-            message: "",
-          });
-        }, 1500);
-      } else {
-        toast.error("Failed to send inquiry. Please try again.", {
-          id: "inquiry-toast",
-        });
-      }
-    } catch (error) {
-      console.error("Error:", error);
-      toast.error("Something went wrong. Try again later.", {
-        id: "inquiry-toast",
-      });
-    } finally {
-      setIsSubmitting(false);
-    }
-  };
+  //     if (response.ok) {
+  //       toast.success("Inquiry sent successfully!", { id: "inquiry-toast" });
+  //       setTimeout(() => {
+  //         setFormData({
+  //           name: "",
+  //           email: "",
+  //           topic: "",
+  //           message: "",
+  //         });
+  //       }, 1500);
+  //     } else {
+  //       toast.error("Failed to send inquiry. Please try again.", {
+  //         id: "inquiry-toast",
+  //       });
+  //     }
+  //   } catch (error) {
+  //     console.error("Error:", error);
+  //     toast.error("Something went wrong. Try again later.", {
+  //       id: "inquiry-toast",
+  //     });
+  //   } finally {
+  //     setIsSubmitting(false);
+  //   }
+  // };
 
   return (
     <>
       <footer
         id="footer"
-        className="relative text-white pb-8 pt-16 min-h-screen px-6 lg:px-8 py-8"
+        className="relative text-white pb-8 pt-16 min-h-[40vh] px-6 lg:px-8 py-8"
       >
         <div className="absolute inset-0 w-full h-full overflow-hidden z-0">
           {/* Base African pattern image with white overlay */}
@@ -444,7 +444,7 @@ const Footer = () => {
         </div>
 
         {/* Content - positioned above background with padding bottom to avoid skyline */}
-        <div className="relative z-10 pb-[30vh] lg:pb-[40vh]">
+        {/* <div className="relative z-10 pb-[30vh] lg:pb-[40vh]">
           <ContactSection
             formData={formData}
             onChange={handleInputChange}
@@ -452,7 +452,7 @@ const Footer = () => {
             errors={errors}
             isSubmitting={isSubmitting}
           />
-        </div>
+        </div> */}
         {/* Copyright */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}

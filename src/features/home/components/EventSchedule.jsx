@@ -374,11 +374,11 @@ const EventSchedule = ({ speakers = [] }) => {
         </motion.div>
       </motion.div>
 
-      <div className="flex gap-6 mb-2 sm:mb-3 lg:mb-4">
+      {/* <div className="flex gap-6 mb-2 sm:mb-3 lg:mb-4">
         <div className="">
           <CalendarDropdown iconSize="md" showText={true} />
         </div>
-      </div>
+      </div> */}
 
       {/* Session Modal - Imported as Child Component */}
       <SessionModal

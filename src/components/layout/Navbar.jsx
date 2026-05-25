@@ -50,10 +50,10 @@ const Navbar = () => {
 
   return (
     <header
-      className={`fixed top-[40px] md:top-[85px] xl:top-[95px] inset-x-0 z-40 pt-6 pb-4 md:pt-8 transition-all duration-700 ease-in-out ${
+      className={`fixed top-0 inset-x-0 z-40 py-4 transition-all duration-700 ease-in-out ${
         isScrolled
           ? "bg-gray-100 shadow-md drop-shadow-md text-black"
-          : "bg-transparent text-black"
+          : "bg-gray-50/70 text-black"
       }`}
     >
       <div className="px-4 sm:px-6 lg:px-8 mx-auto container">
@@ -135,7 +135,7 @@ const Navbar = () => {
               items={awards}
             />
 
-            <a
+            {/* <a
               href="https://events.igasummit.com/en/registration-form"
               target="_blank"
               rel="noopener noreferrer"
@@ -148,8 +148,8 @@ const Navbar = () => {
               >
                 GET TICKETS
               </button>
-            </a>
-            <NavLink to="/speaker-registration">
+            </a> */}
+            {/* <NavLink to="/speaker-registration">
               <button
                 style={isScrolled ? { backgroundColor: "#14a45c" } : {}}
                 className={`hover:bg-green-600 hover:text-white transition-colors duration-300 hover:bg-opacity-20 hover:cursor-pointer text-xs font-bold py-1.5 px-4 lg:py-2 lg:px-6 lg:text-sm border-3 border-lime-500 rounded-md ${
@@ -158,7 +158,7 @@ const Navbar = () => {
               >
                 BECOME A SPEAKER
               </button>
-            </NavLink>
+            </NavLink> */}
           </nav>
         </div>
       </div>
@@ -214,7 +214,7 @@ const Navbar = () => {
               </nav>
 
               {/* CTA Button */}
-              <div className="pt-4">
+              {/* <div className="pt-4">
                 <button
                   onClick={() => setSidebarOpen(!isSidebarOpen)}
                   className="w-full bg-white/10 hover:bg-white/20 text-white font-semibold px-3 py-3 xl:px-6 rounded-xl border border-white/30 hover:border-white/50 transition-all duration-200 backdrop-blur-sm"
@@ -240,7 +240,7 @@ const Navbar = () => {
                     BECOME A SPEAKER
                   </NavLink>
                 </button>
-              </div>
+              </div> */}
             </div>
           </div>
 

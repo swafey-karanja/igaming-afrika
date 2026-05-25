@@ -1,42 +1,42 @@
-import { useState, useEffect } from "react";
+// import { useState, useEffect } from "react";
 import { useLocation } from "react-router-dom";
 import { CalendarDropdown } from "../../lib/utils";
 
 const Hero = () => {
-  const [timeLeft, setTimeLeft] = useState({
-    days: 0,
-    hours: 0,
-    minutes: 0,
-    seconds: 0,
-  });
+  // const [timeLeft, setTimeLeft] = useState({
+  //   days: 0,
+  //   hours: 0,
+  //   minutes: 0,
+  //   seconds: 0,
+  // });
   // const navigate = useNavigate();
   const location = useLocation();
   const isHomePage = location.pathname === "/";
 
   // Calculate time left until the event (May 4, 2026)
-  useEffect(() => {
-    const calculateTimeLeft = () => {
-      const eventDate = new Date("May 4, 2026").getTime();
-      const now = new Date().getTime();
-      const difference = eventDate - now;
+  // useEffect(() => {
+  //   const calculateTimeLeft = () => {
+  //     const eventDate = new Date("May 4, 2026").getTime();
+  //     const now = new Date().getTime();
+  //     const difference = eventDate - now;
 
-      if (difference > 0) {
-        setTimeLeft({
-          days: Math.floor(difference / (1000 * 60 * 60 * 24)),
-          hours: Math.floor(
-            (difference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60),
-          ),
-          minutes: Math.floor((difference % (1000 * 60 * 60)) / (1000 * 60)),
-          seconds: Math.floor((difference % (1000 * 60)) / 1000),
-        });
-      }
-    };
+  //     if (difference > 0) {
+  //       setTimeLeft({
+  //         days: Math.floor(difference / (1000 * 60 * 60 * 24)),
+  //         hours: Math.floor(
+  //           (difference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60),
+  //         ),
+  //         minutes: Math.floor((difference % (1000 * 60 * 60)) / (1000 * 60)),
+  //         seconds: Math.floor((difference % (1000 * 60)) / 1000),
+  //       });
+  //     }
+  //   };
 
-    const timer = setInterval(calculateTimeLeft, 1000);
-    calculateTimeLeft(); // Initial calculation
+  //   const timer = setInterval(calculateTimeLeft, 1000);
+  //   calculateTimeLeft(); // Initial calculation
 
-    return () => clearInterval(timer);
-  }, []);
+  //   return () => clearInterval(timer);
+  // }, []);
 
   return (
     <div className={`relative flex pt-15 px-6 lg:px-8 py-8 min-h-screen`}>
@@ -85,7 +85,7 @@ const Hero = () => {
         {/* Logo */}
         <div className="flex items-center justify-center w-full">
           <img
-            src="/IGA-LIONBETS-Logo.png"
+            src="/Summit_Logo.png"
             alt="iGaming Afrika Logo"
             className={`${
               isHomePage
@@ -106,9 +106,9 @@ const Hero = () => {
           >
             4 - 6 &nbsp; MAY, 2026
           </p>
-          <div>
+          {/* <div>
             <CalendarDropdown showText={false} />
-          </div>
+          </div> */}
         </div>
 
         <p
@@ -153,7 +153,7 @@ const Hero = () => {
         {/* Buttons */}
         {isHomePage && (
           <div className="rounded-lg p-2 sm:p-4 xl:p-3 max-w-2xl mx-auto w-full flex flex-col gap-y-2 sm:gap-y-3 xl:gap-y-3">
-            <div className="flex flex-col md:flex-row justify-center gap-2 sm:gap-4 xl:gap-3">
+            {/* <div className="flex flex-col md:flex-row justify-center gap-2 sm:gap-4 xl:gap-3">
               <button
                 onClick={() => {
                   document.getElementById("eventTickets")?.scrollIntoView({
@@ -164,17 +164,17 @@ const Hero = () => {
               >
                 Get Tickets
               </button>
-              {/* <PopUpModal /> */}
-            </div>
+              <PopUpModal />
+            </div> */}
 
-            <div className="flex flex-col xl:flex-row justify-center gap-3">
+            {/* <div className="flex flex-col xl:flex-row justify-center gap-3">
               <a
                 className="bg-transparent cursor-pointer hover:bg-[#47cf8b] hover:bg-opacity-20 hover:text-white transition-colors duration-300 text-[11px] lg:text-lg xl:text-base 2xl:text-md 3xl:text-lg text-[#14a45c] font-bold w-full py-3 px-4 sm:px-6 border-3 border-lime-500 rounded-4xl whitespace-normal sm:whitespace-nowrap text-center"
-                // onClick={() => {
-                //   document.getElementById("eventTickets")?.scrollIntoView({
-                //     behavior: "smooth",
-                //   });
-                // }}
+                onClick={() => {
+                  document.getElementById("eventTickets")?.scrollIntoView({
+                    behavior: "smooth",
+                  });
+                }}
                 href="https://events.igasummit.com/en/registration-form?ticket_type=VIP"
               >
                 iGaming Operators & Regulators Only - Apply for the Free VIP
@@ -182,18 +182,18 @@ const Hero = () => {
               </a>
               <a
                 className="bg-transparent cursor-pointer hover:bg-[#47cf8b] hover:bg-opacity-20 hover:text-white  transition-colors duration-300 text-[11px] lg:text-lg xl:text-base 2xl:text-md 3xl:text-lg text-[#14a45c] font-bold w-full py-2 xl:py-3 px-4 sm:px-16 border-3 border-lime-500 rounded-4xl whitespace-normal sm:whitespace-nowrap text-center"
-                // onClick={() => {
-                //   document.getElementById("eventTickets")?.scrollIntoView({
-                //     behavior: "smooth",
-                //   });
-                // }}
+                onClick={() => {
+                  document.getElementById("eventTickets")?.scrollIntoView({
+                    behavior: "smooth",
+                  });
+                }}
                 href="https://events.igamingafrika.com/affiliates/register/"
                 target="_blank"
                 rel="noopener noreferrer"
               >
                 Affiliates - Register for Free Here
               </a>
-            </div>
+            </div> */}
           </div>
         )}
       </div>
