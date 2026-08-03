@@ -1,5 +1,5 @@
 import { X, CheckCircle, Star, Users, Hammer } from "lucide-react";
-import { NavLink } from "react-router-dom";
+import { NavLink } from "react-router";
 
 const SponsorshipModal = ({ selectedPackage, isModalOpen, closeModal }) => {
   if (!selectedPackage) return null;

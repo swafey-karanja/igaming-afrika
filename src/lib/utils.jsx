@@ -2,7 +2,7 @@
 import { useInView, motion } from "framer-motion";
 import { useEffect, useRef, useState } from "react";
 import { ChevronDown, CalendarPlus } from "lucide-react";
-import { useLocation } from "react-router-dom";
+import { useLocation } from "react-router";
 import PhoneInput from "react-phone-number-input";
 import "react-phone-number-input/style.css";
 

@@ -1,5 +1,5 @@
 import Footer from "./components/layout/Footer.jsx";
-import { Routes, Route } from "react-router-dom";
+import { Routes, Route } from "react-router";
 import { ScrollToTop } from "./lib/utils.jsx";
 import { Provider } from "react-redux";
 import store from "./store/index.js";
